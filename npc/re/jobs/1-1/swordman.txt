@@ -1,0 +1,120 @@
+//===== rAthena Script ======================================= 
+//= Renewal Swordman Job Quest
+//===== By: ================================================== 
+//= Kisuka
+//===== Current Version: ===================================== 
+//= 1.1
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= Job Change to Swordman Class
+//===== Additional Comments: ================================= 
+//= 1.0 First Version. [Kisuka]
+//= 1.1 Added support for Baby classes. [Euphy]
+//============================================================ 
+izlude_in,74,172,4	script	Swordman#swd	119,{
+	if (Upper == 1) {
+		if (Class == Job_Novice_High && (ADVJOB == Job_Lord_Knight || ADVJOB == Job_Paladin)) {
+			mes "[劍士 工會員]";
+			mes "哈哈! 就是這樣子啊!";
+			mes "想要重新變為劍士嗎？";
+			mes "使用過劍的傢伙，還會做什麼呢?";
+			next;
+			mes "[劍士 工會員]";
+			mes "也沒什麼特別的問題，我就馬上幫你轉職吧！";
+			mes "不需要任何申請書，應該沒有什麼怨言吧?";
+			next;
+			if (getskilllv("NV_BASIC") < 9) {
+				mes "[劍士 工會員]";
+				mes "嗯？不過在你再次成為劍士之前，請先把基本技能給學會吧";
+				close;
+			}
+			mes "[劍士 工會員]";
+			mes "不錯，現在有點穩重的樣子!!";
+			mes "不要忘了每天練習啊...!";
+			skill 143,0,0;
+			jobchange Job_Swordman_High;
+			skill 144,1,0;
+			skill 145,1,0;
+			skill 146,1,0;
+			close;
+		}else{
+			mes "[劍士 工會員]";
+			mes "哎呦，好想睡覺啊!睡覺!";
+			mes "我是劍士工會裡的相關人員...";
+			mes "哈啊啊哈";
+			next;
+			mes "[劍士 工會員]";
+			mes "真實的，想睡覺啊... 嗯?什麼";
+			mes "沒什麼事情的話請回去吧!";
+			close;
+		}
+	}
+	mes "[劍士公會服務人員]";
+	mes "這裡是劍士公會，";
+	mes "你找我有事嗎?";
+	next;
+	switch(select("關於劍士...:轉職為劍士:取消")) {
+	case 1:
+		mes "[劍士公會服務人員]";
+		mes "想要對劍士這個職業了解更多嗎? 好唄! 那我就說給你聽吧.";
+		next;
+		mes "[劍士公會服務人員]";
+		mes "劍士最大的優勢，就是在近距離戰時能發揮最強大的威力。";
+		mes "近距離戰時，比其它職業佔優勢有三個!";
+		next;
+		mes "[劍士公會服務人員]";
+		mes "第一 和其它置業相比HP比較高許多。";
+		mes "第二 ";
+		mes "除了弓箭類和權杖類之外，所有的武器都可以裝備，看情況充分利用。";
+		mes "第三 ";
+		mes "劍士的技能大部分都具有強大的攻擊力。";
+		next;
+		mes "[劍士公會服務人員]";
+		mes "聽起來是簡單的解說，";
+		mes "我想你大概聽得懂。";
+		mes "另外再加上一些我個人的想法，劍士不管做什麼事，都是世界上最耀眼的職業！";
+		close;
+	case 2:
+		mes "[劍士公會服務人員]";
+		if(BaseJob != Job_Novice) {
+			if(BaseJob == Job_Swordman) {
+				mes "You are already an excellent Swordman, aren't you?";
+				mes "Just devote yourself to be a great Swordman.";
+			}else{
+				mes "You already have one of the other jobs, don't you?";
+				mes "You've gone too far with that joke.";
+			}
+			close;
+		}else{
+			if (getskilllv("NV_BASIC") < 9) {
+				mes "I'm sorry to tell you this but to be a Swordman, you must reach at least ^4A4AFFJob Level 10^000000.";
+				mes "and ^4A4AFFBasic Skill Level 9^000000.";
+				next;
+				mes "[劍士公會服務人員]";
+				mes "Want to be a Swordman without having the minimum requirement?";
+				mes "Do you think being a Swordman is that easy?";
+				close;
+			}
+			mes "職業等級和基本技能都已夠水準了，好吧!你不再猶豫，確定要轉職為劍士嗎?";
+			next;
+			if(select("是的，我要專職:我要考慮一下") == 2) {
+				mes "[劍士公會服務人員]";
+				mes "好吧! 當然要慎選職業，";
+				mes "不過現在才反悔...有點難過";
+				close;
+			}
+			mes "[劍士公會服務人員]";
+			mes "恭喜你，你即將從事優質職業的劍士了!";
+			mes "我現在馬上為你服務!";
+			next;
+			mes "[劍士公會服務人員]";
+			mes "再次恭喜你成為劍士，未來劍士公會的發展需要您的支持與努力。";
+			callfunc "Job_Change",Job_Swordman;
+			getitem 13415,1; // N_Falchion
+			close;
+		}
+	case 3:
+		close;
+	}
+}

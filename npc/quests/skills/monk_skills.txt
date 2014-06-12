@@ -1,0 +1,582 @@
+//===== rAthena Script ======================================= 
+//= Monk Skills Quests
+//===== By: ================================================== 
+//= Lupus, Reddozen, Samuray22
+//===== Current Version: ===================================== 
+//= 1.5
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Quests for skills: Spiritual Bestowment, Excruciating Palm
+//===== Additional Comments: ================================= 
+//= 1.5 Rescripted to Aegis 10.3 stadards. [L0ne_W0lf]
+//= 繁體中文 - 轉生後忘記技能重新學習對話待調查 [笨冰]
+//============================================================
+
+prt_monk,270,198,3	script	修練武道家#qsk_mo	753,{
+	if (BaseJob == Job_Monk) {
+		if (MONK_SK == 7) {
+			mes "[修道僧]";
+			mes "To take the time to";
+			mes "comtemplate on your most";
+			mes "important goal, your highest";
+			mes "priority, is never a waste.";
+			mes "Never confuse your means";
+			mes "to the end you wish to achieve.";
+			close;
+		}
+		if (MONK_SK == 6 && getskilllv("MO_KITRANSLATION") == 0) {
+			mes "[修道僧]";
+			mes "You've forgotten the";
+			mes "basics behind performing";
+			mes "Spiritual Bestowment?";
+			mes "How can this be...?";
+			next;
+			mes "[修道僧]";
+			mes "Ah, now I understand.";
+			mes "You've transcended the";
+			mes "limitations that used to";
+			mes "hold you back, and have";
+			mes "become a Champion. I'm";
+			mes "sorry for underestimating you.";
+			next;
+			mes "[修道僧]";
+			mes "Very well. It will be an honor";
+			mes "for me to help you relearn the";
+			mes "Spiritual Bestowment skill. As";
+			mes "a side effect, you will probably relearn Excruciating Palm as well.";
+			next;
+			mes "[修道僧]";
+			mes "Now be still and relax";
+			mes "as I perform my special";
+			mes "accupressure treatment that";
+			mes "will commit these skills to";
+			mes "your nervous system and ";
+			mes "motor memory...";
+			next;
+			mes "[修道僧]";
+			mes "哈啊啊啊啊啊........";
+			mes "呼嗚嗚嗚嗚...";
+			next;
+			mes "[修道僧]";
+			mes "啊~~~塌塌塌塌塌塌!!!";
+			mes "塌達達達達塌!!!";
+			next;
+			mes "[修道僧]";
+			mes "哇啦撒啊!!!!!";
+			next;
+			mes "[修道僧]";
+			mes "咻嗚...";
+			set MONK_SK,7;
+			skill "MO_KITRANSLATION",1,0;
+			skill "MO_BALKYOUNG",1,0;
+			next;
+			mes "[修道僧]";
+			mes "It is done. Please";
+			mes "continue to use these";
+			mes "special skills to promote";
+			mes "peace and harmony in this";
+			mes "world. Farewell, my friend.";
+			close;
+		}
+		if (MONK_SK > 2) {
+			mes "[修道僧]";
+			mes "你自己要做的事，";
+			mes "你自己仔細的想一想";
+			mes "你真正所處的狀況!";
+			mes "打仗並不是你最拿手的事情，";
+			mes "請你銘記";
+			next;
+			mes "[修道僧]";
+			mes "啊，我傳授給你振氣注入的事實，";
+			mes "請對其它修道僧們保持秘密吧，";
+			mes "若被他們知道的話，";
+			mes "又會被宣揚一時的，";
+			mes "你知道我的意思吧?";
+			close;
+		}
+		if (MONK_SK == 2) {
+			if (Weight == 0) {
+				mes "[修道僧]";
+				mes "我不是講過好幾次...";
+				mes "先把物慾給拋棄掉吧? 唉喲?";
+				mes "呵歐..你內心的貪念，";
+				mes "現在是看不出來的，";
+				mes "不過物慾這念頭確實是給拋棄掉了，";
+				mes "這個這個多久才見到一位無慾者啊!";
+				next;
+				mes "[修道僧]";
+				mes "我很欣賞你! 是你的話，";
+				mes "確實的可以把我想的，";
+				mes "理想的正義與和平";
+				mes "去實現的";
+				next;
+				mes "[修道僧]";
+				mes "嗯，我不想因這件事做炫耀，";
+				mes "就為你特別的把我的技能";
+				mes "傳授給你吧，";
+				mes "也沒什麼啦...";
+				mes "其它修道僧們還沒習得到的";
+				mes "稀有的技能";
+				next;
+				mes "[修道僧]";
+				mes "這麼簡單的技能為什麼不能用呢..";
+				mes "都是一些貪心鬼，";
+				mes "擁有一些不正確的信念所至啊，";
+				mes "唉喲，廢話太長了，";
+				mes "馬上就進入到傳授吧?";
+				next;
+				mes "[修道僧]";
+				mes "用話傳授有點麻煩，";
+				mes "事實上這又不是用話就能傳授的，";
+				mes "大約就學別人一樣，";
+				mes "用匝到穴道的方式讓你馬上學會吧";
+				next;
+				mes "[修道僧]";
+				mes "哈啊啊啊啊啊........";
+				mes "呼嗚嗚嗚嗚...";
+				next;
+				mes "[修道僧]";
+				mes "啊~~~塌塌塌塌塌塌!!!";
+				mes "塌達達達達塌!!!";
+				next;
+				mes "[修道僧]";
+				mes "哇啦撒啊!!!!!";
+				next;
+				mes "[修道僧]";
+				mes "咻嗚...";
+				next;
+				mes "[修道僧]";
+				mes "好了! 你的身體可自動的";
+				mes "施展一個技能了呀，";
+				mes "因為身體是屬於記憶的狀態，";
+				mes "不會隨便的教導別人的...";
+				mes "嗯 應該是，";
+				mes "自己去做比較重要吧";
+				set MONK_SK,3;
+				skill "MO_KITRANSLATION",1,0;
+				next;
+				mes "[修道僧]";
+				mes "什麼樣的名稱都可以啦，";
+				mes "其它修道僧們把我剛剛學會的技能叫做，";
+				mes " ^FF0000振氣注入^000000";
+				mes "的樣子吧，";
+				mes "若你想那樣子稱呼的話，就這樣叫吧";
+				next;
+				mes "[修道僧]";
+				mes "^FF0000施展的時間較長，有一點後延遲時間，";
+				mes "請你小心注意的使用，";
+				mes "把自己的氣球體";
+				mes "給自己組隊員的技能，是主動技能";
+				mes "消耗SP是40^000000";
+				next;
+				mes "[修道僧]";
+				mes "其它的請你直接去使用後，";
+				mes "去瞭解他的用途吧";
+				next;
+				mes "[修道僧]";
+				mes "我是有點擔心再叮嚀你一次，";
+				mes "我們並不是為了打仗而鍛鍊身體的，";
+				mes "是為了透過自己修練，";
+				mes "而達到正義實現的，";
+				mes "請銘記這一點來行動吧";
+				next;
+				mes "[修道僧]";
+				mes "又廢話太多了，";
+				mes "也沒有什麼話可以講的啦，";
+				mes "假如你曾經有丟棄過一次物慾的話，";
+				mes "我就能相信你，";
+				mes "你能傳成我的信念的";
+				next;
+				mes "[修道僧]";
+				mes "那就，好好的加油吧，";
+				next;
+				mes "[修道僧]";
+				mes "啊，還有我傳授給你";
+				mes "這技能的事實，請保持秘密啊，";
+				mes "若其它傢伙知道這事實的話，";
+				mes "又會宣騰一時的...";
+				next;
+				mes "[修道僧]";
+				mes "絕對不能跟人家講哦?";
+				mes "若清楚了的話請你離開吧，";
+				mes "我再一次的說一遍，我們所學";
+				mes "的技術是，不是用在於殺傷的道具，";
+				mes "請你銘記這一點";
+				close;
+			}
+			else {
+				mes "[修道僧]";
+				mes "你的貪念好重啊，";
+				mes "你就這樣閒晃著，";
+				mes "還帶著什麼這麼多的東西啊?";
+				mes "請把你的物慾先解除掉吧";
+				close;
+			}
+		}
+		if (MONK_SK == 1) {
+			mes "[修道僧]";
+			mes "打仗是沒用的，是無聊的，";
+			mes "對於鍛鍊自己最好的是...";
+			next;
+			mes "[修道僧]";
+			mes "嗯? 第一次看到的武道家呀，";
+			mes "難道你也是想要對我說些，";
+			mes "力量是怎麼一回事，正義又是怎麼一回事，";
+			mes "對我說教後想要學習振氣注入而來的吧?";
+			next;
+			mes "[修道僧]";
+			mes "到底真是的... 難道都不會累嗎，";
+			mes "真是無可救藥的修道僧啊，";
+			mes "我們武道家們打仗並不是主要的工作呀，";
+			mes "不過卻做一些為打杖的修練呀...";
+			mes " 唉喲";
+			next;
+			mes "[修道僧]";
+			mes "所有的人都指責我說，說我做了之類的話，";
+			mes "說真的那些話還真的刺耳啊，";
+			mes "我有我的方式，";
+			mes "我只是堅持我的";
+			mes "信念而已啊...";
+			next;
+			mes "[修道僧]";
+			mes "反正沒用的貪念太多了，";
+			mes "為了正義使用力氣，";
+			mes "總有一天為了他們的貪念，";
+			mes "會加害到";
+			mes "和平的";
+			next;
+			mes "[修道僧]";
+			mes "若你也想要實現某些事情的話，";
+			mes "首先先把貪念丟掉吧，";
+			mes "那才是真正對自己修練的極點，";
+			mes "與和平實現正義之路啊，";
+			mes "我是這麼認為的";
+			next;
+			mes "[修道僧]";
+			mes "呵嗯...";
+			next;
+			mes "[修道僧]";
+			mes "你的貪念好重啊，";
+			mes "你就這樣閒晃著，";
+			mes "還帶著什麼這麼多的東西啊?";
+			mes "請把你的物慾先解除掉吧";
+			set MONK_SK,2;
+			close;
+		}
+	}
+	mes "[修道僧]";
+	mes "打仗是沒用的，是無聊的，";
+	mes "對於鍛鍊自己最好的是...";
+	close;
+}
+
+monk_test,316,69,5	script	修道僧#qsk_mo	823,{
+	if (BaseJob == Job_Monk) {
+		if (MONK_SK == 6) {
+			mes "[修道僧]";
+			mes "那麼再見囉，";
+			mes "假如在你的旅行途中有想到，";
+			mes "可以讓那位笨蛋有可說服的方法的話，";
+			mes "請隨時的跟我說吧";
+			close;
+		}
+		if (MONK_SK == 5) {
+			mes "[修道僧]";
+			mes "好，看樣子都準備好的模樣，";
+			mes "首先把理論確實的傳授給你，";
+			mes "反正也只有";
+			mes "這些啊...";
+			next;
+			mes "[修道僧]";
+			mes "名稱叫發勁，";
+			mes "之前我也講過好幾次了，";
+			mes "我想你也記得吧，在手掌上注入內功，";
+			mes "給予魔物打擊的同時，";
+			mes "產生出強烈的衝擊波，";
+			mes "讓周圍的敵人也被轟出去的技能";
+			next;
+			mes "[修道僧]";
+			mes "受到這技能打擊的魔物外，";
+			mes "在周圍的魔物們因衝擊波";
+			mes "往後退移，";
+			mes "同時還會得的昏眩的狀態，";
+			mes "受傷害的魔物";
+			mes "只是受傷害而結束的";
+			next;
+			mes "[修道僧]";
+			mes "但施展時會消耗SP 20，";
+			mes "特別的是體力會消耗掉10，";
+			mes "因為這是比較強烈的技能，";
+			mes "或許對施展者有點";
+			mes "負荷的";
+			next;
+			mes "[修道僧]";
+			mes "從剛才就講，把對象指定為";
+			mes "魔物的理由是，";
+			mes "當對人類施展時可以給予傷害力，";
+			mes "但在周圍的人類";
+			mes "不會因衝擊波而退移，";
+			mes "請銘記這一點";
+			next;
+			mes "[修道僧]";
+			mes "嗯... 大概就這些了?";
+			mes "理論就到這邊講完了...";
+			mes "即使全部知道這些也是，";
+			mes "若不會在身上運用";
+			mes "振氣注入內功的話，";
+			mes "也就白費了";
+			next;
+			mes "[修道僧]";
+			mes "反正我已遵守約定都教你了?";
+			mes "現在我要想一下，";
+			mes "為了振氣注入的大眾化，";
+			mes "不知道在那裡奔波的笨蛋先生，";
+			mes "為他想出一個可以說服他的方法囉";
+			next;
+			mes "[修道僧]";
+			mes "感覺好像是在浪費時間的樣子，";
+			mes "反正我已遵守約定";
+			mes "把技術傳授給你了...";
+			mes "你也學會了理論因而滿足吧?";
+			set MONK_SK,6;
+			skill "MO_BALKYOUNG",1,0;
+			next;
+			mes "[修道僧]";
+			mes "那麼再見囉，";
+			mes "假如在你的旅行途中有想到，";
+			mes "可以讓那位笨蛋有可說服的方法的話，";
+			mes "請隨時的跟我說吧";
+			close;
+		}
+		if (MONK_SK == 4 && countitem(905) > 19 && countitem(711) > 2) {
+			mes "[修道僧]";
+			mes "...真是煩人的傢伙，";
+			mes "有植物梗 20個 和芽苗 3個以上的話，";
+			mes "確實是能證明出，";
+			mes "打敗了不少曼陀羅魔花的證據，";
+			mes "你是已擁有了正確的力量，";
+			mes "這不需要第二句話已證明了";
+			next;
+			mes "[修道僧]";
+			mes "那麼有什麼用啊? 那一位笨蛋";
+			mes "只要是沒有把振氣注入";
+			mes "傳授給其它人時，";
+			mes "即使我教會你發勁，";
+			mes "也只不過是一個理論而已啊";
+			next;
+			mes "[修道僧]";
+			mes "只會熟練的知道理論而已";
+			mes "實際上身上的內功，";
+			mes "沒有運用的進行的話，";
+			mes "那只是只知道理論不會運作的";
+			mes "物知識而已呀";
+			next;
+			mes "[修道僧]";
+			mes "真是的... 這樣子你還想學嗎?";
+			mes "還真固執啊，我知道了，";
+			mes "等你準備好了之後再跟我說吧，";
+			mes "即使你知道了對你也沒有什麼幫助，";
+			mes "可不要怪我呀";
+			delitem 905,20; //Stem
+			delitem 711,3; //Shoot
+			set MONK_SK,5;
+			close;
+		}
+		if (MONK_SK == 4) {
+			mes "[修道僧]";
+			mes "嗯? 你說測試內容啊?";
+			mes "我說過那對你沒什麼益處啊，";
+			mes "真是的，因為你已經問我了，";
+			mes "所以我是對你做答覆的";
+			next;
+			mes "[修道僧]";
+			mes "只要是對旅行者做出攻擊，";
+			mes "妨礙旅行路程的兇惡的植物，";
+			mes "打敗許多曼陀羅魔花來的話，";
+			mes "這就可以說是";
+			mes "測試的內容了";
+			next;
+			mes "[修道僧]";
+			mes "對其它旅行者做出傷害，";
+			mes "要打敗兇惡的植物，";
+			mes "並且用力量對其它旅行者，";
+			mes "做出照顧和善良的心地時，";
+			mes "這足以證明你有這樣的心";
+			next;
+			mes "[修道僧]";
+			mes "嗯，配合這樣的程度這樣就夠了!";
+			mes "話是還不能這樣說的，";
+			mes "若說準確一點的話，請帶來^FF0000植物梗 20個^000000和";
+			mes "^FF0000芽苗 3個^000000的話，";
+			mes "我還覺得你是可以的";
+			next;
+			mes "[修道僧]";
+			mes "也就是說，你能擁有打敗";
+			mes "曼陀羅魔花的力量的話，";
+			mes "為了其它旅行者";
+			mes "殺掉魔物為民除害的話，";
+			mes "也就是能證明出，你擁有一顆";
+			mes "照顧他人且善良的心";
+			next;
+			mes "[修道僧]";
+			mes "瞭解嗎?";
+			close;
+		}
+		if (MONK_SK == 3) {
+			mes "[修道僧]";
+			mes "什麼?";
+			mes "叫我教你發勁是吧?";
+			next;
+			mes "[修道僧]";
+			mes "會有兩個問題";
+			next;
+			mes "[修道僧]";
+			mes "第一，沒有習得振氣注入者";
+			mes "是不能使用發勁的，";
+			mes "這個我之前有提過";
+			mes "你應該知道吧?";
+			next;
+			mes "[修道僧]";
+			mes "還有第二，";
+			mes "若不是擁有真正的力量者，";
+			mes "是不能隨便把強的技術，";
+			mes "發勁傳授給他人的，";
+			mes "對擁有不好力量的人，若傳授這技能給他的話，";
+			mes "誰會知道會發生什麼狀況啊";
+			next;
+			mes "[修道僧]";
+			mes "第一個方法我也是沒譜，";
+			mes "第二個是... 嗯，";
+			mes "我們是在測試，";
+			mes "是否真的為人類發揮力量的事實";
+			next;
+			mes "[修道僧]";
+			mes "我猜你來的這邊為止，";
+			mes "會遭到很多植物的攻擊，";
+			mes "本來我走的好好的，";
+			mes "被那些主動攻擊的曼陀羅魔花快要給氣死了";
+			next;
+			mes "[修道僧]";
+			mes "對其它旅行者做出傷害，";
+			mes "要打敗兇惡的植物，";
+			mes "並且用力量對其它旅行者，";
+			mes "做出照顧和善良的心地時，";
+			mes "這足以證明你有這樣的心";
+			next;
+			mes "[修道僧]";
+			mes "嗯，配合這樣的程度這樣就夠了!";
+			mes "話是還不能這樣說的，";
+			mes "若說準確一點的話，請帶來^FF0000植物梗 20個^000000和";
+			mes "^FF0000芽苗 3個^000000的話，";
+			mes "我還覺得你是可以的";
+			next;
+			mes "[修道僧]";
+			mes "嗯...反正現在對這正確的力量，";
+			mes "做測試是沒有意義的";
+			mes "即使測試也成功了，";
+			mes "對振氣注入不行時，";
+			mes "學了發勁也沒什麼...";
+			next;
+			mes "[修道僧]";
+			mes "所以說對發勁就放棄吧，";
+			mes "嗯... 怎麼樣做才能讓振氣注入，";
+			mes "讓修道僧們普及化呢";
+			set MONK_SK,4;
+			close;
+		}
+		if (MONK_SK == 1) {
+			mes "[修道僧]";
+			mes "沒有正義的力量寧願為這力量死去，";
+			mes "沒有力量的正義是沒有意義的，";
+			mes "力量並不是正義，";
+			mes "正義才是力量!";
+			next;
+			mes "[修道僧]";
+			mes "也是對這真理做振氣注入，";
+			mes "唯一天才的同時，";
+			mes "對擁有一個不切實際理想的人，";
+			mes "要對某位笨蛋要好好的教導他吧，";
+			mes "若不喜歡的話，";
+			mes "我就自己來練振氣注入吧";
+			close;
+		}
+		if (MONK_SK == 0) {
+			mes "[修道僧]";
+			mes "沒有正義的力量寧願為這力量死去，";
+			mes "沒有力量的正義是沒有意義的，";
+			mes "力量並不是正義，";
+			mes "正義才是力量!";
+			next;
+			mes "[修道僧]";
+			mes "若你也是武道家的話，";
+			mes "請你銘記這個真理吧!";
+			mes "不要自己躲在某一個角落，";
+			mes "專做自己的修練像某一位笨蛋一樣，";
+			mes "到底要把這個情況比喻成什麼呢...唉喲~";
+			next;
+			mes "[修道僧]";
+			mes "到死亡為止，";
+			mes "我自己想要這樣活著呢，";
+			mes "這又不能如心願一樣，";
+			mes "假如沒有那傢伙的^FF0000振氣注入^000000技能的話，";
+			mes "我們所做出來的新的技能，";
+			mes "也會變成不能施展的";
+			next;
+			mes "[修道僧]";
+			mes "我們武道家們費了全身的力量，";
+			mes "所做出來的^FF0000發勁^000000技能，";
+			mes "若不會振氣注入的話，";
+			mes "就不能施展的...";
+			mes "可是，那傢伙，那傢伙就是!";
+			next;
+			mes "[修道僧]";
+			mes "對他哄著他，對他脅迫他，";
+			mes "對他低頭認輸，能做的都做過了，";
+			mes "那傢伙就是不想把振氣注入，";
+			mes "傳授給別人啊";
+			next;
+			mes "[修道僧]";
+			mes "其它的武道家們，";
+			mes "想要獨自學習振氣注入技能，";
+			mes "不斷的努力之後，還是不行啊...";
+			mes "真是的無可奈何啊";
+			next;
+			mes "[修道僧]";
+			mes "你也是武道家的話，";
+			mes "請你去勸勸他或是，";
+			mes "自己能學習到振氣注入的方法，";
+			mes "從兩者之中去選一個吧";
+			set MONK_SK,1;
+			next;
+			mes "[修道僧]";
+			mes "那傢伙每次都在說打仗是沒有用的，";
+			mes "是無聊的，會在那邊喃喃自語的，";
+			mes "應該會很容易找到他的";
+			close;
+		}
+	}
+	mes "[修道僧]";
+	mes "沒有正義的力量寧願為這力量死去，";
+	mes "沒有力量的正義是沒有意義的，";
+	mes "力量並不是正義，";
+	mes "正義才是力量!";
+	close;
+}
+
+//============================================================ 
+// Old changelog
+//============================================================ 
+//= 1.0 for fully working skills only [Lupus]
+//= 1.1 Added more new skill quests for more classes [Lupus]
+//= Somehow eA engine doesn't let you keep learn't skill V_V'
+//= 1.2 Added to correct locations, correct NPC's, fixed
+//= some of the items required and made them into real
+//= quests. [Reddozen] 
+//= 1.3 Fixed bugs and minor typos. Optimized [Lupus]
+//= 1.3a fixed an item ID typo, thx 2Spiritual Kid
+//= 1.3b Splitted into different files [DracoRPG]
+//= 1.4 Updated to the official one. [Samuray22]
+//= 1.4a replaced item "names" with item id. [Lupus]
+//============================================================

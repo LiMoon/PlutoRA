@@ -1,0 +1,781 @@
+//===== rAthena Script ======================================= 
+//= Ninja Job Quest
+//===== By: ================================================== 
+//= Legionaire, Kisuka
+//===== Current Version: ===================================== 
+//= 1.6
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= Ninja Job Change Quest
+//===== Additional Comments: ================================= 
+//= 1.1 Optimized, updated, checked [Lupus]
+//= 1.2 Added 亞卡其 [Playtester]
+//= 1.3 Updated dialogs to official ones and optimized [SinSloth]
+//= 1.4 Fixed a minor bug [SinSloth]
+//= 1.5 Updated to match AEGIS script and Added Quest Log commands. [Kisuka]
+//= 1.6 Fixed AEGIS amatsu warp typo. [Kisuka]
+//============================================================ 
+
+alberta,30,65,3	script	亞卡其	730,{
+	if (Class == Job_Novice) {
+		if (JobLevel == 10) {
+			mes "[亞卡其]";
+			mes "嗯...";
+			mes "你來到這黑暗的巷子，";
+			mes "想必是需要你的氣韻";
+			mes "指引你腳步而來的吧，";
+			mes "你要前往寬容大道嗎";
+			next;
+			if(select("不用 我不要:好的 我去") == 1) {
+				mes "[亞卡其]";
+				mes "我知道了，";
+				mes ".....";
+				mes "那麼再見";
+				close;
+			}
+			mes "[亞卡其]";
+			mes "好的，立即送你過去";
+			close2;
+			switch(rand(3)) {
+				case 1:
+					warp "amatsu",170,229;
+					end;
+				case 2:
+					warp "amatsu",216,188;
+					end;
+				default:
+					warp "amatsu",178,176;
+					end;
+			}
+		} else {
+			mes "[亞卡其]";
+			mes "這裡不是你該來的地方，";
+			mes "等你變強一點後再過來吧";
+			close;
+		}
+	} else {
+		mes "[亞卡其]";
+		mes "我跟你無話可說，";
+		mes "你回去吧";
+		close;
+	}
+}
+
+que_ng,30,65,3	script	庫烏佳 加伊#nq	730,{
+	if (Upper == 2) {
+		mes "[庫烏佳 加伊]";
+		mes "什麼味道! 這腥味是!!";
+		mes "原來是從你身上散發的，";
+		mes "像你這樣乳臭未乾的人，";
+		mes "好久沒見了，";
+		mes "請趕快從我眼前消失吧";
+		close;
+	}
+	if (Class == Job_Novice) {
+		if (JobLevel < 10) {
+			mes "[庫烏佳 加伊]";
+			mes "什麼味道! 這腥味是!!";
+			mes "原來是從你身上散發的，";
+			mes "像你這樣乳臭未乾的人，";
+			mes "好久沒見了，";
+			mes "請趕快從我眼前消失吧";
+			close;
+		}
+		if (NINJ_Q == 0) {
+			mes "["+strcharinfo(0)+"]";
+			mes "請問一下";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "嗯?...";
+			mes "你怎麼會~!!";
+			mes "看得到我!";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "咒語~!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "-丟擲多連發免洗筷子的男子-";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "-東閃西閃!-";
+			mes "啊呀~!";
+			mes "嗚啊~! 你這是幹嘛!";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "嗯?...";
+			mes "你不是來暗殺我的刺客呀";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "媽啊~ 你幹什麼~你怎麼";
+			mes "可以不分青紅皂白的，";
+			mes "也不做確認後就竟然亂丟...";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "嗚喝~! 好氣憤啊啊啊~~";
+			mes "我永遠的死對頭兼冤家，!";
+			mes "野貓喬伊!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "........";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "哦哈哈哈哈哈~~~!!!";
+			mes "哦呵~哦呵~";
+			mes "啪!啪!啪~";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "-你沒在聽嘛-";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "恩...";
+			mes "啊! 你是誰啊?!";
+			mes "再者，你幾時神不知";
+			mes "鬼不覺的來到我身邊!";
+			mes "呀啊 接招!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "唉呀~";
+			mes "你給我住手~";
+			mes "加上你現在的舉動...";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "呼噢，";
+			mes "你身手不賴嘛~";
+			mes "竟都躲過我的招數";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "-你想幹嘛...-";
+			mes "-而且完全不理我的話-";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "嗯~是嗎~";
+			mes "難道你找我";
+			mes "有事嗎?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes ".........";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "啊...嗯...";
+			mes "是的，";
+			mes "我來是想轉職為忍者";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "噢呵~ 那你是找對人了，";
+			mes "但是!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes ".....";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "我看是有點困難";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "唉喲~ 為什麼~";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "首先，我看你不太信任，";
+			mes "我覺得你以忍者活下去，";
+			mes "還是經驗不太足啊";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "因此緣故，";
+			mes "走!!! 請你走開吧~!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "...........";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "哼哼...";
+			mes "就是如此";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "...........";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "聽懂了的話，你就離開吧，";
+			mes "你也知道我非常";
+			mes "忙碌啊...";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "因為我周圍敵人太多，";
+			mes "我絲毫片刻都不能有，";
+			mes "怠慢警戒之心啊";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "我要去修練，以準備";
+			mes "下一場的決鬥，";
+			mes "咿喲喔喔喔~!";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "下一場必會贏得勝利!";
+			mes "你等著瞧吧，";
+			mes "野貓喬伊!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "野貓喬伊?";
+			mes "你是和貓打鬥嗎?";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "嗯? 那是那是，哈哈哈~嘿嘿~";
+			mes "野貓喬伊是那傢伙的";
+			mes "綽號";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "他是個非常聰明伶俐的傢伙，";
+			mes "為了獲勝，往往不擇手段";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "再加上他所使用的忍術，";
+			mes "既絢爛又強烈";
+			next;	
+			mes "[庫烏佳 加伊]";
+			mes "剛好他和我所使用的";
+			mes "飛鏢和卷軸";
+			mes "目前都已經用完，";
+			mes "所以暫時是休戰狀態，哈哈";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "如果你真想成為忍者的話，";
+			mes "可以幫我一件事嗎?";
+			mes "若你把事情辦妥的話，";
+			mes "即使不能讓你變成忍者，";
+			mes "也許能教你幾招忍術吧";
+			next;
+			if (select("答應:拒絕")==2) {
+				mes "["+strcharinfo(0)+"]";
+				mes "我並不止想學";
+				mes "幾招忍術而已，";
+				mes "不好意思，";
+				mes "你另覓他人吧";
+				next;
+				mes "[庫烏佳 加伊]";
+				mes "嗯...這樣啊...";
+				mes "我知道了，";
+				mes "我好像白費唇舌了，";
+				mes "那麼你可以走了";
+				close;
+			}
+			mes "["+strcharinfo(0)+"]";
+			mes "嗯...好吧";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "噢..是嗎，";
+			mes "那麼請把這封信，";
+			mes "交給野貓喬伊";
+			mes "那傢伙吧";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "內容大致是說";
+			mes "直到彼此都準備妥當之前，";
+			mes "暫時維持休戰，";
+			mes "並你務必帶回回信";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "另外提醒你，";
+			mes "根據情報，聽說那傢伙";
+			mes "去了'艾音布羅克'";
+			mes "至於去那邊的原因";
+			mes "則不得而知...";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "那傢伙擅長於變身術";
+			mes "所以也有可能認不出來";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "你得睜大眼睛仔細找，";
+			mes "那傢伙偏愛高處，";
+			mes "你好好找吧";
+			set NINJ_Q,1;
+			setquest 6015;
+			close;
+		}
+		else if (NINJ_Q == 1) {
+			mes "[庫烏佳 加伊]";
+			mes "嗯...雖然不是什麼急事，";
+			mes "但你最好快點，";
+			mes "野貓喬伊那傢伙在";
+			mes "艾音布羅克";
+			close;
+		}
+		else if (NINJ_Q == 2) {
+			mes "[庫烏佳 加伊]";
+			mes "Did you deliver that";
+			mes "letter to Wildcat Joe?";
+			mes "I still need to know his";
+			mes "response to my proposal";
+			mes "for a truce. Anyway, see";
+			mes "if you can needle him for it.";
+			close;
+		}
+		else if (NINJ_Q == 3) {
+			mes "[庫烏佳 加伊]";
+			mes "你拿到回信了嗎?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "是的，在這裡";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "噢噢，你能見到他且拿到";
+			mes "回信，真不簡單啊，";
+			mes "那麼... 我看";
+			mes "- 拆信... -";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "- 先生仔細閱讀著 -";
+			mes "- 我帶來的信件 -";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "唉咻~!!! 怎可如此!";
+			mes "竟敢拒絕暫時休戰的提議!!!";
+			mes "莫非又做好了飛刀嗎!";
+			mes "真是真事的...";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "我又要開始傷腦筋了，";
+			mes "喂 對你很不好意思，";
+			mes "我想拜託你一件事情，";
+			mes "我必須製作和喬伊";
+			mes "對決的武器，";
+			mes "可是材料不夠";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "如果你能幫我找來材料的話，";
+			mes "我就會承認你的能力，";
+			mes "並助你轉職成忍者的，";
+			mes "首先要帶來的材料是";
+			mes "強化武器金屬-級數一1個、賽依伐5個，";
+			mes "時間緊迫請你快點";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "啊!!";
+			mes "這些材料是...";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "怎麼樣? 有什麼問題嗎?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "這些材料是我找給喬伊";
+			mes "先生的東西，嗚哦哦哦...";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "什麼?!!!";
+			mes "那麼助紂為虐的人";
+			mes "竟然就是你!";
+			mes "我的天啊...";
+			mes "哇哇~笨蛋!傻瓜!白痴!蠢蛋!!!";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "啊啊..我先冷靜一下，";
+			mes "啊哈啊哈...";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "首先你一定要幫幫我，";
+			mes "既然是已演變至此，";
+			mes "我們倆晚點再聊，";
+			mes "請你趕快出發吧";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "啊啊...好的..";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "請你快點啦~~!!";
+			mes "哇哇~";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "- 我去幫加伊先生找來 -";
+			mes "- 強化武器金屬級數一1個、賽依伐5個吧 -";
+			set NINJ_Q,4;
+			changequest 6017,6018;
+			close;
+		}
+		else if (NINJ_Q == 4) {
+			if (countitem(7053) < 5 || countitem(1010) < 1) {
+				mes "[庫烏佳 加伊]";
+				mes "請把^3355FF強化武器金屬-級數一1個^000000和^3355FF5賽依伐5個^000000，";
+				mes "帶給我吧，現在的數量";
+				mes "和我剛才說的不同，";
+				mes "非常緊急，請你快點";
+				close;
+			}
+			if (SkillPoint != 0) {
+				mes "[庫烏佳 加伊]";
+				mes "Whoa, whoa...";
+				mes "You still have some";
+				mes "leftover Skill Points.";
+				mes "You'd better spend all";
+				mes "of them before you";
+				mes "change jobs, right?";
+				close;
+			}
+			mes "[庫烏佳 加伊]";
+			mes "噢噢，你都帶來了嗎，";
+			mes "哪裡哪裡...";
+			mes "嗯~ 你似乎都有依我的";
+			mes "指示帶齊了";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "咻呼~ 幸好沒有太晚，";
+			mes "你辦事情比我想像中來的好啊?";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "好吧，";
+			mes "我依照約定正式讓你";
+			mes "轉職為忍者吧";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "那麼我也來正式自我介紹，";
+			mes "我是東方東牙忍者軍團的";
+			mes "上級忍者，叫做 庫烏佳 加伊，";
+			mes "目前我擔任的職務是";
+			mes "追捕逃走的村落首領";
+			mes "卡茲麻之搜索分隊長";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "其實最近我們忍者軍團，";
+			mes "內部方面發生了許多事情，";
+			mes "所以本來並沒有";
+			mes "打算吸收你到我們的";
+			mes "軍團";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "可是在喬伊傢伙的信中";
+			mes "提到對你的評價很高，";
+			mes "且我交代的任務也順利完成，";
+			mes "所以我改變心意了";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "忍者是一種孤獨的職業，";
+			mes "要非常重視任務的同時，";
+			mes "也不能失去人";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "未來會很辛苦的，";
+			mes "我們忍者在許多村莊裡";
+			mes "隱匿自己的身分活動著";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "忍者基本上所裝備的";
+			mes "武器，其製作和使用";
+			mes "方法一直以來都是保密之故，";
+			mes "所以購買後出售都有";
+			mes "徹底的嚴格管制，";
+			mes "請你特別留意";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "那麼我就正式承認你";
+			mes "是我們東牙忍軍";
+			mes "忍者的一員";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "希望你像西風的鷹般迅速，";
+			mes "像隨著東風飄揚的落葉般";
+			mes "輕盈!!";
+			next;
+			mes "[庫烏佳 加伊]";
+			mes "哈!!!";
+			callfunc "Job_Change",Job_Ninja;
+			set NINJ_Q,5;
+			delitem 7053,5; // Cyfar
+			delitem 1010,1; // Phracon
+			getitem 13010,1;	// Asura
+			completequest 6018;
+			close;
+		}
+		else {
+			mes "[庫烏佳 加伊]";
+			mes "How have you been?";
+			mes "Train hard: you want";
+			mes "to be able to vanish";
+			mes "without a trace. If you";
+			mes "can do that, you'll get";
+			mes "the respect of any Ninja~";
+			close;
+		}
+	} else {
+		if (Class == Job_Ninja) {
+			mes "[庫烏佳 加伊]";
+			mes "How have you been?";
+			mes "Train hard: you want";
+			mes "to be able to vanish";
+			mes "without a trace. If you";
+			mes "can do that, you'll get";
+			mes "the respect of any Ninja~";
+			close;
+		} else {
+			mes "[庫烏佳 加伊]";
+			mes "什麼味道! 這腥味是!!";
+			mes "原來是從你身上散發的，";
+			mes "像你這樣乳臭未乾的人，";
+			mes "好久沒見了，";
+			mes "請趕快從我眼前消失吧";
+			close;
+		}
+	}
+}
+
+einbroch,184,194,3	script	可疑的男子#nq	 	881,{
+	if (NINJ_Q == 1) {
+		mes "[可疑的男子]";
+		mes "嘻呀 ~ 真的很高吧?";
+		mes "雖然我曾經雲遊四海，";
+		mes "不過像這樣的高樓大廈";
+		mes "我還是第一次來呢";
+		next;
+		mes "[可疑的男子]";
+		mes "我以前居住的地方幽靜、";
+		mes "空氣又好，每一種房子";
+		mes "都很小而雅致";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "啊! 莫非是!";
+		mes "天津町?!!!";
+		next;
+		mes "[可疑的男子]";
+		mes "不是";
+		mes "....";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "哦哦~";
+		mes "不是嗎...";
+		mes "那麼是住在伊斯魯得島嗎?";
+		next;
+		mes "[可疑的男子]";
+		mes "是的，沒錯，";
+		mes "我是伊斯魯得島出身";
+		next;
+		mes "[可疑的男子]";
+		mes "因為私人因素暫時來到";
+		mes "礦產豐富的國度旅遊";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "是這樣啊...";
+		mes "啊，那你認識一位";
+		mes "叫野貓喬伊的人嗎?";
+		mes "他是來自天津町的忍者，";
+		mes "我一定要找到他";
+		next;
+		mes "[可疑的男子]";
+		mes "這個嘛，是我第一次聽到的名字，";
+		mes "看樣子你有必要見他的";
+		mes "理由吧";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "是的，我得見到他把這封信";
+		mes "交給他後拿回回信，";
+		mes "這樣我也才能轉職成為忍者啊";
+		next;
+		mes "[可疑的男子]";
+		mes "嗯... 難怪我現在看你的舉止，";
+		mes "原來你是旅行家喔";
+		next;
+		mes "[可疑的男子]";
+		mes "我現在仔細想，";
+		mes "應該有機會找到";
+		mes "你要找的人";
+		next;
+		mes "[可疑的男子]";
+		mes "我來到這村落後，";
+		mes "好像有一面之緣";
+		next;
+		mes "[可疑的男子]";
+		mes "我是很想幫你一起找，";
+		mes "只是我也因公事在身，";
+		mes "工作尚未完成之故";
+		next;
+		mes "[可疑的男子]";
+		mes "如果你能幫我的話，";
+		mes "我也能幫你一起找";
+		next;
+		switch( select( "我自己找就可以了:好啊，我來幫你" )){
+		case 1:
+			mes "[可疑的男子]";
+			mes "啊，這樣喔，";
+			mes "我知道了，";
+			mes "你就仔細找找看，";
+			mes "萬一以後還需要";
+			mes "協助時，在我離開";
+			mes "這裡之前再告訴我吧..";
+			close;
+		case 2:
+			mes "[可疑的男子]";
+			mes "嗯..好的，";
+			mes "我是來這裡找";
+			mes "礦物的，";
+			mes "我有要用這礦物";
+			mes "一定要製作某種東西";
+			next;
+			mes "[可疑的男子]";
+			mes "首先我也會一起去找，";
+			mes "只是數量還不夠，";
+			mes "能帶來賽依伐5個，以及";
+			mes "強化武器金屬-級數一1個的話，";
+			mes "就感激不盡了";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "- 我去找強化武器金屬-級數一1個和賽依伐5個吧-";
+			set NINJ_Q,2;
+			changequest 6015,6016;
+			close;
+		}
+	}
+	else if (NINJ_Q == 2) {
+		if (countitem(7053) < 5 || countitem(1010) < 1) {
+			mes "[可疑的男子]";
+			mes "是強化武器金屬-級數一1個和賽依伐5個，";
+			mes "這和我說的數量不符，";
+			mes "雖不急迫，但要給我";
+			mes "正確的數量";
+			close;
+		}
+		mes "[可疑的男子]";
+		mes "你東西都有帶齊，";
+		mes "嗯... 很好，";
+		mes "我拜託的東西";
+		mes "你都有帶來，";
+		mes "我也要來幫你";
+		mes "才是，嗯...";
+		next;
+		mes "[可疑的男子]";
+		mes "我先看一下那信";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "?????!!";
+		next;
+		mes "[可疑的男子]";
+		mes "嗯? 莫非是加伊傢伙";
+		mes "請你帶來的是不是?";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "嘩...那麼叔叔難道你就是";
+		mes "野貓~!";
+		next;
+		mes "[可疑的男子]";
+		mes "不是，";
+		mes "我不是野貓喬伊，";
+		mes "我是紅豹喬伊，";
+		mes "野貓是加伊那傢伙";
+		mes "為了取笑我";
+		mes "而取的名字，哈哈";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "哈啊，恍然大悟...";
+		next;
+		mes "[野貓喬伊]";
+		mes "如果你想成為忍者的話，";
+		mes "不能只相信眼前的事物";
+		next;
+		mes "[野貓喬伊]";
+		mes "像是穿著漫畫裡才出現的";
+		mes "忍者之服裝，實際上不僅";
+		mes "不存在，即使有也很難見得到";
+		next;
+		mes "[野貓喬伊]";
+		mes "請你切記，";
+		mes "忍者一旦被人識破了";
+		mes "自己的身分，就等於";
+		mes "宣布了自己的死亡";
+		next;
+		mes "[野貓喬伊]";
+		mes "現在我的樣子或";
+		mes "我告訴你的名字，";
+		mes "一切也許是假的";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "I see...";
+		mes "...........";
+		next;
+		mes "[野貓喬伊]";
+		mes "For now, let me read";
+		mes "this letter. Let's see...";
+		mes "Hm. I thought that 庫烏佳 加伊";
+		mes "would want to challenge me";
+		mes "again, but he actually wants";
+		mes "a temporary truce? Hah!";
+		next;
+		mes "[野貓喬伊]";
+		mes "Thanks to your help,";
+		mes "I now have the minerals";
+		mes "I need to construct a Kunai!";
+		mes "Hahaha! I won't agree to a truce when I have the advantage!";
+		next;
+		mes "[野貓喬伊]";
+		mes "Anyway, let me write my";
+		mes "response to him. I'll also";
+		mes "give you my recommendation...";
+		mes "I think you'll make a very fine";
+		mes "Ninja, even if I did trick you";
+		mes "just earlier. Heh heh heh!";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "好的..那麼我告辭了...";
+		next;
+		mes "[野貓喬伊]";
+		mes "啊，到天津町要花";
+		mes "相當長的時間啊，";
+		mes "我送 ["+strcharinfo(0)+"] 先生/小姐到";
+		mes "天津町好了，";
+		mes "那麼晚點再會了";
+		delitem 1010,1;	// Phracon
+		delitem 7053,5;	// Cyfar
+		set NINJ_Q,3;
+		changequest 6016,6017;
+		close2;
+		warp "amatsu",113,127;
+		end;
+	}
+	else if (NINJ_Q == 3) {
+		mes "[野貓喬伊]";
+		mes "Eh? I'm not sure what";
+		mes "happened, but it seems";
+		mes "that you haven't delivered";
+		mes "my response to 庫烏佳 加伊 yet.";
+		mes "Shall I directly send you";
+		mes "to Amatsu right now?";
+		next;
+		if(select("No, thanks.:Yes, please.") == 1) {
+			mes "[野貓喬伊]";
+			mes "Alright. Well, I was";
+			mes "just trying to save";
+			mes "you some time.";
+			close;
+		}
+		mes "[野貓喬伊]";
+		mes "Okay, then.";
+		mes "Goodbye for now.";
+		close2;
+		warp "amatsu",113,127;
+		end;
+	}
+	else if (NINJ_Q == 4) {
+		mes "[野貓喬伊]";
+		mes "庫烏佳 加伊 asked you to";
+		mes "gather some materials";
+		mes "too? Oh well, I suppose";
+		mes "that I can't blame him.";
+		mes "Besides, I should be able";
+		mes "to beat him in a fair fight~";
+		close;
+	}
+	else if (NINJ_Q == 5 && Class == Job_Ninja) {
+		mes "[野貓喬伊]";
+		mes "Oh, you're a Ninja~";
+		mes "I hope you continue to";
+		mes "train yourself and master";
+		mes "all the Ninja skills that";
+		mes "you can. Always remember";
+		mes "to blend into the shadows.";
+		close;
+	}
+	else {
+		mes "[Tourist]";
+		mes "I've traveled to many";
+		mes "countries, but I've never";
+		mes "been on a building as high";
+		mes "as Einbroch Tower. All the";
+		mes "buildings in my hometown";
+		mes "are tiny in comparison...";
+		close;
+	}
+}

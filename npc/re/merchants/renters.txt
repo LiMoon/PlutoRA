@@ -1,0 +1,207 @@
+//===== rAthena Script ======================================= 
+//= Renters
+//===== By: ================================================== 
+//= rAthena Dev Team
+//===== Current Version: ===================================== 
+//= 2.1
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Renewal-specific breeder NPCs.
+//===== Additional Comments: ================================= 
+//= 2.1 Moved some renters to a separate renewal file. [Daegaladh]
+//= 2.2 Updated to match the official scripts. [Euphy]
+//============================================================ 
+
+// Dragon Breeder
+//============================================================
+job3_rune01,88,62,5	script	Dragon Breeder	105,{
+	mes "[Dragon Breeder]";
+	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune) {
+		mes "Welcome. Would you like to rent a Dragon?";
+		next;
+		switch(select("Yes:No")) {
+		case 1:
+			//if (!getskilllv("RK_DRAGONTRAINING")) {
+			if (!getskilllv("KN_RIDING")) {
+				mes "[Dragon Breeder]";
+				mes "Please learn how to ride a Dragon first.";
+				close;
+			}
+			else if (checkriding()) {
+				mes "[Dragon Breeder]";
+				mes "You already have a Dragon.";
+				close;
+			}
+			else if(ismounting()) {
+				mes "[Dragon Breeder]";
+				mes "Please remove your cash mount.";
+				close;
+			}
+			setdragon;
+			close;
+		case 2:
+			mes "[Dragon Breeder]";
+			mes "I see. Then have a great day.";
+			close;
+		}
+	}
+	mes "What are you doing here?";
+	mes "Only Rune Knights can rent a Dragon.";
+	close;
+}
+
+// Dragon/Gryphon Master
+//============================================================
+prontera,130,213,5	script	巨獸管理兵	105,{
+	mes "[巨獸管理兵]";
+	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune) {
+		mes "歡迎光臨! 要為您準備巨龍嗎?";
+		next;
+		switch(select("需要:不要")) {
+		case 1:
+			//if (!getskilllv("RK_DRAGONTRAINING")) {
+			if (!getskilllv("KN_RIDING")) {
+				mes "[巨獸管理兵]";
+				mes "請先學會如何駕馭巨龍後再來吧";
+				close;
+			}
+			else if (checkriding()) {
+				mes "[巨獸管理兵]";
+				mes "您已經有巨龍了";
+				close;
+			}
+			else if(ismounting()) {
+				mes "[巨獸管理兵]";
+				mes "請先移除您的騎寵";
+				close;
+			}
+			setdragon;
+			close;
+		case 2:
+			mes "[巨獸管理兵]";
+			mes "好的! 再會!";
+			close;
+		}
+	}
+	if (Class == Job_Royal_Guard || Class == Job_Royal_Guard_T || Class == Job_Baby_Guard) {
+		mes "歡迎光臨! 要為您準備獅鷲獸嗎?";
+		next;
+		switch(select("需要:不要")) {
+		case 1:
+			if(!getskilllv("KN_RIDING")) {
+				mes "[巨獸管理兵]";
+				mes "請先學會如何駕馭獅鷲獸後再來吧";
+				close;
+			}
+			else if (checkriding()) {
+				mes "[巨獸管理兵]";
+				mes "您已經有獅鷲獸了";
+				close;
+			}
+			else if(ismounting()) {
+				mes "[巨獸管理兵]";
+				mes "請先移除您的騎寵";
+				close;
+			}
+			setriding;
+			close;
+		case 2:
+			mes "[巨獸管理兵]";
+			mes "好的! 再會!";
+			close;
+		}
+	}
+	mes "這裡是幫盧恩騎士和皇家禁衛隊管理巨獸的地方。";
+	close;
+}
+
+// Peco removing NPC
+//============================================================
+prontera,125,208,5	script	七彩大嘴鳥回收兵	105,{
+	mes "[士兵]";
+	mes "這是針對騎著七彩大嘴鳥的";
+	mes "玩家之中，因有不得已的";
+	mes "苦衷而必須卸下的玩家";
+	mes "所提供的服務";
+	if (checkriding()) {
+		next;
+		mes "[士兵]";
+		mes "您要回收大嘴鳥?";
+		next;
+		switch(select("好的:不要")) {
+		case 1:
+			setriding 0;
+			mes "[士兵]";
+			mes "好的，再一次腳踏實地的感覺如何呢?";
+			close;
+		case 2:
+			mes "[士兵]";
+			mes "知道了，需要服務的時候再來找我吧";
+			close;
+		}
+	}
+	close;
+}
+
+// Magic Gear Renter
+//============================================================
+-	script	::mgm	-1,{
+	mes "[魔導機甲管理兵]";
+	if (Class == Job_Mechanic || Class == Job_Mechanic_T || Class == Job_Baby_Mechanic) {
+		mes "Welcome, Mechanic.";
+		mes "Would you like to rent a Pushcart or";
+		mes "ride a Magic Gear?";
+		next;
+		switch(select("Rent a Pushcart:Ride a Magic Gear:Cancel")) {
+		case 1:
+			if (checkcart()) {
+				mes "[魔導機甲管理兵]";
+				mes "I'm sorry, but you already";
+				mes "have a Pushcart.";
+				close;
+			}
+			setcart;
+			mes "[魔導機甲管理兵]";
+			mes "There you go!";
+			close;
+		case 2:
+			if (checkmadogear()) {
+				mes "[魔導機甲管理兵]";
+				mes "I'm sorry, but you're already";
+				mes "riding a Magic Gear.";
+				close;
+			}
+			else if (!getskilllv("NC_MADOLICENCE")) {
+				mes "[魔導機甲管理兵]";
+				mes "Please learn the skill to get the Magic Gear License first.";
+				close;
+			}
+			else if(ismounting()) {
+				mes "[魔導機甲管理兵]";
+				mes "Please remove your cash mount.";
+				close;
+			}
+			setmadogear;
+			mes "[魔導機甲管理兵]";
+			mes "Have fun, and please come again!";
+			close;
+		case 3:
+			close;
+		}
+	}
+	mes "我能為您效勞嗎?";
+	mes "魔導機甲是機械工匠專用的。";
+	close;
+}
+prontera,163,178,3	duplicate(mgm)	魔導機甲管理兵#prt	105
+geffen,103,55,5	duplicate(mgm)	魔導機甲管理兵#gef	105
+payon,166,106,5	duplicate(mgm)	魔導機甲管理兵#pay	105
+aldebaran,133,112,5	duplicate(mgm)	魔導機甲管理兵#alde	105
+yuno,167,187,3	duplicate(mgm)	魔導機甲管理兵#yuno	105
+rachel,106,134,5	duplicate(mgm)	魔導機甲管理兵#ra	105
+dicastes01,187,207,3	duplicate(mgm)	魔導機甲管理兵#dic	105
+manuk,273,212,5	duplicate(mgm)	魔導機甲管理兵#man	105
+splendide,180,174,5	duplicate(mgm)	魔導機甲管理兵#spl	105
+mid_camp,242,243,3	duplicate(mgm)	魔導機甲管理兵#mid	105

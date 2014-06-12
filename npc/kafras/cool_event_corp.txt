@@ -1,0 +1,164 @@
+//===== rAthena Script ======================================= 
+//= 准它 企劃社 服務人員
+//===== By: ================================================== 
+//= Gepard
+//===== Current Version: ===================================== 
+//= 1.6
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= 准它 企劃社 服務人員 (儲存服務, Storage & Pushcart Service)
+//= in Arunafeltz Region.
+//===== Additional Comments: ================================= 
+//= 1.0 First version, iRO Sakray X.4 [Gepard]
+//= 1.1 Optimized, fixed a conditional bug [Lupus]
+//= 1.1a Redo back. It wasn't a bug [Lupus]
+//= 1.2 Added Rachel 准它 企劃社 服務人員 [Playtester]
+//= 1.3 Added cutins, closed Kafra Password exploit
+//=     until we got a client/packet based password support [Lupus]
+//= 1.4 Added Veins 准它 企劃社 服務人員. [L0ne_W0lf]
+//= 1.5 Cool Event Corp staff is now more iRO like. [L0ne_W0lf]
+//= 1.6 Wrote a basic function and added VIP features. [Euphy]
+//============================================================ 
+
+//callfunc "F_CoolEventCorp","<menu>","<location>","<save map>",<x>,<y>,"<warp map>";
+function	script	F_CoolEventCorp	{
+	cutin "zonda_01",2;
+	mes "[准它 企劃社 服務人員]";
+	mes "歡迎光臨，准它";
+	mes "企劃社永遠秉持著最好的服務的，";
+	mes "請問您需要哪一種服務呢?";
+	next;
+	switch(select(getarg(0))) {
+	case 1:
+		mes "[准它 企劃社 服務人員]";
+		mes "已經儲存好了，";
+		mes "謝謝您的使用";
+		savepoint getarg(2),getarg(3),getarg(4);
+		close2;
+		break;
+	case 2:
+		mes "[准它 企劃社 服務人員]";
+		if(basicskillcheck() && getskilllv("NV_BASIC") < 6){
+			mes "你的基本技能要6級以上";
+			mes "才能使用倉庫服務";
+			close2;
+			break;
+		}
+		if(Zeny < 40){
+			mes "顧客，您支付的金額不足啊，";
+			mes "倉庫使用費是 40金幣";
+			close2;
+			break;
+		}
+		set Zeny, Zeny - 40;
+		mes "倉庫將打開了，";
+		mes "感謝您的使用";
+		callfunc("F_CheckKafCode");	//check your storage password, if set
+		close2;
+		openstorage;
+		break;
+	case 3:
+		mes "[准它 企劃社 服務人員]";
+		mes "請選擇您的目的地";
+		next;
+		if (getserverdef(VAR_VIP_SCRIPT) && !vip_status(1))
+			set .@cost,4400;
+		else
+			set .@cost,2200;
+		if (select(getarg(5)+" -> "+.@cost+" z:取消") == 1) {
+			if ((countitem(7060) != 0) || (Zeny >= .@cost)) {
+				if (countitem(7060) != 0) {
+					delitem 7060,1; //Warp_Free_Ticket
+				}
+				else {
+					set Zeny,Zeny-.@cost;
+				}
+				if (getarg(5) == "菲音斯") warp "veins",205,101;
+				else if (getarg(5) == "拉赫") warp "rachel",115,125;
+				cutin "",255;
+				end;
+			}
+			else {
+				mes "[准它 企劃社 服務人員]";
+				mes "顧客，您支付的金額不足。";
+			}
+		}
+		close2;
+		break;
+	case 4:
+		mes "[准它 企劃社 服務人員]";
+		if(BaseClass != Job_Merchant){
+			mes "很抱歉，";
+			mes "手推車是商人系列職業專用的服務";
+			close2;
+			break;
+		}
+		if(getskilllv("MC_PUSHCART") == 0){
+			mes "如果沒學相關技能的話";
+			mes "是沒有手推車的";
+			close2;
+			break;
+		}
+		if(checkcart() == 1){
+			mes "你已經租過手推車了";
+			close2;
+			break;
+		}
+		if(countitem(7061)){
+			delitem 7061,1; //Cart_Free_Ticket
+			setcart;
+			close2;
+			break;
+		}
+		mes "手推車使用費是800金幣，";
+		mes "請問您要使用嗎?";
+		next;
+		if(select("使用:取消") == 1){
+			if(Zeny < 800){
+				mes "[准它 企劃社 服務人員]";
+				mes "顧客，您支付的金額不足，";
+				mes "手推車使用費是800金幣。";
+			} else {
+				set Zeny, Zeny - 800;
+				setcart;
+			}
+		}
+		close2;
+		break;
+	case 5:
+		callfunc("F_SetKafCode","[准它 企劃社 服務人員]","准它企劃社");
+		//the function closes msg and removes cutins
+	case 6:
+	default:
+		mes "[准它 企劃社 服務人員]";
+		mes "我們准它 企劃社";
+		mes "永遠提供最好服務的，若有不便之處的";
+		mes "話請隨時告知我們，";
+		mes "下一次預計以更好的服務與你見面";
+		close2;
+	}
+	cutin "", 255;
+	end;
+}
+
+hugel,88,168,4	script	准它 企劃社 服務人員::CoolEventCorpStaffHugel	874,{
+	callfunc "F_CoolEventCorp",
+		"儲存服務:倉庫服務:手推車服務:倉庫密碼服務:結束",
+		"in the village of Hugel","hugel",96,155;
+	end;
+}
+
+rachel,109,138,5	script	准它 企劃社 服務人員::CoolEventCorpStaffRachel	874,{
+	callfunc "F_CoolEventCorp",
+		"儲存服務:倉庫服務:傳送服務:手推車服務:倉庫密碼服務:結束",
+		"in the town of Rachel","rachel",113,137,"菲音斯";
+	end;
+}
+
+veins,208,128,5	script	准它 企劃社 服務人員::CoolEventCorpStaffVeins	874,{
+	callfunc "F_CoolEventCorp",
+		"儲存服務:倉庫服務:傳送服務:手推車服務:倉庫密碼服務:結束",
+		"in the town of Veins","veins",204,103,"拉赫";
+	end;
+}

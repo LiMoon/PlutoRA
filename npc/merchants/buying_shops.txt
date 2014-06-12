@@ -1,0 +1,231 @@
+//===== rAthena Script =======================================
+//= Buying Shop Scripts
+//===== By: ==================================================
+//= Kisuka
+//===== Current Version: =====================================
+//= 1.1a
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= Buying Shop licenses.
+//===== Additional Comments: =================================
+//= 1.0 First version. [Kisuka]
+//= 1.1 Added Catalog Magician. [Euphy]
+//= 1.1a Moved Catalog Magician to Renewal path. [Euphy]
+//============================================================ 
+
+// 黑市商人 (Buy Licenses - Non-Merchant Classes)
+//============================================================ 
+que_job01,68,84,1	script	黑市商人#Buying	881,{
+	if (getskilllv("ALL_BUYING_STORE") == 1) {
+		mes "[馮先生]";
+		mes "嘿，看來你已經和許書生簽約了呢，";
+		mes "那我和你就沒有關係了，快走吧";
+		close;
+	}
+	mes "[馮先生]";
+	mes "You must need something badly to come to find me.";
+	mes "What do you want?";
+	next;
+	switch(select("Bulk Buyer Shop License:Who are you?:Nothing, nothing!")) {
+	case 1:
+		mes "[馮先生]";
+		mes "I knew it!";
+		mes "Sure, I can make it for you.";
+		mes "Mine looks just like the authentic one that Merchants get from that bastard 許書生!";
+		next;
+		mes "[馮先生]";
+		mes "And my license is better 'cuz you don't need ta' learn any skills.";
+		mes "How many do you want?";
+		next;
+		mes "[馮先生]";
+		mes "一次不能製作很多，每次最多10張。";
+		mes "手續費是每張500金幣。";
+		next;
+		while(1) {
+			input .@input;
+			mes "[馮先生]";
+			if (.@input == 0) {
+				mes "Don't you need those licenses?";
+				close;
+			} else if (.@input > 10) {
+				mes "I can only make up to 10 at a time, you know.";
+				next;
+			} else {
+				mes "It'll cost "+(.@input*500)+" zeny.";
+				if (Zeny < (.@input*500)) {
+					mes "but you don't have enough money.";
+					next;
+					mes "[馮先生]";
+					mes "Don't you know the basics of business? Everything has a price.";
+					mes "If you want something, you gotta pay for it.";
+				} else {
+					mes "Ha... Ha ha ha!";
+					mes "許書生, I'll take over your license business. You'll see!";
+					mes "*Giggle Giggle*";
+					getitem 12548,.@input; //Shabby_Purchase_Street
+					set Zeny,Zeny-(.@input*500);
+				}
+				close;
+			}
+		}
+	case 2:
+		mes "[馮先生]";
+		mes "I left my hometown a long time ago.";
+		mes "It's meaningless to ask who I am because all I've got left now is my hatred.";
+		next;
+		mes "[馮先生]";
+		mes "...";
+		mes "Hugh is a corrupt merchant with no sense of business ethics.";
+		mes "My sole purpose in life is to destroy Hugh.";
+		next;
+		mes "[馮先生]";
+		mes "Aw, I drank too much... (*Hic*)";
+		mes "That's just the alohol talking.";
+		mes "Please forget anything I said.";
+		close;
+	case 3:
+		mes "[馮先生]";
+		mes "Alright, alright! You don't have to yell.";
+		mes "Just leave me alone if you've got no business with me.";
+		close;
+	}
+}
+
+// 採購部許書生 (Learn Skill - Merchant Classes)
+//============================================================ 
+alberta_in,58,52,4	script	採購部許書生#Buying	59,{
+	mes "[許書生]";
+	if (BaseClass == Job_Merchant && getskilllv("MC_VENDING") >= 1) {
+		if (getskilllv("ALL_BUYING_STORE") == 1) {
+			mes "我是採購部的許書生，";
+			mes "您需要什麼東西呢?";
+			next;
+			if(select("購買採購商店執照:不需要") == 2) {
+				mes "[許書生]";
+				mes "如果需要開設採購商店所需的執照的話，請隨時來這裡申請，";
+				mes "歡迎下次光臨～";
+				close;
+			}
+			mes "[許書生]";
+			mes "採購商店執照每張售價 200金幣，";
+			mes "一次可以購買50張，";
+			mes "你想購買多少張呢?";
+			next;
+			while(1) {
+				input .@input;
+				mes "[許書生]";
+				if (.@input == 0) {
+					mes "交易結束，";
+					mes "下次有需要的話，請再來找我哦";
+					close;
+				} else if (.@input > 50) {
+					mes "最多只能購買50個哦";
+					next;
+				} else {
+					mes "您申請的執照是"+.@input+"張，需要支付的金額是"+(.@input*200)+"金幣...";
+					if (Zeny < (.@input*200)) {
+						mes "可是您身上的金幣不夠啊";
+					} else {
+						mes "拿去吧，歡迎下次再來。";
+						getitem 6377,.@input; //Buy_Stall_Permit
+						set Zeny,Zeny-(.@input*200);
+					}
+					close;
+				}
+			}
+		} else {
+			mes "我是艾爾貝塔商人公會採購部的許書生，";
+			mes "你...";
+			next;
+			mes "[許書生]";
+			mes "你知道嗎? 這次商人公會也允許一般人購買。";
+			next;
+			select("沒有那個也能買東西啊?");
+			mes "[許書生]";
+			mes "是的，但你想要購買大量物品的時候，是不是覺得很辛苦呢?";
+			mes "還要去找把東西帶在身上或有意出售的人才行。";
+			next;
+			mes "[許書生]";
+			mes "物品的大量流通，對於商人來說是非常重要的事情。因此在採購部工作了十年的我，這次提出了劃時代的提案。";
+			next;
+			mes "[許書生]";
+			mes "就是個人也可以開設採購商店!";
+			mes "你只要看了這份提案就知道了...";
+			next;
+			mes "[許書生]";
+			mes "...";
+			mes "...(許書生自顧自地說著)";
+			next;
+			select("好了，那結論呢?");
+			mes "[許書生]";
+			mes "嗯? 啊，好吧，簡單地概括一下就是";
+			mes "允許部分商品透過商店大量出售";
+			next;
+			mes "[許書生]";
+			mes "想要開設採購商店，需要有商人公會的執照，";
+			mes "每開設一次，都需要使用執照。出售執照帶來的收入，可以為商人公會打下堅固的基礎。";
+			next;
+			mes "[許書生]";
+			mes "這部分是我提案的核心! 會長非常高興，很快就通過了我的提案!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "只說結論就可以了!";
+			next;
+			mes "[許書生]";
+			mes "啊，你性子可真急。";
+			mes "所以我們允許擁有開設銷售商店授權的人，開設採購商店。";
+			next;
+			mes "[許書生]";
+			mes "當然，每次需要10,000金幣的註冊費，";
+			mes "每次開設商店，還需要^4A4AFF採購商店執照^000000。";
+			next;
+			mes "[許書生]";
+			mes "怎麼樣? 你想註冊嗎?";
+			mes "註冊之後，我就會告訴你開設採購商店的方法。";
+			next;
+			if(select("學習開設採購商店。:不學習。") == 2) {
+				mes "[許書生]";
+				mes "唉，真讓人遺憾，";
+				mes "這可以讓你方便很多的，如果感興趣的話，可以再來找我。";
+				mes "我永遠都歡迎你過來!";
+				close;
+			}
+			mes "[許書生]";
+			if (Zeny < 10000) {
+				mes "註冊的費用是 10,000 zeny.";
+				mes "請先確認您身上所繫帶的金幣吧";
+				close;
+			} else {
+				mes "明智的決定，";
+				mes "好的，請先來這邊註冊，";
+				mes "在這裡簽名...";
+				next;
+				input .@name$;
+				mes "[許書生]";
+				mes .@name$+"....";
+				mes "字寫得不錯嘛！";
+				mes "現在你可以開設採購商店了。";
+				set Zeny,Zeny-10000;
+				getitem 6377,5; //Buy_Stall_Permit
+				skill "ALL_BUYING_STORE",1,4;
+				next;
+				mes "[許書生]";
+				mes "可以大量購買的物品是除了裝備和部分藥水、個人製作的物品以外的普通物品。但根據應用方法的不同，我想應該會對個人很有幫助。";
+				next;
+				mes "[許書生]";
+				mes "啊，還有，想要購買的物品自己必須也有才行。因為需要在商店裡寫上“請賣給我和這個一模一樣的東西”的緣故啊。";
+				next;
+				mes "[許書生]";
+				mes "我先送你5個執照，供你開設採購商店。希望你能好好使用..";
+				close;
+			}
+		}
+	}
+	mes "我是艾爾貝塔商人公會採購部的許書生，";
+	mes "平時我可是很愛聊天的，不過現在有點忙..";
+	next;
+	mes "[許書生]";
+	mes "奉獻心力以提升我們商人公會的基底可是我的職責呢";
+	close;
+}

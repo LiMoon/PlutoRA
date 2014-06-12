@@ -1,0 +1,624 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://plutoea.googlecode.com/svn/
+// ---------------------------------
+// - 吟遊詩人 轉職腳本 - 
+//===================================
+// 版本：2.6
+// 唱歌測驗部分(474行)採取 JA寫法，較為精簡 [熊貓]
+//===================================
+
+comodo,211,155,5	script	流浪的吟遊詩人	741,{
+	cutin "job_bard_aiolo01",2;
+	if(Upper == 1) {
+		mes "[阿伊歐樂]";
+		mes "要成為神的人在每個時代不斷的被誕生，";
+		mes "在世界上變成一個流浪者活著，";
+		mes "也有可能，連命運都可以忘卻";
+		mes "過著一個平凡的人生...";
+		next;
+		mes "[阿伊歐樂]";
+		mes "傳達給所有的風啊，雲啊，";
+		mes "對那些只會追求富裕不愁吃喝的人，";
+		mes "你的人生並不是只有這樣...";
+		mes "你已經遺忘了重要的目的...";
+		close2;
+		cutin "job_bard_aiolo01",255;
+		end;
+	}
+	else if(BaseJob != Job_Archer) {
+		if(BaseJob == Job_Bard) {
+			mes "[阿伊歐樂]";
+			mes "朋友! 應該很會唱歌還在流浪吧?";
+			mes "不知道歌唱聲有沒有進步了一點，";
+			next;
+			mes "[阿伊歐樂]";
+			mes "你應該沒有忘記，到各個村落傳遞新消息的事情吧?";
+			mes "更不要忘了要學新的歌噢...";
+			next;
+			mes "[阿伊歐樂]";
+			mes "不要忘記隨時要保持快樂的心情噢";
+			mes "我們的歌聲是帶給人們，快樂和感動的事情，";
+		}
+		else if(Class == Job_Novice) {
+			cutin "job_bard_aiolo01",2;
+			mes "[阿伊歐樂]";
+			mes "一下一下被刻入胸中的痛楚，";
+			mes "是無法全部數清楚的啊";
+			mes "雖然用品很容易就能獲得，";
+			mes "可能說那已滿足旅途所需嗎...";
+			mes "其實我也從來沒見過什麼珍稀的寶物啊";
+			next;
+			mes "[阿伊歐樂]";
+			mes "想聽我唱歌嗎?";
+			mes "抱歉喔";
+			mes "我正在創作新的歌曲呢";
+			next;
+			mes "[阿伊歐樂]";
+			mes "哈哈....說我從沒有被別人請求過唱歌?";
+			mes "我現在只是離不開手而已";
+		}
+		else {
+			cutin "job_bard_aiolo01",2;
+			mes "[阿伊歐樂]";
+			mes "啦啦啦~ 啦啦啦~ 美麗的克魔島~";
+			mes "永遠都有著無數令人高興的事~";
+			next;
+			mes "[阿伊歐樂]";
+			if (sex) {
+				mes "你今天就把所有的事情都忘記掉吧~";
+				mes "什麼都不要去想盡情的享受快樂~";
+			}
+			else mes "可愛的小姐，你也來跳一支舞吧~";
+			mes "年輕的時光不會再回來的~";
+		}
+		close2;
+		cutin "job_bard_aiolo01",255;
+		end;
+	}
+	else if(BARD_Q == 0) {
+		cutin "job_bard_aiolo01",2;
+		mes "[阿伊歐樂]";
+		if (sex) mes "你好! 快樂的弓箭手朋友喲~";
+		else mes "你好! 美麗的弓箭手小姐喲~";
+		mes "找我這樣的流浪者，有什麼事情嗎?";
+		next;
+		switch(select("你的聲音真好聽:唱個歌給我聽聽吧:沒什麼事")) {
+		case 1:
+			mes "[阿伊歐樂]";
+			mes "哈哈哈! 當然囉!";
+			mes "每次用快樂的心情唱歌的話，聲音也會變的很好聽啊，";
+			next;
+			mes "[阿伊歐樂]";
+			mes "可是， 吟遊詩人這職業，聲音是他的生命啊，";
+			mes "有時候喉嚨會沙啞，要小心噢，";
+			break;
+
+		case 2:
+			mes "[阿伊歐樂]";
+			mes "唱歌... 唱歌，好啊，";
+			mes "那就，唱一首吧...?";
+			next;
+			mes "[阿伊歐樂]";
+			mes "那就唱...戰場的鼓聲了";
+			mes "嗯嗯， 咳咳";
+			mes "1, 2, 3, 4-";
+			next;
+			mes "^000088在地平線遠處聽到馬蹄的聲音";
+			mes "迷霧的灰塵把夕陽遮蔽了";
+			mes "當夜空數千隻眼睛睜開時";
+			mes "類似握住城堡外的火把一樣燃燒吧，^000000";
+			next;
+			mes "^000088可以聽到，我心臟跳動的聲音，";
+			mes "聚集中，我血管內的血液正在聚集中，";
+			mes "可以感覺到，我鎧甲的重量，";
+			mes "出現了，我敵人的模樣，^000000";
+			next;
+			mes "^000088大聲點，再大聲點，再大聲點響亮，";
+			mes "給前進的士兵們力量吧!";
+			mes "再遠點，再遠點，再往遠點吶喊，";
+			mes "只有一天的這瞬間，再也不會來的!^000000";
+			next;
+			mes "^000088把天空搖晃，讓大地生氣吧，";
+			mes "讓快要爆炸的心臟，重新跳躍吧!";
+			mes "喇叭聲音響起時，開始爬城牆吧，";
+			mes "只有一天的這瞬間，再也不會來的!^000000";
+			next;
+			mes "[阿伊歐樂]";
+			mes "咳咳... 什麼時候唱都是一首好歌啊，";
+			mes "聽好啊? 這是一首好歌啊?";
+			next;
+			if (select("嗯，確實不錯:不怎麼樣....") == 1) {
+				mes "[阿伊歐樂]";
+				mes "謝謝!";
+				mes "你能喜歡我的歌我很高興";
+				next;
+				if (Sex == 1 && JobLevel > 39) {
+					mes "[阿伊歐樂]";
+					mes "如果有更多的人能歌唱的話就好了....";
+					mes "像現在這樣的話....";
+					mes "也不錯吧....哈哈";
+					set BARD_Q,1;
+					setquest 3000;
+					close2;
+					cutin "job_bard_aiolo01",255;
+					end;
+				}
+				mes "[阿伊歐樂]";
+				mes "如果還想聽的話，再來和我說吧";
+				close2;
+				cutin "job_bard_aiolo01",255;
+				end;
+			}
+			cutin "job_bard_aiolo02",2;
+			mes "嗯嗯... 我的實力變差了嗎，我要更加努力囉，";
+			mes "謝謝你聽過我的歌曲";
+			break;
+
+		case 3:
+			cutin "job_bard_aiolo02",2;
+			mes "[阿伊歐樂]";
+			mes "你不是想拜託詩人唱歌嗎?";
+			mes "....嗯，你很忙嗎?";
+			next;
+			mes "[阿伊歐樂]";
+			mes "雖然出去狩獵也不錯....";
+			mes "不過稍微放鬆一下心情吧";
+			mes "今天這樣的日子一去就不會復返了";
+			break;
+		}
+		close2;
+		cutin "job_bard_aiolo02",255;
+		end;
+	}
+	else if(BARD_Q == 1) {
+		cutin "job_bard_aiolo01",2;
+		mes "[阿伊歐樂]";
+		mes "你好! 快樂的弓箭手朋友，";
+		mes "找我這樣的流浪者，有什麼事情嗎?";
+		next;
+		switch(select("你的聲音真好聽:唱個歌給我聽聽吧:沒什麼事")) {
+		case 1:
+			mes "[阿伊歐樂]";
+			mes "哈哈，你不也有著很不錯的聲音嗎";
+			mes "你來唱首歌試試怎麼樣?";
+			next;
+			if (select("好的!","我對唱歌什麼的沒興趣...") == 1) {
+				mes "[阿伊歐樂]";
+				mes "哈哈、真不錯嗯嗯";
+				mes "那麼，我就幫助你成為詩人吧";
+				next;
+				mes "[阿伊歐樂]";
+				mes "但是在這之前....";
+				mes "你能帶一朵花來嗎?";
+				mes "能聞著花香的話，";
+				mes "應該能想到不錯的歌曲";
+				next;
+				mes "[阿伊歐樂]";
+				mes "任何花都可以啦，希望能拿給我想要的花";
+				mes "不要隨便買一束花，知道嗎?";
+				set BARD_Q,2;
+				changequest 3000,3001;
+				close2;
+				cutin "job_bard_aiolo01",255;
+				end;
+			}
+			mes "[阿伊歐樂]";
+			mes "哈哈，沒有什麼好緊張的";
+			mes "別對自己太沒有自信喔";
+			next;
+			mes "[阿伊歐樂]";
+			mes "你有著很不錯的才能";
+			mes "如果改變主意的話再來找我吧";
+			break;
+
+		case 2:
+			mes "[阿伊歐樂]";
+			mes "你應該有歌唱的天賦但真可惜";
+			mes "別僅僅是聽人唱歌，";
+			mes "唱歌給別人聽也是一件快樂的事情";
+			next;
+			mes "[阿伊歐樂]";
+			mes "唱著歌從一個村子到另一個村子也是種特別的感受呢";
+			mes "你想不想也作為一個詩人生活呢?";
+			break;
+
+		case 3:
+			mes "[阿伊歐樂]";
+			mes "嗯....這樣啊";
+			mes "真是有點遺憾呢";
+			next;
+			mes "[阿伊歐樂]";
+			mes "那麼，以後再見了~";
+			break;
+		}
+		close2;
+		cutin "job_bard_aiolo01",255;
+		end;
+	}
+	else if(BARD_Q == 2) {
+		cutin "job_bard_aiolo01",2;
+		mes "[阿伊歐樂]";
+		mes "真快啊，朋友!";
+		mes "你帶著花回來了嗎?";
+		mes "能讓我看看嗎?";
+		next;
+		mes "[阿伊歐樂]";
+		//OK的花
+		if (countitem(629) > 0) {
+			mes "啊~、這不是呢喃花嗎!";
+			mes "有著我回憶的花....";
+			next;
+			delitem 629,1; //呢喃花
+			mes "[阿伊歐樂]";
+			mes "我以前的朋友柴可夫斯基很喜歡的花";
+			mes "現在他在哪裡做什麼呢....";
+		}
+		else if(countitem(703) > 0) {
+			mes "啊....可愛的西納雷花...";
+			mes "雖然沒有香味不過是樸素而可愛的花呢";
+			next;
+			delitem 703,1; //西納雷花
+			mes "[阿伊歐樂]";
+			mes "西納雷花在我失意的時候給過我力量";
+			mes "真的是很有用的花，謝謝";
+		}
+		else if(countitem(704) > 0) {
+			mes "蘆薈啊....這真是罕見呢";
+			mes "你居然能找到!";
+			next;
+			delitem 704,1; //蘆薈
+			mes "[阿伊歐樂]";
+			mes "蘆薈的葉子雖然好吃....";
+			mes "不過還是花最好了";
+		}
+		else if(countitem(708) > 0) {
+			mes "曼特花....";
+			mes "好像讓我想起了什麼重要的事情...";
+			mes "真是久違的再見，真是太好了";
+			next;
+			delitem 708,1; //曼特花
+			mes "[阿伊歐樂]";
+			mes "好像是可以做成曼特療傷藥的吧...";
+			mes "這樣真是有點可惜呢，謝謝你了";
+		}
+		else if(countitem(709) > 0) {
+			mes "啊! 這不是迷幻藥嗎";
+			mes "雖然很危險，但卻是非常美麗的花....";
+			next;
+			delitem 709,1; //Izidor
+			mes "[阿伊歐樂]";
+			mes "濃郁的紫色，讓人精神恍惚的香味....";
+			mes "我挺喜歡的謝謝";
+		}
+		else if(countitem(748) > 0) {
+			mes "永恆玫瑰...不會枯萎的玫瑰";
+			mes "這個不應該給我而是給你的戀人才是";
+			next;
+			delitem 748,1; //永恆玫瑰
+			mes "[阿伊歐樂]";
+			mes "我這樣的人收下這個可以嗎";
+			mes "哈哈、謝謝";
+		}
+		else if(countitem(749) > 0 ) {
+			mes "冰雕玫瑰....透明的玫瑰啊";
+			mes "雖然被稱為花可能不太合適，";
+			mes "但確實非常漂亮....";
+			next;
+			delitem 749,1; //冰雕玫瑰
+			mes "[阿伊歐樂]";
+			mes "不過，雖然沒有香味，";
+			mes "但也應該是花吧";
+			mes "那麼我就收下了";
+		}
+		else if(countitem(710) > 0) {
+			mes "呀，這是幻想花!";
+			mes "你居然把這麼貴重的東西拿來了!";
+			next;
+			delitem 710,1; //幻想花
+			mes "[阿伊歐樂]";
+			mes "啊....就好像天堂在眼前浮現一樣";
+			mes "太美妙了!實在太好了!";
+		}
+		//不OK的花
+		else if(countitem(712) > 0) {
+			cutin "job_bard_aiolo02",2;
+			mes "什麼啊，這麼平凡的花";
+			mes "雖然這也是花但...這個不行啊";
+			next;
+			mes "[阿伊歐樂]";
+			mes "普隆德拉的賣花少女那裡買的吧";
+			mes "你能不能帶些其他的花來呢";
+			close2;
+			cutin "job_bard_aiolo02",255;
+			end;
+		}
+		else if(countitem(744) > 0) {
+			mes "呵呵，把花束都帶來了啊";
+			mes "這個應該不是我想要的東西吧";
+			next;
+			mes "[阿伊歐樂]";
+			mes "這是用來慶祝的東西吧，";
+			mes "把這個給轉職成功的初學者比較好吧?";
+			mes "我想要的是其他的花喔";
+			close2;
+			cutin "job_bard_aiolo01",255;
+			end;
+		}
+		else if(countitem(745) > 0) {
+			cutin "job_bard_aiolo02",2;
+			mes "喂喂....";
+			mes "這應該是在婚禮上用的吧?";
+			mes "把捧花給男人幹什麼";
+			next;
+			mes "[阿伊歐樂]";
+			mes "把這個作為禮物給合適的小姐吧";
+			mes "我想要的是其他的花喔";
+			close2;
+			cutin "job_bard_aiolo02",255;
+			end;
+		}
+		else if(countitem(2207) > 0) {
+			mes "嗯....這是花朵頭飾吧";
+			mes "雖然也是花但...這個不行啊";
+			next;
+			mes "[阿伊歐樂]";
+			mes "我喜歡的是美麗而有香味的花";
+			mes "不喜歡僅僅是拿來裝飾的花";
+			close2;
+			cutin "job_bard_aiolo01",255;
+			end;
+		}
+		else if(countitem(1032) > 0) {
+			cutin "job_bard_aiolo02",2;
+			mes "....你怎麼把這麼醜陋的東西拿來了?";
+			mes "你最好再多考慮一下....";
+			next;
+			mes "[阿伊歐樂]";
+			mes "難道你是想引我發笑嗎?";
+			mes "去準備一些正經點的花吧";
+			close2;
+			cutin "job_bard_aiolo02",255;
+			end;
+		}
+		else {
+			cutin "job_bard_aiolo02",2;
+			mes "嗯?你好像什麼都沒帶來吧";
+			mes "我應該說過讓你帶花來的吧";
+			next;
+			mes "[阿伊歐樂]";
+			mes "如果你想自學的話，這也無所謂";
+			mes "唱歌這種事情本來就是個人的自由";
+			close2;
+			cutin "job_bard_aiolo02",255;
+			end;
+		}
+		next;
+		cutin "job_bard_aiolo01",2;
+		mes "[阿伊歐樂]";
+		mes "那麼現在按照約定，幫助你成為一個詩人吧";
+		mes "不過這不是一件簡單的事情喔哈哈!";
+		next;
+		mes "[阿伊歐樂]";
+		mes "為了學習歌曲，和更多的人接觸交流是很重要的";
+		mes "而且必須留意各地村落的所見所聞....";
+		next;
+		mes "[阿伊歐樂]";
+		mes "對了，在薑餅城村落裡，有一個會說話的雪人";
+		mes "你到那裡去，帶一些禮物回來吧，怎麼樣?";
+		next;
+		set BARD_Q,3;
+		changequest 3001,3002;
+		set xmas_npc,1;
+		mes "[阿伊歐樂]";
+		mes "^008800和雪人成為朋友^000000的話，應該可以得到什麼東西的吧";
+		mes "同時也去試試和村子裡的其他人交流交流怎麼樣?";
+		close2;
+		cutin "job_bard_aiolo01",255;
+		end;
+	}
+	else if ((BARD_Q >= 3) || (BARD_Q <= 5)) {
+		if(BARD_Q == 3) {
+			if(xmas_npc > 10) { //該變數被設置在LUTIE.TXT
+				cutin "job_bard_aiolo01",2;
+				mes "[阿伊歐樂]";
+				mes "歡迎回來";
+				mes "和很多人見過面了吧?";
+				mes "看來你也明白了有比禮物更重要的東西了吧";
+				next;
+				mes "[阿伊歐樂]";
+				mes "那麼，唱首歌試試看吧....";
+				mes "從我的本子上選歌來試試吧....";
+				mes "把你會的唱出來";
+				if(checkquest(3003) == -1) {
+					changequest 3002,3003;
+				}
+				next;
+				mes "[阿伊歐樂]";
+				mes "開始了";
+				mes "啊哼啊哼、哈哈";
+				mes "1、2、3、4~";
+				next;
+			}
+			else {
+				cutin "job_bard_aiolo01",2;
+				set xmas_npc,1;
+				mes "[阿伊歐樂]";
+				mes "這樣啊，你沒能和他成為朋友嗎?";
+				mes "有些事情光靠語言是不行的";
+				next;
+				mes "[阿伊歐樂]";
+				mes "和雪人成為朋友的話，應該可以得到什麼東西的吧";
+				mes "同時也去試試和村子裡的其他人交流交流怎麼樣?";
+				close2;
+				cutin "job_bard_aiolo01",255;
+				end;
+			}
+		}
+		else if(BARD_Q == 4) {
+			cutin "job_bard_aiolo01",2;
+			mes "[阿伊歐樂]";
+			mes "嗯嗯...這次你可以唱得更好的，";
+			mes "讓我們再試一次吧!";
+			next;
+			mes "[阿伊歐樂]";
+			mes "我會先唱一次，然後你跟著我再唱一次";
+			mes "這樣了解吧? 準備好了嗎?";
+			next;
+			mes "[阿伊歐樂]";
+			mes "開始了";
+			mes "啊哼啊哼、哈哈";
+			mes "1、2、3、4~";
+			next;
+		}
+		if (BARD_Q != 5) {
+			switch(rand(5)) {
+			case 0: //經驗值倍增
+				setarray .@list$,"沒有錢又沒有裝備的商人","雖然是商人但是沒有辦法做生意","因為他有自尊心，所以沒有向別人乞討，","把衣服和刀都賣掉，湊成資本","剛開始只賣紅色藥水","後來在普隆德拉賣番薯";
+				break;
+			case 1: //戰鼓震天
+				setarray .@list$,"大聲點，再大聲點，在大聲點響亮，","給前進的士兵們力量吧！","把天空搖晃，讓大地生氣吧，","讓快要爆炸的心臟，重新跳躍吧！","喇叭聲音響起時，開始爬城牆吧，","只有一天的這瞬間，再也不會來的！";
+				break;
+			case 2: //不死神齊格弗里德
+				setarray .@list$,"以前有一個叫做不死神的傢伙，","他的名字叫，齊格弗里德，","是英雄齊格門德的兒子，","兇猛的巨人帕鋪呢，","變成了龍來阻擋他了，","化身成龍的男人啊";
+				break;
+			case 3: //布萊奇之詩
+				setarray .@list$,"布萊奇、布萊奇","永遠的叫這詩人的名字，","我的歌聲就是他的呼吸聲，","我的精神就是他的意志，","所有詩人都是他的人，","所有讚美都會回歸給他";
+				break;
+			case 4: //伊登的蘋果
+				setarray .@list$,"所有的神永遠都不會老，","那是因為美麗的女神伊登，","奧丁的媳婦，布萊奇的太太，","那女人所攜帶的果籃裡裝滿了蘋果，","都是那女人所攜帶甜美蘋果的關係，","眾神們永遠都不會衰老";
+				break;
+			}
+			for(set .@i,0; .@i<6; set .@i,.@i+1) {
+				for(set .@j,0; .@j<6; set .@j,.@j+1)
+					mes ((.@count<.@j)? "^000000": "^3173FF") +.@list$[.@j]+ "^000000";
+				next;
+				input .@word$;
+				if(.@word$==.@list$[.@i])
+					set .@point,.@point+1;
+			}
+			if(.@point<6) {
+				cutin "job_bard_aiolo02",2;
+				set BARD_Q,4;
+				mes "[阿伊歐樂]";
+				mes "哎呀哎呀....歌詞好像錯了吧";
+				mes "如果不認真點來唱的話....";
+				next;
+				mes "[阿伊歐樂]";
+				mes "發音是還可以拉";
+				mes "接下來，更加認真點唱出來吧";
+				close2;
+				cutin "job_bard_aiolo02",255;
+				end;
+			}
+			mes "[阿伊歐樂]";
+			mes "....";
+			next;
+			set BARD_Q,5;
+			mes "[阿伊歐樂]";
+			mes "太好了!真是厲害!";
+			mes "這樣的話，一定可以成為優秀的詩人的!";
+			next;
+			mes "[阿伊歐樂]";
+			mes "那麼...";
+			mes "現在你就可以成為詩人了";
+			mes "在這之前還想給你個紀念品呢";
+			next;
+			mes "[阿伊歐樂]";
+			mes "你想就直接這樣轉職嗎?";
+			mes "還是想要得到什麼東西呢?";
+			next;
+			set .@selection,select("直接讓我轉職吧:要給我禮物嗎? 謝謝!");
+		}
+		if ((.@selection == 1) || (BARD_Q == 5)) {
+			if(SkillPoint) {
+				cutin "job_bard_aiolo01",2;
+				mes "[阿伊歐樂]";
+				mes "哎呀...好像還有技能點沒加完呢";
+				mes "全部加完了再來吧";
+				next;
+				mes "[阿伊歐樂]";
+				mes "還有想做個紀念品的關係，對了...";
+				mes "你還沒有帶來^3173FF樹枝^000000吧";
+				mes "哪種都沒有關係，帶60個相同種類的就可以了";
+				close2;
+				cutin "job_bard_aiolo01",255;
+				end;
+			}
+			else {
+				switch(BARD_Q) {
+				case 5:
+					if(countitem(1019) > 59) callsub S_ChangeJob,1019,1901;
+					else if(countitem(1068) > 59) callsub S_ChangeJob,1068,1903;
+					else if(countitem(1067) > 59) callsub S_ChangeJob,1067,1903;
+					else if(countitem(1066) > 59) {
+						if(JobLevel > 49) callsub S_ChangeJob,1066,1910;
+						else callsub S_ChangeJob,1066,1905;
+					}
+					cutin "job_bard_aiolo01",2;
+					mes "[阿伊歐樂]";
+					mes "嗯，不是要去收集^3173FF樹枝^000000的嗎?";
+					mes "現在就想轉職嗎?";
+					next;
+					if (select("現在就轉職:不，去收集樹枝") == 2)
+						break;
+				default:
+					completequest 3003;
+					callfunc "Job_Change",Job_Bard;
+					callfunc "F_ClearJobVar";
+					mes "對了!你有快樂的歌唱嗎?";
+					mes "就像風和雲那樣!";
+					next;
+					mes "[阿伊歐樂]";
+					mes "那麼，再見了!";
+					close2;
+					cutin "job_bard_aiolo01",255;
+					end;
+				}
+			}
+		}
+		changequest 3003,3004;
+		mes "[阿伊歐樂]";
+		mes "嗯...這樣啊";
+		mes "你就帶些^3173FF樹枝^000000來吧";
+		mes "哪種都無所謂，要同樣種類的60個";
+		next;
+		mes "[阿伊歐樂]";
+		mes "如果你能帶來的話，";
+		mes "我就給你一個紀念品";
+		mes "那麼，請慢走啊";
+		close2;
+		cutin "job_bard_aiolo01",255;
+		end;
+	}
+	cutin "job_bard_aiolo01",2;
+	mes "[阿伊歐樂]";
+	mes "咿~ 咿~ 咿~";
+	close2;
+	cutin "job_bard_aiolo01",255;
+	end;
+
+S_ChangeJob:
+		completequest 3004;
+		callfunc "Job_Change",Job_Bard;
+		callfunc "F_ClearJobVar";
+		mes "[阿伊歐樂]";
+		mes "呀，辛苦了";
+		mes "事不宜遲，我給你做轉職紀念品吧";
+		mes "稍微等一會吧";
+		next;
+		mes "[阿伊歐樂]";
+		mes "^3173FF卡卡、鐺鐺、鐺鐺";
+		mes "咚咚、咻咻^000000";
+		delitem getarg(0),60;
+		getitem getarg(1),1;
+		next;
+		mes "[阿伊歐樂]";
+		mes "好，這是紀念品";
+		mes "唱歌的時候使用它吧";
+		mes "希望你能用它快樂的歌唱";
+		mes "那麼，再見了!";
+		close2;
+		cutin "job_bard_aiolo01",255;
+		end;
+}

@@ -1,0 +1,331 @@
+//===== rAthena Script ======================================= 
+//= Kunlun Town
+//===== By: ================================================== 
+//= x[tsk], KarLaeda
+//===== Current Version: ===================================== 
+//= 1.6
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Kunlun Town Script
+//===== Additional Comments: ================================= 
+//= 1.5 Rescripted to Aegis 10.3 standards. [L0ne_W0lf]
+//=     Moved Lost Knife mini-quest to quest file.
+//= 1.6 Moved Alberta NPC to pre-re/re paths. [Euphy]
+//============================================================
+
+// Kunlun Transportation
+//============================================================
+-	script	::Kunlun_Envoy_gonryun	-1,{
+	mes "[瓦百豪]";
+	mes "您好,我想邀請大家,";
+	mes "來到我的故鄉崑崙,";
+	mes "和 盧恩-米德加茲王國,";
+	mes "完全不同的崑崙大陸,";
+	mes "為貴賓們服務,";
+	mes "是我的大榮幸";
+	next;
+	switch (select("詢問有關崑崙的事情:去崑崙:取消")) {
+	case 1:
+		mes "[瓦百豪]";
+		mes "我們崑崙是個可以,";
+		mes "讓大陸的旅客享受最棒";
+		mes "的觀光勝地,經過由小小的家組成的";
+		mes "小人過之後,再通過發著神秘";
+		mes "光彩的柱子就可以走向";
+		mes "天空之路了";
+		next;
+		mes "[瓦百豪]";
+		mes "聽說在這大陸上也有著";
+		mes "漂浮在空中的都市,";
+		mes "我們崑崙不具特別的動力";
+		mes "就可以漂浮在空中,多虧";
+		mes "可以欣賞到美麗的風景";
+		next;
+		mes "[瓦百豪]";
+		mes "我們崑崙的特產品大包子";
+		mes "以及天道石番桃的口味跟更是一品,";
+		mes "當然也有危險的秘穴";
+		mes "如果要去的話,";
+		mes "就要徹底的準備好再去";
+		next;
+		mes "[瓦百豪]";
+		mes "那麼,有興趣的話,";
+		mes "跟我說一聲吧,能夠為大陸的貴賓們服務,";
+		mes "是我最大的歡喜";
+		next;
+		break;
+	case 2:
+		mes "[瓦百豪]";
+		mes "那麼,馬上就出發吧,";
+		mes "我們需要一點去崑崙";
+		mes "的旅費,如果您預付10,000錢幣的話,";
+		mes "當您回程的時候,";
+		mes "我們會免費接待的";
+		next;
+		if(select("出發!:取消")==2)
+			break;
+		mes "[瓦百豪]";
+		mes "準備好要出發囉!";
+		next;
+		if(Zeny<10000) {
+			mes "[瓦百豪]";
+			mes "很抱歉,您要準備好";
+			mes "旅行時所需要的";
+			mes "10,000 錢幣,請再確認一下";
+			mes "您所攜帶的錢幣,";
+			mes "謝謝";
+			close;
+		}
+		set Zeny,Zeny-10000;
+		warp "gon_fild01",258,82;
+		end;
+	case 3:
+	}
+	mes "[瓦百豪]";
+	mes "如果以後想要過去的話,";
+	mes "請來找我吧,能夠為大陸的貴賓們服務,";
+	mes "是我最大的歡喜";
+	close;
+}
+
+gon_fild01,255,79,6	script	崑崙宣傳使臣#gon2	776,{
+	mes "[瓦百豪]";
+	mes "是否有個愉快的旅途了呢?那麼";
+	mes "現在應該是要回去的時候了吧!";
+	mes "往返大陸的船現在已經準備好了";
+	next;
+	switch (select("回艾爾貝塔:取消")) {
+	case 1:
+		mes "[瓦百豪]";
+		mes "那麼出發囉!";
+		close2;
+		warp "alberta",243,67;
+		end;
+	case 2:
+		mes "[瓦百豪]";
+		mes "那麼請你再慢慢的逛吧!";
+		mes "在崑崙還有很多";
+		mes "你沒有去過的地方呢";
+		close;
+	}
+}
+
+gon_fild01,187,239,7	script	崑崙宣傳使臣#gon3	776,{
+	mes "[張澄龍]";
+	mes "請往上走過去就可以了";
+	mes "真希望你能夠在崑崙";
+	mes "製造很多美好的回憶";
+	mes "再回去..";
+	close;
+}
+
+gonryun,153,64,7	script	崑崙宣傳使臣#gon4	776,{
+	mes "[張澄龍]";
+	mes "希望在崑崙有個愉快的一天，";
+	mes "旅遊結束了的話，";
+	mes "我們會親自引導到返往大陸的船";
+	next;
+	if (select("回到港口:取消") == 1) {
+		mes "[張澄龍]";
+		mes "出發囉!";
+		close2;
+		warp "gon_fild01",258,82;
+		end;
+	}
+	mes "[張澄龍]";
+	mes "那麼請你再慢慢的逛吧!";
+	mes "在崑崙還有很多";
+	mes "你沒有去過的地方呢";
+	close;
+}
+
+// Generic Kunlun NPCs
+//============================================================ 
+gonryun,200,82,3	script	成松 感#gon	774,{
+	mes "[成松 感]";
+	mes "慶祝活動真是快樂極了，";
+	mes "所以我好喜歡好喜歡，";
+	mes "總是有著慶祝活動";
+	mes "的這個村落，嘿嘿";
+	close;
+}
+
+gonryun,268,88,4	script	准坡 良#gon	776,{
+	mes "[准坡 良]";
+	mes "我們是獨立的民族，";
+	mes "因羨慕這種被祝福的國土，";
+	mes "沒有被受略我們的惡群敵戰敗，";
+	mes "反而戰勝";
+	next;
+	mes "[准坡 良]";
+	mes "我相信，勝利的凱歌!";
+	mes "那是我們早上的日出!";
+	close;
+}
+
+gonryun,118,111,5	script	員石 千#gon	89,{
+	mes "[員石 千]";
+	mes "這裡的村長是個很開放的人";
+	mes "不過就是因為他那開放的性格";
+	mes "也是有人不喜歡的，喔嗯..";
+	next;
+	mes "[員石 千]";
+	mes "不過因為他，而使我們村落";
+	mes "變得開放是件不錯的事啊..";
+	mes "不過希望不要有無厘頭";
+	mes "的人出現";
+	close;
+}
+
+gonryun,181,161,4	script	玟珍 鄭#gon	773,{
+	mes "[玟珍 鄭]";
+	mes "我們崑崙的男生，";
+	mes "全部都很有力而且精力旺盛，";
+	mes "不過最近那些男生，";
+	mes "都不能夠娶個老婆";
+	next;
+	mes "[玟珍 鄭]";
+	mes "這都是因為男生變多了";
+	mes "相對的女生，";
+	mes "不足才會這樣，";
+	mes "不知道我這兒子能不能";
+	mes "娶得到老婆..呼鳴";
+	close;
+}
+
+-	script	GateKeeper#gon	-1,{
+	mes "[守門人]";
+	mes "歡迎光臨，這裡是";
+	mes "領導崑崙的";
+	mes "史艷文的住宅";
+	next;
+	mes "[守門人]";
+	mes "應該不會有那種事，";
+	mes "不過萬一做一些醜惡的事情，";
+	mes "我們會當場刺你";
+	next;
+	mes "[守門人]";
+	mes "應該不會有那種事發生";
+	mes "不要太擔心，";
+	mes "祝你有個愉快的訪問";
+	close;
+}
+gonryun,113,135,6	duplicate(GateKeeper#gon)	守門人#gon	780
+gonryun,113,127,6	duplicate(GateKeeper#gon)	守門人#gon2	780
+
+gon_in,73,82,5	script	成哲 基#gon	778,{
+	switch (nakha) {
+	case 3:
+		set cha,1;
+		mes "[成哲 基]";
+		mes "我叫成哲 基";
+		mes "研究著好吃的茶";
+		mes "是茶研究人員";
+		mes "為了製作好吃的茶";
+		mes "拚命，正在努力";
+		next;
+		mes "[成哲 基]";
+		mes "哼..可是，近來";
+		mes "研究沒有發展";
+		mes "什麼劃時代的東西";
+		mes "必要,不過..";
+		next;
+		mes "[成哲 基]";
+		mes "做什麼，茶";
+		mes "有好吃地能這樣的傳言";
+		mes "這個那個地...、";
+		mes "什麼?痛苦";
+		close;
+	default:
+		mes "[成哲 基]";
+		mes ".........";
+		next;
+		mes "[成哲 基]";
+		mes "呼鳴.....";
+		mes "真令人擔心啊，擔心";
+		close;
+	}
+}
+
+gon_in,173,27,2	script	鴆俠 吳#gon	774,{
+	mes "[鴆俠 吳]";
+	mes "果然..我這年齡來到酒店，";
+	mes "也不賣我酒啊，";
+	mes "看大人都很會喝，";
+	mes "真好奇是什麼味道啊..唉";
+	next;
+	mes "[鴆俠 吳]";
+	mes "不過正在開發像我這樣的小孩子，";
+	mes "也可以飲用的美味茶，";
+	mes "不知道..那是什麼時候，";
+	mes "想到要喝美味的茶時，";
+	mes "真的好興奮喔";
+	close;
+}
+
+gonryun,166,196,3	script	Soldier#gon	780,{
+	switch (b_sword) {
+	default:
+		mes "[哇鴆歐]";
+		mes "你知道嗎?";
+		mes "這裡本來是祠堂，";
+		mes "不知何時開始一些無法登仙的神仙";
+		mes "開始佔了位子，變成了魔物的";
+		mes "巢穴，因此祠堂也被荒廢了..";
+		if (b_sword > 9) {
+			next;
+			mes "[哇鴆歐]";
+			mes "祭奠應該快要開始了";
+			mes "但是總覺得怪怪的";
+		}
+		close;
+	case 7:
+	case 8:
+	case 9:
+		mes "[哇鴆歐]";
+		mes "昨晚那麼吵";
+		mes "是因為小偷在村子裡";
+		next;
+		mes "[哇鴆歐]";
+		mes "啊~~!難道小偷去過祠堂了";
+		next;
+		mes "[哇鴆歐]";
+		mes "小偷的速度很快";
+		mes "像風一樣";
+		close;
+	}
+}
+
+gonryun,169,71,4	script	介紹人員#gon	770,{
+	mes "[李喜敏]";
+	mes "歡迎光臨，";
+	mes "進來村落之前，";
+	mes "有好好的逛村落的下方嗎?";
+	mes "村外的建築物是我們，";
+	mes "這次製造的精心之作";
+	next;
+	mes "[李喜敏]";
+	mes "為了使一眼看清，";
+	mes "盧恩..米德加茲王國的都市";
+	mes "而製作的小模型..";
+	mes "因為我們很久沒有與";
+	mes "外面交流，雖然很累";
+	mes "不過是很認真製作的";
+	next;
+	mes "[李喜敏]";
+	mes "每個角落到處都走走看看的話，";
+	mes "會發現很多很美的風景";
+	close;
+}
+//============================================================ 
+// Old changelog
+//============================================================ 
+// May be missing npc's and dialogue.
+//= 1.1 Fixed Typos [Nexon]
+//= 1.2 Removed Duplicates [Silent]
+//= 1.3 Max NPC Name is 23 [Toms]
+//= 1.3a Removed temp NPC plugs due Broken Sword quest [Lupus]
+//= 1.4 Added missing NPC [KarLaeda]
+//============================================================

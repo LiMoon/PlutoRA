@@ -1,0 +1,24 @@
+//===== rAthena Script ======================================= 
+//= Izlude Town Pre-Renewal
+//===== By: ================================================== 
+//= Daegaladh
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Izlude town NPCs.
+//===== Additional Comments: ================================= 
+//= 1.0 First Version.
+//============================================================
+
+izlude,201,181,2	duplicate(Sailor_izlude)	船員#izlude	100
+izlude,55,74,2	duplicate(Bonne_izlude)	奔呢#izlude	90
+izlude,135,78,2	duplicate(Charfri_izlude)	夏普立#izlude	91
+izlude,119,121,2	duplicate(Cuskoal_izlude)	庫斯可爾#izlude	124
+izlude,150,118,2	duplicate(Dega_izlude)	竇加#izlude	84
+izlude,150,143,2	duplicate(Kylick_izlude)	齊黎#izlude	97
+izlude,56,126,2	duplicate(Red_izlude)	瑞德#izlude	85
+izlude,58,126,2	duplicate(Cebalis_izlude)	西發利司#izlude	98
+izlude,124,178,2	duplicate(Soldier_izlude)	士兵#izlude	105

@@ -1,0 +1,58 @@
+//===== rAthena Script =======================================
+//= Eden Group Quests - Service NPCs
+//===== By: ==================================================
+//= L0ne_W0lf
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= Any rAthena SVN
+//===== Description: =========================================
+//= Paradise Group storage access.
+//===== Additional Comments: =================================
+//= 1.0 First Version.
+//= 1.1 Replaced 2nd NPC with duplicate function. [Masao]
+//============================================================
+
+-	script	寄物箱#00::pggc	-1,{
+	mes "有個寄物箱，";
+	mes "紙條上有寫東西";
+	mes "";
+	mes "";
+	mes "+ 伊甸園專屬寄物箱 +";
+	mes "針對想使用本寄物箱的人!";
+	next;
+	mes "1.你是伊甸園團員嗎?";
+	mes "2.基本技能足夠了嗎?";
+	mes "3.費用^4d4dff只需 500 zeny^000000!";
+	next;
+	if (countitem(6219) > 0) {
+		mes "想使用寄物箱需要先投幣，";
+		mes "投幣 : 500 Zeny ";
+		mes "要使用嗎?";
+		next;
+		switch(select("使用寄物櫃:取消")) {
+			case 1:
+				if (Zeny > 499) {
+					if (getskilllv("NV_BASIC") < 6) {
+						mes "...寄物箱的投幣口拒絕金幣，";
+						mes "使用寄物箱的基本技能似乎不足";
+						close;
+					}
+					set Zeny, Zeny - 500;
+					close2;
+					openstorage;
+					end;
+				}
+				mes "金幣不夠";
+				mes "使用寄物箱至少要500金幣";
+				close;
+			case 2:
+				mes "歡迎下次再使用";
+				close;
+		}
+	}
+	mes "必須要有團員證才能使用";
+	close;
+}
+moc_para01,173,120,0	duplicate(pggc)	寄物箱#01	111
+moc_para01,170,120,0	duplicate(pggc)	寄物箱#02	111

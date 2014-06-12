@@ -1,0 +1,172 @@
+//===== rAthena Script ======================================= 
+//= 吉芬 解說員s
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.2
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guides for the city of Geffen.
+//===== Additional Comments: ================================= 
+//= 1.0 First version, Renewal guide.
+//= 1.1 Fixed and optimized. [Euphy]
+//= 1.2 Navigation system update. [Euphy]
+//============================================================ 
+
+geffen,203,116,4	script	解說員#01geffen::GuideGeffen	705,{
+	cutin "gef_soldier",2;
+	mes "[吉芬 解說員]";
+	mes "這裡是魔法之都^8B4513吉芬^000000，";
+	mes "誠摯的歡迎大家的蒞臨，";
+	mes "需要為您介紹嗎?";
+	F_Navi("[吉芬 解說員]");
+	next;
+	while (1) {
+		switch(select("[主要設施]:[ 商人&小幫手 ]:刪除小地圖的標記:結束對話")) {
+		case 1:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[魔法學校]:[吉芬塔]:[噴 水 池]:[道 具 店]:[裝備維修及購買]:[          旅 館          ]:[          酒 店          ]:[ 克里斯多夫鐵工廠 ]:返回上一選單")) {
+				case 1:
+					mes "[吉芬 解說員]";
+					mes ""+F_Navi("魔法學校","geffen,61,180","^B9062F");
+					mes "負責魔法師";
+					mes "轉職等的工作，";
+					mes "位置已經標記在";
+					mes "小地圖上了，";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,61,180,0,0xFF0000;
+					next;
+					break;
+				case 2:
+					callsub L_Mark, F_Navi("[吉芬塔]","geffen,120,114","^0000FF");
+					viewpoint 1,120,114,1,0x0000FF;
+					next;
+					break;
+				case 3:
+					callsub L_Mark, F_Navi("[噴水池]","geffen,126,48","^FF5400");
+					viewpoint 1,126,48,2,0xFFB400;
+					next;
+					break;
+				case 4:
+					callsub L_Mark, F_Navi("[道具店]","geffen,44,86","^006400");
+					viewpoint 1,44,86,3,0xAAFF00;
+					next;
+					break;
+				case 5:
+					mes "[吉芬 解說員]";
+					mes F_Navi("[武器、防具購買]","geffen,99,140","^7F3300");
+					mes "或裝備維修的地方，";
+					mes "位置已經標記在";
+					mes "小地圖上了，";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,99,140,4,0xD2691E;
+					next;
+					break;
+				case 6:
+					callsub L_Mark, F_Navi("[旅館]","geffen,172,174","^800080");
+					viewpoint 1,172,174,5,0xDA70D6;
+					next;
+					break;
+				case 7:
+					callsub L_Mark, F_Navi("[酒館]","geffen,138,138","^B9062F");
+					viewpoint 1,138,138,6,0xFF0000;
+					next;
+					break;
+				case 8:
+					mes "[吉芬 解說員]";
+					mes F_Navi("[克里斯多夫的鐵工廠]","geffen,182,59","^0000FF")+"";
+					mes "出售各種精鍊";
+					mes "道具的地方，";
+					mes "據說以前那裡曾是";
+					mes "鐵匠公會。";
+					viewpoint 1,182,59,6,0x0000FF;
+					next;
+					break;
+				case 9:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 伊甸園傳送師  ]:[     卡普拉職員       ]:[     認養寵物商人       ]:[    料理材料商    ]:[   異次元術士解說員  ]:返回上一選單")) {
+				case 1:
+					callsub L_Mark, F_Navi("伊甸園傳送師","geffen,132,66","^B9062F");
+					viewpoint 1,61,180,7,0xFF0000;
+					viewpoint 1,132,66,8,0xFF0000;
+					next;
+					break;
+				case 2:
+					callsub L_Mark, "^FF5400卡普拉職員^000000";
+					viewpoint 1,203,123,10,0xFFB400;
+					viewpoint 1,120,62,11,0xFFB400;
+					next;
+					break;
+				case 3:
+					callsub L_Mark, F_Navi("認養寵物商人","geffen,193,152","^006400");
+					viewpoint 1,193,152,12,0xAAFF00;
+					next;
+					break;
+				case 4:
+					callsub L_Mark, F_Navi("料理材料商","geffen,196,111","^7F3300");
+					viewpoint 1,196,111,13,0xD2691E;
+					next;
+					break;
+				case 5:
+					callsub L_Mark, F_Navi("異次元術士解說員","geffen,140,196","^800080");
+					viewpoint 1,140,196,14,0xDA70D6;
+					next;
+					break;
+				case 6:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			mes "[吉芬 解說員]";
+			mes "已刪除小地圖上的標誌了，";
+			mes "還需要其它服務嗎?";
+			viewpoint 2,1,1,0,0xFFFF00;
+			viewpoint 2,1,1,1,0x000000;
+			viewpoint 2,1,1,2,0xFF0000;
+			viewpoint 2,1,1,3,0xFFFF00;
+			viewpoint 2,1,1,4,0xFFFF00;
+			viewpoint 2,1,1,5,0xFFFF00;
+			viewpoint 2,1,1,6,0xFFFF00;
+			viewpoint 2,1,1,7,0xFFFF00;
+			viewpoint 2,1,1,8,0xFFFF00;
+			viewpoint 2,1,1,9,0xFFFF00;
+			viewpoint 2,1,1,10,0xFFFF00;
+			viewpoint 2,1,1,11,0xFFFF00;
+			viewpoint 2,1,1,12,0xFFFF00;
+			viewpoint 2,1,1,13,0xFFFF00;
+			viewpoint 2,1,1,14,0xFFFF00;
+			next;
+			break;
+		case 4:
+			mes "[吉芬 解說員]";
+			mes "祝您旅途愉快!";
+			close2;
+			cutin "gef_soldier",255;
+			end;
+		}
+	}
+	end;
+L_Mark:
+	mes "[吉芬 解說員]";
+	mes getarg(0)+"^000000的";
+	mes "位置已經標記在";
+	mes "小地圖上了，";
+	mes "還需要其它服務嗎?";
+	return;
+}
+
+geffen,118,62,0	duplicate(GuideGeffen)	解說員#02geffen	705
+geffen,36,123,6	duplicate(GuideGeffen)	解說員#03geffen	705
+geffen,123,203,4	duplicate(GuideGeffen)	解說員#04geffen	705

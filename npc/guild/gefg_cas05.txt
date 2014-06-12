@@ -1,0 +1,132 @@
+//===== rAthena Script =======================================
+//= War of Emperium (Geffen)
+//===== By: ==================================================
+//= L0ne_W0lf
+//===== Current Version: =====================================
+//= 1.2
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= NPCs that relate to Geffen Guild Castle 5
+//===== Additional Comments: =================================
+//= 1.0 First Version. No longer uses functions. [L0ne_W0lf]
+//= 1.1 Removed dialog from interior flags. [L0ne_W0lf]
+//= 1.2 Partially rewrote Script. [Masao]
+//============================================================
+
+// Guild Flag (Outside Castle)
+//============================================================
+-	script	眉撒絲達刺#1::OutsideFlagsG5	722,{
+
+	set .@GID, GetCastleData("gefg_cas05",1);
+
+	if (.@GID == 0) {
+		mes "　　 [ 盧恩-米德加茲王國 公告令 ]";
+		mes " ";
+		mes "1. 根據這裡的，盧恩-米德加茲王國令";
+		mes "　　把這裡認定為";
+		mes "　　沒有正式所有權的秘密基地";
+		mes " ";
+		mes "2. 戰勝守在這裡，可怕的考驗後，";
+		mes "　　給破壞華麗金屬的人，";
+		mes " ";
+		mes "國王會賜予經國王認證的，秘密基地所有權";
+		close;
+	}
+	if (getcharid(2) == .@GID) {
+		mes "[ 響亮的嗓音 ]";
+		mes "勇敢的人們...";
+		mes "要回到您的名譽之地嗎?";
+		next;
+		if (select("回到秘密基地.:放棄") == 1) {
+			close2;
+			if (getcharid(2) == GetCastleData("gefg_cas05",1)) {
+				warp "gefg_cas05",168,31;
+				end;
+			}
+			end;
+		}
+		close;
+	}
+	mes "[ 盧恩-米德加茲王國 公告令 ]";
+	mes " ";
+	mes "1. 根據這裡的，盧恩-米德加茲王國令";
+	mes "　　這裡被認定為 ^ff0000" + GetGuildName(.@GID) + "^000000工會的";
+	mes "　　私有物";
+	mes " ";
+	mes "2. ^ff0000"+ GetGuildName(.@GID) + "^000000 工會的主人是";
+	mes "　　^ff0000" + GetGuildMaster(.@GID) + "^000000 ， 無論是誰";
+	mes "　　對這件事情有意見者";
+	mes " ";
+	mes "請你舉起您的劍，提高自己的名譽吧";
+	close;
+
+OnRecvCastleG05:
+	FlagEmblem GetCastleData("gefg_cas05",1);
+	end;
+}
+
+gef_fild13,302,87,7	duplicate(OutsideFlagsG5)	眉撒絲達刺#1-2	722
+gef_fild13,313,83,0	duplicate(OutsideFlagsG5)	眉撒絲達刺#2	722
+gef_fild13,252,51,2	duplicate(OutsideFlagsG5)	眉撒絲達刺#3	722
+gef_fild13,26,147,2	duplicate(OutsideFlagsG5)	眉撒絲達刺#4	722
+
+// Guild Flag (Inside Castle)
+//============================================================
+-	script	眉撒絲達刺#5::InsideFlagsG5	722,{
+	end;
+
+OnRecvCastleG05:
+	FlagEmblem GetCastleData("gefg_cas05",1);
+	end;
+}
+
+gefg_cas05,77,185,7	duplicate(InsideFlagsG5)	眉撒絲達刺#5-2	722
+gefg_cas05,92,181,0	duplicate(InsideFlagsG5)	眉撒絲達刺#6	722
+gefg_cas05,83,158,1	duplicate(InsideFlagsG5)	眉撒絲達刺#7	722
+gefg_cas05,62,144,7	duplicate(InsideFlagsG5)	眉撒絲達刺#8	722
+gefg_cas05,62,66,4	duplicate(InsideFlagsG5)	眉撒絲達刺#9	722
+gefg_cas05,69,66,4	duplicate(InsideFlagsG5)	眉撒絲達刺#10	722
+
+// Guild Flag (Town)
+//============================================================
+geffen,131,123,6	duplicate(InsideFlagsG5)	眉撒絲達刺#11	722
+
+// Kafra Employee
+//============================================================
+gefg_cas05,61,52,5	duplicate(guildkafra)	卡普拉 職員#gefg_cas05	117
+
+// Steward
+//============================================================
+gefg_cas05,70,52,3	duplicate(cm)	畢歐樂#gefg_cas05	55
+
+// Treasure Room Exit
+//============================================================
+gefg_cas05,149,107,0	script	#lever_G05	111,{
+
+	mes " ";
+	mes "有個某種小的裝置 ，請問你要操作嗎?";
+	next;
+	if(select("操作:結束") == 1) {
+		close2;
+		warp "gefg_cas05",70,53;
+		end;
+	}
+	close;
+}
+
+// Guild Dungeon Switch
+//============================================================
+gefg_cas05,65,22,0	duplicate(gdlever)	#gefg_cas05	111
+
+// Guild Treasure Spawns
+//============================================================
+gefg_cas05,144,110,0	duplicate(Gld_Trea_Spawn)	Treasure#gefg_cas05	-1
+
+// AGIT Manager
+//============================================================
+gefg_cas05,194,184,0	duplicate(Gld_Agit_Manager)	Agit#gefg_cas05	-1
+
+// Guardians
+//============================================================
+gefg_cas05,70,52,3	duplicate(Gld_Guard_Template)	Guardian#gefg_cas05	-1

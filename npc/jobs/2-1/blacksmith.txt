@@ -1,0 +1,1347 @@
+//========================
+// [冥] The PlutoEA Project [王]
+// http://plutoea.googlecode.com/svn/
+// -----------------------------------------
+// - 鐵匠 轉職腳本 -
+//========================
+//= 版本：2.8
+//========================
+
+ein_in01,18,28,4	script	工會會員#BLS	731,{
+	if (Upper == 1) {
+		mes "[鐵匠工會裏的  阿特阿伊健]";
+		mes "喂喂，你到底對著誰亂講話啊";
+		mes "你這傢伙以為這裡是哪裡啊...嗯?";
+		next;
+		mes "[鐵匠工會裏的  阿特阿伊健]";
+		mes "等一下，這傢伙好像以前在哪裡看過啊";
+		mes "嗯嗯....";
+		mes "嗯嗯嗯...";
+		next;
+		mes "[鐵匠工會裏的  阿特阿伊健]";
+		mes "是不是把我武器破壞之後跑傢伙呢?";
+		mes "還是一直逼我幫你做武器的那個呢?";
+		mes "嗯嗯嗯...";
+		next;
+		mes "[鐵匠工會裏的  阿特阿伊健]";
+		mes ".......";
+		mes "...記不起來了";
+		mes ".......是我的幻覺嗎!?";
+		next;
+		mes "[鐵匠工會裏的  阿特阿伊健]";
+		mes "全部都想不起來了，";
+		mes "讓我感覺到某種不尋常的訊息，";
+		mes ".....不管怎樣，祝你有個愉快的一天";
+		close;
+	}
+	mes "[鐵匠工會裏的  阿特阿伊健]";
+	mes "你好?! 我們是 鐵匠 工會!";
+	mes "我們操作在心理深處的熱情.";
+	next;
+	mes "[鐵匠工會裏的  阿特阿伊健]";
+	mes "把熔化的金屬做出新武器是我們的技術!";
+	next;
+	if (BaseClass == Job_Novice) {
+		if (sex == 0) {
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "可愛的小妹妹";
+			mes "妳也想成為充滿魅力的鐵匠啊";
+			next;
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "不過妳必須先成為'商人'才可以";
+			mes "到艾爾貝塔的商人工會去吧";
+			close;
+		}
+		close;
+	}
+	else if (BaseClass == Job_Swordman) {
+		mes "[鐵匠工會裏的  阿特阿伊健]";
+		mes "如果你對於打造武器有興趣的話..";
+		mes "建議你先把'貿易'的技術給學會在說";
+		close;
+	}
+	else if (BaseClass == Job_Archer) {
+		mes "[鐵匠工會裏的  阿特阿伊健]";
+		mes "很可惜. 商人以外，其他職業不能加入我們工會!";
+		close;
+	}
+	else if (BaseClass == Job_Mage) {
+		mes "[鐵匠工會裏的  阿特阿伊健]";
+		mes "對屬性，有什麼想要說的話？";
+		mes "你們的指教很有幫助!";
+		close;
+	}
+	else if (BaseClass == Job_Acolyte) {
+		mes "[鐵匠工會裏的  阿特阿伊健]";
+		mes "很可惜，除了商人以外，";
+		mes "其他職業不能加入我們工會!";
+		mes "不過你想幫我們禱告也是可以的";
+		close;
+	}
+	else if (BaseClass == Job_Thief) {
+		mes "[鐵匠工會裏的  阿特阿伊健]";
+		mes "對不起. 這裡沒有值得偷走的東西";
+		mes "只製作短劍而已. . .";
+		close;
+	}
+	else if (BaseJob == Job_Alchemist) {
+		mes "[鐵匠工會裏的  阿特阿伊健]";
+		mes "製藥的生意最近如何呢?";
+		mes "不過我賣武器的客人是愈來愈多呢!";
+		close;
+	}
+	else if (BaseJob == Job_Blacksmith) {
+		mes "[鐵匠工會裏的  阿特阿伊健]";
+		mes "啊~  好久不見！想要購買物品？";
+		mes "只在辦公室裡真無聊";
+		close;
+	}
+	else if (BaseJob == Job_Merchant) {
+		if (SkillPoint) {
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "嗯..你目前還不能當鐵匠...";
+			mes "轉職為鐵匠是職業等級40以上才可以.";
+			mes "我是很想寬容你, 不過這是這裡的規定...";
+			mes "你下次再來好了";
+			close;
+		}
+		if (BSMITH_Q == 0) {
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "不要身為商人就滿足，";
+			mes "不如和我們玩美麗的煙火如何啊?";
+			mes "請在那裡的轉職轉職申請書上";
+			mes "寫下你的性名和職業等級.";
+			next;
+			switch(select("申請轉職:要轉職需要那些條件?:我考慮看看")) {
+			case 1:
+				if (SkillPoint) {
+					mes "[鐵匠工會裏的  阿特阿伊健]";
+					mes "還有剩點數技能就不能申請轉職.";
+					mes "全部消耗之後再來吧!";
+					close;
+				}
+				else if (JobLevel > 39 && BSMITH_Q == 0) {
+					mes "[鐵匠工會裏的  阿特阿伊健]";
+					mes "嗯...";
+					mes "你的等級還不錯喔.";
+					next;
+					mes "[鐵匠工會裏的  阿特阿伊健]";
+					mes "好吧, 我們也要過濾工會員...";
+					mes "至少要有商人的誠實和，";
+					mes "有著要當鐵匠的積極的心應付考試就好了";
+					mes "我看看...";
+					next;
+					mes " - ^3355FF*翻著一本小冊子*^000000 -";
+					next;
+					mes "[鐵匠工會裏的  阿特阿伊健]";
+					mes "嗯...從艾音貝赫出差中的工會員 '蓋修坢士特'有通報, 說那邊人手不足.";
+					mes "你去幫他的忙吧... 你的第一次考試.";
+					next;
+					set BSMITH_Q,1;
+					setquest 2000;
+					mes "[鐵匠工會裏的  阿特阿伊健]";
+					mes "那麼路上小心.";
+					close;
+				}
+				else if (JobLevel < 40) {
+					mes "[鐵匠工會裏的  阿特阿伊健]";
+					mes "嗯..你目前還不能當鐵匠...";
+					mes "轉職為鐵匠是職業等級40以上才可以.";
+					mes "我是很想寬容你，不過這是這裡的規定...";
+					mes "你下次再來好了";
+					close;
+				}
+			case 2:
+				mes "[鐵匠工會裏的  阿特阿伊健]";
+				mes "轉職的條件啊 ?";
+				mes "首先, 職業等級要40以上才可以喔,";
+				next;
+				mes "[鐵匠工會裏的  阿特阿伊健]";
+				mes "再來就是要通過工會要求的考試...";
+				mes "這兩樣. 嗯..雖然考試有一點難不過只要用心就可以過的.";
+				mes "把考試用品運送到各地區之後";
+				mes "瞭解各地區的特產考試, 為了要當鐵匠的筆試這兩樣.";
+				close;
+			case 3:
+				mes "[鐵匠工會裏的  阿特阿伊健]";
+				mes "那麼，再見了";
+				close;
+			}
+		}
+		else if (BSMITH_Q > 0  && BSMITH_Q < 8) {
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "你還沒出發阿?";
+			mes "快去找艾音貝赫的'^8E6B23蓋修坢士特^000000'啊~";
+			mes "那麼待會再見.";
+			close;
+		}
+		else if (BSMITH_Q > 8 && BSMITH_Q < 15) {
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "蓋修坢士特交代你的事還順利嗎???";
+			mes "......他會要求比較高喔....";
+			close;
+		}
+		else if (BSMITH_Q == 15) {
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "辛苦了!!.";
+			mes "第一個考試已經結束了...";
+			next;
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "嗯? ......哈哈哈，並不是只考一次.";
+			mes "去後面那房間看看吧";
+			mes "那邊會有負責下個考試的工會員.";
+			next;
+			if (select("..太過分了吧. 但是...還是要去啊:嗚啊啊啊!! 我不轉職了啦!") == 1) {
+				set BSMITH_Q,16;
+				changequest 2013,2014;
+				mes "[鐵匠工會裏的  阿特阿伊健]";
+				mes "...很抱歉，但是辦法";
+				mes "你應該也很清楚吧? ";
+				mes "隨便亂收一些亂七八糟的傢伙之後";
+				mes "所造成的我們公鐵匠們的下場!!";
+				mes "造成著一些不禮貌的事情";
+				mes "而被其他人指著的小部分的人!!!";
+				next;
+				mes "[鐵匠工會裏的  阿特阿伊健]";
+				mes "就是因為他們，";
+				mes "我們鐵匠全體都在受到很大的困擾呢!!!";
+				mes "不管怎樣....到後面房間去看看吧";
+				mes "你會遇到負責下場考試的工會員的.";
+				close;
+			}
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "什麼? 你要放棄轉職?";
+			mes "再說一次看看!! 你竟然說出這種話... 這是對我們工會的污辱!!";
+			mes "給我滾出去! 再也不要想要成為鐵匠!";
+			next;
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "連一點耐心也沒有的爛人!!!";
+			mes "連這種小事情也無法認手，你認為成為鐵匠之後會怎麼撐下去啊!!!!!";
+			close;
+		}
+		else if (BSMITH_Q == 16) {
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "嗯? 到後面去找米特麻依兒";
+			mes "還有一個考試再等著呢..";
+			close;
+		}
+		else if (BSMITH_Q == 17 && countitem(1005) > 0 && JobLevel > 39) {
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "喔, 果然... 我的眼光沒有錯. 成功的轉職了啊!";
+			mes "我給你，可以繼承火焰之美學的權利";
+			if(checkquest(2015) != -1) {
+				changequest 2015,2016;
+			}
+			next;
+			set .@joblvl,JobLevel;
+			callfunc "Job_Change",Job_Blacksmith;
+			callfunc "F_ClearJobVar";	// 清除轉職變數
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "但是不要忘了. 我們是把美放進體裡的人呢...";
+			mes "不要陷入似欲而脫離正道.!!!";
+			next;
+			delitem 1005,1; //高級鐵砧
+			completequest 2016;
+			mes "[鐵匠工會裏的  阿特阿伊健]";
+			mes "這是...給你的禮物!! 恭喜你轉職!!!";
+			if (.@joblvl > 48)
+				getitem 999,30; //鋼鐵
+			else 
+				getitem 999,5; //鋼鐵
+			close;
+		}
+	}
+}
+
+//alberta_in,174,22,4	script	工會員#alberta	63,{
+ein_in01,201,27,3	script	工會員#ein	63,{
+	mes "[蓋修坢士特]";
+	mes "熱血!! 我是個熱血的鐵匠!";
+	mes "'^8E6B23蓋修坢士特^000000'~";
+	mes "很高興見到你!!";
+	next;
+	if (BaseJob == Job_Merchant) {
+		mes "[蓋修坢士特]";
+		mes "喔喔喔! 是商人嗎!! 呵呵...很高興見到你!!";
+		mes "剛好我需要一些幫手的呢!!";
+		next;
+		if (BSMITH_Q == 0) {
+			mes "[蓋修坢士特]";
+			mes ".....但是!!!";
+			mes "我也不能攬住忙人!";
+			mes "趕快走你的路吧!!";
+			next;
+			mes "[蓋修坢士特]";
+			mes "Crash! Crash! 丹 丹 丹丹~";
+			mes "(哼哼哼)我是個~ 熱血的 鐵匠啊~ ";
+			next;
+			mes "[蓋修坢士特]";
+			mes "嗯? 你還在那啊?!";
+			close;
+		}
+		else if ((BSMITH_Q == 1) || (BSMITH_Q == 2)) {
+			if (BSMITH_Q == 1) {
+				mes "[蓋修坢士特]";
+				mes "你確定是來自鐵匠工會的沒有錯吧!!?";
+				mes "因為最近太多東西要做出來, 我一個人都忙不過來了呢!! 哈哈哈!!";
+				next;
+				mes "[蓋修坢士特]";
+				mes "嗯. 總而言之, 你是來幫我的是吧?";
+				mes "嗯. 應該不會錯吧. 那麼..簡單的作個面試之後再把事情交給你好了!";
+				next;
+				mes "[蓋修坢士特]";
+				mes "前幾天也有個傢伙來過這裡, 但是實在不懂的基本, 而買錯材料來了呢!";
+				mes "白白浪費了一筆錢的說!";
+				mes "我要給你一個叫困難的事情呢...因為這需要基本之制裁可以辦的到.";
+				mes "那我要問問題囉!! 可以吧?";
+				next;
+				set .@selection,select("可以:等等，我準備一下");
+			}
+			else if (BSMITH_Q == 2) {
+				mes "[蓋修坢士特]";
+				mes "嗯嗯! 好. 看起來準備了不少嗎! ";
+				mes "這次我會讓你輕鬆一點, 錯一題也沒關係的!!";
+				mes "那麼!! 我要出題囉!!";
+				next;
+			}
+			if (.@selection != 2) {
+				if (rand(2)) {
+					mes "[蓋修坢士特]";
+					mes "1. 下列例子中有什麼是把地區跟特產品的連結是不一致的?!";
+					next;
+					if (select("夢羅克 – 盜賊之衣:吉芬 - 雙手斧:克魔島 - 菠色克藥水:艾爾貝塔 - 尖刃鐵錘") == 2)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "2. 下列那一像是鐵匠的技能中'^8E6B23Hammer Fall^000000'的能力?";
+					next;
+					if (select("混亂:黑暗:沉默:睡眠") == 1)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "3. 什麼是商人不擅長的事情?";
+					next;
+					if (select("開商店:低價買入:高價賣出:移動快速") == 4)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "4. 賣藍色魔力礦石的商店的位置是!?";
+					next;
+					if (select("艾爾貝塔:夢羅克:吉芬:普隆德拉") == 3)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "5. 那麼, 吉芬道具店在哪裡!!?";
+					next;
+					if (select("吉芬塔為中心8點鐘方向:吉芬塔為中心11點鐘方向:吉芬塔為中心6點鐘方向:吉芬塔為中心5點鐘方向") == 1)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "6. 以下哪一種武器是商人無法使用?";
+					next;
+					if (select("雙刃短劍:圓柄馬刀:鏈錘:聖言之書") == 4)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "7. 選擇以下防具當中防禦力最高的東西!!";
+					next;
+					if (select("三角褲:毛皮大衣:木製鎧甲:絲質外袍") == 2)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "8. 製作等級3的武器時安定值是到哪裡!!";
+					next;
+					if (select("+ 3:+ 4:+ 5:+ 6") == 3)
+						set .@black_q,.@black_q+10;
+					mes "9. 可以用'瑪哪樹枝'做得到的物品是什麼?";
+					next;
+					if (select("草帽:亡者髮箍:山羊頭盔:鹿角頭飾") == 1)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "10. 對商人而言最重要的是什麼!!?";
+					next;
+					select("信用:誠懇:金錢:口才");
+					set .@black_q,.@black_q+10;
+				}
+				else {
+					mes "[蓋修坢士特]";
+					mes "1. 下列例子中有什麼是把地區跟特產品的連結是不一致的?!!";
+					next;
+					if (select("艾爾帕蘭 - 天地樹葉子:艾爾貝塔 - 鋼斧:克魔島 - 菠色克藥水:艾爾帕蘭 - 鋼斧") == 4)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "2. 傑勒比結晶的價格是多少?";
+					next;
+					if (select("1 Zeny:2 Zeny:3 Zeny:4 Zeny") == 3)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "3. 使用'露天商店'技能的必要條件是什麼?!";
+					next;
+					if (select("要有手推車:要有物品可以賣出去:要攜帶著武器:要穿著盔甲") == 1)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "4. 下列哪各地方，何者是商人工會所在地?";
+					next;
+					if (select("艾爾貝塔:夢羅克:吉芬:普隆德拉") == 1)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "5. 夢羅克的武器店在哪裡?";
+					next;
+					if (select("以城為中心7點方向:以城為中心11點方向:以城為中心6點方向:以城為中心5點方向") == 4)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "6. 以下哪一種武器是商人無法使用?";
+					next;
+					if (select("笨拙短劍:寬劍:鏈錘:雙手斧") == 2)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "7. 以下防具中防禦力最強的是什麼!!";
+					next;
+					if (select("三角褲:毛皮大衣:木製鎧甲:絲質外袍") == 2)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "8. 等級4的武器的精煉安定值是?!";
+					next;
+					if (select("+ 3:+ 4:+ 5:+ 6") == 2)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "9. 不會掉落鐵礦石的魔物是什麼?";
+					next;
+					if (select("蒼蠅:綠蒼蠅:傑洛米:	虎蜥人") == 4)
+						set .@black_q,.@black_q+10;
+					mes "[蓋修坢士特]";
+					mes "10. 對商人而言最重要的是什麼!!?";
+					next;
+					select("信用:誠懇:金錢:口才");
+					set .@black_q,.@black_q+10;
+				}
+				mes "[蓋修坢士特]";
+				mes "嗯. 好了!! 辛苦你了!";
+				next;
+				mes "[蓋修坢士特]";
+				mes "那麼...";
+				mes "分數是 " + .@black_q + "分..";
+				if (.@black_q == 100) {
+					set BSMITH_Q,3;
+					if(checkquest(2001) != -1) {
+						changequest 2001,2002;
+					}else{
+						changequest 2000,2002;
+					}
+					mes "喔喔!! 這樣就沒問題了! 來來...";
+					next;
+					mes "[蓋修坢士特]";
+					mes "那麼, 我就把事情交給你好了!!";
+					mes "我去準備一下..等一下再見吧!!";
+					close;
+				}
+				set BSMITH_Q,2;
+				if(checkquest(2001) == -1) {
+					changequest 2000,2001;
+				}
+				mes ".............";
+				next;
+				mes "[蓋修坢士特]";
+				if (BSMITH_Q == 2) {
+					mes "那個. 不好意思, 你又錯了耶, 是不是有點過分啊!";
+					mes "如果繼續這樣錯下去的話就沒有辦法把事情交給你呢, 再去念點書過來吧!";
+					close;
+				}
+				mes "那個. 不好意思, 如果你連這種知識也沒有的話";
+				mes "沒有辦法把事情交給你呢. 再去念點書在來吧!";
+				close;
+			}
+			mes "[蓋修坢士特]";
+			mes "好...那麼 去準備一下再來吧.";
+			mes "有備無患! 安全第一!!";
+			mes "小心的態度也不算是不好啦";
+			close;
+		}
+		else if (BSMITH_Q == 3) {
+			mes "[蓋修坢士特]";
+			mes "嗯...訂購書在哪裡呢...";
+			next;
+			mes "[蓋修坢士特]";
+			mes "- ^3355FF啪啦啪啦^000000 -";
+			next;
+			mes "[蓋修坢士特]";
+			mes "- ^3355FF咻咻咻咻^000000 -";
+			next;
+			mes "[蓋修坢士特]";
+			mes "首先...需要的材料有...";
+			next;
+			switch(rand(1,5)) {
+			//鋼鐵, 腐爛繃帶, 藍色魔力礦石, 言靈魔杖
+			case 1: setarray .@items[0], 999,1, 930,1, 717,2, 1610,1, 4; changequest 2002,2003; break;
+			//星星的粉末, 死人遺骨, 剎勒空結晶, 長柄短劍
+			case 2: setarray .@items[0], 1001,2, 932,1, 912,1, 1219,1, 5; changequest 2002,2004; break;
+			//煤礦, 堅硬外殼, 火靈礦石, 日本刀
+			case 3: setarray .@items[0], 1003,1, 935,2, 990,2, 1119,1, 6; changequest 2002,2005; break;
+			//鐵礦石, 獨眼龍眼罩, 藍色魔力礦石, 亞伯雷弓
+			case 4: setarray .@items[0], 1002,1, 2212,1, 717,2, 1713,1, 7; changequest 2002,2006; break;
+			//鐵, 綠色藥草, 動物外皮, 圓柄馬刀
+			default: setarray .@items[0], 998,1, 511,1, 919,2, 1122,1, 8; changequest 2002,2007; break;
+			}
+			set BSMITH_Q,.@items[8];
+			mes "[蓋修坢士特]";
+			mes "^8E6B23"+getitemname(.@items[0])+" "+.@items[1]+"個^000000";
+			mes "^8E6B23"+getitemname(.@items[2])+" "+.@items[3]+"個^000000";
+			mes "^8E6B23"+getitemname(.@items[4])+" "+.@items[5]+"個^000000";
+			mes "還有..商店賣的^8E6B23"+getitemname(.@items[6])+" "+.@items[7]+"把^000000";
+			next;
+			mes "[蓋修坢士特]";
+			mes "呵呵... 我們絕不是因為對前有可惜的心態而這樣的啦. 這是考驗啦, 考驗.";
+			next;
+			mes "[蓋修坢士特]";
+			mes "那麼... 拜託你了... 要平安回來喔!";
+			close;
+		}
+		else if (BSMITH_Q > 3 && BSMITH_Q < 9) {
+			switch(BSMITH_Q) {
+			case 4: setarray .@items[0], 999,1, 930,1, 717,2, 1610,1, 9; break;
+			case 5: setarray .@items[0], 1001,2, 932,1, 912,1, 1219,1, 10; break;
+			case 6: setarray .@items[0], 1003,1, 935,2, 990,2, 1119,1, 11; break;
+			case 7: setarray .@items[0], 1002,1, 2212,1, 717,2, 1713,1, 12; break;
+			case 8: setarray .@items[0], 998,1, 511,1, 919,2, 1122,1, 13; break;
+			}
+			mes "[蓋修坢士特]";
+			mes "嗯? 讓我看看...我要你準備的已經準備好了吧?";
+			next;
+			if (countitem(.@items[0]) >= .@items[1] && countitem(.@items[2]) >= .@items[3] && countitem(.@items[4]) >= .@items[5] && countitem(.@items[6]) >= .@items[7]) {
+				mes "[蓋修坢士特]";
+				mes "不是說鋼鐵....3 個的嗎?";
+				next;
+				mes "[蓋修坢士特]";
+				mes "啊 2個沒有錯..剩下的是....好! 準備的很好..";
+				mes "嗯...那麼 等我一下喔..";
+				next;
+				mes "[蓋修坢士特]";
+				mes "你確定一下你身上沒有會和 ^FF0000"+getitemname(.@items[6])+"^000000混淆的相同物品?";
+				next;
+				if (select("啊..等一下:我身上只有一把") == 1) {
+					mes "[蓋修坢士特]";
+					mes "嗯..除了專職用物品以外，其他的呢，在倉庫裡保管最好~";
+					close;
+				}
+				mes "[蓋修坢士特]";
+				mes "那，好!!";
+				next;
+				mes "[蓋修坢士特]";
+				mes "^3355FF*鏗鏘 鏗鏘*^000000";
+				next;
+				mes "[蓋修坢士特]";
+				mes "^3355FF*碰碰碰!*^000000";
+				next;
+				delitem .@items[0],.@items[1];
+				delitem .@items[2],.@items[3];
+				delitem .@items[4],.@items[5];
+				delitem .@items[6],.@items[7];
+				set BSMITH_Q,.@items[8];
+				mes "[蓋修坢士特]";
+				mes "呼.";
+				mes "好了...";
+				switch(BSMITH_Q) {
+				case 9:
+					mes "那麼. 把這個交給吉芬的 '^8E6B23巴伊斯里特^000000'之後把收據拿給我就好了";
+					getitem 1610,1; //言靈魔杖
+					if(checkquest(2003) != -1) {
+						changequest 2003,2008;
+					}
+					next;
+					mes "[蓋修坢士特]";
+					mes "嗯? 看起來沒什麼特別的嗎?!!";
+					mes "....仔細看看手拔那邊吧.";
+					mes "增加握住感的!!";
+					mes "^3355FF超  言靈魔杖 蓋修坢士特 Mk 2 版本^000000 !!!!";
+					next;
+					mes "[蓋修坢士特]";
+					mes "....在甩的時候的感覺就不一樣啦! 不一樣!!";
+					next;
+					mes "[蓋修坢士特]";
+					mes "....反正, 你走到吉芬之把它交給'^8E6B23巴伊斯里特^000000'";
+					break;
+				case 10:
+					mes "那麼. 把這個交給夢羅克的 '^8E6B23修咖巴殷^000000'之後把收據拿給我就好了";
+					getitem 1219,1; //長柄短劍
+					if(checkquest(2004) != -1) {
+						changequest 2004,2009;
+					}
+					next;
+					mes "[蓋修坢士特]";
+					mes "嗯? 看起來沒什麼特別的嗎?!!";
+					mes "....你仔細看看刀刃的部分.";
+					mes "是有裝飾的耶!!!!";
+					mes "^3355FF終極長柄短劍 蓋修坢士特 Mk 2 ^000000!!!!";
+					next;
+					mes "[蓋修坢士特]";
+					mes "....光看著就覺得很燦爛的不是嗎!!";
+					next;
+					mes "[蓋修坢士特]";
+					mes "....反正, 你就把把這個交給夢羅克的 '^8E6B23修咖巴殷^000000'";
+					break;
+				Case 11:
+					mes "那麼. 把這個交給里希塔樂鎮的 '哥倫卡史特'之後把收據拿給我就好了..";
+					getitem 1119,1; //日本刀
+					if(checkquest(2005) != -1) {
+						changequest 2005,2010;
+					}
+					next;
+					mes "[蓋修坢士特]";
+					mes "嗯? 看起來沒什麼特別的嗎?!!";
+					mes "....仔細看看刀刃的部分.";
+					mes "有做裝飾的耶!!!!";
+					mes "^3355FF二文斬斷日本刀 蓋修坢士特 Mk 2^000000 !!!!";
+					next;
+					mes "[蓋修坢士特]";
+					mes "....光看著就覺得不覺得很燦爛嗎!!";
+					next;
+					mes "[蓋修坢士特]";
+					mes "....反正, 你就把把這個交給里希塔樂鎮的 '^8E6B23哥倫卡史特^000000'";
+					break;
+				case 12:
+					mes "那麼. 把這個交給斐揚的 '^8E6B23鐵痞子^000000'之後把收據拿給我就好了";
+					getitem 1713,1; //亞伯雷弓
+					if(checkquest(2006) != -1) {
+						changequest 2006,2011;
+					}
+					next;
+					mes "[蓋修坢士特]";
+					mes "嗯? 看起來沒什麼特別的嗎?!!";
+					mes "....仔細看看弓的本體吧!";
+					mes "有獨眼龍眼罩做的受納空間!!!!";
+					mes "^3355FF極品袋鼠(假名) 亞伯雷弓 蓋修坢士特 Mk 2 ^000000!!!!";
+					next;
+					mes "[蓋修坢士特]";
+					mes "....提高了獨眼龍眼罩 方便性的說!!";
+					next;
+					mes "[蓋修坢士特]";
+					mes "....反正, 你就去斐揚把貨交給'^8E6B23鐵痞子^000000'";
+					break;
+				case 13:
+					mes "那麼. 把這個交給毀葛的 '^8E6B23畢司馬爾克^000000'之後把收據拿給我就好了";
+					getitem 1122,1; //圓柄馬刀
+					if(checkquest(2007) != -1) {
+						changequest 2007,2012;
+					}
+					next;
+					mes "[蓋修坢士特]";
+					mes "嗯? 看起來很普通嗎?!!";
+					mes "....仔細看看刀刃的部分吧!";
+					mes "有加入綠色藥草的濃縮液的!!!!";
+					mes "^3355FF綠色藥草濃縮液的圓柄馬刀 蓋修坢士特 Mk 2^000000 !!!!";
+					next;
+					mes "[蓋修坢士特]";
+					mes "....中毒時用這把刀直接刺下去的話馬上就好的!!";
+					mes "....雖然有可能傷口會變的更大!! 但是可以解毒的不是嗎!!";
+					next;
+					mes "[蓋修坢士特]";
+					mes "....反正, 你就去毀葛把貨交給 '^8E6B23畢司馬爾克^000000'";
+				}
+				mes "之後把收據回來就好了!";
+				close;
+			}
+			else {
+				mes "[蓋修坢士特]";
+				mes ".....還早了嗎....";
+				mes "...到底要講多次啊?!!!";
+				next;
+				mes "[蓋修坢士特]";
+				mes "^8E6B23"+getitemname(.@items[0])+" "+.@items[1]+"個^000000";
+				mes "^8E6B23"+getitemname(.@items[2])+" "+.@items[3]+"個^000000";
+				mes "^8E6B23"+getitemname(.@items[4])+" "+.@items[5]+"個^000000";
+				mes "還有..商店賣的^8E6B23"+getitemname(.@items[6])+" "+.@items[7]+"把啦!!^000000";
+				next;
+				mes "[蓋修坢士特]";
+				mes "要徹底準備好喔!! 這是可是啦! 考試!";
+				mes "咿咿....要以那種精神狀態怎麼能工作呢.";
+				close;
+			}
+		}
+		else if (BSMITH_Q > 8 && BSMITH_Q < 14) {
+			mes "[蓋修坢士特]";
+			mes "嗯? 趕快去啊~";
+			mes "該不會去不知道地點吧?";
+			next;
+			mes "[蓋修坢士特]";
+			if (BSMITH_Q == 9) {
+				mes "以吉芬塔為中心的11點鐘方向，";
+				mes "^8E6B23巴伊斯里特^000000先生就在那";
+				mes "別忘了把收據拿回來啊";
+			}
+			else if (BSMITH_Q == 10) {
+				mes "交給夢羅克 尖刃鐵錘 商人 附近的 '^8E6B23修咖巴殷^000000'";
+				mes "別忘了把收據拿回來啊";
+			}
+			else if (BSMITH_Q == 11) {
+				mes "^8E6B23哥倫卡史特^000000先生他常在";
+				mes "里希塔樂鎮的六點鐘方向附近晃";
+				mes "別忘了把收據拿回來啊";
+			}
+			else if (BSMITH_Q == 12) {
+				mes "^8E6B23鐵痞子^000000位於斐揚的五點鐘方向";
+				mes "別忘了把收據拿回來啊";
+			}
+			else {
+				mes "交給毀葛的12點方向的'^8E6B23畢司馬爾克^000000'之後拿收據回來就好了";
+			}
+			close;
+		}
+		else if (BSMITH_Q == 14) {
+			mes "[蓋修坢士特]";
+			mes "嗯. 回來囉?";
+			mes "把貨物送到客人手中了嗎";
+			mes "那麼，讓我看看收據吧!!!";
+			next;
+			if (select("這是收據，請查收:等..等我一下喔") == 1) {
+				if (countitem(1073) > 0) {
+					set BSMITH_Q,15;
+					delitem 1073,1; //收據
+					if(checkquest(2008) != -1) {
+						changequest 2008,2013;
+					}
+					else if(checkquest(2009) != -1) {
+						changequest 2009,2013;
+					}
+					else if(checkquest(2010) != -1) {
+						changequest 2010,2013;
+					}
+					else if(checkquest(2011) != -1) {
+						changequest 2011,2013;
+					}
+					else {
+						changequest 2012,2013;
+					}
+					mes "[蓋修坢士特]";
+					mes "Oh ho ho~";
+					mes "Great!";
+					mes "You're truly";
+					mes "a great Merchant!";
+					next;
+					mes "[蓋修坢士特]";
+					mes "Good job!";
+					mes "Return to ^8E6B23鐵匠工會裏的  阿特阿伊健^000000 in Einbroch, the guy you first met when you applied for the Blacksmith job.";
+					next;
+					mes "[蓋修坢士特]";
+					mes "I have faith that you";
+					mes "will be a great Blacksmith!";
+					close;
+				}
+				set BSMITH_Q,3;
+				mes "[蓋修坢士特]";
+				mes ".....忘了把收據放在那裡了啊?";
+				mes ".....真是的......";
+				next;
+				mes "[蓋修坢士特]";
+				mes "......是不是太過分的啊? 你?";
+				mes "到底把它賣給誰了啊!!";
+				next;
+				mes "[蓋修坢士特]";
+				mes "收據是 商人之命耶! 是類似於鐵匠生命線的!!!";
+				mes "從頭再來一次!!";
+				close;
+			}
+			mes "[蓋修坢士特]";
+			mes "好吧. 等你找到收據再告訴我~";
+			mes "該不會是忘了拿收據回來的吧?";
+			close;
+		}
+		else if (BSMITH_Q == 15) {
+			mes "[蓋修坢士特]";
+			mes "喔喔! 好....很好.";
+			mes "真的很好!! 你是個很乾脆的商人啊!!";
+			mes "好吧!! 你就到艾音布羅克找";
+			mes "'阿特阿伊健'吧!";
+			mes "就是那個第一個申請 轉職的傢伙!";
+			mes "辛苦了!! 你有足夠的資格當商人了!!";
+			close;
+		}
+		mes "[蓋修坢士特]";
+		mes "嗯. 謝謝你幫我完成這些工作，";
+		mes "趕快回去找'阿特阿伊健'吧!";
+		close;
+	}
+	else {
+		mes "[蓋修坢士特]";
+		mes "當鐵匠是一件意義非凡的事";
+		mes "好棒啊! 你也是這麼想的，對吧?";
+		mes "哈哈哈哈!";
+		close;
+	}
+}
+
+geffen,46,164,1	script	巴伊斯里特#BLS	69,{
+	if (BSMITH_Q == 9 && countitem(1610) > 0) {
+		mes "[巴伊斯里特]";
+		mes "哇哇哇!! 總算來了啊?!";
+		mes "啊啊啊啊...謝謝你...我等了很久呢...";
+		next;
+		mes "[巴伊斯里特]";
+		mes "就是我訂購的那枝魔杖吧?";
+		mes "插在已使用過的卡... 那樣的二手品";
+		mes "我可不要喔!";
+		next;
+		if (select("是我使用過的:放心，是新的!") == 1) {
+			mes "[巴伊斯里特]";
+			mes "...你不要這樣子糊裡糊塗!";
+			close;
+		}
+		mes "[巴伊斯里特]";
+		mes "是真的~? 哈哈~";
+		set BSMITH_Q,14;
+		delitem 1610,1; //言靈魔杖
+		next;
+		mes "[巴伊斯里特]";
+		mes "我之前拜託了艾音布羅克的鐵匠工會，";
+		mes "但是他們說艾爾貝塔";
+		mes "有個很有能力的人...";
+		mes "就把事情交給那個人了呢!!";
+		next;
+		mes "[巴伊斯里特]";
+		mes "謝謝你，來到這麼遠的地放送貨，";
+		mes "那個死 蓋修坢士特，";
+		mes "有機會的話幫我打一拳!";
+		mes "為什麼這麼遲啊..";
+		next;
+		getitem 1073,1; //收據
+		mes "[巴伊斯里特]";
+		mes "在這裡~ 那麼 ~ 辛苦你了~ 真的謝謝你";
+		mapannounce "geffen","嘿! " +strcharinfo(0)+ "，辛苦了，謝謝你送貨~~",bc_map;
+		close;
+	}
+	else if (BSMITH_Q == 14) {
+		mes "[巴伊斯里特]";
+		mes "謝謝你送貨~~~";
+		close;
+	}
+	else {
+		mes "[巴伊斯里特]";
+		mes "真是的....這裡跟艾爾貝塔離太遠了";
+		mes "所訂購的物品拿不到真麻煩啊..";
+		next;
+		mes "[巴伊斯里特]";
+		mes "我之前拜託了艾音布羅克的 鐵匠工會，";
+		mes "但是說艾爾貝塔有個很有能力的人...";
+		mes "就把事情交給那個人了呢!!";
+		next;
+		mes "[巴伊斯里特]";
+		mes "我訂購的 '感覺好的 言靈魔杖'";
+		mes "到底什麼時候才會到呢...?";
+		close;
+	}
+}
+
+morocc,27,112,4	script	修咖巴殷#BLS	725,{
+	if (BSMITH_Q == 10 && countitem(1219) > 0) {
+		cutin "Job_Black_hucke01",2;
+		mes "[修咖巴殷]";
+		mes ".....到了嗎喵!!";
+		mes "給我喵!!!";
+		next;
+		mes "[修咖巴殷]";
+		mes "就是我訂的喵?";
+		mes "你那邊使用過的...";
+		mes "有屬性的...";
+		mes "那樣的 長柄短劍，我不要喵~";
+		next;
+		if (select("是我使用過的:放心，是新的") == 1) {
+			cutin "Job_Black_hucke03",2;
+			mes "[修咖巴殷]";
+			mes "喵~~~~~~~~!";
+			next;
+			mes "- 好像很生氣的樣子 -";
+			close2;
+			cutin "Job_Black_hucke03",255;
+			end;
+		}
+		cutin "Job_Black_hucke02",2;
+		mes "[修咖巴殷]";
+		mes "哈哈~";
+		next;
+		mes "- 好像很高興的樣子 -";
+		next;
+		set BSMITH_Q,14;
+		delitem 1219,1; //長柄短劍
+		cutin "Job_Black_hucke01",2;
+		mes "[修咖巴殷]";
+		mes "告訴艾音布羅克 鐵匠 工會以及";
+		mes "你老師蓋修坢士特喵!";
+		next;
+		cutin "Job_Black_hucke03",2;
+		mes "[修咖巴殷]";
+		mes "'^660000遲到了喵";
+		mes "等很久了喵^000000'";
+		next;
+		cutin "Job_Black_hucke02",2;
+		mes "[修咖巴殷]";
+		mes "但是東西好喵. 滿足喵. .";
+		next;
+		mes "(在寫什麼東西.)";
+		next;
+		getitem 1073,1; //收據
+		emotion e_lv;
+		mes "[修咖巴殷]";
+		mes "收據.";
+		mes "我也覺得你很辛苦了喵~";
+		mapannounce "morocc","" + strcharinfo(0) + "...謝謝，送貨喵",bc_map;
+		close2;
+		cutin "Job_Black_hucke02",255;
+		end;
+	}
+	else if (BSMITH_Q == 14) {
+		emotion e_lv;
+		cutin "Job_Black_hucke02",2;
+		mes "[修咖巴殷]";
+		mes "謝謝，送貨喵~";
+		close2;
+		cutin "Job_Black_hucke02",255;
+		end;
+	}
+	else {
+		cutin "Job_Black_hucke03",2;
+		mes "[修咖巴殷]";
+		mes "..........";
+		mes ".....拜託的物品..到低什麼時候才到呢? ";
+		next;
+		mes "[修咖巴殷]";
+		mes "艾音布羅克 鐵匠工會、蓋修坢士特";
+		mes "兩個都很慢喵!";
+		next;
+		emotion e_lv;
+		mes "[修咖巴殷]";
+		mes "我會生氣喵.";
+		close2;
+		cutin "Job_Black_hucke03",255;
+		end;
+	}
+}
+
+lighthalzen,209,80,4	script	哥倫卡史特#BLS	734,{
+	if (BSMITH_Q == 11 && countitem(1119) > 0) {
+		mes "[哥倫卡史特]";
+		mes "喔喔..到麼嗎?";
+		mes "很好...讓我看一看.";
+		next;
+		mes "[哥倫卡史特]";
+		mes "就是我訂的吧? 你那邊使用過的... 有屬性的... 那樣的 日本刀, 我不要~";
+		next;
+		if (select("是我使用過的!:放心，是新的") == 1) {
+			mes "[哥倫卡史特]";
+			mes "我要沒問題的物品！不要這樣的!";
+			close;
+		}
+		mes "[哥倫卡史特]";
+		mes "沒問題的吧？那，我帶走. ";
+		next;
+		set BSMITH_Q,14;
+		delitem 1119,1; //日本刀
+		mes "[哥倫卡史特]";
+		mes "喔喔....這樣的話...";
+		mes "比我拜託的還要好呢.";
+		next;
+		mes "[哥倫卡史特]";
+		mes "如果是這把刀的話...可以使用我的必殺技...二文字斬刀了!";
+		mes "我很滿意!!";
+		next;
+		mes "[哥倫卡史特]";
+		mes "那麼... 我給你收據.";
+		next;
+		mes "- 寫來寫去 -";
+		next;
+		getitem 1073,1; //收據
+		mes "[哥倫卡史特]";
+		mes "這是收據...辛苦你了~!!";
+		mapannounce "lighthalzen",strcharinfo(0)+"...謝謝你囉!",bc_map;
+		close;
+	}
+	else if (BSMITH_Q == 14) {
+		mes "[哥倫卡史特]";
+		mes "謝謝你送貨~";
+		close;
+	}
+	else {
+		mes "[哥倫卡史特]";
+		mes "..........";
+		mes ".....訂購的東西什麼時候才會到啊.";
+		next;
+		mes "[哥倫卡史特]";
+		mes "要使用2文字斬刀的話..";
+		mes "只有那把刀才可以呢!! 啊啊...";
+		next;
+		mes "[哥倫卡史特]";
+		mes "啊啊啊啊.......";
+		close;
+	}
+}
+
+payon,214,79,4	script	鐵痞子#BLS	59,{
+	if (BSMITH_Q == 12 && countitem(1713) > 0) {
+		mes "[鐵痞子]";
+		mes ".......喔喔. 終於!!! ";
+		mes "還了啊啊啊啊啊啊啊啊!!!";
+		mes "給我看!! 趕快!! 呵呵呵..";
+		next;
+		mes "[鐵痞子]";
+		mes "就是我訂的吧?";
+		mes "你那邊使用過的...";
+		mes "有屬性的...";
+		mes "那樣的二手品 我可不要喔";
+		next;
+		if (select("是我使用過的:I放心，是新的") == 1) {
+			mes "[鐵痞子]";
+			mes "我要沒問題的物品！不要這樣的!";
+			close;
+		}
+		mes "[鐵痞子]";
+		mes "沒問題的吧？是新的吧？";
+		mes "讓我看看就知道了...";
+		next;
+		set BSMITH_Q,14;
+		delitem 1713,1; //亞伯雷弓
+		mes "[鐵痞子]";
+		mes "呵呵呵呵....";
+		mes "太..太帥了!! 這東西!!!";
+		mes "嗚喔喔喔喔喔喔!!!";
+		next;
+		mes "[鐵痞子]";
+		mes "這..這 獨眼龍眼罩 口袋!!";
+		mes "真的是名品啊!! 太棒了啦!!!";
+		mes "太滿意了，";
+		mes "真是太滿意了!!";
+		next;
+		mes "[鐵痞子]";
+		mes "謝謝!! 謝謝!!!";
+		mes "如果是這把劍的話";
+		mes "以後以中古賣出的話";
+		mes "也可以賺出本錢了!!";
+		next;
+		mes "- 寫來寫去 -";
+		next;
+		getitem 1073,1; //收據
+		mes "[鐵痞子]";
+		mes "來!!!! 這是收據!!! 辛苦你了~!! 非常謝謝你~!!!!";
+		mapannounce "payon","Thanks, " +strcharinfo(0)+ "，謝謝你送貨! 越看就越..!! 嗚喔喔喔!!!",bc_map;
+		close;
+	}
+	else if (BSMITH_Q == 14) {
+		mes "[鐵痞子]";
+		mes "真的是, 極品中的極品啊";
+		mes "啊啊啊啊啊啊!!";
+		mes "嗚喔喔喔喔喔!!!";
+		close;
+	}
+	else {
+		mes "[鐵痞子]";
+		mes "啊啊.......";
+		mes ".....我拜託的東西要什麼時候才到呢..";
+		next;
+		mes "[鐵痞子]";
+		mes "我需要可以放 獨眼龍眼罩的好口袋呢...";
+		mes "啊啊...可以做那種口袋的人也只有'他'呢...哈啊..";
+		next;
+		mes "[鐵痞子]";
+		mes "啊啊啊啊......什麼時候才來啊....";
+		close;
+	}
+}
+
+hugel,168,183,1	script	畢司馬爾克#BLS	118,{
+	if (BSMITH_Q == 13 && countitem(1122) > 0) {
+		mes "[畢司馬爾克]";
+		mes ".......咳咳...";
+		mes "哈啊...哈啊....給..給我看看..";
+		next;
+		mes "[逼爾馬爾柯]";
+		mes "就是我訂的吧? 你那邊使用過的... 有屬性的... 那樣的 圓柄馬刀呢, 給我帶來死~";
+		next;
+		if (select("是我使用過的:放心，是新的") == 1) {
+			mes "[畢司馬爾克]";
+		mes "... 焦... 焦急了... 咳... 毒... 毒... ";
+		next;
+		mes "-慢慢死掉-";
+			close;
+		}
+		mes "[畢司馬爾克]";
+		mes "趕... 趕快... 咳... 給我刀... ";
+		next;
+		set BSMITH_Q,14;
+		delitem 1122,1; //圓柄馬刀
+		mes "[逼爾馬爾柯]";
+		mes "咳....";
+		mes "綠色要草已經處理了...應該不會有問題的...";
+		next;
+		mes "[逼爾馬爾柯]";
+		mes "拜..拜託你讓我起來好嗎....毒性已經擴散到全身了...";
+		mes "....咿咿.....";
+		next;
+		mes "- 噗 -";
+		next;
+		mes "[逼爾馬爾柯]";
+		mes "嗚啊啊啊啊!!!!";
+		next;
+		mes "[逼爾馬爾柯]";
+		mes "嗯...! ....解毒效果...還不錯嗎... 好,已經確認了.";
+		next;
+		getitem 1073,1;
+		mes "[逼爾馬爾柯]";
+		mes "這裡...這是收據. 希望下次再遇到你之前能夠存活下來...咳咳..";
+		mapannounce "hugel","Thanks, " +strcharinfo(0)+ "，謝謝你送貨過來...已經沒有問題了..",bc_map;
+		close;
+	}
+	else if (BSMITH_Q == 14) {
+		mes "[畢司馬爾克]";
+		mes "謝謝你...感謝救命之恩..";
+		close;
+	}
+	else {
+		mes "[畢司馬爾克]";
+		mes "......呼...呼....";
+		mes ".....到底我所拜託的東西是什麼時候才到呢...";
+		next;
+	      	mes "[逼爾馬爾柯]";
+		mes "....毒性也已經擴散到全身了....";
+		mes "呵....咳咳.....";
+		next;
+		mes "[逼爾馬爾柯]";
+		mes "....快...快要把解毒劑直解用在體內…解毒…解…要解毒…";
+		close;
+	}
+}
+
+ein_in01,24,41,5	script	鐵匠 工會員#moc	726,{
+	if (BSMITH_Q == 16) {
+		emotion e_hmm;
+		mes "[米特麻依兒]";
+		mes "歡迎光臨... 呵呵...";
+		mes "原來是一個想要成為鐵匠的年情人啊 .";
+		mes "但是你應該也有經過測試而已經知道的...";
+		mes "雖然是商人，";
+		mes "但是也不一定是每個人都會可以轉職的.";
+		next;
+		mes "[米特麻依兒]";
+		mes "你知道有關於礦石的多少內容...";
+		mes "或著對鐵匠瞭解多少...";
+		mes "我會問類似這種的一些問題的喔…";
+		mes "那麼我們開始吧...";
+		next;
+		if (select("好的，開始吧:等等，讓我準備一下") == 1) {
+			mes "[米特麻依兒]";
+			mes "好...那麼要出題目囉...";
+			mes "沒有好好的達對的話就會被淘汰的喔..";
+			next;
+			mes "[米特麻依兒]";
+			mes "我要出題目了，那就好好回答吧..";
+			mes "就算錯了，也不會告訴你是錯在哪裡的.";
+			next;
+			set .@blackss_te,0;
+			mes "[米特麻依兒]";
+			mes "....那麼要注意看題目之後好好的回答以下的問題吧...";
+			next;
+			switch(rand(1,3)) {
+			case 1:
+				mes "[米特麻依兒]";
+				mes "1. 為了學習 低價買進 所需要的過程是什麼?";
+				next;
+				if (select("手推車使用 Lv 3:物品鑑定:金錢攻擊 Lv 10:負重量增加 Lv 3") == 4)
+					set .@blackss_te,.@blackss_te+20;
+				mes "[米特麻依兒]";
+				mes "2. 利用大地之擊攻擊怪物時，有何種追加效果出現?";
+				next;
+				if (select("暈眩:黑暗:混亂:沉默") == 1)
+					set .@blackss_te,.@blackss_te+20;
+				mes "[米特麻依兒]";
+				mes "3. 金錢攻擊 練滿時(Lv 10)所消耗的zeny為多少?";
+				next;
+				if (select("900 Zeny:1000 Zeny:2000 Zeny:100,000 Zeny") == 2)
+					set .@blackss_te,.@blackss_te+20;
+				mes "[米特麻依兒]";
+				mes "4. 點滿 低價買進 後的折現為多少?";
+				next;
+				if (select("21 % :22 % :23 % :24 % ") == 4)
+					set .@blackss_te,.@blackss_te+20;
+				mes "[米特麻依兒]";
+				mes "5. 點滿 高價賣出 時的利潤率為多少?";
+				next;
+				if (select("21 % :22 % :23 % :24 % ") == 3)
+					set .@blackss_te,.@blackss_te+20;
+				break;
+			case 2:
+				mes "[米特麻依兒]";
+				mes "1. 以下那一個魔物會掉落鋼鐵?";
+				next;
+				if (select("傑洛米:綠蒼蠅:邪骸礦工:諾可伊") == 3)
+					set .@blackss_te,.@blackss_te+20;
+				mes "[米特麻依兒]";
+				mes "2. 以下的物品中，哪一個是可以用火靈礦石製造出來的屬性石?";
+				next;
+				if (select("火靈原石:風靈原石:地靈原石:水靈原石") == 1)
+					set .@blackss_te,.@blackss_te+20;
+				mes "[米特麻依兒]";
+				mes "3. 在自己的倉庫中哪種屬性的原石最多？";
+				next;
+				select("火靈原石:風靈原石:地靈原石:水靈原石");
+					set .@blackss_te,.@blackss_te+20;
+				mes "[米特麻依兒]";
+				mes "4. 一般來說. 哪一種屬性的怪獸在被風屬性的武器攻擊時所受到的損失為最大?";
+				next;
+				if (select("火屬性:地屬性:水屬性:風屬性") == 2)
+					set .@blackss_te,.@blackss_te+20;
+				mes "[米特麻依兒]";
+				mes "5. 用幾個鐵才可以做出一個鋼鐵?";
+				next;
+				if (select("5個:4個:3個:6個") == 1)
+					set .@blackss_te,.@blackss_te+20;
+				break;
+			case 3:
+				mes "[米特麻依兒]";
+				mes "1. 在路上有人跟你求救時你要怎麼處理?";
+				next;
+				switch(select("尋問需要什麼:暫時跟他聊天:不理他:給他物品後再走人")) {
+				case 1:
+				case 2:
+					set .@blackss_te,.@blackss_te+20;
+					break;
+				default:
+					break;
+				}
+				mes "[米特麻依兒]";
+				mes "2. 可以學到^8E6B23大聲喧嘩^000000以及^8E6B23改造手推車^000000的村子是哪裡?";
+				next;
+				if (select("艾爾帕蘭:艾爾貝塔:夢羅克:依斯魯得") == 2)
+					set .@blackss_te,.@blackss_te+20;
+				mes "[米特麻依兒]";
+				mes "3. 以艾音布羅克的中心為中心，鐵匠工會所在的方向為?";
+				next;
+				if (select("11點鐘方向:5點鐘方向:7點鐘方向:12點鐘方向") == 2)
+					set .@blackss_te,.@blackss_te+20;
+				mes "[米特麻依兒]";
+				mes "4. 哪個地方鐵匠族人最多?";
+				next;
+				if (select("普隆德拉:夢羅克:艾爾貝塔:艾音布羅克") == 4)
+					set .@blackss_te,.@blackss_te+20;
+				mes "[米特麻依兒]";
+				mes "5. 會影響製造的能力值是什麼?";
+				next;
+				if (select("STR 力量:DEX 熟練度:AGI 敏捷:VIT 體力") == 2)
+					set .@blackss_te,.@blackss_te+20;
+				break;
+			}
+			mes "[米特麻依兒]";
+			mes "辛苦你了...";
+			next;
+			mes "[米特麻依兒]";
+			mes "你的分數是...";
+			mes ""+ .@blackss_te +"分";
+			if (.@blackss_te > 70) {
+				mes "哈哈... 你好厲害哦...! 合格耶";
+				mes "恭喜恭喜!";
+				next;
+				mes "[米特麻依兒]";
+				mes "不過還不可以掉以輕心..";
+				mes "依賴鐵匠生活每天都要提心吊膽.";
+				mes "你應該需要用到合格的證明...";
+				mes "這兒，我送你一個高級鐵砧.";
+				set BSMITH_Q,17;
+				getitem 1005,1; //高級鐵砧
+				changequest 2014,2015;
+				next;
+				mes "[米特麻依兒]";
+				mes "拿著這個...";
+				mes "回去找'阿特阿伊健'";
+				next;
+				mes "[米特麻依兒]";
+				mes "那麼...祝你好運!!!";
+				close;
+			}
+			mes "不合格... 你還要多訓練再來找我吧!!";
+			next;
+			mes "[米特麻依兒]";
+			mes "這... 只知道這些是不夠的喔...";
+			mes "玩火可是會受傷的喔. 你還要多學習之後再來找我吧.";
+			close;
+		}
+		mes "對嘛...總是要有備無患啊. 再準備一些再來吧..";
+		close;
+	}
+	else if (BSMITH_Q == 17) {
+		emotion e_hmm;
+		mes "[米特麻依兒]";
+		mes "啊..我不是說過是合格的啊?";
+		next;
+		mes "[米特麻依兒] ";
+		mes "你可以到前面去找'阿特阿伊健'了";
+		next;
+		mes "[米特麻依兒]";
+		mes "你記得要取回高級鐵砧哦!";
+		next;
+		mes "[米特麻依兒]";
+		mes "記得轉職時要使用完技能點數哦!";
+		close;
+	}
+	else {
+		emotion e_hmm;
+		mes "[米特麻依兒]";
+		mes "我在夢羅克的時候必須忍受";
+		mes "嚴熱的太陽!";
+		mes "而在艾音布羅克卻又要強忍著煙霧!";
+		next;
+		mes "[米特麻依兒]";
+		mes "哦? 我們鐵匠每天都要在大太陽下生活，所以我們都已經習慣了!!";
+		next;
+		mes "[米特麻依兒]";
+		mes "...你說　皮膚會曬黑啊? 曬黑不是很好嗎...";
+		mes "看起來很健康很好啊";
+		close;
+	}
+}
+
+geffen_in,109,170,3	script	鐵匠工會 相關人員#gef	726,{
+	mes "[鐵匠工會 相關人員]";
+	mes "你好，你是來找鐵匠工會的嗎?";
+	next;
+	mes "[鐵匠工會 相關人員]";
+	mes "雖然感謝您大老遠的蒞臨，不過鐵匠工會";
+	mes "已經搬遷至打鐵環境較好的^3131FF秀發茲發德共和國^000000的城市";
+	mes "^3131FF艾音布羅克^000000那裡去了";
+	next;
+	mes "[鐵匠工會 相關人員]";
+	mes "想要去秀發茲發德共和國的話，";
+	mes "可以透過飛空艇方便的移動，";
+	mes "若你有意願，可以到有設置機場的";
+	mes "依斯魯得島去";
+	mes "請問你要移動嗎?";
+	next;
+	switch(select("如何前往艾音布羅克?:移動到依斯魯得島:取消")) {
+	case 1:
+		mes "[鐵匠工會 相關人員]";
+		mes "唉喲~ 你還沒搭過飛空挺嗎?";
+		next;
+		mes "[鐵匠工會 相關人員]";
+		mes "秀發茲發德 共和國不同於我們";
+		mes "盧恩米德加茲王國，不用空間移動服務";
+		mes "而是透過'飛空艇'移動至各個村莊的";
+		next;
+		mes "[鐵匠工會 相關人員]";
+		mes "在盧恩米德加茲^3131FF'依斯魯得島'^000000行駛著";
+		mes "往返^3131FF'依斯魯得島<->朱諾'^000000";
+		mes "的^3131FF國際線^000000.";
+		next;
+		mes "[鐵匠工會 相關人員]";
+		mes "搭著國際線";
+		mes "飛空艇到達朱諾後，再轉乘往";
+		mes "秀發茲發德內村落行駛的^3131FF國內線飛空艇^000000";
+		mes "之後就可以到達艾音布羅克了，";
+		mes "轉乘時，請注意 ^3131FF別離開機場^000000 喔";
+		next;
+		mes "[鐵匠工會 相關人員]";
+		mes "看似有點複雜，但沒有想像中的困難，";
+		mes "那麼請替我問候";
+		mes "艾音布羅克的其他鐵匠同事囉!";
+		close;
+	case 2:
+		if (Zeny < 600) {
+			mes "[鐵匠工會 相關人員]";
+			mes "不好意思，移動到依斯魯得島需要600金幣";
+			close;
+		}
+		set zeny,zeny-600;
+		warp "izlude",94,103;
+		end;
+	case 3:
+		mes "[鐵匠工會 相關人員]";
+		mes "一路上小心!";
+		close;
+	}
+}

@@ -1,0 +1,366 @@
+//===== rAthena Script ======================================= 
+//= Alberta Town
+//===== By: ================================================== 
+//= DZeroX
+//===== Current Version: ===================================== 
+//= 1.6
+//===== Compatible With: ===================================== 
+//= rAthena 1.0
+//===== Description: ========================================= 
+//= Town-specific Alberta NPCs
+//===== Additional Comments: ================================= 
+//= 1.0 Converted from Aegis 10.4 [DZeroX]
+//= 1.1 Optimized, missing next, REMOVED .GATs! again [Lupus]
+//= 1.2 Implemented progression fixes provided by $ephiroth. [L0ne_W0lf]
+//= 1.2b More pregression clean up provided by Barron-Monster. [L0ne_W0lf]
+//= 1.3 Removed npc "Tourist#al" as it's a quest NPC. [L0ne_W0lf]
+//= 1.4 Removed "Fastidious Old Man" duplicate. [L0ne_W0lf]
+//= 1.5 Updated to match AEGIS script. [Kisuka]
+//= 1.6 Added Izlude RE coordinates. [Euphy]
+//============================================================
+
+alberta,97,51,0	script	商人#alb1	84,{
+	mes "[商人]";
+	mes "在世上到處旅行的話會接觸到很多謠言，";
+	mes "其中有一個傳聞是這麼說的，據說有一種";
+	mes "卡片可以用來封住怪物的力量";
+	next;
+	mes "[商人]";
+	mes "如果使用那張卡片的話，還能夠擁有強大的力量..呼!不過那可能也只是謠言而已吧!";
+	close;
+}
+
+alberta,53,39,0	script	商人#alb2	100,{
+	mes "[商人]";
+	mes "嗯 第一次見到的面孔?";
+	mes "很高興見到你，不過我現在正要思考某樣東西呢，可以晚一點和你對話嗎，";
+	mes "聽說在魔法之都吉芬，有販賣一種可以抵抗魔法的神祕道具，如果可以讓它大量流通的話，我就可以變成大富翁了";
+	close;
+}
+
+alberta,20,183,0	script	Chad	49,{
+	mes "[Chad]";
+	mes "People say the legendary weapon Gungnir never misses its target. I wonder if it's possibly true...";
+	next;
+	mes "[Chad]";
+	mes "People also say that babies are assembled by the storks before delivery, girls dig guys who act like jerks, and that Santa Claus exists! But only in Lutie.";
+	next;
+	mes "[Chad]";
+	mes "I wonder...";
+	mes "If any of that";
+	mes "is possibly";
+	mes "true...";
+	close;
+}
+
+alberta,131,139,2	script	醉漢	54,{
+	mes "[醉漢]";
+	mes "...看...看什麼，給我走開！";
+	if(select("不理他:走開點好了")==2) {
+		next;
+		mes "[醉漢]";
+		mes "算你聰明! 快走開啊！";
+		close;
+	}
+	next;
+	mes "[醉漢]";
+	mes "喔喔喔，有骨氣的傢伙，嘿...我本來是高英海盜團的船員。";
+	if(select("那是什麼？:哇！真帥！")==2) {
+		next;
+		mes "[醉漢]";
+		mes "我的船長...他手上拿的那把武器竟然有著神秘的力量，很多人都喪命於那把武器。";
+		next;
+		mes "[醉漢]";
+		mes "啊... 好想念他們啊... 嗯... 真心碎了... 你走開啊！";
+		close;
+	}
+	next;
+	mes "[醉漢]";
+	mes "啊！你不知道？你不知道鼎鼎大名的海盜團嗎";
+	next;
+	mes "[醉漢]";
+	mes "啊... 好懷念啊... 當時沒有碰到那颱風的話，我現在就還在海上稱霸。";
+	next;
+	mes "[醉漢]";
+	mes "我的船長...他手上拿的那把武器，竟然有著神秘的力量，很多人都喪命於那把武器。";
+	next;
+	mes "[醉漢]";
+	mes "啊... 好想念他們啊... 嗯... 真心碎了... 你走開啊！";
+	close;
+}
+
+alberta,58,80,2	script	商人#alb3	99,{
+	if (rand(2)) {
+		mes "[商人叔叔]";
+		mes "我們商人可以開店做生意的，用低價買進技能從其它店裡買進便宜貨後，借手推車然後放在手推車裡就可以販賣了";
+		next;
+		mes "[商人叔叔]";
+		mes "比一個一個去交易更方便也不會出錯的，不要覺得太方便了而邊販賣邊睡著了呢";
+		close;
+	} else {
+		mes "[商人叔叔]";
+		mes "我們商人們，有一個特殊的買賣技能，可以把物品賣給別人更高的價錢，";
+		mes "當其他人們在喊著";
+		mes "可以再賣貴一點好嗎!~~時";
+		next;
+		mes "[商人叔叔]";
+		mes "我們已經可以用高出24%的價錢賣給其它商店呢!";
+		mes "不過這種技巧要不段的修煉啊！";
+		close;
+	}
+}
+
+alberta,62,156,2	script	比娜	102,{
+	switch(rand(3)){
+	case 0:
+		mes "[比娜]";
+		mes "通往艾爾貝塔，連接斐揚城的森林裡，有一群笨熊在那出現";
+   		mes "身上圍繞著蒼蠅，每次都拿著蒼蠅在耍寶呢";
+		next;
+		mes "[比娜]";
+		mes "我抱著調皮的心情把樹枝丟過去，它突然衝過來，害我嚇一跳";
+		mes "還好我逃的快，在我旁邊的樹木都被牠擊倒了，";
+   		mes "我才知道不管什麼樣的動物，可不是隨便可以去觸摸的";
+		close;
+	case 1:
+		mes "[比娜]";
+		mes "你知道嗎？ 狼其實是很團結的";
+		mes "同胞遇難時會衝過來幫忙的";
+   		mes "牠們是講義氣的動物，碰到牠們的時候最好要小心一點喔!";
+		close;
+	case 2:
+		mes "[比娜]";
+   		mes "有一天走在森林裡，發現綠色直立的草，";
+   		mes "非常漂亮";
+   		mes "因為太漂亮了，所以用手去摸，";
+   		mes "那棵草卻突然輕輕的打我的手。";
+		next;
+		mes "[比娜]";
+   		mes "害我嚇一跳，往後退一步看，原來不是草";
+   		mes "是一個非常可愛的小動物";
+   		mes "不過可別像我一樣";
+   		mes "不小心的嚇到人家呢，本來是很溫馴的東西";
+   		mes "把牠惹毛的話可是很可怕的呢";
+		close;
+	}
+}
+
+alberta,93,174,2	script	祖母	103,{
+	mes "[祖母]";
+	mes "不久之前有一艘快解體的船隻，飄流到艾爾貝塔的魚獲區裡，";
+	mes "為了查看是否有生還者，村落裡的年輕人們到船裡去察看，結果被嚇得跑出來了";
+	mes "裡面根本沒有生還者，反而有屍體爬起來，開始走路呢";
+	next;
+	mes "[祖母]";
+	mes "還有一些不知名的海洋生物都開始冒出來了，所以只好在入口處停下腳步回來了...";
+	next;
+	mes "[祖母]";
+	mes "這情況看起來很糟糕的同時，只好等到破碎的船沉沒在島嶼的海底時，不知道從哪裡聽到這消息的准它企業社，給市府一筆龐大的金錢後，希望於他們來處理這解體的船隻";
+	next;
+	mes "[祖母]";
+	mes "然後他們就對沉船開始召募年輕人來處理魔物似的..他們開始對年輕人關說些，要不要試驗一下自己的能力之類的話..也許對年輕人來說有這樣的經驗也不錯吧...";
+	mes ".........";
+	mes "不曉得這樣有沒有危險啊....";
+	close;
+}
+
+alberta,189,151,5	script	船員	100,{
+	mes "[船員]";
+	mes "你要去哪個地方？";
+	next;
+	switch(select("遇難船 -> 250金幣","依斯魯得 港口 -> 500金幣","放棄")) {
+		case 1:
+			if (Zeny < 250) {
+				mes "[船員]";
+				mes "你的錢不夠啊..";
+				close;
+			}
+			set Zeny,Zeny - 250;
+			warp "alb2trea",43,53;
+			end;
+		case 2:
+			if (Zeny < 500) {
+				mes "[船員]";
+				mes "你的錢不夠啊...";
+				close;
+			}
+			set Zeny,Zeny - 500;
+			if(checkre(0))
+				warp "izlude",195,212;
+			else
+				warp "izlude",176,182;
+			end;
+		case 3:
+			mes "[船員]";
+			mes "請隨便...";
+			close;
+	}
+}
+
+alb2trea,39,50,6	script	船員#a2t	100,{
+	mes "[船員]";
+	mes "您要回去嗎？";
+	next;
+	if(select("回艾爾貝塔。:放棄。")==1)
+		warp "alberta",192,169;
+	close;
+}
+
+alberta,195,151,2	script	司特	86,{
+	mes "[司特]";
+	mes "你好，請問你是否要搭船到沉沒之船";
+	mes "先說好哦，那危險";
+	next;
+	mes "[司特]";
+	mes "怎麼樣？準備好了嗎？那請你選擇吧";
+	mes "還有，搭船的費用是 200金幣";
+	next;
+	switch(select("進去:放棄")) {
+		case 1:
+			if (Zeny < 200) {
+				mes "[司特]";
+				mes "你的錢不夠啊";
+				close;
+			} else {
+				set Zeny,Zeny - 200;
+				warp "alb2trea",62,69;
+				close;
+			}
+		case 2:
+			mes "[司特]";
+			mes "下一次要來哦";
+			close;
+	}
+}
+
+alberta,190,173,4	script	菲歷斯	85,{
+	set .@weight,MaxWeight-Weight;
+	mes "[菲歷斯]";
+	if ((.@weight) < 10000) {
+		mes "Wait a moment!!";
+		mes "You have brought too many things!";
+		mes "You cannot accept any more items!";
+		mes "Please reduce the amount of items,";
+		mes "then come see me again.";
+		close;
+	}
+	if (@event_zelopy == 0) {
+		mes "The hell are you doing here?";
+		mes "There is nothing you can get for free on this ship, if you want somethin', work for it!!";
+		next;
+		mes "[菲歷斯]";
+		mes "Hmm, so why don't you bring me 10 jellopies and I will give 1 potion. How's that sound?";
+		mes "Or if that's too hard for your pansy ass, 3 jellopies for 1 Carrot.";
+		next;
+		mes "[菲歷斯]";
+		mes "If you're interested in my offer, get me the stuff I mentioned.";
+		set @event_zelopy,1;
+		close;
+	} else {
+		mes "嗯..你想要把傑勒比結晶換紅色藥水或是蕃薯嗎? 來..幫你換成什麼呢?";
+		next;
+		switch(select("換成紅色藥水:換成紅蘿蔔")) {
+		case 1:
+			mes "[菲歷斯]";
+			mes "Alright...";
+			mes "Let's see";
+			mes "what'cha got...";
+			next;
+			mes "[菲歷斯]";
+			if (countitem(909) < 10) {
+				mes "Hey! Weren't you listening?. I said 10 jellopies for 1 Red Potion.. are ya deaf?";
+				close;
+			} else {
+				set .@max,countitem(909)/10;
+				mes "Hmm, not bad...";
+				mes "How many potions";
+				mes "do you want to get?";
+				next;
+				switch(select("As many as I can, please.","I want this many.","Never mind, I like my jellopy.")) {
+				case 1:
+					delitem 909,.@max*10;	// Jellopy
+					getitem 501,.@max;	// Red_Potion
+					break;
+				case 2:
+					mes "[菲歷斯]";
+					mes "I'm not giving you more then 100 at a time so don't bother, OK? If you don't want any, just say '0'.";
+					mes "Right now, the most you can get is " + .@max + " but remember, 100 at most, you want to break my back?.";
+					input .@amount;
+					next;
+					mes "[菲歷斯]";
+					if (.@amount <= 0) {
+						mes "Much obliged, come again anytime.";
+						close;
+					}
+					if (.@amount > 100) {
+						mes "Hey, what'd I say? 100 at a time at most, you're trying to kill me aren't you!";
+						close;
+					}
+					if (countitem(909) < .@amount*10) {
+						mes "Hmm, it looks like you don't have enough. Go get more jellopies if you want anything else from me.";
+						close;
+					}
+					delitem 909,.@amount*10;	// Jellopy
+					getitem 501,.@amount;	// Red_Potion
+					break;
+				case 3:
+					mes "[菲歷斯]";
+					mes "No problem,";
+					mes "see you next time.";
+					close;
+				}
+				mes "[菲歷斯]";
+				mes "There you go! As I promised. Don't go suckin' them all down at once.";
+				close;
+			}
+		case 2:
+			mes "[菲歷斯]";
+			mes "Alright, let's see what ya got...";
+			next;
+			mes "[菲歷斯]";
+			if (countitem(909) < 3) {
+				mes "Hmm, look pansy ass, I said 3 jellopies for 1 Carrot.. got it?";
+				close;
+			} else {
+				set .@max,countitem(909)/3;
+				mes "Not too bad pansy...";
+				mes "How many do you want?";
+				next;
+				switch(select("As many as I can get, please","I want this many.","Never mind, I like my jellopy.")) {
+				case 1:
+					delitem 909,.@max*3;	// Jellopy
+					getitem 515,.@max;	// Carrot
+					break;
+				case 2:
+					mes "[菲歷斯]";
+					mes "Right I'm not giving you more then 100 at a time so don't bother, okay? If you don't want any, just say '0'.";
+					input .@amount;
+					next;
+					mes "[菲歷斯]";
+					if (.@amount == 0) {
+						mes "Alright then, see you next time.";
+						close;
+					}
+					if (.@amount > 100) {
+						mes "Hey pansy ass, I said 100 at most, no more then that! I'm not going to break my back for the likes of you!";
+						close;
+					}
+					if (countitem(909) < .@amount*10) {
+						mes "Seems you don't have enough. Go get some more if you want anything else.";
+						close;
+					}
+					delitem 909,.@amount*3;	// Jellopy
+					getitem 515,.@amount;	// Carrot
+					break;
+				case 3:
+					mes "[菲歷斯]";
+					mes "Catch'ya later.";
+					close;
+				}
+				mes "[菲歷斯]";
+				mes "There you go~! As I promised. Try not to stuff yer face.";
+				close;
+			}
+		}
+	}
+}

@@ -1,0 +1,695 @@
+//===== rAthena Script ======================================= 
+//= Expanded Super Novice Job Quest
+//===== By: ================================================== 
+//= Euphy
+//===== Current Version: ===================================== 
+//= 1.1a
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= Job Change quest for Expanded Super Novice class.
+//===== Additional Comments: ================================= 
+//= 1.0 All dialogue is custom, contains some incorrect behaviors.
+//= 1.1 Switched to a translated copy of the official script
+//=     by Gennosuke Kouga, but vastly edited its content. [Euphy]
+//= 1.1a Replaced effect numerics with constants. [Euphy]
+//============================================================ 
+
+function	script	Esseray_Ex	{
+	if (BaseLevel > 98 && JobLevel > 98) {
+		if (EXSUPNOV_Q > 0 && EXSUPNOV_Q < 6) {
+			mes "[亞瑟雷]";
+			mes "A legend in the Novice world has disappeared to do something in Comodo.";
+			mes "You should find him.";
+			next;
+			mes "[亞瑟雷]";
+			mes "He can guide you along";
+			mes "the correct path...";
+			close;
+		}
+		mes "[亞瑟雷]";
+		mes "Oh? Are you one of our Novice Society?";
+		mes "You're looking good.";
+		next;
+		mes "[亞瑟雷]";
+		mes "You look full of energy...";
+		mes "You seem strong enough to endure the test.";
+		next;
+		mes "[亞瑟雷]";
+		mes "我有方法讓你變得更強大，想試試嗎?";
+		next;
+		if(select("我很滿足現狀!:我要變得更強!!") == 1) {
+			mes "[亞瑟雷]";
+			mes "If you are satisfied with mediocrity, I can't help you.";
+			mes "Live a normal life then.";
+			close;
+		}
+		mes "[亞瑟雷]";
+		mes "Good!";
+		mes "A legend in the Novice world has disappeared to do something in Comodo.";
+		mes "You should find him.";
+		next;
+		setquest 5092;
+		set EXSUPNOV_Q,1;
+		mes "[亞瑟雷]";
+		mes "He can guide you along";
+		mes "the correct path...";
+		close;
+	}
+	else return;
+}
+
+beach_dun2,119,92,4	script	釣魚中的初學者#sp2	567,{
+	if (checkquest(5092) >= 0) {
+		mes "[釣魚中的初學者]";
+		mes "Sh --------- !!";
+		mes "Be quiet please.";
+		mes "You'll scare the fish.";
+		next;
+		select("Hmm... 'scuse me...");
+		mes "[釣魚中的初學者]";
+		mes "Aaaaaaak!!";
+		mes "What are you doing?";
+		mes "I told you be quiet!";
+		mes "They're swimmin' away bacause of the noise~";
+		next;
+		mes "[釣魚中的初學者]";
+		mes "(-- sh--aking --)";
+		mes "Who... are you?";
+		mes "Why are you disrupting my fishing?";
+		next;
+		select("I have a delivery from Esseray...");
+		emotion e_hmm;
+		mes "[釣魚中的初學者]";
+		mes "What? Esseray? Esseray?";
+		mes "Hmm! I know him...";
+		mes "Esseray... Esseray... hmm.";
+		next;
+		emotion e_dots,1;
+		emotion e_dots;
+		mes "..................";
+		next;
+		emotion e_gasp;
+		mes "[釣魚中的初學者]";
+		mes "Ahhhh --- !! ----- Ahhhh ---!!";
+		mes "Got it! --- Got it!";
+		mes "^0000FFA member of Novice Society in Aldebaran.^000000";
+		mes "Esseray, right? Wrong?";
+		next;
+		if(select("No he isn't:Yes, right") == 2) {
+			mes "[釣魚中的初學者]";
+			mes "Hu hu~ my sense is still alive...";
+			next;
+			mes "[釣魚中的初學者]";
+			mes "So what do you want from me?";
+		}
+		else {
+			mes "[釣魚中的初學者]";
+			mes "What?! He isn't?";
+			mes "Then where is Esseray from?";
+			next;
+			emotion e_dots,1;
+			emotion e_dots;
+			mes ".... .... .... ....";
+			next;
+			mes "[釣魚中的初學者]";
+			mes "What -------- !!";
+			mes "That isn't important, right?";
+			next;
+			mes "[釣魚中的初學者]";
+			mes "Then -------- !!";
+			mes "Why did you come here?";
+		}
+		next;
+		mes "- You explain why you're here. -";
+		next;
+		emotion e_hmm;
+		mes "[釣魚中的初學者]";
+		mes "Hmm... it is an easy and hard question at the same time.";
+		next;
+		mes "- You hear a voice complaining about something. -";
+		next;
+		emotion e_an;
+		mes "[釣魚中的初學者]";
+		mes "Esseray! Such a son of a %@&$# spoiling my vacation...";
+		next;
+		mes "[釣魚中的初學者]";
+		mes "Haaaaa~";
+		mes "My poor life~";
+		mes "Ahhh~ so many problems.";
+		next;
+		emotion e_what;
+		mes "[釣魚中的初學者]";
+		mes "Too ~ hard. Hey, little kid!";
+		mes "What's your name?";
+		next;
+		select(strcharinfo(0)+", how about you?");
+		mes "[史努比]";
+		mes "My name is 史努比! 史努比.";
+		next;
+		mes "[史努比]";
+		mes ".... .... .....";
+		next;
+		mes "[史努比]";
+		mes "Hey! I can see what you are thinking about in your face~";
+		next;
+		mes "[史努比]";
+		mes "Since my name is 史努比 I've been made fun of my whole life.";
+		mes "Condor and Odor...";
+		mes "Don't try to fool me.";
+		next;
+		changequest 5092,5093;
+		mes "[史努比]";
+		mes "原因無所謂! 來者是客!";
+		mes "那我們就一起來";
+		mes "思考一下未來的道路吧!";
+		mes "你就晚點再來吧~";
+		next;
+		mes "- Talk to him again. -";
+		close;
+	}
+	else if (checkquest(5093) >= 0) {
+		mes "[史努比]";
+		mes "Emmhmm ----- !!";
+		next;
+		mes "- 史努比 gives you a suspicious look. -";
+		next;
+		mes "[史努比]";
+		mes "Didn't you know that the ^0000FFSuper Novice^000000 was excellent?";
+		next;
+		mes "- 史努比 asks with confidence. -";
+		next;
+		mes "[史努比]";
+		mes "Hey! Super Novice~";
+		mes "Do you know who I am?";
+		next;
+		select("What are you talking about?!");
+		mes "[史努比]";
+		mes "Heh...";
+		mes "You've got a lot of nerve, don't you?";
+		next;
+		select("... ..... ...");
+		mes "- This guy is a weirdo. -";
+		next;
+		mes "[史努比]";
+		mes "不過…!!";
+		mes "條件是你必須完全找我的話去做，";
+		mes "不能討價還價，";
+		mes "怎麼樣?";
+		mes "你有辦法做到嗎?";
+		next;
+		if(select("不行!!:我…我可以!") == 1) {
+			mes "[史努比]";
+			mes "Refusing? Don't you want to be strong?";
+			mes "I'd love to do nothing too.";
+			mes "Just let me fish if you want to go.";
+			close;
+		}
+		mes "[史努比]";
+		mes "Emmhmm~ Do I sound harsh?";
+		mes "Hmm, I can't help using such words.";
+		next;
+		mes "[史努比]";
+		mes "Don't sweat it.";
+		mes "It's no problem for me to teach you to be stronger.";
+		next;
+		mes "[史努比]";
+		mes "Great~!";
+		mes "What is your issue?";
+		mes "You don't know how to be stronger. Right?";
+		next;
+		select("Yes, I can't get stronger.");
+		emotion e_hmm;
+		mes "[史努比]";
+		mes "Hhhmmm ~!";
+		mes "There's a way to do it...";
+		mes "It is dangerous, but I can";
+		mes "tell you how.";
+		next;
+		mes "[史努比]";
+		mes "I'll only do this on one condition. You do not ask anything and you do everything I tell you!";
+		mes "How about it?";
+		mes "Are you willing to do this?";
+		next;
+		if(select("No, I will not!:Let's do this!") == 1) {
+			mes "[史努比]";
+			mes "To be strong is the only way to live!";
+			mes "Do you want to be a weakling forever?";
+			next;
+			mes "[史努比]";
+			mes "I will give you a tip.";
+			mes "You can't always be right.";
+			mes "Sometimes you need to check your ego and listen to others.";
+			emotion e_an;
+			close;
+		}
+		mes "[史努比]";
+		mes "All right --------- !!";
+		mes "Your passion will make you stronger.";
+		mes "You calm?";
+		next;
+		mes "[史努比]";
+		mes "What I want you to do is...";
+		mes "Hunt 1,000 monsters.";
+		next;
+		mes "[史努比]";
+		mes "Do you know what this is for?";
+		next;
+		setarray .@Monsters$[0],"Poring","Lunatic","Fabre","Picky";
+		set .@i, rand(4);
+		changequest 5093,5094+.@i;
+		mes "[史努比]";
+		mes "You know what a ^FF0000"+.@Monsters$[.@i]+"^000000 monster is, right?";
+		next;
+		mes "[史努比]";
+		mes "Hunt 1,000!";
+		mes "Do not say you can't do this!";
+		mes "I know that's a lot of monsters, but they're so weak!";
+		next;
+		select("Are you kidding me?");
+		mes "[史努比]";
+		mes "Huh huh~!";
+		mes "Rembember, no questions!";
+		mes "Don't come back until you've hunted 1,000.";
+		close;
+	}
+	else if (checkquest(5094) >= 0 || checkquest(5095) >= 0 || checkquest(5096) >= 0 || checkquest(5097) >= 0) {
+		mes "["+strcharinfo(0)+"]";
+		mes "Hey, 史努比!";
+		next;
+		emotion e_omg;
+		mes "[史努比]";
+		mes "Oh my god!";
+		mes "So frightened... let me see?";
+		next;
+		if (checkquest(5094,HUNTING) != 2 && checkquest(5095,HUNTING) != 2 && checkquest(5096,HUNTING) != 2 && checkquest(5097,HUNTING) != 2) {
+			mes "[史努比]";
+			mes "Hey! Super Novice!";
+			mes "Didn't I say to hunt 1,000?";
+			mes "Don't come back until you have.";
+			close;
+		}
+		mes "[史努比]";
+		mes "Have you hunted all 1,000 already?";
+		next;
+		mes "[史努比]";
+		mes "比我想像中還快呢!";
+		mes "好吧，我剛才是叫你抓什麼";
+		mes "怪物回來呢?";
+		next;
+		set .@i, select("波利:瘋兔:綠棉蟲:小雞:巴風特")-1;
+		if (.@i == 4) {
+			mes "[史努比]";
+			mes "Heheh? Can you seriously hunt Baphomet alone?";
+			mes "Don't tell a lie!! I will hit you!!";
+			close;
+		}
+		if (checkquest(5094+.@i,HUNTING) != 2) {
+			mes "[史努比]";
+			mes "Don't tell a lie!";
+			mes "I didn't tell you to hunt this!";
+			close;
+		}
+		changequest 5094+.@i,5098;
+		emotion e_heh;
+		mes "[史努比]";
+		mes "keheheheheheh~";
+		next;
+		mes "[史努比]";
+		mes "You annoyed me so I made you do this task...";
+		next;
+		mes "[史努比]";
+		mes "Wow! You actually hunted all 1,000?";
+		mes "I guess I can't question your passion to be stronger.";
+		next;
+		mes "[史努比]";
+		mes "Okay! So far so good.";
+		mes "I will let you know how to overcome your strength deficiencies.";
+		close;
+	}
+	else if (checkquest(5098) >= 0) {
+		if (rand(10) != 1) {
+			mes "[史努比]";
+			mes "Oh! You already came here?";
+			mes "Didn't you say you have something to handle?";
+			mes "You have enough passion but...";
+			mes "you need to learn patience.";
+			close;
+		}
+		emotion e_gg;
+		mes "[史努比]";
+		mes "Hhhhhhhhhh~";
+		next;
+		mes "[史努比]";
+		mes "Oh sorry! Sorry!";
+		mes "I got a letter from my brother a long time ago, will you read my letter for your information?";
+		next;
+		if(select("Yes, I will:No, I won't") == 2) {
+			mes "[史努比]";
+			mes "You should read more!";
+			next;
+		}
+		else {
+			mes "["+strcharinfo(0)+"]";
+			mes "Tsk*... Ok...";
+			next;
+		}
+		mes "- He throws a bundled letter at you. -";
+		next;
+		mes "Dear Bro. 史努比,";
+		mes " ";
+		mes "Hey Bro, it's your brother 史酷比. How have you been? The reason I'm writing this letter is...";
+		mes "I need money for food. You've got so much money, so help me out.";
+		next;
+		mes "If you don't... Remember last time you %$&*@*&%$...";
+		mes "- The letter is crumpled, so you can't read more. -";
+		mes "I'm still in the Schwaltzvalt Republic.";
+		mes "~ 史酷比";
+		next;
+		mes "- You get an uneasy feeling from reading this letter. -";
+		next;
+		mes "[史努比]";
+		mes "Hu~u~";
+		mes "Hmm, I only have one brother and he's always asking for money.";
+		mes "It's got to be my fame... T_T";
+		next;
+		mes "- Now you really have an uneasy feeling. -";
+		next;
+		changequest 5098,5099;
+		mes "[史努比]";
+		mes "Hey- Super Novice "+strcharinfo(0)+"!";
+		next;
+		mes "[史努比]";
+		mes "You can give some to my bro. He's up in the airship.";
+		close;
+	}
+	else if (checkquest(5099) >= 0) {
+		mes "[史努比]";
+		mes "Have you visited already?";
+		next;
+		select("How much money should I give?");
+		mes "[史努比]";
+		mes "Oh, you didn't go there yet?";
+		mes "Give him a little, ya~";
+		next;
+		mes "[史努比]";
+		mes "100,000 zeny is okay~";
+		mes "1,000,000 zeny is okay~";
+		mes "10,000,000 zeny is okay~";
+		close;
+	}
+	else if (checkquest(5100) >= 0) {
+		if (EXSUPNOV_Q_ == 3) set .@str$,"300,000";
+		else if (EXSUPNOV_Q_ == 4) set .@str$,"1,000,000";
+		else set .@str$,"100,000";
+		mes "[史努比]";
+		mes "Hey, have you gone there?";
+		mes "I got another message from my bro.";
+		next;
+		mes "Bro, someone gave me...";
+		mes .@str$+" Zeny.";
+		mes "You do care about me...";
+		mes "~ 史酷比";
+		next;
+		select("He seemed so hungry...");
+		mes "[史努比]";
+		mes "By the way...";
+		mes .@str$+" Zeny is so little considering my celebrity status, don't you think?";
+		next;
+		select("Eh.....");
+		mes "[史努比]";
+		mes "Anyway~";
+		mes .@str$+" Zeny...";
+		mes "Don't you think you gave him too little? My reputation is gonna take a hit now.";
+		next;
+		select("Hey...");
+		mes "[史努比]";
+		mes "Wow, you've got my point already?";
+		next;
+		mes "[史努比]";
+		mes "I think you are right.";
+		mes "This test is about your ability to open someone else's sympathy.";
+		next;
+		mes "[史努比]";
+		mes "I mean your consuming habit and your gut...";
+		mes "Hahahaha!";
+		next;
+		select("Hey, that's not my...");
+		mes "[史努比]";
+		mes "Hmm? Ah...";
+		mes "I almost forgot to tell";
+		mes "you how to exceed your limit,";
+		mes "didn't I?";
+		next;
+		mes "[史努比]";
+		mes "Eh-hem! I was not just killing time after I sent you!!";
+		next;
+		emotion e_omg;
+		mes "[史努比]";
+		mes "What the? --- ah? --- !!";
+		next;
+		select("??????");
+		emotion e_swt;
+		mes "[史努比]";
+		mes "Watch out!! A bunch of Golems are running after us!";
+		mes "We... have to run...!!!";
+		next;
+		emotion e_omg,1;
+		if(select("What?!:Um?") == 2) {
+			mes "- You look around, and -";
+			mes "- there is nothing behind you. -";
+			mes "- When you are about to doubt... -";
+		}
+		else {
+			mes "- You ask 史努比 once -";
+			mes "- again in your fright... -";
+		}
+		next;
+		if (SkillPoint) {
+			mes "[史努比]";
+			mes "You've still got some skill points that aren't used up.";
+			mes "I can't make you stronger until you use those points.";
+			close;
+		}
+		specialeffect2 EF_LORD;
+		specialeffect2 EF_SIGHTRASHER;
+		specialeffect2 EF_STORMGUST;
+		erasequest 5100;
+		mes "[史努比]";
+		mes "Haha ------------- !!";
+		mes "----- uhhahaha----- !!";
+		mes "------------ yay -- !!";
+		next;
+		nude;
+		callfunc "F_ClearJobVar"; // -- Clears all job variables for the current player
+		jobchange roclass(eaclass()|EAJL_THIRD);
+		set EXSUPNOV_Q,5;	
+		emotion e_heh;
+		mes "[史努比]";
+		mes "Puhahahahahahahahahahah!!";
+		mes "Good! You scared yet?";
+		next;
+		select("... ... ...");
+		emotion e_dots,1;
+		emotion e_sry;
+		mes "[史努比]";
+		mes "Sorry for scaring you!";
+		mes "I think our duty and mission as Novices is to make days joyful.";
+		next;
+		mes "[史努比]";
+		mes "Well then, don't you feel something just changed?";
+		mes "Feel your body lighter than before...?";
+		mes "Or more powerful?";
+		next;
+		select("...? ...? ...?");
+		emotion e_what,1;
+		mes "[史努比]";
+		mes "Oh--- My--- (tut,tut,tut)!!";
+		next;
+		emotion e_hmm;
+		mes "[史努比]";
+		mes "Mr. Sieu Ngu --";
+		mes "Not to be mean, but";
+		mes "you are a little dull...";
+		mes "Don't you feel different now?";
+		next;
+		if(select("What are you talking about?:I got it!") == 1) {
+			mes "[史努比]";
+			mes "Eh--- right, you are dull, aren't you?";
+			mes "You already exceeded your limit.";
+			next;
+			mes "[史努比]";
+			mes "You can be stronger than before.";
+			mes "Wasn't it your dream?";
+			next;
+		}
+		mes "[史努比]";
+		mes "Ok~!";
+		mes "Now march to the world and live as a Novice and enjoy your free, happy life!";
+		mes "That's it!";
+		close;
+	}
+	else if (EXSUPNOV_Q == 5) {
+		mes "[史努比]";
+		mes "(Pouting) ------------- !!";
+		mes "So you're finally back.";
+		next;
+		mes "[史努比]";
+		mes "To celebrate this new Novice comrade, I've prepared some equipment to give you --";
+		next;
+		mes "[史努比]";
+		mes "Don't forget to make sure that you have enough ^FF0000inventory^000000 to take these items from me.";
+		mes "And don't say I didn't warn you either.";
+		next;
+		if(select("Yes, let me check my inventory.:I'm good, show me.") == 1) {
+			mes "[史努比]";
+			mes "Well, well!";
+			mes "You know! Have no regrets.";
+			close;
+		}
+		mes "[史努比]";
+		mes "There are what I used to wear when I was younger,";
+		mes "but they are still good.";
+		if (EXSUPNOV_Q_ == 3) getitem 2522,1; // Undershirt
+		else if (EXSUPNOV_Q_ == 4) {
+			getitem 2628,1; // Novice Armlet [1]
+			getitem 2113,1; // Novice Shield [1]
+			getitem 2416,1; // Novice Shoes [1]
+			getitem 5119,1; // Super Novice Hat [1]
+			getitem 2512,1; // Novice Manteau [1]
+			getitem 2340,1; // Novice Breastplate [1]
+		}
+		else getitem 2340,1; // Novice Breastplate [1]
+		next;
+		select("Second-hand stuff, huh?");
+		mes "[史努比]";
+		mes "Give them back to me.";
+		mes "How can you react like that when I offer you my possessions?";
+		next;
+		mes "[史努比]";
+		mes "I...";
+		mes "I can't take back what I already gave away.";
+		next;
+		mes "[史努比]";
+		mes "Now I am going to say greetings again.";
+		next;
+		specialeffect2 EF_RECOVERY;
+		mes "[史努比]";
+		mes "Let Super Novice "+strcharinfo(0)+" be blessed with the Super Novice Guardian!";
+		set EXSUPNOV_Q,6;
+		close;
+	}
+	else if (EXSUPNOV_Q > 5) {
+		mes "[史努比]";
+		mes "Don't forget that you are a Novice.";
+		mes "Be a Novice always!";
+		mes "The aim of life is to have a nice and normal time!";
+		close;
+	}
+	mes "[釣魚中的初學者]";
+	mes "Hush!";
+	mes "Please be quiet because you'll";
+	mes "scare all the fish away.";
+	close;
+}
+
+airplane,33,47,5	script	史酷比#sp2	729,{
+	if (checkquest(5099) >= 0) {
+		mes "[史酷比]";
+		mes "Ahhh~ I have no money to buy any food.";
+		mes "I'm hungry, but I have no idea when Brother is coming...";
+		next;
+		select("請問…你是史酷比嗎?");
+		mes "[史酷比]";
+		mes "Eeeeeh?! Who wants to know?";
+		mes "Do I know you?";
+		next;
+		mes "- You explain to 史酷比 why you have come to see him. -";
+		next;
+		mes "[史酷比]";
+		mes "Aha! You've come to give me some pocket money in place of my bro~";
+		next;
+		mes "[史酷比]";
+		mes "Wowowow~~ How much did he give you?";
+		next;
+		mes "- 史酷比 stares with twinkling -";
+		mes "- eyes, holding out his hands. -";
+		mes "- How much do you want to give? -";
+		next;
+		set .@i, select("一毛也沒有:Give 100,000 Zeny:Give 300,000 Zeny:Give 1,000,000 Zeny:Give all the money you have");
+		mes "[史酷比]";
+		if (.@i == 1) {
+			mes "- crying -";
+			mes "I hate 史努比 --- !";
+			mes "I hate you too --- !";
+			close2;
+			warp "airplane",70,93;
+			end;
+		}
+		else if (.@i < 5) {
+			switch(.@i) {
+				case 2: set .@str$,"100,000"; set .@n,100000; break;
+				case 3: set .@str$,"300,000"; set .@n,300000; break;
+				case 4: set .@str$,"1,000,000"; set .@n,1000000; break;
+			}
+			mes "Lovely~~ Did he give you "+.@str$+" Zeny? That's pretty much!";
+			next;
+			if (Zeny < .@n) {
+				mes "[史酷比]";
+				mes "What? But where is "+.@str$+" Zeny?";
+				close;
+			}
+		}
+		else {
+			mes "Oh... oh my gosh, are you really giving me all the Zeny you have? Really?";
+			next;
+			if(select("No, not really...:Give it all") == 1) {
+				mes "[史酷比]";
+				mes "Pshaw! How disappointing!";
+				close;
+			}
+			if (!Zeny) {
+				mes "[史酷比]";
+				mes "Eh? But you don't have any money. You're so poor, huh?";
+				close;
+			}
+			set .@n,Zeny;
+		}
+		mes "[史酷比]";
+		mes "Woa~!! "+.@n+" Zeny! This helped me so much~ Tehee~";
+		mes "I can't believe it...";
+		changequest 5099,5100;
+		set Zeny, Zeny - .@n;
+		if (.@i < 5) set EXSUPNOV_Q_, .@i;
+		else {
+			if (.@n > 1000000) set EXSUPNOV_Q_,4;
+			else if (.@n > 300000) set EX_SUPNOV_Q_,3;
+			else set EXSUPNOV_Q_,2;
+		}
+		next;
+		mes "[史酷比]";
+		if (Sex) mes "Did you know? You're really handsome~";
+		else mes "I need to tell you, you are really... really~ beautiful.";
+		next;
+		mes "[史酷比]";
+		mes "- You feel like you're being -";
+		mes "- tricked, so go back to 史努比. -";
+		close;
+	}
+	else if (checkquest(5100) >= 0) {
+		mes "[史酷比]";
+		mes "I cannot believe that my bro sent me money... I love it~";
+		next;
+		mes "[史酷比]";
+		mes "Ooooops!";
+		mes strcharinfo(0)+", hush --- !!";
+		next;
+		mes "[史酷比]";
+		mes "Don't tell 史努比 about this~~";
+		close;
+	}
+	mes "[史酷比]";
+	mes "Ahhh~ I have no money to buy any food.";
+	mes "I'm hungry, but I have no idea when Brother is coming...";
+	close;
+}

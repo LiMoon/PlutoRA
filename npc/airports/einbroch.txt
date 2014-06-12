@@ -1,0 +1,75 @@
+//===== rAthena Script ======================================= 
+//= Einbroch 機場 職員
+//===== By: ================================================== 
+//= L0ne_W0lf, Muad_Dib
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= Einbroch 機場 職員
+//===== Additional Comments: ================================= 
+//= 1.0 First version.
+//============================================================ 
+
+airport,143,43,5	script	機場 職員#airport1a::airport1	90,{
+	mes "[機場 職員]";
+	mes "您好，我們公司隨時提供給顧客便捷又舒適的旅行服務，會盡其所能的，請問您需要幫忙嗎？";
+	next;
+	if (select("我想進入機場內部:取消") == 1) {
+		mes "[機場 職員]";
+		mes "利用飛空艇的費用為1200金幣，如果您持有飛空艇免費搭乘券的話，就能免費進入，請問您要進入機場內部嗎？";
+		next;
+		if (select("Yes:No") == 1) {
+			if (countitem(7311) > 0) {
+				delitem 7311,1; //Free_Flying_Ship_Ticket
+				warp "airport",148,51;
+				end;
+			}
+			if (Zeny >= 1200) {
+				set Zeny, Zeny - 1200;
+				warp "airport",148,51;
+				end;
+			}
+			mes "[機場 職員]";
+			mes "你沒有足夠的金錢.";
+			close;
+		}
+	}
+	mes "[機場 職員]";
+	mes "請你下次再利用吧，謝謝光臨";
+	close;
+}
+
+airport,158,43,5	duplicate(airport1)	機場 職員#airport1b	90
+airport,126,43,5	duplicate(airport1)	機場 職員#airport1c	90
+
+airport,143,49,3	script	機場 職員#airport2a::airport2	90,{
+	mes "[機場 職員]";
+	mes "您好嗎，我們航空隨時提供給顧客便捷又舒適的旅行服務，會盡其所能的，請問您需要幫忙嗎?";
+	next;
+	if (select("我要離開機場內部:取消") == 1) {
+		mes "[機場 職員]";
+		mes "如果你要從機場內部離開又想進來的話，要在花一次費用喔，請問您要離開嗎?";
+		next;
+		if (select("是的:不要") == 1) {
+			warp "airport",142,40;
+			end;
+		}
+	}
+	mes "[機場 職員]";
+	mes "請你下次再利用吧，謝謝光臨";
+	close;
+}
+
+airport,126,51,3	duplicate(airport2)	機場 職員#airport2b	90
+airport,158,50,3	duplicate(airport2)	機場 職員#airport2c	90
+
+einbroch,94,267,3	script	飛空艇 職員#ein01	91,{
+	mes "[飛空艇 職員]";
+	mes "你好，";
+	mes "我們飛空艇隨時會盡其所能的提供給顧客便捷又舒適的旅行服務，";
+	mes "想要搭乘飛空艇請利用這扇門進入，";
+	mes "想要離開機場請利用階梯下去就可以了";
+	close;
+}

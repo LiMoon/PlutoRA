@@ -1,0 +1,122 @@
+//===== rAthena Script ======================================= 
+//= Pile Bunker Quest（機械工匠 武器 衝擊椎 製作）
+//===== By: ================================================== 
+//= JayPee Mateo
+//===== Current Version: ===================================== 
+//= 2.2
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= 1.0 A Pile Bunker quest based on iRO WiKi. [JayPee Mateo]
+//= 2.0 Rewrited the Script a little so it looks a bit better. [Masao]
+//= 2.1 Switched to official script, coded by Gennosuke Kouga. [Euphy]
+//= 2.2 Updated to match the official script. [Euphy]
+//============================================================ 
+
+yuno,179,174,4	script	柏恩斯	851,{
+	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
+		mes "[柏恩斯]";
+		mes "You are carrying so much. Drop off some of your luggage and come back to me.";
+		close;
+	}
+	if (countitem(1549)) {
+		mes "[柏恩斯]";
+		mes "So how's that Pilebuncker working out for you?";
+		close;
+	}
+	if (Class != Job_Mechanic && Class != Job_Mechanic_T && Class != Job_Baby_Mechanic) {
+		mes "[柏恩斯]";
+		mes "你找我有什麼事呢?";
+		close;
+	}
+	mes "[柏恩斯]";
+	mes "So? What does it feel like to be on a Madogear?";
+	mes "It's something that's not allowed for those who failed to seek out their own path.";
+	next;
+	mes "[柏恩斯]";
+	mes "Me? I retired a long time ago. Because I got into an accident... got badly hurt and won't be able to ride again. I am upset about it.";
+	next;
+	mes "[柏恩斯]";
+	mes "So I've decided to stay here forging gears for Madogear.";
+	mes "Huh? I'm not saying I have any complaints about this work.";
+	next;
+	mes "[柏恩斯]";
+	mes "Forced to do something you don't like, there is nothing more miserable than that.";
+	next;
+	mes "[柏恩斯]";
+	mes "There are people who are happy just being props, you know, like being the wall for someone to lean on.";
+	next;
+	mes "[柏恩斯]";
+	mes "That makes me feel good and I am about to make a new gear. I want you to help me. What do you say?";
+	next;
+	switch(select("I am not that interested.:What are you going to make?:Where do you get the materials?:I brought the materials.")) {
+	case 1:
+		mes "[柏恩斯]";
+		mes "Nothing I can do";
+		mes "about it then.";
+		mes "See you next time!";
+		close;
+	case 2:
+		mes "[柏恩斯]";
+		mes "Um, a huge metal stick that could smash an opponent in one hit!";
+		next;
+		mes "[柏恩斯]";
+		mes "It doesn't look fancy, but I've designed a spring-loaded device to attack with great strength.";
+		next;
+		mes "[柏恩斯]";
+		mes "It's concealed, so when you find a chance, one shot could put an opponent in critical condition!";
+		mes "I can't wait to see it in action!";
+		next;
+		mes "[柏恩斯]";
+		mes "If you were to imagine how good this kind of weapon could be, I will make it come true.";
+		next;
+		mes "[柏恩斯]";
+		mes "Bring me 200 Steel, 30 Flexible Tubes, and 1 Brocca. I could make what I just described with those materials.";
+		close;
+	case 3:
+		mes "[柏恩斯]";
+		mes "You should be able get steel from many monsters like Kobolds.";
+		next;
+		mes "[柏恩斯]";
+		mes "Flexible Tubes are more rare, dropped by Metalings around Einbroch and Lighthalzen.";
+		next;
+		mes "[柏恩斯]";
+		mes "Lastly, finding a Brocca is very hard, but you should be able to do something about it. Haha, go get it!";
+		close;
+	case 4:
+		if (countitem(999) < 200 || countitem(7325) < 30 || countitem(1415) < 1) {
+			mes "[柏恩斯]";
+			mes "You haven't brought all of the materials that I asked for.";
+			next;
+			mes "[柏恩斯]";
+			mes "I have a habit of giving up what I've been making and trying to make new things when the inspiration comes up.";
+			mes "You'd better hurry!";
+			close;
+		} else {
+			mes "[柏恩斯]";
+			mes "Oh, I've been waiting. You didn't come on time, so I was wondering if you forgot about it. Please wait there a little bit.";
+			specialeffect EF_REPAIRWEAPON;
+			next;
+			mes "[柏恩斯]";
+			mes "It's done. What do you think? Not bad, eh? Although I made it myself, I have to say it's pretty decently done.";
+			next;
+			mes "[柏恩斯]";
+			mes "Combination of weight, volume and look at its color and gloss. It catches my heart!";
+			next;
+			mes "[柏恩斯]";
+			mes "...........";
+			next;
+			mes "[柏恩斯]";
+			mes "Uh, with little improvement, it could be mass produced and delivered. I'm sure I can make more of these so I will give this one to you.";
+			next;
+			mes "[柏恩斯]";
+			mes "Oh, and it turns out that I didn't need all that Steel after all. So here, take most of it back.";
+			delitem 999,50; //Steel
+			delitem 7325,30; //Tube
+			delitem 1415,1; //Skewer
+			getitem 1549,1; //Pilebuncker
+			getitem 1360,1; //Two_Handed_Axe
+			close;
+		}
+	}
+}

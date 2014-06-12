@@ -1,0 +1,202 @@
+//===== rAthena Script ======================================= 
+//= Izlude Guides
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guides for the city of Izlude.
+//===== Additional Comments: ================================= 
+//= 1.0 First version, Renewal guide.
+//= 1.1 Updated to match the new Izlude Map. [Masao]
+//= 1.2 Added Renewal Izlude viewpoint coordinates.
+//= 1.3 Navigation system update. [Euphy]
+//=     Optimized.
+//= 1.4 Added Izlude duplicates. [Euphy]
+//============================================================ 
+
+-	script	::GuideIzlude	-1,{
+	cutin "prt_soldier",2;
+	mes "[依斯魯得島 解說員]";
+	mes "您好~!";
+	mes "衛星都市^8B4513依斯魯得島^000000，";
+	mes "誠摯地歡迎大家的蒞臨。";
+	F_Navi("[依斯魯得島 解說員]");
+	next;
+	set .@map$, strnpcinfo(4);
+	while (1) {
+		switch(select("[ 主要設施 ]:[ 商人&小幫手 ]:刪除小地圖的標記:結束對話")) {
+		case 1:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 克里圖拉學院 ]:[ 碼頭 ]:[ 飛空艇 (國際線) ]:[ 競技場 ]:[ 商店 ]:[ 劍士公會 ]:[ 強化協會 ]:[ 鐵工廠 ]:返回上一選單")) {
+				case 1:
+					mes "[依斯魯得島 解說員]";
+					mes "新手冒險家可以透過"+F_Navi("克里圖拉學院","iz_ac01,100,39")+"來取得更詳盡的諮詢和優惠喔!";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,128,260,0,0xD2691E;
+					next;
+					break;
+				case 2:
+					mes "[依斯魯得島 解說員]";
+					mes "可透過西北方的"+F_Navi("碼頭",.@map$+",197,205","^B9062F");
+					mes "到達^8B4513艾爾貝塔^000000或是^8B4513柏伊亞嵐島^000000等地。";
+					next;
+					mes "[依斯魯得島 解說員]";
+					mes "柏伊亞嵐島是^8B4513依斯魯得島迷宮^000000所在的恐怖地方。";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,197,205,1,0xFF0000;
+					next;
+					break;
+				case 3:
+					mes "[依斯魯得島 解說員]";
+					mes "東南方的"+F_Navi("飛空艇國際線",.@map$+",202,75","^0000FF");
+					mes "可飛往秀發茲發德共和國的首都^8B4513朱諾^000000，和阿盧納貝茲教國的首都^8B4513拉赫^000000等地。";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,210,73,2,0x0A82FF;
+					next;
+					break;
+				case 4:
+					mes "[依斯魯得島 解說員]";
+					mes "位於東邊的"+F_Navi("競技場",.@map$+",213,161","^FF5400");
+					mes "則是測試自己戰鬥實力的";
+					mes "最佳場地，";
+					mes "位置已經標記在";
+					mes "小地圖上了，";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,213,161,3,0xFF5400;
+					next;
+					break;
+				case 5:
+					callsub L_Mark, F_Navi("商店",.@map$+",110,182","^006400");
+					viewpoint 1,108,179,4,0xAAFF00;
+					next;
+					break;
+				case 6:
+					mes "[依斯魯得島 解說員]";
+					mes F_Navi("劍士公會",.@map$+",51,172")+"是負責^800080劍士轉職^000000的地方，";
+					mes "位置已經標記在";
+					mes "小地圖上了，";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,52,172,5,0xDA70D6;
+					next;
+					break;
+				case 7:
+					callsub L_Mark, F_Navi("強化協會",.@map$+",97,125","^B9062F");
+					viewpoint 1,97,125,6,0xDA70D6;
+					next;
+					break;
+				case 8:
+					callsub L_Mark, F_Navi("鐵工廠",.@map$+",153,126");
+					viewpoint 1,153,126,7,0xAAFF00;
+					next;
+					break;
+				case 9:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 伊甸園傳送師 ]:[ 卡普拉職員 ]:[ 催眠師 ]:[ 新娘秘書 ]:[ 傭兵公會管理員 ]:[ 認養寵物商人 ]:返回上一選單")) {
+				case 1:
+					mes "[依斯魯得島 解說員]";
+					mes F_Navi("伊甸園傳送師",.@map$+",131,148","^0000FF");
+					mes "目前的的位置在劍士公會內部，";
+					mes "已經把位置標記在小地圖上了，";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,131,148,8,0x0A82FF;
+					next;
+					break;
+				case 2:
+					callsub L_Mark, F_Navi("卡普拉職員",.@map$+",128,148","^FF5400"),1;
+					viewpoint 1,128,148,9,0xFF5400;
+					next;
+					break;
+				case 3:
+					callsub L_Mark, F_Navi("催眠師",.@map$+",127,175"),1;
+					viewpoint 1,127,175,10,0x006400;
+					next;
+					break;
+				case 4:
+					mes "[依斯魯得島 解說員]";
+					mes "想要到夫婦們的度假勝地";
+					mes "^8B4513爪哇咿^000000的話，";
+					mes "請向"+F_Navi("新娘秘書",.@map$+",180,224","^B9062F")+"諮詢吧!";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,180,224,11,0xFF0000;
+					next;
+					break;
+				case 5:
+					callsub L_Mark, F_Navi("傭兵公會管理員",.@map$+",47,170","^0000FF");
+					viewpoint 1,47,170,12,0xDA70D6;
+					next;
+					break;
+				case 6:
+					callsub L_Mark, F_Navi("認養寵物商人","izlude_in,72,98"),1;
+					viewpoint 1,108,179,13,0x006400;
+					next;
+					break;
+				case 7:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			mes "[依斯魯得島 解說員]";
+			mes "已刪除小地圖上的標誌了，";
+			mes "還需要其它服務嗎?";
+			viewpoint 2,1,1,0,0xFFFF00;
+			viewpoint 2,1,1,1,0x000000;
+			viewpoint 2,1,1,2,0xFF0000;
+			viewpoint 2,1,1,3,0xFFFF00;
+			viewpoint 2,1,1,4,0xFFFF00;
+			viewpoint 2,1,1,5,0xFFFF00;
+			viewpoint 2,1,1,6,0xFFFF00;
+			viewpoint 2,1,1,7,0xFFFF00;
+			viewpoint 2,1,1,8,0xFFFF00;
+			viewpoint 2,1,1,9,0xFFFF00;
+			viewpoint 2,1,1,10,0xFFFF00;
+			viewpoint 2,1,1,11,0xFFFF00;
+			viewpoint 2,1,1,12,0xFFFF00;
+			viewpoint 2,1,1,13,0xFFFF00;
+			next;
+			break;
+		case 4:
+			mes "[依斯魯得島 解說員]";
+			mes "祝您旅途愉快!";
+			mes "Bye~!";
+			close2;
+			cutin "prt_soldier",255;
+			end;
+		}
+	}
+	end;
+L_Mark:
+	mes "[依斯魯得島 解說員]";
+	mes getarg(0);
+	mes "的位置已經標記在";
+	mes "小地圖上了，";
+	mes "還需要其它服務嗎?";
+	return;
+}
+
+izlude,129,175,4	duplicate(GuideIzlude)	解說員#01izlude	105
+izlude_a,129,175,4	duplicate(GuideIzlude)	解說員#01izlude_a	105
+izlude_b,129,175,4	duplicate(GuideIzlude)	解說員#01izlude_b	105
+izlude_c,129,175,4	duplicate(GuideIzlude)	解說員#01izlude_c	105
+izlude_d,129,175,4	duplicate(GuideIzlude)	解說員#01izlude_d	105
+
+izlude,133,113,4	duplicate(GuideIzlude)	解說員#02izlude	105
+izlude_a,133,113,4	duplicate(GuideIzlude)	解說員#02izlude_a	105
+izlude_b,133,113,4	duplicate(GuideIzlude)	解說員#02izlude_b	105
+izlude_c,133,113,4	duplicate(GuideIzlude)	解說員#02izlude_c	105
+izlude_d,133,113,4	duplicate(GuideIzlude)	解說員#02izlude_d	105
+
+//izlude,120,206,4	duplicate(GuideIzlude)	解說員#03izlude	105

@@ -1,0 +1,1347 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://plutoea.googlecode.com/svn/
+// ---------------------------------
+// - 舞孃 轉職腳本 - 
+//===================================
+// 版本：3.7
+//===================================
+
+comodo,180,153,4	script	斯諾特拉#1	90,{
+	mes "[阿希娜 斯諾特拉]";
+	mes "這裡，克魔導的名勝，休眠已久的舞蹈教";
+	mes "室終於要重新露相了..";
+	next;
+	mes "[阿希娜 斯諾特拉]";
+	mes "啊啊....受到萬眾注目的普利瑪丹娜!";
+	next;
+	mes "[阿希娜 斯諾特拉]";
+	mes "雖然我也想要報名...";
+	mes "可是它的要求條件太麻煩了...";
+	mes "...還是先去申請看看吧...";
+	close;
+}
+
+comodo,193,151,4	script	柏勒 羅本#comodo	86,{
+	mes "[柏勒 羅本]";
+	mes "啊啊...受到萬眾注目的普利瑪丹娜!";
+	mes "可以親眼看見她們成為舞孃的樣子!!...";
+	next;
+	mes "[柏勒 羅本]";
+	mes "出生在這個時代真是太好了!!";
+	mes "克魔島小劇場萬歲!!";
+	next;
+	mes "[柏勒 羅本]";
+	mes "嗯? 你也要一起去嗎?";
+	mes "這是可以見識舞孃轉職考試的好機會";
+	next;
+	if(select("移動到舞孃轉職考場:取消")==2) {
+		mes "[柏勒 羅本]";
+		mes "嘰..不想就算了..";
+		close;
+	}
+	mes "[柏勒 羅本]";
+	mes "咦耶~~ 走吧!";
+	close2;
+	warp "job_duncer",70,49;
+	end;
+}
+
+job_duncer,43,93,4	script	耶伊樂#da	724,{
+	if (Upper == 1) {
+		cutin "job_dancer_eir01",2;
+		mes "[耶伊樂]";
+		mes "一-二-三-四，";
+		mes "壹-貳-參-轉彎，";
+		mes "二-二-三-四，";
+		mes "貳-貳-參-肆";
+		mes "恩?";
+		next;
+		cutin "job_dancer_eir03",2;
+		mes "[耶伊樂]";
+		mes "你要這樣繼續看我的話";
+		mes "我不能集中精神練習啊!";
+		next;
+		mes "[耶伊樂]";
+		mes "..........";
+		mes ".....好像在哪裡看過你耶?";
+		next;
+		mes "[耶伊樂]";
+		mes "不過我怎麼都想不起來了....";
+		mes "因為我還在練習的關係，";
+		mes "你能不能先去其他地方呢?";
+		close2;
+		cutin "",255;
+		end;
+	}
+	if (BaseJob != Job_Archer) {
+		if (BaseJob == Job_Bard) {
+			cutin "job_dancer_eir01",2;
+			mes "[耶伊樂]";
+			mes "歡迎光臨~";
+			mes "如果有新作曲就麻煩你了..因為我們這次表演裡有缺音樂啊..";
+			close2;
+			cutin "",255;
+			end;
+		}
+		else if (BaseJob == Job_Dancer) {
+			cutin "",2;
+			mes "[耶伊樂]";
+			mes "希望你努力學習以後有個成功的表演~";
+			close2;
+			cutin "",255;
+			end;
+		}
+		cutin "job_dancer_eir03",2;
+		mes "[耶伊樂]";
+		mes "遊客們，這裡除相關人員以外，";
+		mes "是禁止進入的喲";
+		next;
+		mes "[耶伊樂]";
+		mes "舞蹈學校要是誰都能進去的話，那就沒有意義了";
+		next;
+		mes "[耶伊樂]";
+		mes "要是參觀的話，";
+		mes "請到中間的舞台吧";
+		close2;
+		cutin "",255;
+		end;
+	}
+	if (DANC_Q == 0 && sex == 0 && BaseJob == Job_Archer) {
+		cutin "job_dancer_eir01",2;
+		mes "[耶伊樂]";
+		mes "歡迎光臨~";
+		mes "這裡是'克魔島舞蹈學校'，";
+		mes "教導各種各樣的舞";
+		next;
+		mes "[耶伊樂]";
+		mes "為從各地而來的遊客提供最好的舞，";
+		mes "培育的舞孃也能變成名人喔";
+		next;
+		mes "[耶伊樂]";
+		mes "怎麼樣?";
+		mes "在很多的人們面前，";
+		mes "享受在燈光下跳著艷麗的舞，";
+		mes "不是很棒嗎?";
+		next;
+		mes "[耶伊樂]";
+		mes "但是，我們這的跳舞學校與其他不同的地方，";
+		mes "不是誰都能進的";
+		next;
+		mes "[耶伊樂]";
+		mes "像對舞蹈不熟練的人，";
+		mes "校方有事先聲明拒絕接收的";
+		next;
+		mes "[耶伊樂]";
+		mes "怎麼樣呢?";
+		mes "可以感覺的到妳的素質不錯喔";
+		mes "在這裡接受跳舞課程，";
+		mes "好不好呢?";
+		next;
+		cutin "job_dancer_eir02",2;
+		mes "[耶伊樂]";
+		mes "你覺得如何呢??";
+		mes "只要在這張報名表上簽名就可以囉!";
+		next;
+		cutin "job_dancer_eir01",2;
+		mes "[耶伊樂]";
+		mes "不要考慮了啦~";
+		mes "趕快簽名吧";
+		next;
+		if (select("好，試試看吧!:裝作沒聽見") == 1) {
+			if (JobLevel > 39) {
+				cutin "job_dancer_eir02",2;
+				mes "[耶伊樂]";
+				mes "很好，下定決心了!";
+				mes "請填一下那邊的申請書";
+				next;
+				mes "....";
+				next;
+				mes "....^3355FF喀哩 喀哩 喀哩^000000....";
+				next;
+				mes "....";
+				next;
+				cutin "job_dancer_eir01",2;
+				mes "[耶伊樂]";
+				mes "你的名字叫....";
+				mes strcharinfo(0)+ "小姐嗎?....";
+				mes "真是好名字呀!";
+				mes "一聽就知道很會跳舞的樣子";
+				next;
+				mes "[耶伊樂]";
+				mes "那麼，請稍等一下";
+				mes "我將申請書送給校方";
+				close2;
+				cutin "",255;
+				set DANC_Q,1;
+				setquest 7000;
+				end;
+			}
+			else {
+				cutin "job_dancer_eir01",2;
+				mes "[耶伊樂]";
+				mes "噢....";
+				mes "妳還沒達到上課資格的條件啊，";
+				next;
+				mes "[耶伊樂]";
+				mes "職業等級至少要40以上，";
+				mes "否則無法接受申請的";
+				mes "沒辦法...";
+				mes "相信我們會再見面的，";
+				mes "非常期待那一天的到來";
+				close2;
+				cutin "",255;
+				end;
+			}
+		}
+		cutin "job_dancer_eir01",2;
+		mes "[耶伊樂]";
+		mes "怎會這樣啊....真是冷漠耶....";
+		mes "請再靠近一點好嗎?";
+		mes "嗯?";
+		close2;
+		cutin "",255;
+		end;
+	}
+	else if (sex == 1) {
+		cutin "job_dancer_eir03",2;
+		mes "[耶伊樂]";
+		mes "歡迎來...到...恩?";
+		mes "先生有走錯地方嗎?";
+		mes "我們舞蹈學校只收女學生喔";
+		next;
+		mes "[耶伊樂]";
+		mes "不是所有弓箭手都可以成為舞孃的";
+		mes "除非你跑去進行變性手術(汗)";
+		mes "如果對表演有興趣的話，";
+		mes "建議你可以去當吟遊詩人喔!";
+		close2;
+		cutin "",255;
+		end;
+	}
+	else if (DANC_Q == 1) {
+		cutin "job_dancer_eir01",2;
+		mes "[耶伊樂]";
+		mes "嗯，已經填好申請書了吧?";
+		mes "在接受課程前必須準備一些東西";
+		next;
+		mes "[耶伊樂]";
+		mes "物品不齊全是不行的....";
+		mes "那些東西是你在課程中需要用到的，";
+		mes "所以請好好準備吧";
+		next;
+		mes "[耶伊樂]";
+		mes "首先是學費^CD688910,000 元^000000，";
+		set .@item_nd,rand(1,10);
+		if (.@item_nd > 0 && .@item_nd < 3) {
+			set DANC_Q,2;
+			changequest 7000,7001;
+			mes "要把舞鞋給擦亮，需要^CD688920個 黏稠液體^000000";
+			next;
+			mes "[耶伊樂]";
+			mes "再來是^CD68893個 傑勒比結晶^000000和^CD68895瓶 紅色藥水^000000，你受傷時可以擦；當然，妳還需要^CD68891雙 長靴^000000.";
+			next;
+			mes "[耶伊樂]";
+			mes "所以是...";
+			mes "^CD6889學費 10,000元^000000,";
+			mes "^CD6889黏稠液體 20個^000000,";
+			mes "^CD6889傑勒比結晶 3個^000000,";
+			mes "^CD6889紅色藥水 5瓶^000000以及";
+			mes "^CD6889長靴 1雙^000000.";
+		}
+		else if (.@item_nd == 4) {
+			set DANC_Q,3;
+			changequest 7000,7002;
+			mes "製作跳舞需要的鞋，";
+			mes "需要^0000FF蚯蚓皮 5個^000000就好了";
+			next;
+			mes "[耶伊樂]";
+			mes "為了不讓腳受傷，";
+			mes "還需要^0000FF戰士長靴^0000001對";
+			next;
+			mes "[耶伊樂]";
+			mes "所以是...";
+			mes "^CD6889學費 10,000元^000000,";
+			mes "^CD6889蚯蚓皮 5個^000000以及";
+			mes "^CD6889戰士長靴 1雙^000000.";
+		}
+		else {
+			set DANC_Q,4;
+			changequest 7000,7003;
+			mes "衣服上的裝飾，需要^0000FF蛤蜊外殼 2個^000000";
+			next;
+			mes "[耶伊樂]";
+			mes "萬一腳部受傷的話，";
+			mes "^0000FF黃色藥水 5個^000000用來代替療傷藥，";
+			mes "而且還需要^0000FF傑勒比結晶^0000FF20個^000000";
+			next;
+			mes "[耶伊樂]";
+			mes "然後呢....";
+			mes "為了在演出的時候做假髮需要^0000FF長髮 10個^000000";
+			next;
+			mes "[耶伊樂]";
+			mes "為了不讓腳受傷";
+			mes "還需要^0000FF輕便鞋^0000001對";
+			next;
+			mes "[耶伊樂]";
+			mes "^CD6889學費 10,000元^000000,";
+			mes "^CD6889蛤蜊外殼 2個^000000,";
+			mes "^CD6889黃色藥水 5個^000000,";
+			mes "^CD6889傑勒比結晶 20個^000000,";
+			mes "^CD6889長髮 10束^000000以及";
+			mes "^CD6889輕便鞋 1雙^000000.";
+		}
+		next;
+		mes "[耶伊樂]";
+		mes "那麼，準備好後請隨時告訴我吧!";
+		close2;
+		cutin "",255;
+		end;
+	}
+	else if (DANC_Q >= 2 && DANC_Q <= 4) {
+		switch(DANC_Q) {
+		case 2: 
+			setarray .@item[0], 938,909,501,2403;
+			setarray .@count[0], 20,3,5,1;
+			break;
+		case 3: 
+			setarray .@item[0], 1055,2405;
+			setarray .@count[0], 5,1;
+			break;
+		case 4: 
+
+			setarray .@item[0], 965,503,909,1020,2401;
+			setarray .@count[0], 2,5,20,10,1;
+			break;
+		}
+		set .@size, getarraysize(.@item);
+		for( set .@i, 0; .@i < .@size; set .@i,.@i+1 ) {
+			if( countitem(.@item[.@i]) < .@count[.@i] ) {
+				break;
+			}
+		}
+		if( .@i == .@size && Zeny > 9999 ) {
+			cutin "job_dancer_eir02",2;
+			mes "[耶伊樂]";
+			mes "啊，全部拿來了";
+			mes "先繳學費吧，放在這邊";
+			next;
+			cutin "job_dancer_eir01",2;
+			set zeny,zeny-10000;
+			mes "[耶伊樂]";
+			mes "請你去找一下^0000FF寶羅瓦珠^000000老師吧";
+			mes "只是問幾個簡單的問題，";
+			mes "請放輕鬆作答";
+			set DANC_Q,5;
+			if(checkquest(7001) != -1) {
+				changequest 7001,7004;
+			}
+			else if(checkquest(7002) != -1) {
+				changequest 7002,7004;
+			}
+			else {
+				changequest 7003,7004;
+			}
+			close2;
+			cutin "",255;
+			end;
+		}
+		else {
+			cutin "job_dancer_eir01",2;
+			mes "[耶伊樂]";
+			mes "嗯....";
+			mes "材料好像不足啊";
+			mes "這些材料是必須的，請好好準備吧";
+			next;
+			mes "[耶伊樂]";
+			mes "請把這些東西帶來..";
+			mes "學費 ^CD688910,000元^000000,";
+			if (DANC_Q == 2) {
+				mes "^CD6889"+.@count[0]+"個"+getitemname(.@item[0])+"^000000、";
+				mes "^CD6889"+.@count[1]+"個"+getitemname(.@item[1])+"^000000、";
+				mes "^CD6889"+.@count[2]+"個"+getitemname(.@item[2])+"^000000以及";
+				mes "^CD6889"+.@count[3]+"個"+getitemname(.@item[3])+"^000000";
+			}
+			else if (DANC_Q == 3) {
+				mes "^CD6889"+.@count[0]+"個"+getitemname(.@item[0])+"^000000以及";
+				mes "^CD6889"+.@count[1]+"個"+getitemname(.@item[1])+"^000000.";
+			}
+			else {
+				mes "^CD6889"+.@count[0]+"個"+getitemname(.@item[0])+"^000000、";
+				mes "^CD6889"+.@count[1]+"個"+getitemname(.@item[1])+"^000000、";
+				mes "^CD6889"+.@count[2]+"個"+getitemname(.@item[2])+"^000000、";
+				mes "^CD6889"+.@count[3]+"個"+getitemname(.@item[3])+"^000000以及";
+				mes "^CD6889"+.@count[4]+"個"+getitemname(.@item[4])+"^000000";
+			}
+			close2;
+			cutin "",255;
+			end;
+		}
+	}
+	else if (DANC_Q == 5) {
+		cutin "job_dancer_eir01",2;
+		mes "[耶伊樂]";
+		mes "請你去找一下^0000FF寶羅瓦珠^000000老師吧";
+		mes "只是問幾個簡單的問題，";
+		mes "請放輕鬆作答";
+		close2;
+		cutin "",255;
+		end;
+	}
+	else if (DANC_Q > 5) {
+		cutin "job_dancer_eir01",2;
+		mes "[耶伊樂]";
+		mes "讓我看看妳經過熱心練習後的美麗舞姿吧!";
+		close2;
+		cutin "",255;
+		end;
+	}
+	else {
+		cutin "job_dancer_eir03",2;
+		mes "[耶伊樂]";
+		mes "遊客們，這裡除相關人員以外，";
+		mes "是禁止進入的喲";
+		next;
+		mes "[耶伊樂]";
+		mes "舞蹈學校要是誰都能進去的話，那就沒有意義了";
+		next;
+		mes "[耶伊樂]";
+		mes "要是參觀的話，";
+		mes "請去村中的舞臺吧";
+		close2;
+		cutin "",255;
+		end;
+	}
+}
+
+job_duncer,95,93,4	script	寶羅瓦珠#da	101,{
+	if (SkillPoint) {
+		mes "[寶羅瓦珠]";
+		mes "如果想轉職的話";
+		mes "必須先把技能點數點完喔!";
+		close;
+	}
+	if (BaseJob != Job_Archer) {
+		if (BaseJob == Job_Bard) {
+			mes "[寶羅瓦珠]";
+			mes "歡迎光臨~";
+			mes "如果有新作曲就麻煩你了..因為我們這次表演裡有缺音樂啊..";
+			close;
+		}
+		else if (BaseJob == Job_Dancer) {
+			mes "[寶羅瓦珠]";
+			mes "喔喔! 歡迎光臨~";
+			next;
+			mes "[保羅瓦朱]";
+			mes "最近怎麼樣? 大家都很快樂嗎?";
+			mes "總之，不要忘記舞孃的本分啊~";
+			close;
+		}
+		mes "[寶羅瓦珠]";
+		mes "喔喔~ 你是外地人啊~";
+		mes "看來是從老遠的地方來觀賞我的舞蹈啊~";
+		next;
+		mes "[保羅瓦朱]";
+		mes "真可惜我已經退休了，現在只負責培訓新";
+		mes "進人員~";
+		mes "不過，我培養了許多新進人員~";
+		next;
+		mes "[保羅瓦朱]";
+		mes "去中間的舞蹈場，就可以看到繼承我舞";
+		mes "蹈的學生~";
+		close;
+	}
+	else if (DANC_Q < 5) {
+		mes "[寶羅瓦珠]";
+		mes "唉呀~妳想轉職成舞孃嗎?";
+		next;
+		mes "[保羅瓦朱]";
+		mes "想要的話，必須先申請轉職喔! 在舞台的左方，耶伊樂會為妳解說~";
+		close;
+	}
+	else if (DANC_Q > 4 && DANC_Q < 7) {
+		if (DANC_Q == 5) {
+			mes "[寶羅瓦珠]";
+			mes "啊呀，是想成為舞孃的人呢";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "....不要這麼緊張，";
+			mes "讓身體放鬆一下";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "你不用這麼擔心";
+			mes "因為需要調整身體狀態的關系，";
+			mes "會有體型矯正的課程的呵呵....";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "那麼你先做好成為舞孃的心理準備吧";
+			mes "我想應該會問你一些相關的問題的，";
+			mes "雖然是面試但問題不會很難的";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "準備好了嗎?我們開始吧！";
+			next;
+		}
+		else {
+			mes "[寶羅瓦珠]";
+			mes "打起精神來!";
+			next;
+		}
+		switch(rand(1,3)) {
+		case 1:
+			mes "[寶羅瓦珠]";
+			mes "1.";
+			mes "舞孃的舞蹈'女神之吻'所增加的能力是?";
+			next;
+			if(select("INT:DEX:VIT:爆擊率")==4)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "2.";
+			mes "下列何者不屬於舞蹈?";
+			next;
+			switch(select("探戈:踢踏舞:HIP-HOP:創作舞蹈:雷擊術")) {
+			default:
+				set .@da_score,.@da_score-10;
+				break;
+			case 5:
+				set .@da_score,.@da_score+10;
+				break;
+			}
+			mes "[寶羅瓦珠]";
+			mes "3.";
+			mes "下面哪個詞用來形容舞孃最合適?";
+			next;
+			if(select("大聲說話的人:囉唆的人:跳舞的人:唱歌的人")==3)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "4.";
+			mes "下面哪個不屬於克魔島特徵的是?";
+			next;
+			if(select("海邊之都:舞孃轉職的地方:一直像夜晚一樣:周圍3個方向都有洞窟:盜賊很多")==5)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "5.";
+			mes "來到克魔島之前，位於發樂斯燈塔島，東北方的海邊地名是?";
+			next;
+			if(select("耶摩斯 普勒圖:克幕克 海邊:克克魔 海邊:基乃依 沼澤地")==3)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "6.";
+			mes "世上最美麗的舞孃是誰?";
+			next;
+			switch(select("" + strcharinfo(0) + ":寶羅瓦珠:耶伊樂:蔡依林")) {
+			case 1:
+				mes "[寶羅瓦珠]";
+				mes "...";
+				mes "這....";
+				mes "這是^660000明顯的錯誤^000000啊!";
+				mes "難道妳沒看其他選項嗎?";
+				mes "扣分!";
+				set .@da_score,.@da_score-10;
+				next;
+				break;
+			case 2:
+				set .@da_score,.@da_score+10;
+				break;
+			default:
+				break;
+			}
+			mes "[寶羅瓦珠]";
+			mes "7.";
+			mes "下面哪個職業可以和舞孃合奏?";
+			next;
+			if(select("刺客:吟遊詩人:鍊金術師:賢者")==2)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "8.";
+			mes "下面哪個不是克魔島的特產?";
+			next;
+			if(select("菠色克藥水:蛤蜊外殼:螃蟹外殼:閃爍之石")==4)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "9.";
+			mes "克魔島賭博場的負責人是哪位?";
+			next;
+			if (select("Yoo:Moo:Hoon:Roul") == 2)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "10.";
+			mes "接收舞孃轉職申請書的人是哪位?";
+			next;
+			if(select("寶羅瓦珠:耶伊樂:阿希娜:斯諾特拉")==2)
+				set .@da_score,.@da_score+10;
+			break;
+		case 2:
+			mes "[寶羅瓦珠]";
+			mes "1.";
+			mes "吟遊詩人與舞孃的合奏技能";
+			mes "^CD6889經驗值倍增^000000的效果是?";
+			next;
+			if (select("使怪物立即死亡:使怪物受到兩倍傷害:獲取經驗值增加:加快攻擊速度") == 3)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "2.";
+			mes "在舞臺跳完舞之後，";
+			mes "對舞伴沒禮貌的行動是?";
+			next;
+			if(select("跟對方說聲謝謝:具體的稱贊對方:提議跳其它的舞蹈:批評對方")==4)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "3.";
+			mes "當看到有人在跳舞失誤時，";
+			mes "不應該有的反應是哪一個呢?";
+			next;
+			if(select("面不改色的繼續跳舞:指出對方的錯誤:如果對方不知道就當作沒事:稍微微笑一下")==2)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "4.";
+			mes "舞孃轉職完成的所在地是在?";
+			next;
+			if (select("克克魔:山特樂曼:克姆島:克魔島") == 4)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "5.";
+			mes "與克魔島直接連接的密穴總共有幾個?";
+			next;
+			if(select("1個:2個:3個:4個")==3)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "6.";
+			mes "下面不能當寵物的是哪一個?";
+			next;
+			if(select("蛇女伊絲:艾吉歐蜈蚣:土人:小惡魔")==2)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "7.";
+			mes "哪位舞孃跳舞最優雅呢?";
+			next;
+			switch(select("" + strcharinfo(0) + ":寶羅瓦珠:蛇女伊絲:蔡依林")) {
+			case 1:
+				mes "[寶羅瓦珠]";
+				mes "...";
+				mes "這....";
+				mes "這是^660000明顯的錯誤^000000啊!";
+				mes "難道妳沒看其他選項嗎?";
+				mes "扣分!";
+				set .@da_score,.@da_score-10;
+				next;
+				break;
+			case 2:
+				set .@da_score,.@da_score+10;
+				break;
+			default:
+				break;
+			}
+			mes "[寶羅瓦珠]";
+			mes "8.";
+			mes "下列位於克魔島的卡普拉正式名稱是?";
+			next;
+			if(select("卡普拉總部:卡普拉西部分區:卡普拉服務處:卡普拉西部分社")==4)
+				set .@da_score,.@da_score+10;
+			mes "[......]";
+			mes "9.";
+			mes "我的名字叫什麼?";
+			next;
+			if (select("寶兒朱瓦:寶羅朱瓦:寶羅瓦珠:寶兒瓦朱") == 3)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "10.";
+			mes "詩人與舞孃的合奏技能技能'搖籃曲'的效果是?";
+			next;
+			if(select("範圍內黑暗效果:範圍內睡眠效果:範圍內夜晚效果:範圍內冰凍效果")==2)
+				set .@da_score,.@da_score+10;
+			break;
+		case 3:
+			mes "[寶羅瓦珠]";
+			mes "1.";
+			mes "舞孃的「練習舞蹈」技能的效果是?";
+			next;
+			if(select("INT上升:增加舞蹈技能的效果:增加鞭子系列的傷害力:範圍的暈眩效果")==2)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "2.";
+			mes "穿著鞋底會響亮的特殊鞋子";
+			mes "彎動腳並用腳根拍打地板的動作做為節奏";
+			mes "舞蹈是?";
+			next;
+			if(select("踢踏舞:心神凝聚:探戈:二連矢")==1)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "3.";
+			mes "與舞孃的特徵無關的是?";
+			next;
+			if(select("用舞技能施展:用遠距離攻擊:使用鞭子:使用雙手劍")==4)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "4.";
+			mes "舞孃最多的是在哪個地方?";
+			next;
+			if(select("艾爾帕蘭:朱諾:夢羅克:克魔島")==4)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "5.";
+			mes "可以跳出最美的舞蹈的舞孃是?";
+			next;
+			switch(select("" + strcharinfo(0) + ":寶羅瓦珠:蛇女伊絲:蔡依林")) {
+			case 1:
+				mes "[寶羅瓦珠]";
+				mes "...";
+				mes "這....";
+				mes "這是^660000明顯的錯誤^000000啊!";
+				mes "難道妳沒看其他選項嗎?";
+				mes "扣分!";
+				set .@da_score,.@da_score-10;
+				next;
+				break;
+			case 2:
+				set .@da_score,.@da_score+10;
+				break;
+			default:
+				break;
+			}
+			mes "[寶羅瓦珠]";
+		mes "6.";
+		mes "舞孃與它職業相比較，";
+		mes "長處是什麼?";
+		next;
+		if(select("體力:表演力:舞蹈能力:魔法的實力")==3)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+		mes "7.";
+		mes "克魔島賭博場的負責人是哪位?";
+			next;
+			if (select("Ryu:Moo:Roul:Hoon") == 2)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+		mes "8.";
+		mes "舞孃不能裝備的物品是?";
+		next;
+		if(select("貓耳髮圈:雙手巨劍:輕便鞋:智力耳環")==2)
+				set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "考試很無聊嗎?";
+			next;
+			select("是啊:還好啦");
+			set .@da_score,.@da_score+10;
+			mes "[寶羅瓦珠]";
+			mes "發樂斯燈臺島總共有幾座燈塔?";
+			next;
+			if (select("1:2:3") == 1)
+				set .@da_score,.@da_score+10;
+		}
+		mes "[寶羅瓦珠]";
+		mes "做得太棒了!";
+		mes "你已經做完所有題目了呢";
+		next;
+		mes "[寶羅瓦珠]";
+		mes "讓我算算看啊...";
+		mes "你的分數是" + .@da_score + "分!";
+		if (.@da_score == 100) {
+			set DANC_Q,7;
+			mes "真是太棒了，你合格了!";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "這樣的話就可以了";
+			mes "然後要進行舞孃的實習，";
+			mes "只要努力的話一定可以做到的";
+			close;
+		}
+		else if (.@da_score > 70) {
+			set DANC_Q,7;
+			mes "雖然這個分數並不是很好....";
+			mes "不過沒關係的";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "這樣的話就可以了";
+			mes "然後要進行舞孃的實習，";
+			mes "只要努力的話一定可以做到的";
+			close;
+		}
+		else {
+			set DANC_Q,6;
+			mes "不合格";
+			mes "這可真是麻煩呢";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "問題很困難嗎?";
+			mes "那我年輕的時候不是更加困難嗎?";
+			mes "你還需要再學習學習啊";
+			close;
+		}
+	}
+	else if (DANC_Q == 7) {
+		mes "[寶羅瓦珠]";
+		mes "那麼現在進入實習的階段了";
+		mes "在這之前要不要我說說注意事項呢?";
+		next;
+		if (select("詢問注意事項:直接考試") == 1) {
+			mes "[寶羅瓦珠]";
+			mes "其實這是一次實習哦";
+			mes "限時^0000FF1分鐘^000000";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "舞蹈實習是^0000FF一次一位^000000的，";
+			mes "即使沒有舞蹈經驗也不用擔心";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "進入會場就可以看到舞臺了，";
+			mes "首先你必須站在^0000FF舞臺全體能縱覽^000000的位置";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "^0000FF為使前後左右能無誤地操控^000000";
+			mes "快點兩下滑鼠的右鍵，";
+			mes "讓方向變回初期的設定....";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "剛開始請先進入^0000FF等待室^000000裡，";
+			mes "按照順序等待";
+			mes "如果前面的人實習完畢，";
+			mes "就會輪到你進場";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "如果人多，等待室滿員時，";
+			mes "也請按照次序排隊等待";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "實習開始以最初站立的位置為基準點，";
+			mes "廣播傳出，往哪一個的方向移動，";
+			mes "你必需要配合行動";
+			next;
+			mes "[寶羅瓦珠]";
+			mes "^0000FF限定時間內，";
+			mes "如果不能配合好的話，";
+			mes "會馬上被傳送出去^000000";
+			mes "執行是相當嚴厲的喲!";
+			close;
+		}
+		mes "[寶羅瓦珠]";
+		mes "那麼請加油吧!";
+		changequest 7004,7005;
+		set DANC_Q,8;
+		close2;
+		warp "job_duncer",105,109;
+		end;
+	}
+	else if (DANC_Q == 8) {
+		mes "[寶羅瓦珠]";
+		mes "啊呀，是剛才的女孩啊....";
+		mes "來，讓我們再一次傾聽舞蹈的旋律吧!";
+		close2;
+		warp "job_duncer",105,109;
+		end;
+	}
+	else if (DANC_Q == 9) {
+		if (SkillPoint) {
+			mes "[寶羅瓦珠]";
+			mes "不准有剩餘的技能點數!";
+			close;
+		}
+		mes "[寶羅瓦珠]";
+		mes "唉呀，剛才的舞";
+		mes "真是太美了喲~";
+		next;
+		mes "[寶羅瓦珠]";
+		mes "能夠跳出那麼美的舞，";
+		mes "要想轉職是絕對沒有問題的";
+		next;
+		mes "[寶羅瓦珠]";
+		mes "你，現在....受到女神的保佑";
+		next;
+		mes "[寶羅瓦珠]";
+		mes "給予全部的人喜悅，";
+		mes "已經成為舞孃....";
+		mes "今後你將踏上舞者的旅途!";
+		next;
+		set .@jlevel,JobLevel;
+		mes "[寶羅瓦珠]";
+		completequest 7006;
+		callfunc "Job_Change",Job_Dancer;
+		callfunc "F_ClearJobVar";
+		mes "為了人們的微笑....";
+		next;
+		mes "[寶羅瓦珠]";
+		mes "這是我送給你的禮物";
+		mes "你合格了恭喜恭喜!";
+		if (.@jlevel == 50)
+			getitem 1953,1; //Line_
+		else
+			getitem 1950,1; //Rope
+		close;
+	}
+} 
+
+// Waiting Room
+//============================================================ 
+job_duncer,32,154,1	script	舞孃考試接待員#dance	66,{
+OnInit:
+	waitingroom "等待室",20,"舞孃考試接待員#dance::OnStartArena",1;
+	enablewaitingroomevent;
+	end;
+
+OnStartArena:
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	donpcevent "dance#return::OnDisable";
+	warpwaitingpc "job_duncer",69,110,1;
+	donpcevent "寶羅瓦珠#dance_timer::OnEnable";
+	disablewaitingroomevent;
+	end;
+
+OnEnable:
+	enablewaitingroomevent;
+	end;
+}
+
+job_duncer,32,154,1	script	等待室說明#click	66,{
+	mes "[珮兒錦]";
+	mes "請進入等待室，輪到你的時候會自動把你傳到舞台";
+	next;
+	mes "[珮兒錦]";
+	mes "當然，如果你對後台感到好奇的話，可以自己隨意逛逛";
+	close;
+}
+
+// Dance Timer
+//============================================================ 
+job_duncer,69,105,0	script	寶羅瓦珠#dance_timer	-1,{
+OnEnable:
+	initnpctimer;
+	end;
+
+OnDisable:
+	stopnpctimer;
+	end;
+
+OnTimer2000:
+	mapannounce "job_duncer","寶羅瓦珠 : 好，要開始了，不要緊張，時間限制是1分鐘",bc_map;
+	end;
+
+OnTimer5000:
+	mapannounce "job_duncer","寶羅瓦珠 : 好，往後! : [↑]",bc_map;
+	end;
+
+OnTimer7000:
+	disablenpc "dance#up";
+	enablenpc "dance#down";
+	enablenpc "dance#left";
+	enablenpc "dance#right";
+	enablenpc "dance#cen";
+	end;
+
+OnTimer8000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 前~ : [↓]",bc_map;
+	end;
+
+OnTimer11000:
+	enablenpc "dance#up";
+	disablenpc "dance#down";
+	enablenpc "dance#left";
+	enablenpc "dance#right";
+	enablenpc "dance#cen";
+	end;
+
+OnTimer12000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 左~ : [←]",bc_map;
+	end;
+
+OnTimer15000:
+	enablenpc "dance#up";
+	enablenpc "dance#down";
+	disablenpc "dance#left";
+	enablenpc "dance#right";
+	enablenpc "dance#cen";
+	end;
+
+OnTimer16000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 往右邊 : [→]",bc_map;
+	end;
+
+OnTimer19000:
+	enablenpc "dance#up";
+	enablenpc "dance#down";
+	enablenpc "dance#left";
+	disablenpc "dance#right";
+	enablenpc "dance#cen";
+	end;
+
+OnTimer20000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 回到中間來 : [ ]",bc_map;
+	end;
+
+OnTimer23000:
+	enablenpc "dance#up";
+	enablenpc "dance#down";
+	enablenpc "dance#left";
+	enablenpc "dance#right";
+	disablenpc "dance#cen";
+	end;
+
+OnTimer23500:
+	donpcevent "舞者#1::OnSmile";
+	mapannounce "job_duncer","寶羅瓦珠 : 就是這樣，休息一下!",bc_map;
+	end;
+
+OnTimer27000:
+	donpcevent "舞者#1::OnSmile";
+	mapannounce "job_duncer","寶羅瓦珠 : 暫停之後，來個「心神凝聚」或即興演出也行!'",bc_map;
+	end;
+
+OnTimer28500:
+	mapannounce "job_duncer","寶羅瓦珠 : 休息好了嗎? 準備開始囉",bc_map;
+	end;
+
+OnTimer30000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 左邊~ : [←]",bc_map;
+	end;
+
+OnTimer34000:
+	enablenpc "dance#up";
+	enablenpc "dance#down";
+	disablenpc "dance#left";
+	enablenpc "dance#right";
+	enablenpc "dance#cen";
+	end;
+
+OnTimer35000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 前~ : [↓]",bc_map;
+	end;
+
+OnTimer38500:
+	mapannounce "job_duncer","寶羅瓦珠 : 往右邊! : [→]",bc_map;
+	end;
+
+OnTimer40000:
+	enablenpc "dance#up";
+	enablenpc "dance#down";
+	enablenpc "dance#left";
+	disablenpc "dance#right";
+	enablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 就是這樣，休息一下!",bc_map;
+	end;
+
+OnTimer43000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 左、中、右、後~ : [←][ ][→][↑]",bc_map;
+	end;
+
+OnTimer49000:
+	disablenpc "dance#up";
+	enablenpc "dance#down";
+	enablenpc "dance#left";
+	enablenpc "dance#right";
+	enablenpc "dance#cen";
+	end;
+
+OnTimer50000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : [→]",bc_map;
+	end;
+
+OnTimer53000:
+	enablenpc "dance#up";
+	enablenpc "dance#down";
+	enablenpc "dance#left";
+	disablenpc "dance#right";
+	enablenpc "dance#cen";
+	end;
+
+OnTimer54000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 左、中、前、後 : [←][ ][↓][↑] ",bc_map;
+	end;
+
+OnTimer60000:
+	disablenpc "dance#up";
+	enablenpc "dance#down";
+	enablenpc "dance#left";
+	enablenpc "dance#right";
+	enablenpc "dance#cen";
+	end;
+
+OnTimer61000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 再一次，左、中、前、後 : [←][ ][↓][↑] ",bc_map;
+	end;
+
+OnTimer66000:
+	disablenpc "dance#up";
+	enablenpc "dance#down";
+	enablenpc "dance#left";
+	enablenpc "dance#right";
+	enablenpc "dance#cen";
+	end;
+
+OnTimer67000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 前~ : [↓]",bc_map;
+	end;
+
+OnTimer69000:
+	enablenpc "dance#up";
+	disablenpc "dance#down";
+	enablenpc "dance#left";
+	enablenpc "dance#right";
+	enablenpc "dance#cen";
+	end;
+
+OnTimer70000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 左 : [←]",bc_map;
+	end;
+
+OnTimer74000:
+	enablenpc "dance#up";
+	enablenpc "dance#down";
+	disablenpc "dance#left";
+	enablenpc "dance#right";
+	enablenpc "dance#cen";
+	end;
+
+OnTimer75000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 中間 : [ ]",bc_map;
+	end;
+
+OnTimer80000:
+	enablenpc "dance#up";
+	enablenpc "dance#down";
+	enablenpc "dance#left";
+	enablenpc "dance#right";
+	disablenpc "dance#cen";
+	end;
+
+OnTimer81000:
+	donpcevent "舞者#1::OnSmile";
+	disablenpc "dance#up";
+	disablenpc "dance#down";
+	disablenpc "dance#left";
+	disablenpc "dance#right";
+	disablenpc "dance#cen";
+	mapannounce "job_duncer","寶羅瓦珠 : 快!用箭雨解決掉!",bc_map;
+	end;
+
+OnTimer82000:
+	donpcevent "dance#poring::OnEnable";
+	end;
+
+OnTimer89000:
+	donpcevent "dance#poring::OnDisable";
+	donpcevent "dance#return::OnEnable";
+	end;
+}
+
+job_duncer,69,110,0	script	dance#return	-1,1,4,{
+OnTouch:
+	mapannounce "job_duncer","舞者 : 恭喜你都學會! 寶羅瓦珠小姐的教導完成了!",bc_map;
+	set DANC_Q,9;
+	changequest 7005,7006;
+	warp "comodo",188,162;
+	end;
+
+OnDisable:
+	disablenpc "dance#return";
+	donpcevent "dance#return#2::OnDisable";
+	donpcevent "dance#return#3::OnDisable";
+	end;
+
+OnEnable:
+	enablenpc "dance#return";
+	donpcevent "dance#return#2::OnEnable";
+	end;
+}
+
+job_duncer,66,110,0	script	dance#return#2	-1,1,1,{
+OnTouch:
+	set DANC_Q,9;
+	warp "comodo",188,162;
+	end;
+
+OnDisable:
+	disablenpc "dance#return#2";
+	end;
+
+OnEnable:
+	enablenpc "dance#return#2";
+	donpcevent "dance#return#3::OnEnable";
+	end;
+}
+
+job_duncer,72,110,0	script	dance#return#3	-1,1,1,{
+OnTouch:
+	set DANC_Q,9;
+	warp "comodo",188,162;
+	end;
+
+OnDisable:
+	disablenpc "dance#return#3";
+	end;
+
+OnEnable:
+	enablenpc "dance#return#3";
+	donpcevent "Bijou#dance_timer::OnDisable";
+	donpcevent "舞孃考試接待員#dance::OnEnable";
+	end;
+}
+
+// Dance Move Triggers
+//============================================================ 
+-	script	dancestep::StepTrigger	-1,1,1,{
+OnTouch:
+	donpcevent "舞者#1::OnOmg";
+	mapannounce "job_duncer","舞者 : " + strcharinfo(0) + ", ~你太慢了!",bc_map;
+	set DANC_Q,8;
+	donpcevent "Bijou#dance_timer::OnDisable";
+	donpcevent "舞孃考試接待員#dance::OnEnable";
+	warp "comodo",188,162;
+	end;
+}
+job_duncer,69,113,0	duplicate(StepTrigger)	dance#up	-1,1,1
+job_duncer,69,107,0	duplicate(StepTrigger)	dance#down	-1,1,1
+job_duncer,66,110,0	duplicate(StepTrigger)	dance#left	-1,1,1
+job_duncer,72,110,0	duplicate(StepTrigger)	dance#right	-1,1,1
+job_duncer,69,110,0	duplicate(StepTrigger)	dance#cen	-1,1,1
+
+job_duncer,10,10,0	script	dance#poring	-1,{
+OnEnable:
+	monster "job_duncer",69,106,"波利",1002,1,"dance#poring::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	mapannounce "job_duncer","寶羅瓦珠 : 很好!就是這樣! ",bc_map;
+	end;
+
+OnDisable:
+	killmonsterall "job_duncer";
+	end;
+
+}
+
+// Backup Dancers
+//============================================================ 
+job_duncer,63,110,4	script	舞者#1::舞者	724,{
+	end;
+
+OnSmile:
+	Emotion e_no1;
+	donpcevent "舞者#2::OnSmile";
+	donpcevent "舞者#3::OnSmile";
+	donpcevent "舞者#4::OnSmile";
+	end;
+
+OnOmg:
+	Emotion e_omg;
+	donpcevent "舞者#2::OnOmg";
+	donpcevent "舞者#3::OnOmg";
+	donpcevent "舞者#4::OnOmg";
+	end;
+}
+
+job_duncer,66,113,4	script	舞者#2	724,{
+	end;
+
+OnSmile:
+	Emotion e_no1;
+	end;
+
+OnOmg:
+	Emotion e_omg;
+	end;
+}
+
+job_duncer,72,113,4	script	舞者#3	724,{
+	end;
+
+OnSmile:
+	Emotion e_no1;
+	end;
+
+OnOmg:
+	Emotion e_omg;
+	end;
+}
+
+job_duncer,75,110,4	script	舞者#4	724,{
+	end;
+
+OnSmile:
+	Emotion e_no1;
+	end;
+
+OnOmg:
+	Emotion e_omg;
+	end;
+}

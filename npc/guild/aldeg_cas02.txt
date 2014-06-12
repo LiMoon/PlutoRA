@@ -1,0 +1,137 @@
+//===== rAthena Script =======================================
+//= War of Emperium (Al De Baran)
+//===== By: ==================================================
+//= L0ne_W0lf
+//===== Current Version: =====================================
+//= 1.2
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= NPCs that relate to Al De Baran Guild Castle 2
+//===== Additional Comments: =================================
+//= 1.0 First Version. No longer uses functions. [L0ne_W0lf]
+//= 1.1 Removed dialog from interior flags. [L0ne_W0lf]
+//= 1.2 Partially rewrote Script. [Masao]
+//============================================================
+
+// Guild Flags (Outside Castle)
+//============================================================
+-	script	乎汗修番佳烏#1::OutsideFlagsA2	722,{
+
+	set .@GID, GetCastleData("aldeg_cas02",1);
+
+	if (.@GID == 0) {
+		mes "　　 [ 盧恩-米德加茲王國 公告令 ]";
+		mes " ";
+		mes "1. 根據這裡的，盧恩-米德加茲王國令";
+		mes "　　把這裡認定為";
+		mes "　　沒有正式所有權的秘密基地";
+		mes " ";
+		mes "2. 戰勝守在這裡，可怕的考驗後，";
+		mes "　　給破壞華麗金屬的人，";
+		mes " ";
+		mes "國王會賜予經國王認證的，秘密基地所有權";
+		close;
+	}
+	if (getcharid(2) == .@GID) {
+		mes " ";
+		mes "勇敢的人們...";
+		mes "要回到您的名譽之地嗎?";
+		next;
+		if(select("回到秘密基地.:放棄") == 1) {
+			close2;
+			if (getcharid(2) == GetCastleData("aldeg_cas02",1)) {
+				warp "aldeg_cas02",220,190;
+				end;
+			}
+			end;
+		}
+		close;
+	}
+	mes "　　 [ 盧恩-米德加茲王國 公告令 ]";
+	mes " ";
+	mes "1. 根據這裡的，盧恩-米德加茲王國令";
+	mes "　　這裡被認定為 ^ff0000" + GetGuildName(.@GID) + "^000000工會的";
+	mes "　　私有物";
+	mes " ";
+	mes "2. ^ff0000"+ GetGuildName(.@GID) + "^000000 工會的主人是";
+	mes "　　^ff0000" + GetGuildMaster(.@GID) + "^000000 ， 無論是誰";
+	mes "　　對這件事情有意見者";
+	mes " ";
+	mes "請你舉起您的劍，提高自己的名譽吧";
+	close;
+
+OnRecvCastleA02:
+	FlagEmblem GetCastleData("aldeg_cas02",1);
+	end;
+}
+
+alde_gld,99,251,4	duplicate(OutsideFlagsA2)	乎汗修番佳烏#1-2	722
+alde_gld,99,244,4	duplicate(OutsideFlagsA2)	乎汗修番佳烏#2	722
+
+// Guild Flags (Inside Castle)
+//============================================================
+-	script	乎汗修番佳烏#3::InsideFlagsA2	722,{
+	end;
+
+OnRecvCastleA02:
+	FlagEmblem GetCastleData("aldeg_cas02",1);
+	end;
+}
+
+aldeg_cas02,82,71,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#3-2	722
+aldeg_cas02,67,30,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#4	722
+aldeg_cas02,183,140,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#5	722
+aldeg_cas02,212,152,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#6	722
+aldeg_cas02,108,39,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#7	722
+aldeg_cas02,57,213,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#8	722
+aldeg_cas02,103,53,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#9	722
+aldeg_cas02,73,53,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#10	722
+aldeg_cas02,63,41,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#11	722
+aldeg_cas02,229,6,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#12	722
+aldeg_cas02,230,40,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#13	722
+aldeg_cas02,197,40,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#14	722
+aldeg_cas02,32,213,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#15	722
+aldeg_cas02,121,29,2	duplicate(InsideFlagsA2)	乎汗修番佳烏#16	722
+
+// Guild Flag (Town)
+//============================================================
+aldebaran,149,97,4	duplicate(InsideFlagsA2)	乎汗修番佳烏#17	722
+
+// Kafra Employee
+//============================================================
+aldeg_cas02,84,74,0	duplicate(guildkafra)	卡普拉 職員#aldeg_cas02	117
+
+// Steward
+//============================================================
+aldeg_cas02,78,74,0	duplicate(cm)	Chenchenlie#aldeg_cas02	55
+
+// Treasure Room Lever
+//============================================================
+aldeg_cas02,139,234,0	script	#lever_A02	111,{
+	mes " ";
+	mes "有個某種小的裝置 ，請問你要操作嗎?";
+	next;
+	if(select("操作:結束") == 1) {
+		close2;
+		warp "aldeg_cas02",78,75;
+		end;
+	}
+	close;
+}
+
+// Guild Dungeon Lever
+//============================================================
+aldeg_cas02,194,136,0	duplicate(gdlever)	#aldeg_cas02	111
+
+// Guild Treasure Spawns
+//============================================================
+aldeg_cas02,135,230,0	duplicate(Gld_Trea_Spawn)	Treasure#aldeg_cas02	-1
+
+// AGIT Manager
+//============================================================
+aldeg_cas02,214,24,0	duplicate(Gld_Agit_Manager)	Agit#aldeg_cas02	-1
+
+// Guardians
+//============================================================
+aldeg_cas02,78,74,0	duplicate(Gld_Guard_Template)	Guardian#aldeg_cas02	-1

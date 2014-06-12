@@ -1,0 +1,123 @@
+//==========================================
+// [冥] The PlutoEA Project [王]
+// https://plutoea.googlecode.com/svn/
+// -----------------------------------------
+// - TRO 2009 愚人節活動 -
+//========================
+//= 版本：1.0 [笨冰]
+//========================
+
+prontera,156,196,5	script	黑暗之王#fool1	737,{
+	mes "[黑暗之王]";
+	mes "滅亡之天來了! 人類們,";
+	mes "你們要緊張!!!!!";
+	close;
+}
+
+payon,155,205,5	duplicate(黑暗之王#fool1)	黑暗之王#fool2	737
+geffen,127,113,5	duplicate(黑暗之王#fool1)	黑暗之王#fool3	737
+aldebaran,144,129,5	duplicate(黑暗之王#fool1)	黑暗之王#fool4	737
+alberta,116,73,5	duplicate(黑暗之王#fool1)	黑暗之王#fool5	737
+
+//-----------------------
+//召換活動魔物
+//-----------------------
+prontera,1,1,0	script	Fool Event#prt	-1,{
+OnInit:
+	mapannounce "prontera","來臨滅亡之天! 惡魔同伴們都站起來統統殺死人類!!",1,0xFF8400;
+	goto OnSummon;
+	end;
+OnSummon:
+	set $@foolprt,50;
+	areamonster "prontera",0,0,300,300,"惡魔侵略者",2051,25,"Fool Event#prt::OnKilled";
+	areamonster "prontera",0,0,300,300,"惡魔侵略者",2052,25,"Fool Event#prt::OnKilled";
+	end;
+OnKilled:
+	set $@foolprt,$@foolprt-1;
+	if ( $@foolprt == 0 ) {
+		sleep2 60000;
+		goto OnInit;
+		end;
+	}
+	end;
+}
+
+payon,1,1,0	script	Fool Event#pay	-1,{
+OnInit:
+	mapannounce "payon","來臨滅亡之天! 惡魔同伴們都站起來統統殺死人類!!",1,0xFF8400;
+	goto OnSummon;
+	end;
+OnSummon:
+	set $@foolpay,50;
+	areamonster "payon",0,0,300,300,"惡魔侵略者",2051,25,"Fool Event#pay::OnKilled";
+	areamonster "payon",0,0,300,300,"惡魔侵略者",2052,25,"Fool Event#pay::OnKilled";
+	end;
+OnKilled:
+	set $@foolpay,$@foolpay-1;
+	if ( $@foolpay == 0 ) {
+		sleep2 60000;
+		goto OnInit;
+		end;
+	}
+	end;
+}
+
+geffen,1,1,0	script	Fool Event#gef	-1,{
+OnInit:
+	mapannounce "geffen","來臨滅亡之天! 惡魔同伴們都站起來統統殺死人類!!",1,0xFF8400;
+	goto OnSummon;
+	end;
+OnSummon:
+	set $@foolgef,50;
+	areamonster "geffen",0,0,300,300,"惡魔侵略者",2051,25,"Fool Event#gef::OnKilled";
+	areamonster "geffen",0,0,300,300,"惡魔侵略者",2052,25,"Fool Event#gef::OnKilled";
+	end;
+OnKilled:
+	set $@foolgef,$@foolgef-1;
+	if ( $@foolgef == 0 ) {
+		sleep2 60000;
+		goto OnInit;
+		end;
+	}
+	end;
+}
+
+aldebaran,1,1,0	script	Fool Event#al	-1,{
+OnInit:
+	mapannounce "aldebaran","來臨滅亡之天! 惡魔同伴們都站起來統統殺死人類!!",1,0xFF8400;
+	goto OnSummon;
+	end;
+OnSummon:
+	set $@foolal,50;
+	areamonster "aldebaran",0,0,300,300,"惡魔侵略者",2051,25,"Fool Event#al::OnKilled";
+	areamonster "aldebaran",0,0,300,300,"惡魔侵略者",2052,25,"Fool Event#al::OnKilled";
+	end;
+OnKilled:
+	set $@foolal,$@foolal-1;
+	if ( $@foolal == 0 ) {
+		sleep2 60000;
+		goto OnInit;
+		end;
+	}
+	end;
+}
+
+alberta,1,1,0	script	Fool Event#alb	-1,{
+OnInit:
+	mapannounce "alberta","來臨滅亡之天! 惡魔同伴們都站起來統統殺死人類!!",1,0xFF8400;
+	goto OnSummon;
+	end;
+OnSummon:
+	set $@foolalb,50;
+	areamonster "alberta",0,0,300,300,"惡魔侵略者",2051,25,"Fool Event#alb::OnKilled";
+	areamonster "alberta",0,0,300,300,"惡魔侵略者",2052,25,"Fool Event#alb::OnKilled";
+	end;
+OnKilled:
+	set $@foolalb,$@foolalb-1;
+	if ( $@foolalb == 0 ) {
+		sleep2 60000;
+		goto OnInit;
+		end;
+	}
+	end;
+}

@@ -1,0 +1,91 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// https://code.google.com/p/plutoea
+// ---------------------------------
+// - 創造者 轉職腳本 - 
+//===================================
+// 版本：1.3c
+//===================================
+
+valkyrie,53,50,3	script	創造者#Valkyrie	122,{
+	if (ADVJOB == 0 || Upper != 1) {
+		set .@karma_d,rand(1,10);
+		if (.@karma_d > 4) {
+			mes "[創造者]";
+			mes "恭喜你轉生了!";
+			mes "這是戰士們的光榮!";
+			close;
+		}
+		mes "[創造者]";
+		mes "當用7.6折低價買進金屬頭盔5個，";
+		mes "再打八折賣出去時，";
+		mes "所賺取的金幣是多少?";
+		mes ".......";
+		close;
+	}
+	else if (ADVJOB == Job_Creator && Class == Job_Merchant_High && JobLevel > 39) {
+		mes "[創造者]";
+		mes "找回你榮譽的樣子，";
+		mes "照亮時代的時機又";
+		mes "回來了，以新的模樣";
+		mes "走像那英雄的路吧";
+		next;
+		mes "[創造者]";
+		mes "要轉職為創造者嗎?";
+		next;
+		if (select("不:是") == 1) {
+			mes "[創造者]";
+			mes "準備好的話再來找我吧，";
+			mes "獻給戰士們的光榮!";
+			close;
+		}
+		if (SkillPoint) {
+			mes "[創造者]";
+			mes "好像學習的還不夠多，";
+			mes "學會所有技能之後再來吧";
+			close;
+		}
+		jobchange Job_Creator;
+		set ADVJOB,0;
+		mes "[創造者]";
+		mes "恭喜你，回到世上之後，";
+		mes "希望能成為用你的能力";
+		mes "領導全部的人";
+		close;
+	}
+	else {
+		if (Class == Job_Creator && MISC_QUEST & 64 && getskilllv(238) == 0) {
+			mes "[創造者]";
+			mes "你是來回憶過去的記憶嗎?";
+			next;
+			if (select("是的:不是") == 1) {
+				mes "[創造者]";
+				mes "請閉上你的雙眼";
+				mes "並且把心沉澱下來";
+				mes "我將會喚起你過去的回憶";
+				mes "縱使那些回憶是破碎的";
+				next;
+				mes "[創造者]";
+				mes "當你打開眼睛的之候";
+				mes "你會重新回想起'生命的奧秘'";
+				mes "並且會永遠的記住它...";
+				next;
+				skill 238,1,0;
+				mes "[創造者]";
+				mes "打開眼睛吧!";
+				mes "現在你已經回想起來了!";
+				close;
+			}
+			mes "[創造者]";
+			mes "準備好了的話，";
+			mes "請隨時找我吧";
+			mes "祝你好運!";
+			close;
+		}
+	mes "[創造者]";
+	mes "歡迎來到榮譽的巴哈拉，";
+	mes "好好的休息再回去吧，";
+	mes "戲給戰士們光榮!";
+	close;
+	}
+}

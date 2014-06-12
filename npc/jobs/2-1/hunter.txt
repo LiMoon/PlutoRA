@@ -1,0 +1,1693 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://plutoea.googlecode.com/svn/
+// ---------------------------------
+// - 獵人 轉職腳本 - 
+//===================================
+// 版本：3.7
+//===================================
+
+// 在舊獵人工會的公告板
+//============================================================ 
+in_hunter,99,99,4	script	轉職所 搬遷 公告#hnt::HntNotice	727,{
+	mes "============  公告  ============";
+	mes "獵人轉職所已經搬遷到修發茲共和國的";
+	mes "田園都市^FF0000毀葛^000000";
+	mes "因新開闢了飛空艇的毀葛航線，";
+	mes "請搭飛空艇來就可以啦";
+	next;
+	mes "想要參加轉職考試的人請到";
+	mes "^FF0000村落^000000的^FF0000最右上角^000000新搬遷的轉職所建築物來吧";
+	mes "　";
+	mes "^844200（最下面好像寫著什麼東西）^000000";
+	next;
+	mes "....獵鷹管理員也一起跟著去了";
+	close;
+}
+
+pay_fild10,148,252,3	duplicate(HntNotice)	轉職所 搬遷 公告#毀葛	857
+
+// Actual Job quest start
+//============================================================ 
+hu_in01,386,373,4	script	獵人 公會員#hnt	727,{
+	if (Upper == 1) {
+		mes "[獵人 雪霖]";
+		mes "唉呀，您好!";
+		mes "以前似曾相見喲....";
+		next;
+		mes "[獵人 雪霖]";
+		mes "唉呀....?";
+		mes "對不起，好像認錯人了?";
+		next;
+		mes "[獵人 雪霖]";
+		mes "....";
+		mes "好像在哪裡見過你一樣....";
+		next;
+		mes "[獵人 雪霖]";
+		mes "頭痛，還是想不起來";
+		mes "我弄錯人是件非常稀奇的事啊....";
+		mes "總之，祝你度過美好的一天啊";
+		close;
+	}
+	if (BaseJob == Job_Archer && JobLevel < 40) {
+		mes "[獵人工會人員]";
+		mes "喂...對弓使用不夠熟練啊...";
+		mes "至少，要累積到了成為獵人應有的弓箭手的鍛鍊水平啊";
+		next;
+		mes "[獵人工會人員]";
+		mes "請再努力鍛鍊一下啊";
+		mes "正確的轉職調件為職業等級40或以上才行";
+		mes "當然超過這個水平也是沒有問題的喔";
+		mes "那麼期待下次的見面吧";
+		close;
+	}
+	else if (BaseJob == Job_Hunter) {
+		mes "[獵人 雪霖]";
+		mes "啊，" +strcharinfo(0)+ "!";
+		mes "好久不見喔~";
+		mes "今天有什麼事嗎?";
+		mes "工會裡也沒有什麼特別的通知，";
+		mes "請繼續做你的事情吧";
+		close;
+	}
+	else if (Class != 3) {
+		mes "[獵人工會人員]";
+		mes "歡迎光臨!";
+		mes "很高興見到你~";
+		mes "很少有人會來到這裡呢...";
+		close;
+	}
+	else if (BaseJob == Job_Archer) {
+		if (SkillPoint) {
+			mes "[獵人 雪霖]";
+			mes "如果有剩餘技能點是無法轉職的";
+			mes "請把點數全部加完再來";
+			close;
+		}
+		else if (HNTR_Q == 17 && countitem(1007) == 0) {
+			mes "[獵人 雪霖]";
+			mes "嗯嗯，我有收到通過考試的消息了";
+			mes "但是沒有證據'慧眼'喔";
+			next;
+			mes "[獵人 雪霖]";
+			mes "丟失了證據這件事，";
+			mes "這次我就幫你保密吧";
+			mes "無論如何，先找出'慧眼'吧";
+			close;
+		}
+		else if (HNTR_Q == 17 && countitem(1007) > 0 && JobLevel > 39) {
+			mes "[獵人 雪霖]";
+			mes "噢，轉職考試合格了!";
+			mes "恭喜!";
+			next;
+			mes "[獵人 雪霖]";
+			mes "好，我現在就幫你轉職為獵人";
+			next;
+			delitem 1007,1; //Penetration
+			mes "[獵人 雪霖]";
+			mes "再次恭喜你";
+			mes "獵人的服裝非常適合你耶!";
+			set .@joblvl,JobLevel;
+			completequest 4013;
+			callfunc "Job_Change",Job_Hunter;
+			callfunc "F_ClearJobVar";	// 清除轉職用的變數
+			next;
+			mes "[獵人 雪霖]";
+			mes "就跟你帥氣的樣子一樣，";
+			mes "不要做出讓自已丟臉的事情喔，";
+			mes "要表現出以獵人的身份一樣能夠熱愛大自然的心喔!";
+			next;
+			mes "[獵人 雪霖]";
+			mes "最後，這是為了獎賞你的小禮物";
+			if (.@joblvl > 49)
+				getitem 1718,1; //獵人之弓
+			else
+				getitem 1710,1; //CrossBow
+			close;
+		}
+		else if ((JobLevel > 39) && ((HNTR_Q == 0) || (HNTR_Q == 1))) {
+			if (HNTR_Q == 0) {
+				mes "[獵人工會人員]";
+				mes "啊，是弓箭手喔";
+				mes "看起來好像已經有相當的熟練度了";
+				mes "是為了轉職為獵人而來的吧?";
+				next;
+				switch(select("是的，我是為轉職而來的:轉職的條件是什麼啊?:還不想轉職")) {
+				case 1:
+					mes "[獵人工會人員]";
+					mes "嘻嘻，果然沒錯~";
+					mes "那麼，先在轉職名單上簽個名...";
+					next;
+					mes "[獵人工會人員]";
+					mes "首先，先從面試開始吧";
+					mes "回答問題時不要緊張，放輕鬆點";
+					next;
+					mes "^3355FF*啪拉啪拉*^000000";
+					next;
+					mes "[獵人工會人員]";
+					mes "嗯，找到了...";
+					mes "面試調查書";
+					mes "首先，我的名字叫'雪霖'";
+					mes "請多指教!";
+					next;
+					mes "[獵人 雪霖]";
+					mes "那麼，現在開始面試吧~";
+					next;
+					if (select("現在就開始吧:等一下再來做好了") == 1) {
+						if(checkquest(4000) == -1) {
+							setquest 4000;
+						}
+						mes "[獵人 雪霖]";
+						mes "那麼，現在會先和你聊一下天，";
+						mes "偶爾會問一些問題，";
+						mes "只要適當的回答就好了";
+						next;
+						mes "[獵人 雪霖]";
+						mes "是為了想問你在生活當中有何想法，";
+						mes "以及為什麼要當獵人的原因而已的，";
+						mes "所以不用太緊張的";
+						next;
+					}
+					else {
+						mes "[獵人 雪霖]";
+						mes "好的，準備好歡迎隨時再來吧";
+						close;
+					}
+					break;
+				case 2:
+					set .@selection,2;
+					break;
+				case 3:
+					set .@selection,3;
+					break;
+				}
+			}
+			else if (HNTR_Q == 1) {
+				mes "[獵人 雪霖]";
+				mes "你又來了喔!";
+				mes "那麼，先從面試開始吧~";
+				mes "這次請好好回答問題哦!";
+				next;
+			}
+			switch(.@selection) {
+			default:
+				mes "[獵人 雪霖]";
+				mes "那麼，要開始囉";
+				next;
+				mes "[獵人 雪霖]";
+				mes "你是位弓箭手";
+				mes "想要去某個地方打獵，";
+				mes "但是你卻不曉得要往哪裡去";
+				mes "這時候你會怎麼辦?";
+				next;
+				switch(select("大聲驚吼的問路人:很客氣得向路人詢問:自己一個人到處亂走")) {
+				case 2:
+				case 3:
+					set .@hunter_t,.@hunter_t+10;
+				default:
+					break;
+				}
+				mes "[獵人 雪霖]";
+				mes "你已經決定狩獵的地方了";
+				mes "現在決定要到'蘇克拉特'去抓蚯蚓";
+				next;
+				mes "[獵人 雪霖]";
+				mes "但是這裡是斐揚啊";
+				mes "要怎麼去沙漠呢?";
+				next;
+				switch(select("去求祭司免費傳送:去找卡普拉服務人員:跟朋友一起走路過去")) {
+				case 2:
+				case 3:
+					set .@hunter_t,.@hunter_t+10;
+				default:
+					break;
+				}
+				mes "[獵人 雪霖]";
+				mes "周圍沒有祭司和朋友在附近";
+				mes "只能去找卡普拉了呢";
+				mes "但是錢不夠";
+				mes "你會怎麼辦呢?";
+				next;
+				switch(select("求人家:把沒用的物品賣掉:在附近的森林打獵")) {
+				case 2:
+				case 3:
+					set .@hunter_t,.@hunter_t+10;
+				default:
+					break;
+				}
+				mes "[獵人 雪霖]";
+				mes "經過一些困難，總算來到有蚯蚓的沙漠了";
+				mes "但是要抓蚯蚓的時候覺得有點困難耶...";
+				next;
+				mes "[獵人 雪霖]";
+				mes "你會怎麼辦呢?";
+				next;
+				if (select("到山岳上面，往下攻擊位於下面的蚯蚓:回城:去攻擊人家在打的蚯蚓") == 2)
+					set .@hunter_t,.@hunter_t+10;
+				mes "[獵人 雪霖]";
+				mes "打獵結束，回到城裡";
+				next;
+				mes "[獵人 雪霖]";
+				mes "回城後發現自已已經紅血了";
+				mes "剛好遇到祭司，你要怎麼求他?";
+				next;
+				if (select("可以請你幫我用治癒術嗎?","幫補","++") == 1)
+					set .@hunter_t,.@hunter_t+10;
+				mes "[獵人 雪霖]";
+				mes "嗯?突然發現這次狩獵獲得了一個貴重物品";
+				mes "為了要賣物品而來到廣場，";
+				mes "發現很多人開了露天商店和聊天室";
+				next;
+				mes "[獵人 雪霖]";
+				mes "那麼為了要把物品賣掉，";
+				mes "如何做才是最好的呢?";
+				next;
+				switch(select("到處洗頻:打開聊天室等待:找找是否有人需要那個物品")) {
+				case 2:
+				case 3:
+					set .@hunter_t,.@hunter_t+10;
+				default:
+					break;
+				}
+				mes "[獵人 雪霖]";
+				mes "你在等待的時候，";
+				mes "發現有人在乞討";
+				mes "你會怎麼辦呢?";
+				next;
+				if (select("把我的錢跟物品分給他:無視他並走開:告訴他可以狩獵的地方") == 1)
+					set .@hunter_t,.@hunter_t+10;
+				mes "[獵人 雪霖]";
+				mes "這次打算自已一個人去迷宮森林看看";
+				next;
+				mes "[獵人 雪霖]";
+				mes "但是在中途遇到迷路的人";
+				mes "你會怎麼辦呢?";
+				next;
+				switch(select("告訴他出路:帶他到目的地:無視他")) {
+				case 1:
+				case 2:
+					set .@hunter_t,.@hunter_t+10;
+				default:
+					break;
+				}
+				mes "[獵人 雪霖]";
+				mes "你一邊幫那個人帶路一邊打獵，";
+				mes "但是看到有人在攻擊BOSS魔物";
+				next;
+				mes "[獵人 雪霖]";
+				mes "你會怎麼辦呢?";
+				next;
+				if (select("等他求救再攻擊:搶他怪:直接回到村落") == 1)
+					set .@hunter_t,.@hunter_t+10;
+				mes "[獵人 雪霖]";
+				mes "現在已經很累了，";
+				mes "是回村落的時候了";
+				next;
+				mes "[獵人 雪霖]";
+				mes "但是這時候，你在路上發現了一個珍貴的物品";
+				mes "要會怎麼處理它呢?";
+				next;
+				switch(select("撿起來據為己有","看看是誰掉下的","無視")) {
+				case 2:
+				case 3:
+					set .@hunter_t,.@hunter_t+10;
+				default:
+					break;
+				}
+				mes "[獵人 雪霖]";
+				mes "好，辛苦你了~";
+				mes "我的問題問完了";
+				next;
+				if (.@hunter_t == 100) {
+					set HNTR_Q,2;
+					changequest 4000,4001;
+					mes "[獵人 雪霖]";
+					mes "做的很好，你這種態度活下來了的話就夠了";
+					mes "你已經有充分的資格當獵人了";
+					next;
+					mes "[獵人 雪霖]";
+					mes "面試已經結束了";
+					mes "剩下的就到那邊角落的人確認一下轉職考試用的物品就好了";
+					close;
+				}
+				else if (.@hunter_t == 90) {
+					set HNTR_Q,2;
+					changequest 4000,4001;
+					mes "[獵人 雪霖]";
+					mes "雖然有些部分不太滿意，";
+					mes "我先算你是通過面試好了";
+					mes "但是不曉得工會長是如何想呢，";
+					mes "以後慢慢思考一下基本的問題吧";
+					next;
+					mes "[獵人 雪霖]";
+					mes "希望你能在以後的考試中更加努力，";
+					mes "讓我雪霖也看看你不錯的成績吧";
+					close;
+				}
+				set HNTR_Q,1;
+				mes "[獵人 雪霖]";
+				mes "嗯...我覺得，還是不行...";
+				mes "沒有把基本的東西做好的話，";
+				mes "無法讓你轉職為獵人";
+				next;
+				mes "[獵人 雪霖]";
+				mes "你回去好好想想我剛剛問你的問題吧";
+				mes "為了要養成一個能夠昭想自然的心之前，";
+				mes "首先是要養成要如何重視人際關系的習慣";
+				close;
+			case 2:
+				mes "[獵人工會人員]";
+				mes "以下是轉職條件：";
+				mes "一．必須是弓箭手";
+				mes "二．職業等級要在40以上";
+				mes "三．收集工會要求的物品";
+				mes "四．通過工會的考試";
+				next;
+				mes "[獵人工會人員]";
+				mes "弓箭手如果是好好鍛鍊的話，";
+				mes "考試合格是沒問題的";
+				close;
+			case 3:
+				mes "[獵人工會人員]";
+				mes "好的，準備好歡迎隨時再來吧";
+				close;
+			}
+		}
+		else if (HNTR_Q > 2 && HNTR_Q < 10) {
+			mes "[獵人 雪霖]";
+			mes "把物品交給我旁邊的獵人迪文就好了";
+			next;
+			mes "[獵人 雪霖]";
+			mes "到時你成為獵人後，一定要來找我雪霖喔";
+			mes "因為你的氣質很不一樣喔，";
+			mes "我很想看看成為獵人的你呢嘻嘻...";
+			close;
+		}
+		else if (HNTR_Q == 2) {
+			mes "[獵人 雪霖]";
+			mes "嗯?";
+			next;
+			mes "[獵人 雪霖]";
+			mes "還沒找到獵人迪文嗎?";
+			mes "獵人迪文在我的左邊";
+			next;
+			mes "[獵人 雪霖]";
+			mes "我很想趕快看到轉職之後的樣子呢~";
+			mes "一定是很帥的說";
+			close;
+		}
+		mes "[獵人 雪霖]";
+		mes "嗯...你應該要去找別人喔";
+		mes "目前工會會長好像有什麼事情出差了吧?";
+		next;
+		mes "[獵人 雪霖]";
+		mes "據我所知，";
+		mes "他應該是在斐揚的中央宮或者弓手村吧";
+		mes "麻煩到那邊去看看吧";
+		close;
+	}
+	mes "[獵人工會人員]";
+	mes "你的訓練還不夠成為一位弓箭手";
+	mes "想成為獵人的話，";
+	mes "你還必須累積更多經驗呢";
+	next;
+	mes "[獵人工會人員]";
+	mes "哦哦，那你趕快去鍛鍊自己吧";
+	mes "職業等級至少要40或以上才能";
+	mes "那麼，下次再見了";
+	close;
+}
+
+hu_in01,382,382,4	script	獵人公會 考試報名人員#ht	732,{
+	if (HNTR_Q == 2) {
+		mes "[獵人工會 考試報名人員]";
+		mes "你好啊，你可以叫我^660000'迪文'^000000";
+		mes "我是你轉職考試的主考官之一";
+		mes "你的名字叫 " + strcharinfo(0) + ", 沒錯吧?";
+		next;
+		set .@selection,select("是的:不是啦，白痴喔");
+		if (.@selection == 2) {
+			mes "[獵人 迪文]";
+			mes "不要開玩笑了啦...";
+			mes strcharinfo(0)+ "，沒錯吧?";
+			next;
+			if (select("是的:不是勒，哈哈") == 1) {
+				mes "[獵人 迪文]";
+				mes "好，現在就告訴你轉職考試所需要的物品";
+				mes "因為在考試期間所用的所有的箭都是由我們工會所提供的";
+				next;
+				mes "[獵人 迪文]";
+				mes "我們的財務狀況也並不是很好的說...";
+				mes "嗯...現在也需要一些物品的呢...";
+				next;
+			}
+			else {
+				mes "[獵人 迪文]";
+				mes "如果你要開玩笑的話，給我滾!";
+				mes "給你好臉色看就覺得我很好欺負啊!";
+				close2;
+				warp "hugel",208,223;
+				end;
+			}
+		}
+		mes "[獵人 迪文]";
+		mes "好，現在就告訴你轉職考試所需要的物品";
+		mes "因為在考試期間所用的所有的箭都是由我們工會所提供的";
+		next;
+		mes "[獵人 迪文]";
+		mes "我們的財務狀況也並不是很好的說...";
+		mes "嗯...現在也需要一些物品的呢...";
+		next;
+		if(checkre(0)) set .@i,1;
+		switch(rand(1,7)) {
+		//沙漠之狼之指甲, 瑪哪樹枝, 白色藥草
+		case 1: setarray .@items[0], (.@i?928:7030),5, 1019,5, 509,3, 3; changequest 4001,4002; break;
+		//鳥嘴, 死人遺骨, 綠色藥草
+		case 2: setarray .@items[0], 925,3, 932,5, 511,3, 4; changequest 4001,4003; break;
+		//毒牙, 動物外皮, 紅色藥草
+		case 3: setarray .@items[0], (.@i?1013:937),3, 919,3, 507,5, 5; changequest 4001,4004; break;
+		//土人之角 or 硬角, 蛋殼碎片 or 毒魔菇芽孢, 毛
+		case 4: setarray .@items[0], (.@i?947:1021),3, (.@i?7033:7032),3, 914,10, 6; changequest 4001,4005; break;
+		//堅硬外殼, 昆蟲外殼, 黃色藥草
+		case 5: setarray .@items[0], 935,9, 955,9, 508,9, 7; changequest 4001,4006; break;
+		//蝙蝠牙, 黏稠液體, 熊掌
+		case 6: setarray .@items[0], 913,3, 938,1, 948,1, 8; changequest 4001,4007; break;
+		//刺蝟尖刺, 猴子尾巴, 橡實
+		case 7: setarray .@items[0], 1027,2, 942,1, 1026,1, 9; changequest 4001,4008; break;
+		}
+		if (.@selection == 1) {
+			mes "[獵人 迪文]";
+			mes "恩...";
+			mes "^660000"+.@items[1]+"個"+getitemname(.@items[0])+"^000000";
+			mes "^660000"+.@items[3]+"個"+getitemname(.@items[2])+"^000000 還有";
+			mes "^660000"+.@items[5]+"個"+getitemname(.@items[4])+"^000000";
+			set HNTR_Q,.@items[6];
+			next;
+			mes "[獵人 迪文]";
+			mes "之後，因為去斐揚出差的工會會長一手包辦考試，務必要見上一次";
+			mes "那麼，全部弄齊之後再來吧";
+			mes "我會在這裡等你的";
+		}
+		close;
+	}
+	else if (HNTR_Q >= 3 && HNTR_Q <= 9) {
+		if(checkre(0)) set .@i,1;
+		switch(HNTR_Q) {
+		//沙漠之狼之指甲, 瑪哪樹枝, 白色藥草
+		case 3: setarray .@items[0], (.@i?928:7030),5, 1019,5, 509,3, 10; break;
+		//鳥嘴, 死人遺骨, 綠色藥草
+		case 4: setarray .@items[0], 925,3, 932,5, 511,3, 10; break;
+		//毒牙, 動物外皮, 紅色藥草
+		case 5: setarray .@items[0], (.@i?1013:937),3, 919,3, 507,5, 10; break;
+		//土人之角, 蛋殼碎片, 毛
+		case 6: setarray .@items[0], (.@i?947:1021),3, (.@i?7033:7032),3, 914,10, 10; break;
+		//堅硬外殼, 昆蟲外殼, 黃色藥草
+		case 7: setarray .@items[0], 935,9, 955,9, 508,9, 11; break;
+		//蝙蝠牙, 黏稠液體, 熊掌
+		case 8: setarray .@items[0], 913,3, 938,1, 948,1, 11; break;
+		//刺蝟尖刺, 猴子尾巴, 橡實
+		case 9: setarray .@items[0], 1027,2, 942,1, 1026,1, 11; break;
+		}
+		mes "[獵人 迪文]";
+		mes "嗯...";
+		next;
+		if (countitem(.@items[0]) >= .@items[1] && countitem(.@items[2]) >= .@items[3] && countitem(.@items[4]) >= .@items[5]) {
+			mes "[獵人 迪文]";
+			mes "你已經把需要的物品全都準備好了啊!";
+			mes "那你現在就去找出差到斐揚城的工會會長吧，";
+			mes "他會告訴你可往考場走的路的";
+			set HNTR_Q,.@items[6];
+			if(checkquest(4002) != -1) {
+				changequest 4002,4009;
+			}
+			else if(checkquest(4003) != -1) {
+				changequest 4003,4009;
+			}
+			else if(checkquest(4004) != -1) {
+				changequest 4004,4009;
+			}
+			else if(checkquest(4005) != -1) {
+				changequest 4005,4009;
+			}
+			else if(checkquest(4006) != -1) {
+				changequest 4006,4010;
+			}
+			else if(checkquest(4007) != -1) {
+				changequest 4007,4010;
+			}
+			else {
+				changequest 4008,4010;
+			}
+			delitem .@items[0],.@items[1];
+			delitem .@items[2],.@items[3];
+			delitem .@items[4],.@items[5];
+			close;
+		}
+		mes "[獵人 迪文]";
+		mes "還沒有準備好物品喔";
+		mes "需要的物品是...";
+		mes "^660000"+.@items[1]+"個"+getitemname(.@items[0])+"^000000、";
+		mes "^660000"+.@items[3]+"個"+getitemname(.@items[2])+"^000000 還有";
+		mes "^660000"+.@items[5]+"個"+getitemname(.@items[4])+"^000000";
+		mes "那麼把物品準備好之後再來找我吧";
+		close;
+	}
+	else if (HNTR_Q > 9 && HNTR_Q < 17) {
+		mes "[獵人 迪文]";
+		mes "工會會長好像在斐揚的中央宮或弓手村";
+		mes "到那裡去找找看吧";
+		close;
+	}
+	else if (HNTR_Q == 17) {
+		mes "[獵人 迪文]";
+		mes "喔，你已經通過考試囉，恭喜你!";
+		mes "那你到雪霖那邊看看吧";
+		close;
+	}
+	else {
+		mes "[獵人工會 考試報名人員]";
+		mes "想要轉職成獵人要先報名才可以的";
+		close;
+	}
+}
+				
+payon_in03,131,7,3	script	獵人#htnGM	59,{
+	if (HNTR_Q == 10) {
+		mes "[獵人工會會長]";
+		mes "嗯...?你是為了獵人轉職考試而來的吧";
+		mes "那麼，我來告訴你考試內容吧";
+		mes "你就問一些你想知道的事情吧";
+		next;
+		switch(select("考試的內容:考試合格的條件:注意事項:開始考試吧")) {
+		case 1:
+			mes "[獵人工會會長]";
+			mes "突破到處所存在的陷阱，";
+			mes "去殺死那些有特定名字的怪物，";
+			mes "這就是大概的考試內容";
+			next;
+			mes "[獵人工會會長]";
+			mes "為了成為獵人而最重要的就是移動能力、";
+			mes "以及目標識別能力";
+			close;
+		case 2:
+			mes "[獵人工會會長]";
+			mes "一開始會從地圖的6點鐘方向開始";
+			mes "只要在限定時間內殺死目標怪物，";
+			next;
+			mes "[獵人工會會長]";
+			mes "之後再打開地圖中央的逃出用開關，";
+			mes "走到12點方向逃出來就成功了";
+			close;
+		case 3:
+			mes "[獵人工會會長]";
+			mes "嗯，注意事項嘛...";
+			mes "如果掉到陷阱的話，則要重新開始";
+			next;
+			mes "[獵人工會會長]";
+			mes "一次只有一個人可以參加考試";
+			mes "我把你送到考場的話，會看到休息室的";
+			mes "如果有人在進行考試的話，";
+			mes "你要到聊天室等待才可以的";
+			next;
+			mes "[獵人工會會長]";
+			mes "前面的人失敗或過關的話，";
+			mes "按照順序會把聊天室裡的人移動到考場";
+			mes "如果前面沒有人的話會直接進行考試的";
+			close;
+		case 4:
+			if (.@a0) {
+				mes "[獵人工會會長]";
+				mes "....好吧，我現在傳送你過去，";
+				mes "不要因為沒有聽到說明而埋怨我喔";
+				next;
+			}
+			mes "[獵人工會會長]";
+			mes "祝你好運!";
+			next;
+		}
+		mes "[獵人工會會長]";
+		mes "現在就送你過去";
+		mes "按照說明來做的話，應該不會有太大問題";
+		next;
+		mes "[獵人工會會長]";
+		mes "好了，用了你剛才收集的材料製作好的箭";
+		mes "請帶上這個進行轉職考試吧";
+		set HNTR_Q,12;
+		changequest 4009,4011;
+		getitem 1751,200; //Silver_Arrow
+		close2;
+		warp "job_hunte",176,22;
+		end;
+	}
+	else if (HNTR_Q > 1 && HNTR_Q < 10) {
+		mes "[獵人工會會長]";
+		mes "嗯?弓箭手怎麼會來這裡?";
+		mes "特別是沒接受獵人工會通知，";
+		mes "又省略了中間的過程來參加考試了嗎?";
+		next;
+		mes "[獵人工會會長]";
+		mes "首先，必需先收集轉職考試的物品";
+		mes "然後到獵人工會交付後再到這裡來";
+		close;
+	}
+	else if (HNTR_Q == 11) {
+		mes "[獵人]";
+		mes "嗯? 你對我有什麼事情嗎?";
+		mes "如果你是要轉職的話...";
+		mes "你應該要去找出差到弓箭手工會的人才對.";
+		close;
+	}
+	else if (HNTR_Q > 11 && HNTR_Q < 16) {
+		mes "[獵人工會會長]";
+		mes "嗯...?你是為了獵人轉職考試而來的吧";
+		mes "那麼，我來告訴你考試內容吧";
+		mes "你就問一些你想知道的事情吧";
+		next;
+		switch(select("考試的內容:考試合格的條件:注意事項:開始考試吧")) {
+		case 1:
+			mes "[獵人工會會長]";
+			mes "突破到處所存在的陷阱，";
+			mes "去殺死那些有特定名字的怪物，";
+			mes "這就是大概的考試內容";
+			next;
+			mes "[獵人工會會長]";
+			mes "為了成為獵人而最重要的就是移動能力、";
+			mes "以及目標識別能力";
+			close2;
+			cutin "job_huntermaster",255;
+			end;
+		case 2:
+			mes "[獵人工會會長]";
+			mes "一開始會從地圖的6點鐘方向開始";
+			mes "只要在限定時間內殺死目標怪物，";
+			next;
+			mes "[獵人工會會長]";
+			mes "之後再打開地圖中央的逃出用開關，";
+			mes "走到12點方向逃出來就成功了";
+			close2;
+			cutin "job_huntermaster",255;
+			end;
+		case 3:
+			mes "[獵人工會會長]";
+			mes "嗯，注意事項嘛...";
+			mes "如果掉到陷阱的話，則要重新開始";
+			next;
+			mes "[獵人工會會長]";
+			mes "一次只有一個人可以參加考試";
+			mes "我把你送到考場的話，會看到休息室的";
+			mes "如果有人在進行考試的話，";
+			mes "你要到聊天室等待才可以的";
+			next;
+			mes "[獵人工會會長]";
+			mes "前面的人失敗或過關的話，";
+			mes "按照順序會把聊天室裡的人移動到考場";
+			mes "如果前面沒有人的話會直接進行考試的";
+			close2;
+			cutin "job_huntermaster",255;
+			end;
+		case 4:
+			mes "[獵人工會會長]";
+			mes "好吧我現在就送你過去";
+			mes "按照說明來做的話，應該不會有太大問題";
+			next;
+		}
+		mes "[獵人工會會長]";
+		mes "嗯...?你說為何不給你銀箭矢嗎?";
+		mes "不給材料而期待什麼的話你想的也太美了吧，";
+		mes "之前已經給過一次了，";
+		mes "相信你已經準備好了";
+		mes "那麼現在要開始嗎?";
+		next;
+		if (select("好，那就開始吧:啊，等我一下喔") == 1) {
+			mes "[獵人工會會長]";
+			mes "Okay!! I hope";
+			mes "you will pass this time!";
+			close2;
+			set HNTR_Q,12;
+			warp "job_hunte",176,22;
+			end;
+		}
+		mes "[獵人工會會長]";
+		mes "準備好之後再來吧";
+		close;
+	}
+	else if (HNTR_Q == 16) {
+		mes "[獵人工會會長]";
+		mes "嗯，你平安回來了啊";
+		mes "那麼，我給你通過考試的證明";
+		mes "你就拿著它到獵人工會吧";
+		mes "我還有點事情要在這裡辦呢...";
+		set HNTR_Q,17;
+		savepoint "payon",104,99;
+		getitem 1007,1; //Penetration
+		changequest 4012,4013;
+		next;
+		mes "[獵人工會會長]";
+		mes "來，這個給你";
+		mes "那麼再見了...";
+		close;
+	}
+	else if (HNTR_Q == 17) {
+		mes "[獵人工會會長]";
+		mes "不想趕快成為一個獵人嗎?";
+		mes "我當初剛當獵人的時候馬上就衝出去了呢";
+		mes "因為太高興了啊，呼呼";
+		next;
+		mes "[獵人工會會長]";
+		mes "請盡早回去獵人工會吧";
+		close;
+	}
+	else {
+		mes "[獵人]";
+		mes "有什麼事情呢?";
+		mes "我因為是在出差，所以很忙";
+		mes "所以希望你能夠安靜一下";
+		close;
+	}
+}
+
+payon_in02,21,31,1	script	獵人#htnGM2	59,{
+	cutin "job_huntermaster",2;
+	if (HNTR_Q == 11) {
+		mes "[獵人工會會長]";
+		mes "嗯...?你是為了獵人轉職考試而來的吧";
+		mes "那麼，我來告訴你考試內容吧";
+		mes "你就問一些你想知道的事情吧";
+		next;
+		switch(select("考試的內容:考試合格的條件:注意事項:開始考試吧")) {
+		case 1:
+			mes "[獵人工會會長]";
+			mes "突破到處所存在的陷阱，";
+			mes "去殺死那些有特定名字的怪物，";
+			mes "這就是大概的考試內容";
+			next;
+			mes "[獵人工會會長]";
+			mes "為了成為獵人而最重要的就是移動能力、";
+			mes "以及目標識別能力";
+			close2;
+			cutin "job_huntermaster",255;
+			end;
+		case 2:
+			mes "[獵人工會會長]";
+			mes "一開始會從地圖的6點鐘方向開始";
+			mes "只要在限定時間內殺死目標怪物，";
+			next;
+			mes "[獵人工會會長]";
+			mes "之後再打開地圖中央的逃出用開關，";
+			mes "走到12點方向逃出來就成功了";
+			close2;
+			cutin "job_huntermaster",255;
+			end;
+		case 3:
+			mes "[獵人工會會長]";
+			mes "嗯，注意事項嘛...";
+			mes "如果掉到陷阱的話，則要重新開始";
+			next;
+			mes "[獵人工會會長]";
+			mes "一次只有一個人可以參加考試";
+			mes "我把你送到考場的話，會看到休息室的";
+			mes "如果有人在進行考試的話，";
+			mes "你要到聊天室等待才可以的";
+			next;
+			mes "[獵人工會會長]";
+			mes "前面的人失敗或過關的話，";
+			mes "按照順序會把聊天室裡的人移動到考場";
+			mes "如果前面沒有人的話會直接進行考試的";
+			close2;
+			cutin "job_huntermaster",255;
+			end;
+		case 4:
+			if (.@a0) {
+				mes "[獵人工會會長]";
+				mes "....好吧，我現在傳送你過去，";
+				mes "不要因為沒有聽到說明而埋怨我喔";
+				next;
+			}
+			mes "[獵人工會會長]";
+			mes "好吧我現在就送你過去";
+			mes "按照說明來做的話，應該不會有太大問題";
+			next;
+		}
+		mes "[獵人工會會長]";
+		mes "好了，用了你剛才收集的材料製作好的箭";
+		mes "請帶上這個進行轉職考試吧";
+		getitem 1751,200; //銀箭矢
+		next;
+		mes "[獵人工會會長]";
+		mes "祝你好運!";
+		set HNTR_Q,12;
+		changequest 4010,4011;
+		warp "job_hunte",176,22;
+		cutin "job_huntermaster",255;
+		end;
+	}
+	else if (HNTR_Q > 1 && HNTR_Q < 10) {
+		mes "[獵人工會會長]";
+		mes "嗯?弓箭手怎麼會來這裡?";
+		mes "特別是沒接受獵人工會通知，";
+		mes "又省略了中間的過程來參加考試了嗎?";
+		next;
+		mes "[獵人工會會長]";
+		mes "首先，必需先收集轉職考試的物品";
+		mes "然後到獵人工會交付後再到這裡來";
+		close2;
+		cutin "job_huntermaster",255;
+		end;
+	}
+	else if (HNTR_Q == 10) {
+		mes "[獵人]";
+		mes "嗯? 對我有什麼";
+		mes "事嗎?";
+		next;
+		mes "[獵人]";
+		mes "如果你是想要轉職的話...";
+		mes "去找出差到斐揚城的人吧.";
+		close2;
+		cutin "job_huntermaster",255;
+		end;
+	}
+	else if (HNTR_Q > 11 && HNTR_Q < 16) {
+		mes "[獵人工會會長]";
+		mes "嗯...?你是為了獵人轉職考試而來的吧";
+		mes "那麼，我來告訴你考試內容吧";
+		mes "你就問一些你想知道的事情吧";
+		next;
+		switch(select("考試的內容:考試合格的條件:注意事項:開始考試吧")) {
+		case 1:
+			mes "[獵人工會會長]";
+			mes "突破到處所存在的陷阱，";
+			mes "去殺死那些有特定名字的怪物，";
+			mes "這就是大概的考試內容";
+			next;
+			mes "[獵人工會會長]";
+			mes "為了成為獵人而最重要的就是移動能力、";
+			mes "以及目標識別能力";
+			close2;
+			cutin "job_huntermaster",255;
+			end;
+		case 2:
+			mes "[獵人工會會長]";
+			mes "一開始會從地圖的6點鐘方向開始";
+			mes "只要在限定時間內殺死目標怪物，";
+			next;
+			mes "[獵人工會會長]";
+			mes "之後再打開地圖中央的逃出用開關，";
+			mes "走到12點方向逃出來就成功了";
+			close2;
+			cutin "job_huntermaster",255;
+			end;
+		case 3:
+			mes "[獵人工會會長]";
+			mes "嗯，注意事項嘛...";
+			mes "如果掉到陷阱的話，則要重新開始";
+			next;
+			mes "[獵人工會會長]";
+			mes "一次只有一個人可以參加考試";
+			mes "我把你送到考場的話，會看到休息室的";
+			mes "如果有人在進行考試的話，";
+			mes "你要到聊天室等待才可以的";
+			next;
+			mes "[獵人工會會長]";
+			mes "前面的人失敗或過關的話，";
+			mes "按照順序會把聊天室裡的人移動到考場";
+			mes "如果前面沒有人的話會直接進行考試的";
+			close2;
+			cutin "job_huntermaster",255;
+			end;
+		case 4:
+			mes "[獵人工會會長]";
+			mes "好吧我現在就送你過去";
+			mes "按照說明來做的話，應該不會有太大問題";
+			next;
+		}
+		mes "[獵人工會會長]";
+		mes "好吧，那你就加油吧";
+		mes "我現在就送你到考場";
+		next;
+		mes "[獵人工會會長]";
+		mes "嗯...?你說為何不給你銀箭矢嗎?";
+		mes "不給材料而期待什麼的話你想的也太美了吧，";
+		mes "之前已經給過一次了，";
+		mes "相信你已經準備好了";
+		mes "那麼現在要開始嗎?";
+		next;
+		if (select("好，那就開始吧:啊，等我一下喔") == 1) {
+			mes "[獵人工會會長]";
+			mes "好!希望你能過關!";
+			close2;
+			cutin "job_huntermaster",255;
+			set HNTR_Q,12;
+			warp "job_hunte",176,22;
+			end;
+		}
+		mes "[獵人工會會長]";
+		mes "準備好之後再來吧";
+		close2;
+		cutin "job_huntermaster",255;
+		end;
+	}
+	else if (HNTR_Q == 16) {
+		mes "[獵人工會會長]";
+		mes "嗯. 你平安回來了啊. 辛苦你了.";
+		mes "那麼. . 我給你通過考試的證明的你就拿著他到獵人工會吧.";
+		mes "我還有點事情要在這裡辦呢";
+		set HNTR_Q,17;
+		savepoint "payon",104,99;
+		getitem 1007,1; //Penetration
+		next;
+		mes "[獵人工會會長]";
+		mes "來..這個給你.";
+		mes "那麼就再會了~";
+		close2;
+		cutin "job_huntermaster",255;
+		end;
+	}
+	else if (HNTR_Q == 17) {
+		mes "[獵人工會會長]";
+		mes "不想趕快成為一個獵人嗎?";
+		mes "我當初剛當獵人的時候馬上就衝出去了呢";
+		mes "因為太高興了啊，呼呼";
+		next;
+		mes "[獵人工會會長]";
+		mes "請盡早回去獵人工會吧";
+		close2;
+		cutin "job_huntermaster",255;
+		end;
+	}
+	else {
+		mes "[獵人]";
+		mes "有什麼事情呢?";
+		mes "我因為是在出差，所以很忙";
+		mes "所以希望你能夠安靜一下";
+		close2;
+		cutin "job_huntermaster",255;
+		end;
+	}
+}
+
+job_hunte,178,32,1	script	服務人員#hnt	107,5,2,{
+OnTouch:
+	if (HNTR_Q == 12) {
+		mes "[考場服務人員]";
+		mes "歡迎光臨獵人轉職考場";
+		next;
+		mes "[服務人員]";
+		mes "進到在我旁邊的休息室的話就可以開始考試了";
+		next;
+		mes "[服務人員]";
+		mes "從開始位置進行考試，";
+		mes "打倒4個以上名字為「轉職考試專用怪獸」的怪物，";
+		mes "就會啟動地圖中間的按鈕";
+		next;
+		mes "[服務人員]";
+		mes "按下開關的話，地圖12點鐘方向的出口就會開啟";
+		mes "在限定時間內脫離就成功了";
+		next;
+		mes "[服務人員]";
+		mes "中途如果戰鬥不能、掉入陷阱、或者超時的話就會失敗，";
+		mes "要重新進行考試才可以";
+		next;
+		mes "[服務人員]";
+		mes "箭矢會由我們工會提供的";
+		mes "所以各位只要準備弓就好了";
+		mes "準備好了的話請各位進入休息室";
+		savepoint "job_hunte",176,22;
+		close;
+	}
+	else if (HNTR_Q > 12 && HNTR_Q < 16) {
+		mes "[考場服務人員]";
+		mes "失敗了嗎...";
+		mes "先幫你把HP和SP恢復";
+		mes "如果覺得困難的話下次再挑戰也可以的";
+		mes "現在打算怎麼辦呢?";
+		percentheal 100,100;
+		next;
+		switch(select("繼續挑戰:放棄考試")) {
+		case 1:
+			mes "[考場服務人員]";
+			mes "好，我知道了，那請你繼續努力，希望能夠成為獵人";
+			mes "那麼，請你到休息室吧";
+			mes "前面有人在等待的話，";
+			mes "你要等到他們結束為止";
+			close;
+		case 2:
+			mapannounce "job_hunte",strcharinfo(0)+ "放棄考試了，下一位考生請進",bc_map;
+			mes "[考場服務人員]";
+			mes "好，我知道了";
+			mes "我會幫你送回斐揚的";
+			mes "希望下次再見";
+			mes "不要忘了存檔吧";
+			//donpcevent "Hunter waitingroom#hnt::OnStart";
+			close2;
+			set HNTR_Q,13;
+			savepoint "payon",104,99;
+			warp "payon_in02",21,27;
+		}
+	}
+	else if (HNTR_Q > 15) {
+		mes "[考場服務人員]";
+		mes "你不應該出現在這裡";
+		close2;
+		savepoint "payon",104,99;
+		warp "payon_in02",21,27;
+	}
+	end;
+}
+
+job_hunte,178,38,1	script	Hunter waitingroom#hnt	66,{
+	end;
+
+OnInit:
+	waitingroom "job-change waiting room", 10,"Hunter waitingroom#hnt::OnStartArena",1;
+	enablewaitingroomevent;
+	end;
+
+OnStartArena:
+	warpwaitingpc "job_hunte", 90, 67;
+	donpcevent "Manager#hnt::OnEnable";
+	disablewaitingroomevent;
+	end;
+
+OnStart:
+	enablewaitingroomevent;
+	end;
+}
+
+job_hunte,1,1,1	script	Manager#hnt	66,{
+OnInit:
+	disablenpc "Manager#hnt";
+	end;
+
+OnEnable:
+	donpcevent "開關#hnt::OnDisable";
+	enablenpc "Manager#hnt";
+	set .MyMobs,6;
+	initnpctimer;
+	// 正確
+	monster "job_hunte",67,80,"轉職考試專用怪獸",1015,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte",114,78,"轉職考試專用怪獸",1015,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte",89,127,"轉職考試專用怪獸",1002,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte",53,73,"轉職考試專用怪獸",1041,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte",125,70,"轉職考試專用怪獸",1016,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte",90,92,"轉職考試專用怪獸",1015,1,"Manager#hnt::OnMyMobDead";
+	// 擾亂用
+	monster "job_hunte",85,100,"轉職考試專用怪物",1016,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",72,102,"轉職考試專用怪物",1041,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",108,103,"轉職考試專用怪物",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",88,127,"轉職考試專用怪物",1002,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",125,69,"轉職考試專用怪物",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",77,112,"考試專用怪獸",1016,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,106,"考試專用怪獸",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,73,"考試專用怪獸",1002,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",125,70,"考試專用怪獸",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",90,91,"考試專用怪獸",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",67,80,"獵人考試專用怪獸",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",77,112,"獵人考試專用怪獸",1016,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,106,"獵人考試專用怪獸",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,73,"獵人考試專用怪獸",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",125,70,"獵人考試專用怪獸",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",90,91,"獵人考試用怪獸",1041,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",85,100,"獵人考試用怪獸",1002,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",72,102,"獵人考試用怪獸",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",108,103,"獵人考試用怪獸",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",77,112,"獵人考試用怪獸",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",112,139,"火星人",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",112,139,"打我吧",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",112,139,"其實我是波利",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",112,139,"轉職考試專用樣本",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",90,91,"不是我啦",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,73,"展示用怪物",1002,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,106,"饒了我啦",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",77,112,"幫幫我",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",72,102,"打我直接過關",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",108,103,"攻速184",1015,1,"Manager#hnt::OnMyMobDead2";
+	end;
+
+OnMyMobDead:
+	set .MyMobs,.MyMobs-1;
+	if (.MyMobs < 3) {
+		mapannounce "job_hunte","invigilator: 很好，太棒了注意陷阱去找地圖中央的按鈕吧!",bc_map;
+		set HNTR_Q,14;
+		donpcevent "開關#hnt::OnEnable";
+		donpcevent "Manager#hnt::OnDisable";
+	}
+	else {
+		mapannounce "job_hunte","invigilator: 很好，就是這樣",bc_map;
+		set .MyMobs,.MyMobs-1;
+	}
+	end;
+
+OnMyMobDead2:
+	mapannounce "job_hunte",strcharinfo(0)+ "!! 唉呀，真不小心，重來吧",bc_map;
+	set HNTR_Q,13;
+	warp "job_hunte",176,22;
+	donpcevent "Manager#hnt::OnReset";
+	donpcevent "Hunter waitingroom#hnt::OnStart";
+	end;
+
+OnReset:
+	stopnpctimer;
+
+OnDisable:
+	killmonsterall "job_hunte";
+	disablenpc "Manager#hnt";
+	end;
+
+OnTimer2000:
+	mapannounce "job_hunte","invigilator: 那麼. 轉職考試要開始了.",bc_map;
+	end;
+
+OnTimer4000:
+	mapannounce "job_hunte","invigilator: 前面也有說明過, 在許多怪獸當中只選擇抓住 ‘轉職考試專用怪獸' 就好了.",bc_map;
+	end;
+
+OnTimer6000:
+	mapannounce "job_hunte","invigilator: ***** 請注意陷阱而抓住怪獸. *****",bc_map;
+	end;
+
+OnTimer8000:
+	mapannounce "job_hunte","invigilator: 能夠抓住4隻以上的'轉職考試專用怪獸' 的話就可以啟動中央的脫離用按鈕的.",bc_map;
+	end;
+
+OnTimer10000:
+	mapannounce "job_hunte","invigilator: 請啟動脫離用按鈕之後就會看到12點方向的出口的,  經過那裡離開考場就成功了.",bc_map;
+	end;
+
+OnTimer12000:
+	mapannounce "job_hunte","invigilator: 好, 現在開始要進入倒數了. 每一分鐘會提醒大家的.",bc_map;
+	end;
+
+OnTimer14000:
+	mapannounce "job_hunte","invigilator:  ****** 剩下3分鐘. ******",bc_map;
+	end;
+
+OnTimer74000:
+	mapannounce "job_hunte","invigilator:  ****** 剩下2分鐘. ******",bc_map;
+	end;
+
+OnTimer134000:
+	mapannounce "job_hunte","invigilator:  ****** 剩下1分鐘. ******",bc_map;
+	end;
+
+OnTimer164000:
+	mapannounce "job_hunte","invigilator:  ****** 剩下30秒. ******",bc_map;
+	end;
+
+OnTimer187000:
+	mapannounce "job_hunte","invigilator:  考試終了還剩下5秒. . . . .",bc_map;
+	end;
+
+OnTimer188000:
+	mapannounce "job_hunte","invigilator: 考試終了還剩下4秒. . . .",bc_map;
+	end;
+
+OnTimer189000:
+	mapannounce "job_hunte","invigilator: 考試終了還剩下3秒. . . .",bc_map;
+	end;
+
+OnTimer191000:
+	mapannounce "job_hunte","invigilator: 考試終了還剩下2秒. . . .",bc_map;
+	end;
+
+OnTimer192000:
+	mapannounce "job_hunte","invigilator: 考試終了還剩下1秒. . . .",bc_map;
+	end;
+
+OnTimer193000:
+	mapannounce "job_hunte","invigilator:  0 ",bc_map;
+	end;
+
+OnTimer194000:
+	mapannounce "job_hunte","invigilator:  時間到了 . 請再次挑戰.",bc_map;
+	end;
+
+OnTimer195000:
+	areawarp "job_hunte",50,64,129,143,"job_hunte",176,22;
+	end;
+
+OnTimer197000:
+	donpcevent "Manager#hnt::OnReset";
+	donpcevent "Hunter waitingroom#hnt::OnStart";
+	end;
+}
+
+job_hunte,93,101,1	script	開關#hnt	723,1,1,{
+OnTouch:
+	mes "有逃脫用開關，";
+	mes "看到3個按鈕";
+	set HNTR_Q,15;
+	next;
+	switch(select("脫離:取消:補考")) {
+	case 1:
+		mes "^3355FF脫離出口已經打開^000000";
+		close2;
+		mapannounce "job_hunte"," ## 打開了脫離出口 ## ",bc_map;
+		enablenpc "exit#hnttest";
+		end;
+	case 2:
+		mes "^3355FF取消了操作^000000";
+		close2;
+		mapannounce "job_hunte"," ## 取消了操作 ## ",bc_map;
+		end;
+	case 3:
+		mapannounce "job_hunte"," ## 轉職考試中斷了... ## ",bc_map;
+		mes "^3355FF稍候 回到休息室^000000";
+		close2;
+		set HNTR_Q,13;
+		warp "job_hunte",176,22;
+		donpcevent "Manager#hnt::OnReset";
+		donpcevent "Hunter waitingroom#hnt::OnStart";
+		end;
+	}
+
+OnDisable:
+	disablenpc "exit#hnttest";
+	disablenpc "開關#hnt";
+	end;
+
+OnEnable:
+	enablenpc "開關#hnt";
+	end;
+}
+
+job_hunte,89,139,0	script	exit#hnttest	45,2,2,{
+OnInit:
+	disablenpc "exit#hnttest";
+	end;
+
+OnTouch:
+	donpcevent "Manager#hnt::OnReset";
+	donpcevent "Hunter waitingroom#hnt::OnStart";
+	set HNTR_Q,16;
+	changequest 4011,4012;
+	savepoint "payon",104,99;
+	if (rand(1))
+		warp "payon_in02",21,27;
+	warp "payon_in03",128,7;
+}
+
+// Hunter Job test traps.
+//============================================================ 
+job_hunte,52,140,0	script	1-1::HntTrap	-1,0,1,{
+OnTouch:
+	set HNTR_Q,13;
+	warp "job_hunte",176,22;
+	donpcevent "Manager#hnt::OnReset";
+	donpcevent "Hunter waitingroom#hnt::OnStart";
+	end;
+}
+
+job_hunte,53,140,0	duplicate(HntTrap)	1-2	-1,0,1
+job_hunte,54,141,0	duplicate(HntTrap)	1-3	-1,0,0
+job_hunte,55,141,0	duplicate(HntTrap)	1-4	-1,0,0
+job_hunte,55,140,0	duplicate(HntTrap)	1-5	-1,0,0
+job_hunte,54,140,0	duplicate(HntTrap)	1-6	-1,0,0
+job_hunte,52,138,0	duplicate(HntTrap)	1-7	-1,0,0
+job_hunte,53,138,0	duplicate(HntTrap)	1-8	-1,0,0
+job_hunte,62,140,0	duplicate(HntTrap)	2-1	-1,0,1
+job_hunte,63,140,0	duplicate(HntTrap)	2-2	-1,0,1
+job_hunte,64,140,0	duplicate(HntTrap)	2-3	-1,0,0
+job_hunte,64,141,0	duplicate(HntTrap)	2-4	-1,0,0
+job_hunte,65,140,0	duplicate(HntTrap)	2-5	-1,0,0
+job_hunte,65,141,0	duplicate(HntTrap)	2-6	-1,0,0
+job_hunte,62,138,0	duplicate(HntTrap)	2-7	-1,0,0
+job_hunte,63,138,0	duplicate(HntTrap)	2-8	-1,0,0
+job_hunte,72,140,0	duplicate(HntTrap)	3-1	-1,0,1
+job_hunte,73,140,0	duplicate(HntTrap)	3-2	-1,0,1
+job_hunte,72,138,0	duplicate(HntTrap)	3-3	-1,0,0
+job_hunte,72,138,0	duplicate(HntTrap)	3-4	-1,0,0
+job_hunte,78,140,0	duplicate(HntTrap)	4-1	-1,0,0
+job_hunte,78,141,0	duplicate(HntTrap)	4-2	-1,0,0
+job_hunte,79,140,0	duplicate(HntTrap)	4-3	-1,0,0
+job_hunte,79,141,0	duplicate(HntTrap)	4-4	-1,0,0
+job_hunte,82,138,0	duplicate(HntTrap)	5-1	-1,0,0
+job_hunte,82,139,0	duplicate(HntTrap)	5-2	-1,0,0
+job_hunte,83,138,0	duplicate(HntTrap)	5-3	-1,0,0
+job_hunte,83,139,0	duplicate(HntTrap)	5-4	-1,0,0
+job_hunte,99,138,0	duplicate(HntTrap)	6-1	-1,1,0
+job_hunte,99,139,0	duplicate(HntTrap)	6-2	-1,1,0
+job_hunte,101,138,0	duplicate(HntTrap)	6-3	-1,0,0
+job_hunte,101,139,0	duplicate(HntTrap)	6-4	-1,0,0
+job_hunte,106,140,0	duplicate(HntTrap)	7-1	-1,0,1
+job_hunte,107,140,0	duplicate(HntTrap)	7-2	-1,0,1
+job_hunte,106,138,0	duplicate(HntTrap)	7-3	-1,0,0
+job_hunte,107,138,0	duplicate(HntTrap)	7-4	-1,0,0
+job_hunte,112,140,0	duplicate(HntTrap)	8-1	-1,0,0
+job_hunte,112,141,0	duplicate(HntTrap)	8-2	-1,0,0
+job_hunte,113,140,0	duplicate(HntTrap)	8-3	-1,0,0
+job_hunte,113,141,0	duplicate(HntTrap)	8-4	-1,0,0
+job_hunte,116,140,0	duplicate(HntTrap)	9-1	-1,0,0
+job_hunte,116,141,0	duplicate(HntTrap)	9-2	-1,0,0
+job_hunte,117,140,0	duplicate(HntTrap)	9-3	-1,0,0
+job_hunte,117,141,0	duplicate(HntTrap)	9-4	-1,0,0
+job_hunte,120,138,0	duplicate(HntTrap)	10-1	-1,0,0
+job_hunte,120,139,0	duplicate(HntTrap)	10-2	-1,0,0
+job_hunte,121,138,0	duplicate(HntTrap)	10-3	-1,0,0
+job_hunte,121,139,0	duplicate(HntTrap)	10-4	-1,0,0
+job_hunte,126,139,0	duplicate(HntTrap)	11-1	-1,0,2
+job_hunte,127,139,0	duplicate(HntTrap)	11-2	-1,0,2
+job_hunte,126,136,0	duplicate(HntTrap)	11-3	-1,0,0
+job_hunte,127,136,0	duplicate(HntTrap)	11-4	-1,0,0
+job_hunte,52,134,0	duplicate(HntTrap)	12-1	-1,0,1
+job_hunte,53,134,0	duplicate(HntTrap)	12-2	-1,0,1
+job_hunte,52,132,0	duplicate(HntTrap)	12-3	-1,0,0
+job_hunte,53,132,0	duplicate(HntTrap)	12-4	-1,0,0
+job_hunte,124,130,0	duplicate(HntTrap)	13-1	-1,0,0
+job_hunte,124,131,0	duplicate(HntTrap)	13-2	-1,0,0
+job_hunte,125,130,0	duplicate(HntTrap)	13-3	-1,0,0
+job_hunte,125,131,0	duplicate(HntTrap)	13-4	-1,0,0
+job_hunte,64,128,0	duplicate(HntTrap)	14-1	-1,0,0
+job_hunte,64,129,0	duplicate(HntTrap)	14-2	-1,0,0
+job_hunte,65,128,0	duplicate(HntTrap)	14-3	-1,0,0
+job_hunte,65,129,0	duplicate(HntTrap)	14-4	-1,0,0
+job_hunte,68,126,0	duplicate(HntTrap)	15-1	-1,0,0
+job_hunte,68,127,0	duplicate(HntTrap)	15-2	-1,0,0
+job_hunte,69,126,0	duplicate(HntTrap)	15-3	-1,0,0
+job_hunte,69,127,0	duplicate(HntTrap)	15-4	-1,0,0
+job_hunte,75,128,0	duplicate(HntTrap)	16-1	-1,1,0
+job_hunte,75,129,0	duplicate(HntTrap)	16-2	-1,1,0
+job_hunte,77,128,0	duplicate(HntTrap)	16-3	-1,0,0
+job_hunte,77,129,0	duplicate(HntTrap)	16-4	-1,0,0
+job_hunte,82,126,0	duplicate(HntTrap)	17-1	-1,0,0
+job_hunte,82,127,0	duplicate(HntTrap)	17-2	-1,0,0
+job_hunte,83,126,0	duplicate(HntTrap)	17-3	-1,0,0
+job_hunte,83,127,0	duplicate(HntTrap)	17-4	-1,0,0
+job_hunte,96,128,0	duplicate(HntTrap)	18-1	-1,0,0
+job_hunte,96,129,0	duplicate(HntTrap)	18-2	-1,0,0
+job_hunte,97,128,0	duplicate(HntTrap)	18-3	-1,0,0
+job_hunte,97,129,0	duplicate(HntTrap)	18-4	-1,0,0
+job_hunte,100,126,0	duplicate(HntTrap)	19-1	-1,0,0
+job_hunte,100,127,0	duplicate(HntTrap)	19-2	-1,0,0
+job_hunte,101,126,0	duplicate(HntTrap)	19-3	-1,0,0
+job_hunte,101,127,0	duplicate(HntTrap)	19-4	-1,0,0
+job_hunte,106,128,0	duplicate(HntTrap)	20-1	-1,0,0
+job_hunte,106,129,0	duplicate(HntTrap)	20-2	-1,0,0
+job_hunte,107,128,0	duplicate(HntTrap)	20-3	-1,0,0
+job_hunte,107,129,0	duplicate(HntTrap)	20-4	-1,0,0
+job_hunte,112,126,0	duplicate(HntTrap)	21-1	-1,0,0
+job_hunte,112,127,0	duplicate(HntTrap)	21-2	-1,0,0
+job_hunte,113,126,0	duplicate(HntTrap)	21-3	-1,0,0
+job_hunte,113,127,0	duplicate(HntTrap)	21-4	-1,0,0
+job_hunte,126,126,0	duplicate(HntTrap)	22-1	-1,0,0
+job_hunte,126,127,0	duplicate(HntTrap)	22-2	-1,0,0
+job_hunte,127,126,0	duplicate(HntTrap)	22-3	-1,0,0
+job_hunte,127,127,0	duplicate(HntTrap)	22-4	-1,0,0
+job_hunte,52,122,0	duplicate(HntTrap)	23-1	-1,0,1
+job_hunte,52,122,0	duplicate(HntTrap)	23-2	-1,0,1
+job_hunte,53,120,0	duplicate(HntTrap)	23-3	-1,1,0
+job_hunte,54,121,0	duplicate(HntTrap)	23-4	-1,0,0
+job_hunte,55,121,0	duplicate(HntTrap)	23-5	-1,0,0
+job_hunte,55,120,0	duplicate(HntTrap)	23-6	-1,0,0
+job_hunte,66,120,0	duplicate(HntTrap)	24-1	-1,0,0
+job_hunte,66,121,0	duplicate(HntTrap)	24-2	-1,0,0
+job_hunte,67,120,0	duplicate(HntTrap)	24-3	-1,0,0
+job_hunte,67,121,0	duplicate(HntTrap)	24-4	-1,0,0
+job_hunte,114,118,0	duplicate(HntTrap)	25-1	-1,0,0
+job_hunte,114,119,0	duplicate(HntTrap)	25-2	-1,0,0
+job_hunte,115,118,0	duplicate(HntTrap)	25-3	-1,0,0
+job_hunte,115,119,0	duplicate(HntTrap)	25-4	-1,0,0
+job_hunte,124,120,0	duplicate(HntTrap)	26-1	-1,0,1
+job_hunte,125,120,0	duplicate(HntTrap)	26-2	-1,0,1
+job_hunte,124,118,0	duplicate(HntTrap)	26-3	-1,0,0
+job_hunte,125,118,0	duplicate(HntTrap)	26-4	-1,0,0
+job_hunte,66,116,0	duplicate(HntTrap)	27-1	-1,0,0
+job_hunte,66,117,0	duplicate(HntTrap)	27-2	-1,0,0
+job_hunte,67,116,0	duplicate(HntTrap)	27-3	-1,0,0
+job_hunte,67,117,0	duplicate(HntTrap)	27-4	-1,0,0
+job_hunte,76,114,0	duplicate(HntTrap)	28-1	-1,0,0
+job_hunte,76,115,0	duplicate(HntTrap)	28-2	-1,0,0
+job_hunte,77,114,0	duplicate(HntTrap)	28-3	-1,0,0
+job_hunte,77,115,0	duplicate(HntTrap)	28-4	-1,0,0
+job_hunte,82,116,0	duplicate(HntTrap)	29-1	-1,0,0
+job_hunte,82,117,0	duplicate(HntTrap)	29-2	-1,0,0
+job_hunte,83,116,0	duplicate(HntTrap)	29-3	-1,0,0
+job_hunte,83,117,0	duplicate(HntTrap)	29-4	-1,0,0
+job_hunte,86,114,0	duplicate(HntTrap)	30-1	-1,0,0
+job_hunte,86,115,0	duplicate(HntTrap)	30-2	-1,0,0
+job_hunte,87,114,0	duplicate(HntTrap)	30-3	-1,0,0
+job_hunte,87,115,0	duplicate(HntTrap)	30-4	-1,0,0
+job_hunte,92,115,0	duplicate(HntTrap)	31-1	-1,1,0
+job_hunte,92,114,0	duplicate(HntTrap)	31-2	-1,1,0
+job_hunte,90,115,0	duplicate(HntTrap)	31-3	-1,0,0
+job_hunte,102,116,0	duplicate(HntTrap)	32-1	-1,0,0
+job_hunte,102,117,0	duplicate(HntTrap)	32-2	-1,0,0
+job_hunte,103,116,0	duplicate(HntTrap)	32-3	-1,0,0
+job_hunte,103,117,0	duplicate(HntTrap)	32-4	-1,0,0
+job_hunte,114,114,0	duplicate(HntTrap)	33-1	-1,0,0
+job_hunte,114,115,0	duplicate(HntTrap)	33-2	-1,0,0
+job_hunte,115,114,0	duplicate(HntTrap)	33-3	-1,0,0
+job_hunte,115,115,0	duplicate(HntTrap)	33-4	-1,0,0
+job_hunte,54,110,0	duplicate(HntTrap)	34-1	-1,0,1
+job_hunte,55,110,0	duplicate(HntTrap)	34-2	-1,0,1
+job_hunte,54,108,0	duplicate(HntTrap)	34-3	-1,0,0
+job_hunte,55,108,0	duplicate(HntTrap)	34-4	-1,0,0
+job_hunte,64,112,0	duplicate(HntTrap)	35-1	-1,0,0
+job_hunte,64,113,0	duplicate(HntTrap)	35-2	-1,0,0
+job_hunte,65,112,0	duplicate(HntTrap)	35-3	-1,0,0
+job_hunte,65,113,0	duplicate(HntTrap)	35-4	-1,0,0
+job_hunte,80,110,0	duplicate(HntTrap)	36-1	-1,0,0
+job_hunte,80,111,0	duplicate(HntTrap)	36-2	-1,0,0
+job_hunte,81,110,0	duplicate(HntTrap)	36-3	-1,0,0
+job_hunte,81,111,0	duplicate(HntTrap)	36-4	-1,0,0
+job_hunte,90,108,0	duplicate(HntTrap)	37-1	-1,0,6
+job_hunte,91,108,0	duplicate(HntTrap)	37-2	-1,0,5
+job_hunte,91,102,0	duplicate(HntTrap)	37-3	-1,0,0
+job_hunte,98,109,0	duplicate(HntTrap)	38-1	-1,0,2
+job_hunte,99,109,0	duplicate(HntTrap)	38-2	-1,0,2
+job_hunte,103,109,0	duplicate(HntTrap)	38-3	-1,3,0
+job_hunte,103,108,0	duplicate(HntTrap)	38-4	-1,3,0
+job_hunte,97,106,0	duplicate(HntTrap)	39-1	-1,2,0
+job_hunte,96,107,0	duplicate(HntTrap)	39-2	-1,1,0
+job_hunte,94,108,0	duplicate(HntTrap)	39-3	-1,0,1
+job_hunte,95,109,0	duplicate(HntTrap)	39-4	-1,0,0
+job_hunte,95,108,0	duplicate(HntTrap)	40-1	-1,0,0
+job_hunte,94,106,0	duplicate(HntTrap)	40-2	-1,0,0
+job_hunte,96,102,0	duplicate(HntTrap)	40-3	-1,0,3
+job_hunte,97,102,0	duplicate(HntTrap)	40-4	-1,0,3
+job_hunte,95,98,0	duplicate(HntTrap)	41-1	-1,2,0
+job_hunte,94,99,0	duplicate(HntTrap)	42-1	-1,1,0
+job_hunte,92,98,0	duplicate(HntTrap)	43-1	-1,0,0
+job_hunte,112,110,0	duplicate(HntTrap)	44-1	-1,0,0
+job_hunte,112,111,0	duplicate(HntTrap)	44-2	-1,0,0
+job_hunte,113,110,0	duplicate(HntTrap)	44-3	-1,0,0
+job_hunte,113,111,0	duplicate(HntTrap)	44-4	-1,0,0
+job_hunte,126,108,0	duplicate(HntTrap)	45-1	-1,0,1
+job_hunte,127,108,0	duplicate(HntTrap)	45-2	-1,0,1
+job_hunte,126,106,0	duplicate(HntTrap)	45-3	-1,0,0
+job_hunte,126,106,0	duplicate(HntTrap)	45-4	-1,0,0
+job_hunte,53,102,0	duplicate(HntTrap)	46-1	-1,1,1
+job_hunte,55,102,0	duplicate(HntTrap)	46-2	-1,0,1
+job_hunte,53,100,0	duplicate(HntTrap)	46-3	-1,1,0
+job_hunte,55,100,0	duplicate(HntTrap)	46-4	-1,0,0
+job_hunte,64,106,0	duplicate(HntTrap)	47-1	-1,0,0
+job_hunte,64,107,0	duplicate(HntTrap)	47-2	-1,0,0
+job_hunte,65,106,0	duplicate(HntTrap)	47-3	-1,0,0
+job_hunte,65,107,0	duplicate(HntTrap)	47-4	-1,0,0
+job_hunte,66,100,0	duplicate(HntTrap)	48-1	-1,0,0
+job_hunte,66,101,0	duplicate(HntTrap)	48-2	-1,0,0
+job_hunte,67,100,0	duplicate(HntTrap)	48-3	-1,0,0
+job_hunte,67,101,0	duplicate(HntTrap)	48-4	-1,0,0
+job_hunte,86,106,0	duplicate(HntTrap)	49-1	-1,0,1
+job_hunte,87,106,0	duplicate(HntTrap)	49-2	-1,0,1
+job_hunte,82,104,0	duplicate(HntTrap)	49-3	-1,5,0
+job_hunte,81,105,0	duplicate(HntTrap)	49-4	-1,4,0
+job_hunte,76,105,0	duplicate(HntTrap)	50-1	-1,0,0
+job_hunte,76,104,0	duplicate(HntTrap)	50-2	-1,0,0
+job_hunte,78,101,0	duplicate(HntTrap)	50-3	-1,0,2
+job_hunte,79,101,0	duplicate(HntTrap)	50-4	-1,0,2
+job_hunte,76,99,0	duplicate(HntTrap)	51-1	-1,1,0
+job_hunte,77,98,0	duplicate(HntTrap)	51-2	-1,2,0
+job_hunte,74,99,0	duplicate(HntTrap)	51-3	-1,0,0
+job_hunte,74,98,0	duplicate(HntTrap)	51-4	-1,0,0
+job_hunte,82,100,0	duplicate(HntTrap)	53-1	-1,0,0
+job_hunte,82,101,0	duplicate(HntTrap)	53-2	-1,0,0
+job_hunte,83,100,0	duplicate(HntTrap)	53-3	-1,0,0
+job_hunte,83,101,0	duplicate(HntTrap)	53-4	-1,0,0
+job_hunte,106,104,0	duplicate(HntTrap)	54-1	-1,0,0
+job_hunte,106,105,0	duplicate(HntTrap)	54-2	-1,0,0
+job_hunte,107,104,0	duplicate(HntTrap)	54-3	-1,0,0
+job_hunte,107,105,0	duplicate(HntTrap)	54-4	-1,0,0
+job_hunte,112,104,0	duplicate(HntTrap)	55-1	-1,0,1
+job_hunte,113,104,0	duplicate(HntTrap)	55-2	-1,0,1
+job_hunte,112,102,0	duplicate(HntTrap)	55-3	-1,0,0
+job_hunte,113,102,0	duplicate(HntTrap)	55-4	-1,0,0
+job_hunte,54,92,0	duplicate(HntTrap)	56-1	-1,0,0
+job_hunte,54,93,0	duplicate(HntTrap)	56-2	-1,0,0
+job_hunte,55,92,0	duplicate(HntTrap)	56-3	-1,0,0
+job_hunte,55,93,0	duplicate(HntTrap)	56-4	-1,0,0
+job_hunte,52,90,0	duplicate(HntTrap)	56-5	-1,0,0
+job_hunte,52,91,0	duplicate(HntTrap)	56-6	-1,0,0
+job_hunte,53,90,0	duplicate(HntTrap)	56-7	-1,0,0
+job_hunte,53,91,0	duplicate(HntTrap)	56-8	-1,0,0
+job_hunte,64,92,0	duplicate(HntTrap)	57-1	-1,0,0
+job_hunte,64,93,0	duplicate(HntTrap)	57-2	-1,0,0
+job_hunte,65,92,0	duplicate(HntTrap)	57-3	-1,0,0
+
+job_hunte,65,93,0	script	57-4::HntTrap2	-1,{
+OnTouch:
+	mapannounce "job_hunte",strcharinfo(0) + " 掉入陷阱了. 要回到原來的位置了.",bc_map;
+	set HNTR_Q,13;
+	warp "job_hunte",176,22;
+	donpcevent "Manager#hnt::OnReset";
+	donpcevent "Hunter waitingroom#hnt::OnStart";
+	end;
+}
+
+job_hunte,76,94,0	duplicate(HntTrap2)	58-1	-1,0,0
+job_hunte,76,95,0	duplicate(HntTrap2)	58-2	-1,0,0
+job_hunte,77,94,0	duplicate(HntTrap2)	58-3	-1,0,0
+job_hunte,77,95,0	duplicate(HntTrap2)	58-4	-1,0,0
+job_hunte,78,92,0	duplicate(HntTrap2)	59-1	-1,0,0
+job_hunte,78,93,0	duplicate(HntTrap2)	59-2	-1,0,0
+job_hunte,79,92,0	duplicate(HntTrap2)	59-3	-1,0,0
+job_hunte,79,93,0	duplicate(HntTrap2)	59-4	-1,0,0
+job_hunte,86,92,0	duplicate(HntTrap2)	60-1	-1,0,0
+job_hunte,86,93,0	duplicate(HntTrap2)	60-2	-1,0,0
+job_hunte,87,92,0	duplicate(HntTrap2)	60-3	-1,0,0
+job_hunte,87,93,0	duplicate(HntTrap2)	60-4	-1,0,0
+job_hunte,90,96,0	duplicate(HntTrap2)	61-1	-1,0,0
+job_hunte,90,97,0	duplicate(HntTrap2)	61-2	-1,0,0
+job_hunte,91,96,0	duplicate(HntTrap2)	61-3	-1,0,0
+job_hunte,91,97,0	duplicate(HntTrap2)	61-4	-1,0,0
+job_hunte,99,95,0	duplicate(HntTrap2)	62-1	-1,1,0
+job_hunte,99,94,0	duplicate(HntTrap2)	62-2	-1,1,0
+job_hunte,101,94,0	duplicate(HntTrap2)	62-3	-1,0,1
+job_hunte,100,93,0	duplicate(HntTrap2)	62-4	-1,0,0
+job_hunte,100,92,0	duplicate(HntTrap2)	63-1	-1,0,0
+job_hunte,101,92,0	duplicate(HntTrap2)	63-2	-1,0,0
+job_hunte,102,98,0	duplicate(HntTrap2)	64-1	-1,0,0
+job_hunte,102,99,0	duplicate(HntTrap2)	64-2	-1,0,0
+job_hunte,103,98,0	duplicate(HntTrap2)	64-3	-1,0,0
+job_hunte,103,99,0	duplicate(HntTrap2)	64-4	-1,0,0
+job_hunte,102,90,0	duplicate(HntTrap2)	65-1	-1,0,0
+job_hunte,102,91,0	duplicate(HntTrap2)	65-2	-1,0,0
+job_hunte,103,90,0	duplicate(HntTrap2)	65-3	-1,0,0
+job_hunte,103,91,0	duplicate(HntTrap2)	65-4	-1,0,0
+job_hunte,114,96,0	duplicate(HntTrap2)	66-1	-1,0,0
+job_hunte,114,97,0	duplicate(HntTrap2)	66-2	-1,0,0
+job_hunte,115,96,0	duplicate(HntTrap2)	66-3	-1,0,0
+job_hunte,115,97,0	duplicate(HntTrap2)	66-4	-1,0,0
+job_hunte,112,90,0	duplicate(HntTrap2)	67-1	-1,0,0
+job_hunte,112,91,0	duplicate(HntTrap2)	67-2	-1,0,0
+job_hunte,113,90,0	duplicate(HntTrap2)	67-3	-1,0,0
+job_hunte,113,91,0	duplicate(HntTrap2)	67-4	-1,0,0
+job_hunte,125,97,0	duplicate(HntTrap2)	68-1	-1,1,0
+job_hunte,125,96,0	duplicate(HntTrap2)	68-2	-1,1,0
+job_hunte,127,96,0	duplicate(HntTrap2)	68-3	-1,0,0
+job_hunte,127,97,0	duplicate(HntTrap2)	68-4	-1,0,0
+job_hunte,52,86,0	duplicate(HntTrap2)	69-1	-1,0,0
+job_hunte,52,87,0	duplicate(HntTrap2)	69-2	-1,0,0
+job_hunte,53,86,0	duplicate(HntTrap2)	69-3	-1,0,0
+job_hunte,53,87,0	duplicate(HntTrap2)	69-4	-1,0,0
+job_hunte,66,88,0	duplicate(HntTrap2)	70-1	-1,0,0
+job_hunte,66,89,0	duplicate(HntTrap2)	70-2	-1,0,0
+job_hunte,67,88,0	duplicate(HntTrap2)	70-3	-1,0,0
+job_hunte,67,89,0	duplicate(HntTrap2)	70-4	-1,0,0
+job_hunte,114,84,0	duplicate(HntTrap2)	71-1	-1,0,0
+job_hunte,114,85,0	duplicate(HntTrap2)	71-2	-1,0,0
+job_hunte,115,84,0	duplicate(HntTrap2)	71-3	-1,0,0
+job_hunte,115,85,0	duplicate(HntTrap2)	71-4	-1,0,0
+job_hunte,126,86,0	duplicate(HntTrap2)	72-1	-1,0,0
+job_hunte,126,87,0	duplicate(HntTrap2)	72-2	-1,0,0
+job_hunte,127,86,0	duplicate(HntTrap2)	72-3	-1,0,0
+job_hunte,127,87,0	duplicate(HntTrap2)	72-4	-1,0,0
+job_hunte,54,80,0	duplicate(HntTrap2)	73-1	-1,0,1
+job_hunte,55,80,0	duplicate(HntTrap2)	73-2	-1,0,1
+job_hunte,55,80,0	duplicate(HntTrap2)	73-3	-1,0,0
+job_hunte,55,78,0	duplicate(HntTrap2)	73-4	-1,0,0
+job_hunte,64,82,0	duplicate(HntTrap2)	74-1	-1,0,1
+job_hunte,65,82,0	duplicate(HntTrap2)	74-2	-1,0,1
+job_hunte,64,80,0	duplicate(HntTrap2)	74-3	-1,0,0
+job_hunte,65,80,0	duplicate(HntTrap2)	74-4	-1,0,0
+job_hunte,66,78,0	duplicate(HntTrap2)	75-1	-1,0,0
+job_hunte,66,79,0	duplicate(HntTrap2)	75-2	-1,0,0
+job_hunte,67,78,0	duplicate(HntTrap2)	75-3	-1,0,0
+job_hunte,67,79,0	duplicate(HntTrap2)	75-4	-1,0,0
+job_hunte,74,78,0	duplicate(HntTrap2)	76-1	-1,0,0
+job_hunte,74,79,0	duplicate(HntTrap2)	76-2	-1,0,0
+job_hunte,75,78,0	duplicate(HntTrap2)	76-3	-1,0,0
+job_hunte,75,79,0	duplicate(HntTrap2)	76-4	-1,0,0
+job_hunte,78,80,0	duplicate(HntTrap2)	77-1	-1,0,0
+job_hunte,78,81,0	duplicate(HntTrap2)	77-2	-1,0,0
+job_hunte,79,80,0	duplicate(HntTrap2)	77-3	-1,0,0
+job_hunte,79,81,0	duplicate(HntTrap2)	77-4	-1,0,0
+job_hunte,82,78,0	duplicate(HntTrap2)	78-1	-1,0,0
+job_hunte,82,79,0	duplicate(HntTrap2)	78-2	-1,0,0
+job_hunte,83,78,0	duplicate(HntTrap2)	78-3	-1,0,0
+job_hunte,83,79,0	duplicate(HntTrap2)	78-4	-1,0,0
+job_hunte,94,78,0	duplicate(HntTrap2)	79-1	-1,0,0
+job_hunte,94,79,0	duplicate(HntTrap2)	79-2	-1,0,0
+job_hunte,95,78,0	duplicate(HntTrap2)	79-3	-1,0,0
+job_hunte,95,79,0	duplicate(HntTrap2)	79-4	-1,0,0
+job_hunte,101,80,0	duplicate(HntTrap2)	80-1	-1,1,0
+job_hunte,101,81,0	duplicate(HntTrap2)	80-2	-1,1,0
+job_hunte,103,81,0	duplicate(HntTrap2)	80-3	-1,0,0
+job_hunte,103,80,0	duplicate(HntTrap2)	80-4	-1,0,0
+job_hunte,104,78,0	duplicate(HntTrap2)	81-1	-1,0,0
+job_hunte,104,79,0	duplicate(HntTrap2)	81-2	-1,0,0
+job_hunte,105,78,0	duplicate(HntTrap2)	81-3	-1,0,0
+job_hunte,105,79,0	duplicate(HntTrap2)	81-4	-1,0,0
+job_hunte,110,78,0	duplicate(HntTrap2)	82-1	-1,0,0
+job_hunte,110,79,0	duplicate(HntTrap2)	82-2	-1,0,0
+job_hunte,111,78,0	duplicate(HntTrap2)	82-3	-1,0,0
+job_hunte,111,79,0	duplicate(HntTrap2)	82-4	-1,0,0
+job_hunte,114,80,0	duplicate(HntTrap2)	83-1	-1,0,0
+job_hunte,114,81,0	duplicate(HntTrap2)	83-2	-1,0,0
+job_hunte,115,80,0	duplicate(HntTrap2)	83-3	-1,0,0
+job_hunte,115,81,0	duplicate(HntTrap2)	83-4	-1,0,0
+job_hunte,124,78,0	duplicate(HntTrap2)	84-1	-1,0,0
+job_hunte,124,79,0	duplicate(HntTrap2)	84-2	-1,0,0
+job_hunte,125,78,0	duplicate(HntTrap2)	84-3	-1,0,0
+job_hunte,125,79,0	duplicate(HntTrap2)	84-4	-1,0,0
+job_hunte,126,82,0	duplicate(HntTrap2)	85-1	-1,0,0
+job_hunte,126,83,0	duplicate(HntTrap2)	85-2	-1,0,0
+job_hunte,127,82,0	duplicate(HntTrap2)	85-3	-1,0,0
+job_hunte,127,83,0	duplicate(HntTrap2)	85-4	-1,0,0
+job_hunte,52,68,0	duplicate(HntTrap2)	86-1	-1,0,1
+job_hunte,53,68,0	duplicate(HntTrap2)	86-2	-1,0,1
+job_hunte,52,66,0	duplicate(HntTrap2)	86-3	-1,0,0
+job_hunte,53,66,0	duplicate(HntTrap2)	86-4	-1,0,0
+job_hunte,54,70,0	duplicate(HntTrap2)	87-1	-1,0,1
+job_hunte,55,70,0	duplicate(HntTrap2)	87-2	-1,0,1
+job_hunte,54,68,0	duplicate(HntTrap2)	87-3	-1,0,0
+job_hunte,55,68,0	duplicate(HntTrap2)	87-4	-1,0,0
+job_hunte,59,66,0	duplicate(HntTrap2)	88-1	-1,1,0
+job_hunte,59,67,0	duplicate(HntTrap2)	88-2	-1,1,0
+job_hunte,61,67,0	duplicate(HntTrap2)	88-3	-1,0,0
+job_hunte,61,66,0	duplicate(HntTrap2)	88-4	-1,0,0
+job_hunte,68,68,0	duplicate(HntTrap2)	89-1	-1,0,1
+job_hunte,69,68,0	duplicate(HntTrap2)	89-2	-1,0,1
+job_hunte,68,66,0	duplicate(HntTrap2)	89-3	-1,0,0
+job_hunte,69,66,0	duplicate(HntTrap2)	89-4	-1,0,0
+job_hunte,76,66,0	duplicate(HntTrap2)	90-1	-1,0,0
+job_hunte,76,67,0	duplicate(HntTrap2)	90-2	-1,0,0
+job_hunte,77,66,0	duplicate(HntTrap2)	90-3	-1,0,0
+job_hunte,77,67,0	duplicate(HntTrap2)	90-4	-1,0,0
+job_hunte,82,68,0	duplicate(HntTrap2)	91-1	-1,0,0
+job_hunte,82,69,0	duplicate(HntTrap2)	91-2	-1,0,0
+job_hunte,83,68,0	duplicate(HntTrap2)	91-3	-1,0,0
+job_hunte,83,69,0	duplicate(HntTrap2)	91-4	-1,0,0
+job_hunte,96,66,0	duplicate(HntTrap2)	92-1	-1,0,0
+job_hunte,96,67,0	duplicate(HntTrap2)	92-2	-1,0,0
+job_hunte,97,66,0	duplicate(HntTrap2)	92-3	-1,0,0
+job_hunte,97,67,0	duplicate(HntTrap2)	92-4	-1,0,0
+job_hunte,100,68,0	duplicate(HntTrap2)	93-1	-1,0,0
+job_hunte,100,69,0	duplicate(HntTrap2)	93-2	-1,0,0
+job_hunte,101,68,0	duplicate(HntTrap2)	93-3	-1,0,0
+job_hunte,101,69,0	duplicate(HntTrap2)	93-4	-1,0,0
+job_hunte,107,66,0	duplicate(HntTrap2)	94-1	-1,1,0
+job_hunte,107,67,0	duplicate(HntTrap2)	94-2	-1,1,0
+job_hunte,109,67,0	duplicate(HntTrap2)	94-3	-1,0,0
+job_hunte,109,66,0	duplicate(HntTrap2)	94-4	-1,0,0
+job_hunte,117,69,0	duplicate(HntTrap2)	95-1	-1,1,0
+job_hunte,117,68,0	duplicate(HntTrap2)	95-2	-1,1,0
+job_hunte,119,69,0	duplicate(HntTrap2)	95-3	-1,0,0
+job_hunte,119,68,0	duplicate(HntTrap2)	95-4	-1,0,0
+job_hunte,124,66,0	duplicate(HntTrap2)	96-1	-1,0,0
+job_hunte,124,67,0	duplicate(HntTrap2)	96-2	-1,0,0
+job_hunte,125,66,0	duplicate(HntTrap2)	96-3	-1,0,0
+job_hunte,125,67,0	duplicate(HntTrap2)	96-4	-1,0,0
+job_hunte,126,70,0	duplicate(HntTrap2)	97-1	-1,0,0
+job_hunte,126,71,0	duplicate(HntTrap2)	97-2	-1,0,0
+job_hunte,127,70,0	duplicate(HntTrap2)	97-3	-1,0,0
+job_hunte,127,71,0	duplicate(HntTrap2)	97-4	-1,0,0

@@ -1,0 +1,184 @@
+//===== rAthena Script ======================================= 
+//= Blessed Refiner
+//===== By: ==================================================
+//= Euphy
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= [Official Conversion]
+//= Refiners that use Blessed ores to refine equipment.
+//= Upon failure, the equipment is not destroyed. The success
+//= rate is identical to that for Enriched ores.
+//= - "鐵匠 迪斯特" only refines from +6~12.
+//= NOTE: This NPC is currently disabled on official servers.
+//===== Additional Comments: =================================
+//= 1.0 First version. [Euphy]
+//============================================================
+
+-	script	::BlacksmithDister	-1,{
+	disable_items;
+	mes "[鐵匠 迪斯特]";
+	mes "在競爭激烈的社會下，需與眾不同才能生存下去!";
+	mes "我來精煉物品的話，會讓裝備^FF0000不會破壞^000000，不過";
+	next;
+	mes "[鐵匠 迪斯特]";
+	mes "只限精煉6 ~";
+	mes "12已精煉過的裝備，因商道是很重要的~";
+	next;
+	mes "[鐵匠 迪斯特]";
+	mes "還有精煉武器需要^ff9999受祝福的武器礦石^000000，防具需要^ff9999受祝福的防具礦石^000000，且精煉失敗也^FF0000不會破壞裝備也不會退階^000000";
+	next;
+	mes "[鐵匠 迪斯特]";
+	mes "怎麼樣? 要精煉嗎?";
+	next;
+	setarray .@position$[1],"頭部","身體","左手","右手","披肩","鞋子","裝飾品1","裝飾品2","頭中","頭下";
+	set .@menu$,"";
+	for(set .@i,1; .@i<=10; set .@i,.@i+1)
+		set .@menu$, .@menu$+((getequipisequiped(.@i))?getequipname(.@i):.@position$[.@i]+"-[Unequipped]")+":";
+	set .@part, select(.@menu$);
+	if (!getequipisequiped(.@part)) {
+		mes "[鐵匠 迪斯特]";
+		switch(.@part) {
+		case 1:
+			mes "這物品即使是上帝也沒辦法精煉";
+			break;
+		case 2:
+			mes "我的鐵鎚可以把你轟上天空當星星呢!";
+			break;
+		case 3:
+		case 4:
+			mes "做手工藝可不是我的專長啊";
+			break;
+		case 5:
+			mes "拿我可以精煉的東西來吧!!";
+			break;
+		case 6:
+			mes "這奇怪的味道是哪裡來的?";
+			break;
+		case 7:
+		case 8:
+			mes "你的裝飾品呢?";
+			break;
+		case 9:
+			mes "你要拿什麼給我精煉啊?";
+			break;
+		case 10:
+			mes "什麼? 你要我幹什麼?";
+			break;
+		}
+		close;
+	}
+	if (!getequipisenableref(.@part)) {
+		mes "[鐵匠 迪斯特]";
+		mes "這項物品是無法被精煉的";
+		close;
+	}
+	set .@equip_refine, getequiprefinerycnt(.@part);
+	if (.@equip_refine < 6 || .@equip_refine > 12) {
+		mes "[鐵匠 迪斯特]";
+		mes "這不是已精煉"+.@equip_refine+"的裝備嗎?";
+		mes "我有說過，我只接受精煉度6~12的裝備，";
+		mes "你去找別人吧!";
+		close;
+	}
+	set .@equip_lv, getequipweaponlv(.@part);
+	switch(.@equip_lv) {
+	default:
+	case 0:
+		set .@price,20000;
+		set .@material,6439; //Unbreakable_Def
+		set .@type$,"防具";
+		break;
+	case 1:
+		set .@price,1000;
+		set .@material,6438; //Unbreakable_Weap
+		set .@type$,"武器";
+		break;
+	case 2:
+		set .@price,2000;
+		set .@material,6438; //Unbreakable_Weap
+		set .@type$,"武器";
+		break;
+	case 3:
+		set .@price,20000;
+		set .@material,6438; //Unbreakable_Weap
+		set .@type$,"武器";
+		break;
+	case 4:
+		set .@price,40000;
+		set .@material,6438; //Unbreakable_Weap
+		set .@type$,"武器";
+		break;
+	}
+	set .@ore$,"^ff9999受祝福的"+.@type$+"礦石^000000";
+	mes "[鐵匠 迪斯特]";
+	mes "你拿已精煉"+.@equip_refine+"的"+.@type$+"，若需要精煉需準備"+.@ore$+"";
+	mes "1個和手續費"+(.@price/1000)+",000 zeny；";
+	mes "你確定要繼續嗎?";
+	next;
+	if(select("要:不要") == 2) {
+		mes "[鐵匠 迪斯特]";
+		mes "我很忙，別跟我開玩笑";
+		close;
+	}
+	if (getequippercentrefinery(.@part) < 100) {
+		mes "[鐵匠 迪斯特]";
+		mes "這"+.@type$+"已經精煉過好多次，若繼續精煉，失敗時裝備不會消失，但是"+.@ore$+"會消失哦!";
+		next;
+		mes "[鐵匠 迪斯特]";
+		mes "當然也不會退手續費喔!";
+		mes "這樣也要精煉嗎?";
+		next;
+		if(select("要:是嗎? 那不要") == 2) {
+			mes "[鐵匠 迪斯特]";
+			mes "很好，其實若勉強精煉而失敗的話，我也會很難過。";
+			close;
+		}
+	}
+	if (countitem(.@material) == 0 || Zeny < .@price) {
+		mes "[鐵匠 迪斯特]";
+		mes "材料不足，";
+		mes "精煉"+.@type$+"需要"+.@ore$+"和手續費"+(.@price/1000)+",000 zeny";
+		close;
+	}
+	delitem .@material,1;
+	set Zeny, Zeny-.@price;
+	mes "[鐵匠 迪斯特]";
+	mes "噹! 噹! 噹!";
+	if (getequippercentrefinery(.@part) > rand(100) || getequippercentrefinery(.@part) > rand(100)) {
+		specialeffect EF_BLESSING;
+		successrefitem .@part;
+		next;
+		mes "[鐵匠 迪斯特]";
+		mes "哈哈哈哈哈!!!";
+		next;
+		mes "[鐵匠 迪斯特]";
+		mes "這次精煉真是大成功啊!";
+		close;
+	}
+	specialeffect EF_CURSEATTACK;
+	specialeffect2 EF_SUI_EXPLOSION;
+	next;
+	emotion (!rand(5))?e_ag:e_omg;
+	mes "[鐵匠 迪斯特]";
+	mes "我的天啊!!!!";
+	next;
+	mes "[鐵匠 迪斯特]";
+	mes "噢!雖然有"+.@ore$+"的加持...";
+	next;
+	mes "[鐵匠 迪斯特]";
+	mes "我現在的心情糟透啦!!";
+	close;
+}
+
+// 台版位置與 rA 不同
+// prt_in,52,56,3	duplicate(BlacksmithDister)	鐵匠 迪斯特#prt	826
+prt_in,27,73,3	duplicate(BlacksmithDister)	鐵匠 迪斯特#prt	826
+
+payon,148,172,3	duplicate(BlacksmithDister)	鐵匠 迪斯特#pay	826
+alberta_in,20,56,3	duplicate(BlacksmithDister)	鐵匠 迪斯特#alb	826
+yuno_in01,175,18,3	duplicate(BlacksmithDister)	鐵匠 迪斯特#yuno	826
+ein_in01,26,82,3	duplicate(BlacksmithDister)	鐵匠 迪斯特#ein	826
+lhz_in02,280,15,3	duplicate(BlacksmithDister)	鐵匠 迪斯特#lhz	826

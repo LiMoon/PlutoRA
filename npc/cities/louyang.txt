@@ -1,0 +1,298 @@
+//===== rAthena Script ======================================= 
+//= Louyang City NPCs 
+//===== By: ================================================== 
+//= Vidar (1.0)
+//= Mass Zero (1.1)
+//= Dino9021, roughly translated by Celest (1.2)
+//= Mass Zero (1.3)
+//= MasterOfMuppets (2.0)
+//= rAthena Dev Team
+//===== Current Version: ===================================== 
+//= 3.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Louyang Town Script
+//===== Additional Comments: ================================= 
+//= 2.9 Rescripted to Aegis 10.3 Standards. [L0ne_W0lf]
+//= 3.0 Moved Alberta NPC to pre-re/re paths. [Euphy]
+//============================================================
+
+// Louyang Transportation
+//============================================================
+-	script	::Girl_louyang	-1,{
+	mes "[姑娘]";
+	mes "那那～ 那那那那～ 今天的心情";
+	mes "真好呢～ 好想要";
+	mes "出去玩喔～";
+	next;
+	switch(select("有關龍之城．．．:去龍之城:取消")) {
+	case 1:
+		mes "[姑娘]";
+		mes "您想去龍之城嗎？";
+		mes "那兒真的是個很棒的地方呀，";
+		mes "擁有數千年神秘之都市呀，";
+		mes "都市也很漂亮，原野也很漂亮呀";
+		next;
+		mes "[姑娘]";
+		mes "尤其這裡也會發生與";
+		mes "神秘魔物之間不可";
+		mes "預測的事情呀，還可以";
+		mes "找到稀少且可醫治百病的藥呀";
+		next;
+		mes "[姑娘]";
+		mes "也有很多會拳法的人，";
+		mes "姑娘每天早上也是在那裡";
+		mes "努力的修練拳法的呀，";
+		mes "姑娘很堅強的呀．．．！";
+		next;
+		mes "[姑娘]";
+		mes "想去的話隨時跟我說呀，";
+		mes "我會收一點錢，然後";
+		mes "把您踢到龍之城去呀．．．";
+		mes "哈哈-哈，不要當真呀！";
+		close;
+	case 2:
+		mes "[姑娘]";
+		mes "馬上出發呀，";
+		mes "給我 10,000 金幣就幫您送過去呀，";
+		mes "去玩的愉快一點呀";
+		next;
+		mes "[姑娘]";
+		mes "好，可以出發了呀？";
+		next;
+		if (select("出發！:取消") == 1) {
+			if (Zeny > 9999) {
+				mes "[姑娘]";
+				mes "咿～　哈啊～～";
+				mes "出發了呀～～～";
+				close2;
+				set zeny,zeny-10000;
+				warp "lou_fild01",190,101;
+				end;
+			}
+			mes "[姑娘]";
+			mes "沒錢呀～";
+			mes "需要 10,000 金幣呀～";
+			mes "沒有的話絕對不行呀！";
+			close;
+		}
+	case 3:
+		mes "[姑娘]";
+		mes "哼！ 失望呀，回家";
+		mes "去包餃子吃呀！！";
+		close;
+	}
+}
+
+//回到愛爾貝塔
+lou_fild01,190,100,7	script	姑娘#1lou	815,{
+	mes "[姑娘]";
+	mes "那麼要回去了呀?";
+	next;
+	if (select("回到艾爾貝塔:取消") == 1) {
+		mes "[姑娘]";
+		mes "下次再來呀~";
+		mes "出發~~";
+		close2;
+		warp "alberta",235,45;
+		end;
+	}
+	mes "[姑娘]";
+	mes "可以的話就留下來呀，";
+	mes "有美食又有漂亮美眉呀";
+	close;
+}
+
+// 城鎮NPC
+louyang,297,167,2	script	看起來很堅強的女人#lou	815,{
+	if (!Sex) {
+		mes "[季岑琉]";
+		mes "在我們少女宮裡， ";
+		mes "宮主以下的成員是由女性所構成的，";
+		mes "不過";
+		mes "最近想要加入宮裡的人比較少，";
+		mes "所以目前宮裡並不是在很理想的情況";
+		next;
+		mes "[季岑琉]";
+		mes "所以我這次為了打聽";
+		mes "有沒有人想要加入宮裡，";
+		mes "所以就從宮裡出來走走";
+		emotion e_dots;
+		close;
+	}
+	mes "[季岑琉]";
+	mes "..........";
+	mes "現在很忙不要煩我";
+	mes "..........";
+	close;
+}
+
+louyang,274,136,4	script	散發著強烈氣息的男人#lou	819,{
+	mes "[阿吉拉]";
+	mes "『八極拳』這個名稱含有三種意義";
+	mes "一是「簡」";
+	mes "二是「變」";
+	mes "三是「不變」";
+	next;
+	mes "[阿吉拉]";
+	mes "易是指著萬物生生不息，";
+	mes "這也叫做德，";
+	mes "擁有易簡的意思，";
+	mes "變易是指著萬物生生不息的道理，";
+	mes "雖然會變， ";
+	mes "但是會互相接續的，";
+	next;
+	mes "[阿吉拉]";
+	mes "不易是指天地的定位，也就是說不能互相定位變更的東西，";
+	mes "易就是以變化的道理，指宇宙萬物不停地運作的意思，";
+	mes "不停的運作(生生不息)就是在不斷的變化的意思";
+	close;
+}
+
+louyang,276,136,4	script	領悟到權利的人#lou	819,{
+	mes "[鄭克志]";
+	mes "不過天地間的萬物當然正在改變當中，";
+	mes "但在這變化中還有不變的法則，";
+	mes "除了支援這變化的變易之外，";
+	mes "還會有不易的道理";
+	next;
+	mes "[鄭克志]";
+	mes "變易是現象，";
+	mes "不易是法則，";
+	mes "簡易則成為那方法，";
+	mes "伏羲一下就開啟天地，";
+	mes "並不是如此的簡單";
+	next;
+	mes "[鄭克志]";
+	mes "太極當作為第一，陰陽當作為第二，";
+	mes "所以萬象萬變不會脫離那陰陽的，";
+	mes "從簡變為繁，有連續又有理";
+	mes "從繁化為簡，才會有系統又有根來源，";
+	mes "八極龍拳術就是以這一個原理作為基礎";
+	close;
+}
+
+louyang,276,133,0	script	修練生#1lou::LouTrainee	819,{
+	mes "[修練生]";
+	mes "伊呀!!";
+	mes "呼呼呼~~~~!!";
+	mes "唷呵...唷呵...";
+	close;
+}
+
+louyang,276,131,0	script	修練生#2lou	819,{
+	mes "[修練生]";
+	mes "恰啊!";
+	mes "呼呀~~!!";
+	mes "呀........：!!!";
+	close;
+}
+
+louyang,276,129,0	script	修練生#3lou	819,{
+	mes "[修練生]";
+	mes "咿..呵..!!";
+	mes "咑啊~~~~!!!!";
+	mes "呵...";
+	close;
+}
+
+louyang,274,133,0	script	修練生#4lou	819,{
+	mes "[修練生]";
+	mes "卡!!";
+	mes "咑啊!!!!";
+	mes "咿呀!!!!";
+	close;
+}
+
+louyang,274,131,0	script	修練生#5lou	819,{
+	mes "[修練生]";
+	mes "呼...";
+	mes "伊喔...!!";
+	mes "翻來翻去...";
+	close;
+}
+
+louyang,274,129,0	script	修練生#6lou	819,{
+	mes "[修練生]";
+	mes "哇咑!";
+	mes "啊啾~~~~!!";
+	mes "哇咑啊啊啊!!!!";
+	close;
+}
+
+louyang,278,133,0	duplicate(LouTrainee)	修練生#7lou	819
+louyang,278,131,0	duplicate(LouTrainee)	修練生#8lou	819
+louyang,278,129,0	duplicate(LouTrainee)	修練生#9lou	819
+louyang,272,133,0	duplicate(LouTrainee)	修練生#10lou	819
+louyang,272,131,0	duplicate(LouTrainee)	修練生#11lou	819
+louyang,272,129,0	duplicate(LouTrainee)	修練生#12lou	819
+
+// 瞭望台
+lou_in01,25,23,5	script	看起來很親切的小姐#lo	817,{
+	mes "[紅廟]";
+	mes "歡迎光臨，";
+	mes "這裡是上去瞭望台的電梯，";
+	mes "只要付一定的費用，";
+	mes "我們會安全的將您送達到瞭望台，";
+	mes "請多多使用，";
+	mes "請問您要使用嗎?";
+	next;
+	switch(select("聽取說明:我要使用:下一次再使用")) {
+	case 1:
+		mes "[紅廟]";
+		mes "本瞭望台是我們龍之城觀光事業的一環，";
+		mes "由於很多人反應說，";
+		mes "無法好好的享受我們龍之城的風景，";
+		mes "所以便設定了";
+		mes "這間瞭望台";
+		next;
+		mes "[紅廟]";
+		mes "為了使您安全的使用瞭望台";
+		mes "我們設定了電梯，";
+		mes "使用電梯的費用是500金幣，";
+		mes "為了乘客的安全我們會盡最大的努力";
+		close;
+	case 2:
+		if (Zeny < 500) {
+			mes "[紅廟]";
+			mes "很可惜...你身上的錢不足500金幣";
+			close;
+		}
+		mes "[紅廟]";
+		mes "謝謝您的使用，";
+		mes "為了乘客的安全";
+		mes "我們瞭望台會盡最大的努力，";
+		mes "謝謝，";
+		mes "歡迎您再次來使用";
+		close2;
+		set zeny,zeny-500;
+		warp "lou_in01",17,19;
+		end;
+	case 3:
+		mes "[紅廟]";
+		mes "那麼請下一次再來使用吧，";
+		mes "再見";
+		close;
+	}
+}
+
+//緊急出口
+louyang,84,254,0	script	緊急出口#lou	111,{
+	mes "有個可以下去的裝置，";
+	mes "請問您要下去嗎?";
+	next;
+	if (select("我要下去:不要下去") == 1) {
+		if (rand(1,100) == 34) {
+			percentheal -99,0;
+			warp "louyang",86,269;
+			mapannounce "louyang",""+strnpcinfo(0)+" : Oh God, I'm faaaaaaaaaaaalling~~!!!!",bc_map;
+		}
+		else {
+			warp "lou_in01",10,18;
+		}
+		end;
+	}
+	close;
+}

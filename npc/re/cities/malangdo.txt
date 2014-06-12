@@ -1,0 +1,425 @@
+//===== rAthena Script ======================================= 
+//= Malangdo Town
+//===== By: ================================================== 
+//= Muad_Dib
+//===== Current Version: ===================================== 
+//= 1.5
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Malangdo Town Script
+//===== Additional Comments: ================================= 
+//= 1.0 First version. [Euphy]
+//= 1.1 Added entrance scripts.
+//= 1.2 Moved "Odgnalam" coordinates.
+//= 1.3 Fixed dialogues.
+//= 1.4 Dialogue edits, source iRO.
+//= 1.5 Added Izlude duplicates.
+//============================================================
+
+// Malangdo Transportation :: malangdo_go
+//============================================================
+-	script	Dolangmal	-1,{
+	if (checkquest(5091) == -1) {
+		mes "[貓綿綿]";
+		mes "嘿~!人類你好啊呀~我是貓綿綿，哇哈哈~";
+		next;
+		mes "[貓綿綿]";
+		mes "我是被指派來親自接你去貓咪的樂園^A2314B綿綿島^000000的。";
+		next;
+		mes "[貓綿綿]";
+		set .@s$,"Why don't you go to ^A2314BMalangdo^000000?";
+		switch(atoi(strnpcinfo(2))) {
+			case 1: mes "怎麼樣?雖然人聲鼎沸的普隆德拉也不錯，但你有想要去我們貓咪的樂園^A2314B綿綿島^000000嗎?"; break;
+			case 2: mes "Why don't you go to ^A2314BMalangdo^000000? That place is better than Geffen, where there are only crowds of simple honest wizards."; break;
+			case 3: mes "The fresh air of Payon is not bad, but why don't you go better place like the heaven of the cats, ^A2314BMalangdo^000000?"; break;
+			case 4: mes .@s$+"The beautiful and quiet place is better than Aldebaran, where it's so noisy with the tick-tock sound of the clock."; break;
+			case 5: mes .@s$+"The beautiful and quiet place is better than Morroc, with its heat and sandstorms."; break;
+			case 6: mes .@s$+"The beautiful place is better than Yuno, which is full of books and headaches."; break;
+			case 7: mes .@s$+"The complex place is better than Rachel, where it's too horribly quiet."; break;
+			case 8: mes .@s$+"The safe place is better than Lighthanlzen, which is too dangerous."; break;
+			case 9: mes .@s$+"The smell of this sea place is better than Mora, which is full of a grassy smell."; break;
+		}
+		next;
+		if(select("不要:往^A2314B綿綿島^000000出發~ Go~ Go~") == 1) {
+			mes "[貓綿綿]";
+			mes "什麼!? 你說你不去^A2314B綿綿島^000000? 嘖!";
+			next;
+			mes "[貓綿綿]";
+			mes "你不去的話幹嘛跟我說話呢? 煩我啊?";
+			next;
+			mes "[貓綿綿]";
+			mes "^9E1837湯瑪斯司令^000000要我綁架人類..啊不是..是邀請人類吧?";
+			next;
+			mes "[貓綿綿]";
+			mes "這次放你一馬! 想去的話隨時告訴我哦~";
+			close;
+		}
+		mes "[貓綿綿]";
+		mes "很好!我欣賞你的熱情奔放!";
+		next;
+		mes "[貓綿綿]";
+		mes "去^A2314B綿綿島^000000之前，有幾點注意事項要提醒你。";
+		next;
+		mes "[貓綿綿]";
+		mes "第一點!!雖然這是一定要的，但抵達^A2314B綿綿島^000000後，必須先向^9E1837湯瑪斯司令^000000報到..";
+		next;
+		mes "[貓綿綿]";
+		mes "不然的話，你可能會在昏暗的路上遭到可怕粗暴的貓咪大哥的攻擊。";
+		next;
+		mes "[貓綿綿]";
+		mes "第二點!!雖然這裡開放人類造訪，但^A2314B綿綿島^000000是100%屬於我們貓咪的!";
+		next;
+		mes "[貓綿綿]";
+		mes "要把我們當作一個人..喔..不..我們是貓嘛~要把我們當作一隻貓對待!";
+		next;
+		mes "[貓綿綿]";
+		mes "然後是...";
+		next;
+		mes "明明說注意事項只有幾點的貓綿綿，滔滔不絕地說了差不多100點的注意事項。";
+		next;
+		mes "[貓綿綿]";
+		mes "很好!以上就是注意事項，都是些很容易遵守的事項，怎麼樣? 你有辦法遵守嗎?";
+		next;
+		switch(select("我可以遵守:沒辦法遵守")) {
+		case 1:
+			mes "[貓綿綿]";
+			mes "很好! 說話算話，^9E1837湯瑪斯司令^000000就在^A2314綿綿島中央的船^000000裡。";
+			next;
+			mes "[貓綿綿]";
+			mes "別忘記要報導哦~";
+			next;
+			mes "[貓綿綿]";
+			mes "那就往貓咪的樂園^A2314B綿綿島^000000出發吧~";
+			setquest 5091;
+			completequest 5091;
+			warp "malangdo",217,85;
+			close;
+		case 2:
+			mes "[貓綿綿]";
+			mes "什麼?連這麼簡單的規則也沒辦法遵守? 搞什麼!";
+			next;
+			mes "[貓綿綿]";
+			mes "你沒辦法的話就早說嘛~還讓我說得那麼累~";
+			next;
+			mes "[貓綿綿]";
+			mes "^9E1837湯瑪斯司令^000000交代說要抓個人類…不對…是邀請人類吧?";
+			next;
+			mes "[貓綿綿]";
+			mes "這次放你一馬!想去的話隨時告訴我哦~";
+			close;
+		}
+	}
+	mes "[貓綿綿]";
+	mes "Uh? You must be the one from last time...? Alright. Did you visit ^A2314BMalangdo^000000?";
+	next;
+	switch(select("Take me to ^A2314BMalangdo^000000 again:I have visited")) {
+	case 1:
+		mes "[貓綿綿]";
+		mes "I really want to send you there, but I can't because of the policy. It is difficult to send people who have visited ^A2314BMalangdo^000000 already.";
+		next;
+		mes "[貓綿綿]";
+		mes "And that was roughly it... It's supposed to be rule 53...";
+		next;
+		mes "[貓綿綿]";
+		mes "Actually, let me tell you rule 53. I am an indulgent cat.";
+		next;
+		mes "[貓綿綿]";
+		mes "If you want to go back to ^A2314BMalangdo^000000, take the ship at Izlude or Alberta.";
+		next;
+		mes "[貓綿綿]";
+		mes "If you enjoy that pleasant sea trip, you will arrive at the heaven of cats, ^A2314BMalangdo^000000.";
+		next;
+		mes "[貓綿綿]";
+		mes "So easy! Isn't it? Well, good bye~";
+		close;
+	case 2:
+		mes "[貓綿綿]";
+		mes "How was it? You liked it? I knew it. Kakaka~";
+		next;
+		mes "[貓綿綿]";
+		mes "Ah! I just want to make sure...";
+		next;
+		mes "[貓綿綿]";
+		mes "Again, if you want to go back to ^A2314BMalangdo^000000, do you know where to take a ship at Izlude or Alberta?";
+		next;
+		mes "[貓綿綿]";
+		mes "Hm~ You might know because you're a smart person. Well, see you again~";
+		close;
+	}
+}
+prontera,114,77,6	duplicate(Dolangmal)	貓綿綿#1	553
+geffen,109,61,6	duplicate(Dolangmal)	貓綿綿#2	553
+payon,200,106,4	duplicate(Dolangmal)	貓綿綿#3	553
+aldebaran,170,104,4	duplicate(Dolangmal)	貓綿綿#4	553
+morocc,168,275,4	duplicate(Dolangmal)	貓綿綿#5	553
+yuno,165,122,4	duplicate(Dolangmal)	貓綿綿#6	553
+rachel,121,126,4	duplicate(Dolangmal)	貓綿綿#7	553
+lighthalzen,254,83,5	duplicate(Dolangmal)	貓綿綿#8	553
+mora,57,150,4	duplicate(Dolangmal)	貓綿綿#9	553
+
+-	script	::Odgnalam	-1,{
+	mes "貓咪一邊曬著"+((strnpcinfo(2) == "albe")?"艾爾貝塔":"依斯魯得島")+"的溫暖陽光，一邊睡得正香甜。";
+	next;
+	if(select("不理會:和他說話") == 1) close;
+	mes "[貓奧克]";
+	mes "嗯? 喵??";
+	next;
+	if (ep13_yong1 == 0) {
+		set .@price,1000;
+		set .@s1$,"哼!!原來是煩人的人類!給我^0000FF1000金幣^000000，我就送你去貓咪樂園^A2314B綿綿島^000000!";
+		set .@s2$,"Money? Where is the money? You can't go anywhere without the money. Shame on you.";
+	} else if (ep13_yong1 < 60) {
+		set .@price,999;
+		set .@s1$,"You have a little relationship with fleet of cat. I'll give you special discount price ^0000FF999 Zeny^000000 to ^A2314BMalangdo^000000, because you have relationship with fleet.";
+		set .@s2$,"Where is the money? You don't have a sense of honor.";
+	} else if (ep13_yong1 > 59 && ep13_yong1 < 80) {
+		set .@price,500;
+		set .@s1$,"You gave several help to our cat's fleet so let me give you special that with 50% discount price ^0000FF500 Zeny^000000. I'll send you to ^A2314BMalangdo^000000.";
+		set .@s2$,"You don't have any money for paying 50% discount price? I can't believe it.";
+	} else {
+		mes "[貓奧克]";
+		mes "You are a hero of cat's fleet. Your activity is the legend between us.";
+		next;
+		mes "[貓奧克]";
+		mes "As you are a hero of the cat fleet let me send you to ^A2314BMalangdo^000000 for free.";
+		next;
+		if(select("Send me to Malangdo!:Do not go.") == 1) {
+			mes "[貓奧克]";
+			mes "Have a comfortable trip... Alright let's go~";
+			warp "malangdo",217,85;
+		}
+		close;
+	}
+	mes "[貓奧克]";
+	mes .@s1$;
+	next;
+	if(select("朝綿綿島出發!!:取消") == 2) close;
+	if (Zeny < .@price) {
+		mes "[貓奧克]";
+		mes "錢呢？我的錢在哪裡？沒有錢是沒辦法出發的啊～";
+		close;
+	}
+	set Zeny, Zeny - .@price;
+	mes "[貓奧克]";
+	mes "現在馬上就送你去!出發~";
+	warp "malangdo",217,85;
+	close;
+}
+alberta,200,151,4	duplicate(Odgnalam)	貓奧克#albe	554
+izlude,182,218,4	duplicate(Odgnalam)	貓奧克#iz	554	// Old coordinates: (182,192)
+izlude_a,182,218,4	duplicate(Odgnalam)	貓奧克#iz_a	554
+izlude_b,182,218,4	duplicate(Odgnalam)	貓奧克#iz_b	554
+izlude_c,182,218,4	duplicate(Odgnalam)	貓奧克#iz_c	554
+izlude_d,182,218,4	duplicate(Odgnalam)	貓奧克#iz_d	554
+
+malangdo,219,86,4	script	貓豆豆#malang	545,{
+	mes "[貓豆豆]";
+	mes "在綿綿島玩得還開心嗎?";
+	mes "商隊有提供來往依斯魯得島和艾爾貝塔的便船。";
+	next;
+	if (ep13_yong1 == 0) {
+		set .@price,1000;
+		set .@s1$, "1000 zeny";
+		set .@s2$, "祝你在綿綿島有愉快的一天";
+		set .@no_money$, "It is difficult for free.";
+		set .@yes_money$, "Have a nice trip.";
+		mes "[貓豆豆]";
+		mes "船費只要1000金幣，你的目的地是哪裡呢?";
+		next;
+	} else if (ep13_yong1 < 60) {
+		set .@price,999;
+		set .@s1$,"999 zeny";
+		set .@s2$, "Have a full of fortune day in Malangdo...";
+		set .@no_money$, "It is difficult even though you have a relationship with the fleet.";
+		set .@yes_money$, "Thanks, have a wonderful trip.";
+		mes "[貓豆豆]";
+		mes "You have a connection with our fleet. Apply special price 999 zeny. Where do you want to go?";
+		next;
+	} else if (ep13_yong1 > 59 && ep13_yong1 < 80) {
+		set .@price,500;
+		set .@s1$,"500 zeny";
+		set .@s2$, "There are full of fortune and jackpot in Malangdo.";
+		set .@no_money$, "Oh my god. You don't have 500 zeny? It is difficult for free.";
+		set .@yes_money$, "Have a nice trip and come again.";
+		mes "[貓豆豆]";
+		mes "Wow~ You contributed to our fleet a lot. Alright!! Special discount price 500 zeny. Where do you want to go?";
+		next;
+	} else {
+		set .@price,0;
+		set .@s1$,"Free for the hero of our fleet!!";
+		set .@s2$, "No one objects to the hero of our fleet staying in Malangdo...";
+		mes "[貓豆豆]";
+		mes "Ah... You are the legendary hero of our cat's fleet.";
+		next;
+		mes "[貓豆豆]";
+		mes "We can't charge the hero of our fleet. What is your destination?";
+		next;
+	}
+	set .@i, select("- 往依斯魯得 --- "+.@s1$+":- 往艾爾貝塔 --- "+.@s1$+":- 留在綿綿島");
+	mes "[貓豆豆]";
+	if (.@i == 3) {
+		mes .@s2$;
+		close;
+	}
+	if (ep13_yong1 > 80) {
+		mes "祝你旅途愉快~";
+		if (.@i == 1)
+			warp "izlude",195,212; // Old coordinates: (194,180)
+		else
+			warp "alberta",192,150;
+		close;
+	}
+	if (Zeny < .@price) {
+		mes .@no_money$;
+		close;
+	}
+	set Zeny, Zeny - .@price;
+	mes .@yes_money$;
+	if (.@i == 1)
+		warp "izlude",195,212;
+	else
+		warp "alberta",192,150;
+	close;
+}
+
+// Generic Malangdo NPCs :: malang_tre
+//============================================================
+malangdo,147,117,3	script	旅館老闆#malang	554,{
+	mes "發現有隻貓咪整個癱在椅子上，";
+	mes "雖然他是旅館老闆，但他似乎一副不想做生意的模樣。";
+	next;
+	switch(select("我可以在吊床上休息嗎?:我要在旅館記憶位置:你好像很閒的樣子")) {
+	case 1:
+		mes "[旅館老闆]";
+		mes "吊床你愛躺多久我沒意見，不過吊床經常損壞，你只要捐出^FF0000罐頭5個^000000就可以好好消除疲勞囉!";
+		next;
+		switch(select("給他罐頭:地板好像也不錯")) {
+		case 1:
+			if (countitem(12636) > 4) {
+				delitem 12636,5; //Malang_Sp_Can
+				percentheal 100,100;
+				specialeffect2 EF_HEALSP;
+				mes "[旅館老闆]";
+				mes "好好休息吧";
+				emotion e_kis;
+				next;
+				warp "malangdo",140,121;
+				close;
+			}
+			mes "[旅館老闆]";
+			mes "你的罐頭不夠喔!";
+			close;
+		case 2:
+			mes "[旅館老闆]";
+			mes "想不到你這麼小器!";
+			close;
+		}
+	case 2:
+		mes "[旅館老闆]";
+		mes "記憶好囉!";
+		mes "以後我們會常見面，要相親相愛哦～";
+		savepoint "malangdo",142,118;
+		close;
+	case 3:
+		mes "[旅館老闆]";
+		mes "該忙的時候就忙，該偷閒的時候就偷閒啊!";
+		next;
+		mes "- 不曉得他究竟有沒有忙的時候? -";
+		close;
+	}
+	close;
+}
+
+malangdo,151,120,3	script	流浪的宮廷樂師#mal	479,{
+	mes "[流浪的宮廷樂師]";
+	mes "不知道為什麼看著那個旅館老闆就會一直感到睡意襲來，渾身發懶的感覺…";
+	close;
+}
+
+malangdo,149,120,5	script	流浪的浪姬舞者#mal	485,5,1,{
+	mes "[流浪的浪姬舞者]";
+	mes "住在這裡的貓咪都好有活力喔!";
+	mes "讓我也不知不覺手舞足蹈了起來呢!";
+	close;
+OnTouch:
+	switch(rand(5)) {
+	case 0:
+		soundeffect "ring_of_nibelungen.wav",0;
+		break;
+	case 1:
+		soundeffect "dont_forget_me_not.wav",0;
+		break;
+	case 2:
+		soundeffect "humming.wav",0;
+		break;
+	case 3:
+		soundeffect "assassin_of_sunset.wav",0;
+		break;
+	case 4: 
+		emotion e_ho;
+		emotion e_ho,0,"Wandering Minstrel#mal";
+		break;
+	}
+	end;
+}
+
+malangdo,216,168,3	script	貓咪訓練師#mal1	558,0,8,{
+	emotion e_awsm;
+	mes "[貓咪訓練師]";
+	mes "白白胖胖的尾巴!還有屁股!";
+	mes "受不了了~~!這裡簡直是天堂嘛!";
+	next;
+	emotion e_gg;
+	mes "[貓咪訓練師]";
+	mes "我要用我的王牌^FF0000獼猴桃果實^000000，將綿綿島上所有的貓咪都變成我的奴隸!";
+	next;
+	select("^FF0000獼猴桃果實^000000是什麼?");
+	mes "[貓咪訓練師]";
+	mes "獼猴桃果實是非常珍貴的東西，";
+	mes "我也是很不容易才得到的!";
+	mes "而且只要是貓咪的話，沒有一隻不愛死它的!";
+	next;
+	select("^FF0000獼猴桃果實^000000去哪裡買呢?");
+	mes "[貓咪訓練師]";
+	mes "連我都是很不容易才得到的，你竟敢想要它?";
+	mes "聽說他可是連金幣都買不到的異界之物呢";
+	next;
+	emotion e_gg;
+	mes "[貓咪訓練師]";
+	mes "綿綿島的貓咪都是我的了!只許成功不許失敗!喲呼~";
+	mes "我要靠著^FF0000獼猴桃果實^000000成為綿綿島的女王! 噢呵呵呵!!";
+	close;
+OnTouch:
+	emotion e_flash;
+	end;
+}
+
+malangdo,164,203,3	script	貓咪訓練師#mal2	853,{
+	emotion e_awsm;
+	mes "[貓咪訓練師]";
+	mes "軟綿綿尾巴!還有屁股!";
+	mes "受不了了~!!這裡簡直是天堂嘛!!";
+	next;
+	emotion e_gg;
+	mes "[貓咪訓練師]";
+	mes "我要用我的王牌^FF0000獼猴桃果實^000000，將綿綿島上所有的貓咪都變成我的奴隸!";
+	next;
+	select("^FF0000獼猴桃果實^000000是什麼?");
+	mes "[貓咪訓練師]";
+	mes "獼猴桃果實是非常珍貴的東西，";
+	mes "我也是很不容易才得到的!";
+	mes "而且只要是貓咪的話，沒有一隻不愛死它的!";
+	next;
+	select("^FF0000獼猴桃果實^000000去哪裡買呢?");
+	mes "[貓咪訓練師]";
+	mes "連我都是很不容易才得到的，你竟敢想要它?";
+	mes "聽說他可是連金幣都買不到的異界之物呢";
+	next;
+	emotion e_gg;
+	mes "[貓咪訓練師]";
+	mes "綿綿島的貓咪都是我的了!只許成功不許失敗!喲呼~";
+	mes "我要靠著^FF0000獼猴桃果實^000000成為綿綿島的國王! 噢呵呵呵!!";
+	close;
+}

@@ -1,0 +1,372 @@
+//===== rAthena Script ======================================= 
+//= Valkyrie Realm
+//===== By: ==================================================
+//= Nana, fixes by Poki
+//= finished, optimized and tested by Lupus
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 3.1
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Quest to become a Tranceded Class. (Advanced/Rebirthed)
+//===== Additional Comments: ================================= 
+//= 1.1 Made all into functions,additional checks,quest skills,now Valhallana can return you back. She also makes reborn process only when you got no Zeny/items (as in kRO) [Lupus]
+//= 1.2 now alternative classes can use their 1-1 job NPC to become Advanced 1st Class [Lupus]
+//= 1.4 added Baby Class support [Lupus]
+//= 1.5 Fixed loads of gramatical errors. [Mass Zero]
+//= 1.6 Added a func which prevent advanced classes passing 2nd Job Quests again. It also guides adv classes where to go. [Lupus]
+//= 1.7 On reborn reset some Job Quest Vars and Reset Girls Counter [Lupus]
+//= 1.8 Added Taekwondo classes check [Lupus]
+//= 1.9 Added support for Job NPC Fase pics, sorrected one dialogue stuff [Lupus]
+//= 2.0 Removed callfunc Is_####_Class in favor of baseClass [Silentdragon]
+//= 2.1 Changed all numbers into constants. [Vicious]
+//= 2.2 Now ALL quests skills are saved/restored [Lupus]
+//= 2.3 Removed Duplicates [Silent]
+//= 2.4 Fixed typos, optimized [Lupus]
+//= 2.5 Fixed a stuck bug [Lupus]
+//= 2.6a Adding proper dialogues [Lupus]
+//= 2.7 Rescripted to Aegis 10.3 standards. [L0ne_W0;f]
+//=     Removed all functions as they are no longer required.
+//=     Correct job level requirements for 1-1 -> 2-x.
+//= 2.7a Added Function "F_BlockHigh" back in until rewriteing of the 2-x [L0ne_W0lf]
+//=     scripts are comepleted.
+//= 2.7b Removed function "F_BlockHigh" as it's no longer used. [L0ne_W0lf]
+//= 2.8 Corrected NPC names to fall within proper restrictions. [L0ne_W0lf]
+//= 2.9 Corrected Valkyrie case spicifying where to warp after rebirthing. [L0ne_W0lf]
+//= 2.9b Fixed Verdandi typo, fixed resetting vars [Lupus]
+//= 3.0 Added quest log commands. [L0ne_W0lf]
+//= 3.1 Added Izlude Renewal coordinates.
+//============================================================ 
+
+valkyrie,48,86,4	script	巴基力#	811,{
+	if (ADVJOB != 0 || Upper == 1) {
+		mes "[巴基力]";
+		mes "歡迎來到榮譽的巴哈拉，";
+		mes "好好的休息再回去吧，";
+		mes "戲給戰士們光榮!";
+		close;
+	}
+	else if (Baselevel > 98 && JobLevel > 49 && Class >= Job_Knight && Class <= Job_Crusader2) {
+		mes "[巴基力]";
+		mes "歡迎來到榮譽的巴哈拉，";
+		mes "現在開始，把你目前的人生劃下句點，";
+		mes "你會重新獲得一次新的生命，";
+		mes "獻給戰士們的光榮!";
+		next;
+		if (Weight > 0 || Zeny > 0 || checkcart() != 0 || checkfalcon() != 0 || checkriding() != 0) {
+			mes "[巴基力]";
+			mes "好..你必須要達成英雄的條件，";
+			mes "首先，先將等級提升到最大，所謂的名譽就是";
+			mes "由身心淨空之後才會出來的";
+			next;
+			mes "[巴基力]";
+			mes "所攜帶的物品及金幣，全部都要淨空，";
+			mes "之前召喚的動物，或是手推車等...";
+			mes "任何東西都不能帶走，";
+			mes "那麼...準備好之後再來吧";
+			close2;
+			warp "yuno_in02",93,205;
+			end;
+		}
+		else {
+			mes "[巴基力]";
+			mes "把身體和心全部淨空了";
+			mes "很偉大的決心啊，所謂的名譽就是由身心";
+			mes "淨空之後才會出來的";
+			next;
+			mes "[巴基力]";
+			mes "好...現在把過去的記憶從你身體裡移除，";
+			mes "在你的的精神裡只幫你留下目前光榮的記憶";
+			next;
+			if (SkillPoint) {
+				mes "[巴基力]";
+				mes "不能有剩餘的技能點數";
+				close2;
+				warp "yuno_in02",93,205;
+				end;
+			}
+			mes "[巴基力]";
+			mes "好...現在，";
+			mes "一，在兀兒德會留下你過去的記憶，";
+			mes "二，在蓓兒丹娣只記憶著目前光榮的剎那，";
+			mes "三，在詩寇蒂會過著往未來的生活";
+			next;
+			callfunc "F_ClearJobVar";
+			mes "[巴基力]";
+			mes "一";
+			next;
+			mes "[巴基力]";
+			mes "二....";
+			next;
+			mes "[巴基力]";
+			mes "三....";
+			set ADVJOB, Class+Job_Novice_High; //memo target 3rd Job ID
+			if(ADVJOB == Job_Lord_Knight2) set ADVJOB,Job_Lord_Knight;
+			if(ADVJOB == Job_Paladin2) set ADVJOB,Job_Paladin;
+			jobchange Job_Novice_High;
+			resetlvl(1);
+			set MISC_QUEST,MISC_QUEST | 1024; //<-reset Skill Reset Event
+			skill 142,1,0;
+			skill 143,1,0;
+			completequest 1000;
+			next;
+			mes "[巴基力]";
+			mes "好，恭喜你，所有過程都已經結束了，";
+			mes "這是，我送給即將走向新生活戰士的小禮物";
+			getitem 1202,1; //Knife_
+			getitem 2302,1; //Cotton_Shirt_
+			next;
+			mes "[巴基力]";
+			mes "希望記錄在過去兀兒德的生活不要白費了，";
+			mes "希望記錄在現在蓓兒丹娣的榮譽重新再現，";
+			mes "希望記錄在未來詩寇蒂的新生活裡能展現榮譽，";
+			close2;
+			switch (ADVJOB) {
+			case 4008:
+			case 4015:
+				if (checkre(0)) warp "izlude",129,97;
+				else warp "izlude",94,103;
+				break;
+			case 4009:
+			case 4016:
+				warp "prontera",273,354; break;
+			case 4010:
+			case 4017:
+				warp "geffen",120,60; break;
+			case 4011:
+			case 4019:
+				warp "alberta",116,57; break;
+			case 4012:
+			case 4020:
+			case 4021:
+				warp "payon",69,100; break;
+			case 4013:
+			case 4018:
+				warp "morocc",154,50; break;
+			default:
+				warp "yuno_in02",93,205; break;
+			}
+			end;
+		}
+	}
+	else {
+		mes "[巴基力]";
+		mes "歡迎來到榮譽的巴哈拉，";
+		mes "現在開始，把你目前的人生劃下句點，";
+		mes "你會重新獲得一次新的生命，";
+		mes "獻給戰士們的光榮!";
+		next;
+		mes "[巴基力]";
+		mes "不過，你不應該出現在這裡的";
+		close2;
+		warp "yuno_in02",93,205;
+		end;
+	}
+}
+
+yuno_in02,88,164,5	script	玫泰武司 西芙#Library	742,{
+	if (Baselevel > 98 && JobLevel > 49 && Class >= Job_Knight && Class <= Job_Crusader2) {
+		if (valkyrie_Q == 0) {
+			mes "[玫泰武司 西芙]";
+			mes "歡迎光臨，這裡是修巴宜且樂比";
+			mes "魔法學校";
+			mes "的圖書館，來到這裡的目的是";
+			mes "為了要看'依美樂之書'吧?";
+			next;
+			mes "[玫泰武司 西芙]";
+			mes "依美樂之書的閱覽雖然已";
+			mes "開放給所有人，有時也會";
+			mes "有想要親自閱讀的人，不過";
+			mes "由於原本的狀態並不太好，";
+			mes "所以對想要閱覽的人我們會特別的";
+			mes "收下樂捐並給予許可";
+			next;
+			mes "[玫泰武司 西芙]";
+			mes "樂捐是1,285,000 金幣，";
+			mes "是為了書籍的安全保管及";
+			mes "古書籍的研究，如果願意的話";
+			mes "現在馬上繳款並進場就可以了，";
+			mes "請問要樂捐嗎?";
+			next;
+			if (select("要:取消") == 1) {
+				if (Zeny >= 1285000) {
+					set zeny,zeny-1285000;
+					set valkyrie_Q,1;
+					//setquest 1000;
+					mes "[玫泰武司 西芙]";
+					mes "謝謝你，這些樂捐我們會好好的";
+					mes "使用在大學研究方面，";
+					mes "你現在可以進去閱覽了";
+					close;
+				}
+				mes "[玫泰武司 西芙]";
+				mes "你的金幣有點不足啊，";
+				mes "想要捐獻的話，先確認一下";
+				mes "口袋裡的錢再過來吧";
+				close;
+			}
+			mes "[玫泰武司 西芙]";
+			mes "是嗎?";
+			mes "您不願意啊?";
+			mes "那真是太可惜了!";
+			mes "既然如此我也就不勉強了";
+			mes "再會!";
+			close;
+		}
+		mes "[玫泰武司 西芙]";
+		mes "謝謝你，這些樂捐我們會好好的";
+		mes "使用在大學研究方面，";
+		mes "你現在可以進去閱覽了";
+		close;
+	}
+	mes "[玫泰武司 西芙]";
+	mes "歡迎光臨，這裡是修巴宜且樂比 魔法學校";
+	mes "的圖書館，慢慢逛吧，";
+	mes "這裡有很多書籍";
+	close;
+}
+
+yuno_in02,93,207,1	script	依美樂之書	111,{
+	if (ADVJOB != 0 || Upper == 1) {
+		mes "[依美樂之書]";
+		mes "...進入榮譽神殿的入口";
+		mes "已為重生的所有人們而打開，";
+		mes "那將有助於邁向英雄之路";
+		mes "往世上任何地方的路都會為你開著";
+		next;
+		mes "[依美樂之書]";
+		mes "還有在那地方已為他們";
+		mes "準備好了所有事情，聽說";
+		mes "在現實生活中無法實現的願望，";
+		mes "在那神殿是可以實現的";
+		next;
+		if (select("停止閱讀:繼續閱讀") == 1) {
+			mes "[依美樂之書]";
+			mes ".....";
+			close;
+		}
+		mes "[依美樂之書]";
+		mes "離天空最近的地方，應該會有";
+		mes "通往巴基力的神殿之路....";
+		mes "平凡的他們永遠不會知道的";
+		close2;
+		warp "valkyrie",48,8;
+		end;
+	}
+	else if (Baselevel > 98 && JobLevel > 49 && Class >= Job_Knight && Class <= Job_Crusader2) {
+		if (valkyrie_Q != 0) {
+			mes "[依美樂之書]";
+			mes "...然而伴隨前輩的無數功績";
+			mes "同時可疑的地方是，面對英雄們";
+			mes "必然會遇到有關'死亡' ";
+			mes "的問題，所有被封上英雄稱號的人";
+			mes "也都會有最後一刻的時候";
+			next;
+			mes "[依美樂之書]";
+			mes "可是有關任何英雄的歌或一些記錄，";
+			mes "就算是以口頭流傳下來的故事，";
+			mes "也沒有留下那最後的紀錄，";
+			mes "關於這必須要注意一點的是，";
+			mes "那就是記述在 '仙境傳說' 裡";
+			mes "有關巴基力的內容";
+			next;
+			mes "[依美樂之書]";
+			mes "對於人在巔峰時最棒的那一刻擁有";
+			mes "偉大的素質者的人，在最後的聖戰上";
+			mes "以戰士打仗，他的魂會隨著";
+			mes "巴基力的領導而走向巴哈拉，";
+			mes "他跟一般所有人的最後不同，";
+			mes "而是有關英雄的輪迴，";
+			next;
+			mes "[依美樂之書]";
+			mes "以真正的英雄重新復活";
+			mes "成為照亮新時代的人，";
+			mes "跌倒的身體會再爬起來，";
+			mes "靈魂喚起新的能力，";
+			mes "但是很不幸的依美樂的心臟，";
+			mes "在戰亂之後從大陸上消失了";
+			next;
+			mes "[依美樂之書]";
+			mes "一點點的發現並不能支持我們";
+			mes "做研究，沒有驗證過的";
+			mes "就無法嘗試任何事，";
+			mes "所以我就留下這紀錄，";
+			mes "等後人發現這紀錄";
+			mes "和他的意志及希望，希望能夠";
+			next;
+			set valkyrie_Q,2;
+			if(checkquest(1000) == -1) {
+				setquest 1000;
+			}
+			mes "[依美樂之書]";
+			mes "重生為點亮時代最後一道光";
+			mes "的英雄，再次苦苦的等待";
+			mes "希望領導巴基力神殿之";
+			mes "英雄們的人出現，還有那以後...";
+			mes "........";
+			close;
+		}
+		mes "[依美樂之書]";
+		mes ".....";
+		close;
+	}
+	mes "[依美樂之書]";
+	mes ".....";
+	close;
+}
+
+yuno_in05,49,43,1	script	依美樂的心臟	111,{
+	if (Baselevel > 98 && JobLevel > 49 && Class >= Job_Knight && Class <= Job_Crusader2) {
+		if (valkyrie_Q == 2) warp "valkyrie",48,8;
+	}
+	end;
+}
+
+valkyrie,44,33,5	script	泰樂柏特#val	124,{
+	if (Upper != 1) {
+		set .@karma_d,rand(1,10);
+		if (.@karma_d > 4) {
+			mes "[泰樂柏特]";
+			mes "恭喜你轉生成功，";
+			mes "獻給戰士們光榮!";
+			close;
+		}
+		mes "[泰樂柏特]";
+		mes "請不要觸摸展示品";
+		mes "........";
+		close;
+	}
+	else {
+		mes "[泰樂柏特]";
+		mes "記住光榮時刻的你";
+		mes "請問要去哪裡呢?";
+		next;
+		switch (select("普隆德拉:夢羅克:斐揚:吉芬:艾爾貝塔:伊斯魯德:艾爾帕蘭:克魔島:朱諾")) {
+		case 1: callsub S_Warpchar,"prontera",116,72;
+		case 2: callsub S_Warpchar,"morocc",156,46;
+		case 3: callsub S_Warpchar,"payon",69,100;
+		case 4: callsub S_Warpchar,"geffen",120,39;
+		case 5: callsub S_Warpchar,"alberta",117,56;
+		case 6:
+			if (checkre(0)) callsub S_Warpchar,"izlude",129,97;
+			else callsub S_Warpchar,"izlude",94,103;
+		case 7: callsub S_Warpchar,"aldebaran",91,105;
+		case 8: callsub S_Warpchar,"comodo",209,143;
+		case 9: callsub S_Warpchar,"yuno",328,101;
+		}
+	}
+S_WarpChar:
+	mes "[泰樂柏特]";
+	mes "祝您平安";
+	close2;
+	savepoint getarg(0),getarg(1),getarg(2);
+	warp getarg(0),getarg(1),getarg(2);
+	end;
+}
+
+// Warps
+//============================================================ 
+valkyrie,48,73,0	warp	valk01#1	1,1,valkyrie,48,64
+valkyrie,48,66,0	warp	valk01#2	1,1,valkyrie,48,75

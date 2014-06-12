@@ -1,0 +1,704 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// https://code.google.com/p/plutoea/
+// -----------------------------------------
+// - 朱諾 城鎮腳本 -
+//===========================================
+//= 版本：1.5
+//===========================================
+// Juno
+// Freidrich#juno
+//===========================================
+
+yuno,184,173,4	script	朱諾 玩家#juno	729,{
+	if (rand(1,5) == 1) {
+		mes "[尹噗雷西]";
+		mes "^3355FF 朱諾 ^000000 這塊大地";
+		mes "很神奇的飄浮在空中";
+		mes "這力量是來自於很早就存在的";
+		mes "' 初古代文明 ' 上的";
+		mes "^3355FF 優配擂斯 ^000000";
+		next;
+		mes "[尹噗雷西]";
+		mes "那中心地有一個";
+		mes "^3355FF' 依美樂的心臟碎片 '^000000";
+		mes "這源動力被猜測來自這裡";
+		mes "為了研究這個";
+		mes "很多學者開始聚集在這裡";
+		next;
+		mes "[尹噗雷西]";
+		mes "現在朱諾變成";
+		mes "學者們的聚集地了";
+		close;
+	}
+	else {
+		mes "[尹噗雷西]";
+		mes "這賢者之都";
+		mes "' 朱諾 '分成";
+		mes "三大島嶼所構成的";
+		next;
+		mes "[尹噗雷西]";
+		mes "它們是,";
+		mes "光榮之島，所羅門";
+		mes "繁榮之島，謎奈達";
+		mes "知識之島，斯諾塔拉";
+		next;
+		mes "[尹噗雷西]";
+		mes "各個島嶼的位置在";
+		mes "西北方有 : 所羅門";
+		mes "東北方有 : 斯諾塔拉";
+		mes "南方有 : 謎奈達";
+		close;
+	}
+}
+
+yuno,337,227,4	script	朱諾奶奶#juno	103,{
+	mes "[賀傑 奧拉客]";
+	if (rand(1,50) == 1) {
+		if (Zeny > 999) {
+			mes "So, do you enjoy candy?";
+			next;
+			mes "^3355FF奶奶 hands you some candy^000000.";
+			next;
+			mes "[賀傑 奧拉客]";
+			mes "You've already chosen. It doesn't matter whether or not you get this candy. That doesn't matter at all. You have to understand why it's happened.";
+			next;
+			mes "[賀傑 奧拉客]";
+			mes "Here's ^3355FF1,000 zeny^000000.";
+			mes "Do you accept this?";
+			next;
+			if (select("Accept:Do not accept") == 1) {
+				mes "[賀傑 奧拉客]";
+				mes "*Giggle*";
+				mes "There you go~";
+				set zeny,zeny-1000;
+				getitem 529,1; //Candy
+				next;
+				mes "[賀傑 奧拉客]";
+				mes "*Giggle*";
+				mes "Well then...";
+				mes "See you ~";
+				close;
+			}
+			mes "[賀傑 奧拉客]";
+			mes "Yes, that's right. Now you must ask yourself why you didn't accept the candy I offered.";
+			close;
+		}
+		else {
+			mes "*Giggle giggle*";
+			mes "The time has come.";
+			mes "Well then...";
+			close;
+		}
+	}
+	else {
+		mes "來囉 ..";
+		mes "我是什麼都可以預知的";
+		mes "朱諾的賢者祖母";
+		mes "在很久以前";
+		mes "在 朱諾 附近";
+		mes "你是否知道";
+		next;
+		mes "[賀傑 奧拉客]";
+		mes "一直喧鬧的";
+		mes "巨大Boss級魔物的名字 ..";
+		mes "'^FF3355'死靈騎士'^000000'";
+		mes "他們是從";
+		mes "生命已結束的世界過來";
+		mes "他帶著已經";
+		next;
+		mes "[賀傑 奧拉客]";
+		mes "許多死亡的魔物";
+		mes "出現，只要看到周圍";
+		mes "有生命的東西";
+		mes "就會主動攻擊";
+		mes "把他們帶領到其它世界 ..";
+		mes "你是要對付死靈騎士";
+		next;
+		mes "[賀傑 奧拉客]";
+		mes "或是不對付死靈騎士";
+		mes "都已經被選擇了";
+		mes "只是，為什麼";
+		mes "要這樣子";
+		mes "你只要理解就好了 ..";
+		close;
+	}
+}
+
+yuno,328,239,4	script	朱諾武道家#juno	732,{
+	mes "[莎拉 傅拉負]";
+	mes "我是服侍， 賀傑 奧拉克先生";
+	mes "在 朱諾";
+	mes "的武道家 我叫";
+	mes "莎拉 傅拉負";
+	mes "我給你， 大嘴鳥鳥群中";
+	mes "上級等級的大嘴鳥";
+	next;
+	mes "[莎拉 傅拉負]";
+	mes "有關 ^5533FF'七彩大嘴鳥'^000000";
+	mes "的故事";
+	mes "比大嘴鳥更快";
+	mes "具有攻擊性的習性";
+	mes "七彩大嘴鳥 ..";
+	mes "用強烈的鳥爪";
+	next;
+	mes "[莎拉 傅拉負]";
+	mes "做為連續攻擊的主要武器";
+	mes "牠會帶領著許多";
+	mes "大嘴鳥";
+	mes "一起行動";
+	next;
+	mes "[莎拉 傅拉負]";
+	mes ".. 你的時間和我的時間";
+	mes "都已經到時候了";
+	mes "你所要達到的心願";
+	mes "祝你都達成 ..";
+	close;
+}
+
+yuno,343,68,4	script	朱諾絕對者#juno	730,{
+	mes "[尼歐]";
+	if (rand(1,1000) == 1) {
+		mes "You are very lucky to have me tell you this story. This only happens by ^FF33551 out of a 1,000 chance^000000.";
+		next;
+		mes "[尼歐]";
+		mes "This world you are experiencing is actually fabricated! It's time for you to see reality for what it is!";
+		next;
+		mes "[尼歐]";
+		mes "Open your eyes! Stop being manipulated by virtual reality!";
+		close2;
+		warp "prontera",182,206;
+		end;
+	}
+	mes "實際上，是埃及的國王";
+	mes "被稱為太陽神的兒子";
+	mes "曾經統治一個王朝";
+	mes "知道這國王的名字嗎?";
+	mes "^5533FF'法老王'^000000";
+	next;
+	mes "[尼歐]";
+	mes "據說擁有相當高的";
+	mes "詛咒術";
+	mes "也能發揮";
+	mes "極大的威力";
+	mes "命令老百姓沉默";
+	mes "施詛咒等";
+	next;
+	mes "[尼歐]";
+	mes "據說用相當";
+	mes "惡質的技能 ..";
+	mes "你曾經有見過";
+	mes "法老王嗎?";
+	close;
+}
+
+yuno,165,111,4	script	朱諾賢者#juno		123,{
+	mes "[黎磨樂 琵俄斯]";
+	if (rand(1,50) == 25) {
+		if (Zeny > 4999) {
+			mes "Look in my hand. I am holding two different kinds of herbs.";
+			next;
+			mes "[黎磨樂 琵俄斯]";
+			mes "One is a ^3355FFBlue Herb^000000 which will make you forget about reality and keep you in this virtual reality^000000.";
+			next;
+			mes "[黎磨樂 琵俄斯]";
+			mes "The other is a ^FF3355Red Herb^000000 which will reveal to you what is true and real.";
+			next;
+			mes "[黎磨樂 琵俄斯]";
+			mes "Whichever one you choose, you must spend ^3355FF5,000 zeny^000000. Now, please select one.";
+			next;
+			if (select("Choose ^FF3355Red Herb^000000:Choose ^3355FFBlue Herb^000000.") == 1) {
+				mes "[黎磨樂 琵俄斯]";
+				mes "As you have chosen, you will forget everything, and remain in this virtual reality.";
+				set zeny,zeny-5000;
+				getitem 507,1; //Red_Herb
+				close2;
+				warp "prontera",182,206;
+				end;
+			}
+			mes "[黎磨樂 琵俄斯]";
+			mes "You will see the truth.";
+			set zeny,zeny-5000;
+			getitem 510,1; //Blue_Herb
+			close2;
+			warp "pay_dun03",200,222;
+			end;
+		}
+		else {
+			mes "Hmm. I'm sorry to say you just missed a fortunate chance. However, I can tell you don't have enough wealth to bring this fortune to fruition.";
+			close;
+		}
+	}
+	else {
+		mes "'^5533FF阿修羅機械戰士^000000'";
+		mes "那是，很久以前";
+		mes "被遺忘的初古代文明";
+		mes "朱諾的守門將";
+		mes "負責治安的人造機器人";
+		next;
+		mes "[黎磨樂 琵俄斯]";
+		mes "長的很像機器人";
+		mes "長久的時間下來，";
+		mes "人工智慧已經被破壞";
+		mes "變成敵我不分的地步";
+		next;
+		mes "[黎磨樂 琵俄斯]";
+		mes "它變成了攻擊人的魔物..";
+		close;
+	}
+}
+
+yuno,157,205,4	script	朱諾匠人#juno	54,{
+	mes "[齊賣依佳]";
+	mes "嗚嚕 嗚嚕，嗚嚕 嗚嚕";
+	mes "你好嗎";
+	mes "我是 朱諾裡";
+	mes "負責繼承各種物品";
+	mes "匠人精神的";
+	mes "匠人老人";
+	next;
+	switch(select("關於強烈的裝備:關於獨特的物品:關於傳統的飲食:結束對話")){
+		case 1:
+			mes "[齊賣依佳]";
+			mes "^5533FF'聖耀之盾'^000000 和";
+			mes "^5533FF'神聖復仇者之劍'^000000";
+			mes "都是十字軍專用的";
+			mes "神聖的裝備";
+			mes "各個裝備都非常輕";
+			next;
+			mes "[齊賣依佳]";
+			mes "攻擊力和防禦力都相當優秀";
+			mes "且都擁有神聖的力量";
+			mes "像這樣的聖屬性";
+			mes "對不死系之類的幽靈魔物";
+			mes "殺傷力非常好";
+			next;
+			mes "[齊賣依佳]";
+			mes "因為稀有性高";
+			mes "所以只有被挑選上的十字軍可以裝備";
+			close;
+		case 2:
+			mes "[齊賣依佳]";
+			mes "圓圈裡面又有一個圓圈..";
+			mes "還有一個六角形的星星";
+			mes "樣子像個魔法圖";
+			mes "^5533FF'老舊的魔法卷軸'^000000 ?";
+			mes "看起來有點舊";
+			mes "不過編織得相當緊密";
+			next; 
+			mes "[齊賣依佳]";
+			mes "魔法圖的一種";
+			mes "有相當多的賢者們";
+			mes "作為研究在使用中";
+			next; 
+			mes "[齊賣依佳]";
+			mes "不知道在哪裡";
+			mes "在使用高難度高等級";
+			mes "的魔法咒文時";
+			mes "應該用得到的物品";
+			close;
+		case 3:
+			mes "[齊賣依佳]";
+			mes "^5533FF'仙貝'^000000!!";
+			mes "許多年來一直被人們所喜愛的食物.";
+			mes "品嚐它的時候，人們總是會懷念起昔日熙攘的市場和充滿溫馨的集市.";
+			next;
+			mes "[齊賣依佳]";
+			mes "年糕啊....我真希望我現在能吃上幾快...........";
+			close;
+		case 4:	
+			mes "[齊賣依佳]";
+			mes "雖然朱諾被人稱作賢者之城..";
+			mes "但是還有許多善良的人們在這裡過著平凡的生活.";
+			next;
+			mes "[齊賣依佳]";
+			mes "那麼就請你盡情享受這座獨特的城市吧.";
+			close;
+		}
+}
+
+//==================================
+// 三大賢者任務(由於任務內容不齊全~所以暫時保留舊版對話)
+//==================================
+yuno,157,87,4	script	朱諾 住民	102,{
+	mes "[李空流棄棄]";
+	mes "從艾爾帕蘭";
+	mes "往北方一直走 ..";
+	mes "會到達' 爾 邁斯 瀑雷德 '";
+	mes "岩漿大地的地方";
+	mes "在窒息的熱氣中";
+	next;
+	mes "[李空流棄棄]";
+	mes "山脈頂端上";
+	mes "就是這地方 !";
+	mes "學者們的都市 ^5533FF' 朱諾 '^000000";
+	mes "可以發現到";
+	mes "通往朱諾 的橋梁";
+	next;
+	mes "[李空流棄棄]";
+	mes "這裡朱諾有";
+	mes "' 優配擂 大廣場'";
+	mes "' 朱諾 大會議場'";
+	mes "' 修百依蔡樂 魔法學校'";
+	mes "' 魔物博物館' 等";
+	mes "世界上有名的";
+	next;
+	mes "[李空流棄棄]";
+	mes "充滿許多名盛的地方";
+	mes "特別是高級的職業";
+	mes "可以幫助轉職成";
+	mes "' 賢者 ' 的";
+	mes "'賢者 城堡' 是";
+	mes "在朱諾裡是";
+	next;
+	mes "[李空流棄棄]";
+	mes "不可或缺的驕傲之一";
+	mes "想要知道有關";
+	mes "賢者的情報的話";
+	mes "不妨進去看一看";
+	mes "也不錯啊 ?";
+	close;
+}
+
+yuno,261,99,4	script	賢者 宜酷拉	735,{
+	mes "[宜酷拉]";
+	mes "^5533FF優配擂斯^000000 -";
+	mes "那裡是初古代的地";
+	mes "也是讓伊美樂的心臟碎片";
+	mes "自由建造的地方";
+	mes "也是擁有知識的人";
+	mes "都市的地方";
+	next;
+	mes "[宜酷拉]";
+	mes "由於太過被那力量所吸引";
+	mes "濫用";
+	mes "伊美樂的心臟碎片力量";
+	mes "也是導致自滅";
+	mes "的地方";
+	mes "這位，你想得到學問的話";
+	next;
+	mes "[宜酷拉]";
+	mes "先成為人吧";
+	mes "把心淨空之後";
+	mes "才能獲得力量的 -";
+	close;
+}
+
+
+yuno,306,207,6	script	賢者 詩酷拉	735,{
+	mes "[詩酷拉]";
+	mes "在賢者的都市 朱諾";
+	mes "某一個地方裡，在很久以前";
+	mes "就有一位不知名怪怪的，";
+	mes "每天只投入研究";
+	mes "造成附近居民";
+	mes "民怨的對象 ..";
+	next;
+	mes "[詩酷拉]";
+	mes "統稱大家都叫他";
+	mes "' 瘋狂的科學家 '";
+	mes "今天也做些讓所有的人";
+	mes "都不能理解的";
+	mes "研究";
+	mes "還正在投入瘋狂當中";
+	next;
+	mes "[詩酷拉]";
+	mes "在 朱諾附近通常!";
+	mes "可以看到的";
+	mes "魔物當中有 '火焰妖'";
+	mes "牠是用火焰";
+	mes "做成球體 ..";
+	mes "用火箭術和火球術等";
+	next;
+	mes "[詩酷拉]";
+	mes "使用可怕的魔法";
+	mes "只要看到人類的話";
+	mes "會主動的攻擊";
+	mes "據八卦所聽到的消息";
+	mes "做那火焰球的人";
+	mes "並不是哪個瘋子魔法師做的";
+	next;
+	mes "[詩酷拉]";
+	mes "就是那個瘋狂的科學家";
+	mes "所做的 ..";
+	close;
+}
+
+yuno,213,298,4	script	賢者 艾斯酷拉	735,{
+	mes "[艾斯酷拉]";
+	mes "我曾經在哪裡有看過";
+	mes "對啊，想起來了 ..";
+	mes "漂泊的紙張";
+	mes "正在飛舞";
+	mes "被風吹著";
+	mes "不知所措";
+	next;
+	mes "[艾斯酷拉]";
+	mes "的樣子";
+	mes "我正在想";
+	mes "噗哈哈 !";
+	mes "無預警的攻擊我 !";
+	mes "敢對朱諾 3 賢者之一";
+	mes "的我";
+	next;
+	mes "[艾斯酷拉]";
+	mes "身為賢者的我";
+	mes "你認為會被那一張紙張";
+	mes "打敗嗎";
+	mes "我把劍給予回擊";
+	mes "這張紙，相當的";
+	mes "有效率的使用戰術";
+	next;
+	mes "[艾斯酷拉]";
+	mes "在欺負人 ..";
+	mes "牠利用身體薄薄的一面";
+	mes "把刀刃豎起來以躲避劍的攻擊";
+	mes "不知牠有沒有受到傷害";
+	mes "或是受不到傷害";
+	mes "用刀去砍時根本就感覺不到觸感 ?";
+	next;
+	mes "[艾斯酷拉]";
+	mes "最後我也忍不住";
+	mes "只好用魔法把牠消滅掉了";
+	mes "是個相當棘手的";
+	mes "魔物";
+	mes "後來聽其它賢者們說";
+	mes "那傢伙叫";
+	next;
+	mes "[艾斯酷拉]";
+	mes " ^5533FF' 紙妖'^000000";
+	mes "在 .. 朱諾裡";
+	mes "是收錄在古老智慧";
+	mes "古書的一頁";
+	mes "後來逃跑出去";
+	mes "變成了一隻紙妖魔物 ..";
+	close;
+}
+
+//==================================
+// 朱諾士兵
+//==================================
+-	script	::JunoSoldier1	-1,{
+	mes "[朱諾士兵]";
+	mes "有高潔的知識在呼吸的";
+	mes "賢者之都";
+	mes "歡迎各位來到";
+	mes "朱諾";
+	next;
+	mes "[朱諾士兵]";
+	mes "熔岩巨石魔物是";
+	mes "石頭人不小心被石心岩漿捲入";
+	mes "增加魔法力量的魔物.";
+	next;
+	mes "[朱諾士兵]";
+	mes "...從身上流下來的岩漿...";
+	mes "那高熱可以把用鐵做成的鎧甲和武器全部融化掉.";
+	mes "若沒考慮清楚就去攻擊它會造成相當大的傷害,";
+	next;
+	mes "[朱諾士兵]";
+	mes "和武器防御具也會受到傷害";
+	close;
+}
+	
+-	script	::JunoSoldier2	-1,{
+	mes "[朱諾士兵]";
+	mes "有高潔的知識在呼吸的";
+	mes "賢者之都";
+	mes "歡迎各位來到";
+	mes "朱諾";
+	next;
+	mes "[朱諾士兵]";
+	mes "'邪惡向日葵' 是長在地上面在許多花中突起的魔物.";
+	mes "因為它延伸的很長實時在很遠的地方也不能安心啊";
+	next;
+	mes "[朱諾士兵]";
+	mes "路過的地理學家在研究途中被這魔物吃掉了所以才會取到這樣的名字";
+	close;
+}
+	
+-	script	::JunoSoldier3	-1,{
+	mes "[朱諾士兵]";
+	mes "有高潔的知識在呼吸的";
+	mes "賢者之都";
+	mes "歡迎各位來到";
+	mes "朱諾";
+	next;
+	mes "[朱諾士兵]";
+	mes "在朱諾 附近有一個叫 '偽天使' 傢伙存在";
+	next;
+	mes "[朱諾士兵]";
+	mes "假裝是個天使";
+	mes "假裝給你祈福";
+	mes "對沒有警覺心的旅行者";
+	mes "從背後攻擊";
+	mes "是屬於攻擊性魔物.";
+	mes "被漂後的模樣上當的話會倒大霉的.";
+	close;
+}
+
+-	script	::JunoSoldier4	-1,{
+	mes "[朱諾士兵]";
+	mes "有高潔的知識在呼吸的";
+	mes "賢者之都";
+	mes "歡迎各位來到";
+	mes "朱諾";
+	next;
+	mes "[朱諾士兵]";
+	mes "'居住在高海拔的";
+	mes "山上的山羊";
+	mes "變成魔物化之後";
+	mes "比石頭更堅硬的頭";
+	mes "撞擊一次的話";
+	next;
+	mes "[朱諾士兵]";
+	mes "不管是哪一種人";
+	mes "他的頭一定會破裂";
+	mes "牠們是在山壁上";
+	mes "爬上爬下的傢伙";
+	mes "牠們的腿也是鍛鍊有成的";
+	next;
+	mes "[朱諾士兵]";
+	mes "牠們尋找犧牲羊，然後再攻擊";
+	close;
+}
+	
+-	script	::JunoSoldier5	-1,{
+	mes "[朱諾士兵]";
+	mes "有高潔的知識在呼吸的";
+	mes "賢者之都";
+	mes "歡迎各位來到";
+	mes "朱諾";
+	next;
+	mes "[朱諾士兵]";
+	mes "請問 .. 有看到嗎?";
+	mes "傑勒比結晶! 相當巨大的傑勒比結晶!!";
+	mes "非常的大";
+	mes "比普通的";
+	mes "更閃亮更晶瑩剔透的光澤";
+	mes "更大的傑勒比結晶";
+	close;
+}
+
+-	script	::JunoSoldier6	-1,{
+	mes "[朱諾士兵]";
+	mes "有高潔的知識在呼吸的";
+	mes "賢者之都";
+	mes "歡迎各位來到";
+	mes "朱諾";
+	next;
+	mes "[朱諾士兵]";
+	mes "賢者的武器中，";
+	mes "有一個叫做 ' 反擊短劍 '";
+	mes "只有賢者才能裝備";
+	mes "有較高的機率會產生";
+	mes "必殺攻擊";
+	next;
+	mes "[朱諾士兵]";
+	mes "是一個有用又美觀的武器";
+	close;
+}	
+
+-	script	::JunoSoldier7	-1,{
+	mes "[朱諾士兵]";
+	mes "有高潔的知識在呼吸的";
+	mes "賢者之都";
+	mes "歡迎各位來到";
+	mes "朱諾";
+	next;
+	mes "[朱諾士兵]";
+	mes "據稱'大天使之盾'";
+	mes "是十字軍的專用裝備";
+	mes "神聖的盾牌";
+	mes "是較長的菱形";
+	mes "盾牌中間";
+	mes "有象徵天使翅膀的圖樣";
+	next;
+	mes "[朱諾士兵]";
+	mes "特別是對付不死系惡魔型的魔物時發揮較大的威力...";
+	close;
+}
+
+yuno,142,183,5	script	飛空艇 宣傳人員	100,{
+	mes "[飛空艇 宣傳人員]";
+	mes "歡迎光臨，我是在朱諾這裡，";
+	mes "針對以後要飛行的飛空艇 ，";
+	mes "做宣傳才會出現在這邊， ";
+	mes "到目前為止還是製作當中，";
+	mes "所以不方便試飛，";
+	mes "先對客人們做些說明";
+	next;
+	mes "[飛空艇 宣傳人員]";
+	mes "何謂飛空艇，是只在空中飛行的船，";
+	mes "你不相信啊?";
+	mes "現在你站在這都市上，";
+	mes "也是飄浮在空中的物體... 哈哈，你該不會";
+	mes "到現在還不相信吧";
+	next;
+	mes "[飛空艇 宣傳人員]";
+	mes "利用飛空艇可以任意的移動到任何村落，";
+	mes "還有充分的享受觀光的樂趣，";
+	mes "也有販賣各地的特產品，";
+	mes "也有一些";
+	mes "充足的便利設備";
+	next;
+	mes "[飛空艇 宣傳人員]";
+	mes "預計很快就會公開亮相，";
+	mes "以後請多多關照，";
+	mes "目前臨時在做傳送服務，";
+	mes "請務必來拜訪";
+	next;
+	mes "[飛空艇 宣傳人員]";
+	mes "傳送費用是1800 金幣，";
+	mes "請告訴我目的地";
+	next;
+	switch(select("普隆德拉:伊斯魯得島:吉芬:夢羅克:斐揚:艾爾貝塔:克魔島:取消")) {
+		case 1: callsub S_Warp,"prontera",116,72;
+		case 2: if (checkre(0)) callsub S_Warp,"izlude",128,98; else callsub S_Warp,"izlude",94,103;
+		case 3: callsub S_Warp,"geffen",120,39;
+		case 4: callsub S_Warp,"morocc",156,46;
+		case 5: if (checkre(0)) callsub S_Warp,"payon",162,59; else callsub S_Warp,"payon",69,100;
+		case 6: callsub S_Warp,"alberta",117,56;
+		case 7: callsub S_Warp,"comodo",209,143;
+		case 8: close;
+	}
+
+S_Warp:
+	if (Zeny >= 1800) {
+		set zeny,zeny-1800;
+		warp getarg(0),getarg(1),getarg(2);
+		end;
+	}
+	else {
+		mes "[飛空艇 宣傳人員]";
+		mes "顧客，您所支付的金額不夠啊";
+		mes "請再一次的做確認";
+		close;
+	}
+}
+
+
+//============
+// arc211543 補充
+//============
+yuno_in04,20,123,6	script	註冊人員#yu_in	95,{
+	mes "[梅麗琳 普切]";
+	mes "歡迎光臨";
+	mes "在我們魔物學會研究室裡";
+	mes "以各位冒險家的資訊為基礎";
+	mes "掌握分佈在大陸各地魔物的";
+	mes "情況或棲息等,為了有更安全";
+	mes "的對應而正在努力中";
+	next;
+	mes "[梅麗琳 普切]";
+	mes "除此之外的任務資訊情報";
+	mes "我們都做受理";
+	mes "如果有任何新消息或情報的話";
+	mes "可以在前方填寫";
+	mes "之後交給我";
+	next;
+	mes "[梅麗琳 普切]";
+	mes "大家所提供的資訊";
+	mes "我們會認真的去研究";
+	mes "並會努力的帶給大家利益的";
+	close;
+}

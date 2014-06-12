@@ -1,0 +1,100 @@
+//===== rAthena Script =======================================
+//= 檢索達人
+//===== By: ==================================================
+//= skyiing, Scriptor
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= [Official Conversion]
+//= Catalogs allow players to easily search for items in-game,
+//= and to buy/sell directly from the catalog interface.
+//===== Additional Comments: =================================
+//= 1.0 Moved from root directory. [Euphy]
+//= 1.1 Updated dialogue. [Euphy]
+//============================================================ 
+
+moc_para01,22,16,5	script	檢索達人#catal01	704,{
+	if (!checkweight(1301,3)) {
+		mes "- 請檢查您的負重量 -";
+		close;
+	}
+	set .@ticket_cost, 200;
+	mes "[檢索達人]";
+	mes "由吉芬魔法學會";
+	mes "直接提供的";
+	mes "新商品，^007777露天商店檢索卡(銀)^000000!";
+	next;
+	mes "專心讀著寫在";
+	mes "手掌上的文字，";
+	mes "專注得都沒空";
+	mes "觀察你的反應。";
+	next;
+	mes "[檢索達人]";
+	mes "露天商店賣什麼、";
+	mes "交易什麼東西，";
+	mes "可一眼看清楚的";
+	mes "超便利咒文";
+	mes "剛剛上市了！";
+	mes "這是最受露天商店歡迎的東西。";
+	next;
+	mes "[檢索達人]";
+	mes "^007777露天商店檢索卡(銀)^000000";
+	mes "每1張只賣 200z!";
+	mes "一次最多可買 50張!";
+	next;
+	switch(select("購買^007777露天商店檢索卡(銀)^000000:不買:你是商人嗎?")) {
+	case 1:
+		mes "[檢索達人]";
+		mes "請問你要買50張嗎?";
+		mes "還是需要多少呢?";
+		next;
+		while (1) {
+			input .@input;
+			mes "[檢索達人]";
+			if (.@input == 0) {
+				mes "交易結束";
+				emotion e_swt2,1;
+				close;
+			} else if (.@input < 1 || .@input > 50) {
+				mes "請輸入 50個以內。";
+				next;
+			} else
+				break;
+		}
+		set .@sell, .@ticket_cost * .@input;
+		mes "你總共要購買" + .@input + "張，";
+		mes "費用總計是" + .@sell + "金幣，";
+		if (Zeny < .@sell) {
+			mes "不過你身上帶的金幣似乎不夠啊";
+			close;
+		}
+		mes "東西給你，請收好。";
+		set Zeny, Zeny - .@sell;
+		getitem 12580,.@input; //Vending_Search_Scroll
+		close;
+	case 2:
+		mes "[檢索達人]";
+		mes "不買會後悔哦...";
+		mes "需要重新給你解說嗎?";
+		mes "接下來不知如何是好...";
+		mes "該怎麼辦呢?";
+		emotion e_swt2,1;
+		close;
+	case 3:
+		mes "[檢索達人]";
+		mes "我的本職是魔法師，";
+		mes "本來要委託商人公會出售的，";
+		mes "但他們老是想搭配掃把一起販賣，";
+		mes "所以我只好親自來賣啦。";
+		next;
+		mes "[檢索達人]";
+		mes "這裡是冒險家們";
+		mes "來往密切的地方，";
+		mes "應該會大賣吧?";
+		mes "所以你能否多買";
+		mes "幾個呢...!";
+		close;
+	}
+}

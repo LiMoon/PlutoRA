@@ -1,0 +1,370 @@
+//===== rAthena Script ======================================= 
+//= Super Novice Job Quest
+//===== By: ================================================== 
+//= Darkchild
+//===== Current Version: ===================================== 
+//= 2.4
+//===== Compatible With: ===================================== 
+//= rAthena SVN r15340+
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Super Novice Job Change Npc
+//= Super Novice Cart Rental Npc
+//= Some Other Useless Super Novice Npc
+//===== Additional Comments: ================================= 
+//= 1.9 Rescripted to the Aegis 10.3 Standars. [Samuray22]
+//= 2.0 Rescripted again, this time using an iRO base. [L0ne_W0lf]
+//= 2.1 Swapped use of baseclass for basejob. [L0ne_W0lf]
+//= 2.2 Added Quest Log commands. [Kisuka]
+//= 2.3 NPC "亞瑟雷" calls Ex. Super Novice script when enabled. [Euphy]
+//= 2.4 Added an Ex. Super Novice dialog check. [Euphy]
+//============================================================ 
+
+aldeba_in,223,167,3	script	特傑雷諾#sn	709,{
+	if(Upper == 1) {
+		mes "[特傑雷諾]";
+		mes "你已經是優秀的，初學者俱樂部成員之一了，";
+		mes "沒有什麼不知的，";
+		mes "也更沒有什麼缺點的，";
+		mes "只是平凡的初學者";
+		next;
+		mes "[特傑雷諾]";
+		mes "耶耶耶耶?!!?!?";
+		mes "騙人!!! 你是!! 你是!!!?";
+		mes "- 笛哩哩哩鈴 -";
+		next;
+		mes "- 叉卡 -";
+		next;
+		mes "[特傑雷諾]";
+		mes "啊啊，是，是，是";
+		mes "是....我知道了，是，啊! 沒有! 還沒有開口說啊，是，當然";
+		mes "-叉卡 -";
+		next;
+		mes "[特傑雷諾]";
+		mes "...............";
+		mes "再見囉~";
+		close;
+	}
+	if (BaseJob == Job_SuperNovice) {
+		mes "[特傑雷諾]";
+		mes "你已經是優秀的，初學者俱樂部成員之一了，";
+		mes "沒有什麼不知的，";
+		mes "也更沒有什麼缺點的，";
+		mes "只是平凡的初學者";
+		next;
+		mes "[特傑雷諾]";
+		mes "希望以後繼續享受著平凡的人生，";
+		mes "繼續的發揚，";
+		mes "初學者的存在";
+		close;
+	}
+	if (countitem(938) > 29 && countitem(907) > 29 && SUPNOV_Q == 1) {
+		delitem 938,30; //Sticky_Mucus
+		delitem 907,30; //Resin
+		mes "[特傑雷諾]";
+		mes "哦..果然如我預測般";
+		mes "你真的適合過普通又平凡的人生";
+		mes "對我們來說已經足夠了!";
+		mes "歡迎加入初學者公會!";
+		next;
+		mes "[特傑雷諾]";
+		mes "如同我先前對你的承諾，幫你轉職成超級初學者";
+		mes "你準備好了嗎!!!";
+		next;
+		select("啊!?:什麼?!");
+		mes "^3355FF- 特傑雷諾突然不尋常的舉動讓你錯愕... -";
+		mes "- 你突然不知道要說什麼好! -";
+		mes "- 那一瞬間! -^000000";
+		next;
+		completequest 6010;
+		callfunc "F_ClearJobVar";
+		getitem 2339,1; //G_Strings
+		if (Upper==0) jobchange Job_SuperNovice;
+		if (Upper==2) jobchange Job_Super_Baby;
+		mes "[特傑雷諾]";
+		mes "哇哈哈哈!嚇了一跳?";
+		mes "只是對普通又平凡的日常生活";
+		mes "稍微小小的惡作劇...";
+		mes "那個是特傑雷諾信條";
+		next;
+		mes "[特傑雷諾]";
+		mes "嗯，這樣的話";
+		mes "你也是位優秀的超級初學者了";
+		next;
+		mes "[特傑雷諾]";
+		mes "那麼給予一件東西";
+		mes "傳說木乃伊使用過的傳說中的防禦具!";
+		mes "請一定使用";
+		next;
+		mes "[特傑雷諾]";
+		mes "心情真好~今後也在普通的平凡早晨度過";
+		mes "我們通知不平凡的人們";
+		mes "知道有初學者公會的存在";
+		close;
+	}
+	if (SUPNOV_Q == 1) {
+		mes "[特傑雷諾]";
+		mes "呃..忘記了必要的物品嗎?";
+		mes "再告訴你一遍吧!好嗎?";
+		next;
+		mes "[特傑雷諾]";
+		mes "^FF0000黏稠液體^000000和 ^FF0000枯木汁^000000";
+		mes "這次請不要忘記啊~";
+		close;
+	}
+	if (BaseJob == Job_Novice && Upper != 1) {
+		mes "[特傑雷諾]";
+		mes "那一位!!就是你!!";
+		mes "全身普通又平凡的你";
+		mes "我們就是為了像你這樣的人而在此!";
+		next;
+		mes "[特傑雷諾]";
+		mes "如何?";
+		mes "想不想加入初學者俱樂部";
+		mes "躋身擁有各項一般能力的人";
+		mes "再也不用普通又不起眼的過日子";
+		mes "想為平凡的生活道路多點變化嗎?";
+		next;
+		mes "[特傑雷諾]";
+		mes "如果你加入我們的話";
+		mes "可以幫你轉職成能高度使用";
+		mes "各種一般能力的^CE6300超級初學者^000000!";
+		mes "聽起還不錯吧?";
+		next;
+		switch(select("加入:不加入:請告訴我更多的相關資料")) {
+		case 1:
+			if (getskilllv("NV_BASIC") < 9) {
+				mes "[特傑雷諾]";
+				mes "哎呀哎呀...真是可惜!";
+				mes "你不具備有申請轉職的資格";
+				mes "技能等級必須達到^0000FF9以上^000000";
+				mes "才能加入我們";
+				close;
+			}
+			if (BaseLevel < 45) {
+				mes "[特傑雷諾]";
+				mes "哎呀哎呀...真是可惜!";
+				mes "你不具備有申請轉職的資格";
+				mes "基本等級必須達到^0000FF45以上^000000";
+				mes "才能加入我們";
+				close;
+			}
+			mes "[特傑雷諾]";
+			mes "喔~這個時勢，普通平凡地活著是條荊棘的道路!";
+			mes "敢於選擇此條道路嗎...";
+			mes "下定決心了!?";
+			next;
+			mes "[特傑雷諾]";
+			mes "普通...平凡...是個不錯的字眼";
+			mes "不那樣認為嗎?";
+			next;
+			mes "[特傑雷諾]";
+			mes "雖然你接受加入初學者公會";
+			mes "但是並不表示你可以馬上成為超級初學者";
+			mes "有一些東西需要你去蒐集";
+			mes "是個普通又平凡的資格試驗";
+			next;
+			mes "[特傑雷諾]";
+			mes "去個適合普通又平凡生活的地圖";
+			mes "然後取得初學者公會資格試驗";
+			mes "需要你帶回的平凡項目物品";
+			mes "嗯...需蒐集以下物品";
+			mes "^FF0000黏稠液體^000000和 ^FF0000枯木汁^000000";
+			next;
+			mes "[特傑雷諾]";
+			mes "這二項物品蒐集^FF000030個^000000之後再回來找我";
+			mes "喏~喏!這數字也實在普通又平凡吧~";
+			next;
+			mes "[特傑雷諾]";
+			mes "那麼，就在這等待你回來唷!";			next;
+			set SUPNOV_Q,1;
+			setquest 6010;
+			close;
+		case 2:
+			mes "[特傑雷諾]";
+			mes "唔...你這是普通罪犯";
+			mes "和一般社會邊緣人的普通想法";
+			mes "...這種人不懂得與一般普通朋友相處應盡的義務";
+			next;
+			mes "[特傑雷諾]";
+			mes "當然，普通的想法也很容易用普通的方法改變";
+			mes "如果你改變了你的想法，請再來找我";
+			close;
+		case 3:
+			mes "[特傑雷諾]";
+			mes "噢! 你想知道更多有關這個公會的事啊";
+			mes "我很榮幸能為你解釋!";
+			next;
+			mes "[特傑雷諾]";
+			mes "讓我告訴你有關琪瑪的事吧!";
+			mes "他是我們這個公會的創辦人";
+			mes "琪瑪創辦這個公會";
+			mes "是一位普通朋友和普通社交圈";
+			mes "沒有足夠的凝聚力";
+			mes "也沒有辦法認識更多的朋友..";
+			next;
+			mes "- 特傑雷諾 講了快十分鐘 -";
+			mes "- 他的聲音是那麼的普通 -";
+			mes "- 讓你快要睡著了... -";
+			next;
+			mes "[特傑雷諾]";
+			mes "...總之、這個初學者公會從創辦開始就發展迅速";
+			mes "我們為我們的口語驕傲:";
+			mes "普通的人，普通的目標";
+			mes "普通的夢想!!";
+			close;
+		}
+	}
+	else {
+		mes "[特傑雷諾]";
+		mes "你不是一位平凡的人，";
+		mes "我是初學者俱樂部的，非正式老大";
+		mes "我叫，特傑雷諾";
+		next;
+		mes "[特傑雷諾]";
+		mes "大概不平凡的你，";
+		mes "這和你一輩子沒有關聯的俱樂部吧..";
+		mes "你不理解也沒有關係，";
+		mes "叫我們來理解你，";
+		mes "也是不可能的事情啊";
+		next;
+		mes "[特傑雷諾]";
+		mes "嗯... 反正這世界上有各式各樣的人，";
+		mes "既然有這樣的人，";
+		mes "也會有那樣的人，這是理所當然的，";
+		mes "你也這麼認為嗎?";
+		close;
+	}
+}
+
+aldeba_in,216,169,5	script	亞瑟雷#sn	86,{
+	if (Class == Job_Super_Novice_E || Class == Job_Super_Baby_E) {
+		mes "[亞瑟雷]";
+		mes "You! Stronger than before.";
+		mes "I knew you could pass the test~";
+		close;
+	}
+	if (BaseJob == Job_SuperNovice) {
+		if (checkre(0))
+			callfunc "Esseray_Ex";
+		mes "[亞瑟雷]";
+		mes "唉唷~";
+		mes "你不是我們初學者俱樂部會員嗎?";
+		mes "呀~ 你很有眼光啊?!";
+		mes "你怎麼知道這是好東西呢~";
+		next;
+		mes "[亞瑟雷]";
+		mes "以後也要繼續的混...不不，";
+		mes "平凡的吃喝享用! 附加一句，";
+		mes "我是特傑雷諾隊長屬下的，";
+		mes "最好的會員!";
+		close;
+	}
+	if (BaseJob == Job_Novice && Upper != 1) {
+		mes "[亞瑟雷]";
+		mes "噢!不..!!";
+		mes "你是那些拒絕過普通生活的不尋常人";
+		mes "你的生活方式會危害到那些";
+		mes "只想平平淡淡過普通生活的人!";
+		mes "啊啊啊啊啊!!";
+		close;
+	}
+	else {
+		mes "[亞瑟雷]";
+		mes "唉唷...你已經遠離平凡之路啦，";
+		mes "已經後悔，";
+		mes "也來不及了!";
+		mes "嗯... 那就代替我們，";
+		mes "隨意的過著危險的生活吧";
+		close;
+	}
+}
+
+aldebaran,54,238,5	script	卡普拉 職員#sn	117,{
+	if (BaseJob == Job_SuperNovice) {
+		mes "[卡普拉 職員]";
+		mes "嗯! 你是超級初學者啊，";
+		mes "其它卡普拉職員們，";
+		mes "沒有對你出租手推車，";
+		mes "是不是很失望呢? 不過現在，";
+		mes "就不用煩惱了";
+		next;
+		mes "[卡普拉 職員]";
+		mes "我在這邊針對，";
+		mes "超級初學者們，";
+		mes "出租手推車，所以和...";
+		mes "卡普拉本社所下達的命令，";
+		mes "是違背的，";
+		mes "所以我在這邊偷偷的服務..嘿嘿";
+		next;
+		mes "[卡普拉 職員]";
+		mes "反正，社論就說到這裡!";
+		mes "請問你要使用出租手推車嗎?";
+		mes "出租費用是1900金幣";
+		next;
+		if (select("我要使用:我不要使用") == 1) {
+			mes "[卡普拉 職員]";
+			mes "啊，在這裡有一點注意事項";
+			mes "手推車使用技能，";
+			mes "應該都有學會吧?";
+			mes "反正我是什麼時候都可以出租給你的，";
+			mes "假如沒有學會這技能的話，";
+			mes "只是浪費金錢，也租不到手推車";
+			next;
+			mes "[卡普拉 職員]";
+			mes "請注意到這一點..我都是偷偷的服務，";
+			mes "所以都沒有，";
+			mes "確認到這些事情";
+			next;
+			if (select("我要使用:我不要使用") == 1) {
+				if (checkcart()) {
+					mes "[卡普拉 職員]";
+					mes "顧客你已經裝備手推車了";
+					close;
+				}
+				if (Zeny >= 1899) {
+					set RESRVPTS, RESRVPTS + 190;
+					set Zeny, Zeny-1900;
+					if (getskilllv("MC_PUSHCART") > 0) setcart;
+					mes "[卡普拉 職員]";
+					mes "謝謝您的使用，";
+					mes "雖然是不合法的服務";
+					mes "不過我是到目前為止，";
+					mes "為各位所服務的卡普拉~";
+					close;
+				}
+				else {
+					mes "[卡普拉 職員]";
+					mes "唔...看來你的錢不夠喔.";
+					close;
+				}
+			}
+			mes "[卡普拉 職員]";
+			mes "那麼下一次有機會的話，";
+			mes "再來利用吧";
+			close;
+		}
+		mes "[卡普拉 職員]";
+		mes "那麼下一次有機會的話，";
+		mes "再來利用吧";
+		close;
+	}
+	mes "[卡普拉 職員]";
+	mes "您好~ 唉唷? 真不好意思啊";
+	mes "我能幫助你的事情，什麼都沒有啊，";
+	mes "請你尋找其它，";
+	mes "卡普拉職員吧";
+	close;
+}
+
+//============================================================ 
+// Old changelog
+//============================================================ 
+//= Dialogs From Some Other Scripts (Most Of It)
+//= 1.3-1.5 Added Baby class support (and to the Kafta SN Cart
+//=     renter, too) [Lupus]
+//= 1.6 Added a fix which prevent High Novices passing
+//=     this Job Quests again. [Lupus]
+//= 1.7 Fixed Baby Class Support. [Lupus]
+//= 1.8 Now a Baby can become a Super Baby [Lupus]
+//============================================================ 

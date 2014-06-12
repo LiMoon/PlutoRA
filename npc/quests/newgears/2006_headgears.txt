@@ -1,0 +1,1154 @@
+//===== rAthena Script =======================================
+//= 2006 Headgear
+//===== By: ==================================================
+//= DiviniaRO members, cleaned by reddozen
+//===== Current Version: =====================================
+//= 1.4
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= [Official Conversion]
+//= Censor Bar, Feather Beret, Valk. Helm, Hahoe Mask,
+//= Mythical Lion Mask, Bride Mask, Magistrate Hat and Ayam
+//===== Additional Comments: =================================
+//= NPC id's and dialog are custom, please replace
+//= 1.0a fixed typos, added missing names, more cleaned and
+//=     standartized stuff a bit [Lupus]
+//= 1.0b fixed Helm of Valkyries ingredients
+//= 1.0c corrected item names according to item_db [Lupus]
+//= 1.1 Full update. EuRO (?) dialogs, and positions. [L0ne_W0lf]
+//= 1.2 Fixed bugs in the Hahoe/Lion/Bride Mask NPC. [L0ne_W0lf]
+//=     Fixed some of the names to iRO.
+//= 1.3 Fixed some color code bugs in 蓋尼勒希民. Thanks to yyCC. [L0ne_W0lf]
+//= 1.3a Fixed wrong item names (due to copy/paste) [Lupus]
+//= 1.4 青岳望 now checks if the last item set should be deleted. (bugreport:4719) [L0ne_W0lf]
+//============================================================
+
+// Censor Bar
+//============================================================
+rachel,91,273,8	script	?	930,{
+	if (countitem(983) > 0 && countitem(7111) > 99 && countitem(938) > 98 && Zeny > 99999) {
+		mes "[?]";
+		mes "Giggle giggle...isn't it my partner, eh?";
+		mes "So, did you bring everything that I asked?";
+		mes "Great, now I can make the item which will help you";
+		mes "to cover your identity! Giggle giggle...";
+		next;
+		mes "- Bzzz Bzzz Click Click -";
+		mes "- Fumble Fumble Fumble Fumble -";
+		mes "- Bzzz Bzzz Click Click -";
+		mes "- Fumble Fumble Fumble Fumble -";
+		next;
+		mes "[?]";
+		mes "...Hey, don't look over my shoulder.";
+		mes "I don't want to share";
+		mes "my business secret with you, you know?";
+		next;
+		mes "- Bzzz Bzzz Click Click -";
+		mes "- Fumble Fumble Fumble Fumble -";
+		mes "- Bzzz Bzzz Click Click -";
+		mes "- Fumble Fumble Fumble Fumble -";
+		next;
+		delitem 983,1; //Black_Dyestuffs
+		delitem 7111,100; //Smooth_Paper
+		delitem 938,99; //Sticky_Mucus 
+		set Zeny,Zeny-100000;
+		getitem 5175,1; //Anonimity_Request
+		mes "[?]";
+		mes "Phew...it's done. Well, it was not that difficult to make, but...";
+		mes "Giggle giggle, what is important is that";
+		mes "now you can hide your identity. Now, take this.";
+		mes "Hopefully, this mask will help you";
+		mes "to avoid encountering your enemies. Ahahaha!";
+		close;
+	}
+	mes "[?]";
+	mes "... 喔呵! 你不要想";
+	mes "打聽我! 也別想跟我搭訕!";
+	mes "噓! 別向敵人透露";
+	mes "我在這裡!";
+	next;
+	mes "[?]";
+	mes "什麼嘛... 是跟我同一國的嗎，";
+	mes "因想要隱蔽，想要隱藏自己的身份，";
+	mes "所以才跑到這窮鄉僻壤的";
+	mes "對吧? 沒錯... 應該是... 呵呵呵";
+	next;
+	mes "[?]";
+	mes "若是同志的話我就不該對你";
+	mes "冷淡... 雖然我不能把我的";
+	mes "真實身份告訴你，但能讓你";
+	mes "像我一樣過著隱藏的生活";
+	next;
+	mes "[?]";
+	mes "把^FF0000黑色染料 1個^000000，^FF0000光滑的紙";
+	mes "100個^000000，^FF0000粘稠液體 99個^000000，";
+	mes "以及 ^FF000010萬金幣^000000等";
+	mes "帶來吧.. 呵呵，那麼我會幫你";
+	mes "徹底的來隱藏身份的";
+	next;
+	mes "[?]";
+	mes "那麼去吧，我們在一起";
+	mes "不會有好結果的，";
+	mes "你也找個好位置來隱藏吧..";
+	mes "呵呵呵，等你備齊材料時";
+	mes "再來找我囉";
+	close;
+}
+
+// 羽毛貝雷帽
+//============================================================
+rachel,152,131,3	script	俠庫	928,{
+	if (countitem(5172) > 0 && countitem(7063) > 99 && countitem(982) > 0) {
+		mes "[俠庫]";
+		mes "很好，你很機靈的把製作^FF0000羽毛貝雷帽^000000的";
+		mes "材料全都準備妥當了! 為了";
+		mes "獎勵你的辛勞，由我來";
+		mes "親自製作";
+		next;
+		mes "[俠庫]";
+		mes "請你持清淨的心在旁觀摩，";
+		mes "等待時間也需要挺直腰桿，";
+		mes "必須對上蒼坦蕩又虔誠的";
+		mes "用正直的眼神注視才可以!";
+		next;
+		mes "[俠庫]";
+		mes "萬一未遵守規定時，";
+		mes "^FF0000 雖然只有極低的機率，";
+		mes "但也有可能會失敗! 當作業";
+		mes "失敗時所有材料都會泡湯!";
+		mes "那麼本人絕對不會付任何";
+		mes "責任，請你牢記了!^000000";
+		next;
+		mes "- 敲打敲打敲 -";
+		mes "- 敲打敲打敲 -";
+		mes "- 敲打敲打敲 -";
+		mes "- 啪啪啪 -";
+		next;
+		mes "- 敲打敲打敲 -";
+		mes "- 敲打敲打敲 -";
+		mes "- 敲打敲打敲 -";
+		mes "- 啪啪啪 -";
+		next;
+		set .@result,rand(1,10);
+		if (.@result == 4) {
+			delitem 5172,1; //Beret 
+			delitem 7063,100; //Soft_Feather 
+			delitem 982,1; //White_Dyestuffs
+			mes "[俠庫]";
+			mes "I did succeed in making the hat,";
+			mes "but I cannot let it fall into someone else's hand!";
+			mes "The essential of Feather Beret is";
+			mes "the precise angle of the beret and the feather,";
+			mes "but this hat's angle has become slightly crooked,";
+			mes "and the quality has become too poor to be my artwork!";
+			next;
+			mes "[俠庫]";
+			mes "I understand that you feel quite unfortunate";
+			mes "with this result. However, I urge you to not to be";
+			mes "so disappointed, and try again!";
+			mes "There is no impossibility in the world, so you can do it!";
+			next;
+			mes "[俠庫]";
+			mes "Now, brace yourself up!";
+			mes "You have done this already,";
+			mes "so you can easily do it again.";
+			mes "If you understood, now, go, go gather the materials again!";
+			close;
+		}
+		delitem 5172,1; //貝雷帽
+		delitem 7063,100; //柔軟的羽毛
+		delitem 982,1; //白色染料
+		getitem 5170,1; //羽毛如貝雷
+		mes "[俠庫]";
+		mes "成功了，看到了嗎，這羽毛如貝雷的";
+		mes "完美搭配，還有光看就能";
+		mes "感受到有規矩，這才是";
+		mes "人類生活在時代裡該秉持的";
+		mes "必需品";
+		next;
+		mes "[俠庫]";
+		mes "這是用你搜集回來的材料";
+		mes "所製作的理所當然是你的，";
+		mes "請你善加利用它，不管到";
+		mes "哪裡要做個堂堂正正的人";
+		close;
+	}
+	mes "[俠庫]";
+	mes "角度抓好! 腰桿要挺直!!";
+	mes "要有規矩且流暢的行動";
+	mes "才是我們人類該做的! 我說";
+	mes "現在的人，實在太沒骨氣";
+	mes "又沒禮貌，你沒有";
+	mes "同感嗎，那位諸君!";
+	next;
+	if (select("是，沒錯!:不對") == 1) {
+		mes "[俠庫]";
+		mes "嗯! 不錯! 是最近難得一見";
+		mes "有規矩的人，不過本人";
+		mes "看起來你還不夠成熟!";
+		mes "沒錯，若使用^FF0000羽毛貝雷帽^000000的話，";
+		mes "或許會比較好一些";
+		next;
+		mes "[俠庫]";
+		mes "我特別賞識你那守規矩的態度，";
+		mes "你只要帶來材料的話，本人親自";
+		mes "為你製作羽毛貝雷帽的，";
+		mes "明白了嗎?";
+		next;
+		mes "[俠庫]";
+		mes "材料是 ^FF0000貝雷帽^000000 一個，^FF0000柔軟的羽毛^000000";
+		mes "一百個，^FF0000白色染料^000000 一個，";
+		mes "請記清楚後機靈的";
+		mes "搜集回來吧!";
+		next;
+		mes "[俠庫]";
+		mes "這會提升你的威嚴和品德，";
+		mes "以及完成度，你要心存";
+		mes "感激喔! 準備好了的話，";
+		mes "立刻去搜集回來~吧!";
+		close;
+	}
+	mes "[俠庫]";
+	mes "聲音太小! 也沒規矩!";
+	mes "你這樣哪能在世上";
+	mes "生存嗎，嗯? 你要提起";
+	mes "精神來?!";
+	close;
+}
+
+// 巴基力頭具
+//============================================================
+hugel,147,103,3	script	蓋尼勒希民	897,{
+	if (moza_valkylie == 5) {
+		set .@val2,rand(1,10);
+		if (.@val2 == 3) {
+			specialeffect EF_LIGHTSPHERE;
+			mes "[蓋尼勒希民]";
+			mes "The materials are still being fused.";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "Umm?! Oh...oh?! Isn't this...";
+			mes "Isn't this...?!";
+			next;
+			specialeffect EF_FORESTLIGHT2;
+			mes "[蓋尼勒希民]";
+			mes "Ah...ahahaha, we've made it! We've made it!";
+			mes "Valkyre's Helm...We've recreated Valkyre's Helm,";
+			mes "a glorious godly armor!";
+			mes "Ah...does this mean...?";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "We are writing new history!";
+			mes "Yes, we just have started writing new history.";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "Thank you so much for giving me a chance to participate in this.";
+			mes "I am sure that my ancestors in heaven will be glad";
+			mes "to see this successful recreation of Valkyre's Helm.";
+			mes "Hahahahaha!";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "Please take this helm.";
+			mes "As I promised, this is yours.";
+			mes "Please take pride in yourself, and";
+			mes "do not disgrace this Helm through evil doings.";
+			next;
+			set moza_valkylie,0;
+			getitem 5171,1; //Valkyrie_Helm
+			mes "[蓋尼勒希民]";
+			mes "May God bless this adventurer";
+			mes "who has written new history.";
+			mes "I, Gheirhemin pray to god for his safe journey";
+			mes "who is now heading toward the new history.";
+			close;
+		}
+		specialeffect EF_LIGHTSPHERE;
+		mes "[蓋尼勒希民]";
+		mes "The materials are still being fused.";
+		close;
+	}
+	else if (moza_valkylie == 4) {
+		set .@val,rand(1,10);
+		if (.@val == 7) {
+			mes "[蓋尼勒希民]";
+			mes "............";
+			next;
+			specialeffect EF_LIGHTSPHERE;
+			mes "[蓋尼勒希民]";
+			mes "Oh...oh? They....they just have started being fused!";
+			mes "Look at this shining light!";
+			mes "I can't...I can't believe that";
+			mes "this is what happens in Valhala!";
+			next;
+			set moza_valkylie,5;
+			mes "[蓋尼勒希民]";
+			mes "We are now witnessess of the God's grace...ah....";
+			close;
+		}
+		mes "[蓋尼勒希民]";
+		mes "....Let's wait a little longer.";
+		close;
+	}
+	else if (moza_valkylie == 3) {
+		set moza_valkylie,4;
+		mes "[蓋尼勒希民]";
+		mes "Will you stop being anxious?";
+		mes "Just relax and wait, will you?";
+		mes "In a sense, we are holding a holy rite,";
+		mes "and it is not going to happen faster,";
+		mes "only because you, a human wants it to happen faster.";
+		close;
+	}
+	else if (moza_valkylie == 2 && Zeny > 9999999 && countitem(4219) > 0 && countitem(4114) > 0 && countitem(4177) > 0 && countitem(4259) > 0 && countitem(4212) > 0 && countitem(4073) > 0 && countitem(4112) > 0 && countitem(4081) > 0 && countitem(4251) > 0 && countitem(4166) > 0 && countitem(7511) > 999 && countitem(7563) > 999) {
+		mes "[蓋尼勒希民]";
+		mes "Hmm...I am impressed that you have brought everything";
+		mes "despite of the difficulty in gathering them. It was difficult, wasn't it?";
+		mes "Haha, I can tell just by looking at your face.";
+		mes "Good job, my friend, you did a good job.";
+		next;
+		mes "[蓋尼勒希民]";
+		mes "Now, please hand them to me.";
+		mes "If I place them together in one place,";
+		mes "I am pretty sure that they will start";
+		mes "being fused into the helm with their own mysterious powers.";
+		next;
+		if (select("Give him the items.:Don't give him the items.") == 1) {
+			mes "[蓋尼勒希民]";
+			mes "Excellent. Now, all we have to do";
+			mes "is just waiting until they finish being fused into one.";
+			next;
+			delitem 4219,1; //Sageworm_Card
+			delitem 4114,1; //Argiope_Card
+			delitem 4177,1; //Dryad_Card
+			delitem 4259,1; //Wooden_Golem_Card
+			delitem 4212,1; //Bon_Gun_Card
+			delitem 4073,1; //Pirate_Skel_Card
+			delitem 4112,1; //Marduk_Card
+			delitem 4081,1; //Hode_Card
+			delitem 4251,1; //Elder_Card
+			delitem 4166,1; //Nightmare_Terror_Card
+			delitem 7511,1000; //Rune_Of_Darkness
+			delitem 7563,1000; //Bloody_Rune
+			set Zeny,Zeny-10000000;
+			set moza_valkylie,3;
+			mes "[蓋尼勒希民]";
+			mes "Now I am all nervous";
+			mes "in anticipation of a good result. Hahahaha.";
+			close;
+		}
+		mes "[蓋尼勒希民]";
+		mes "?";
+		close;
+	}
+	else if (moza_valkylie == 2) {
+		mes "[蓋尼勒希民]";
+		mes "Please bring me";
+		mes "^FF00001 Sage Worm Card, 1Argiope Card,";
+		mes "^FF00001 Dryad Card, 1 Wooden Golem Card,";
+		mes "^FF00001 Bongun Card, 1 Pirate Skeleton Card,";
+		mes "^FF00001 Marduk Card, 1 Hode Card,";
+		mes "^FF00001 Elder Card, 1 Nightmare Terror Card,^000000";
+		next;
+		mes "[蓋尼勒希民]";
+		mes "^FF00001,000 Rune of the Darkness,";
+		mes "^FF00001,000 Bloody Rune,";
+		mes "^FF0000and the helm price, 10,000,000 zeny^000000.";
+		next;
+		mes "[蓋尼勒希民]";
+		mes "It surely is a reasonable price considering that ";
+		mes "you are about to obtain a godly power, don't you think?";
+		next;
+		set moza_valkylie,2;
+		mes "[蓋尼勒希民]";
+		mes "Let's discuss it later";
+		mes "once you prepare the money and the items.";
+		mes "Now I am so exhausted";
+		mes "as it has been a while since the last time that I talked this much.";
+		mes "Excuse me.";
+		close;
+	}
+	else if (moza_valkylie == 1) {
+		mes "[蓋尼勒希民]";
+		mes "You must be pretty surprised by now.";
+		mes "Yes, it is surely understandable.";
+		mes "If you have travelled many places,";
+		mes "and heard many stories, you would know what this is.";
+		mes "Yes, it is ^FF0000Valkyre's Helm^000000.";
+		next;
+		mes "[蓋尼勒希民]";
+		mes "A legendary helm only allowed to men";
+		mes "who have transcended their limit.";
+		mes "A godly armor that is blessed with an incredible power.";
+		mes "Can you see now that my story is true?";
+		next;
+		mes "[蓋尼勒希民]";
+		mes "It has passed so many years, and thus";
+		mes "its power has become weakened,";
+		mes "but you can still feel something holy about the helm.";
+		mes "Don't you think?";
+		next;
+		mes "[蓋尼勒希民]";
+		mes "Well...I am not allowed to wear this helm.";
+		mes "Thus, if I find someone who is just perfect for this helm,";
+		mes "I am going to give this to him without any regret.";
+		next;
+		mes "[蓋尼勒希民]";
+		mes "Of course, I can't give away";
+		mes "such a valuable thing for nothing in return.";
+		mes "That's how it goes, you know?";
+		mes "I maybe think about giving it to you";
+		mes "because you seem to be wealthier than others,";
+		mes "and I can sense special aura from you.";
+		next;
+		mes "[蓋尼勒希民]";
+		mes "So, what do you say?";
+		mes "I think that I have an eye for right men.";
+		mes "I feel that you will be able to fully recreate this Valkyre's Helm";
+		mes "as well as use it to its full potential.";
+		next;
+		if (select("Sure.:No, thanks.") == 1) {
+			mes "[蓋尼勒希民]";
+			mes "You are an ambitious young man as I expected.";
+			mes "It is surely a great advantage.";
+			mes "Okay, I will tell you what I know from now on.";
+			mes "So, listen carefully.";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "First, we have to fully restore the helm's power.";
+			mes "To do so, we must find monster cards";
+			mes "that possess mysterious powers.";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "That's not all. You know,";
+			mes "we can't just glue those monster cards";
+			mes "on the helm. Thus, we need a power that";
+			mes "enables us to fuse the cards and the helm into one.";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "Ancient runes are perfect to supply the power,";
+			mes "especially we need Rune of the Darkness, and Bloody Rune.";
+			mes "Perhaps, they were chosen because of their sealed dark power";
+			mes "and bloody sticky power? That's just my guess, hahahaha!";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "Once we successfully restore the helm's power,";
+			mes "you are expected to purchase the helm from me.";
+			mes "As I said earlier, I am not going to";
+			mes "give away such a valuable thing with nothing in return.";
+			mes "It will also demonstrate your qualification to become the helm's owner.";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "Basically, you have to bring me...";
+			mes "Ah, there are so many things that you need to bring me.";
+			mes "I suggest you to write down, and memorize them.";
+			next;
+			mes "Please bring me";
+			mes "^FF00001 Sage Worm Card, 1Argiope Card,";
+			mes "1 Dryad Card, 1 Wooden Golem Card,";
+			mes "1 Bongun Card, 1 Pirate Skeleton Card,";
+			mes "1 Marduk Card, 1 Hode Card,";
+			mes "1 Elder Card, 1 Nightmare Terror Card,^000000";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "^FF00001,000 Rune of the Darkness,";
+			mes "1,000 Bloody Rune,";
+			mes "and the helm price, 10,000,000 zeny^000000.";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "It surely is a reasonable price considering that ";
+			mes "you are about to obtain a godly power, don't you think?";
+			next;
+			set moza_valkylie,2;
+			mes "[蓋尼勒希民]";
+			mes "Let's discuss it later";
+			mes "once you prepare the money and the items.";
+			mes "Now I am so exhausted";
+			mes "as it has been a while since the last time that I talked this much.";
+			mes "Excuse me.";
+			close;
+		}
+		mes "[蓋尼勒希民]";
+		mes "Haha, I understand that";
+		mes "it is not an easy choice to make.";
+		mes "Take your time, my friend.";
+		mes "If you still don't want the helm, I respect your decision.";
+		close;
+	}
+	else if (Zeny > 9999999) {
+		mes "[蓋尼勒希民]";
+		mes "Hmm...you look like a poor-looking wanderer,";
+		mes "but you seem to have an enormous amount of money with you.";
+		mes "I guess that the old saying was right:";
+		mes "''Don't judge a book by its cover.''";
+		next;
+		mes "[蓋尼勒希民]";
+		mes "You maybe understand my story.";
+		mes "Would you like to listen to my long story?";
+		mes "It may or may not be interesting to you,";
+		mes "but I gurantee that it will never bore you in either way.";
+		next;
+		if (select("Listen.:Don't listen.") == 1) {
+			mes "[蓋尼勒希民]";
+			mes "Good, let me introduce myself.";
+			mes "My name is 蓋尼勒希民.";
+			mes "I am no different than others,";
+			mes "if I may speak of my only advantage,";
+			mes "I have little more money than them. Hahaha.";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "However, I did not earn my money,";
+			mes "but I inherited the fortune from my ancestors,";
+			mes "who were all gifted businessmen.";
+			mes "I thank to him for handing over such great fortune.";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "In fact, I am ashamed to tell you that";
+			mes "I do not know what exactly my ancestors did";
+			mes "to make this much fortune. Perhaps some would have held business,";
+			mes "some others would have been great artists...";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "Our family is just blessed enough to have";
+			mes "such great ancestors, who brought wealth to their family.";
+			mes "It would take me at least a week to list";
+			mes "every single successful ancestor of mine.";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "However, I like to tell you about one of my amazing ancestors,";
+			mes "who has become our family hero.";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "Well, actually I do not know exactly";
+			mes "what he did, but I know that";
+			mes "he brought glory and fame";
+			mes "to our family for the first time.";
+			mes "However, since it has been so long, we do not have";
+			mes "any document about him, so...";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "I clearly remember one thing about him though.";
+			mes "He was the only human who was able to";
+			mes "become close to the gods, and he demonstrated";
+			mes "his godly power to bring light to us, humans.";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "I don't know how he obtained the godly power,";
+			mes "or how he could become close to the gods.";
+			mes "I just remember these things because I was repeatedly told";
+			mes "about his amazing story ever since I was born...";
+			next;
+			mes "[蓋尼勒希民]";
+			mes "I can show you that I am not making things up.";
+			mes "I told you that we do not have any document about him, right?";
+			mes "However, there is something that I can show you.";
+			mes "Now, take a look at this.";
+			next;
+			set moza_valkylie,1;
+			mes "[蓋尼勒希民]";
+			mes "See? This surely tells you that";
+			mes "I am not making things up!";
+			mes "This is what my ancestor used to use!";
+			close;
+		}
+		mes "[蓋尼勒希民]";
+		mes "What a shame! However, I don't want to force you to";
+		mes "do something that you don't want to do. Hahaha.";
+		mes "Just remember, you just have made another choice for your life.";
+		close;
+	}
+	mes "[蓋尼勒希民]";
+	mes "Everything has meaning and reason to exist in this world.";
+	mes "You and I, we are destined to meet with each other today.";
+	next;
+	mes "[蓋尼勒希民]";
+	mes "Well...although I said that everything has meaning,";
+	mes "unfortunately you are not interesting to me at all.";
+	mes "Call me a money monger,";
+	mes "but I like the rich.";
+	next;
+	mes "[蓋尼勒希民]";
+	mes "If you prove me that you are wealthy,";
+	mes "I maybe change my mind, and become interested in you.";
+	mes "But, I will decide whether or not I will be interested in you";
+	mes "when you show me your money. Hahahaha!";
+	close;
+}
+// 獅子假面 / 內人假面 / 河回假面
+//============================================================
+payon,135,320,3	script	青岳望	97,{
+	if (moza_tal == 2) {
+		if (countitem(7015) > 19 && countitem(952) > 99 && countitem(1028) > 99) {
+			//Hahoe_Mask: Bookclip_In_Memory, Cactus_Needle, Wild_Boar's_Mane
+			callsub S_MakeMask,5176,7015,20,952,100,1028,100,0,0;
+		}
+		if (countitem(1048) > 499 && countitem(1053) > 1 && countitem(980) > 0) {
+			//Guardian_Lion_Mask: Slender_Snake, Tooth_Of_Ancient_Fishm Orange_Dyestuffs
+			callsub S_MakeMask,5177,1048,500,1053,2,980,1,0,0;
+		}
+		if (countitem(1049) > 19 && countitem(1059) > 499 && countitem(1054) > 1 && countitem(1024) > 99) {
+			//Bride_Mask: Skirt_Of_Virgin, Transparent_Cloth, Lip_Of_Ancient_Fish, Chinese_Ink
+			callsub S_MakeMask,5169,1049,20,1059,500,1054,2,1024,100;
+		}
+		mes "[青岳望]";
+		mes "Well well, have you not gathered the materials yet?";
+		mes "You'd better hurry because I can't wait so long!";
+		mes "Wait, what mask did you ask me to make anyways?";
+		next;
+		switch(select("Hahoe Mask:Bride Mask:Mythical Lion Mask")) {
+		case 1:
+			mes "[青岳望]";
+			mes "Oh, yes, you want Hahoe Mask.";
+			mes "Then you need to bring... ^FF000020 Bookclip in Memory^000000,";
+			mes "^FF0000100 Cactus Needle^000000, and";
+			mes "^FF0000100 Mane^000000.";
+			break;
+		case 2:
+			mes "[青岳望]";
+			mes "Oh, yes, you want Bride Mask.";
+			mes "Then you need to bring... ^FF000020 Skirt of Virgin^000000,";
+			mes "^FF0000500 Fabric^000000, ^FF00002 Ancient Lips^000000,";
+			mes "and ^FF0000100 Squid Ink^000000.";
+			break;
+		case 3:
+			mes "[青岳望]";
+			mes "Oh, yes, you want Mythical Lion Mask.";
+			mes "Then you need to bring... ^FF0000500 Horrendous Hair^000000,";
+			mes "^FF00002 Ancient Tooth^000000, and";
+			mes "^FF00001 Orange Dyestuffs^000000.";
+			break;
+		}
+		mes "Bring the exact amount of materials, then I will give you the mask right away.";
+		close;
+	}
+	if (countitem(7201) > 499) && (countitem(7200) > 9 && moza_tal == 1) {
+		mes "[青岳望]";
+		mes "Ah, Four Leaf Clover must bring me luck";
+		mes "because you came back faster than I thought! Wow...";
+		mes "Thank you so much, now I think that";
+		mes "I have fortune on my side. Hahaha!";
+		next;
+		mes "[青岳望]";
+		mes "Alright! I will return your favor as I promised.";
+		mes "I will tell you everything. In fact,";
+		mes "I am a traditional mask craftsman.";
+		mes "I am proud to tell you that no one can beat me";
+		mes "in crafting traditional masks! Ahem!";
+		next;
+		mes "[青岳望]";
+		mes "I had experienced emotional instability";
+		mes "as well as had bad luck with everything due to various reasons.";
+		mes "But, that's history now! I am back, hahahaha!";
+		next;
+		mes "[青岳望]";
+		mes "I feel good, and I have fortune back to my side.";
+		mes "I really appreciate you for helping me to feel better.";
+		mes "In return, I am going to make you a traditional mask! Hahaha!";
+		mes "You should be thankful for that I am offering you a great gift.";
+		next;
+		mes "[青岳望]";
+		mes "You know why? Because there is no one who can offer you";
+		mes "such a valuable item except me.";
+		mes "Anyhow, I can make 3 different masks:";
+		mes "Hahoe Mask, Bride Mask and Mythical Lion Mask.";
+		mes "Which one whould you like to have? Pick one.";
+		next;
+		switch(select("Hahoe Mask:Bride Mask:Mythical Lion Mask")) {
+		case 1:
+			mes "[青岳望]";
+			mes "Great, you want Hahoe Mask, eh? That's easy!";
+			mes "Then you need to bring... ^FF000020 Bookclip in Memory^000000,";
+			mes "^FF0000100 Cactus Needle^000000, and";
+			mes "^FF0000100 Mane^000000.";
+			mes "Bring the exact amount of materials, then I will give you the mask right away.";
+			break;
+		case 2:
+			mes "[青岳望]";
+			mes "Great, you want Bride Mask, eh? That's easy!";
+			mes "Then you need to bring... ^FF000020 Skirt of Virgin^000000,";
+			mes "^FF0000500 Fabric^000000, ^FF00002 Ancient Lips^000000,";
+			mes "and ^FF0000100 Squid Ink^000000.";
+			mes "Bring the exact amount of materials, then I will give you the mask right away.";
+			break;
+		case 3:
+			mes "[青岳望]";
+			mes "Great, you want Mythical Lion Mask, eh? That's easy!";
+			mes "Then you need to bring... ^FF0000500 Horrendous Hair^000000,";
+			mes "^FF00002 Ancient Tooth^000000, and";
+			mes "^FF00001 Orange Dyestuffs^000000.";
+			mes "Bring the exact amount of materials, then I will give you the mask right away.";
+			break;
+		}
+		delitem 7201,500; //Log
+		delitem 7200,10; //Flexible_String
+		set moza_tal,2;
+		next;
+		mes "[青岳望]";
+		mes "...Why are you eyeing at me?";
+		mes "What, did you expect me to make the mask for free?";
+		mes "If you did, you must think of it this way.";
+		mes "My term of payback is to use my skills,";
+		mes "and let you have my precious mask,";
+		mes "not making the mask for you at free of charge, understood?";
+		next;
+		mes "[青岳望]";
+		mes "At least I am not charging you with service fee, am I?";
+		mes "Just bring me the materials, I will do my best";
+		mes "to make an incredible mask for you!";
+		next;
+		mes "[青岳望]";
+		mes "In the meantime, I am going to prepare";
+		mes "the work by using these Log and Elastic Band.";
+		mes "So come back as soon as you can, okay?";
+		close;
+	}
+	if (moza_tal == 1) {
+		mes "[青岳望]";
+		mes "Umm...the things that I've asked you were";
+		mes "^FF0000500 Log^000000 and ^FF000010 Elastic Band^000000.";
+		mes "Thanks in advance.";
+		close;
+	}
+	if (countitem(706) > 0) {
+		mes "[青岳望]";
+		mes "Ah...! Hey! I can tell something unique about you.";
+		mes "Do you have a Four Leaf Clover by any chance?";
+		mes "Do you mind if I ask you to give me the clover?";
+		next;
+		mes "[青岳望]";
+		mes "I am not asking you to give it to me for free.";
+		mes "Although I can't gurantee it,";
+		mes "I will be able to pay back your favor sooner or later.";
+		mes "So, can I take it?";
+		next;
+		if (select("Sure.:No, you can't.") == 1) {
+			mes "[青岳望]";
+			mes "Oh! Thank you so much!";
+			mes "Muhahahahahaha! Now I will become a lucky guy!";
+			mes "With the clover, fortune will be on my side again!";
+			next;
+			mes "[青岳望]";
+			mes "Oh, right! I almost forgot.";
+			mes "I promised you to pay back your favor, right?";
+			mes "I know that this might sound selfish,";
+			mes "but, hey, can you do me one more favor?";
+			mes "Since you did me a favor already,";
+			mes "I don't think that it would be";
+			mes "that hard for you to help me one more time?";
+			mes "Please, show me your generosity~";
+			next;
+			mes "[青岳望]";
+			mes "I need... ^FF0000500 Log^000000 and";
+			mes "^FF000010 Elastic Band^000000.";
+			mes "Will you be so kind to bring them to me?";
+			mes "In fact, I can't pay you back unless I have them.";
+			next;
+			delitem 706,1; //Four_Leaf_Clover
+			set moza_tal,1;
+			mes "[青岳望]";
+			mes "You want me to pay you back, don't you?";
+			mes "So, please bring them to me, please~";
+			close;
+		}
+		mes "[青岳望]";
+		mes "I see... Well, it is not easy to give away the lucky charm";
+		mes "to a stranger without a second thought.";
+		mes "...Haha, but that doesn't make me stop being upset.";
+		mes "How dare you to refuse my request? Hah!";
+		close;
+	}
+	mes "[青岳望]";
+	mes "嗚... 嗚... 我是... 我是...";
+	next;
+	mes "[青岳望]";
+	mes "我是渴望幸運的男子!請帶給我";
+	mes "好運吧吧吧吧吧！";
+	mes "總之，我需要的只有一個!";
+	next;
+	mes "[青岳望]";
+	mes "需要^FF0000四葉幸運草^000000啦啦啦啦!";
+	mes "有人能幫我找到";
+	mes "四葉幸運草嗎!!!";
+	close;
+
+S_MakeMask:
+	mes "[青岳望]";
+	mes "Oh, you have brought everything";
+	mes "to make a "+getitemname(getarg(0))+". Excellent.";
+	mes "Please give me the materials. I will make the mask right away.";
+	next;
+	if (select("Give him the items.:Don't give him the items.") == 1) {
+		mes "[青岳望]";
+		mes "Great, I like your unhesitating attitude!";
+		mes "Alright then, I will make the mask as quickly as I can!";
+		next;
+		mes "[青岳望]";
+		mes "- Fumble Fumble Fumble -";
+		mes "- Fumble Fumble Fumble -";
+		mes "- Fumble Fumble Fumble -";
+		mes "- Thud Thud Thud Thud -";
+		next;
+		mes "[青岳望]";
+		mes "- Fumble Fumble Fumble -";
+		mes "- Fumble Fumble Fumble -";
+		mes "- Fumble Fumble Fumble -";
+		mes "- Thud Thud Thud Thud -";
+		next;
+		delitem getarg(1),getarg(2);
+		delitem getarg(3),getarg(4);
+		delitem getarg(5),getarg(6);
+		if (getarg(0) == 5169) 
+			delitem getarg(7),getarg(8);
+		getitem getarg(0),1;
+		set moza_tal,0;
+		mes "[青岳望]";
+		mes "Wow, it was a piece of cake!";
+		mes "You know, I am not an artisan only in title.";
+		mes "Hahaha, here, take your "+getitemname(getarg(0))+".";
+		mes "I hope that you will wear it with pride, hahaha!";
+		next;
+		mes "[青岳望]";
+		mes "Aright, I need to take a rest";
+		mes "until I have next customer. Hahaha, bye!";
+		close;
+	}
+	mes "[青岳望]";
+	mes "Err? Don't you want "+getitemname(getarg(0))+"?";
+	mes "Alright then...coward.";
+	close;
+}
+
+
+// 使道帽 / 披額帽
+//============================================================
+payon_in03,139,124,3	script	韓嘉藍	88,{
+	if (moza_korea == 2 && countitem(954) > 299 && countitem(733) > 4 && countitem(975) > 0 && countitem(7166) > 49) {
+		mes "[韓嘉藍]";
+		mes "必要的材料你帶齊了，";
+		mes "搜集的比我想像中還快...";
+		mes "果然心胸寬大的人實力也很好!";
+		mes "這個，一想到說為這種人製作";
+		mes "披額帽，真讓我興奮莫名";
+		next;
+		mes "[韓嘉藍]";
+		mes "好吧! 我盡快幫你完成，";
+		mes "你先把材料交給我吧";
+		next;
+		if (select("給他:不給他") == 1) {
+			mes "[韓嘉藍]";
+			mes "OK! 現在甚至不需要下龍了，";
+			mes "我也可以做得很漂亮，";
+			mes "請你等一下";
+			next;
+			mes "[韓嘉藍]";
+			mes "是的... 沒錯... 嗯 哼";
+			next;
+			mes "[韓嘉藍]";
+			mes ".................";
+			next;
+			mes "[韓嘉藍]";
+			mes ".................";
+			next;
+			mes "[韓嘉藍]";
+			mes "咻嗚... 好久沒做了";
+			mes "工作還滿吃力的";
+			next;
+			mes "[韓嘉藍]";
+			mes "不過我仍能發揮實力是件";
+			mes "頗得意的事，啊...真有趣，";
+			mes "總之這是你委託的批額帽，完成了";
+			mes "遵守約定把這個交給你了，拿去吧";
+			next;
+			delitem 954,300; //Shining_Scales
+			delitem 733,5; //Crystal_Jewel___
+			delitem 975,1; //Scarlet_Dyestuffs
+			delitem 7166,50; //Soft_Silk_Cloth
+			set moza_korea,0;
+			getitem 5174,1; //A_yam
+			mes "[韓嘉藍]";
+			mes "現在若有進行其它工作的話，";
+			mes "還需要體驗更多的下龍...嗯，";
+			mes "像這次也使多虧別人的幫忙";
+			mes "才能順利完成，下次應該";
+			mes "也不會有問題，正面思考~";
+			next;
+			mes "[韓嘉藍]";
+			mes "總之，謝謝你! 這披額帽希望";
+			mes "你能善加利用，它是珍貴物品";
+			mes "請你隨時抱持自豪感去使用吧!";
+			close;
+		}
+		mes "[韓嘉藍]";
+		mes "...? What? Do you need more time?";
+		mes "Can't you just give them to me already?";
+		close;
+	}
+	else if (moza_korea == 2 && countitem(954) > 299 && countitem(733) > 4 && countitem(983) > 0 && countitem(2221) > 0) {
+		mes "[韓嘉藍]";
+		mes "You came back faster than I expected.";
+		mes "Great, I am also highly motivated for the fact that";
+		mes "my Magistrate Hat will belong to someone like you,";
+		mes "who are competent and trustworthy.";
+		next;
+		mes "[韓嘉藍]";
+		mes "Okay then, I will make the hat as quickly as I can.";
+		mes "Now, hand me all the materials.";
+		next;
+		if (select("Give him the items.:Don't give him the items.") == 1) {
+			mes "[韓嘉藍]";
+			mes "Excellent! I don't have to be mediumized";
+			mes "by the Dragon God for this work";
+			mes "because I can perfectly do it on my own.";
+			mes "So, hold it right there, okay?";
+			next;
+			mes "[韓嘉藍]";
+			mes "Yes...right...umm hmm.";
+			next;
+			mes "[韓嘉藍]";
+			mes ".................";
+			next;
+			mes "- 韓嘉藍 started hammering, -";
+			mes "- and assembling the materials without a word. -";
+			next;
+			mes "[韓嘉藍]";
+			mes ".................";
+			next;
+			mes "[韓嘉藍]";
+			mes "Phew, it was quite difficult,";
+			mes "as I had not done this for quite a while.";
+			next;
+			mes "[韓嘉藍]";
+			mes "I still feel good that I had a chance";
+			mes "to exercise my skills, you know. It was fun, too.";
+			mes "Please take this Magistrate Hat.";
+			mes "As I promised, this is my gift for you.";
+			next;
+			delitem 954,300; //Shining_Scales
+			delitem 733,5; //Crystal_Jewel___
+			delitem 983,1; //Black_Dyestuffs
+			delitem 2221,1; //Hat_
+			set moza_korea,0;
+			getitem 5173,1; //Judge_Hat
+			mes "[韓嘉藍]";
+			mes "Now I need to meet with the Dragon God again,";
+			mes "if I want to make another hat...umm...";
+			mes "Oh well, somehow I was able to make one this time with your help,";
+			mes "so I guess that it will happen when the time is right.";
+			next;
+			mes "[韓嘉藍]";
+			mes "Thank you so much! Please take my Magistrate Hat with care,";
+			mes "and be proud that you are the owner of Magistrate Hat!";
+			close;
+		}
+		mes "[韓嘉藍]";
+		mes "...? What? Do you need more time?";
+		mes "Can't you just give them to me already?";
+		close;
+	}
+	else if (moza_korea == 2) {
+		mes "[韓嘉藍]";
+		mes "To make Ayam, I need";
+		mes "^FF0000300 Shining Scale^000000, ^FF00005 Cracked Diamond^000000,";
+		mes "^FF00001 Scarlet Dyestuffs^000000, and";
+		mes "^FF000050 Soft Silk^000000!";
+		next;
+		mes "[韓嘉藍]";
+		mes "To make Magistrate Hat, I need";
+		mes "^FF0000300 Shining Scale^000000, ^FF00005 Cracked Diamond^000000,";
+		mes "^FF00001 Black Dyestuffs^000000, and ^FF00001 Slotted Hat^000000!";
+		next;
+		mes "[韓嘉藍]";
+		mes "...That's what I said.";
+		mes "So, choose a hat, and bring me";
+		mes "its materials without missing anything.";
+		next;
+		mes "[韓嘉藍]";
+		mes "Ah~ it's been a while since the last time that I felt the Dragon God in me.";
+		mes "I felt like that I have learned something unworldly.";
+		close;
+	}
+	else if (moza_korea == 1) {
+		mes "[韓嘉藍]";
+		mes ".............";
+		next;
+		mes "[韓嘉藍]";
+		mes ".............";
+		next;
+		mes "[韓嘉藍]";
+		mes ".............";
+		next;
+		mes "[韓嘉藍]";
+		mes "...*Tremble Tremble*...He...He's here...He's here!";
+		mes "*Tremble Tremble* I can feel";
+		mes "the Dragon God inside of me! Waaah!";
+		mes "He is waving his tail, and showing me future!";
+		mes "Aaaaaahhhhhhh!";
+		next;
+		specialeffect EF_LORD;
+		mes "[韓嘉藍]";
+		mes "Waaaahhhh!";
+		next;
+		mes "[韓嘉藍]";
+		mes ".............";
+		next;
+		mes "[韓嘉藍]";
+		mes ".............";
+		next;
+		mes "[韓嘉藍]";
+		mes "Yes... yes, I can! I can make ^FF0000Ayam^000000";
+		mes "and ^FF0000Magistrate Hat^000000 now!";
+		mes "Oh, I can see how to make them,";
+		mes "I know what I need to make them! Everything is in my vision!";
+		mes "I feel like that I am alreadying making one!";
+		next;
+		mes "[韓嘉藍]";
+		mes "To make Ayam, I need";
+		mes "^FF0000300 Shining Scale^000000, ^FF00005 Cracked Diamond^000000,";
+		mes "^FF00001 Scarlet Dyestuffs^000000, and";
+		mes "^FF000050 Soft Silk^000000!";
+		next;
+		mes "[韓嘉藍]";
+		mes "To make Magistrate Hat, I need";
+		mes "^FF0000300 Shining Scale^000000, ^FF00005 Cracked Diamond^000000,";
+		mes "^FF00001 Black Dyestuffs^000000, and ^FF00001 Slotted Hat^000000!";
+		next;
+		mes "[韓嘉藍]";
+		mes "Anyone who brings these, I will create hat for him!";
+		mes "Ahhh~ Dragon God!";
+		next;
+		specialeffect EF_EXIT;
+		mes "[韓嘉藍]";
+		mes ".............";
+		next;
+		mes "[韓嘉藍]";
+		mes ".............";
+		next;
+		mes "[韓嘉藍]";
+		mes "Phew... Dragon God has gone now.";
+		mes "However, I still clearly remember";
+		mes "what I need, and how to make the hats.";
+		mes "So, you don't have to worry about that.";
+		mes "You know...are they Ayam and Magistrate Hat?";
+		next;
+		mes "[韓嘉藍]";
+		mes "You heard what materials I need, don't you?";
+		mes "Choose a hat, and bring me its materials without missing anything.";
+		next;
+		set moza_korea,2;
+		mes "[韓嘉藍]";
+		mes "Okay then, I will be waiting you to come back.";
+		close;
+	}
+	if (countitem(7446) > 6 && countitem(7448) > 6 && countitem(7445) > 6 && countitem(7447) > 6) {
+		mes "[韓嘉藍]";
+		mes "My name is 韓嘉藍,";
+		mes "and I am a proud heir of a renown family... eh?";
+		mes "Wait, I feel something mysteriously familiar from you...";
+		mes "Hey, do you have 7 Bijous for each of the 4 Bijou colors?";
+		next;
+		mes "[韓嘉藍]";
+		mes "...Wow! This is crazy! You do have them, don't you?";
+		mes "Wow, how did you gather all of them? They are so hard to find...";
+		next;
+		mes "[韓嘉藍]";
+		mes "........Umm.";
+		next;
+		mes "[韓嘉藍]";
+		mes "Hey, if you don't mind, can I have them?";
+		mes "In fact, I am the only traditional hat craftsman";
+		mes "in this Rune-Midgarts Kingdom.";
+		mes "However, I have recently gotten into trouble,";
+		mes "and have not been able to focus on my business.";
+		next;
+		mes "[韓嘉藍]";
+		mes "The trouble is that I have ran out of those Bijous.";
+		mes "You know, those colorful beads that you have.";
+		mes "I could restart my business again,";
+		mes "only if I have them...*Sigh*";
+		next;
+		mes "[韓嘉藍]";
+		mes "Can you please let me have them?";
+		mes "I will pay you back with one of my proud traditional hats.";
+		mes "Well, since I am the only one who can make them,";
+		mes "in fact, you are not doing a losing business with me, don't you think?";
+		next;
+		mes "[韓嘉藍]";
+		mes "Please? I assure you that I can make traditional hats.";
+		next;
+		if (select("Give him the items.:Don't give him the items.") == 1) {
+			mes "[韓嘉藍]";
+			mes "OK! 我會好好使用的!";
+			mes "謝謝你! 我會遵守約定一定幫你";
+			mes "製作傳統帽子，首先要舉行下龍";
+			mes "儀式，請你稍等一下";
+			next;
+			delitem 7446,7; //Blue_Orb
+			delitem 7448,7; //Yellow_Orb
+			delitem 7445,7; //Green_Orb
+			delitem 7447,7; //Red_Orb
+			set moza_korea,1;
+			mes "[韓嘉藍]";
+			mes "咻嗚...我要暫時把精神集中在";
+			mes "這些寶珠上面，請你等一下";
+			close;
+		}
+		mes "[韓嘉藍]";
+		mes "Bah, that's your choice.";
+		mes "If you change your mind, tell me immediately though.";
+		mes "You should know that";
+		mes "those things belong to someone else, not you.";
+		close;
+	}
+	mes "[韓嘉藍]";
+	mes "我叫韓嘉藍，我可曾是名門望族";
+	mes "後裔的男子漢，你是說為何";
+	mes "曾經是名門望族嗎? 那是因為...";
+	mes "在爺爺時就家道中落了，";
+	mes "現在則過著和一般人相同的";
+	mes "生活和待遇，哈哈";
+	next;
+	mes "[韓嘉藍]";
+	mes "我跟金錢和寶物沒什麼關聯，";
+	mes "我繼承的只有製作傳統帽子的技術而已";
+	mes "反正，除了我之外，沒有人會製作";
+	mes "傳統帽子，所以算是偉大的技術吧";
+	next;
+	mes "[韓嘉藍]";
+	mes "不過那偉大的技術最近";
+	mes "因缺少下龍而成了無用武之地，";
+	mes "嗯? 你問下龍是什麼嗎? 嗯..";
+	mes "你知道神仙下凡吧? 就是指神的";
+	mes "降臨，下龍就是指";
+	mes "龍降臨的意思";
+	next;
+	mes "[韓嘉藍]";
+	mes "不是突然間龍從天上";
+	mes "掉下來的那種，是指忽然";
+	mes "龍進入我身體後傳授力量";
+	mes "和智慧的現象...";
+	next;
+	mes "[韓嘉藍]";
+	mes "我們家以前過得很好，";
+	mes "下龍所需的材料";
+	mes "家裡堆積如山..";
+	mes "後來家道中落後";
+	mes "如今一無所有";
+	next;
+	mes "[韓嘉藍]";
+	mes "總之，我繼承的技術卻";
+	mes "英雄無用武之地，真是";
+	mes "可悲啊";
+	next;
+	mes "[韓嘉藍]";
+	mes "那個...必須^FF0000寶珠4種顏色共各7個^000000";
+	mes "都要具備龍才會降臨一次，";
+	mes "需要^FF0000藍色寶珠、黃色寶珠、綠色";
+	mes "寶珠、紅色寶珠^000000... 各7個";
+	mes "合計28個的寶珠.. 嗯";
+	next;
+	mes "[韓嘉藍]";
+	mes "這也不是容易取得的東西，";
+	mes "取得不易啊...";
+	mes "真是... 變得很棘手";
+	close;
+}

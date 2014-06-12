@@ -1,0 +1,4953 @@
+//===== rAthena Script ======================================= 
+//= Quest NPCs related to Louyang
+//===== By: ================================================== 
+//= Evera and The rAthena Dev Team
+//===== Current Version: ===================================== 
+//= 2.4
+//===== Compatible With: ===================================== 
+//= rAthena 1.0
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Soup Quest（四龍轉入湯）
+//= - Variable in use: che_tre (max 5)
+//= Doctor Quest（召還丹）
+//= - Variable in use: che_par (max 18)
+//= Poison King Quest （毒藥王）
+//= - Variable in use: ch_poison (max 20)
+//= Revolution Quest（革命運動）
+//= - Variable in use: QL_REVO (max 9)
+//===== Additional Comments: ================================= 
+//= 1.0 Initial Release [Evera]
+//= 1.1 Fixed double levelup bug [Lupus]
+//= 1.2 Added Revolution Quest. [SinSloth]
+//= 1.3 Fixed experience gains to match upcoming rate adjustments. [SinSloth]
+//= 1.4 Corrected NPC names to fall within proper restrictions. [L0ne_W0lf]
+//= 1.5 Fixed bad NPC header data to comply with rev. 11603. [L0ne_W0lf]
+//= 1.6 Rescripted Soup, Doctor, and Poison King quests [L0ne_W0lf]
+//=     to Aegis 10.3 standards. Attempted to save current
+//=     quest progress from the old scripts.
+//= 1.7 Added missing checkweights. And corrected [L0ne_W0lf]
+//=     a typo in Poison King quest.
+//= 1.8 Bug fixes. (bugreport:1025 bugreport:1062) [L0ne_W0lf]
+//= 1.9 Bug fixes/Typos. [Paradox924X]
+//= 2.0 Replaced effect numerics with constants. [L0ne_W0lf]
+//= 2.1 Fixed guard tower warper ALWAYS warping. (bugreport:2377) [L0ne_W0lf]
+//= 2.2 Removed unused "name" variable. [L0ne_W0lf]
+//= 2.3 Updated RE/Pre-RE EXP. [Euphy]
+//= 2.4 Added questlog support. [Euphy]
+//============================================================ 
+// Translated by Yanpo（PlutoEA）
+//============================================================ 
+
+
+// Soup Quest :: lou_tre
+//============================================================
+lou_in02,53,174,7	script	服務生#1	822,6,62,{
+	if (gettime(3) >= 10 && gettime(3) < 22) {
+		mes "[昌派]";
+		mes "啊啊! 客人~~~~ 歡迎光臨!";
+		mes "有很多很多位子喔!";
+		mes "來! 來! 請上2樓~";
+		close;
+	}
+	mes "[昌派]";
+	mes "^666666*Yawn...*^000000";
+	close;
+
+OnTouch:
+	if (ch_tre == 2 || ch_tre == 3) {
+		if (gettime(3) >= 10 && gettime(3) < 14) {
+			if (rand(1,10) < 9) {
+				mes "[昌派]";
+				mes "Wait, who are you?!";
+				mes "Put that down and get";
+				mes "of out here right now!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+		else if (gettime(3) >= 14 && gettime(3) < 17) {
+			if (rand(1,10) < 10) {
+				mes "[昌派]";
+				mes "Wait, who are you?!";
+				mes "Put that down and get";
+				mes "of out here right now!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+		else if (gettime(3) >= 17 && gettime(3) < 21) {
+			if (rand(1,10) < 6) {
+				mes "[昌派]";
+				mes "Wait, who are you?!";
+				mes "Put that down and get";
+				mes "of out here right now!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+		else {
+			if (rand(1,10) < 5) {
+				mes "[昌派]";
+				mes "^666666*Yawn...*^000000";
+				mes "So...";
+				mes "Sleepy...";
+				next;
+				mes "[昌派]";
+				mes "Huh...?";
+				mes "Who are you!?";
+				mes "Hey, I got a thief here!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+	}
+	end;
+}
+
+lou_in02,76,181,3	script	服務生#2	822,2,2,{
+	if (gettime(3) >= 10 && gettime(3) < 22) {
+		mes "[黃家善]";
+		mes "Welcome~";
+		mes "Sorry for making you wait. If you wish to rest, please go upstairs.";
+		next;
+		mes "[黃家善]";
+		mes "Recently, many tourists are visiting Louyang and although business is great, we're now";
+		mes "busier than ever.";
+		next;
+		mes "[黃家善]";
+		mes "^666666*Sigh...*^000000";
+		mes "I don't even";
+		mes "have time to eat.";
+		mes "I'm starving...!";
+		close;
+	}
+	mes "[黃家善]";
+	mes "Ehhhh...";
+	mes "Forgive me...";
+	mes "....................";
+	mes "...Zzzzz...Zzzz...";
+	close;
+
+OnTouch:
+	if (ch_tre == 2 || ch_tre == 3) {
+		if (gettime(3) >= 10 && gettime(3) < 14) {
+			if (rand(1,10) < 9) {
+				mes "[黃家善]";
+				mes "What the...?";
+				mes "Hey, what";
+				mes "are you doing?";
+				mes "Get out of here!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+		else if (gettime(3) >= 14 && gettime(3) < 17) {
+			if (rand(1,10) < 10) {
+				mes "[黃家善]";
+				mes "What the...?";
+				mes "Hey, what";
+				mes "are you doing?";
+				mes "Get out of here!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+		else if (gettime(3) >= 17 && gettime(3) < 22) {
+			if (rand(1,10) < 6) {
+				mes "[黃家善]";
+				mes "What the...?";
+				mes "Hey, what";
+				mes "are you doing?";
+				mes "Get out of here!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+		else {
+			if (rand(1,10) < 5) {
+				mes "[黃家善]";
+				mes "*Yawn...*";
+				mes "So very tired...";
+				next;
+				mes "[黃家善]";
+				mes "Hey, what are you";
+				mes "doing here? Are you";
+				mes "a Thief?! Somebody help!";
+				mes "There's a Thief!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+	}
+	end;
+}
+
+lou_in02,61,175,3	script	服務生#3	818,2,2,{
+	if (gettime(3) >= 10 && gettime(3) < 22) {
+		if (ch_tre == 5) {
+			mes "[阿花]";
+			mes "Welcome, welcome!";
+			mes "We have many rooms";
+			mes "available! Why don't";
+			mes "you go upstairs?";
+			mes "Ha ha ha!";
+			next;
+			emotion e_swt;
+			mes "[阿花]";
+			mes "Oh, if by any chance you came to try the Dragon Soup, I'm sorry, but it's no longer availalbe.";
+			next;
+			mes "[阿花]";
+			mes "But don't be too disappointed, we serve many other delicious foods that you can choose from!";
+			close;
+		}
+		mes "[阿花]";
+		mes "啊啊! 客人~~~~ 歡迎光臨!";
+		mes "還有很多位子呢~";
+		mes "來! 來! 請上2樓~";
+		close;
+	}
+	mes "[阿花]";
+	mes "^666666*Yawn...*^000000";
+	close;
+
+OnTouch:
+	if (ch_tre == 2 || ch_tre == 3) {
+		if (gettime(3) >= 10 && gettime(3) < 14) {
+			if (rand(1,10) < 9) {
+				mes "[阿花]";
+				mes "What do you think";
+				mes "you're doing here?!";
+				mes "Put that down and";
+				mes "leave right now!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+		else if (gettime(3) >= 14 && gettime(3) < 17) {
+			if (rand(1,10) < 10) {
+				mes "[阿花]";
+				mes "What do you think";
+				mes "you're doing here?!";
+				mes "Put that down and";
+				mes "leave right now!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+		else if (gettime(3) >= 17 && gettime(3) < 22) {
+			if (rand(1,10) < 6) {
+				mes "[阿花]";
+				mes "What do you think";
+				mes "you're doing here?!";
+				mes "Put that down and";
+				mes "leave right now!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+		else {
+			if (rand(1,10) < 5) {
+				mes "[阿花]";
+				mes "^666666*Yawn...*^000000";
+				mes "Eyelids...";
+				mes "Getting...";
+				mes "Heavier...";
+				next;
+				mes "[阿花]";
+				mes "Wait a sec...";
+				mes "Are you a Thief?!";
+				mes "Get out of here!!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+	}
+	end;
+}
+
+lou_in02,62,183,3	script	廚師#1-2	820,2,2,{
+	if (ch_tre > 0 && ch_tre < 4) {
+		mes "[王沙隆]";
+		mes "嗯? 是客人嗎?";
+		mes "我是這家店的廚師";
+		next;
+		mes "[王沙隆]";
+		mes "太守世世代代的餐飲， ";
+		mes "通常是由我們的祖先料理的呢!";
+		mes "這家店是我們家族的榮耀，而我是這家店的繼承者! 喔呼~";
+		next;
+		mes "[王沙隆]";
+		mes "我們店裡的主力料理";
+		mes "四龍轉入湯， ";
+		mes "連很挑食的太守";
+		mes "也喊著：特好啊~的程度， ";
+		mes "它的口味是一流呢!";
+		next;
+		mes "[王沙隆]";
+		mes "特別嚴選的新鮮及品質又好的材料，";
+		mes "使料理顯的更加高級! 哈哈!";
+		next;
+		mes "[王沙隆]";
+		mes "托你的福，";
+		mes "我們店裡這幾百年來";
+		mes "都沒遇到任何困難，";
+		mes "並享受著美好的現況!";
+		close;
+	}
+	else if (ch_tre > 3 && ch_tre < 6) {
+		mes "[王沙隆]";
+		mes "^666666*Moans and Cries*^000000";
+		mes "I guess this is it...!";
+		mes "The end of my family's glory.";
+		mes "Someone stole the base broth";
+		mes "of my Dragon Soup!";
+		next;
+		mes "[王沙隆]";
+		mes "What should I do, now?";
+		mes "Without Dragon Soup, my family's restaurant will now just be like all the others...";
+		close;
+	}
+	mes "[王沙隆]";
+	mes "Hello, are you";
+	mes "one of our customers?";
+	mes "I am 王沙隆,";
+	mes "the chef of this";
+	mes "restaurant.";
+	next;
+	mes "[王沙隆]";
+	mes "My family has served food";
+	mes "to Lord Bai Long for a long time. This restaurant has been handed down the family line, and I am the successor~";
+	next;
+	mes "[王沙隆]";
+	mes "Our specialty dish, Dragon Soup, won especially high praise from Lord Bai Long, who is known for";
+	mes "his extremely discerning sense of taste.";
+	next;
+	mes "[王沙隆]";
+	mes "I'm also proud to say that we cook with only the freshest and highest quality ingredients.";
+	next;
+	mes "[王沙隆]";
+	mes "We've always been popular in Louyang for hundreds and hundreds of years because of our high quality gourmet cuisine.";
+	next;
+	mes "[王沙隆]";
+	mes "In this dry and hot weather,";
+	mes "Dragon Soup is the best food for any appetite. I suggest that you try a bowl. You'll be quite pleased!";
+	close;
+
+OnTouch:
+	if (ch_tre == 2 || ch_tre == 3) {
+		if (gettime(3) >= 10 && gettime(3) < 14) {
+			if (rand(1,10) < 9) {
+				mes "[王沙隆]";
+				mes "Hey, what do you";
+				mes "think you're doing?!";
+				mes "Let go of that, and";
+				mes "get outta here!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				warp "louyang",280,161;
+				close;
+			}
+		}
+		else if (gettime(3) >= 14 && gettime(3) < 17) {
+			if (rand(1,10) < 10) {
+				mes "[王沙隆]";
+				mes "Hey, what do you";
+				mes "think you're doing?!";
+				mes "Let go of that, and";
+				mes "get outta here!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				warp "louyang",280,161;
+				close;
+			}
+		}
+		else if (gettime(3) >= 17 && gettime(3) < 22) {
+			if (rand(1,10) < 6) {
+				mes "[王沙隆]";
+				mes "Hey, what do you";
+				mes "think you're doing?!";
+				mes "Let go of that, and";
+				mes "get outta here!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				warp "louyang",280,161;
+				close;
+			}
+		}
+		else {
+			if (rand(1,10) < 5) {
+				mes "[王沙隆]";
+				mes "^666666*Yawn...*^000000";
+				mes "Hm...?";
+				mes "Who's that?";
+				next;
+				mes "[王沙隆]";
+				mes "Wait...!";
+				mes "What are you doing?!";
+				mes "G-Get out of here!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				warp "louyang",280,161;
+				close;
+			}
+		}
+	}
+	end;
+}
+
+lou_fild01,195,177,5	script	古炎寶#1-1	819,{
+	//Remove outdated variables and attempt to preserve prior quest progress.
+	if (QL_ACCEPTSOUP) set ch_tre,1;
+	if (QL_GOTDRAGONSOUP) set ch_tre,2;
+	if (QL_GOTFAKESOUP) set ch_tre,3;
+	if (QL_SOUPQUEST)  set ch_tre,4;
+	if (QL_SOUP2) set ch_tre,5;
+	set QL_ACCEPTSOUP,0; set QL_GOTDRAGONSOUP,0; set QL_GOTFAKESOUP,0; set QL_SOUPQUEST,0; set QL_SOUP2,0; 
+
+	if (ch_tre == 0) {
+		mes "[古炎寶]";
+		mes "呀啊- 你好?";
+		mes "在這裡幹嘛呢?";
+		mes "我不喜歡人多的地方，我正在靜靜的聽著江水聲";
+		mes "讓心情安定中";
+		next;
+		mes "[古炎寶]";
+		mes "最近多了很多陌生人，感到非常不悅!";
+		mes "對第一次看到的風景，雖然大家都睜大眼驚奇的看著，但這裡也只不過是人住的村落而已！";
+		next;
+		mes "[古炎寶]";
+		mes "人過的不都一樣嗎? 哼!! 反正大人都是貪心鬼!";
+		mes "尤其是那家店!!! 真的要狠狠地整一頓!";
+		next;
+		if (select("哪家店呢?:不理他直接經過") == 1) {
+			mes "[古炎寶]";
+			mes "有一家蓋在村落西邊，荷花池上面的大酒店，";
+			mes "是個很古老的店，只是因為悠久且稍微好吃的理由，就不當的以高價販賣呢！";
+			next;
+			mes "[古炎寶]";
+			mes "以熱愛村落的青年來說，這種事是絕對不會原諒的!!";
+			mes "可是..由我自己來行動.. 這村落太小了，馬上會被抓到的";
+			next;
+			mes "[古炎寶]";
+			mes "...上次在江老先生的牆上塗鴉時.. 到底是被誰看到的呢.. 切..碎碎唸...";
+			mes "喔，反正你要不要幫我嘛?";
+			next;
+			mes "[古炎寶]";
+			mes "代替我偷偷潛入村落酒店之後，偷走^3131FFD四龍轉入湯^000000的湯頭!!";
+			next;
+			mes "[古炎寶]";
+			mes "四龍轉入湯的湯頭是世世代代傳承下來的，那只不過在裡面加點水來煮的，就騙大家說是幾百年的四龍轉入湯，並以高價賣給人們!";
+			next;
+			mes "[古炎寶]";
+			mes "如果你拿那個給我的話，我就帶你去一個地方";
+			mes "嗯?怎麼樣?";
+			next;
+			if (select("好:不要") == 1) {
+				mes "[古炎寶]";
+				mes "太棒了- !!!!";
+				mes "酒店在村落的西邊，";
+				mes "那裡的老闆叔叔有點兇，小心不要被抓到了!!!";
+				mes "那麼等順利的把任務完成之後，就把湯頭交給我啊！懂嗎?";
+				mes "祝你好運!!!";
+				set ch_tre,1;
+				close;
+			}
+			mes "[古炎寶]";
+			mes "哼!!";
+			mes "走開!!";
+			close;
+		}
+		mes "[古炎寶]";
+		mes "嘀咕嘀咕..碎碎唸..";
+		close;
+	}
+	else if (ch_tre == 1) {
+		mes "[古炎寶]";
+		mes "四龍轉入湯怎樣了呢?";
+		mes "成功了嗎? 失敗了嗎?";
+		mes "麻煩你了，交給你囉~!!";
+		close;
+	}
+	else if (ch_tre == 2) {
+		mes "[古炎寶]";
+		mes "Wow! You made it!";
+		mes "Let me see...";
+		next;
+		mes "^3355FF古炎寶 takes";
+		mes "a hearty sip of the";
+		mes "broth you've managed";
+		mes "to steal for him.^000000";
+		next;
+		mes "[古炎寶]";
+		mes "Ohhhh man....";
+		mes "This is soooo not Dragon Soup Broth. Sorry, but would you go";
+		mes "and try to get it again?";
+		set ch_tre,1;
+		close;
+	}
+	else if (ch_tre == 3) {
+		mes "[古炎寶]";
+		mes "喔喔!! 拿?!!";
+		mes "讓我看看...";
+		next;
+		mes "[古炎寶]";
+		mes "沒錯!! 就是這個...";
+		mes "...喀喀喀喀...";
+		mes "有了這個，那傲慢的廚師應該會清醒一點吧！";
+		next;
+		mes "[古炎寶]";
+		mes "呼呼，非常感謝你!";
+		mes "為了我這麼辛苦，我就讓你參觀很漂亮的地方!";
+		mes "好~跟我來!";
+		set ch_tre,4;
+		close2;
+		warp "lou_fild01",180,170;
+		end;
+	}
+	else if (ch_tre > 3 && ch_tre < 6) {
+		mes "[古炎寶]";
+		mes "Hey~";
+		mes "So how ya been, ya smooth criminal? You wanna visit that place again?";
+		next;
+		if (select("Sure, let's go~:Nah, maybe next time.") == 1) {
+			mes "[古炎寶]";
+			mes "Alright~";
+			mes "Let's get";
+			mes "a groove on.";
+			close2;
+			warp "lou_fild01",180,170;
+			end;
+		}
+		mes "[古炎寶]";
+		mes "Not in the mood, eh?";
+		mes "No prob. But feel free";
+		mes "to come see me whenever";
+		mes "you want.";
+		close;
+	}
+	mes "[古炎寶]";
+	mes "Wha...?";
+	mes "Hey, who are you? If you don't got anything to say to me, then get lost!";
+	close;
+}
+
+lou_fild01,175,173,3	script	古炎寶#1-2	819,{
+	emotion e_heh;
+	if (ch_tre == 4) {
+		mes "[古炎寶]";
+		mes "So...";
+		mes "Whaddya think?";
+		mes "Prettiest place";
+		mes "in Louyang, isn't it?";
+		next;
+		mes "[古炎寶]";
+		mes "Whenever I'm depressed";
+		mes "or need to relax, I just sit here in enjoy the breeze. It helps me forget all my worries.";
+		next;
+		mes "[古炎寶]";
+		mes "Heh heh, the best part is, this place is far away from my older sister. Man, that woman can nag, nag, nag, all day long.";
+		next;
+		mes "[古炎寶]";
+		mes "Why don't you sit down and close your eyes, and feel that soothing wind. It's pretty refreshing...";
+		next;
+		emotion e_hmm;
+		mes "[古炎寶]";
+		mes "Also...";
+		mes "I'm a little";
+		mes "embarrassed to";
+		mes "say this but...";
+		next;
+		mes "[古炎寶]";
+		mes "I'm the kind of guy who speaks his mind. If there's something you just wanna say, but can't, it's kind of like poison in your mind.";
+		next;
+		mes "[古炎寶]";
+		mes "You know what I'm talking about, right? If you bottle something up inside of you, it just causes you anxiety you don't need.";
+		next;
+		mes "[古炎寶]";
+		mes "So...";
+		mes "This is what you do.";
+		mes "Clench your fist, take";
+		mes "a deep breath.";
+		next;
+		mes "[古炎寶]";
+		mes "And just yell";
+		mes "whatever you want!";
+		mes "If you don't know";
+		mes "the words, just";
+		mes "screaming will do.";
+		mes "Let everything out!";
+		next;
+		mes "[古炎寶]";
+		mes "Ready~!";
+		mes "Say it out loud!";
+		next;
+		input .@input$;
+		mes "["+strcharinfo(0)+"]";
+		mes .@input$;
+		mapannounce "lou_fild01","'"+strcharinfo(0)+"' shouts : "+.@input$,bc_map,"0x9CFF00";
+		next;
+		mes "[古炎寶]";
+		mes "So, how do you feel?";
+		mes "Don't you feel better now? Hahaha~";
+		next;
+		mes "[古炎寶]";
+		mes "So from now on, whenever you";
+		mes "wanna relieve yourself of stress, come see me and we'll come back to this place. Call it my way of saying thanks.";
+		set ch_tre,5;
+		close;
+	}
+	else if (ch_tre == 5) {
+		mes "[古炎寶]";
+		mes "So...";
+		mes "Whaddya wanna do?";
+		next;
+		if (select("Shout.:Leave.") == 1) {
+			mes "[古炎寶]";
+			mes "Alright~!";
+			mes "Say it out loud!";
+			next;
+			input .@input$;
+			mes "["+strcharinfo(0)+"]";
+			mes .@input$;
+			mapannounce "lou_fild01","'"+strcharinfo(0)+"' shouts : "+.@input$,bc_map,"0x9CFF00";
+			next;
+			mes "[古炎寶]";
+			mes "So, how do you feel? Don't you feel better now?";
+			close;
+		}
+		mes "[古炎寶]";
+		mes "Ahhh...";
+		mes "Alright, let's";
+		mes "get a groove on.";
+		close2;
+		warp "lou_fild01",200,174;
+		end;
+	}
+	mes "[古炎寶]";
+	mes "Hey, pal~! This is my turf! Whaddya think you're doin' here?!";
+	next;
+	mes "[古炎寶]";
+	mes "Now...";
+	mes "Get the hell";
+	mes "outta here.";
+	close2;
+	warp "lou_fild01",200,174;
+	end;
+}
+
+lou_in02,50,185,5	script	Pot#1	111,{
+	if (ch_tre == 1) {
+		mes "^3131FFBeneath the shadows,";
+		mes "you find a large pot filled with dark, red liquid. What do you";
+		mes "want to do?^000000 ";
+		next;
+		if (select("Take the pot.:Look for another pot.") == 1) {
+			mes "^3131FFYou take a careful look around.";
+			mes "It wouldn't be wise to steal this now if anyone is watching.^000000";
+			next;
+			if (gettime(3) >= 10 && gettime(3) < 14) {
+				mes "^3131FFThe restaurant doesn't seem busy right now, so there's only a few employees and customers.^000000";
+			}
+			else if (gettime(3) >= 14 && gettime(3) < 17) {
+				mes "^3131FFOnly the restaurant";
+				mes "employees are around,";
+				mes "and they busy chatting";
+				mes "amongst each other.^000000";
+			}
+			else if (gettime(3) >= 17 && gettime(3) < 22) {
+				mes "^3131FFThe restaurant is filled";
+				mes "with customers, and the";
+				mes "hustle and bustle of the";
+				mes "restaurant employees.^000000";
+				next;
+				mes "^3131FFEveryone seems so busy";
+				mes "and preoccupied that they don't";
+				mes "notice you approach the pot.^000000";
+			}
+			else {
+				mes "^3131FFSince the restaurant";
+				mes "is closed, the whole place";
+				mes "is completely quiet. The";
+				mes "employees are all asleep.^000000";
+			}
+			next;
+			mes "^3131FFYou carefully lift the pot, and although it's heavy, you think";
+			mes "you can carry it.^000000";
+			next;
+			mes "^3131FFAll you have";
+			mes "to do now is get";
+			mes "away from this restaurant";
+			mes "without getting caught...^000000";
+			if (rand(1,4) < 4) {
+				set ch_tre,2;
+			}
+			else {
+				set ch_tre,3;
+			}
+			close;
+		}
+		mes "^3131FFYou decide to^000000";
+		mes "^3131FFlook for another pot.^000000";
+		close;
+	}
+	else if (ch_tre > 3 && ch_tre < 6) {
+		mes "^3131FFYou found a pot.^000000";
+		mes "^3131FFHowever, it's empty.^000000";
+		close;
+	}
+	if (gettime(3) >= 10 && gettime(3) < 22) {
+		mes "[廚師]";
+		mes "啊! 請勿觸摸那裡";
+		close;
+	}
+	mes "^3131FFBeneath the shadows,";
+	mes "you find a large pot filled with dark, red liquid.^000000 ";
+	close;
+}
+
+lou_in02,49,185,5	script	Pot#2	111,{
+	if (ch_tre == 1) {
+		mes "^3131FFBeneath the shadows,";
+		mes "you find a large pot filled with dark, red liquid. What do you";
+		mes "want to do?^000000";
+		next;
+		if (select("Take the pot.:Look for another pot.") == 1) {
+			mes "^3131FFYou take a careful look around.";
+			mes "It wouldn't be wise to steal this now if anyone is watching.^000000";
+			next;
+			if (gettime(3) >= 10 && gettime(3) < 14) {
+				mes "^3131FFThe restaurant doesn't seem busy right now, so there's only a few employees and customers.^000000";
+			}
+			else if (gettime(3) >= 14 && gettime(3) < 17) {
+				mes "^3131FFOnly the restaurant";
+				mes "employees are around,";
+				mes "and they busy chatting";
+				mes "amongst each other.^000000";
+			}
+			else if (gettime(3) >= 17 && gettime(3) < 22) {
+				mes "^3131FFThe restaurant is filled";
+				mes "with customers, and the";
+				mes "hustle and bustle of the";
+				mes "restaurant employees.^000000";
+				next;
+				mes "^3131FFEveryone seems so busy";
+				mes "and preoccupied that they don't";
+				mes "notice you approach the pot.^000000";
+			}
+			else {
+				mes "^3131FFSince the restaurant";
+				mes "is closed, the whole place";
+				mes "is completely quiet. The";
+				mes "employees are all asleep.^000000";
+			}
+			next;
+			mes "^3131FFYou carefully lift the pot, and although it's heavy, you think";
+			mes "you can carry it.^000000";
+			next;
+			mes "^3131FFAll you have";
+			mes "to do now is get";
+			mes "away from this restaurant";
+			mes "without getting caught...^000000";
+			if (rand(1,4) < 4) {
+				set ch_tre,2;
+			}
+			else {
+				set ch_tre,3;
+			}
+			close;
+		}
+		mes "^3131FFYou decided to^000000";
+		mes "^3131FFlook for another pot.^000000";
+		close;
+	}
+	else if (ch_tre > 3 && ch_tre < 6) {
+		mes "^3131FFYou found";
+		mes "an empty pot.^000000";
+		close;
+	}
+	if (gettime(3) >= 10 && gettime(3) < 22) {
+		mes "[廚師]";
+		mes "啊! 請勿觸摸那裡";
+		close;
+	}
+	mes "^3131FFBeneath the shadows,";
+	mes "you find a large pot filled with dark, red liquid.^000000";
+	close;
+}
+
+lou_in02,58,183,5	script	廚房助理#lou1	823,5,5,{
+	mes "[金唯英]";
+	mes "老實說過去我是個武術家，";
+	mes "雖然現在成了料理師，";
+	mes "不過我的心裡總是活著武術人的靈魂";
+	next;
+	mes "[金唯英]";
+	mes "所以我正在做料理結合武術的研究，";
+	mes "像我們店裡這麼大的地方，";
+	mes "有時候客滿時不但非常忙碌，";
+	mes "也非常的擁擠呢!";
+	next;
+	mes "[金唯英]";
+	mes "像這時候-!!!";
+	mes "直接用武功的話，可以迅速的準備好材料，";
+	mes "哈哈，武術好棒喔~";
+	next;
+	specialeffect EF_BEGINSPELL3;
+	mes "[金唯英]";
+	mes "托啊-!!!!";
+	next;
+	specialeffect EF_ENDURE;
+	mes "[金唯英]";
+	mes "托呵喔喔-!!!!!";
+	next;
+	specialeffect EF_SONICBLOW;
+	mes "[金唯英]";
+	mes "剁啊啊啊啊!!!!!!";
+	next;
+	specialeffect EF_SONICBLOWHIT;
+	mes "- 滋嗒嗒嗒嗒嗒嗒嗒嗒喏 -";
+	next;
+	emotion e_no1;
+	mes "[金唯英]";
+	mes "呼呼呼~瞧瞧吧!!";
+	mes "毫無誤差地切在菜板上的蔬菜!!";
+	mes "哇哈哈哈哈哈哈!!!!";
+	mes "我會一直研究推廣，直到所有料理店的廚師，";
+	mes "都使用武術來做菜的那一天為止!! 加油!!";
+	close;
+
+OnTouch:
+	if (ch_tre == 2 || ch_tre == 3) {
+		if (gettime(3) >= 10 && gettime(3) < 14) {
+			if (rand(1,10) < 9) {
+				mes "[金唯英]";
+				mes "Wait! Who are you!";
+				mes "Put that pot down";
+				mes "and get out of";
+				mes "here right now!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+		else if (gettime(3) >= 14 && gettime(3) < 17) {
+			if (rand(1,10) < 10) {
+				mes "[金唯英]";
+				mes "Wait! Who are you!";
+				mes "Put that pot down";
+				mes "and get out of";
+				mes "here right now!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+		else if (gettime(3) >= 17 && gettime(3) < 22) {
+			if (rand(1,10) < 6) {
+				mes "[金唯英]";
+				mes "Wait! Who are you!";
+				mes "Put that pot down";
+				mes "and get out of";
+				mes "here right now!";
+				next;
+				mes "^3131FFYou have failed^000000";
+				mes "^3131FFto steal the pot.^000000";
+				set ch_tre,1;
+				close;
+			}
+		}
+	}
+	end;
+}
+
+lou_in02,80,173,3	script	李敏#lou	746,{
+	if (ch_tre == 5) {
+		mes "[李敏]";
+		mes "^666666*Sigh*^000000 I am so disappointed. I came all the way down here to taste the food! I can't believe they don't sell it anymore!";
+		next;
+		mes "[李敏]";
+		mes "The worst part is that I'm already addicted to the taste! ^666666*Sob...*^000000";
+		close;
+	}
+	mes "[李敏]";
+	mes "雖然我不是這村子的住民，";
+	mes "但無法忘記不久前吃過唯一那一次的料理，而再次的找上門了";
+	next;
+	mes "[李敏]";
+	mes "吃過一次就絕不會忘記，";
+	mes "那種在嘴裡薄薄的散開並融化的甜感..";
+	mes "喀喔...那是什麼呢~";
+	next;
+	mes "[李敏]";
+	mes "對!!! 沒錯!! 那就是蜂膠，對，沒錯!沒錯!";
+	mes "喔呵呵~~ 越想嘴裡的口水就越多了..";
+	close;
+}
+
+lou_in02,42,186,5	script	劉家林#lou	816,{
+	mes "[劉家林]";
+	mes "你知道這家店人氣最旺的料理是什麼嗎?";
+	mes "就是四龍轉入湯!";
+	mes "因為是擁有悠久歷史的店，連細微的地方也非常用心";
+	next;
+	if (ch_tre == 5) {
+		mes "[劉家林]";
+		mes "Do you know what was this restaurant's best dish throughout all of its history? Dragon Soup!";
+		next;
+		emotion e_lv;
+		mes "[劉家林]";
+		mes "Its delicate taste comes from";
+		mes "a broth extracted from pure meat that does not contain any fat. So it's also a very popular diet food for the ladies.";
+		next;
+		mes "[劉家林]";
+		mes "I'm not sure what happened,";
+		mes "but people say this restaurant no longer sells Dragon Soup.";
+		mes "Was it because of the price...?";
+		close;
+	}
+	mes "[劉家林]";
+	mes "雖然我很喜歡那細心做出來的口味，最主要是它的肉不老不硬， ";
+	mes "也會先把油擠過一次，是注重身材的小姐們的最愛呢!";
+	mes "有各種對身體有益的材料.. 一句話就是健康食品呢!";
+	close;
+}
+
+lou_in02,43,169,1	script	張勇#lou	827,{
+	mes "[張勇]";
+	mes "四龍轉入湯的人氣";
+	mes "當然是在於那清爽香甜又微辣的口味，";
+	mes "而且加入很多有益的藥材，";
+	mes "也是對健康非常好的食品呢!!";
+	next;
+	mes "[張勇]";
+	mes "可以除掉身體上不需要的熱量，";
+	mes "也可以暢通處處阻塞的氣血，";
+	mes "會使新陳代謝順暢，可以維持自然健康，就像個補藥般食品!";
+	mes "喀哈哈!!";
+	next;
+	mes "[張勇]";
+	mes "因為我年輕的時候常吃四龍轉入湯的關係，";
+	mes "現在就算這個年紀也是個血氣旺盛的老人家呢!";
+	mes "不是嗎?";
+	close;
+}
+
+louyang,261,123,3	script	賊五平#lou	824,{
+	mes "[賊五平]";
+	mes "沒什麼胃口..是中暑了嗎..";
+	mes "呵喔，好無力喔...";
+	mes "唉呀，我的頭、腰、肩膀、膝蓋啊...";
+	mes "這個時候，應該要吃那個呢...";
+	next;
+	emotion e_gasp;
+	mes "[賊五平]";
+	mes "喂，你不是這裡的人吧？";
+	mes "順著這條路上去的話，有家很大的酒店，";
+	mes "那家賣的食品是在這村子裡最健康的養生食品呢";
+	next;
+	mes "[賊五平]";
+	mes "對你這種心身疲勞的人，是必備的食品呢！";
+	next;
+	mes "[賊五平]";
+	if (BaseLevel < 80) {
+		mes "對你這種瘦巴巴的人，";
+	} else {
+		mes "對你這種心身疲勞的人，";
+	}
+	mes "是必備的食品呢！";
+	close;
+}
+
+louyang,174,150,5	script	古嘉玲#lou	815,{
+	if (ch_tre == 5) {
+		mes "[古嘉玲]";
+		mes "There's a strange rumor going around that the restaurant is no longer selling Dragon Soup...";
+		next;
+		mes "[古嘉玲]";
+		mes "Do you think";
+		mes "my brother did";
+		mes "something bad again!?";
+		mes "I hope not! If he did...";
+		mes "What am I supposed to do?!";
+		close;
+	}
+	mes "[古嘉玲]";
+	mes "好擔心我弟弟喔，";
+	mes "因為年紀還小，";
+	mes "而且正是叛逆時期，";
+	mes "說什麼都不聽呢";
+	next;
+	mes "[古嘉玲]";
+	mes "剛剛也說村子的酒店，";
+	mes "怎樣怎樣的，";
+	mes "然後自己生氣就離家出走了";
+	next;
+	mes "[古嘉玲]";
+	mes "唉呦! 真是的~~";
+	mes "這傢伙一旦回來的話，一定要揍他一頓!";
+	close;
+}
+
+// Doctor Quest :: dr_china
+//============================================================
+lou_in02,265,69,5	script	Doctor#lyang	814,{
+	if ((MaxWeight-Weight) < 2000 || checkweight(1201,1) == 0) {
+		mes "^3355FFWait a minute! Right now, you're over weight, so you cannot receive more items. Please store some of your things in Kafra Storage and try again.^000000";
+		close;
+	}
+	if (ch_par == 0) {
+		mes "[Hua Tuo]";
+		mes "There are many pressure points on the human body. Ever since ancient times, it has been believed that each pressure point was limited";
+		mes "to its role and functions.";
+		next;
+		mes "[Hua Tuo]";
+		mes "However, as I studied and experimented with every pressure point, I came to the conclusion that the use of pressure points, depending on the circumstances,";
+		mes "can produce different results.";
+		emotion e_gasp;
+		next;
+		mes "[Hua Tuo]";
+		mes "Few pressure points tend to show the same symptoms, regardless of the problem. Most of the time, the effects of pressure points will differ depending on the body's health or the time of day.";
+		next;
+		mes "[Hua Tuo]";
+		mes "For instance, the pressure point located on the upper side of navel is the most vulnerable point.";
+		next;
+		mes "[Hua Tuo]";
+		mes "If pressed the wrong way, it can cause death. But between 5:15 am and 7:15 am, it's just a weak point.";
+		set ch_par,1;
+		close;
+	}
+	else if (ch_par == 1) {
+		if (BaseLevel < 40) {
+			mes "[Hua Tuo]";
+			mes "Being strong as a person is not defined as mere physical strength.";
+			next;
+			mes "[Hua Tuo]";
+			mes "Factors such as intelligence, experience and knowledge are";
+			mes "also considered when judging one's strength.";
+			next;
+			mes "[Hua Tuo]";
+			mes "Let's say you're very strong and given the most powerful weapon.";
+			next;
+			mes "[Hua Tuo]";
+			mes "If you don't know how to use the weapon's power, you will not be strong... You will be weak.";
+			next;
+			mes "[Hua Tuo]";
+			mes "When the tools or weapons";
+			mes "overwhelm your capabilities,";
+			mes "the worst situations result.";
+			close;
+		}
+		mes "[Hua Tuo]";
+		mes "Hmmm...";
+		mes "I'm in trouble...";
+		next;
+		mes "[Hua Tuo]";
+		mes "I cannot do anything without my medicine. But one my patients";
+		mes "needs immediate treatment and";
+		mes "I can't leave the office...";
+		emotion e_swt2;
+		next;
+		if (select("I can help you.:What a shame!") == 1) {
+			mes "[Hua Tuo]";
+			mes "Huh...?";
+			mes "Are...";
+			mes "Are you serious?";
+			next;
+			mes "[Hua Tuo]";
+			mes "This won't take much effort, but it may be too much to ask this of you, especially since we have just met.";
+			next;
+			if (select("If you feel burdened...:I don't mind, I'd be glad to help.") == 1) {
+				mes "[Hua Tuo]";
+				mes "Thank you so";
+				mes "much for saying that.";
+				mes "I feel very uncomfortable asking a favor of someone I have only just met.";
+				next;
+				mes "[Hua Tuo]";
+				mes "However, I will ask you";
+				mes "if we meet another time.";
+				mes "Now, if you'll excuse me...";
+				emotion e_thx;
+				close;
+			}
+			mes "[Hua Tuo]";
+			mes "Hmm, I see.";
+			mes "Well then, let me";
+			mes "ask a favor of you.";
+			next;
+			mes "[Hua Tuo]";
+			mes "As you heard earlier, I need";
+			mes "a special medicine to treat this patient. However, I'm running out of the medicine I need.";
+			next;
+			mes "[Hua Tuo]";
+			mes "I will need you to get it for me since I cannot leave the patients that are waiting for me right now.";
+			next;
+			mes "[Hua Tuo]";
+			mes "^666666*Sigh*^000000";
+			mes "Misfortunes always seem";
+			mes "to occur one after another, don't they? My staff is currently too busy doing other errands.";
+			next;
+			mes "[Hua Tuo]";
+			mes "Please visit the";
+			mes "Tool Shop in town and bring me";
+			mes "the medicine that I need. Master will understand if you tell him you've been sent by me.";
+			next;
+			mes "[Hua Tuo]";
+			mes "I am sorry for causing you";
+			mes "so much trouble, but if you'll excuse me, I have other patients waiting. Please hurry back with";
+			mes "the medicine!";
+			set ch_par,2;
+			setquest 11044;
+			close;
+		}
+		mes "[Hua Tuo]";
+		mes "^666666*Sigh*^000000 For some reason, I never seem to have enough medicine in stock. Is there no one I can ask to help me?";
+		close;
+	}
+	else if (ch_par < 4) {
+		mes "[Hua Tuo]";
+		mes "You haven't gotten";
+		mes "the medicine yet...?";
+		mes "I hope you can get it";
+		mes "as soon as you can...";
+		close;
+	}
+	else if (ch_par == 4) {
+		mes "[Hua Tuo]";
+		mes "In order to prescribe medicine";
+		mes "and apply acupuncture suited to";
+		mes "a patient, I must first consider many different factors related to health.";
+		next;
+		mes "[Hua Tuo]";
+		mes "I must be especially careful if the patient is in critical condition or is exhibiting unusual symptoms.";
+		close;
+	}
+	else if (ch_par < 9) {
+		mes "[Hua Tuo]";
+		mes "Umm.....";
+		mes "Is that so...?";
+		mes "I can understand if you";
+		mes "take your time to bring the item. There's no need to rush.";
+		next;
+		mes "[Hua Tuo]";
+		mes "Everybody has their own";
+		mes "worries, and I understand if your own problems must take priority.";
+		next;
+		mes "[Hua Tuo]";
+		mes "Still, it's good";
+		mes "to put yourself in someone";
+		mes "else's shoes sometimes.";
+		close;
+	}
+	else if (ch_par == 9) {
+		if (countitem(7252) < 1) {
+			mes "[Hua Tuo]";
+			mes "Umm.....";
+			mes "Is that so...?";
+			mes "I can understand if you";
+			mes "take your time in bringing what I need. There's no rush.";
+			next;
+			mes "[Hua Tuo]";
+			mes "Everybody has their own";
+			mes "worries, and I understand if your own problems must take priority.";
+			next;
+			mes "[Hua Tuo]";
+			mes "Still, it's good";
+			mes "to put yourself in someone";
+			mes "else's shoes sometimes.";
+			close;
+		}
+		mes "[Hua Tuo]";
+		mes "Ah...";
+		mes "You've finally";
+		mes "brought it to me!";
+		mes "Thank you so much,";
+		mes "I feel much more relieved...";
+		next;
+		mes "[Hua Tuo]";
+		mes "I apologize";
+		mes "in advance,";
+		mes "but may I ask";
+		mes "another favor of you?";
+		next;
+		mes "[Hua Tuo]";
+		mes "I am asking you once more";
+		mes "as now I see that you are trustworthy. Of course, I will compensate you for your trouble.";
+		next;
+		if (select("I'm sorry, I can't help you.:No problem.") == 1) {
+			mes "[Hua Tuo]";
+			mes "Alright....";
+			mes "I understand.";
+			mes "But let me thank you";
+			mes "for helping me out.";
+			mes "Please take this...";
+			next;
+			mes "[Hua Tuo]";
+			mes "This medicine is not that";
+			mes "great, but it's an old family secret. I hope it will be useful to you if you find yourself in great danger.";
+			delitem 7252,1; //Herb_Medicine
+			set ch_par,10;
+			completequest 11056;
+			getitem 679,2; //Gold_Pill
+			getexp (checkre(3))?1000:10000,0;
+			next;
+			mes "[Hua Tuo]";
+			mes "Well then,";
+			mes "I will see";
+			mes "you around.";
+			mes "Once again, thank";
+			mes "you for your help.";
+			close;
+		}
+		mes "[Hua Tuo]";
+		mes "Thank you,";
+		mes "thank you so much!";
+		mes "I just ran out of some other medicines again, and I hope that you can assist me once more.";
+		next;
+		mes "[Hua Tuo]";
+		mes "I hope that I am not causing";
+		mes "you too much trouble. Um, so the medicines I'll need are...";
+		next;
+		mes "[Hua Tuo]";
+		mes "^0000ff2 Leopard Claw^000000 which strengthen bones, ^0000ff10 Solid Peach^000000 which strengthens muscle, ^0000ff5 Poisonous Toad Skin^000000 which replenishes the skin...";
+		next;
+		mes "[Hua Tuo]";
+		mes "^0000ff20 Brown Root^000000 which regulates the heart, ^0000ff10 Sprout^000000 which eases the abdomen and ^0000ff5 Honey Pot^000000 which provides nutrition.";
+		next;
+		mes "[Hua Tuo]";
+		mes "I hope you were";
+		mes "able to memorize all";
+		mes "of that. Once again, that's...";
+		next;
+		mes "[Hua Tuo]";
+		mes "^3355FF2 Leopard Claw^000000,";
+		mes "^3355FF10 Solid Peach^000000,";
+		mes "^3355FF5 Poisonous Toad Skin^000000,";
+		mes "^3355FF20 Brown Root^000000,";
+		mes "^3355FF10 Sprout^000000 and";
+		mes "^3355FF5 Honey Pot^000000.";
+		set ch_par,17;
+		changequest 11056,11057;
+		close;
+	}
+	else if (ch_par == 10) {
+		mes "[Hua Tuo]";
+		mes "Being strong as a person is not defined as mere physical strength.";
+		next;
+		mes "[Hua Tuo]";
+		mes "Factors such as intelligence, experience and knowledge are";
+		mes "also considered when judging one's strength.";
+		next;
+		mes "[Hua Tuo]";
+		mes "Let's say you're very strong and given the most powerful weapon.";
+		next;
+		mes "[Hua Tuo]";
+		mes "If you don't know how to use the weapon's power, you will not be strong... You will be weak.";
+		next;
+		mes "[Hua Tuo]";
+		mes "When the tools or weapons";
+		mes "overwhelm your capabilities,";
+		mes "the worst situations result.";
+		close;
+	}
+	else if (ch_par < 15) {
+		mes "[Hua Tuo]";
+		mes "Ah...";
+		mes "Did you just say you're going to gather all the items soon? Oh, thank you for your kindness.";
+		mes "I appreciate your effort";
+		mes "on my behalf.";
+		close;
+	}
+	else if (ch_par == 15) {
+		mes "[Hua Tuo]";
+		mes "Ah....";
+		mes "Did you just say you're going to gather all the items soon? Oh, thank you for your kindness.";
+		mes "I appreciate your effort";
+		mes "on my behalf.";
+		close;
+	}
+	else if (ch_par == 16) {
+		if (countitem(7252) < 1) {
+			mes "[Hua Tuo]";
+			mes "Umm.....";
+			mes "Is that so...?";
+			mes "I understand even";
+			mes "if you can't bring";
+			mes "the medicine right away.";
+			next;
+			mes "[Hua Tuo]";
+			mes "It's okay for now,";
+			mes "so don't rush yourself.";
+			mes "Everybody has their own problems, so I can understand if your own troubles must take priority.";
+			next;
+			mes "[Hua Tuo]";
+			mes "Still, it's good to see that you're understanding of the troubles other people are having.";
+			close;
+		}
+		mes "[Hua Tuo]";
+		mes "Ah, finally...";
+		mes "You've brought what I need. Thank you so much, it's such a relief to have this medicine onhand again.";
+		next;
+		mes "[Hua Tuo]";
+		mes "I apologize in advance,";
+		mes "but may I ask you another favor?";
+		mes "I am asking for your help once more, since I know I can depend on you. Of course, I will compensate you for your trouble.";
+		next;
+		if (select("I'm sorry...:No problem.") == 1) {
+			mes "[Hua Tuo]";
+			mes "Alright....";
+			mes "I understand.";
+			mes "But thank you for";
+			mes "helping me out.";
+			mes "Please take this...";
+			next;
+			mes "[Hua Tuo]";
+			mes "It's not much, but this medicine";
+			mes "is an old family secret. I hope that it will be of use to you in dangerous situations.";
+			delitem 7252,1; //Herb_Medicine
+			set ch_par,10;
+			completequest 11056;
+			getitem 679,2; //Gold_Pill
+			getexp (checkre(3))?1000:10000,0;
+			next;
+			mes "[Hua Tuo]";
+			mes "Well then, I will see you around. Once again, I'd like to thank you for your help.";
+			close;
+		}
+		mes "[Hua Tuo]";
+		mes "Thank you, thank you so much!";
+		mes "I've just run out of other medicines that my patients will be needing. I don't need too much, but you would be doing me a great favor.";
+		next;
+		mes "[Hua Tuo]";
+		mes "The medicines I need are ^0000ff2 Leopard Claw^000000 which supports the bones, ^0000ff10 Solid Peach^000000 which strengthens the muscle, ^0000ff5 Poisonous Toad Skin^000000 which replenishes the skin...";
+		next;
+		mes "[Hua Tuo]";
+		mes "^0000ff20 Brown Root^000000 which regulates the heart, ^0000ff10 Sprout^000000 which eases the abdomen and ^0000ff5 Honey Pot^000000 which provides nutrition.";
+		next;
+		mes "[Hua Tuo]";
+		mes "I hope you've";
+		mes "memorized it all.";
+		mes "Once again, that's...";
+		next;
+		mes "[Hua Tuo]";
+		mes "^3355FF2 Leopard Claw^000000,";
+		mes "^3355FF10 Solid Peach^000000,";
+		mes "^3355FF5 Poisonous Toad Skin^000000,";
+		mes "^3355FF20 Brown Root^000000,";
+		mes "^3355FF10 Sprout^000000 and";
+		mes "^3355FF5 Honey Pot^000000.";
+		set ch_par,17;
+		close;
+	}
+	else if (ch_par == 17) {
+		if (countitem(7172) > 1 && countitem(7164) > 9 && countitem(7155) > 4 && countitem(7188) > 19 && countitem(7193) > 9 && countitem(7121) > 4) {
+			mes "[Hua Tuo]";
+			mes "Hm? Ah, you have returned.";
+			mes "Sorry, I was taking care of my other patients. Have you already gathered the medicines I'll need?";
+			next;
+			mes "[Hua Tuo]";
+			mes "Let's see...";
+			mes "Oh, you've brought them all.";
+			mes "Thank you so much for your";
+			mes "generous help. It's such a relief to have these medicines available again...";
+			next;
+			mes "[Hua Tuo]";
+			mes "Please take this as a token of my appreciation. It's not much, but this medicine is an old family secret. I hope it will be helpful to you in dangerous situations.";
+			delitem 7172,2; //Leopard_Talon
+			delitem 7164,10; //Hard_Peach
+			delitem 7155,5; //Poison_Toad's_Skin
+			delitem 7188,20; //Browny_Root
+			delitem 7193,10; //Germinating_Sprout
+			delitem 7121,5; //Honey_Jar
+			delitem 7252,1; //Herb_Medicine
+			set ch_par,18;
+			completequest 11057;
+			getitem 679,5; //Gold_Pill
+			getexp (checkre(3))?10000:30000,0;
+			next;
+			mes "[Hua Tuo]";
+			mes "However, please remember not to take more than the recommended dosage for the pills I have given you. Even medicine, in the wrong doses, can become poison to the body.";
+			close;
+		}
+		mes "[Hua Tuo]";
+		mes "Hmm...";
+		mes "Unfortunately, you haven't collected everything that I need yet. Once again, please gather...";
+		next;
+		mes "[Hua Tuo]";
+		mes "^3355FF2 Leopard Claw^000000,";
+		mes "^3355FF10 Solid Peach^000000,";
+		mes "^3355FF5 Poisonous Toad Skin^000000,";
+		mes "^3355FF20 Brown Root^000000,";
+		mes "^3355FF10 Sprout^000000 and";
+		mes "^3355FF5 Honey Pot^000000.";
+		close;
+	}
+	mes "[Hua Tuo]";
+	mes "Your health is affected by";
+	mes "many factors. Nutricious food and medicine alone cannot guarantee";
+	mes "a healthy lifestyle.";
+	next;
+	mes "[Hua Tuo]";
+	mes "Seemingly little things like your everyday mood and behavior, your thoughts and words also contribute to states of illness or well-being.";
+	next;
+	mes "[Hua Tuo]";
+	mes "Everyone needs time to quiet";
+	mes "their thoughts and relax. If you can maintain a calm mood throughout your daily life, your body will greatly benefit.";
+	next;
+	mes "[Hua Tuo]";
+	mes "Hahaha...";
+	mes "I hope you enjoy";
+	mes "your visit here";
+	mes "in Louyang.";
+	close;
+}
+
+lou_in02,272,55,0	script	Familiar-Looking Patient	798,{
+	if (ch_par == 0 ) {
+		mes "[??????]";
+		mes "Awwww.....";
+		mes "Ummm....";
+		mes "^666666*Cough...cough...*^000000";
+		emotion e_omg;
+		set ch_par,1;
+		close;
+	}
+	else if (ch_par < 18) {
+		mes "[??????]";
+		mes "^666666*Cough cough...*^000000";
+		mes "Aww......www...";
+		mes "Aww...wwww..";
+		emotion e_dots;
+		close;
+	}
+	else {
+		mes "[??????]";
+		mes "Zzzzzzz";
+		mes "Zzzzz.....";
+		mes "Zzzzz.....";
+		close;
+	}
+}
+
+lou_in02,248,166,2	script	Tool Shop Master#lou	824,{
+	if (ch_par < 2) {
+		mes "[Wang Chuiyi]";
+		mes "My business hasn't been doing";
+		mes "well recently. And what is wrong with this weather? I don't know what's going on with the world...";
+		close;
+	}
+	else if (ch_par == 2) {
+		mes "[Wang Chuiyi]";
+		mes "Darn it!";
+		mes "I hate this";
+		mes "weather...!";
+		next;
+		mes "[Wang Chuiyi]";
+		mes "Um? Can I help";
+		mes "you with anything?";
+		emotion e_what;
+		next;
+		if (select("I'm here to get something for the doctor...:I agree, the weather really is bad.") == 1) {
+			mes "[Wang Chuiyi]";
+			mes "Huh?";
+			mes "An errand for the doctor?";
+			mes "She must have run out of";
+			mes "medicine again. Go ahead";
+			mes "and check the storage.";
+			next;
+			mes "[Wang Chuiyi]";
+			mes "You can find the storage on";
+			mes "the opposite side of this building. There, you'll see a guy named Jiang Xiayou. Go ahead and ask him for the stuff you need.";
+			set ch_par,3;
+			changequest 11044,11045;
+			close;
+		}
+		mes "[Wang Chuiyi]";
+		mes "Tell me about it. This weather keeps stressing me out. Damn,";
+		mes "I don't think I'll live very long if I keep getting aggravated like";
+		mes "this by the weather...";
+		close;
+	}
+	else if (ch_par == 3) {
+		mes "[Wang Chuiyi]";
+		mes "I can't understand why outsiders continue to travel here to Louyang despite the weather. I'm also getting tired of keeping my business here. Sooner or later,";
+		mes "I may have to leave.";
+		close;
+	}
+	else if (ch_par == 4) {
+		mes "[Wang Chuiyi]";
+		mes "What? He didn't give you the stuff you need? Huh, I guess you did something he didn't like. I can't help you if that's the case.";
+		close;
+	}
+	else if (ch_par < 10) {
+		mes "[Wang Chuiyi]";
+		mes "I can't understand why outsiders continue to travel here to Louyang despite the weather. I'm also getting tired of keeping my business here. Sooner or later,";
+		mes "I may have to leave.";
+		close;
+	}
+	else {
+		mes "[Wang Chuiyi]";
+		mes "God, what is wrong with this weather?! I wish the Cloud God would bring the rainy season, but it doesn't seem possible.";
+		close;
+	}
+}
+
+lou_in02,201,166,4	script	Storage Keeper#lou	819,{
+	if ((MaxWeight-Weight) < 2000 || checkweight(1201,1) == 0) {
+		mes "^3355FF * Wait a moment!! *";
+		mes "Currently you're over weight, so you cannot receive more items into your inventory. Please store some of your items into Kafra Storage and try again.^000000";
+		close;
+	}
+	if (ch_par < 3) {
+		mes "[Jiang Xiayou]";
+		mes "^666666*Yawn...*^000000";
+		mes "This is boring...";
+		mes "So boring, it's ridiculous. I don't wanna waste any more time here, I've got important things to do...";
+		close;
+	}
+	else if (ch_par == 3) {
+		mes "[Jiang Xiayou]";
+		mes "Huh?";
+		mes "What, what are you doing here?";
+		mes "If you don't need anything, you better get a move on.";
+		next;
+		switch(select("Sorry about that.:It's hot, isn't it?:I'm on an errand for the doctor.")) {
+		case 1:
+			mes "[Jiang Xiayou]";
+			mes "That's right!";
+			mes "You don't mess with a person in this hot weather! Now, go away. Can't you see I'm busy!";
+			close;
+		case 2:
+			mes "[Jiang Xiayou]";
+			mes "You don't have to";
+			mes "ask me that. I can feel";
+			mes "it for myself! Now, I got";
+			mes "a bunch of things to take";
+			mes "care of, so quit bugging me.";
+			mes "Damn, it's hot!";
+			close;
+		case 3:
+			mes "[Jiang Xiayou]";
+			mes "Oh yeah?";
+			mes "Well, why didn't you";
+			mes "say so? Let's see.";
+			mes "Hmmm...";
+			next;
+			emotion e_gasp;
+			next;
+			mes "[Jiang Xiayou]";
+			mes "Actually, could you help me";
+			mes "out first? Don't worry, it's not so hard but it's pretty important for me. Once you help me out, I'll";
+			mes "get you what you need.";
+			next;
+			if (select("Um, what is it?:Sorry, I'm busy.") == 1) {
+				mes "[Jiang Xiayou]";
+				mes "Cool, thanks. I have to go get";
+				mes "some official documents from";
+				mes "City Hall, but I can't leave this storage area since no one can take over my shift.";
+				next;
+				mes "[Jiang Xiayou]";
+				mes "So I want you to go get the documents from City Hall for me.";
+				mes "I don't think it'll take much of your time.";
+				next;
+				mes "[Jiang Xiayou]";
+				mes "Just go East from here";
+				mes "and look for the building that looks sort of like it was made in gauge form. That's City Hall.";
+				next;
+				mes "[Jiang Xiayou]";
+				mes "I don't get why the government spent so much money making that building, but anyway, I hope you can do that for me.";
+				next;
+				mes "[Jiang Xiayou]";
+				mes "Oh, I almost forgot.";
+				mes "You have to ask for a specific type of document, so let me tell you right now.";
+				next;
+				mes "[Jiang Xiayou]";
+				mes "This is important,";
+				mes "So don't forget this.";
+				set .@paper_j,rand(10,13);
+				if (.@paper_j == 10) {
+					mes "When the guy asks what you need, you tell him: '^ff0000Residence Transfer Application^000000.' Just like that.";
+					set ch_par,5;
+					changequest 11045,11046;
+				}
+				else if (.@paper_j == 11) {
+					mes "When the guy asks what you need, you tell him: '^ff0000Summer SAT Class Application^000000.' Got it?";
+					set ch_par,6;
+					changequest 11045,11047;
+				}
+				else if (.@paper_j == 12) {
+					mes "When the guy asks what you need, you tell him: '^ff0000Sandy Dust Phenomenon Report^000000.' Easy, right?";
+					set ch_par,7;
+					changequest 11045,11048;
+				}
+				else if (.@paper_j == 13) {
+					mes "When the guy asks what you need, you tell him: '^ff0000Communication Proposal^000000.' Just like that?";
+					set ch_par,8;
+					changequest 11045,11049;
+				}
+				next;
+				mes "[Jiang Xiayou]";
+				mes "If you don't specify the";
+				mes "documents you need, they won't give you anything. So be careful and don't forget!";
+				close;
+			}
+			mes "[Jiang Xiayou]";
+			mes "Bah~!";
+			mes "Forget it, then!";
+			next;
+			mes "[Jiang Xiayou]";
+			mes "The medicines you're looking for might be around here, so look around. If it weren't for the doctor, I wouldn't even let you hang around, you know that?";
+			emotion e_pif;
+			set ch_par,4;
+			changequest 11045,11050;
+			close;
+		}
+	}
+	else if (ch_par == 4) {
+		mes "[Jiang Xiayou]";
+		mes "Hah...";
+		mes "Sorry pal, you'll have to find the medicines on your own. A man's life is at stake, so I guess you oughta get a move on.";
+		close;
+	}
+	else if (ch_par < 9) {
+		mes "[Jiang Xiayou]";
+		mes "Huh?";
+		mes "Haven't you gone";
+		mes "to City Hall yet?";
+		mes "Whaaaat a lazy ass.";
+		next;
+		mes "[Jiang Xiayou]";
+		mes "Shouldn't you hurry to get that medicine to the doc? We're talking a man's life at stake, that mean anything to you?";
+		next;
+		mes "[Jiang Xiayou]";
+		mes "I guess you're";
+		mes "the forgetful type...";
+		mes "When the guy asks what";
+		mes "you need, you tell him:";
+		if (ch_par == 5) {
+			mes "'^ff0000Residence Transfer Application^000000.'";
+		}
+		else if (ch_par == 6) {
+			mes "'^ff0000Summer SAT Class Application^000000.'";
+		}
+		else if (ch_par == 7) {
+			mes "'^ff0000Sandy Dust Phenomenon Report^000000'.";
+		}
+		else if (ch_par == 8) {
+			mes "^ff0000Communication Proposal^000000.'";
+		}
+		next;
+		mes "[Jiang Xiayou]";
+		mes "Just like that.";
+		mes "Now, go to it, tiger.";
+		close;
+	}
+	else if (ch_par == 9) {
+		mes "[Jiang Xiayou]";
+		mes "Hmm...";
+		mes "You're lucky.";
+		mes "Alright, go ahead.";
+		mes "Still, things have";
+		mes "become complicated...";
+		close;
+	}
+	else if (ch_par == 10) {
+		mes "[Jiang Xiayou]";
+		mes "^666666*Yawn~*^000000 I really hope the";
+		mes "weather gets better. Man, now why did I have to think about the heat? Now I'm all depressed...";
+		next;
+		mes "[Jiang Xiayou]";
+		mes "Huh. I guess I should";
+		mes "take care of these things";
+		mes "as soon as I can...";
+		close;
+	}
+	else if (ch_par < 15) {
+		mes "[Jiang Xiayou]";
+		mes "Huh?";
+		mes "Haven't you gone to City Hall yet? Whaaaaat a lazy ass.";
+		next;
+		mes "[Jiang Xiayou]";
+		mes "If I were you, I'd hurry so I could get that medicine to the doc. A man's life is at stake here, that's gotta mean something to you!";
+		next;
+		mes "[Jiang Xiayou]";
+		mes "I guess you're";
+		mes "the forgetful type...";
+		mes "When the guy asks what";
+		mes "you need, you tell him:";
+		if (ch_par == 11) {
+			mes "'^ff0000Residence Transfer Application^000000.'";
+		}
+		else if (ch_par == 12) {
+			mes "'^ff0000Summer SAT Class Application^000000.'";
+		}
+		else if (ch_par == 13) {
+			mes "'^ff0000Sandy Dust Phenomenon Report^000000.'";
+		}
+		else if (ch_par == 14) {
+			mes "'^ff0000Communication Proposal^000000.'";
+		}
+		next;
+		mes "[Jiang Xiayou]";
+		mes "Just like that.";
+		mes "Now, go to it, tiger.";
+		close;
+	}
+	else if (ch_par == 15) {
+		mes "[Jiang Xiayou]";
+		mes "You finally brought it! Haha,";
+		mes "I just got everything you need, too. Let me see...";
+		mes "Yup, this is it!";
+		mes "Good, good...";
+		next;
+		mes "^3355FF*Rummage rummage*";
+		mes "......^000000";
+		next;
+		select("Excuse me.");
+		mes "[Jiang Xiayou]";
+		mes "Huh?";
+		mes "Ah....";
+		mes "Haha...";
+		mes "Sorry about";
+		mes "that. Hahaha~";
+		next;
+		mes "[Jiang Xiayou]";
+		mes "Ah! Here you go. Even if it was kind of annoying to do, I guess";
+		mes "we gotta help each other, right? Alright then, I'll see ya around.";
+		set ch_par,16;
+		changequest 11055,11056;
+		getitem 7252,1; //Herb_Medicine
+		close;
+	}
+	mes "[Jiang Xiayou]";
+	mes "^666666*Yawn~*^000000 I really hope the";
+	mes "weather gets better. Man, now why did I have to think about the heat? Now I'm all depressed...";
+	next;
+	mes "[Jiang Xiayou]";
+	mes "Huh. I guess I should";
+	mes "take care of these things";
+	mes "as soon as I can...";
+	close;
+}
+
+lou_in02,210,47,0	script	City Hall Officer#lou	825,{
+	if (ch_par < 5) {
+		mes "[Jin Chiyuan]";
+		mes "^666666*Yawn~*^000000";
+		mes "Gosh, this hot weather is such";
+		mes "a pain. Oh? You look like a tourist. Are you enjoying your stay?";
+		next;
+		mes "[Jin Chiyuan]";
+		mes "Although we've been having bad weather recently, there are many good places to visit in Louyang.";
+		mes "I hope you have a good time.";
+		close;
+	}
+	else if (ch_par < 9) {
+		mes "[Jin Chiyuan]";
+		mes "Hm? A Rune-Midgardian?";
+		mes "Now, how may I help you?";
+		next;
+		if (select("I need a document.:I just dropped by.") == 1) {
+			mes "[Jin Chiyuan]";
+			mes "Ah, you do?";
+			mes "Unfortunately, there are many people waiting in line to procure government forms, so it will take";
+			mes "a while to handle your request.";
+			next;
+			mes "[Jin Chiyuan]";
+			mes "^333333*Whispers*";
+			mes "Well, there is a way that you can, shall we say, expediate our processing of your request...^000000";
+			next;
+			if (select("Huh? Come again?:A little zeny to cut the red tape, eh?") == 1) {
+				mes "[Jin Chiyuan]";
+				mes "^666666*Ahem!*^000000 Nothing.";
+				mes "Nothing of importance. Now, I'm very busy, so if you would go fill the application over there...";
+				close;
+			}
+			input .@input;
+			if (.@input < 10000) {
+				mes "[Jin Chiyuan]";
+				mes "Good lord,";
+				mes "what are you thinking?";
+				mes "What am I, a beggar?!";
+				mes "That's a poor excuse";
+				mes "for a bribe!";
+				next;
+				mes "[Jin Chiyuan]";
+				mes "I mean...";
+				mes "How dare you bribe an officer of the law! I hope other outsiders are not like you! Please leave immediately!";
+				emotion e_pif;
+				close;
+			}
+			else {
+				if (Zeny > .@input) {
+					mes "[Jin Chiyuan]";
+					mes "What...?!";
+					mes "That's not what I meant,";
+					mes "but if you insist on donating to our government...";
+					next;
+					mes "[Jin Chiyuan]";
+					mes "^666666*Whispers*^000000";
+					mes "^333333When you go up stairs, another officer will give you the document you want.^000000 ^666666*Ahem*^000000 Louyang thanks you!";
+					set Zeny, Zeny-.@input;
+					if (ch_par == 5) {
+						set ch_par,11;
+						changequest 11046,11051;
+					}
+					else if (ch_par == 6) {
+						set ch_par,12;
+						changequest 11047,11052;
+					}
+					else if (ch_par == 7) {
+						set ch_par,13;
+						changequest 11048,11053;
+					}
+					else if (ch_par == 8) {
+						set ch_par,14;
+						changequest 11049,11054;
+					}
+					close;
+				}
+				else {
+					mes "[Jin Chiyuan]";
+					mes "Good lord, what are you thinking? What am I, a beggar?! That's a poor excuse for a bribe!";
+					next;
+					mes "[Jin Chiyuan]";
+					mes "I mean...";
+					mes "How dare you bribe an officer of the law! I hope other outsiders are not like you! Please leave immediately!";
+					emotion e_pif;
+					close;
+				}
+			}
+		}
+		mes "[Jin Chiyuan]";
+		mes "Oh well...";
+		mes "Let me tell you that this is not a good time for tourists. I hope you don't wander into places you're";
+		mes "not supposed to be.";
+		next;
+		mes "[Jin Chiyuan]";
+		mes "Quite frankly,";
+		mes "it's a dangerous climate for curiosity right now. Please,";
+		mes "be careful.";
+		close;
+	}
+	else if (ch_par == 9) {
+		mes "[Jin Chiyuan]";
+		mes "Oh well...";
+		mes "Let me tell you that this is not a good time for tourists. I hope you don't wander into places you're";
+		mes "not supposed to be.";
+		next;
+		mes "[Jin Chiyuan]";
+		mes "Quite frankly,";
+		mes "it's a dangerous climate for curiosity right now. Please,";
+		mes "be careful.";
+		close;
+	}
+	else if (ch_par == 10) {
+		mes "[Jin Chiyuan]";
+		mes "Oh well...";
+		mes "Let me tell you that this is not a good time for tourists. I hope you don't wander into places you're";
+		mes "not supposed to be.";
+		next;
+		mes "[Jin Chiyuan]";
+		mes "Quite frankly,";
+		mes "it's a dangerous climate for curiosity right now. Please,";
+		mes "be careful.";
+		close;
+	}
+	else if (ch_par < 15) {
+		mes "[Jin Chiyuan]";
+		mes "Haven't you met the officer I told you about? I've contacted him about the matter, so you may meet him upstairs.";
+		next;
+		mes "[Jin Chiyuan]";
+		mes "Hahahaha...";
+		mes "Take care,";
+		mes "Rune-Midgardian.";
+	}
+	else if (ch_par == 15) {
+		mes "[Jin Chiyuan]";
+		mes "Ah~";
+		mes "You met him,";
+		mes "didn't you?";
+		mes "Hahaha...";
+		mes "Enjoy your stay";
+		mes "in Louyang!";
+		emotion e_heh;
+		close;
+	}
+	mes "[Jin Chiyuan]";
+	mes "Welcome.";
+	mes "How may I help you?";
+	next;
+	mes "[Jin Chiyuan]";
+	mes "If you have nothing to ask of me, please leave. This place is not";
+	mes "a playground for adventurers.";
+	emotion e_pif;
+	close;
+}
+
+lou_in02,156,38,0	script	Studying Officer#lou	822,{
+	if (ch_par < 5) {
+		mes "[Huang Zhishu]";
+		mes ".....";
+		mes "^666666*Mumble mumble*^000000";
+		next;
+		mes "^3355FFHe appears to be";
+		mes "rummaging around for";
+		mes "some documents and takes";
+		mes "no notice of you.^000000";
+		next;
+		if (select("Excuse me.:Pass him.") == 1) {
+			mes "[Huang Zhishu]";
+			mes "Hmmm...?";
+			mes "Well...";
+			mes "...";
+			mes "I see...";
+			mes "^666666*Mumble mumble...*^000000";
+			close;
+		}
+		mes "[Huang Zhishu]";
+		mes ".........";
+		mes "^666666*Mumble mumble*^000000";
+		close;
+	}
+	else if (ch_par < 9) {
+		mes "[Huang Zhishu]";
+		mes "Books contain the spirit and";
+		mes "ideas of their authors. Any work of art can be considered a window into the soul of its creator.";
+		next;
+		mes "[Huang Zhishu]";
+		mes "^666666*Mumble mumble...*^000000";
+		mes "Hmm... I see...";
+		mes "Ah, I see....";
+		mes "^666666*Mumble mumble...*^000000";
+		close;
+	}
+	else if (ch_par == 9) {
+		mes "[Huang Zhishu]";
+		mes "A book is more than a mere collection of pages and words are more than simple arrangements of letters that mean nothing.";
+		next;
+		mes "[Huang Zhishu]";
+		mes "For humans seeking to enrich their lives, books are an important part of their education, as books can impart various kinds of knowledge.";
+		next;
+		mes "[Huang Zhishu]";
+		mes "Read as many books as you can. Without books and the knowledge";
+		mes "of others, you'll never grasp the essense of life.";
+		next;
+		mes "^3355FF*Rummage rummage...*^000000";
+		close;
+	}
+	else if (ch_par == 10) {
+		mes "[Huang Zhishu]";
+		mes "A book is more than a mere collection of pages and words are more than simple arrangements of letters.";
+		next;
+		mes "[Huang Zhishu]";
+		mes "For humans seeking to enrich their lives, books are an important part of their education, as they can impart various kinds of knowledge.";
+		next;
+		mes "[Huang Zhishu]";
+		mes "Read as many books as you can. Without books and the knowledge of others, you'll never grasp the essense of life.";
+		next;
+		mes "[Huang Zhishu]";
+		mes "^3355FF*Rummage rummage...*^000000";
+		close;
+	}
+	else if (ch_par < 15) {
+		mes "[Huang Zhishu]";
+		mes "Huh?";
+		mes "What are you doing here?";
+		mes "Please don't disturb me,";
+		mes "I'm trying to study.";
+		next;
+		mes "^3355FF*Rummage rummage...*^000000";
+		next;
+		if (select("Sorry about that.:I came to pick up my documents.") == 1) {
+			mes "[Huang Zhishu]";
+			mes "Apology accepted.";
+			mes "Hmmm....";
+			mes "Oh I see, I see...";
+			next;
+			mes "^3355FF*Rummage rummage...*";
+			mes ".........^000000";
+			emotion e_gasp;
+			close;
+		}
+		mes "[Huang Zhishu]";
+		mes "Huh?";
+		mes "Ah...";
+		mes "You're the one I'm waiting for.";
+		mes "So what kind of document";
+		mes "did you need?";
+		next;
+		input .@input$;
+		switch (ch_par) {
+		case 11:
+			if (.@input$ == "Residence Transfer Application")
+				set .@paper,1;
+			break;
+		case 12:
+			if (.@input$ == "Summer SAT Class Application")
+				set .@paper,1;
+			break;
+		case 13:
+			if (.@input$ == "Sandy Dust Phenomenon Report")
+				set .@paper,1;
+			break;
+		case 14:
+			if (.@input$ == "Communication Proposal")
+				set .@paper,1;
+			break;
+		}
+		mes "[Huang Zhishu]";
+		mes "Let's see, now.";
+		mes "You want...";
+		mes "a "+ .@input$ +"?";
+		next;
+		if (.@paper == 1) {
+			mes "[Huang Zhishu]";
+			mes "Now where did I put that? You want a "+.@input$+", huh? I think I'll need some time to find it. Ah, right, I think I know where I put that.";
+			next;
+			mes "...";
+			next;
+			mes "...";
+			mes "......";
+			next;
+			mes "...";
+			mes "......";
+			mes ".........";
+			next;
+			mes "...";
+			mes "......";
+			mes ".........";
+			mes "............";
+			next;
+			mes "...";
+			mes "......";
+			mes ".........";
+			mes "............";
+			mes "...............";
+			next;
+			mes "[Huang Zhishu]";
+			mes "Here it is. A few days ago, someone asked me for the same document,";
+			mes "so I was able to find it again pretty easily. I hope it's useful to you.";
+			set ch_par,15;
+			for(set .@i,11051; .@i<=11054; set .@i,.@i+1) {
+				if (checkquest(.@i) > -1 && checkquest(.@i < 2))
+					completequest .@i;
+			}
+			setquest 11055;
+			close;
+		}
+		mes "[Huang Zhishu]";
+		mes "Huh?";
+		mes "Wha...?";
+		next;
+		mes "[Huang Zhishu]";
+		mes "I'm sorry but I don't think we have that one. You might want to check the name of the document once";
+		mes "more, and then ask me again.";
+		close;
+	}
+	mes "[Huang Zhishu]";
+	mes "Hmmm...?";
+	mes "Do you think I need to go outside more often? Well, I guess for some reason, I don't feel well. I guess I really should get some fresh air. ^666666*Yawn...*^000000";
+	emotion e_ok;
+	next;
+	mes "[Huang Zhishu]";
+	mes "But you should get out more often yourself! It's not a good idea to always stay home. If you don't get some exercise when you're young,";
+	mes "it could affect your health later.";
+	close;
+}
+
+lou_in02,204,169,0	script	Supply Stack#1lou	111,{
+	if (MaxWeight - Weight < 2000) {
+		mes "^3355FF* Wait a minute! *";
+		mes "You're carrying too many items with you. Please put some of your items into your Kafra Storage and try again. ^000000";
+		close;
+	}
+	if (ch_par == 4) {
+		if (rand(1,20) == 7) {
+			mes "^3355FF*Rummage rummage*";
+			mes "It seems there's something inside of this stack. It might be a good idea to rummage around to see if you can find something.^000000";
+			next;
+			if (rand(1,100) == 67) {
+				mes "^3355FF*Rummage rummage*";
+				mes "*Rummage rummage*";
+				mes "*Rummage rummage*";
+				mes "You found a medicine.^000000";
+				set ch_par,9;
+				changequest 11050,11056;
+				getitem 7252,1; //Herb_Medicine
+				next;
+				mes "[Jiang Xiayou]";
+				mes "What...!";
+				mes "You found it...?!";
+				mes "Bah, I can't believe it!";
+				mes "You're just lucked out!";
+				mes "^666666*Grumble grumble*^000000";
+				close;
+			}
+			mes "^3355FF*Rummage rummage*";
+			mes "*Rummage rummage*";
+			mes "*Rummage rummage*";
+			mes "You didn't find anything.^000000";
+			next;
+			mes "[Jiang Xiayou]";
+			mes "Hey, hey...";
+			mes "I told you! It's not too late, why don't you do me the favor I asked? I'm only asking you once!";
+			emotion e_an,0,"Storage Keeper#lou";
+			close;
+		}
+		mes "^3355FF*Rummage rummage*";
+		mes "You didn't find anything. You decided to give up your search.^000000";
+		close;
+	}
+	mes "^3355FFThere are many things piled up to the ceiling. Since there's too many things jumbled together, it doesn't look like it's possible that you'll find anything here.^000000";
+	next;
+	mes "[Jiang Xiayou]";
+	mes "Hey, don't touch anything! If you mess anything up, you've gotta pile it up again, got it? If you don't want to clean up after yourself, don't make a mess!";
+	close;
+}
+
+lou_in02,207,168,0	script	Supply Stack#5lou	111,{
+	if (MaxWeight - Weight < 2000) {
+		mes "^3355FF* Wait a minute !! *";
+		mes "You're carrying too many items with you. Please put some of your items into your Kafra Storage and try again.^000000";
+		close;
+	}
+	if (ch_par == 4) {
+		if (rand(1,20) == 13) {
+			mes "^3355FF*Rummage rummage*";
+			mes "It seems there's something inside of this stack. You decide to rummage around to see if you can find anything.^000000";
+			next;
+			if (rand(1,100) == 43) {
+				mes "^3355FF*Rummage rummage*";
+				mes "*Rummage rummage*";
+				mes "*Rummage rummage*";
+				mes "You found a medicine.^000000";
+				set ch_par,9;
+				changequest 11050,11056;
+				getitem 7252,1; //Herb_Medicine
+				next;
+				mes "[Jiang Xiayou]";
+				mes "Err...";
+				mes "You found it...?!";
+				mes "I can't believe it!";
+				mes "You just lucked out.";
+				close;
+			}
+			mes "^3355FF*Rummage rummage*";
+			mes "*Rummage rummage*";
+			mes "*Rummage rummage*";
+			mes "You didn't find anything.^000000";
+			next;
+			mes "[Jiang Xiayou]";
+			mes "Hey, hey...";
+			mes "I told you!";
+			mes "It's not too late for you";
+			mes "to do the favor I asked.";
+			mes "I'm only asking you once!";
+			close;
+		}
+		mes "^3355FF*Rummage rummage*";
+		mes "You didn't find anything. You decided to give up your search.^000000";
+		close;
+	}
+	mes "^3355FFThere are many things piled up to the ceiling. Since there is too much stuff jumbled together, it doesn't seem possible that you'll find anything in this stack.^000000";
+	next;
+	mes "[Jiang Xiayou]";
+	mes "Hey, don't touch anything! If you mess anything up, you've gotta pile it up again, got it? If you don't want to clean up after yourself, don't make a mess!";
+	emotion e_rock,0,"Storage Keeper#lou";
+	close;
+}
+
+lou_in02,206,163,0	script	Supply Stack#4lou	111,{
+	if (MaxWeight - Weight < 2000) {
+		mes "^3355FF* Wait a minute !! *";
+		mes "You're carrying too many items with you. Please put some of your items into your Kafra Storage and try again.^000000";
+		close;
+	}
+	if (ch_par == 4) {
+		if (rand(1,20) == 4) {
+			mes "^3355FF*Rummage rummage*";
+			mes "It seems there's something inside of this stack. You decide to rummage around to see if you can find anything.^000000";
+			next;
+			if (rand(1,100) == 11) {
+				mes "^3355FF*Rummage rummage*";
+				mes "*Rummage rummage*";
+				mes "*Rummage rummage*";
+				mes "You found a medicine.^000000";
+				set ch_par,9;
+				changequest 11050,11056;
+				getitem 7252,1; //Herb_Medicine
+				next;
+				mes "[Jiang Xiayou]";
+				mes "Err...";
+				mes "You found it...?!";
+				mes "I can't believe it!";
+				mes "You just lucked out.";
+				emotion e_wah,0,"Storage Keeper#lou";
+				close;
+			}
+			mes "^3355FF*Rummage rummage*";
+			mes "*Rummage rummage*";
+			mes "*Rummage rummage*";
+			mes "You didn't find anything.^000000";
+			next;
+			mes "[Jiang Xiayou]";
+			mes "Hey, hey...";
+			mes "I told you!";
+			mes "It's not too late for you";
+			mes "to do the favor I asked.";
+			mes "I'm only asking you once!";
+			close;
+		}
+		mes "^3355FF*Rummage rummage*";
+		mes "You didn't find anything. You decided to give up your search.^000000";
+		close;
+	}
+	mes "^3355FFThere are many things piled up to the ceiling. Since there is too much stuff jumbled together, it doesn't seem possible that you'll find anything in this stack.^000000";
+	next;
+	mes "[Jiang Xiayou]";
+	mes "Hey, don't touch anything! If you mess anything up, you've gotta pile it up again, got it? If you don't want to clean up after yourself, don't make a mess!";
+	close;
+}
+
+lou_in02,198,170,0	script	Supply Stack#3lou	111,{
+	if (MaxWeight - Weight < 2000) {
+		mes "^3355FF* Wait a minute !! *";
+		mes "You're carrying too many items with you. Please put some of your items into your Kafra Storage and try again.^000000";
+		close;
+	}
+	if (ch_par == 4) {
+		if (rand(1,20) == 18) {
+			mes "^3355FF*Rummage rummage*";
+			mes "It seems there's something inside of this stack. You decide to rummage around to see if you can find anything.^000000";
+			next;
+			if (rand(1,100) == 96) {
+				mes "^3355FF*Rummage rummage*";
+				mes "*Rummage rummage*";
+				mes "*Rummage rummage*";
+				mes "You found a medicine.^000000";
+				set ch_par,9;
+				changequest 11050,11056;
+				getitem 7252,1; //Herb_Medicine
+				next;
+				mes "[Jiang Xiayou]";
+				mes "Err...";
+				mes "You found it...?!";
+				mes "I can't believe it!";
+				mes "You just lucked out.";
+				close;
+			}
+			mes "^3355FF*Rummage rummage*";
+			mes "*Rummage rummage*";
+			mes "*Rummage rummage*";
+			mes "You didn't find anything.^000000";
+			next;
+			mes "[Jiang Xiayou]";
+			mes "Hey, hey...";
+			mes "I told you!";
+			mes "It's not too late for you";
+			mes "to do the favor I asked.";
+			mes "I'm only asking you once!";
+			emotion e_gg,0,"Storage Keeper#lou";
+			close;
+		}
+		mes "^3355FF*Rummage rummage*";
+		mes "You didn't find anything. You decided to give up your search.^000000";
+		close;
+	}
+	mes "^3355FFThere are many things piled up to the ceiling. Since there is too much stuff jumbled together, it doesn't seem possible that you'll find anything in this stack.^000000";
+	next;
+	mes "[Jiang Xiayou]";
+	mes "Hey, don't touch anything! If you mess anything up, you've gotta pile it up again, got it? If you don't want to clean up after yourself, don't make a mess!";
+	close;
+}
+
+lou_in02,192,170,0	script	Supply Stack#2	111,{
+	if (MaxWeight - Weight < 2000) {
+		mes "^3355FF* Wait a minute !! *";
+		mes "You're carrying too many items with you. Please put some of your items into your Kafra Storage and try again.^000000";
+		close;
+	}
+	if (ch_par == 4) {
+		if (rand(1,20) == 10) {
+			mes "^3355FF*Rummage rummage*";
+			mes "It seems there's something inside of this stack. You decide to rummage around to see if you can find anything.^000000";
+			next;
+			if (rand(1,100) == 87) {
+				mes "^3355FF*Rummage rummage*";
+				mes "*Rummage rummage*";
+				mes "*Rummage rummage*";
+				mes "You found a medicine.^000000";
+				set ch_par,9;
+				changequest 11050,11056;
+				getitem 7252,1; //Herb_Medicine
+				next;
+				mes "[Jiang Xiayou]";
+				mes "Err...";
+				mes "You found it...?!";
+				mes "I can't believe it!";
+				mes "You just lucked out.";
+				close;
+			}
+			mes "^3355FF*Rummage rummage*";
+			mes "*Rummage rummage*";
+			mes "*Rummage rummage*";
+			mes "You didn't find anything.^000000";
+			next;
+			mes "[Jiang Xiayou]";
+			mes "I told you! Now stop bugging me and leave now! I don't wanna deal with someone who won't trust me.";
+			emotion e_pif,0,"Storage Keeper#lou";
+			close;
+		}
+		mes "^3355FF*Rummage rummage*";
+		mes "You didn't find anything. You decided to give up your search.^000000";
+		close;
+	}
+	mes "^3355FFThere are many things piled up to the ceiling. Since there is too much stuff jumbled together, it doesn't seem possible that you'll find anything in this stack.^000000";
+	next;
+	mes "[Jiang Xiayou]";
+	mes "Hey, don't touch anything! If you mess anything up, you've gotta pile it up again, got it? If you don't want to clean up after yourself, don't make a mess!";
+	close;
+}
+
+louyang,129,121,0	warp	Storage Warp#1	1,1,lou_in02,203,161;
+louyang,125,121,0	warp	Storage Warp#2	1,1,lou_in02,198,161;
+lou_in02,198,159,0	warp	Storage Warp#3	1,1,louyang,124,118;
+lou_in02,203,159,0	warp	Storage Warp#4	1,1,louyang,129,118
+
+// Poison King Quest :: poison_king
+//============================================================
+lou_in02,123,39,4	script	Poison King#lou	824,{
+	// Attempt to preserve prior quest progress.
+	if (ch_poison == 0 && CL_POISONKING != 0) {
+		if (QL_POISONKING <= 12) set ch_poison,QL_POISONKING;
+		else if (QL_POISONKING == 16) set ch_poison,19;
+		else if (QL_POISONKING >= 17) set ch_poison,20;
+		// Remove outdated variable.
+		set QL_POISONKING,0;
+	}
+	if (checkweight(1201,1) == 0) {
+		mes "^3355FF * Wait a minute! *";
+		mes "Right now, you are carrying too many items with you. Please place some of your items into Kafra Storage and try again.^000000";
+		close;
+	}
+	if (ch_poison < 6) {
+		mes "[Nagash Arses]";
+		mes "It's been 40 years since I came here. Hahaha, but it doesn't feel like it's been that long.";
+		next;
+		mes "[Nagash Arses]";
+		mes "In the past, I was one of the";
+		mes "most renowned experts in the use";
+		mes "of poison. I even created a martial art based on its use, and formed my own martial arts organization.";
+		next;
+		mes "[Nagash Arses]";
+		mes "Now, those memories";
+		mes "don't even seem real";
+		mes "anymore. This poem is";
+		mes "all I can remember...";
+		next;
+		mes "[Nagash Arses]";
+		mes "As I lay in bed looking";
+		mes "up at the moonlight";
+		mes " ";
+		mes "It looks like the";
+		mes "frost on the ground.";
+		next;
+		mes "[Nagash Arses]";
+		mes "I lift head up to look";
+		mes "at the bright moon,";
+		mes " ";
+		mes "I lower my head";
+		mes "feeling homesick.";
+		next;
+		if ((countitem(506) > 0 || countitem(511) > 0 || countitem(716) > 0) && (ch_poison > 0 && rand(1,300) > 99)) {
+			switch(select("Ask about the poem.:Ask about his hometown.:Ask about use of Poison.:Ask about his situation.")) {
+			case 1:
+				mes "[Nagash Arses]";
+				mes "Ah, have you";
+				mes "head of this poem?";
+				mes "As I grow older, my";
+				mes "memory also grows worse,";
+				mes "but I really like this poem";
+				mes "and don't want to forget it.";
+				next;
+				mes "[Nagash Arses]";
+				mes "I hope you don't";
+				mes "mind helping me";
+				mes "memorize this poem...";
+				next;
+				set .@question_poet,rand(1,4);
+				if (.@question_poet == 1) {
+					mes "[Nagash Arses]";
+					mes "'^3355FFAs I lay^000000 ^3355FFlooking up at the moonlight^000000.' In this first line, what word should be in [ ]?";
+					next;
+					if (select("on the ground:with you:in bed:in the stars") == 3)
+						set .@answer_poet,.@answer_poet + 10;
+					mes "[Nagash Arses]";
+					mes "'^3355FFIt looks like the^000000 ^3355FFon the ground^000000.' In the second line, which word should be in [ ]?";
+					next;
+					if (select("frost:dew:pebbles:snow") == 1)
+						set .@answer_poet,.@answer_poet + 10;
+					mes "[Nagash Arses]";
+					mes "Now to see if you see really understand the poem. It's no use to just know the words. They must be a part of you as well.";
+					next;
+					mes "[Nagash Arses]";
+					mes "How would you describe the overall mood and tone of the speaker of this poem?";
+					next;
+					if (select("Romantic:Wistful:Regretful:Passionate") == 2)
+						set .@answer_poet,.@answer_poet + 10;
+					mes "[Nagash Arses]";
+					mes "What do you think is the";
+					mes "major theme of this poem?";
+					next;
+					if (select("Tragedy:Separation:Love:Revenge:Buddy Cop Film") == 2)
+						set .@answer_poet,.@answer_poet + 10;
+					next;
+					mes "[Nagash Arses]";
+					mes "Ha ha ha! You understand this poem well! Now, would you repeat the first line for me again?";
+					next;
+					if (.@answer_poet > 30) {
+						if (select("When I lay in bed looking up at the moon light:When I lay in bed thinking of the moon light:As I lay in bed looking up at the moonlight:As I lay in bed thinking of the moonlight") == 3) {
+							set ch_poison,2;
+						}
+					}
+					else {
+						select("When I lay in bed looking up at the moon light:When I lay in bed thinking of the moon light:As I lay in bed looking up at the moonlight:As I lay in bed thinking of the moon light");
+					}
+					mes "[Nagash Arses]";
+					mes "Thank you for your time,";
+					mes "youngster. Oh, and this is";
+					mes "an old, famous poem written";
+					mes "by Li Tai Bai. You know that,";
+					mes "don't you?";
+					close;
+				}
+				else if (.@question_poet == 2) {
+					mes "[Nagash Arses]";
+					mes "'^3355FFIt looks like the^000000 ^3355FFon the ground^000000.' In the second line, which word should be in [ ]?";
+					next;
+					if (select("frost:dew:pebbles:snow") == 1)
+						set .@answer_poet,.@answer_poet + 10;
+					mes "[Nagash Arses]";
+					mes "'^3355FFI lower my head feeling^000000 [ ].' Which word should be in [ ]?";
+					next;
+					if (select("homesick.:drowsy:loneliness.:heartbroken.") == 1)
+						set .@answer_poet,.@answer_poet + 10;
+					next;
+					mes "[Nagash Arses]";
+					mes "Now to see if you see really understand the poem. It's no use to just know the words. To know this poem by heart is to truly take it to heart.";
+					next;
+					mes "[Nagash Arses]";
+					mes "According to the poem,";
+					mes "where is the location";
+					mes "of the speaker as he is";
+					mes "gazing at the moon?";
+					next;
+					if (select("In his hometown.:In jail.:In the depths of the cosmos.:In bed.") == 4)
+						set .@answer_poet,.@answer_poet + 10;
+					mes "[Nagash Arses]";
+					mes "Although this poem is only four lines long, its structure can be easily classified. How would you describe this poem's structure?";
+					next;
+					if (select("Why, it's a sonnet.:It's prose with erratic caesuras.:It's a quatrain, of course.:Iambic pentameter?") == 3)
+						set .@answer_poet,.@answer_poet + 10;
+					next;
+					mes "[Nagash Arses]";
+					mes "Ha ha ha! You understand this poem well! Now, would you repeat the first line for me again?";
+					next;
+					if (.@answer_poet > 30) {
+						if (select("It looks like the frost on the ground:It looks like an icicle on the ground:It looks as though shining:It looks like the frost in the sky") == 1) {
+							set ch_poison,2;
+						}
+					}
+					else {
+						select("It looks like the frost on the ground:It looks like an icicle on the ground:It looks as though shining:It looks like the frost in the sky");
+					}
+					mes "[Nagash Arses]";
+					mes "Thank you for your time,";
+					mes "youngster. Oh, and this is";
+					mes "an old, famous poem written";
+					mes "by Li Tai Bai. You know that,";
+					mes "don't you?";
+					close;
+				}
+				else if (.@question_poet == 3) {
+					mes "[Nagash Arses]";
+					mes "'^3355FFIt looks like the^000000 ^3355FFon the ground^000000.' In the second line, which word should be in [ ]?";
+					next;
+					if (select("frost:dew:pebbles:snow") == 1)
+						set .@answer_poet,.@answer_poet + 10;
+					next;
+					mes "[Nagash Arses]";
+					mes "'^3355FFI lower my head feeling^000000 [ ].' Which word should be in [ ]?";
+					next;
+					if (select("homesick.:drowsy:loneliness.:heartbroken.") == 1)
+						set .@answer_poet,.@answer_poet + 10;
+					next;
+					mes "[Nagash Arses]";
+					mes "Now to see if you see really understand the poem. It's not enough to just know the words. You must know what they truly mean.";
+					next;
+					mes "[Nagash Arses]";
+					mes "In the first two lines, what two images are being linked by the poet?";
+					next;
+					if (select("Bed and ground:Frost and hometown:Gloomy:Smokey:Moonlight and frost") == 5)
+						set .@answer_poet,.@answer_poet + 10;
+					mes "[Nagash Arses]";
+					mes "In this land, the image of the moon often appears in poems expressing separation, longing and homesickness. Why would gazing at the moon offer comfort?";
+					next;
+					if (select("The rabbit on the moon grants wishes.:Its sheer beauty eases any anxiety.:Because it wanes and waxes.:All places and peoples share the same moon.") == 4)
+						set .@answer_poet,.@answer_poet + 10;
+					next;
+					mes "[Nagash Arses]";
+					mes "Ha ha ha! You understand this poem well! Now, would you repeat the third line for me again?";
+					next;
+					if (.@answer_poet > 30) {
+						if (select("I look up at the bright moon:I lift my head to look at the bright moon:I turn my head to look at the bright moon:I face the bright moon") == 2) {
+							set ch_poison,2;
+						}
+					}
+					else {
+						select("I look up at the bright moon:I lift my head to look at the bright moon:I turn my head to look at the bright moon:I face the bright moon");
+					}
+					mes "[Nagash Arses]";
+					mes "Thank you for your time,";
+					mes "youngster. Oh, and this is";
+					mes "an old, famous poem written";
+					mes "by Li Tai Bai. You know that,";
+					mes "don't you?";
+					close;
+				}
+				else {
+					mes "[Nagash Arses]";
+					mes "'^3355FFIt looks like the^000000 ^3355FFon the ground^000000.' In the second line,";
+					mes "which word should be in [ ]?";
+					next;
+					if (select("frost:dew:pebbles:snow") == 1)
+						set .@answer_poet,.@answer_poet + 10;
+					next;
+					mes "[Nagash Arses]";
+					mes "'^3355FFI lift my^000000 ^3355FFto look at the bright moon^000000.' In the third line, which word should be in [ ]?";
+					next;
+					if (select("eyes:head:gaze:sights") == 2)
+						set .@answer_poet,.@answer_poet + 10;
+					next;
+					mes "[Nagash Arses]";
+					mes "Now to see if you see really understand the poem. It's no";
+					mes "use to just know the words. They must be a part of you as well.";
+					next;
+					mes "[Nagash Arses]";
+					mes "What do you think is the major theme of this poem?";
+					next;
+					if (select("Tragedy:Separation:Love:Revenge:Buddy Cop Film") == 2)
+						set .@answer_poet,.@answer_poet + 10;
+					next;
+					mes "[Nagash Arses]";
+					mes "Why might be one reason why the bright moonlight looks like frost on the ground to the poet?";
+					next;
+					if (select("He's looking through a frosty window.:A bright moon glimmers like icicles.:He's homesick, so the moonlight looks cold:It's called 'poetic license.'") == 3)
+						set .@answer_poet,.@answer_poet + 10;
+					next;
+					mes "[Nagash Arses]";
+					mes "Ha ha ha! You understand this poem well! Now, would you repeat the last line for me again?";
+					next;
+					if (.@answer_poet > 30) {
+						if (select("I cry for my home town.:I lower my head feeling homesick.:I miss my home town.:I sob feeling homesick.") == 2) {
+							set ch_poison,2;
+						}
+					}
+					else {
+						select("I cry for my home town.:I lower my head feeling homesick.:I miss my home town.:I sob feeling homesick.");
+					}
+					mes "[Nagash Arses]";
+					mes "Thank you for your time,";
+					mes "youngster. Oh, and this is";
+					mes "an old, famous poem written";
+					mes "by Li Tai Bai. You know that,";
+					mes "don't you?";
+					close;
+				}
+			case 2:
+				mes "[Nagash Arses]";
+				mes "Are you asking me";
+				mes "about my hometown...?";
+				mes "As a Rune-Midgardian,";
+				mes "I'm sure you've at least";
+				mes "heard of Morroc...";
+				next;
+				mes "[Nagash Arses]";
+				mes "A city built in the middle of the desert, its founders had to combat the harsh and unforgiving forces of nature everyday.";
+				next;
+				mes "[Nagash Arses]";
+				mes "Yeah, the blazing sun never";
+				mes "seems to leave, and it's a dry,";
+				mes "desert area, but people still";
+				mes "manage to live there.";
+				next;
+				if (ch_poison == 2) {
+					mes "[Nagash Arses]";
+					mes "Ah~ I miss Morroc, my hometown.";
+					mes "I used to be a member of the Assassin organization known as the 'Canine of Desert.' Long ago, I was their poison expert.";
+					next;
+					switch(select("Tell him news of Morroc.:Info about 'Canine of Desert'.:Just listen.")) {
+					case 1:
+						mes "[Nagash Arses]";
+						mes "Hm? Do you have recent news of Morroc?";
+						next;
+						mes "["+strcharinfo(0)+"]";
+						mes "Yeah, I've got some news you might be interested in.";
+						input .@input$;
+						mes "["+strcharinfo(0)+"]";
+						mes ""+.@input$+"";
+						next;
+						if (rand(1,50) > 25) {
+							mes "[Nagash Arses]";
+							mes "Ah, I see. Thank you for the news. Now, let me continue my story.";
+							next;
+						}
+						else {
+							mes "[Nagash Arses]";
+							mes "I see! You just said,";
+							mes ""+.@input$+".";
+							next;
+							mes "[Nagash Arses]";
+							mes "Thank you for";
+							mes "telling me the news.";
+							close;
+						}
+						break;
+					case 2:
+						mes "[Nagash Arses]";
+						mes "I just told you what 'Canine of Desert' is. Now you tell me what it is. If you were listening, you would be able to.";
+						next;
+						input .@input$;
+						if (.@input$ == "Assassin Organization" || .@input$ == "Assassin" || .@input$ == "Assassins") {
+							mes "[Nagash Arses]";
+							mes "Correct. You listened to me very well. They are Assassins. Assassins that were abandoned by society.";
+							next;
+							mes "[Nagash Arses]";
+							mes "'Canine of Desert' is the name of that Assassin organization. Don't forget that.";
+							next;
+							mes "[Nagash Arses]";
+							mes "...";
+							next;
+							mes "[Nagash Arses]";
+							mes "...";
+							mes "......";
+							next;
+							mes "[Nagash Arses]";
+							mes "Bah! I forgot what I was just talking about! This bad memory of mine frustrates me so much!";
+							close;
+						}
+						else {
+							if (BaseJob == Job_Assassin) {
+								mes "[Nagash Arses]";
+								mes "How could you not know what the 'Canine of Desert' is?! Just how long have you been an Assassin?!";
+								next;
+								mes "[Nagash Arses]";
+								mes "You're supposed to be aware of your origins and your colleagues! Oh, the shame...";
+								close;
+							}
+							mes "[Nagash Arses]";
+							mes "Well, I suppose I can't blame you for not knowing or remembering. When you get the chance, find someone wearing a purple suit...";
+							next;
+							mes "[Nagash Arses]";
+							mes "Any Assassin worth his salt should know what the 'Canine of Desert' is.";
+							close;
+						}
+					case 3:
+						if (rand(1,33) < 12) {
+							mes "[Nagash Arses]";
+							mes "Wait...";
+							mes "Let me think...";
+							mes "Now how did I becoming interested in the use of poison...?";
+							close;
+						}
+					}
+					mes "[Nagash Arses]";
+					mes "I tried many things to develop my poison skills when I was young.";
+					mes "I tried to extract poison from Muka's needles and from purple mushrooms. Eventually, I became";
+					mes "an expert of toxins from my efforts.";
+					next;
+					mes "[Nagash Arses]";
+					mes "One time I even injected";
+					mes "a poison into my own body";
+					mes "to fully test it. Yeah...";
+					mes "It almost killed me.";
+					next;
+					mes "[Nagash Arses]";
+					mes "I was recognized as the man who";
+					mes "was most highly skilled in the use of poison in the 'Canine of Desert,' and I was sent on the most crucial and dangerous missions.";
+					next;
+					mes "[Nagash Arses]";
+					mes "One day, I was hired by the Alberta Merchant Guild to assassinate an enemy that had been threatening them. However, I never got to complete that mission.";
+					next;
+					mes "[Nagash Arses]";
+					mes "While I was on the ship to procceed with my mission, we encountered heavy wind and waves and the ship sank. I believe I was the only survivor of that accident.";
+					next;
+					mes "[Nagash Arses]";
+					mes "I was floated helplessly on the ocean and somehow managed";
+					mes "to arrive here, in Louyang. That was forty years ago.";
+					next;
+					mes "[Nagash Arses]";
+					mes "It seemed that my arrival was rather timely. Louyang was intruded by huge mobs of dangerous monsters that were even able to infiltrate the Castle of the Dragon.";
+					next;
+					mes "[Nagash Arses]";
+					mes "Since I was one of the best Assassins of the 'Canine of Desert,' I did far more than my share of monster killing.";
+					next;
+					mes "[Nagash Arses]";
+					mes "It was on the battlefield that";
+					mes "I met Bai Long who is now lord of this town. But back then, he was known as the 'Street Knight.'";
+					next;
+					mes "[Nagash Arses]";
+					mes "I remember seeing him surrounded";
+					mes "by enemies, and I dove into thick of battle to keep him from getting killed. We fought back to back and managed to stay alive back then.";
+					next;
+					mes "[Nagash Arses]";
+					mes "You have to understand that it's not easy to let someone back you";
+					mes "up in battle unless there's a solid trust. Those fights... were the greatest moments in my life.";
+					next;
+					mes "[Nagash Arses]";
+					mes "Sadly, many of our comrades,";
+					mes "all of them respectable and highly skilled martial artists, fell in battle. The number of monsters we had to contend with was just overwhelming.";
+					next;
+					mes "[Nagash Arses]";
+					mes "Still, I managed to continue my poison research, even during those tough times. I studied medicine in this town and was able use that knowledge to enhance my understanding of poisons.";
+					next;
+					mes "[Nagash Arses]";
+					mes "I created a new skill based on all of my knowledge, and learned how";
+					mes "to put poison on weapons.";
+					next;
+					mes "[Nagash Arses]";
+					mes "I even learned martial arts in Louyang, and combined that";
+					mes "knowledge with my poison expertise to create my own unique fighting style.";
+					next;
+					mes "[Nagash Arses]";
+					mes "Well, that's my story.";
+					mes "But now, I just miss my";
+					mes "home town. I miss the heat";
+					mes "of the desert and the glare";
+					mes "of the blazing sun...";
+					set ch_poison,3;
+					close;
+				}
+				else {
+					mes "[Nagash Arses]";
+					mes "Ah, Morroc.";
+					mes "That name brings";
+					mes "back memories of";
+					mes "being an Assassin";
+					mes "in the 'Canine of Desert.'";
+					next;
+					mes "[Nagash Arses]";
+					mes "^666666*Sigh...*^000000";
+					mes "I wish I could see";
+					mes "Morroc just once before I die.";
+					next;
+					if (select("Tell him news of Morroc.:Ask about 'Canine of Desert.'") == 1) {
+						mes "[Nagash Arses]";
+						mes "Hm...?";
+						mes "Is there anything";
+						mes "you want to say?";
+						next;
+						mes "["+strcharinfo(0)+"]";
+						mes "I have news";
+						mes "of Morroc...";
+						input .@input$;
+						mes "["+strcharinfo(0)+"]";
+						mes ""+.@input$+"";
+						next;
+						if (rand(1,50) > 30) {
+							mes "[Nagash Arses]";
+							mes "I see...";
+							mes "Thank you for";
+							mes "telling me that.";
+							close;
+						}
+						mes "[Nagash Arses]";
+						mes "I see!";
+						mes "You just said, "+.@input$+". Thank you.";
+						close;
+					}
+					mes "[Nagash Arses]";
+					mes "I just told you what 'Canine of Desert.' If you can't remember what I just told you, it's no use for me to explain further. You go ahead and tell me what it is.";
+					next;
+					input .@input$;
+					if (.@input$ == "Assassin Organization" || .@input$ == "Assassin" || .@input$ == "Assassins") {
+						mes "[Nagash Arses]";
+						mes "Correct. You listened to me very well. They are Assassins. Assassins that were abandoned by society.";
+						next;
+						mes "[Nagash Arses]";
+						mes "Canine of Desert";
+						mes "is the name of an";
+						mes "Assassin organization.";
+						mes "Do not forget that.";
+						close;
+					}
+					else {
+						if (BaseJob == Job_Assassin) {
+							mes "[Nagash Arses]";
+							mes "How could you not know what the 'Canine of Desert' is?! Just how long have you been an Assassin?!";
+							next;
+							mes "[Nagash Arses]";
+							mes "You're supposed to be aware of your origins and your colleagues! Oh, the shame...";
+							close;
+						}
+						mes "[Nagash Arses]";
+						mes "Well, I suppose I can't blame you for not knowing or remembering. When you get the chance, find someone wearing a purple suit...";
+						next;
+						mes "[Nagash Arses]";
+						mes "Any Assassin worth his salt should know what the 'Canine of Desert' is.";
+						close;
+					}
+				}
+			case 3:
+				if (ch_poison == 4 || ch_poison == 5) {
+					mes "[Nagash Arses]";
+					mes "Did you just say you";
+					mes "want to learn about the";
+					mes "use of poison?";
+					next;
+					mes "[Nagash Arses]";
+					mes "Why do you want";
+					mes "to learn about it?";
+					mes "Even if I wanted to";
+					mes "teach, I'm too old to";
+					mes "remember everything";
+					mes "clearly...";
+					next;
+					mes "[Nagash Arses]";
+					mes "Go find my last disciple,";
+					mes "^0000FFSong Zhi Du^000000, as he may tell you something useful. He's working at the doctor's office. If it weren't for him, I'd be starving now.";
+					set ch_poison,5;
+					setquest 11070;
+					close;
+				}
+				else {
+					mes "[Nagash Arses]";
+					mes "Did you just say you";
+					mes "want to learn about the";
+					mes "use of poison?";
+					next;
+					mes "[Nagash Arses]";
+					mes "Why do you want";
+					mes "to learn about it?";
+					mes "Even if I wanted to";
+					mes "teach, I'm too old to";
+					mes "remember everything";
+					mes "clearly...";
+					close;
+				}
+			case 4:
+				if (ch_poison == 3) {
+					mes "[Nagash Arses]";
+					mes "You're asking me how";
+					mes "things came to be like";
+					mes "this? Life used to be good.";
+					next;
+					mes "[Nagash Arses]";
+					mes "As I told you, I distinguished myself in the battles with monsters. I was rewarded with Louyang citizenship and given";
+					mes "gifts of money.";
+					next;
+					mes "[Nagash Arses]";
+					mes "I was invited to join a martial arts organization that specialized in the use of poison. I joined them, excited about further broadening my knowledge.";
+					next;
+					mes "[Nagash Arses]";
+					mes "I was stunned by the enormous body of knowledge about toxins that they provided. I tried to learn as much as I could so I could develop my own, unique poisoning skills.";
+					next;
+					mes "[Nagash Arses]";
+					mes "As I studied with them, together we started to clear the town of the remaining monsters. Can you guess the results of our efforts to clean up the city?";
+					next;
+					switch(select("...??:It must have been good.:I guess it was okay?:I don't know, but how did it go?")) {
+					case 1:
+						mes "[Nagash Arses]";
+						mes "Did you even listen to me? It's no use talking to you if you don't even care about what I have to say.";
+						next;
+						mes "[Nagash Arses]";
+						mes "I'm sorry for keeping you from what you wanted to do. Take care of yourself, youngster.";
+						close;
+					case 2:
+						mes "[Nagash Arses]";
+						mes "You're right!";
+						mes "We got rid of every";
+						mes "single monster in the city!";
+						next;
+						break;
+					case 3:
+						mes "[Nagash Arses]";
+						mes "Just okay...?";
+						mes "I don't think you realized how powerful we were back then! Eh...";
+						next;
+						mes "[Nagash Arses]";
+						mes "Sorry for keeping you from what you wanted to do. Take care of yourself, youngster.";
+						close;
+					case 4:
+						mes "[Nagash Arses]";
+						mes "We got rid of every single monster in the city!";
+						next;
+					}
+					mes "[Nagash Arses]";
+					mes "We managed to eliminate every monster that was wandering around Louyang. At the time, we were the only people brave enough to take on this sort of task.";
+					next;
+					mes "[Nagash Arses]";
+					mes "Unfortunately, other martial arts organizations grew envious of our success, insisting that we were dishonorable for using poison to attack our enemies.";
+					next;
+					mes "[Nagash Arses]";
+					mes "Although we can accept criticism for our use of poison, we were finally blamed for something we never would have done.";
+					next;
+					mes "[Nagash Arses]";
+					mes "Someone put poison into a meal which was eaten by a son of the lord and then falsely accused us!";
+					next;
+					mes "[Nagash Arses]";
+					mes "In the end, our organization was disbanded and I was put in jail.";
+					mes "I suffered through much to escape from prison...";
+					next;
+					mes "[Nagash Arses]";
+					mes "However, because of all the injuries I've had to endure in jail and in my escape attempts,";
+					mes "I can no longer use my";
+					mes "martial arts.";
+					next;
+					mes "[Nagash Arses]";
+					mes "Even to this day, the police are hounding after me. I really want to tell the lord of Louyang that I'm innocent, but it may be";
+					mes "too late now...";
+					set ch_poison,4;
+					close;
+				}
+				else {
+					mes "[Nagash Arses]";
+					mes "I...";
+					mes "I don't want";
+					mes "to talk about that.";
+					mes "Let's not talk about it.";
+					close;
+				}
+			}
+		}
+		else {
+			switch(select("Grin at him.:Lament for his grief.:Reprove him.:Listen to the poem again.:Show him a sad look.")) {
+			case 1:
+				mes "[Nagash Arses]";
+				mes "Yeah, I don't blame you.";
+				mes "I know I look stupid. Legally,";
+				mes "I'm a criminal after all.";
+				mes "I don't any friends and";
+				mes "there's no one I can trust.";
+				close;
+			case 2:
+				mes "[Nagash Arses]";
+				mes "How can you sympathize?";
+				mes "I doubt anyone has had";
+				mes "experiences that are";
+				mes "much worse than mine...";
+				close;
+			case 3:
+				mes "[Nagash Arses]";
+				mes "Wha--? I haven't wronged you in any way! Why must you be so mean to an old man? You don't even know half of what I've had to go through.";
+				close;
+			case 4:
+				mes "[Nagash Arses]";
+				mes "As I lay in bed looking";
+				mes "up at the moonlight";
+				mes " ";
+				mes "It looks like the";
+				mes "frost on the ground.";
+				next;
+				mes "[Nagash Arses]";
+				mes "I lift head up to look";
+				mes "at the bright moon,";
+				mes " ";
+				mes "I lower my head";
+				mes "feeling homesick.";
+				close;
+			case 5:
+				mes "[Nagash Arses]";
+				mes "Do you miss your hometown";
+				mes "as much as I do? I'm envious";
+				mes "of you, youngster. You have";
+				mes "the freedom to go";
+				mes "wherever you want.";
+				next;
+				mes "[Nagash Arses]";
+				mes "I'm a wanted criminal.";
+				mes "Even if I were free to";
+				mes "travel, I may not have";
+				mes "the strength to try.";
+				next;
+				mes "[Nagash Arses]";
+				mes "Let's not talk about this any longer. It's reminding me of";
+				mes "my worst memories.";
+				next;
+				set ch_poison,1;
+				if (BaseClass == Job_Thief) {
+					mes "[Nagash Arses]";
+					mes "Ah, you look just like I did when";
+					mes "I was young. It seems you know";
+					mes "a little something about poison.";
+					next;
+					mes "[Nagash Arses]";
+					mes "It seems you haven't";
+					mes "perfected your knowledge yet,";
+					mes "though. Oh well, I doubt I can";
+					mes "pinpoint what you need to master.";
+					next;
+					mes "[Nagash Arses]";
+					mes "I'm too old to remember anything. Ha ha ha. Maybe if I saw something related to poison, I might remember something...";
+					next;
+					mes "[Nagash Arses]";
+					mes "...";
+					next;
+					mes "[Nagash Arses]";
+					mes "No, no...";
+					mes "I think I'm too old";
+					mes "to remember anything.";
+					mes "Anything at all.";
+					close;
+				}
+				mes "[Nagash Arses]";
+				mes "I'm too old to remember anything. Ha ha ha. Maybe if I saw something related to poison, I might remember something...";
+				next;
+				mes "[Nagash Arses]";
+				mes "...";
+				next;
+				mes "[Nagash Arses]";
+				mes "No, no...";
+				mes "I think I'm too old";
+				mes "to remember anything.";
+				mes "Anything at all.";
+				close;
+			}
+		}
+	}
+	else if (ch_poison > 4 && ch_poison < 12) {
+		mes "[Nagash Arses]";
+		mes "If you wish to talk about poison, you'd better go to the doctor's office. My last disciple is";
+		mes "working there.";
+		next;
+		mes "[Nagash Arses]";
+		mes "Now, let me rest.";
+		mes "I am very tired.";
+		mes "I... I hope he doesn't";
+		mes "have any bad intentions...";
+		close;
+	}
+	else if (ch_poison == 12) {
+		mes "[Nagash Arses]";
+		mes "Aren't you the youngster";
+		mes "I talked to a while ago?";
+		mes "Did you get a chance";
+		mes "to meet my disciple?";
+		mes "How was he?";
+		next;
+		mes "[Nagash Arses]";
+		mes "He was sick all the time when he was young, so he worried me a lot. But now I'm proud of him and he's doing as well just any other fine young man.";
+		next;
+		mes "[Nagash Arses]";
+		mes "I am living only for him,";
+		mes "and hope that he becomes a great healer someday. Recently, I've found that my sole comfort is in treating diseases for other people...";
+		next;
+		mes "[Nagash Arses]";
+		mes "By the way...";
+		mes "You look pale...";
+		mes "Did something happen?";
+		next;
+		switch(select("Nothing.:I want to talk about your diciple.:I don't feel good.")) {
+		case 1:
+			mes "[Nagash Arses]";
+			mes "Oh...";
+			mes "I see...";
+			mes "But take care";
+			mes "of yourself.";
+			next;
+			mes "[Nagash Arses]";
+			mes "You better enjoy your physical strength when you're young. When you're my age, it's tough to regain your health once you lose it.";
+			close;
+		case 2:
+			mes "[Nagash Arses]";
+			mes "Did something happen to him?";
+			mes "I've been worried since he hasn't come to visit me since you last came to speak with me.";
+			next;
+			if (countitem(678) > 1) {
+				if (select("Give him Poison Bottle.:Cancel and go to 'Song Zhi Du.") == 1) {
+					delitem 678,1; //Poison_Bottle
+					mes "[Nagash Arses]";
+					mes "Huh!?";
+					mes "Isn't this...!?";
+					next;
+					mes "[Nagash Arses]";
+					mes "I've dreamed of creating";
+					mes "a poison of such potency!";
+					mes "W-where did you find this?";
+					next;
+					if (select("It's common nowadays.:Explain to him what happened.") == 1) {
+						mes "[Nagash Arses]";
+						mes "Really...?";
+						mes "Then someone";
+						mes "finally figured it out.";
+						next;
+						mes "[Nagash Arses]";
+						mes "I shared all of my knowledge with others, so I guess a doctor might have figured how to create this.";
+						next;
+						mes "[Nagash Arses]";
+						mes "^666666*Sigh...*^000000";
+						mes "Now I feel depressed";
+						mes "for some reason...";
+						close;
+					}
+					mes "^3355FFYou tell Nagash Arses how";
+					mes "Song Zhi Du created this Deadly Poison Bottle and his plan to get his revenge on the lord of Louyang.^000000";
+					next;
+					mes "[Nagash Arses]";
+					mes "^666666*Sigh...*^000000";
+					next;
+					mes "[Nagash Arses]";
+					mes "Will you...";
+					mes "Will you excuse";
+					mes "me for a second...?";
+					set ch_poison,15;
+					changequest 11077,11078;
+					close;
+				}
+				mes "["+strcharinfo(0)+"]";
+				mes "...Nothing much.";
+				next;
+				mes "[Nagash Arses]";
+				mes "Hmm...?";
+				mes "I guess you don't know what is going on. I've heard some bad rumors about him, which is why I'm asking.";
+				next;
+				mes "[Nagash Arses]";
+				mes "I hope he'll be fine.";
+				mes "After all, he's truly";
+				mes "kind at heart.";
+				close;
+			}
+			mes "[Nagash Arses]";
+			mes "Hmm...?";
+			mes "I guess you don't know what is going on. I've heard some bad rumors about him, which is why I'm asking.";
+			next;
+			mes "[Nagash Arses]";
+			mes "I hope he'll be fine.";
+			mes "After all, he's truly";
+			mes "kind at heart.";
+			close;
+		case 3:
+			mes "[Nagash Arses]";
+			mes "Oh, you don't?";
+			mes "Well, that can happen";
+			mes "sometimes when you're";
+			mes "in a foreign land for";
+			mes "too long. I hope you";
+			mes "feel better soon.";
+			close;
+		}
+	}
+	else if (ch_poison == 13) {
+		mes "[Nagash Arses]";
+		mes "Recently...";
+		mes "I've been getting";
+		mes "a bad feeling...";
+		next;
+		mes "[Nagash Arses]";
+		mes "I want to blame it";
+		mes "on my solitude, but...";
+		close;
+	}
+	else if (ch_poison == 14) {
+		mes "^3355FFNagash Arses. He is no longer a well-known Assassin or the martial arts organization of which he was once master has long since disbanded.^000000";
+		next;
+		mes "^3355FFNow he is but a poor old man";
+		mes "who is in anguish over his disciple. No matter what you say, he continues to talk about something totally unrelated, as if in a dream.^000000";
+		close;
+	}
+	else if (ch_poison == 15 || ch_poison == 16) {
+		mes "[Nagash Arses]";
+		mes "Youngster...";
+		mes "I beg of you.";
+		mes "Please do not let him";
+		mes "bring any harm to the lord.";
+		next;
+		mes "[Nagash Arses]";
+		mes "If you cannot stop him,";
+		mes "then please interrupt him";
+		mes "from carrying out his plan.";
+		next;
+		mes "[Nagash Arses]";
+		mes "I tried...";
+		mes "To convince myself";
+		mes "that what I had heard";
+		mes "were just ugly rumors.";
+		mes "I was wrong...";
+		next;
+		mes "[Nagash Arses]";
+		mes "I am pretty sure he's been asking you, as well as others, for aid. Even if you do not agree to carry out his plan, I'm sure he will find someone to poison Lord Bai Long.";
+		next;
+		mes "[Nagash Arses]";
+		mes "There is only one way he can poison";
+		mes "the lord. He likes drinking, and has a favorite drink bottle he keeps with him all the time. You must get rid of his drink.";
+		next;
+		mes "[Nagash Arses]";
+		mes "Please, I beg you.";
+		mes "For my sake, as well";
+		mes "as that of my disciple,";
+		mes "Louyang's leader must live...";
+		set ch_poison,16;
+		changequest 11078,11079;
+		close;
+	}
+	else if (ch_poison == 17) {
+		mes "[Nagash Arses]";
+		mes "So...";
+		mes "What...";
+		mes "What happened?";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "I made it.";
+		next;
+		mes "[Nagash Arses]";
+		mes "You did?!";
+		mes "Oh~ thank you,";
+		mes "thank you so much!";
+		emotion e_an;
+		next;
+		mes "[Nagash Arses]";
+		mes "Thank God I've";
+		mes "lived this long.";
+		mes "And... I just realized";
+		mes "something while you away.";
+		next;
+		mes "[Nagash Arses]";
+		mes "This is a journal that I have been writing for 15 years about my feelings of guilt, and what really happened in the past. I hope you can deliver this to the lord for me.";
+		next;
+		mes "^3355FFYou obtained";
+		mes "^0000FFPoison King,";
+		mes "Nagash Arses' Jounal^000000.";
+		set ch_poison,18;
+		changequest 11080,11081;
+		close;
+	}
+	else if (ch_poison == 18) {
+		mes "[Nagash Arses]";
+		mes "I hope you";
+		mes "can deliver this";
+		mes "to Lord Bai Long...";
+		close;
+	}
+	else if (ch_poison == 19) {
+		mes "^3355FFYou gave him the";
+		mes "^0000FFLetter from Bai Long^000000.";
+		next;
+		mes "[Nagash Arses]";
+		mes "What's this...?";
+		next;
+		mes "[Nagash Arses]";
+		mes "Why, he's invited me";
+		mes "to take the position of";
+		mes "a government official!";
+		mes "I'm truly grateful!";
+		next;
+		mes "[Nagash Arses]";
+		mes "However, please let him";
+		mes "know that I must respectfully decline his offer. I'm afraid that I may be a burden to him once again.";
+		next;
+		mes "[Nagash Arses]";
+		mes "Please tell him that I wish to enjoy the rest of my life here. Also, there are people here";
+		mes "who still need me...";
+		next;
+		mes "[Nagash Arses]";
+		mes "Thank you, youngster.";
+		mes "You've stopped my disciple";
+		mes "and helped me make up";
+		mes "with an old friend...";
+		next;
+		mes "^3355FFNagash Arses put his palm on your back, and you can feel his strength flowing into you.^000000";
+		next;
+		mes "^3355FFYou grow dizzy, but you also feel like you're becoming more powerful and gaining experience.^000000";
+		next;
+		set ch_poison,20;
+		changequest 11082,11083;
+		if (checkre(3)) {
+			if (BaseLevel < 56) getexp 1050,0;
+			else if (BaseLevel > 55 && BaseLevel < 61) getexp 1230,0;
+			else if (BaseLevel > 60 && BaseLevel < 66) getexp 1570,0;
+			else if (BaseLevel > 65 && BaseLevel < 71) getexp 2300,0;
+			else if (BaseLevel > 70 && BaseLevel < 76) getexp 3400,0;
+			else if (BaseLevel > 75 && BaseLevel < 81) getexp 4500,0;
+			else if (BaseLevel > 80 && BaseLevel < 86) getexp 9000,0;
+			else if (BaseLevel > 85 && BaseLevel < 91) getexp 18000,0;
+			else getexp 20000,0;
+		} else {
+			if (BaseLevel < 56) getexp 9000,0;
+			else if (BaseLevel > 55 && BaseLevel < 61) getexp 10500,0;
+			else if (BaseLevel > 60 && BaseLevel < 66) getexp 18684,0;
+			else if (BaseLevel > 65 && BaseLevel < 71) getexp 27411,0;
+			else if (BaseLevel > 70 && BaseLevel < 76) getexp 70757,0;
+			else if (BaseLevel > 75 && BaseLevel < 81) getexp 130246,0;
+			else if (BaseLevel > 80 && BaseLevel < 86) getexp 150340,0;
+			else if (BaseLevel > 85 && BaseLevel < 91) getexp 182052,0;
+			else getexp 406786,0;
+		}
+		mes "^3355FFThen...";
+		mes "Everything blacks out...^000000";
+		close2;
+		warp "louyang",270,136;
+		end;
+	}
+	else if (ch_poison > 20) {
+		mes "^3355FFHe looks tired";
+		mes "for some reason,";
+		mes "as if he's thinking";
+		mes "of Morroc, his hometown.^000000";
+		next;
+		mes "^3355FFYou reflect on when he gave you his remaining strength and remember that he told you that he used to be one of the greatest Assassins...^000000";
+		next;
+		mes "^3355FFBut after all that's happened,";
+		mes "he just looks like an old man who likes treating other people. It seems that he's finally at peace with himself.^000000";
+		close;
+	}
+	else {
+		mes "[Nagash Arses]";
+		mes "My name, Nagash Arses,";
+		mes "is also the name of the poison king in the legend of Arcturus. I have good reason to be proud of my name!";
+		close;
+	}
+}
+
+lou_in02,253,45,0	script	Employee#poison	822,{
+	if (checkweight(1201,1) == 0) {
+		mes "^3355FF * Wait a minute! *";
+		mes "You're carrying too many items with you right now. Please put some of your things into Kafra Storage and try again.^000000";
+		close;
+	}
+	if (ch_par < 10 && ch_poison < 6) {
+		while(1) {
+			if (.@r_o_o_f > 5) {
+				break;
+			}
+			else {
+				if (rand(1,4) > 2) {
+					set .@r_o_o_f,.@r_o_o_f + 1;
+					mes "[Song Zhi Du]";
+					mes "Let's see, there's that medicine, and then the medicine over here...";
+					next;
+				}
+				else {
+					mes "[Song Zhi Du]";
+					mes "...";
+					mes "......";
+					next;
+				}
+			}
+		}
+		mes "[Song Zhi Du]";
+		mes "I feel like you're looking at me. Is there something that you want?";
+		next;
+		switch(select("......:Ask him about his master.:Ask about Poison Organization.:Ask why he's working here.")) {
+		case 1:
+			mes "[Song Zhi Du]";
+			mes "I guess there's nothing you really need from me. Well then, if you'll excuse me...";
+			close;
+		case 2:
+			mes "[Song Zhi Du]";
+			mes "Oh, I'm sorry, but I'm kind of busy right now. You see, we're running out of medicine...";
+			next;
+			mes "[Song Zhi Du]";
+			mes "My master, Hua Tuo,";
+			mes "is also having difficulty treating all of his patients. I must get him the medicine that he needs...";
+			close;
+		case 3:
+			mes "[Song Zhi Du]";
+			mes "What...?";
+			mes "What did";
+			mes "you just say...?";
+			next;
+			input .@input$;
+			mes "[Song Zhi Du]";
+			mes ""+.@input$+"...?";
+			next;
+			mes "[Song Zhi Du]";
+			mes "I've never heard of that organization in my life. I'm sorry I can't help you. Now, if you'll excuse me...";
+			close;
+		case 4:
+			mes "[Song Zhi Du]";
+			mes "Of course I'm working here to learn about medicine. I'm grateful for the chance to work under the most famous doctor in this area.";
+			next;
+			mes "[Song Zhi Du]";
+			mes "Doctor Hua Tuo is such a great person. I'm more than happy to assist him in saving the lives of others with his medical knowledge.";
+			next;
+			mes "[Song Zhi Du]";
+			mes "Even though I'm just in charge of the medicine storage, I'm working hard to become his disciple someday.";
+			next;
+			mes "[Song Zhi Du]";
+			mes "And working with Doctor Hua Tuo is really worthwhile. Well, sometimes it's really hard to supply medicine when we have too many patients though.";
+			next;
+			select("Why don't you gather medicinal herbs then?");
+			mes "[Song Zhi Du]";
+			mes "My job is keeping this storage.";
+			mes "I'm not supposed to leave my position. I need to organize the herbs, and make sure they're in good condition.";
+			close;
+		}
+	}
+	else if (ch_par > 9 && ch_poison < 5) {
+		mes "[Song Zhi Du]";
+		mes "Well, well. Thank you for your trouble. I didn't expect you to gather all these herbs for us...";
+		next;
+		mes "[Song Zhi Du]";
+		mes "I suppose I underestimated you. By the way, do you know anything about poison?";
+		next;
+		if (select("Yes, I am kind of interested in it.:No, not at all.") == 1) {
+			mes "[Song Zhi Du]";
+			mes "Oh, I see. Well, if you have some time, why don't you go visit my old master in the slums?";
+			next;
+			mes "[Song Zhi Du]";
+			mes "If you two get along, I will tell you something important.";
+			close;
+		}
+		mes "[Song Zhi Du]";
+		mes "Huh. I see. Well, thank you for your trouble once again. I hope you have a good time in Louyang.";
+		close;
+	}
+	else if (ch_par > 9 && ch_poison == 5) {
+		mes "[Song Zhi Du]";
+		mes "...";
+		mes "So, did you talk";
+		mes "to my old master?";
+		mes "It seems he really";
+		mes "likes you.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "As you know, my master has been accused of something he didn't do! And they crippled his use of the martial arts!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "I can't forgive what";
+		mes "they've have done to my master!";
+		mes "I want to grind their bones";
+		mes "to powder! And that's before";
+		mes "I kill them!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "He's innocent and all he did";
+		mes "was research poison with all";
+		mes "of his effort! And for that,";
+		mes "they destroyed him!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "I was young";
+		mes "when it happened...";
+		mes "Too young to know";
+		mes "any martial arts.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "I couldn't protect him.";
+		mes "All I could do was hide and";
+		mes "watch other people get killed.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "I hate myself";
+		mes "for not being strong!";
+		mes "But, my body isn't suited";
+		mes "for martial arts.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "All I can do is maintain my weak body and make sure it's reasonably healthy. Even so, if it weren't for my master, I'd be dead";
+		mes "in the streets...";
+		next;
+		mes "[Song Zhi Du]";
+		mes "It was my master who picked me up from the streets and cured me. So, I've decided to become a doctor and save as many lives as I can.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "But before";
+		mes "I do that,";
+		mes "I want ^FF0000revenge^000000!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "As I told you, I am weak.";
+		mes "Too weak... I know that from";
+		mes "the bottom of my heart.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "But...";
+		next;
+		mes "[Song Zhi Du]";
+		mes "I am knowledgable about medicine, especially the use of poison. I can tell you that I'm one of the best.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Poison can kill people but it can also be used to save lifes. The people who destroyed my master";
+		mes "will pay the price.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Do you understand";
+		mes "why I'm furious!?";
+		next;
+		if (select("But revenge isn't good.:Yes, I fully understand.") == 1) {
+			mes "[Song Zhi Du]";
+			mes "Hmm...";
+			mes "I see.";
+			next;
+			mes "[Song Zhi Du]";
+			mes "I suppose you couldn't";
+			mes "understand the way I feel.";
+			mes "After all, you didn't have";
+			mes "to go through the same";
+			mes "things I did.";
+			next;
+			mes "[Song Zhi Du]";
+			mes "I suppose I expected too much, since my master likes you. How could you know the rage and";
+			mes "sadness that I feel!?";
+			next;
+			mes "[Song Zhi Du]";
+			mes "Fine.";
+			mes "Go do whatever";
+			mes "you were going to do.";
+			mes "I'm just disappointed...";
+			set ch_poison,6;
+			changequest 11070,11071;
+			close;
+		}
+		mes "[Song Zhi Du]";
+		mes "Yes! Yes!";
+		mes "You do understand!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "I volunteered for this medicine storage position so that I can secretly study poison! Now, the time for action has come!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Still, I'll need some materials to complete my research. Then, when";
+		mes "I succeed and create a poison pill, I'll need someone to carry my revenge out for me.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Since my body is so frail, I can't bear the tension and rage of seeing my lifelong enemy face to face.";
+		set ch_poison,8;
+		changequest 11070,11073;
+		close;
+	}
+	else if (ch_par > 9 && ch_poison == 6) {
+		mes "[Song Zhi Du]";
+		mes "I'm so disappointed.";
+		mes "You've even seen the";
+		mes "pitiable state of my";
+		mes "master for yourself!";
+		mes "How could you not";
+		mes "understand me?!";
+		next;
+		if (select("I'm sorry for last time.:No matter what, revenge isn't good.") == 1) {
+			mes "[Song Zhi Du]";
+			mes "If you really";
+			mes "feel sorry for me,";
+			mes "then you must help me";
+			mes "carry out my revenge!";
+			next;
+			mes "[Song Zhi Du]";
+			mes "I still need to complete the";
+			mes "poison potion I'm creating. I hope you can bring what I need to finish it. Go and get me...";
+			next;
+			mes "[Song Zhi Du]";
+			mes "^0000FF4 Bee Sting,";
+			mes "10 Venom Canine,";
+			mes "10 Empty Potion,";
+			mes "30 Green Potion^000000.";
+			set ch_poison,7;
+			changequest 11071,11072;
+			next;
+			mes "[Song Zhi Du]";
+			mes "An apology is fine, but you must also show me that you are sorry and help me carry out my plan. Do you have any problem with this?";
+			close;
+		}
+		mes "[Song Zhi Du]";
+		mes "Oh, forget about it.";
+		mes "I don't think I can ever";
+		mes "make you understand how I feel.";
+		specialeffect EF_ENDURE;
+		close2;
+		set ch_poison,6;
+		changequest 11070,11071;
+		end;
+	}
+	else if (ch_par > 9 && ch_poison == 7) {
+		mes "[Song Zhi Du]";
+		mes "So, did you";
+		mes "gather everything";
+		mes "I asked of you?";
+		next;
+		if (select("Yes.:What do you need again?") == 1) {
+			if (countitem(939) > 3 && countitem(937) > 9 && countitem(1093) > 9 && countitem(506) > 29) {
+				delitem 939,4; //Bee_Sting
+				delitem 937,10; //Posionous_Canine
+				delitem 1093,10; //Empty_Potion
+				delitem 506,30; //Green_Potion
+				set ch_poison,8;
+				changequest 11072,11073;
+				mes "[Song Zhi Du]";
+				mes "Ah...";
+				mes "With these, I accept your apology. Thank you for all the trouble you went through to get this stuff.";
+				next;
+				mes "[Song Zhi Du]";
+				mes "Now that you're this involved, you're in this with me all the way! I've been waiting for this";
+				mes "day for years...";
+				next;
+				mes "[Song Zhi Du]";
+				mes "All that's left is to create this poison, and then to get the";
+				mes "lord of Louyang to drink it...";
+				close;
+			}
+			mes "[Song Zhi Du]";
+			mes "Where are things";
+			mes "I asked you to bring?";
+			mes "Are you testing my";
+			mes "patience or what?";
+			next;
+			mes "[Song Zhi Du]";
+			mes "You're still missing some of the items I need. I must have them all in order to finish making this poison!";
+			specialeffect EF_ENDURE;
+			close;
+		}
+		mes "[Song Zhi Du]";
+		mes "*Sigh...*";
+		mes "Go and get me...";
+		next;
+		mes "[Song Zhi Du]";
+		mes "^0000FF4 Bee Sting,";
+		mes "10 Venom Canine,";
+		mes "10 Empty Potion,";
+		mes "30 Green Potion^000000.";
+		specialeffect EF_ENDURE;
+		close;
+	}
+	else if (ch_par > 9 && ch_poison == 8) {
+		emotion e_gasp;
+		mes "[Song Zhi Du]";
+		mes "Ah, hello.";
+		mes "Please give me a minute,";
+		mes "I've just received a message.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Ah!";
+		mes "It says here";
+		mes "that my delivery";
+		mes "has finally arrived!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Would you bring me the";
+		mes "box from the firecracker";
+		mes "lady at the entrance";
+		mes "to Louyang? Thanks";
+		mes "in advance.";
+		close;
+	}
+	else if (ch_par > 9 && ch_poison == 9) {
+		if (countitem(7126) > 0) {
+			delitem 7126,countitem(7126); //Large_Jellopy
+			mes "[Song Zhi Du]";
+			mes "Ah. Thank you,";
+			mes "I needed this. Now,";
+			mes "shall we begin?";
+			next;
+			mes "[Song Zhi Du]";
+			mes "First, I shall mix a poison extracted from Venom Canine";
+			mes "with a foreign liquid named Karvodailnirol.";
+			next;
+			mes "[Song Zhi Du]";
+			mes "Then, I add Green Herb extract, poison extracted from Bee Sting and a Large Jellopy into the liquid! Finally, I must heat them all!";
+			specialeffect EF_BEGINSPELL;
+			next;
+			mes "[Song Zhi Du]";
+			mes "Finally, I have to carefully heat the mixture and collect it all into a Potion Bottle.";
+			specialeffect EF_ENCHANTPOISON;
+			specialeffect EF_VENOMDUST;
+			next;
+			mes "[Song Zhi Du]";
+			mes "Now, I've got to do this just right. This is a very delicate procedure...";
+			next;
+			specialeffect EF_MAGNUMBREAK;
+			emotion e_omg;
+			mes "[Song Zhi Du]";
+			mes "No!! I failed again! ^666666*Sigh...*^000000 And I spent a long time preparing all of those materials...";
+			set ch_poison,10;
+			changequest 11074,11075;
+			close;
+		}
+		emotion e_gasp;
+		mes "[Song Zhi Du]";
+		mes "Ah, hello.";
+		mes "Please give me a minute,";
+		mes "I've just received a message.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Ah!";
+		mes "It says here";
+		mes "that my delivery";
+		mes "has finally arrived!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Would you bring me the";
+		mes "box from the firecracker";
+		mes "lady at the entrance";
+		mes "to Louyang? Thanks";
+		mes "in advance.";
+		close;
+	}
+	else if (ch_par > 9 && ch_poison == 10) {
+		if (countitem(939) > 3 && countitem(937) > 9 && countitem(1093) > 9 && countitem(506) > 29 && countitem(7126) > 0) {
+			mes "[Song Zhi Du]";
+			mes "Oh! You brought";
+			mes "me everything I need!";
+			mes "I'm very impressed!";
+			next;
+			mes "[Song Zhi Du]";
+			mes "You're the only one";
+			mes "who actually understands how";
+			mes "I feel. Thank you for gathering all of these ^FF0000materials^000000.";
+			next;
+			delitem 939,countitem(939); //Bee_Sting
+			delitem 937,countitem(937); //Posionous_Canine
+			delitem 1093,countitem(1093); //Empty_Potion
+			delitem 506,countitem(506); //Green_Potion
+			delitem 7126,countitem(7126); //Large_Jellopy
+			mes "[Song Zhi Du]";
+			mes "Alright, now";
+			mes "to create the poison.";
+			mes "This is going to be tough.";
+			mes "Here we go...";
+			next;
+			if (rand(1,1000) > 700) {
+				mes "[Song Zhi Du]";
+				mes "First, I shall mix a poison extracted from Venom Canine";
+				mes "with a foreign liquid named Karvodailnirol.";
+				next;
+				mes "[Song Zhi Du]";
+				mes "Then, I add Green Herb extract,";
+				mes "a poison extracted from Bee Sting and a Large Jellopy!";
+				specialeffect EF_BEGINSPELL;
+				next;
+				mes "[Song Zhi Du]";
+				mes "Finally, I have to carefully heat the mixture and collect it all into a Potion Bottle.";
+				specialeffect EF_ENCHANTPOISON;
+				specialeffect EF_VENOMDUST;
+				next;
+				mes "[Song Zhi Du]";
+				mes "*Phew...*";
+				mes "Did...";
+				mes "Did I make it?";
+				next;
+				specialeffect EF_PATTACK;
+				specialeffect EF_POISONHIT; 
+				emotion e_omg;
+				mes "[Song Zhi Du]";
+				mes "Hahaha~!";
+				mes "Success! ";
+				mes "It works!";
+				mes "I finally created it!";
+				mes "Mwahahahahahah!";
+				next;
+				mes "[Song Zhi Du]";
+				mes "Muhahahahaha!";
+				next;
+				mes "[Song Zhi Du]";
+				mes "Muhahahahaha!";
+				mes "Hahahahahahahahahahah!";
+				mes "";
+				next;
+				mes "[Song Zhi Du]";
+				mes "I made it!";
+				mes "I made it!";
+				mes "Now, revenge will be mine!";
+				next;
+				set ch_poison,11;
+				getitem 678,2; //Poison_Bottle
+				mes "[Song Zhi Du]";
+				mes "Hahaha! Now, please";
+				mes "take this bottle. But be careful. Even if you smell it just a little, it can cause your body to decompose, leading to death.";
+				close;
+			}
+			mes "[Song Zhi Du]";
+			mes "First, I shall mix a poison extracted from Venom Canine";
+			mes "with a foreign liquid named Karvodailnirol.";
+			next;
+			mes "[Song Zhi Du]";
+			mes "Then I add Green Herb extract, a poison extracted from Bee Sting and a Large Jellopy!";
+			specialeffect EF_BEGINSPELL;
+			next;
+			mes "[Song Zhi Du]";
+			mes "Then I must carefully heat the mixture, and gather it all into a potion bottle.";
+			specialeffect EF_ENCHANTPOISON;
+			specialeffect EF_VENOMDUST;
+			next;
+			mes "[Song Zhi Du]";
+			mes "*Phew...*";
+			mes "Did...";
+			mes "Did I make it?";
+			next;
+			specialeffect EF_MAGNUMBREAK;
+			emotion e_omg;
+			mes "[Song Zhi Du]";
+			mes "NO! I... I've failed again! And I spent a long time getting everything ready...";
+			close;
+		}
+		mes "[Song Zhi Du]";
+		mes "I'm not sure what went wrong.";
+		mes "Hmm, would you please help me again? I've used all the materials from last time.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "^0000FF4 Bee Sting^000000,";
+		mes "^0000FF10 Venom Canine^000000,";
+		mes "^0000FF10 Empty Potion Bottle^000000,";
+		mes "^0000FF30 Green Potion^000000 and";
+		mes "^0000FF1 Large Jellopy^000000.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "That's everything I'll need.";
+		mes "I would apologize, but since you've shown that you'll help carry out my revenge, I know you'll understand.";
+		close;
+	}
+	else if (ch_par > 9 && ch_poison == 11) {
+		mes "[Song Zhi Du]";
+		mes "Hahahaha...!";
+		mes "Now, time has come.";
+		mes "With this poison, Louyang's";
+		mes "lord will be cast into hell!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "If they lied about my master,";
+		mes "then I'll simply make their lies into truth. Then, my master";
+		mes "won't feel victimized!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Lord Bai Long!";
+		mes "You will die!";
+		mes "Ha HA HA HA HA!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Muhahahaha!";
+		mes "Hahaha...Haha..hahaha..haha...hahahahaha...mmmmuhahahahahahahaha!!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Muhahahahahaha!";
+		mes "...........";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Ah, forgive me.";
+		mes "I was overly excited.";
+		mes "Yes, I must calm down...";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Now, I have one last favor to ask of you. Please sneak into the Castle of the Dragon.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "I want you to put this poison some place where Lord Bai Long might stay. But be careful, the castle has a lot of security.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Still, you're an adventurer from Rune-Midgard. You've probably had challenges like this before, so I'm sure you'll find a way.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Anyway, I'm sure my master";
+		mes "will be happy to know that";
+		mes "I finally created the ^0000FFpoison";
+		mes "he wished to create^000000!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Hahaha...!";
+		mes "Master, I did it!";
+		mes "Your disciple Song Zhi Du made the world's deadliest poison for you!";
+		set ch_poison,12;
+		changequest 11075,11076;
+		close;
+	}
+	else if (ch_par > 9 && ch_poison == 12) {
+		mes "[Song Zhi Du]";
+		mes "Remember...";
+		mes "The Castle of the Dragon";
+		mes "is under heavy surveillance.";
+		mes "I guess Lord Bai Long is";
+		mes "insecure. Heh heh.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Anyways, I hope you'll be";
+		mes "really careful. When you go in, don't forget to use this poison somewhere the Lord Bai Long";
+		mes "can ingest it.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Anyway, I'm sure my master";
+		mes "will be happy to know that";
+		mes "I finally created the ^0000FFpoison";
+		mes "he wished to create^000000!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Hahaha...!";
+		mes "Master, I did it!";
+		mes "Your disciple Song Zhi Du made the world's deadliest poison for you!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Leave now,";
+		mes "my friend!";
+		mes "For my revenge!";
+		mes "Go and kill Lord Bai Long!";
+		close;
+	}
+	else if (ch_par > 9 && ch_poison == 13) {
+		mes "[Song Zhi Du]";
+		mes "Ah!";
+		mes "You came back!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Ah yes.";
+		mes "All I have to do now";
+		mes "is wait and hear news";
+		mes "of Lord Bai Long's death.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Thank you so much, my friend. You've satisfied my old grudge.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Now, I am getting tired.";
+		mes "Let me rest... Take care, my friend, and travel in safety.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "But before you go, let me give you some poison and a medicinal pill.";
+		mes "I made these with the leftover materials and medicine in the storage.";
+		set ch_poison,14;
+		getitem 678,3; //Poison_Bottle
+		next;
+		mes "[Song Zhi Du]";
+		mes "Please take the";
+		mes "medicine pill";
+		mes "right away.";
+		next;
+		mes "^3355FFYou swallowed a strange pill";
+		mes "that shines with a gold color.";
+		mes "It tastes bitter...^000000";
+		next;
+		mes "^3355FFThe nasty taste lingers in your mouth, but then you feel a great warmth flowing throughout your body. Eventually, you pass out.^000000";
+		next;
+		if (checkre(3)) {
+			if (BaseLevel < 56) getexp 500,0;
+			else if (BaseLevel > 55 && BaseLevel < 61) getexp 700,0;
+			else if (BaseLevel > 60 && BaseLevel < 66) getexp 850,0;
+			else if (BaseLevel > 65 && BaseLevel < 71) getexp 1270,0;
+			else if (BaseLevel > 70 && BaseLevel < 76) getexp 1600,0;
+			else if (BaseLevel > 75 && BaseLevel < 81) getexp 2100,0;
+			else if (BaseLevel > 80 && BaseLevel < 86) getexp 4000,0;
+			else if (BaseLevel > 85 && BaseLevel < 91) getexp 7000,0;
+			else getexp 11000,0;
+		} else {
+			if (BaseLevel < 56) getexp 8909,0;
+			else if (BaseLevel > 55 && BaseLevel < 61) getexp 10213,0;
+			else if (BaseLevel > 60 && BaseLevel < 66) getexp 17684,0;
+			else if (BaseLevel > 65 && BaseLevel < 71) getexp 25411,0;
+			else if (BaseLevel > 70 && BaseLevel < 76) getexp 68757,0;
+			else if (BaseLevel > 75 && BaseLevel < 81) getexp 128246,0;
+			else if (BaseLevel > 80 && BaseLevel < 86) getexp 142340,0;
+			else if (BaseLevel > 85 && BaseLevel < 91) getexp 152052,0;
+			else getexp 366786,0;
+		}
+		warp "louyang",270,136;
+		end;
+	}
+	else if (ch_par > 9 && ch_poison == 14) {
+		mes "[Song Zhi Du]";
+		mes "......................";
+		next;
+		mes "^3355FFSong Zhi Du looks blankly at the ceiling. With his revenge, it seems he's lost his motivation in life. Was it a good idea to help him, after all?^000000";
+		next;
+		mes "^3355FFBy hearsay, the poisoned drink didn't work so well, as a Thief from a foreign land actually stole the bottle.^000000";
+		close;
+	}
+	else if (ch_par > 9 && ch_poison == 15 && ch_poison < 20) {
+		mes "[Song Zhi Du]";
+		mes "What happened?";
+		mes "Why isn't";
+		mes "Lord Bai Long dead yet?!";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Hmmm...";
+		mes "You don't have";
+		mes "a different plot";
+		mes "in mind, do you?";
+		close;
+	}
+	else if (ch_par > 9 && ch_poison == 20) {
+		mes "[Song Zhi Du]";
+		mes "Ah...";
+		mes "Welcome.";
+		mes "My master told";
+		mes "me everything.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Somehow, I feel relieved, but sorry at the same time. Still, now I can forget everything that's happened in the past.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Now, I've decided to focus more on my medical studies so that I can really save as many lives as I can. I'm sorry I've been so rude to you before.";
+		next;
+		mes "[Song Zhi Du]";
+		mes "Also, I hope you will";
+		mes "take these, since I don't";
+		mes "need them any longer.";
+		set ch_poison,21;
+		completequest 11083;
+		getitem 678,5; //Poison_Bottle
+		next;
+		mes "[Song Zhi Du]";
+		mes "Thank you";
+		mes "once again, friend.";
+		mes "Now, if you'll excuse me,";
+		mes "I have many things to do...";
+		close;
+	}
+	else if (ch_poison > 20) {
+		mes "^3355FFSong Zhi Du is busily engaged with organizing medicinal herbs. The faint look of sadness that used to be on his face now seems drained.^000000";
+		next;
+		mes "^3355FFStill, from his movements and the pace at which he is working, you can tell that he loves what he is doing. It seems that Song Zhi Du has finally found his life's path.^000000";
+		close;
+	}
+	mes "[Song Zhi Du]";
+	mes "Nagash Arses is also the name of poison king in a legend of Arcturus. There's good reason for my master to be proud of his name!";
+	close;
+}
+
+lou_fild01,224,348,0	script	Lady#delivery	817,{
+	if (checkweight(1201,1) == 0) {
+		mes "^3355FF * Wait a minute! *";
+		mes "Currently, you're carrying too many items. Please put some of your things into Kafra Storage and try again.^000000";
+		close;
+	}
+	if (ch_poison < 8) {
+		if (rand(1,10) > 5) {
+			mes "[Lady]";
+			mes "You're at the";
+			mes "entrance of Louyang.";
+			mes "I hope you enjoy";
+			mes "your stay here~";
+			emotion e_kis;
+			close;
+		}
+		mes "[Lady]";
+		mes "You're at the entrance of Louyang.";
+		next;
+		mes "[Lady]";
+		mes "Louyang is well known";
+		mes "for its various firecrackers.";
+		mes "Would you like to see one?";
+		next;
+		if (select("Sure!:No thanks~") == 1) {
+			mes "[Lady]";
+			mes "Alright, there you go!";
+			if (Zeny > 99) {
+				set Zeny, Zeny-100;
+			}
+			close2;
+			specialeffect EF_BLASTMINEBOMB,AREA," #fire";
+			end;
+		}
+		mes "[Lady]";
+		mes "Hmpf...!";
+		emotion e_dots;
+		close;
+	}
+	else if (ch_poison == 8) {
+		mes "[Lady]";
+		mes "Would you";
+		mes "like to see some";
+		mes "firecrackers?";
+		next;
+		if (select("Sure!:No thanks~") == 1) {
+			mes "[Lady]";
+			mes "Alright,";
+			mes "there you go!";
+			if (Zeny > 99) {
+				set Zeny, Zeny-100;
+			}
+			close2;
+			donpcevent " #fire::OnClaymore";
+			end;
+		}
+		mes "[Lady]";
+		mes "Hmm, if not firecrackers,";
+		mes "then you must want something";
+		mes "else. Did someone send you?";
+		next;
+		if (select("Yes.:No.") == 1) {
+			mes "[Lady]";
+			mes "Who was it?";
+			mes "Please tell me";
+			mes "his name.";
+			next;
+			input .@input$;
+			if (.@input$ == "Song Zhi Du") {
+				mes "[Lady]";
+				mes "Oh, I see.";
+				mes "Let me give";
+				mes "you the package.";
+				next;
+				mes "[Lady]";
+				mes "Ah, wait! I forgot!";
+				mes "You must first pay the";
+				mes "delivery fee of 1,000 zeny.";
+				next;
+				if (Zeny > 999) {
+					set Zeny, Zeny-1000;
+					getitem 7126,1; //Large_Jellopy
+					mes "[Lady]";
+					mes "Thank you~";
+					mes "Now that the fee is paid,";
+					mes "please bring this to";
+					mes "Song Zhi Du.";
+					mes "Take care!";
+					set ch_poison,9;
+					changequest 11073,11074;
+					close;
+				}
+				mes "[Lady]";
+				mes "Errr...";
+				mes "You don't have enough zeny for the fee. I can't give you the package unless the delivery fee is paid!";
+				emotion e_an;
+				close;
+			}
+			mes "[Lady]";
+			mes "Hmmm?";
+			mes "I don't know who that is.";
+			mes "So I definitely don't have";
+			mes "a package for whoever you're";
+			mes "talking about.";
+			close;
+		}
+		mes "[Lady]";
+		mes "No...?";
+		next;
+		mes "[Lady]";
+		mes "Are you...";
+		mes "Coming on to me?";
+		close;
+	}
+	else if (ch_poison > 8) {
+		if (rand(1,10) > 5) {
+			mes "[Lady]";
+			mes "You're at the";
+			mes "entrance of Louyang.";
+			mes "I hope you have a good time~";
+			emotion e_kis;
+			close;
+		}
+		mes "[Lady]";
+		mes "You're at the";
+		mes "entrance of";
+		mes "Louyang.";
+		next;
+		mes "[Lady]";
+		mes "Louyang is well known";
+		mes "for its various firecrackers.";
+		mes "Would you like to see one?";
+		next;
+		if (select("Sure!:No thanks~") == 1) {
+			mes "[Lady]";
+			mes "Alright~";
+			mes "There you go!";
+			if (Zeny > 99) {
+				set Zeny, Zeny-100;
+			}
+			close2;
+			donpcevent " #fire::OnClaymore";
+			end;
+		}
+		mes "[Lady]";
+		mes "Hmpf...!";
+		emotion e_dots;
+		close;
+	}
+}
+
+lou_fild01,225,350,0	script	 #fire	139,{
+	end;
+}
+
+lou_in01,101,125,0	script	Trap#lou_in1	-1,20,1,{
+OnTouch:
+	if (ch_poison == 12 || ch_poison == 16) {
+		mes "[Soldier]";
+		mes "Who goes there!";
+		next;
+		mes "^3355FFYou ran away as quickly as you could!^000000";
+		close2;
+		warp "louyang",218,246;
+		end;
+	}
+	end;
+}
+
+lou_in01,101,129,0	script	Trap#lou_in2	-1,20,1,{
+OnTouch:
+	if (ch_poison == 12 || ch_poison == 16) {
+		mes "[Soldier]";
+		mes "Huh...?";
+		mes "What was";
+		mes "that noise?";
+		next;
+		mes "^3355FFYou bolted away from the castle as fast as your legs could carry you.^000000";
+		close2;
+		warp "louyang",218,246;
+		end;
+	}
+	end;
+}
+
+lou_in01,101,134,0	script	Trap#lou_in3	-1,20,1,{
+OnTouch:
+	if (ch_poison == 12 || ch_poison == 16) {
+		mes "[Soldier]";
+		mes "Huh...?";
+		mes "Is somebody there?";
+		next;
+		mes "^3355FFYou escaped from the soldier's suspicious gaze.^000000";
+		close2;
+		warp "louyang",218,246;
+		end;
+	}
+	end;
+}
+
+lou_in01,114,163,0	script	Trap#lou_in4	-1,6,1,{
+OnTouch:
+	if (ch_poison == 12 || ch_poison == 16) {
+		mes "[Soldier]";
+		mes "Hold it right there, Rune-Midgardian!";
+		next;
+		mes "^3355FFYou run as fast as you can before the soldiers can catch you.^000000";
+		close2;
+		warp "louyang",218,246;
+		end;
+	}
+	end;
+}
+
+lou_in01,114,165,0	script	Trap#lou_in5	-1,1,0,{
+OnTouch:
+	if (ch_poison == 12 || ch_poison == 16) {
+		mes "[Soldier]";
+		mes "Huh...?";
+		mes "I hear something!";
+		next;
+		mes "^3355FFYou escape before the soldier can find you.^000000";
+		close2;
+		warp "louyang",218,246;
+		end;
+	}
+	end;
+}
+
+louyang,217,278,0	script	 #lou_path	111,{
+	if (ch_poison == 12 || ch_poison == 16) {
+		mes "["+strcharinfo(0)+"]";
+		mes "What's this?";
+		mes "A crack in the wall?";
+		next;
+		mes "^3355FFYou jump to the stone wall and peep into the crack. It looks big enough for someone to squeeze through.^000000";
+		next;
+		mes "^3355FFYou move through the crack as quickly as you can.^000000";
+		close2;
+		warp "lou_in01",119,167;
+		end;
+	}
+	end;
+}
+
+lou_in01,107,163,0	script	 #lou_drink1	111,{
+	if (ch_poison == 12) {
+		mes "^3355FFYou found a drink bottle that's possibly owned by Bai Long, lord of Louyang.^00000";
+		next;
+		mes "^3355FFYou put the deadly poison into the bottle.^000000";
+		delitem 678,1; //Poison_Bottle
+		set ch_poison,13;
+		changequest 11076,11077;
+		close;
+	}
+	else if (ch_poison == 13) {
+		mes "^3355FFIt would be smart to get out of this place as soon as you can.^000000";
+		close;
+	}
+	else if (ch_poison == 16) {
+		if (countitem(938) > 0 && countitem(713) > 0) {
+			mes "^3355FFYou take the drink bottle and replace it with a bottle filled with Sticky Mucus. Hopefully Bai Long won't notice!^000000";
+			delitem 938,1; //Sticky_Mucus
+			delitem 713,1; //Empty_Bottle
+			set ch_poison,17;
+			changequest 11079,11080;
+			close;
+		}
+		mes "^3355FFIt seems that you need switch Bai Long's drinking bottle with something else. Just taking the drink bottle would arouse suspicion.^000000";
+		next;
+		mes "^3355FFMaybe if you found some kind of empty bottle and filled it with something, like Sticky Mucus...^000000";
+		close;
+	}
+	mes "^3355FFYou found a drink bottle. It's fancy enough that the only possible owner could be Bai Long, lord of Louyang.^000000";
+	close;
+}
+
+lou_in01,118,167,0	script	 #lou_drink2	111,{
+	if (ch_poison == 12) {
+		mes "^3355FFYou squeeze through the crack as quickly as you can.^000000";
+		close2;
+		warp "louyang",217,278;
+		end;
+	}
+	else if (ch_poison == 13) {
+		mes "^3355FFYou squeeze through the crack as quickly as you can.^000000";
+		close2;
+		warp "louyang",217,278;
+		end;
+	}
+	end;
+}
+
+lou_in01,99,158,4	script	Lord#bailong	821,{
+	if (checkweight(1201,1) == 0) {
+		mes "^3355FF * Wait a minute! *";
+		mes "Right now you're carrying too many items. Please put some of your things into Kafra Storage and try again.^000000";
+		close;
+	}
+	if (ch_poison == 12 || ch_poison == 16) {
+		mes "[Lord Bai Long]";
+		mes "Hey...!";
+		mes "You're not doing";
+		mes "anything suspicious";
+		mes "are you?";
+		next;
+		mes "^3355FFYou run away";
+		mes "from Bai Long as";
+		mes "fast as you can!^000000";
+		close2;
+		warp "louyang",218,246;
+		end;
+	}
+	else {
+		mes "[Lord Bai Long]";
+		mes "Hahahaha!";
+		mes "Welcome to Louyang!";
+		next;
+		mes "[Lord Bai Long]";
+		mes "Louyang is such a great city.";
+		mes "We've protected this land for forty years from the invasions of evil creatures!";
+		next;
+		mes "[Lord Bai Long]";
+		mes "I hope you enjoy";
+		mes "your stay here,";
+		mes "Rune-Midgardian!";
+		next;
+		if (ch_poison == 18) {
+			mes "^3355FFYou give Nagash Arses' Journal";
+			mes "to Bai Long. He reads it intently, slowly turning each page.^000000";
+			next;
+			mes "^3355FFHe's completely silent for about fifteen minutes, and focuses all";
+			mes "of his attention of the journal.^000000";
+			next;
+			mes "^3355FFA single tear trickles";
+			mes "from his eye as he reads";
+			mes "the words of Nagash Arse...^000000";
+			next;
+			mes "[Lord Bai Long]";
+			mes "Thank you..";
+			mes "Adventurer...";
+			next;
+			mes "[Lord Bai Long]";
+			mes "Thank you so much.";
+			mes "You've helped me make";
+			mes "up with an old friend!";
+			next;
+			mes "[Lord Bai Long]";
+			mes "I, Bai Long, will work on giving";
+			mes "fair treatment to all of martial arts organizations, regardless of their methods or philosophies!";
+			next;
+			mes "[Lord Bai Long]";
+			mes "I will also forgive Song Zhi Du, even if he tried to poison me.";
+			mes "He is innocent...";
+			next;
+			mes "[Lord Bai Long]";
+			mes "As a matter of fact, it was reported to me that Nagash was deported to his homeland after";
+			mes "that incident. I had no idea";
+			mes "he was in jail!";
+			next;
+			mes "[Lord Bai Long]";
+			mes "Thank you so";
+			mes "much for your help!";
+			next;
+			next;
+			mes "[Lord Bai Long]";
+			mes "Please, take this as a token of gratitute. And please deliver this letter to Nagash and Song Zhi Du for me.";
+			set ch_poison,19;
+			changequest 11081,11802;
+			getitem 603,1; //Old_Blue_Box
+			next;
+			mes "^3355FFYou obtained ^0000FFBai Long's letter^000000.";
+			next;
+			mes "[Lord Bai Long]";
+			mes "Thank you in advance.";
+			close;
+		}
+		mes "[Lord Bai Long]";
+		mes "How could I have lost my friend from our glory days? Hmm...?";
+		mes "Oh, I didn't realize you were still there... Listening to me.";
+		next;
+		mes "[Lord Bai Long]";
+		mes "I'm sorry, I was just talking to myself. I hope you have a good time while staying here in Louyang.";
+		close;
+	}
+}
+
+lou_in01,111,151,4	script	Soldier#bailong1	825,{
+	if (ch_poison == 12 || ch_poison == 16) {
+		mes "[Soldier]";
+		mes "Hey...";
+		mes "There's something";
+		mes "fishy about you...! ";
+		next;
+		mes "^3355FFYou escaped from the castle, far away from the suspicious guard...^000000";
+		close2;
+		warp "louyang",218,246;
+		end;
+	}
+	mes "[Soldier]";
+	mes "^666666*Yawn*^000000 It's so boring here nowadays. Although, I hear that";
+	mes "a long time ago, things were";
+	mes "much different.";
+	next;
+	mes "[Soldier]";
+	mes "Supposedly, monsters used to intrude Louyang all the time! Heh, but that's just a rumor. Still, there are a bunch of rumors going around that I'm curious about...";
+	close;
+}
+
+lou_in01,91,151,4	script	Soldier#bailong2	825,{
+	if (ch_poison == 12 || ch_poison == 16) {
+		mes "[Soldier]";
+		mes "Huh...?";
+		mes "Is somebody there? ";
+		next;
+		mes "^3355FFYou ran away";
+		mes "as quickly";
+		mes "as you could.^000000";
+		close2;
+		warp "louyang",218,246;
+		end;
+	}
+	mes "[Soldier]";
+	mes ".....z...Z....z...";
+	next;
+	select("Hey, wake up!");
+	mes "[Soldier]";
+	mes "Yeeeesss...Sir!";
+	mes "I was not dozing off~ seerious...ly...";
+	next;
+	mes "[Soldier]";
+	mes "...";
+	next;
+	mes "[Soldier]";
+	mes "...";
+	mes "......";
+	next;
+	mes "[Soldier]";
+	mes ".....z...Z....z...";
+	close;
+}
+
+lou_in01,102,144,4	script	Soldier#bailong3	825,{
+	if (ch_poison == 12 || ch_poison == 16) {
+		mes "[Soldier]";
+		mes "Huh...?";
+		mes "What was that?";
+		next;
+		mes "^3355FFYou escape the soldier's";
+		mes "suspicious gaze as quickly";
+		mes "as you can.^000000";
+		close2;
+		warp "louyang",218,246;
+		end;
+	}
+	mes "[Soldier]";
+	mes "People have been";
+	mes "saying that there's";
+	mes "a scammer at the";
+	mes "entrance of town...";
+	next;
+	select("...?");
+	mes "[Soldier]";
+	mes "But I went there and I didn't";
+	mes "find anyone suspicious. I swear, everything seemed completely normal!";
+	close;
+}
+
+lou_in01,99,144,4	script	Soldier#bailong4	825,{
+	if (ch_poison == 12 || ch_poison == 16) {
+		mes "[Soldier]";
+		mes "Who goes there?!";
+		next;
+		mes "^3355FFYou ran away";
+		mes "as quickly";
+		mes "as you could.^000000";
+		close2;
+		warp "louyang",218,246;
+		end;
+	}
+	mes "[Soldier]";
+	mes "Ah, don't bother";
+	mes "to listen to this";
+	mes "guy beside of me.";
+	next;
+	mes "[Soldier]";
+	mes "I hope you have a good time while you're staying here in Louyang!";
+	close;
+}
+
+// Revolution Quest :: lou_zero
+//============================================================
+lou_in02,77,37,7	script	隱居者#lou	824,{
+	if (!QL_REVOL) {
+		mes "[孫 馬奧]";
+		mes "有志者事竟成，";
+		mes "每一個人團結協力，";
+		mes "想到光明的明天，沒有做不到的事情!";
+		mes "要不要參加革命運動呢?";
+		next;
+		mes "[孫 馬奧]";
+		mes "管他是本國人或是外國人都沒有關係啊...";
+		mes "我的名字叫孫 馬奧，為了洛陽的未來，";
+		mes "發誓連生命都可以巖陽的未來，";
+		mes "我夢想著有一天，";
+		mes "所有人都能過著平等的生活";
+		next;
+		mes "[孫 馬奧]";
+		mes "請問有沒有想要一起參與";
+		mes "我們的改革運動呢?";
+		mes "當然一開始接受是比較困難的，";
+		mes "暫時幫助我們的話，會很感激您的";
+		next;
+		switch( select( "要怎麼幫你呢?:我也參與改革:我只是一位觀光客啦..." )) {
+		case 1:
+			mes "[孫 馬奧]";
+			mes "首先現在先募集一些";
+			mes "志道同合的人吧，";
+			mes "然後在適當的時機準備好之後就起義，";
+			mes "我們的洛陽，以後要把全世界";
+			mes "都大大改變...!";
+			next;
+			mes "[孫 馬奧]";
+			mes "目前還沒有準備好，";
+			mes "為了起義所募集到的同志還不夠啊，";
+			mes "在太守的監視下，";
+			mes "我們能活到今天也算是幸運啊";
+			next;
+			mes "[孫 馬奧]";
+			mes "希望所有的人， ";
+			mes "都能瞭解我們的意思，";
+			mes "不過這是很難的事情，";
+			mes "我們也不是第一次對像你這樣的外國人說明了，";
+			mes "不管是誰，我們都需要志道同合的人!";
+			close;
+		case 2:
+			mes "[孫 馬奧]";
+			mes "歐歐，是老天幫助我們嗎，";
+			mes "為我們送來新的同志，";
+			mes "真的是天地神明在保佑我們啊，";
+			mes "要和我們共執同一個理念，";
+			mes "真的謝謝你啊...";
+			next;
+			mes "[孫 馬奧]";
+			mes "那麼，你... 不，把同志你的名字";
+			mes "就寫在血書上了...";
+			mes "在這之前我再問最後一次，";
+			mes "真的要加入我們嗎?";
+			next;
+			switch(select("No, wait!:I am 100% sure.")) {
+			case 1:
+				mes "[孫 馬奧]";
+				mes "I understand if you need time to decide. If you do decide to join us, please return. Time is on our side, after all.";
+				close;
+			case 2:
+				set QL_REVOL,1;
+				mes "[孫 馬奧]";
+				mes strcharinfo(0)+ "...!";
+				mes "Your name is now engraved on this bloody pledge board. We will fight together to the death for Louyang's future!";
+				next;
+				getpartymember(getcharid(1));
+				set @partymember,$@partymembercount;
+				if (getpartyleader(getcharid(1),1) == getcharid(0) || !@partymember) {
+					mes "[孫 馬奧]";
+					mes "Now, the most important thing for our cause is to gather more recruits and increase our numbers. Please find others who will join us in our fight.";
+					next;
+					mes "[孫 馬奧]";
+					mes "However, as to not arouse suspicion, bring only one new recruit at a time. Also, we suggest not to bring a friend in a party with you.";
+					next;
+					mes "[孫 馬奧]";
+					mes "Now, I will wait for you here. Go forth and find others who wish for a better future for Louyang!";
+					close;
+				}
+				mes "[孫 馬奧]";
+				mes "Please assist the people who fight behind you. As more are gathered, one of our comrades will inform you of further instructions.";
+				close;
+			}
+		case 3:
+			mes "[孫 馬奧]";
+			mes "是這樣子嗎..好吧，就進去看看吧";
+			mes "在這邊的所見所聞及所有的東西，";
+			mes "不要讓任何人知道，";
+			mes "假如真的以是觀光目的來的話，";
+			mes "應該不會有時間想要瞭解我們的問題";
+			close;
+		}
+	} else if (getpartyleader(getcharid(1),2) == getcharid(0)) {
+		if (QL_REVOL == 9) {
+			mes "[孫 馬奧]";
+			mes "Once again,";
+			mes "thank you for";
+			mes "your trouble.";
+			mes "Go back safe.";
+			close;
+		}
+		getpartymember(getcharid(1));
+		set @partymember,$@partymembercount;
+		if (QL_REVOL < 8) {
+			if (@partymember == QL_REVOL +1) {
+				if (@partymember != 8) {
+					set QL_REVOL,QL_REVOL +1;
+					mes "[孫 馬奧]";
+					mes "Oh, you brought a new comrade! Welcome. Please help your friend understand our intentions before joining us.";
+					next;
+					mes "[孫 馬奧]";
+					switch(QL_REVOL) {
+					case 2:
+						mes "Please bring another friend that both of you can trust. Remember, add one person at a time into your party.";
+						next;
+						mes "[孫 馬奧]";
+						mes "Otherwise, other people may learn of what we are doing, and that will lead to trouble.";
+						close;
+					case 3:
+						mes "The three of you may all move together for our cause. Please try to find another recruit to be your fourth member, invite him to your party and bring him to this place.";
+						close;
+					case 4:
+						mes "Ah, now there are four of you. However, we must continue to strengthen our ranks at a cautious pace. Please go and find one new recruit, and only one, to add to your party.";
+						close;
+					case 5:
+						mes "Now, there are five of you. Needless to say, we still require more manpower. Please go out and seek another new member for our cause. Remember, only add one more person to your party and return to me.";
+						close;
+					case 6:
+						mes "There are now six of you. So far, so good. Please go forth and find just one more person to add to your party and bring him to me so that we may recruit him.";
+						close;
+					case 7:
+						mes "Now, there are seven of you, but we still lack the manpower we need. Please go forth and seek out one, and only one, more person to add to your party and then return to me.";
+						close;
+					}
+				}
+				mes "[孫 馬奧]";
+				mes "Great work, you've brought another new comrade! Welcome! Please explain our goals and the righteousness of our cause to our new friend so that he may fully join us.";
+				next;
+				if (BaseLevel < 50) {
+					mes "[孫 馬奧]";
+					mes "It is almost time to take the action...";
+					next;
+					mes "[孫 馬奧]";
+					mes "I recognize your pledge to fight for us, but I fear that you are not yet ready for the task I have available for you.";
+					next;
+					mes "[孫 馬奧]";
+					mes "However, we still have time. Go out and train with the party members you have gathered to gain more experience.";
+					next;
+					mes "[孫 馬奧]";
+					mes "Together, all of you will be able to train faster than if you were to go train alone. Come back when you feel that you are ready for this task.";
+					close;
+				}
+				mes "[孫 馬奧]";
+				mes "At long last, there are eight of you. Now, I believe there is among manpower amongst you to carry out this mission. Please listen carefully.";
+				next;
+				mes "[孫 馬奧]";
+				mes "The martial arts organizations of Louyang, as you may well know, have been divided between those that fight for justice, and those that serve evil purposes.";
+				next;
+				mes "[孫 馬奧]";
+				mes "Recently, some of the evil organizations have conspired with corrupt government officials in the interest to expand their power.";
+				next;
+				mes "[孫 馬奧]";
+				mes "These corrupt government officials have been suspicious of our gunpowder research and arrested our comrade, ^3355FF郝 干柳^000000, our gunpowder expert, under the pretext of investigation.";
+				next;
+				mes "[孫 馬奧]";
+				mes "Without him, we cannot continue the gunpowder research, or produce the gunpowder we'll need for our movement. We must contact him so that he may make gunpowder for us.";
+				next;
+				mes "[孫 馬奧]";
+				mes "Unfortunately, many of us cannot contact him, as our identities are known to the officials. However, since you are new recruits, as well as Rune-Midgardians, they will not know how you are.";
+				next;
+				mes "[孫 馬奧]";
+				mes "Your mission will be to deliver these chemicals to our comrade 郝 干柳 who is held captive by the government.";
+				next;
+				mes "[孫 馬奧]";
+				mes "Since flammable chemicals are not allowed inside government offices, you must keep them well hidden. If the chemicals are equally divided among the eight of you, we might succeed!";
+				next;
+				set QL_REVOL,8;
+				getitem 7068,8; //Burn_Tree
+				getitem 7096,8; //Cold_Magma
+				getitem 7004,8; //Mud_Lump
+				mes "[孫 馬奧]";
+				mes "There you go. Now, divide these materials equally among the eight of you. The eight of you must fully cooperate with each other, or our plan will fail. Understood?";
+				close;
+			} else if (@partymember < QL_REVOL +1) {
+				mes "[孫 馬奧]";
+				switch(QL_REVOL) {
+				case 1:
+					mes "You made a party. Now, why don't you go recruit more followers? For now, just add one more person, lest we arouse the suspicion of our enemies.";
+					close;
+				case 2:
+					mes "Hmmm...";
+					mes "Having trouble finding a third person to add to your party? It's important that you find someone that is trustworthy. Be careful and don't get caught!";
+					close;
+				case 3:
+					mes "Hmmm...";
+					mes "Having trouble finding a forth person to add to your party? I understand that it's important that you find someone you can trust. Be careful and don't get caught!";
+					close;
+				case 4:
+					mes "Having trouble finding a fifth person to add to your party? I understand that it's important that you find someone you can trust. Be careful and don't get caught!";
+					close;
+				case 5:
+					mes "Having trouble finding a six person to add to your party? It's important that you find someone that is trustworthy. Be careful and don't get caught!";
+					close;
+				case 6:
+					mes "Having trouble finding a seventh person to add to your party? It's important that you find someone that is trustworthy. Be careful and don't get caught!";
+					close;
+				case 7:
+					mes "Hmmm...";
+					mes "Having trouble finding an eighth person to add to your party? It's important that you find someone that is trustworthy. Be careful and don't get caught!";
+					close;
+				}
+			} else {
+				mes "[孫 馬奧]";
+				mes "Oh no! You've brought more than one more person to join us! We can't do any recruiting now, it will bring unnecessary attention to our activities!";
+				next;
+				mes "[孫 馬奧]";
+				switch(QL_REVOL) {
+				case 1:
+					mes "Please make sure that there is a total of two members in your party so that we can recruit your friend. I believe that will look natural.";
+					close;
+				case 2:
+					mes "At this stage in our plan, we cannot afford any unnecessary attention to our activities! Please make sure that there is a total of three members in your party so that we can recruit your friend.";
+					close;
+				case 3:
+					mes "Please make sure that there is a total of four members in your party so that we can recruit your friend. I believe that will look natural.";
+					close;
+				case 4:
+					mes "Please make sure that there is a total of five members in your party so that we can recruit your friend. I believe that will look natural.";
+					close;
+				case 5:
+				case 6:
+					mes "By this time, you should know that you should only bring one more person at a time. You know that it is crucial that we do not attract any undue attention before we can take action!";
+					close;
+				case 7:
+					mes "At this stage in our plan, we cannot afford any unnecessary attention to our activities! Please make sure that there is a total of eight members in your party so that we can recruit your friend.";
+					close;
+				}
+			}
+		} else if (QL_REVOL == 8) {
+			if (@partymember == 8) {
+				if (countitem(7204) > 7) {
+					mes "[孫 馬奧]";
+					mes "Welcome back! I see that the mission has been successfully accomplished! Great work, men!";
+					next;
+					mes "[孫 馬奧]";
+					mes "Finally, we have a weapon to mete out severe retribution to our enemies, the corrupt government officials and the evil martial arts organizations! I appreciate your help, comrades.";
+					next;
+					delitem 7204,countitem(7204);
+					set ch_make,0;
+					set QL_REVOL,9;
+					getitem 668,8;
+					mes "[孫 馬奧]";
+					mes "Please take these funds and share them with your party members. I hope that all of you will lend your power to our cause once again.";
+					next;
+					mes "[孫 馬奧]";
+					mes "Once again, I thank you for your help. Now, go in safety.";
+					close;
+				}
+				mes "[孫 馬奧]";
+				mes "Your mission is to take the materials I have given you and your party members, and to smuggle them to 郝 干柳.";
+				next;
+				mes "[孫 馬奧]";
+				mes "郝 干柳 is currently held captive by corrupt members of the government. Remember to divide the materials equally among your party members so that the officials do find them.";
+				close;
+			}
+			mes "[孫 馬奧]";
+			mes "Huh, where are all your members? Come back to me with all of your recruits.";
+			next;
+			mes "[孫 馬奧]";
+			mes "Remember that you move together with your comrades. There isn't a traitor amongst you, is there?";
+			close;
+		}
+	} else {
+		if (ch_make == 1) {
+			set ch_make,0;
+			mes "[孫 馬奧]";
+			mes "Ah...";
+			mes "You have";
+			mes "returned!";
+			mes "Ha ha ha ha!";
+			next;
+			mes "[孫 馬奧]";
+			mes "I would like to commend you and your comrades for your excellent performance in the last mission. Come back anytime if you wish to be assigned to another task for our cause.";
+			close;
+		}
+		mes "[孫 馬奧]";
+		mes "Remember that the authoritative center of the party is its leader. The party members must act as one in order to accomplish their goals.";
+		close;
+	}
+}
+
+lou_in01,43,147,3	script	火藥製作者	750,{
+	if (ch_make == 0) {
+		getpartymember(getcharid(1));
+		set @partymember,$@partymembercount;
+		if (!QL_REVOL) {
+			mes "[郝 干柳]";
+			mes "誰呀!你這傢伙...";
+			mes "沒有在血書上寫名字，";
+			mes "我不想跟非志同道合的人一起講話，";
+			mes "請你走開啦!";
+			close;
+		} else if (@partymember != 8) {
+			mes "[郝 干柳]";
+			mes "Mao told me that eight Rune-Midgardians";
+			mes "would be coming.";
+			mes "But what happened?";
+			mes "I'm confused...";
+			next;
+			mes "[郝 干柳]";
+			mes "Mao's plans are flawless,";
+			mes "so I'm sticking to the scenario he's drawn up. You're either improvising needlessly, or you're not really my comrade...";
+			close;
+		 } else if (countitem(7068) && countitem(7096) && countitem(7004)) {
+			mes "[郝 干柳]";
+			mes "Ah, I see that Mao";
+			mes "has sent you. I'm sorry";
+			mes "for the trouble you've";
+			mes "gone through to smuggle";
+			mes "the chemicals to me, comrade.";
+			next;
+			mes "[郝 干柳]";
+			mes "Please give me";
+			mes "a minute so that";
+			mes "I may quickly make";
+			mes "the gunpowder.";
+			next;
+			switch(select("Make Gunpowder.:Cancel.")) {
+			case 1:
+				delitem 7068,1; //Burn_Tree
+				delitem 7096,1; //Cold_Magma
+				delitem 7004,1; //Mud_Lump
+				mes "[郝 干柳]";
+				mes "I don't want you to be caught if the soldiers inspect your goods. It will be better if one of you carry a Cart and hide the gunpowder in there.";
+				set ch_make,1;
+				getitem 7204,1; //Gunpowder
+				close;
+			case 2:
+				mes "[郝 干柳]";
+				mes "Is...";
+				mes "Something wrong?!";
+				next;
+				mes "[郝 干柳]";
+				mes "I guess we must";
+				mes "be extra careful,";
+				mes "as there is much";
+				mes "surveillance in";
+				mes "this place.";
+				close;
+			}
+		} else {
+			mes "[郝 干柳]";
+			mes "Hmmm...";
+			mes "It seems like";
+			mes "you're one of us.";
+			next;
+			mes "[郝 干柳]";
+			mes "If you came for the";
+			mes "gunpowder, you should";
+			mes "get some chemcials";
+			mes "from your party leader.";
+			close;
+		}
+	} else if (countitem(7204)) {
+		mes "[郝 干柳]";
+		mes "Be careful!";
+		mes "It's easy for";
+		mes "gunpowder to be";
+		mes "found during the";
+		mes "inspection process!";
+		mes "Hide it well...!";
+		close;
+	} else {
+		mes "[郝 干柳]";
+		mes "I hope you bring the gunpowder to Mao safely. The next time you see him, please give him my thanks.";
+		close;
+	}
+}
+
+lou_in01,45,138,3	script	Soldier#1	825,{
+	if (countitem(7204)) {
+		mes "[Soldier]";
+		mes "Hold on there!";
+		next;
+		mes "[Soldier]";
+		mes "You're not allowed to bring any gunpowder out of here. Now go";
+		mes "and put it back, Rune-Midgardian! Move!";
+		close;
+	}
+	mes "[Soldier]";
+	mes "It's strange to see outsiders in this kind of place. We don't have any business with you,";
+	mes "so move along.";
+	close2;
+	warp "lou_in01",82,141;
+	end;
+}
+
+lou_in01,82,139,7	script	Soldier#2	825,{
+	if (countitem(7068) || countitem(7096) || countitem(7004)) {
+		mes "[Soldier]";
+		mes "I am sorry, but it is prohibited to enter with some of the products";
+		mes "you are carrying. I cannot let you in.";
+		close;
+	}
+	mes "[Soldier]";
+	mes "There is nothing much, but if you wish to look around this room, please be my guest.";
+	close2;
+	warp "lou_in01",47,141;
+	end;
+}

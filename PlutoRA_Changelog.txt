@@ -1,0 +1,312 @@
+//===========================================
+// [冥] The PlutoRA Project [王]
+// https://github.com/LiMoon/PlutoRA
+// unCopyright (c) 2014
+// PlutoRA is a team for translating the database, scripts, config files of rAthena from English to Traditional Chinese.
+// ------------------------------------------------
+// 1. 有比對rAthena更新的話，記得修改
+// 2. 如果有進行腳本中文化，請記得前往 [https://github.com/rathena]
+//    是否有新的腳本內容再做對照修改
+// ------------------------------------------------
+// 更動模式
+// - Rev 版本號 - 時間[西元/月/日] - [更改者]
+// *[受更動的主資料夾名稱]*
+// -[受更動的資料夾名稱] - 更動之內容
+// ------------------------------------------------
+// Github Project Start
+// 現在更新都會在Github 紀錄上顯示更改內容, 
+// 所以此檔不在紀錄、而存作紀念。
+// 因檔案都使用rAthena、專案名稱變更為PlutoRA
+//===========================================
+- [2014/06/12] - [LiMoon]
+ * [sql-files]
+	1. mob_db.sql、item_db.sql、item_db_re.sql 未Follow up cc499e8 更新, 需仔細一項項檢查。
+
+- Rev 484 - [2014/01/18] - [XD人]
+  * [db]
+	1.將re/mob_db.txt少許更新
+
+- Rev 483 - [2014/01/18] - [XD人]
+  * [db]
+	1.將re/item_db.txt更新
+
+- Rev 482 - [2014/01/18] - [XD人]
+  * [npc]
+	1.完成皇家禁衛隊的中文化
+
+- Rev 481 - [2014/01/17] - [XD人]
+  * [npc]
+	1.補上遊俠部份的中文化
+
+- Rev 480 - [2014/01/07] - [Yanpo]
+  * [npc]
+	1.中文化了伊甸園的倉庫、11~55等級的看板任務，感謝XD人提供的文字內容。
+	2.follow up
+
+- Rev 479 - [2014/01/05] - [Yanpo]
+  * [db] 
+	follow up
+  * [npc]
+	1.英文版的腳本更新了可以判斷複數和序數的函數，
+	不過中文版沒有這個問題啊.. 就不更新上了。
+
+	2.清除掉一些垃圾文字。
+
+- Rev 478 - [2014/01/02] - [Yanpo]
+  * [db] 
+	進一步擴大可以自定的 db 檔案；另外補上最新的 sql-files
+  * [npc]
+	修正紅草、藍草傻傻分不清楚的問題。
+
+- Rev 477 - [2014/01/01] - [Yanpo]
+  * [db] 
+	follow up to 11833
+	客制化的自訂內容更改移動到 db/import 資料夾統一管理，
+	原理和 conf/import 一樣，
+	避免與 rA 的內容衝突，或是您在進行更新的時候自己的資料被覆蓋。
+  * [npc]
+	修正廢棄礦坑前面的告示牌少了 close;
+	克魔島鑽石抽抽樂中文化了
+	局部中文化數個伊甸園 npc
+
+- Rev 476 - [2013/12/31] - [Yanpo]
+  * [db] [sql-files]
+	follow up to 11832
+
+- Rev 475 - [2013/12/31] - [Yanpo]
+  * [db] [sql-files] [conf]
+	Happy new year!
+	follow up to 11829
+	1. char_conf增加可以選擇使用生日或是電子郵件來刪除任務的選項。
+	2. item_db 改寫對於特定種族、大小的魔物攻擊增傷的語法。
+
+- Rev 474 - [2013/12/30] - [Yanpo]
+	fix an mistake of a name typo of item.
+
+- Rev 473 - [2013/12/30] - [Yanpo]
+  * [db] [sql-files] [conf]
+	最高等級開放到 175了，更新相關的config、經驗值列表、最新的道具db等。補上古城副本的中文怪物名稱。
+
+- Rev 472 - [2013/12/26] - [Yanpo]
+  * [db] [sql-files]
+	rA終於實裝轉蛋系統啦～
+  * [npc]
+	補上刺客轉職的中文化
+	修正無限塔的小錯誤
+	拳聖、悟靈士轉職部分中文化
+
+- Rev 471 - [2013/12/23] - [Yanpo]
+  * [db] [sql-files]
+	Athena一直以來都弄錯武器與防具的分類了，
+	所以在倉庫裡面看起來就會變成這個樣子：
+	http://imgur.com/mjwZaMq
+
+	立即更新你的 db 和主程式以解決這個 bug
+
+- Rev 470 - [2013/12/21] - [Yanpo]
+	修正 普隆德拉任務的小失誤
+
+- Rev 469 - [2013/12/21] - [Yanpo]
+	一個星期以來居然有四封來信！太神奇了傑克。
+
+  * [client]
+	嘗試加入此資料夾來放置客戶端方面的資料，以補完及修正twRO的瑕疵為出發點。
+	1. twRO的msgstringtable.txt漏了第1749行，導致後面的訊息都往前跑一格，我把它給補正了。
+	2. 二級密碼系統的文字敘述也一併翻譯補上。
+	3. 刪除部分帶有GF字眼的訊息。
+  * [db]
+	followed up~
+  * [npc]
+	1.中文化 renewal的導遊，不過還沒有全部完成。
+	2.修改部分十字軍轉職過程中的對話為twRO版本。
+
+- Rev 468 - [2013/12/14] - [Yanpo]
+  * [npc] [db]
+  - 更新上 rA 11777的db、sql的item db
+  - 傭兵名稱、生命體名稱中文化
+  - re副本部分的中文化
+  - 薑餅城(lutie) cities腳本的中文化
+  - 除去 流氓和賢者轉職腳本多餘的 mapflag 設定
+  - 修正出租大嘴鳥給十字軍的NPC對話內容官方版本
+  - 台版卡普拉在儲存服務的時候不會顯示地點名稱，所以從腳本中拿掉了
+
+- Rev 467 - [2013/12/13] - [Yanpo]
+  * [npc]
+  - 中文化數個轉職任務，2-2轉已套用之前的版本全數中文化，並更新版本（但是十字軍的還沒）；
+武道家之前的腳本是舊版本的，這次一併更新（不過這個版本的語法不夠精簡，我也把它簡化了）。
+
+  - 中文化數個 merchants、other 資料夾內的npc，主要依然是比照之前 eA的內容。
+
+- Rev 466 - [2013/12/11] - [Yanpo]
+  * [npc]
+  - 中文化數個轉職 npc
+
+- Rev 465 - [2013/12/07] - [Yanpo]
+  * [doc] [npc]
+  - follow up~
+
+- Rev 464 - [2013/12/03] - [Yanpo]
+  * [doc] [conf]
+  - update to the newest.
+
+- Rev 463 - [2013/11/27] - [Yanpo]
+  * [db] [conf] [sql files]
+  - update to the newest.
+
+- Rev 462 - [2013/11/22] - [Yanpo]
+  * [npc]
+  - 部分任務中文化，詳情請見SVN記錄
+
+- Rev 461 - [2013/11/22] - [Yanpo]
+  * [db]
+  - 更新最新的 item_db，順帶附上SQL的中文化
+  * [npc]
+  - 部分任務中文化，詳情請見SVN記錄
+
+- Rev 460 - [2013/11/18] - [Yanpo]
+  * [db]
+  - 更新最新的 item_db，順帶附上SQL的中文化
+
+  * [npc]
+  - 部分任務中文化，詳情請見SVN記錄
+
+- Rev 459 - [2013/11/18] - [Yanpo]
+  * [npc]
+  - 部分任務中文化，詳情請見SVN記錄
+
+- Rev 458 - [2013/11/16] - [Yanpo]
+  * [db] [conf]
+  - 更新到 rA 11698，加入 Shadow Equipment System （這是什麼東西啊？）
+  - 加入 攻城戰進行當中能否更換公會圖的選項
+
+  * [npc]
+  - 中文化部分三轉NPC、任務等
+
+- Rev 457 - [2013/11/15] - [Yanpo]
+  * [npc]
+  - 中文化商店腳本、魔物spawns、依斯魯得島cities（已完成）
+  - 卡普拉、獸人回憶迷宮、綿綿島cities（未完成）
+
+- Rev 456 - [2013/11/14] - [Yanpo]
+- Rev 455 - [2013/11/14] - [Yanpo]
+  * [npc]
+  * [db]
+  - 一口氣爆發更新到最新，不過都還是英文的啦，呵呵，慢慢來～
+
+- Rev 454 - [2012/07/14] - [哲小莫]
+　* [npc] - [re] - [jobs] - [3-1]
+　- archbishop.txt、ranger.txt、rune_knight.txt、warlock.txt 更換為最新 R452 腳本內容
+　* [npc] - [re] - [jobs] - [3-2]
+　- genetic.txt、minstrel.txt、royal_guard.txt、sorcerer.txt、sura.txt、wanderer.txt 更換為最新 R452 腳本內容
+
+　R453的腳本內容我已經分支到 branch/rev-453/npc/re/job 上。
+
+※請D.weizhe 不要把腳本給降級，謝謝。更新前對照rAthena的腳本內容是否有新版本(如上方地址顯示)及你現在電腦的PlutoEA是否為最新SVN。
+
+- Rev 453 - [2012/07/14] - [D.weizhe]
+　* [npc] - [re] - [jobs] - [2-1e]
+　- StarGladiator.txt 中文化
+　* [npc] - [re] - [jobs] - [2-2e]
+　- SoulLinker.txt 中文化
+　* [npc] - [re] - [jobs] - [3-1]
+　- archbishop.txt、ranger.txt、rune_knight.txt、warlock.txt 中文化
+　* [npc] - [re] - [jobs] - [3-2]
+　- genetic.txt、minstrel.txt、royal_guard.txt、sorcerer.txt、sura.txt、wanderer.txt 中文化
+
+- Rev 452 - [2012/07/12] - [哲小莫]
+　* [conf]
+　* [db]
+　* [doc]
+　* [sql-files]
+　- 全面更新至  rA SVN 16399
+
+- Rev 451 - [2012/07/12] - [哲小莫]
+　* [npc] - [pre-re] - [quests]
+　* [npc] - [re] - [quests]
+　- quests_13_1.txt 更新至 rA SVN 16398
+　- quests_13_2.txt 更新至 rA SVN 16398
+
+- Rev 450 - [2012/07/12] - [哲小莫]
+　* [db] - [re]
+　- mob_db.txt 中文化 (完成)
+　* [npc] - [re] - [cities]
+　- alberta.txt 中文化
+　* [npc] - [job] - [3-1]
+　- *.txt 中文化
+　* [npc] - [mobs] - [towns]
+　- brasils.txt 中文化
+　* [npc] - [re] - [quests]
+　- quests_alberta.txt 中文化
+　* [npc] - [re] - [quests] - [seals]
+　- megingard_seal.txt 中文化
+
+- Rev 449 - [2012/07/11] - [哲小莫]
+　- 修正Changelog 內容沒上傳問題
+　
+- Rev 448 - [2012/07/11] - [哲小莫]
+　* [npc]
+　- 補上遺漏的 rA 16387 檔案
+　
+- Rev 447 - [2012/07/11] - [哲小莫]
+　* [npc]
+　- 更換版本至rA 16387 (中文化日後在修改回來，先前舊的npc已經丟到分支夾)
+
+- Rev 445 ~ 446 - [2012/07/11] - [哲小莫]
+　- 切換npc分支
+
+- Rev 444 - [2012/07/10] - [哲小莫]
+　* [db] - [re]
+　- item_db.txt 中文化
+　- mob_db.txt 中文化
+　* [npc] - [mobs] - [towns]
+　- brasils.txt 中文化
+　* [npc] - [job] - [3-1]
+　- *.txt 中文化
+　
+- Rev 443 - [2012/06/05] - [D.weizhe]
+　* [npc] - [job] - [3-2]
+　- royal_guard.txt 中文化
+　
+- Rev 442 - [2012/06/04] - [D.weizhe]
+　* [npc] - [job] - [3-1]
+　- mechanic.txt - 中文化
+　* [npc] - [merchants]
+　- shops.txt - 中文化 (NPC名稱來自plutoea，並更新為rAthena物品販賣資訊)
+　
+- Rev 441 - [2012/05/05] - [XD人]
+　* [npc] - [quests] - [eden]
+　- 伊甸園委託任務41-55中文化
+
+- Rev 440 - [2012/05/02] - [XD人]
+　* [npc] - [quests] - [eden]
+　- 修正註解、增加eden_common.txt, eden_service.txt中文化
+
+- Rev 439 - [2012/05/02] - [XD人]
+　* [npc] - [quests] - [eden]
+　- 伊甸園委託任務11-25與26-40中文化
+
+- Rev 438 - [2012/05/02] - [斯梅爾克]
+　* [conf]
+　- 比對部分文件 Rev.428 繁中化. (Part.4)
+
+- Rev 437 - [2012/04/29] - [哲小莫]
+　* [conf]
+　- 比對部分文件 Rev.428 繁中化. (Part.3)
+　* [db]
+　- 比對官方任務資料與任務資料庫的比對與修正 (Part.1)
+　* [db] - [re]
+　- 比對部分道具名稱為中文 (Part.1)
+
+- Rev 436 - [2012/04/29] - [哲小莫]
+　* [conf]
+　- 比對部分文件 Rev.428 繁中化. (Part.2)
+
+- Rev 435 - [2012/04/29] - [哲小莫]
+　* [conf]
+　- 比對部分文件 Rev.428 繁中化, 部分舊檔與新內容也一併修正了. (Part.1)
+
+- Rev 434 - [2012/04/29] - [哲小莫]
+　* branch > Eathena 版本
+　- 分支版本
+　* trunk > Rathena 版本
+　- 暫時以英文, 會陸續比對更新

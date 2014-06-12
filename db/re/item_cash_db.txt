@@ -1,0 +1,18 @@
+﻿// 點數商城資料庫
+// Contains the items sold in the ingame cash shop.
+//
+// Structure of Database:
+// 分類,道具ID,價格
+//
+// 分類:
+//    0: 人氣商品
+//    1: 轉蛋
+//    2: 道具
+//    3: 租賃裝備
+//    4: 頭飾I
+//    5: 頭飾II
+//    6: 武器
+//    7: 防具
+//
+// 價格:
+//    Item cost, in cash points (#CASHPOINTS).

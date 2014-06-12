@@ -1,0 +1,333 @@
+//===== rAthena Script ======================================= 
+//= Izlude Town
+//===== By: ================================================== 
+//= kobra_k88
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.9a
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Izlude town NPCs
+//===== Additional Comments: ================================= 
+//= Fully working
+//= 1.1 fixed 2 zeny bugs/checks [Lupus]
+//= 1.2 Fixed a lot of typos [Nexon]
+//= 1.3 Removed callfunc Is_####_Class in favor of baseClass [Silentdragon]
+//= 1.4 Added a Jawaii related npc. 1.4a Fixed a small bug to
+//=     the Jawaii warper, thanks to reddozen and Silent [MasterOfMuppets]
+//= 1.5 Replaced iz_move_alberta with MISC_QUEST & 16 [Lupus]
+//= 1.6 Removed Duplicates [Silent]
+//= 1.7 Split quest to quests/quests_izlude.txt [Evera]
+//= 1.71 Optimized. Also thanks to CAHTEXHuK [Lupus]
+//= 1.72 Small bugfix [Paradox924X]
+//= 1.8 Rescripted to Aegis 10.3 standard. [L0ne_W0lf]
+//=     Removed Honeymoon Helper, as she is a Jawaii NPC.
+//=     Moved Signs to the msg_boards file.
+//= 1.8a Made Red/Cebalis as a single NPC + duplicate [Lupus]
+//= 1.9 Fixed a small problem with Dega. (Ne default case) [L0ne_W0lf]
+//=     Re-added NPC dialog for Cebalis. The dialog differs
+//=     (even if slightly,) after the five or so lines.
+//= 1.9a A part of Kylick's dialogue is Pre-Renewal only. [Euphy]
+//============================================================
+
+// Izlude
+//============================================================
+-	script	::Sailor_izlude	-1,{
+	mes "[船員]";
+	mes "有艘以超高速航行的船早已準備好隨時出發，";
+	mes "不過它不能保障大家的安全就是了!";
+	mes "來吧!我們走!";
+	next;
+	switch(select("柏伊亞嵐 島 -> 150 z:艾爾貝塔 港口 -> 500 z:取消")) {
+	case 1:
+		if (Zeny < 150) {
+			mes "[船員]";
+			mes "需要150 金幣!";
+			mes "只要給我150金幣就帶你去";
+			close;
+		}
+		set Zeny, Zeny - 150;
+		warp "izlu2dun",107,50;
+		end;
+	case 2:
+		if (Zeny < 500) {
+			mes "[船員]";
+			mes "需要500 金幣!";
+			mes "只要給我500金幣就帶你去";
+			close;
+		}
+		set Zeny, Zeny - 500;
+		warp "alberta",188,169;
+		end;
+	case 3:
+		close;
+	}
+}
+
+-	script	::Bonne_izlude	-1,{
+	mes "[奔呢]";
+	mes "歡迎光臨，真心歡迎您來到依斯魯得島，我們依斯魯得島是，盧恩-米德加茲王國的首都普隆德拉的衛星都市，不只是訓練劍士而已，也負責海洋巡邏，是非常重要的都市。";
+	next;
+	mes "[奔呢]";
+	mes "還有我們依斯魯得島，運用高科技的這座橋樑，看起來雖然很薄又長又脆弱的樣子，但對於巨大的風浪也不怕，幾千人在上面走動也不會垮的。不信的話可以試試看哦，請你在我們依斯魯得島玩得愉快，留下美好的回憶吧";
+	close;
+}
+
+-	script	::Charfri_izlude	-1,{
+	mes "[夏普立]";
+	switch(rand(2)) {
+	case 1:
+		mes "有人看不起我們是普隆德拉的衛星都市，不過伊斯魯得島 靠近海洋擁有一座美麗的島";
+		next;
+		mes "[夏普立]";
+		mes "想去的話 ，在港口搭船即可，島上有很多危險的洞口，不要隨便進出";
+		close;
+	Default:
+		mes " 雖然說島上風景非常漂亮，不過也有連接到深海處的洞穴入口";
+		next;
+		mes "[夏普立]";
+		mes "聽去過人的說，越往裡面進去，就會發現全部淹在水底下";
+		mes "可能是有神秘的力量在作用吧，在那裡人也可以像魚一樣能夠呼吸";
+		next;
+		mes "[夏普立]";
+		mes "水裡的風景非常夢幻，讓人難以忘懷";
+		mes "可是隨時會有邪惡的魔物出沒，不是每個人都能隨便進出";
+		mes "我也很想去，但是太危險，所以只能用想像的";
+		close;
+	}
+}
+
+-	script	::Cuskoal_izlude	-1,{
+	mes "[庫斯可爾]";
+	switch(rand(2)) {
+	case 1:
+		mes "這裡的競技場是，盧恩-米德加爾特王國，為了讓全國有能力的人，想試驗自己的能力的地方";
+		mes "按照等級別會出現魔物和你決鬥，看你能通過什麼樣的等級，就能判定你的能力";
+		next;
+		mes "[庫斯可爾]";
+		mes "怎麼樣，你要不要也挑戰一下";
+		close;
+	Default:
+		mes "普隆德拉所有酒店裡，平時都集滿市民和外地人，非常熱鬧";
+		mes "來自各地的人在這裡聚會，所以說情報流通的很快，好好傾聽的話，可以獲得很重要的情報";
+		close;
+	}
+}
+
+-	script	::Dega_izlude	-1,{
+	mes "[竇加]";
+	switch(rand(3)) {
+	case 1:
+		mes "普隆德拉北方有一座妙勒尼山脈，據說危險很不好翻越，";
+		mes "整座山非常險峻，我想你也因該知道，那邊有非常非常可怕的昆蟲存活著";
+		next;
+		mes "[竇加]";
+		mes "說真的我只想乖乖的不動，結果經過那裡，他們反而先攻擊我";
+		mes "真的要翻越山脈，要去別的地方的話，除非真的有自信，否則請回吧";
+		close;
+	case 2:
+		mes "在這個世界上有些生物很特別的，可以有著預防魔法的力量";
+		mes "那邊沙漠中的巨石怪也是這種類型，";
+		next;
+		mes "[竇加]";
+		mes "可別小看他們動作有點慢，想要對他施法時，不知道什麼時候他就已經知道了，而且吼!吼!吼!吼!的就來到你身邊了，一定要小心啊";
+		close;
+	Default:
+		mes "在婓揚之都東南方的入口處，有一個連接沙漠和森林的橋樑，在那可以看到所有種類的波利，是一個非常可愛的地方";
+		next;
+		mes "[竇加]";
+		mes "那裡不只有粉紅色波利，也有淺綠色的波波利";
+		mes "請小心，也許你會遇到像幽靈一樣的幽靈波利";
+		next;
+		mes "[竇加]";
+		mes "他們是非常非常可愛的波利，運氣不錯的話也可以看到長翅膀的天使波利";
+		next;
+		while(1) {
+		switch(select("幽靈波利?:天使波利?:結束對話")) {
+		case 1:
+			mes "[竇加]";
+			mes " 幽靈波利是包圍著白色光圈， 輕飄飄的波利";
+			mes "當碰到幽靈波利時，直接逃跑為上策";
+			next;
+			mes "[竇加]";
+			mes "有些人有用過一種神秘的方式打敗它們";
+			mes "我想等你經驗足夠的話，也是有辦法打敗它的";
+			next;
+			break;
+		case 2:
+			mes "[竇加]";
+			mes " 魔法對天使波利是無效的，他會把魔法反彈回去";
+			mes "假如有人用魔法碰到這天使波利的話，會大喊'救命啊'然後逃跑";
+			next;
+			mes "[竇加]";
+			mes "假如有武器的話，你也可以打看看，不過會很累喔";
+			next;
+			break;
+		case 3:
+			mes "[竇加]";
+			mes "祝你好運";
+			close2;
+			break;
+			}
+		}
+	}
+}
+
+-	script	::Kylick_izlude	-1,{
+	mes "[齊黎]";
+	mes "用望遠鏡左右觀望，實在是太神氣了";
+	mes "嗯嗯我們依斯魯得島，不只負責路地上的安全，也負責寬廣海洋的安全";
+	next;
+	mes "[齊黎]";
+	mes "所以架設大望遠鏡，可以看到遠海，可提前做準備，所有的事情提早做準備，是一定要的啦";
+	close;
+}
+
+-	script	::Cebalis_izlude	-1,{
+	mes "[瑞德]";
+	mes "劍士不需要別的技能，只要會狂擊就好，你說對不對!";
+	next;
+	mes "[西發利司]";
+	mes "你說什麼話!不管怎麼說，劍士最大的希望，是獨自衝進戰場獨當一面，可是最需要的是怒暴!";
+	mes "除了主動攻擊我的傢伙之外，還有四周圍徘徊的傢伙，在我怒暴時讓他們得到損失，本人雖然受到損失，不過劍士對小小的損失是可以承擔的?!";
+	next;
+	mes "[瑞德]";
+	mes "所以說你這傢伙是白癡! 有點像男子漢的氣概嗎? 讓自己造成損失去冒這種風險真是白癡，上次你用這技巧";
+	mes "我還記得上次，你不小心打到一群路過的波利，造成一群波利衝過來，嚇的逃跑";
+	next;
+	mes "[瑞德]";
+	mes "那. 那...種...事 就忘記吧，不管怎樣，是劍士的話，就善用怒爆吧!!";
+	mes "狂擊，只是修練怒爆的中間過程而已";
+	next;
+	mes "[瑞德]";
+	mes "喂...那邊在聽我講話的人... 對!就是你，你認為怎麼樣? 是狂擊好?還是怒爆好?";
+	mes "那一個比較好?";
+	next;
+	if (select("狂擊比較好:怒爆比較好") == 1) {
+		if (BaseClass == Job_Swordman) {
+			mes "[瑞德]";
+			mes "Hahahaha!!! I knew you'd see things my way!! You ARE a great guy!! Without a doubt, only ^FF2400Bash^000000 suits a Swordman. Please tell that to FUNBOY over here!! Hahaha.";
+			next;
+			mes "[瑞德]";
+			mes "Hmm, let me give you a bit of advice. After you achieve level 5 Bash, the amount of SP consumed by the skill increases greatly, so watch out for your SP.";
+			close;
+		}
+		mes "[瑞德]";
+		mes "Hahahaha!!";
+		mes "See!? Someone who pursues a different job agrees with me~! You really are a great guy! Hahaha!!";
+		next;
+		mes "[瑞德]";
+		mes "Without a doubt, only ^FF2400Bash^000000 suits a Swordman. Please tell that to this MORON over here!! Hahaha~";
+		close;
+	}
+	if (BaseClass == Job_Swordman) {
+		mes "[西發利司]";
+		mes " Alright!! ^EE0000Magnum Break^000000 is the BEST!! Now you're talking~!! You know your stuff, kid. HaHaHa~!";
+		next;
+		mes "[西發利司]";
+		mes "You wanna know some useful information? Okay, okay lemme tell ya! The explosion from 'Magnum Break' has the Fire Property.";
+		next;
+		mes "[西發利司]";
+		mes "So it won't be very effective against Water property monsters, but this is THE skill to use against Undead and Earth property monsters.!";
+		next;
+		mes "[西發利司]";
+		mes "And most importantly, look around before you use it. Otherwise you'll be in BIG trouble~ ";
+		close;
+	}
+	mes "[西發利司]";
+	mes "I'm right, aren't I?! ^EE0000Magnum Break^000000 is THE BEST!!! You know what you're talking about, eh? I don't know why this LARDFACE is sooooo stubborn.";
+	close;
+}
+
+-	script	::Soldier_izlude	-1,{
+	mes "[士兵]";
+	mes "嘿嘿嘿，";
+	mes "嗯? 什麼事讓我這麼高興?";
+	mes "告訴你嗎?";
+	next;
+	if (select("請問你是怎麼了?:不用了") == 1) {
+		mes "[士兵]";
+		mes "啊啊..最近比較沒有工作，我想你也知道吧?";
+		mes "抓到魔物從他們身上取得戰利品後，部分商人們用錢買回去的事實";
+		next;
+		if (select("我知道:噢? 真的嗎?") == 2) {
+			mes "[士兵]";
+			mes "你難道不知道嗎?!";
+			mes "嗯..這..";
+			mes "這..抓到魔物從他們身上取得戰利品後，把這東西賣給商人的話，是個可觀的收入啊，";
+			mes "反正!";
+			next;
+		}
+		mes "[士兵]";
+		mes "老實說那是我們的工作耶，";
+		mes "不過最近狩獵的人好像變多了，所以只有我們倆人來處理這些工作是有點負荷不了的";
+		next;
+		mes "[士兵]";
+		mes "說真的每天都是連續加班，只要回想那個到那個時候..嗚嗚嗚~~";
+		mes "所以政府用了卑鄙的手法，要有販賣證才能到賞金兌換所換取現金";
+		next;
+		mes "[士兵]";
+		mes "販賣正對許多人來說可以買進許多戰利品的基本資金，對在一定場所做買賣的商人們會發給他們的";
+		next;
+		mes "[士兵]";
+		mes "所以說現在找我們的人變得很少了!";
+		mes "其實我們的經濟情況也不是很好，不過卻讓我們變得很輕鬆啊~";
+		mes "所以說當人碰到艱難的環境之後，才知道什麼叫輕鬆啊，";
+		mes "哈哈哈!";
+		close;
+	}
+	mes "[士兵]";
+	mes "好吧 再見囉~";
+	close;
+}
+
+// Inside Izlude
+//============================================================
+izlude_in,125,164,2	script	阿倫#izlude	65,{
+	mes "[阿倫]";
+	mes "嗯? 劍士? 不管怎麼說，做為劍士要有強韌的體力，還有特別訓練的吸氣法，讓HP快速回覆，是他的優點吧";
+	next;
+	mes "[阿倫]";
+	mes "努力的修行技巧，自己也可以感覺到體力在恢復，還有HP回覆能力受VIT影響，所以對VIT大力投資，相對的恢復體力也快";
+	next;
+	mes "[阿倫]";
+	mes "攻擊力變強也不錯吧?要給對方造成重度攻擊傷害的話、武器要好，不過STR也要提升，不然武器再怎麼好沒力量是沒用的";
+	next;
+	mes "[阿倫]";
+	mes "還有正確的使用劍法是很重要的，這可以透過DEX來修練";
+	next;
+	mes "[阿倫]";
+	mes "有...有點無聊? 還要聽嗎?";
+	next;
+	if(select("多告訴一點:結束對話")==2) {
+		mes "[阿倫]";
+		mes "好吧，好好訓練吧";
+		close;
+	}
+	mes "[阿倫]";
+	mes "這樣的話，對別的能力也簡單的說一點好了";
+	mes "快速的移動、快速的攻擊敵人或輕易的閃避敵人的攻擊，只要提升AGI能力即可";
+	next;
+	mes "[阿倫]";
+	mes "你要更多的掉寶機率的話，在LUK上投資些吧";
+	mes "提升INT會輔助SP的方法很多，請你好好想想吧";
+	close;
+}
+
+// Izlude Dungeon
+//============================================================
+izlu2dun,108,27,0	script	船員#2izlude	100,{
+	mes "[船員]";
+	mes "想回去嗎?";
+	next;
+	if (select("好啊，我快累癱了:不，我還要待一會") == 1) {
+		if(checkre(0))
+			warp "izlude",197,210;
+		else
+			warp "izlude",176,182;
+		end;
+	}
+	close;
+}

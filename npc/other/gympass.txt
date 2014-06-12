@@ -1,0 +1,148 @@
+//===== rAthena Script ======================================= 
+//= 重力聖人
+//===== By: ================================================== 
+//= Kisuka
+//= 中文化:小笨冰
+//===== Current Version: ===================================== 
+//= 1.3
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Exchange Gym Passes to learn "Enlarge Weight Limit"
+//= iRO NPC situated in Payon beside Kafra Shop.
+//===== Additional Comments: ================================= 
+//= 1.0 First version [L0ne_W0lf]
+//= 1.1 Fixed the NPC saying you "00" [L0ne_W0lf]
+//= 1.2 Replaced effect numerics with constants. [Samuray22]
+//= 1.3 Updated script, and fixed potential errors. [L0ne_W0lf]
+//============================================================ 
+
+// 台版NPC與iRO位置不同
+//payon,173,141,4	script	重力聖人#GymPass	899,{
+prontera,160,136,4	script	重力聖人#GymPass	899,{
+	mes "[聖人]";
+	mes "Oh~ 您好~";
+	mes "Me 是從那遙遠的重力城來到這裡的，";
+	mes "我叫做 重力聖人 噢";
+	next;
+	mes "[聖人]";
+	mes "Why 來到這裡的話!";
+	mes "因為這裡的人都太過於輕裝備攜帶物品啊，";
+	mes "所以忍無可忍 咻~ 一聲";
+	mes "用重力跳躍來到這裡了 噢~";
+	next;
+	mes "[聖人]";
+	mes "So~ 要怎麼樣重裝備的";
+	mes "攜帶物品 噢!";
+	mes "只要給Me 帶來 '^FF0000健身房會員卷^000000'的話，";
+	mes "我會對你施展重力的魔法";
+	mes "讓你擴充200的攜帶量 噢!";
+	next;
+	mes "[聖人]";
+	mes "But! 有一點要小心 噢，";
+	mes "This 人們都太過脆弱了 噢，";
+	mes "So~ 對重力的魔法受 ^FF000010次^000000 以上的話";
+	mes "會受不了的 噢";
+	next;
+	mes "[聖人]";
+	mes "Hey~ 請問你要接受重力的魔法嗎?";
+	next;
+	switch(select("是的:不要:魔法已經消失不見了~")) {
+	case 1:
+		if (gympassmemory < 10) {
+			set .@add_carry,gympassmemory + 1;
+			set .@remain_carry,10 - .@add_carry;
+			if (countitem(7776) > 0) {
+				mes "[聖人]";
+				mes "Cool~ 你有帶來";
+				mes "'^FF0000健身房會員卷^000000'啊~";
+				mes "You 真勇敢 噢~";
+				mes "You 真強壯 噢~";
+				next;
+				mes "[魔術師]";
+				mes "Me 來為你施展";
+				mes "重力的魔法 噢~";
+				mes "Hey~ 敬請期待 噢~";
+				next;
+				specialeffect2 EF_EARTHSPIKE;
+				next;
+				specialeffect2 EF_DEVIL;
+				next;
+				specialeffect2 EF_COIN;
+				next;
+				specialeffect2 EF_SIGHTRASHER;
+				next;
+				mes "[聖人]";
+				mes "Oh~ 你現在已經施展到了";
+				mes "'重力的魔法' 噢~";
+				mes "You~ 已經變得很強壯 噢~";
+				mes "Now~ 你能接受到^FF00000" + .@remain_carry + "^000000次的";
+				mes "重力的魔法 噢~";
+				delitem 7776,1; //Max_Weight_Up_Scroll
+				set gympassmemory,.@add_carry;
+				skill "ALL_INCCARRY",.@add_carry,4;
+				next;
+				mes "[聖人]";
+				mes "ah! 假如魔法消失掉的話 請再來 噢~";
+				mes "Yet~ 魔法沒有按照這邊的情形變形";
+				mes "噢~";
+				mes "But 可以再給你的 等到消失後再來";
+				mes "噢~";
+				close;
+			}
+			else {
+				mes "[聖人]";
+				mes "Boo~ 你沒有";
+				mes "'^FF0000健身房會員卷^000000'啊!~";
+				mes "沒有的話 就不能使用重力的魔法 噢~";
+				close;
+			}
+		}
+		else {
+			mes "[聖人]";
+			mes "Oh~ 你受到太多的";
+			mes "重力的魔法了! ~";
+			mes "You 現在再也不能 ~";
+			mes "受到重力的魔法 噢!";
+			mes "Bye~ 再見 噢~";
+			close;
+		}
+	case 2:
+		mes "[聖人]";
+		mes "Oh~ 我已經失望 噢~";
+		mes "你太脆弱 噢";
+		close;
+	case 3:
+		if (gympassmemory > 0) {
+			mes "[聖人]";
+			mes "Ouh~ 魔法已經消失掉了 噢!";
+			mes "It's 是副作用 噢~";
+			mes "But 不要擔心 噢~";
+			mes "Me 來為你解決 噢~";
+			next;
+			specialeffect2 EF_EARTHSPIKE;
+			next;
+			specialeffect2 EF_DEVIL;
+			next;
+			specialeffect2 EF_COIN;
+			next;
+			specialeffect2 EF_SIGHTRASHER;
+			next;
+			mes "[聖人]";
+			mes "Oh~ 消失掉的10次魔法 已經回來了";
+			mes "噢~";
+			mes "Me 的魔法雖然有點不安定 但不會失敗";
+			mes "噢 ~";
+			mes "Again~ 感覺一下重力的魔法 噢~";
+			skill "ALL_INCCARRY",gympassmemory,4;
+			close;
+		}
+		else {
+			mes "[聖人]";
+			mes "Oops~ 你好像沒有接受過魔法 噢!";
+			mes "So! 沒有魔法是~ 應該的 噢~";
+			close;
+		}
+	}
+}

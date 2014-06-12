@@ -1,0 +1,665 @@
+//===========================================
+// [­ß] The PlutoEA Project [¤ý]
+// https://code.google.com/p/plutoea/
+// -----------------------------------------
+// - ¨Z¤Ú©Ô «°Âí¸}¥» -
+//===========================================
+//= ª©¥»¡G2.1
+//===========================================
+
+comodo,170,137,7	script	©Ô¦ã¼w#um	84,{
+	end;
+
+OnEmoteHmm:
+	emotion e_hmm;
+	end;
+
+OnEmoteGG:
+	emotion e_gg;
+	end;
+}
+
+comodo,171,137,1	script	¶Â¥ì¥q#um	92,{
+	mes "[©Ô¦ã¼w]";
+	mes "¤@©w¬OÂÃ¦³Åå¤HªºÄ_ª«°Ú!";
+	next;
+	mes "[¶Â¥ì¥q]";
+	mes "§ä¨ìÄ_ª«ªº¸Ü¡A¤@ª½¥H¨Ó§â§Ú­Ì·í²Â³J¤G¤H²Õ¬Ý«Ýªº¨º¨Ç¤H¡A¤]·|®ø¥¢§a!!";
+	next;
+	mes "[©Ô¦ã¼w]";
+	mes "§Ú­Ì¤]¨Ó¥h´M§äÄ_ª«§a!";
+	next;
+	emotion e_gg;
+	mes "[¶Â¥ì¥q]";
+	mes "¦n§a- !!";
+	next;
+	mes "[©Ô¦ã¼w]";
+	mes "............";
+	next;
+	emotion e_hmm;
+	donpcevent "©Ô¦ã¼w#um::OnEmoteHmm";
+	mes "[©Ô¦ã¼w]";
+	mes "¤£¹L¥L·|»´©öªº¶}¤f¶Ü?";
+	next;
+	select("¤°»ò¸Ü°Ú? Ä_ª«?");
+	mes "[©Ô¦ã¼w]";
+	mes "°Ú¡A§A±q¤°»ò®É­Ô¶}©lÅ¥ªº°Ú?!";
+	next;
+	emotion e_gg;
+	mes "[¶Â¥ì¥q]";
+	mes "¨þ³á¡A§A¤]·Q­nÅ¥¦³ÃöÄ_ª«ªº¨Æ±¡°Ú?";
+	mes "·íµM§A¤]¬O«_ÀI®aªº¸Ü¡AÀ³¸Óª¾¹D¹ï­«­nªºªF¦è¡AÁ`¬O»Ý­n§´·íªº¸ÉÀv§a?";
+	next;
+	emotion e_gg;
+	donpcevent "©Ô¦ã¼w#um::OnEmoteGG";
+	mes "[©Ô¦ã¼wA¶Â¥ì¥q]";
+	mes "µ¹§Ú1000ª÷¹ôªº¸Ü¡A§Ú·|§i¶D§Aªº!";
+	next;
+	if(select("¥I1000ª÷¹ôµ¹¥L:¤£¥Iµ¹¥L") == 1) {
+		if(Zeny > 999) {
+			set zeny,zeny-1000;
+			mes "[¶Â¥ì¥q]";
+			mes "©I©I ÆZÀ´¨Æªº³Ã¥ë¹À!";
+			next;
+			mes "[©Ô¦ã¼w]";
+			mes "..¦Ñ¹ê»¡¡A¤£¤[«e¦b³o­Ó¦a¤è¡A";
+			mes "¦³¦ìµÛ¦Wªº«_ÀI®a¥§º¸´µµ²§ô®È¦æ¦^¨Ó¡A";
+			next;
+			mes "[¶Â¥ì¥q]";
+			mes "(¤pÁn¤pÁnªº)¨â¤â©êµÛ¤j½c¤l¦^¨Ó¤F¡A";
+			next;
+			mes "[©Ô¦ã¼w]";
+			mes "¦b¥b©]°½°½¦^¨Ó¡A¤@©w¬O©È³Q§O¤Hµo²{§a?";
+			next;
+			mes "[¶Â¥ì¥q]";
+			mes "¤j½c¤l¸Ì©Ò¸ËªºÄ_¶QªF¦è~...";
+			mes "°£¤FÄ_ª«¥~ÁÙ¦³§Oªº¶Ü?!!";
+			next;
+			mes "[©Ô¦ã¼w]";
+			mes "©Ò¥H»¡§Ú­Ì¤]­n¥h´M§äÄ_ª«-!!";
+			next;
+			emotion e_hmm;
+			mes "[¶Â¥ì¥q]";
+			mes "¥i¬O°ÝÃD¬O¡A¥§º¸´µ¯uªº·|»´©öªº§i¶D§Ú­Ì¡AÄ_ª«ªº©Ò¦b¦aÂI¶Ü..";
+			next;
+			mes "[©Ô¦ã¼w]";
+			mes "¥§º¸´µ¥­®É³£§â§Ú­Ì·í²Â³J¬Ý«Ý!!";
+			mes "­ó-!!";
+			next;
+			menu "¨º­Ó¥s¥§º¸´µªº¤H¦b­þ¸Ì©O?",-;
+			mes "[©Ô¦ã¼w]";
+			mes "¥L©~¦í¦b§ø¸¨ªº¥_Ãä";
+			next;
+			mes "[¶Â¥ì¥q]";
+			mes "§Ú§i¶D§A¦³§Qªº±¡³ø¤F¡A¦pªG§A¤]±oª¾¤F¤°»ò±¡³ø¤]±o§i¶D§Ú¡A³o¤~¬O¤H¤§±`±¡°Ú!";
+			next;
+			mes "[©Ô¦ã¼w¡B¶Â¥ì¥q]";
+			mes "¨º»ò¯¬§A¦n¹B¤F!";
+			close;
+		}
+		mes "[©Ô¦ã¼w]";
+		mes "¶Ù¡A§A¨S¿ú°Ú";
+		close;
+	}
+	mes "[Haith]";
+	mes "­ó! ¤£­n´Nºâ¤F~";
+	emotion e_hmm;
+	emotion e_hmm;
+	close;
+}
+
+cmd_in01,175,120,3	script	¥ì¥ß¨È#um	69,{
+	mes "[¥ì¥ß¨È]";
+	mes "¦ì¦b¨º¨¤¸¨®àªº¨º¦ì¬O¡A«_ÀI®a¥§º¸´µ¡A";
+	mes "¥L·|¨ì³B®È¹C¦Ó¥B·|Á¿¤@¨Ç¦³½ìªº¸Ü";
+	next;
+	mes "[¥ì¥ß¨È]";
+	mes "³o¦¸¨ì©³¥h­þ¦^¨Ó¤F©O¡A";
+	mes "¥L¥u¬O¨þ¨þªº¯ºµÛ»¡";
+	mes "- §ÚªGµM¤£¾A¦X·í¦Ñ®vªº¼Ë¤l -";
+	next;
+	mes "[¥ì¥ß¨È]";
+	mes "¤H­Ì¤S¤@ª½¨Ó§ä¥§º¸´µ..";
+	mes "¨ì©³¬O¥h­þ¸Ì¦^¨Ó¤F©O?";
+	close;
+}
+
+cmd_in01,164,115,1	script	¥§º¸´µ#um	731,{
+	mes "[¥§º¸´µ]";
+	mes "...¨þ¨þ? ¤°»ò";
+	mes "³á- §A¤]¬OÅ¥¨ìÁÁ¨¥¦Ó¶]¨Óªº²Â³J¶Ü?";
+	mes "¤]¤£¯à¤Ó«j±j§a. . .³Ø³Ø";
+	next;
+	mes "[¥§º¸´µ]";
+	mes "»¡¤°»ò¥@¤W³Ì¦nªºÄ_ª«¨ºÃþªº¸Ü¡A";
+	mes "¨º¥u¬O±q¤H­Ìªº»~¸Ñ¦Ó¤Þ°_ªº¡A";
+	mes "À³¸Ó¤£¬OÄ_ª«¦Ó¥u¬O§Úªº¦¬¶°«~§a~";
+	next;
+	mes "[¥§º¸´µ]";
+	mes "¤]¹ï... '°²¦p¨º­Ó¬O'";
+	mes "¹ê»Ú¤W¯uªº¦s¦bªº¨Æ¹ê¡A";
+	mes "¤]³\¥u­n¥Î§ÚÂù²´½T»{¦Ó¤w¡A´N¹³¬O±o¨ì¤F­È¿úªºÄ_¥Û¤@¼Ë¡A";
+	next;
+	mes "[¥§º¸´µ]";
+	mes "³o¸Ì³o§JÅ]®q§ø¸¨!";
+	mes "¤£Ä±±o¥¦ªº¬}¥Þ¦³ÂI¹L¥÷ªº¤p¶Ü?";
+	next;
+	mes "[¥§º¸´µ]";
+	mes "©Ò¥H§Ú·Q¹L¤F..";
+	mes "¤@©w¬O¦³¤°»òªF¦èÂÃ¦b¸Ì­±..";
+	next;
+	mes "[¥§º¸´µ]";
+	mes "µM«á©O !";
+	mes "´N²×©ó§ä¨ì¤F¡A";
+	mes "ª½¨ì¥Ø«eÁÙ¨S§ä¨ìªº¡A³q©¹'¨º¸Ì'ªº¸ô!";
+	next;
+	mes "[¥§º¸´µ]";
+	mes "............";
+	next;
+	mes "[¥§º¸´µ]";
+	mes "......¤°»ò©O?";
+	next;
+	mes "[¥§º¸´µ]";
+	mes "³o®É­ÔÀ³¸Ó­n¨ÓÂI '©N©N' ªº®ÄªG­µ¤£¬O¶Ü!";
+	mes "¨S·N«ä..";
+	emotion e_hmm;
+	next;
+	mes "[¥§º¸´µ]";
+	mes "¤Ï¥¿©O¡A³Ì¦n¬O¤£­n°Ý§Ú '¨º¸Ì' «ç»ò¥h¡AÁÙ¦³ '¨º¸Ì' ¦³¤°»ò";
+	next;
+	mes "[¥§º¸´µ]";
+	mes "¦pªG¬O¯u¥¿ªº±´ÀI®aªº¸Ü!!!";
+	mes "§ÚÁ¿¨ì³o¸Ì®É!";
+	mes "À³¸Ó­n¦³µÛ<°Ú°Ú°Ú°Ú! ·Qª¾¹D·Q¨ì§ÖºÆ¤F!>";
+	mes "ªºªí±¡¨Ã§âªù¿å¶}¶]¥X¥h¡A¥Î°Êª«¯ëªº·PÄ±¤Î¥»¯à¥h´M§ä¨º­Ó¦a¤è!!";
+	next;
+	mes "[¥§º¸´µ]";
+	mes "¦n! §ÖÂI!";
+	mes "¥X¥h§a !!!!!!";
+	next;
+	mes "[¥§º¸´µ]";
+	mes "¦b§Ú­±«e§e²{ªº¬Oµo²{Ä£²´ªº¥¼ª¾¥@¬É©O! ÁÙ¬O¦º¤`ªº³´¨À©O!";
+	mes "³Ø «¢ «¢ «¢ !!!!";
+	close;
+}
+
+umbala,70,106,3	script	«BÀÈ±Ú ¤p«Ä#um	781,{
+	if (event_umbala >= 3) {
+		mes "[???]";
+		mes "«u§r?±z..";
+		mes "¤£¬O§Ú­Ì¨Z¤Ú©Ôªº¤H°Ú?";
+		next;
+		mes "[???]";
+		mes "À~¤@¸õ!¦ý¬O«Ü°ª¿³»{ÃÑ§A";
+		mes "§Ú¥s«¢©Z";
+		emotion e_heh;
+		next;
+		mes "[«¢©Z]";
+		mes "....¦ý¬O¡A²{¦b«Ü¥i±¤ªº¬O";
+		mes "¤£¯à©M±z¤@°_ª±";
+		mes "³Ìªñ¡A¬ðµM¦b§Ú®a¦³¹p¸¨¤U«á";
+		mes "§â«Î³»§Ë¯}¤F....";
+		emotion e_sob;
+		next;
+		mes "[«¢©Z]";
+		mes "¹ï¤F!½Ðµ¥¤@¤U¡A";
+		mes "¥i½Ð¨D§A¶Ü?";
+		mes "§Aªº¤é¤l¦n¹³¹LªºÁÙ¤£¿ù¡A";
+		mes "¦³¦h¾lªº¿ú¥i¥H­É§Ú¶Ü?";
+		mes "«ô°U§A!";
+		emotion e_heh;
+		next;
+		if (select("µ¹¥L:¤£µ¹¥L") == 1) {
+			mes "[«¢©Z]";
+			mes "µ¹§Ú¶Ü!!";
+			mes "§A¯u¬O­Ó¦n¤H°Ú~";
+			mes "¤Ó¦n¤F!";
+			if (zeny > 1000) {
+				set zeny,zeny-1000;
+				if (checkweight(517,1)) {
+					getitem 517,1; //Meat
+				}
+				emotion e_swt2;
+			}
+			else {
+				next;
+				mes "[«¢©Z]";
+				mes "¤°»ò!¨S¦³¿ú";
+				mes "«o¸Ë§@¦³¿ú....";
+				emotion e_pif;
+				close;
+			}
+			next;
+			mes "[«¢©Z]";
+			mes "³o¬O§Úªº¤@ÂI¤p·N«ä¡AÁÂÁÂ§A";
+			emotion e_heh;
+			close;
+		}
+		mes "[«¢©Z]";
+		mes "........³o¼Ë°Ú";
+		emotion e_sob;
+		close;
+	}
+	else {
+		mes "[???]";
+		mes "¨Z¤Ú¨Z¤Ú!!";
+		mes "¨Z~¤Ú¨Z¤Ú~¨Z~¤Ú¨Z¤Ú~";
+		mes "©Ô~¤Ú¨Z¤Ú~¨Z~¤Ú¨Z¤Ú©Ô~";
+		next;
+		mes "[???]";
+		mes "Umbah! Umbaumbah!";
+		mes "Umbahumbah Haatan babah.";
+		emotion e_sob;
+		next;
+		mes "[Haatan]";
+		mes "........umbah,";
+		mes "Umbah umbah umbaumbumbah umbah umbah";
+		mes "Babaum babahum woombah umbah umbabah";
+		mes "Umbah umbah";
+		mes "..Umbah umbabah umbah...";
+		emotion e_heh;
+		next;
+		mes "[Haatan]";
+		mes " . . . !";
+		next;
+		mes "[Haatan]";
+		mes "Umbah!";
+		mes "Umbah umbah? Umbah umbahbah";
+		mes "abaum babahum woombah!";
+		mes "Umbahumbah umbabahumbaumhumbah! Umbah!";
+		emotion e_heh;
+		next;
+		if (select("(Nod head):(Shake head)") == 1) {
+			mes "[Haatan]";
+			mes "Umbaumbah!!";
+			mes "Um~bahumbah~ Um~baumbah~";
+			mes "Um~baumbah~ um~baumbah~";
+			if (zeny > 1000) {
+				set zeny,zeny-1000;
+				if (checkweight(517,1)) {
+					getitem 517,1; //Meat
+				}
+				emotion e_swt2;
+			}
+			else {
+				next;
+				mes "[Haatan]";
+				mes "...umbah? Umbahumbah!! Umbaum!";
+				emotion e_pif;
+				close;
+			}
+			next;
+			mes "[Haatan]";
+			mes "Umba umba umbaum.";
+			emotion e_sob;
+			close;
+		}
+		mes "[Haatan]";
+		mes "........umbah..";
+		emotion e_heh;
+		close;
+	}
+	close;
+}
+
+umbala,59,243,5	script	«BÀÈ±Ú ¤p«Ä#1	787,{
+	if (event_umbala >= 3) {
+		mes "[±F©Z]";
+		mes ".........";
+		mes ".......¼H¼H";
+		mes "....¦×¦n¦Y";
+		mes "...µ¹§Ú¦×";
+		emotion e_rock;
+		next;
+		if (select("µ¹¥L:¤£µ¹¥L") == 1) {
+			if (countitem(517) > 0) {
+				mes "[±F©Z]";
+				mes "¯uªº­nµ¹§Ú¶Ü? ÁÂÁÂ!";
+				mes "³o¨S¤°»ò¬O§Úµ¹§AªºÁÂÂ§";
+				delitem 517,1; //Meat
+				getitem 909,2; //Jellopy
+				getitem 914,2; //Fluff
+				getitem 705,2; //Clover
+				emotion e_scissors;
+				close;
+			}
+			mes "[±F©Z]";
+			mes "¤°»ò¹À¡A¨S¦³¦×¡A";
+			mes "ÁÙ¸Ë§@¦³!";
+			mes "«BÀÈ±Ú¬O«D±`";
+			mes "°Q¹½¶B´Ûªº!";
+			percentheal -20,0;
+			emotion e_an;
+			close;
+		}
+		mes "[±F©Z]";
+		mes ".......";
+		mes "....¨{¤l¾j";
+		mes "....·Q¦Y¦×";
+		percentheal -1,0;
+		emotion e_sob;
+		close;
+	}
+	else {
+		mes "[???]";
+		mes ".........";
+		mes "......¨Z¤Ú";
+		mes ".....¨Z¤Ú¤Ú";
+		mes ".....©I¤Ú";
+		emotion e_rock;
+		next;
+		if (select("µ¹¥L:¤£µ¹¥L") == 1) {
+			if (countitem(517) > 0) {
+				mes "[???]";
+				mes "Umbaumbaumbabababah.";
+				mes "Umbababahum.";
+				delitem 517,1; //Meat
+				getitem 909,2; //Jellopy
+				getitem 914,2; //Fluff
+				getitem 705,2; //Clover
+				emotion e_scissors;
+				close;
+			}
+			mes "[???]";
+			mes "Umbahumumhumbubabababah!!";
+			mes "Umbahumbababah umbahumboo!";
+			percentheal -20,0;
+			emotion e_an;
+			close;
+		}
+		mes "[???]";
+		mes "...........";
+		mes "......woong bah.";
+		mes "....umbabababah.";
+		emotion e_sob;
+		percentheal -1,0;
+		close;
+	}
+}
+
+umbala,177,153,3	script	©¬´µ¦«#um	97,{
+	emotion e_gasp;
+	mes "[©¬´µ¦«]";
+	mes "¶ã«z-! ¦³¤H­C!?";
+	mes "¨S·Q¨ì¦b³oºØ°¾»÷ªº¦a¤è·|µo²{¤H!";
+	mes "¤Ï¥¿«Ü°ª¿³¨£¨ì§A¡A§Ú¥s©¬´µ¦«";
+	next;
+	mes "[©¬´µ¦«]";
+	mes "³o¸Ì¬O¥s°µ¨Z¤Ú©Ôªº§ø¸¨¡A";
+	mes "¥i¯à¬O¦ì©ó³oºØ²`¤sÂOªL¸Ì¡A©Ò¥H»P¨ä¥L§ø¸¨§Î¦¨§¹¥þ¤£¦Pªº¤å¤Æ°é";
+	next;
+	mes "[©¬´µ¦«]";
+	mes "½§¦â¤]¤£¦P¡A»y¨¥¤]¬O¸ò§Ú­Ì¥Îªº»y¨¥§¹¥þ¤£¦P°Ú¡A";
+	mes "¨Ó¨ì³o¸Ì¤§«á³Ì¯î­ðªº´N¬O¡A ";
+	mes "¥L­Ìªí¹F·P±¡ªº¤è¦¡»P§Ú­Ì¤£¦P";
+	next;
+	mes "[©¬´µ¦«]";
+	mes "·íµM¤]¦³¬Û¦üªº¦a¤è¡A";
+	mes "¤£¹L¦³´X¶µ¨Æ±¡¨S¦³ª`·Nªº¸Ü¡A¥i¯à·|«ÜÃø³ô³á¡A";
+	mes "ÁÙ·|¦³¥]§tµÛ§¹¥þ¬Û¤Ïªº·N«ä";
+	next;
+	mes "[©¬´µ¦«]";
+	mes "¤£­n¥H¬°¥L­ÌªºÁy¦b¯º¡A ";
+	mes "´NÄ±±o¥L­Ìªº¤ß¸Ì¤]¦b¯º¡A";
+	mes "À´¤F¶Ü?";
+	next;
+	mes "[©¬´µ¦«]";
+	mes "­Ë¤£¦p»y¨¥¬Û³qªº¸Ü...";
+	mes "¤£ª¾¹D¦³¨S¦³¤HÀ´±o§Ú­Ìªº»y¨¥©O..";
+	mes "­ü­ò ¯uÆ{´e°Ú - ! !";
+	emotion e_sob;
+	close;
+}
+
+umbala,80,146,4	script	ÀuªZ§J#um	753,{
+	mes "[ÀuªZ§J]";
+	mes "¤£¬O...¨Z¤Ú ¨Z¤Ú ¶ã¹Ç¶ã¡A";
+	mes "§A¤]¬O§O¦a¤èªº¤H°Ú?";
+	mes "§r°Ú~ «Ü°ª¿³¨£¨ì§A¡A¨S·Q¨ì";
+	mes "¦b³oºØ¦a¤èÁÙ·|¨£¨ì";
+	mes "§Oªº¥~¦a¤H°Ú¡A«¢«¢«¢";
+	next;
+	mes "[ÀuªZ§J]";
+	mes "¬°¤F´M§ä±jªÌ¦Ó¨Ó¨ì¤F";
+	mes "³o¸Ì¬OÁÙ¥i¥H°Õ¡A¥i¬O»y¨¥";
+	mes "³£¤£³q¸Ó«ç»ò¿ì©O...³o¥»¨Ó";
+	mes "¯u¬O­Ó¥O¤H§ì¨gªº¨Æ¡A¤£¹L";
+	mes "Å¥¤[¤FÅÜ±o¼ô±x¤F¡A«¢«¢«¢";
+	next;
+	mes "[ÀuªZ§J]";
+	mes "¦b³o§ø¸¨»y¨¥¤£³q¬O¨ä¦¸°Õ¡A";
+	mes "¯u¥¿ÀÇ¬Nªº¬O³o§ø¸¨";
+	mes "¨k¤H­ÌªººØ±Ú«O¦s¤§";
+	mes "»Ý¨D«Ü±j¯P¡A¯uªº";
+	mes "¨ì³B³£¹³¬O­·¬y°­¦üªº";
+	next;
+	mes "[ÀuªZ§J]";
+	mes "¦]¬°¬O¤ñ¸û±µªñ­ì©lªº§ø¸¨¡A";
+	mes "¦n¹³¤£¤Ó¾A¦X¥Hªk«ß¨Óªý¾×... ";
+	mes "¥i¬OÁÙ¬O·PÄ±¨ì";
+	mes "«ÜÀÇ¬N°Ú";
+	close;
+}
+
+umbala,140,157,6	script	«BÀÈ±Ú «C¦~#1	785,{
+	if (event_umbala >= 3) {
+		mes "[¥B¼Ö©Z]";
+		mes "°ªªÅ¼u¸õ«D±`¦MÀI¡A";
+		mes "¦]¬°¬O«_µÛ¥Í©R¦MÀIªº¨Æ±¡¡A";
+		mes "©Ò¥H¦¨¥\ªº¤H¡A";
+		mes "·|³Q»{©w¬°¬O«BÀÈ±Ú¸Ì";
+		mes "ªº¤j¤H";
+		close;
+	}
+	else {
+		mes "[?????]";
+		mes "¨Z¤Ú¨Z¤Ú©I¤Ú¡A";
+		mes "¶ã¨Z¤Ú¨Z¤Ú¨Z¤Ú¤Ú¶ã©I¤Ú";
+		mes "¨Z¤Ú¤Ú¤Ú¨Z¤Ú¨Z¤Ú";
+		close;
+	}
+}
+
+umbala,146,157,4	script	«BÀÈ±Ú «C¦~#2	786,{
+	if (event_umbala >= 3) {
+		mes "[ªüÃ¹©Z]";
+		mes "¶¶§Qªº§¹¦¨°ªªÅ¼u¸õ";
+		mes "¬O«D±`§xÃøªº¡A";
+		mes "©Ò¥H¬°¤F¼y¯¬¶¶§Q§¹¦¨ªº¤H¡A¦Ó»E¶°¦b³o¸ÌÁ|¦æ»ö¦¡ªº";
+		close;
+	}
+	else {
+		mes "[????]";
+		mes "¨Z¤Ú¨Z¤Ú¨Z¤Ú¤Ú¨Z¤Ú¤Ú";
+		mes "¨Z¤Ú¨Z¤Ú¤Ú¨Z¤Ú¤Ú¤Ú¨Z©I¤Ú¤Ú";
+		close;
+	}
+}
+
+umbala,149,165,4	script	«BÀÈ±Ú ¤p«Ä#3	781,{
+	if (event_umbala >= 3) {
+		mes "[§JÅS°¨©Z]";
+		mes "±q¨º»ò°ªªº¦a¤è±¼¤U¨Ó";
+		mes "¯u¬O¤Ó¥i©È¤F¡A";
+		mes "¤£¹L©O¦b§Ú­Ì«BÀÈ±Ú¡A";
+		mes "­nªí²{¥X¨ººØ¼Ë¤l¡A";
+		mes "¤~·|³Q»{©w¬°¦³«i®ðªº¤H";
+		close;
+	}
+	else {
+		mes "[??????]";
+		mes "¨Z¤Ú¨Z¤Ú¨Z¤Ú¤Ú¤Ú¡A";
+		mes "¨Z¤Ú¨Z¤Ú¨Z¨Z¤Ú¤Ú¨Z©I¤Ú¡A";
+		mes "¨Z¤Ú¨Z¤Ú¨Z¨Z¤Ú©I¤Ú¡A";
+		close;
+	}
+}
+
+umbala,92,159,4	script	¨õ¼Ö©Z#um	785,{
+	if (event_umbala >= 3) {
+		mes "[¨õ¼Ö©Z]";
+		mes "§Aª¾¹D¨Z¤Ú©Ô©~¥Áªº¥Ö½§¬°¤°»ò³£«Ü¶Â¶Ü?";
+		mes ". . . ¨º´N¬O¦]¬°";
+		next;
+		mes "[¨õ¼Ö©Z]";
+		mes "¨Z¤Ú©Ô¤H¦b¨C±ßºÎ«e³£·|¦Y¥©§J¤OªºÃö«Y!";
+		next;
+		mes "[¨õ¼Ö©Z]";
+		mes "¦n³ßÅw¥©§J¤O ®¦«¢~";
+	}
+	else {
+		mes "[????]";
+		mes "¨Z¤Ú¨Z¤Ú ¨Z¤Ú¨Z¤Ú";
+		mes "¨Z¤Ú¨Z¤Ú ¨Z¤Ú¨Z¤Ú";
+		mes "¨Z¤Ú ¨Z¤Ú ¨Z¤Ú¨Z¤Ú";
+		next;
+		mes "[????]";
+		mes "¨Z¤Ú ¨Z¤Ú¤Ú ®¦«¢";
+		emotion e_ho;
+		close;
+	}
+	close;
+}
+
+umbala,194,104,4	script	«BÀÈ±Ú ¤p«Ä#2	787,{
+	if (event_umbala >= 3) {
+		mes "[¥¬¼Ö³Ø©Z]";
+		mes "­ü§r¡A¬O¥~¦a¤H°Ú?";
+		mes "§A¦³¸õ¹L°ªªÅ¼u¸õ¶Ü?";
+		next;
+		if (select("¦³:¨S¦³") == 1) {
+			mes "[¥¬¼Ö³Ø©Z]";
+			mes "«z°Ú¡A¥~¦a¤H·|¸õ³o­Ó¯u¬O¤F¤£°_°Ú¡A";
+			mes "§Ú­ÌÆg³\§A¦³³o¼Ëªº«i®ð¡A«BÀÈ±ÚÅwªï§A";
+			close;
+		}
+		mes "[¥¬¼Ö³Ø©Z]";
+		mes "ÁÙ¨S¸õ¹L°Ú...";
+		mes "·Q­n³Q»{©w¬°¤j¤Hªº¸Ü¡A";
+		mes "¤£ºÞ¬O½Ö³£­n¸g¾ú¹Lªº»ö¦¡°Ú¡A";
+		mes "µ¥§Úªø¤j¡A¤@©w­n¨Ó³o¸Ì¬D¾Ô¡AµM«á³Q¤j®a»{©w¬O¦³«i®ðªº¤H!";
+		close;
+	}
+	else {
+		mes "[???]";
+		mes "¨Z¤Ú¨Z¤Ú¤Ú¤Ú¨Z©I¤Ú¡A";
+		mes "¨Z¤Ú¤Ú¨Z¨Z¤Ú¨Z¤Ú¨Z¤Ú?";
+		next;
+		if (select("¦³:¨S¦³") == 1) {
+			mes "[???]";
+			mes "Umba, Umumbah umbabah.";
+			mes "Umbaumbah umumbabah.";
+			close;
+		}
+		mes "[???]";
+		mes "Er, Umbahumba umumbah.";
+		mes "Umbahumbah umbabah.";
+		mes "Umbahumhumbabahum.";
+		close;
+	}
+}
+
+umbala,193,208,6	script	«BÀÈ±Ú «C¦~#3	789,{
+	if (event_umbala >= 3) {
+		mes "[½÷©y©Z]";
+		mes "§Ú¦~»´®É¤]¸õ¹L°ªªÅ¼u¸õ¡A";
+		mes "ÁöµM®tÂI¨S©R¡A¤£¹L¦¨¥\«áªº¨ººØ¦¨´N·P¬OµLªk¨¥³ëªº¡A";
+		mes "¤]¦³¤HÄ±±o«Üª¼¥Ø¡A";
+		mes "¦ý§ÚÄ±±o¨º¬O¦~»´¤Hªº¶¯¤ß°Ú";
+		close;
+	}
+	else {
+		mes "[????]";
+		mes "¨Z¤Ú¨Z¤Ú¨Z¤Ú¤Ú¡A";
+		mes "¨Z¤Ú¨Z¤Ú©I¤Ú¨Z¨Z¤Ú¤Ú¨Z¡A";
+		mes "¨Z¨Z¤Ú¤Ú¤Ú¨Z¤Ú©I";
+		close;
+	}
+}
+
+umbala,139,205,4	script	«BÀÈ±Ú «C¦~#5	785,{
+	if (event_umbala >= 3) {
+		mes "[¦¶©Z]";
+		mes "¦n¤[¤£¨£ªº¥~¦a¤H°Ú!";
+		mes "³o¸Ì¬O¤H­Ìª±°ªªÅ¼u¸õ";
+		mes "ªº¦a¤è¡A";
+		mes "«Ü¦h«BÀÈ±Úªº¦~»´¤H¡A";
+		mes "¬°¤FÃÒ©ú¦Û¤vªº«i®ð¡A";
+		mes "¦Ó¦b³o¸õ¤U¥h";
+		next;
+		mes "[¦¶©Z]";
+		mes "¦A©¹«e­±¨«ªº¸Ü·|±¼¤U¥hªº¡A";
+		mes "³Ì¦n¬O¥ý°µ¦n¤ß²z·Ç³Æ³á";
+		next;
+		mes "[¦¶©Z]";
+		mes "±¼¤U¥h¤§«á¥i¥Hª¦Ã·¤l¤W¨Ó¡A¤£µM¦b¤ô¸Ì¥J²Ó§äªº¸Ü¡A";
+		mes "¦³­Ó¥i¥H³q¨ì¹ï­±ªº¤ô¤¤¬}¥Þ";
+		mes "¹ï¤F¡A°¸¦Ó¤]¦³¹B®ð®tªº¤H·|ª½±µ±¼¤U¥h¦Ó¦º¤`ªº";
+		next;
+		mes "[¦¶©Z]";
+		mes "¨ä¤¤¤]¦³¥ú¬Ý´NÀ~¦ºªº¤H¡A©Ò¥H­n¤p¤ßÂI¡A";
+		mes "¦b¤ô¸ÌÁÙ¦³¤£©úªº©Çª«¡A§A«Ý¤[ªº¸Ü¤]·|¦º±¼ªº";
+		close;
+	}
+	else {
+		mes "[????]";
+		mes "¨Z¤Ú¨Z¤Ú!";
+		mes "¨Z¤Ú¨Z¤Ú¤Ú¤Ú¤Ú¨Z¨Z¤Ú¡A";
+		mes "¤Ú¤Ú¨Z¶ã©Z¨Z¤Ú¨Z¤Ú¤Ú¡A";
+		mes "¨Z¤Ú¤Ú¤Ú©I¡A";
+		mes "¨Z¨Z©I¤Ú¤Ú¨Z¤Ú¨Z¤Ú¨Z¤Ú¤Ú";
+		next;
+		mes "[????]";
+		mes "¨Z¤Ú©I¹À¤Ú¤Ú¨Z¤Ú¡A";
+		mes "¨Z¤Ú¤Ú©Z¨Z¤Ú¨Z¤Ú¡A";
+		mes "¤Ú¡A¨Z¤Ú¨Z¤Ú¨Z¨Z¤Ú¤Ú¨Z¡A";
+		mes "¨Z¤Ú¨Z¤Ú¨Z¤Ú©I";
+		close;
+	}
+}
+
+um_in,158,71,3	script	«BÀÈ±Ú «C¦~#um	787,{
+	if (event_umbala >= 3) {
+		mes "[ªª¶ð®w©Z]";
+		mes "¨Z¤Ú©Ô¸Ì¦³«Ü¦h«Ü¦h¾ð¤ì!";
+		mes "§Úªª¶ð®w©Z¡A«D±`³ßÅw¾ð¤ì¡A¼K¼K";
+		next;
+		mes "[ªª¶ð®w©Z]";
+		mes "¨ä¤¤¦³­Ó¯S§O³ßÅwªº¾ð¤ì! ¬O¦b¨Z¤Ú©Ô³Ì¤j- ³Ì¤[ªº¾ð¤ì!";
+		mes "¤£¹ï¡AÀ³¸Ó¬O¥@¤W³Ì- ¤jªº!";
+	}
+	else {
+		mes "[????]";
+		mes "¨Z¤Ú¨Z¤Ú ¨Z¤Ú¤Ú ¨Z«¢!";
+		mes "¨Z¤Ú ¨Z¤Ú ¨Z¤Ú¤Ú¤Ú ¨Z¤Ú";
+		mes "¨Z¤Ú ¨Z¤Ú ¨Z¤Ú";
+		mes "¨Z¤Ú¤Ú ¨Z¤Ú ¨Z¤Ú¤Ú";
+	}
+	close;
+}
+
+umbala,140,197,1	script	Bungee Jump	-1,0,0,{
+OnTouch:
+	switch(rand(1,3)) {
+	case 1:
+		percentheal -100,0;
+		mapannounce "umbala","¦b°ªªÅ¼u¸õ»O¤W: "+strcharinfo(0)+" : ¹Ç§r§r§r§r§r§r°Ú°Ú°Ú°Ú~~~~~~~",bc_map;
+		end;
+	case 2:
+		percentheal -50,0;
+		mapannounce "umbala","¦b°ªªÅ¼u¸õ»O¤W: "+strcharinfo(0)+" : ©I¹Ç°Ú°Ú°Ú°Ú°Ú°Ú~~~~~~!",bc_map;
+		end;
+	case 3:
+		if (rand(1,2) == 2) {
+			percentheal -99,0;
+			warp "nif_in",69,15;
+		}
+		end;
+	}
+}
+
+umbala,136,195,0	script	 #jump	-1,1,1,{
+OnTouch:
+	warp "umbala",145,166;
+	end;
+}

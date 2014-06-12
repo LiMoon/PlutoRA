@@ -1,0 +1,484 @@
+//===== rAthena Script ======================================= 
+//= Novice Skills Quests
+//===== By: ================================================== 
+//= kobra_k88
+//===== Current Version: ===================================== 
+//= 1.8
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= Quest for skills: First Aid, Trick Dead
+//===== Additional Comments: ================================= 
+//= 1.5 Rescripted to Aegis 10.3 stadards. [L0ne_W0lf]
+//= 1.6 Corrected NPC names to fall within proper restrictions. [L0ne_W0lf]
+//= 1.7 Updated to latest available official file. [Masao]
+//= 1.8 Added Baby support. [Zopokx]
+//============================================================ 
+
+prt_in,234,133,4	script	納迷	66,{
+	if ((Class == Job_Novice || Class == Job_Baby) && (JobLevel > 3 || BaseLevel > 11) && (skill_nov < 3)) {
+		mes "[納迷]";
+		mes "喂 ，我的志願是當護士老師";
+		mes "我是來這裡做實習老師的";
+		mes "是一個平凡淑女.. 請問";
+		mes "要不要給我一次";
+		mes "實習的機會呢? . .";
+		next;
+		switch (select("繼續對話:偷偷的溜走")) {
+		case 1:
+			if ((skill_nov >= 0) && (skill_nov <= 2)) {
+				switch (skill_nov) {
+				case 0:
+					mes "[納迷]";
+					mes "謝謝你的答應!";
+					mes "既然要開始的話我會";
+					mes "盡全力的教導你-";
+					mes "呼啊 -";
+					next;
+					mes "[納迷]";
+					mes "我想傳達的內容是";
+					mes "有關^3355FF 緊急治療 ^000000 的事情";
+					mes "不需要特別的裝備和器具";
+					mes "只需要簡單的物品 . .";
+					mes "要的是破布之類的東西，或著是利用";
+					mes "剩下來的藥水"; 
+					next;
+					mes "[納迷]";
+					mes "透過緊急治療處理傷口-";
+					mes "只不過是微不足道";
+					mes "稍微恢復你的體力的";
+					mes "技能罷了. . . . .";
+					mes "由於實習道具不足的關係";
+					mes "所以必須要請你自備";
+					next;
+					mes "[納迷]";
+					mes "因為是緊急治療的準備物";
+					mes "所以應該是沒有很大的負擔吧..";
+					mes "首先在附近的原野上";
+					mes "很簡單的就可以找到 ^3355FF 紅色藥草 ^000000 和";
+					mes "^3355FF 三葉幸運草 ^000000 各3片 ，還有需要";
+					mes "^3355FF 消毒處理過的繃帶 ^000000"; 
+					next;
+					mes "[納迷]";
+					mes "所謂消毒處理過的繃帶，在某個地方";
+					mes "透過魔物可以得到，腐爛繃帶";
+					mes "經過消毒加工處理後";
+					mes "可以放在傷口和患部";
+					mes "在外面的原野上";
+					mes "所有的魔物或者是商人";
+					next;
+					mes "[納迷]";
+					mes "都得不到這東西的";
+					mes "普隆德拉城的內部東邊 2樓";
+					mes "在某個地方的護士將軍";
+					mes "他會準備好這些物品";
+					mes "好好跟他說情的話";
+					mes "他會給你的";
+					next;
+					mes "[納迷]";
+					mes "我們現在開始做實習教育";
+					mes "不過沒有所需的教材";
+					mes "所以可以請你先準備好嗎";
+					set skill_nov,1;
+					close;
+				case 1:
+					mes "[納迷]";
+					mes "因為是緊急治療的準備物";
+					mes "所以應該是沒有很大的負擔吧..";
+					mes "首先在附近的原野上";
+					mes "很簡單的就可以找到 ^3355FF 紅色藥草 ^000000 和";
+					mes "^3355FF 三葉幸運草 ^000000 各3片 . 還有需要";
+					mes "^3355FF 消毒處理過的繃帶 ^000000";
+					next;
+					mes "[納迷]";
+					mes "所謂消毒處理過的繃帶，在某個地方";
+					mes "透過魔物可以得到，腐爛繃帶";
+					mes "經過消毒加工處理後";
+					mes "可以放在傷口和患部";
+					mes "在外面的原野上";
+					mes "所有的魔物或者是商人";
+					next;
+					mes "[納迷]";
+					mes "都得不到這東西的";
+					mes "普隆德拉城的內部東邊 2樓";
+					mes "在某個地方的護士將軍";
+					mes "他會準備好這些物品";
+					mes "好好的跟他說情的話";
+					mes "他會給你的";
+					close;
+				case 2:
+					if ((countitem(507) > 2) && (countitem(705) > 2)) {
+						delitem 507,3; //Red_Herb
+						delitem 705,3; //Clover
+						mes "[納迷]";
+						mes "歡迎光臨 ，為了找到準備物";
+						mes "真的辛苦你啦";
+						mes "不管別的，到普隆德拉";
+						mes "找護士將軍，還要應付他古怪的個性";
+						mes "我相信你一定受到不少委屈吧";
+						mes "呼呼呼 . . . . .";
+						next;
+						mes "[納迷]";
+						mes "那就開始教課囉";
+						mes "緊急治療是消耗自己的 SP ";
+						mes "來恢復 HP 的技能";
+						mes "大約消耗 SP 3 ";
+						mes "來恢復 HP 5 的技能";
+						mes "治療時需要的緊急治療藥品";
+						next;
+						mes "[納迷]";
+						mes "製作方法";
+						mes "以及包紮患部的方法 ..";
+						mes "就是這樣，然後又這樣";
+						mes "然後再這樣，再這樣子之後 ，很簡單吧 ?";
+						next;
+						mes "[納迷]";
+						mes ". . 若要講的更詳細一點的話";
+						mes "剩下的藥水，大湯匙一半";
+						mes "紅色藥草一小塊，大約大拇指大小就好";
+						mes "然後這樣子，再那樣子 .";
+						mes "鏘 !!";
+						next;
+						skill "NV_FIRSTAID",1,0;
+						set skill_nov,3;
+						mes "[納迷]";
+						mes "對！對！就是這樣啊";
+						mes "現在你已經有點基礎了";
+						mes "那麼你就好好的";
+						mes "利用這個技能囉";
+						mes "再見囉！拜！ -";
+						close;
+					}
+					mes "[納迷]";
+					mes "因為是緊急治療的準備物";
+					mes "所以應該是沒有很大的負擔吧..";
+					mes "首先在附近的原野上";
+					mes "很簡單的就可以找到 ^3355FF 紅色藥草 ^000000 和";
+					mes "^3355FF 三葉幸運草 ^000000 各3片 . 還有需要";
+					mes "^3355FF 消毒處理過的繃帶 ^000000";
+					close;
+				}
+			}
+			mes "[納迷]";
+			mes ". . . . . Z z z";
+			mes "I am so sorry!!!...I know I did it wrong...!!";
+			mes "Wahhhh ..";
+			mes "!! *sigh* !!";
+			mes "- *rolls her eyes* -";
+			close;
+		case 2:
+			mes "[納迷]";
+			mes "Hey! .. Where are you going? !";
+			mes "Come over here and have a shot !";
+			mes "Prick and its over !!";
+			mes "Grab that patient! ! !";
+			close;
+		}
+	}
+	mes "[納迷]";
+	mes "最近我正在努力的準備";
+	mes "考取護士教師執照啊..";
+	mes "不過成績不太好啊";
+	mes "我認為是. .";
+	mes "實習經驗不足的關係吧?";
+	next;
+	mes "[納迷]";
+	mes "假如你是沒有負擔的";
+	mes "高等級玩家或是. .";
+	mes "^3355FF初心者職業等級4 以上^000000 的話";
+	mes "就可以和你";
+	mes "多聊一點天啊. . . . .";
+	close;
+}
+
+prt_in,73,87,4	script	普隆德拉 騎士團員	65,{
+	if ((Class == Job_Novice || Class == Job_Baby) && (JobLevel > 6) && ((skill_nov >= 3) && (skill_nov <= 5))) {
+		mes "[布碼]";
+		mes "對啊！就如同你所看到的一樣 ，我是..";
+		mes "屬於普隆德拉，騎士團的定額會員";
+		mes "我叫布碼.  哈 哈 哈!!";
+		mes "成為騎士團員還不到幾天";
+		mes "能有這負德行，還算不錯啦?";
+		mes "你認為呢 ?";
+		next;
+		switch (skill_nov) {
+		case 3:
+			mes "[布碼]";
+			mes "唷 ! 初學者朋友 -";
+			mes "看到你什麼都不懂的模樣";
+			mes "讓我想到以前的事啊";
+			mes "哈哈哈！ 好懷念啊 . .";
+			mes "啊 ，我講話的口氣，像不像中年人啊";
+			mes "對不起 ，我也只不過是壯碩的青年啊";
+			next;
+			mes "[布碼]";
+			mes "嘻嘻 . . 你也是";
+			mes "稍微辛苦一點，達到自己想要的職業之後";
+			mes "就可以活的多采多姿啊";
+			mes "當我還是初學者的時候";
+			mes "修練過一個不錯技能";
+			mes "想對你說一些建言. .";
+			next;
+			mes "[布碼]";
+			mes ". . . . . 有一點好奇";
+			mes "不過又有一點懷疑我的眼神啊";
+			mes "我認為這技能";
+			mes "也許會對你有很大的幫助喔..";
+			next;
+			mes "[布碼]";
+			mes "哈哈 ，好的 ，你很想知道";
+			mes "我獨特技能，告訴你同時";
+			mes "也會傳授給你 !";
+			mes "那名稱叫  試著裝死 ! ";
+			mes "你放心，是試著讓你..";
+			mes "看起來真的像已經死去的樣子";
+			next;
+			mes "[布碼]";
+			mes "說^3355FF裝死^000000";
+			mes "比較恰當 ，這需要初學者特有的";
+			mes "極度的耐心才可以";
+			mes "這看起來沒什麼";
+			mes "不過確實是一個很實用的技能. . 想想看嗎 ，裝死";
+			mes "其實不簡單啊";
+			next;
+			mes "[布碼]";
+			mes "當你碰到強悍魔物";
+			mes "你判定打不過它時";
+			mes "你就可以用裝死技能啦";
+			mes "假如魔物的智力比較高";
+			mes "用抓癢的方法試驗你";
+			mes "以你現在的體能，能忍耐過嗎?";
+			next;
+			mes "[布碼]";
+			mes "像在這麼多種的情況之下";
+			mes "看起來要像死掉";
+			mes "需要極度的忍耐力 !";
+			mes "完全的裝死狀態 . . 這就是";
+			mes "裝死技能的最終目的";
+			next;
+			mes "[布碼]";
+			mes "說明就到這裡";
+			mes "看你的眼光已經有";
+			mes "要學習的樣子了";
+			mes "那就準備開始";
+			mes "接受訓練的課程吧 ，首先呢";
+			mes "先吞下我手中的藥丸";
+			next;
+			mes "[布碼]";
+			mes "10 分鐘之內，跑到普隆德拉城內";
+			mes "到東邊走道2樓，尋找護士將軍";
+			mes "跟他領取 ^3355FF 初學者名片 ^000000";
+			mes "就可以啦! . .";
+			next;
+			mes "^3355FF- 恩 (吞下藥丸了) -^000000";
+			next;
+			mes "[布碼]";
+			mes "哈哈！！你剛才吞下的藥丸是";
+			mes "會引起呼吸困難作用的藥丸";
+			mes "哈～哈～你被騙的表情好好笑!";
+			mes "沒關係啦，這藥丸對身體";
+			mes "沒有任何的傷害 ，據說要培養忍耐力";
+			mes "多跑長途跑步";
+			next;
+			mes "[布碼]";
+			mes "是最好的方法之一";
+			mes "那就 ，請你出發囉 . .";
+			mes "假如很晚回來的話";
+			mes "我要懲罰你再跑一次 ，準備，出發!!";
+			mes "快跑啊 - - - - -";
+			set skill_nov, 4;
+			close;
+		case 4:
+			mes "[布碼]";
+			mes "喂 ! 你剩的時間不多啦 !";
+			mes "真是天下太平啊 ! 唉 !";
+			mes "是沒有心要學習技能嗎?";
+			mes "快跑，快跑 ，快跑啊- - - - -";
+			next;
+			mes "[布碼]";
+			mes "普隆德拉護士將軍";
+			mes "在普隆德拉城內";
+			mes "在東邊走道2樓裡";
+			close;
+		case 5:
+			if (countitem(7039) > 0) {
+				mes "[布碼]";
+				mes "太好了! 你終於把它帶來了-";
+				mes "來 ! 試驗已經結束了 . .";
+				mes "只要能承受這藥丸的效力的話";
+				mes "對護士將軍的叫罵，也可以抵抗";
+				mes "只要裝死的話";
+				mes "會看起來很像真的死亡-";
+				next;
+				mes "[布碼]";
+				mes "只要發現，有強悍的魔物出現時";
+				mes "請你好好的觀察之後";
+				mes "打不過就用裝死吧";
+				mes "好了好了，那就下一次再見囉!";
+				set skill_nov,6;
+				delitem 7039,1; //Novice_Nametag
+				skill "NV_TRICKDEAD",1,0;
+				close;
+			}
+			mes "[布碼]";
+			mes "唉，喂 -";
+			mes "初學者名片在那裡?";
+			mes "唉 ，真是的 ，拿你沒辦法";
+			mes "是不是又掉了 . .";
+			mes "你真的是，不行啦，不行啦";
+			mes "我們從頭再開始吧 -";
+			next;
+			mes "[布碼]";
+			mes "你好像把我看扁了";
+			mes "請你小心";
+			mes "普隆德拉騎士團員的職位";
+			mes "並不是隨隨便便";
+			mes "就可以獲得的啊 . .";
+			mes "那就從頭開始，再來一次吧!!";
+			set skill_nov,4;
+			close;
+		}
+	}
+	mes "[布碼]";
+	mes "啊 – 真的讓我回想起當年啊 !";
+	mes "尤其是還是初學者時候的回億";
+	mes "好像就在眼前啊 . . . . . 那時候";
+	mes "真的過的很辛苦啊 ，現在已經到這等級了";
+	mes "所以還有一點寬裕";
+	mes "初學者 (職業等級7 以上)";
+	next;
+	mes "[布碼]";
+	mes "( 加上可使用，緊急治療技能)";
+	mes "也順便想一想";
+	mes "留給初學者的建言吧. .";
+	next;
+	mes "[布碼]";
+	mes "假如你的夥伴中有初學者";
+	mes "跟你的關係還不錯的話";
+	mes "可以介紹給我嗎";
+	mes "我想幫他一臂之力啊 ..";
+	close;
+}
+
+prt_castle,175,146,4	script	護士將軍	50,{
+	mes "[Dread Lord]";
+	mes ". . . . . . . . . .";
+	mes ". . . . . . . . . .";
+	mes "Stop pestering me! ! !";
+	mes "I am very busy ! ! !";
+	mes "Would you just bug off ? ! ? !";
+	close2;
+	if ((skill_nov >= 0) && (skill_nov <= 5)) {
+		switch (skill_nov) {
+		case 0:
+			mes "[Dread Lord]";
+			mes "The people who work here at";
+			mes "Prontera clinic are battling life";
+			mes "and death everyday.";
+			mes "It takes a lot of patience and ";
+			mes "puts a lot of tension on us.";
+			mes "Sorry if we seem a bit uptight. . .";
+			next;
+			mes "[Dread Lord]";
+			mes "I am the Nursing director.";
+			mes "There are many things I must do.";
+			mes "If your business is complete, please leave.";
+			close;
+		case 1:
+			mes "[Dread Lord]";
+			mes "Ohhh . .";
+			mes "You have come here for bandages ?";
+			mes "Do you even know how we get these";
+			mes "precious bandages ?";
+			mes "They come from a powerful monster";
+			mes "that is found in the pyramids of Morroc.";
+			next;
+			mes "[Dread Lord]";
+			mes "The monster is some sort of mummy.";
+			mes "We take the rotten bandages from it's";
+			mes "diseased body and sanitize them. . .";
+			mes "Do you believe me ? . .";
+			mes "Heh heh... There is even poison";
+			mes "in the bandages.";
+			next;
+			mes "[Dread Lord]";
+			mes "Fortunately, the poison kills other poisons";
+			mes "and does not hurt the patient . .";
+			mes "You must destroy poison with poison. . .";
+			mes "I think I heard something similar that. . .";
+			mes ". . . . . Anyway, I would usually give you a";
+			mes "hard time for taking these bandages lightly,";
+			next;
+			mes "[Dread Lord]";
+			mes "but I am much too tired today to";
+			mes "give you any trouble. . .";
+			mes "If you ever get skilled in medicine and first aid,";
+			mes "please consider joining our clinic.";
+			mes "Now don't take these bandages and then";
+			mes "go and get killed, be careful. -";
+			next;
+			mes "^3355FF- Got 1 Sterilized Bandages -^000000";
+			set skill_nov,2;
+			close;
+		case 2:
+			mes "[Dread Lord]";
+			mes "Look, if your business is done";
+			mes "get out of my site! ! !";
+			mes "I have no time for this nonsense ..";
+			mes ". . . . .";
+			mes "- Click Click *Walks away* . . . . . -";
+			close;
+		case 4:
+			if (countitem(7039) == 0) {
+				mes "[Dread Lord]";
+				mes "Look at this guy!";
+				mes "Wake up and watch where you are going.";
+				mes "What are you thinking running around our clinic!";
+				mes "Running ?!?!";
+				mes "*Sigh* . . ";
+				mes "What do you want? ! ? !";
+				next;
+				mes "[Dread Lord]";
+				mes "I see. . . .";
+				mes ". . . . . what ?";
+				mes "You want to have a bandage to learn first aid?";
+				mes " *Arhg* Here take it !";
+				mes "-woosh - *storms away*";
+				next;
+				mes "^3355FF- Got 1 Newbie Tag -^000000";
+				set skill_nov,5;
+				getitem 7039,1; //Novice_Nametag
+				close;
+			}
+			mes "[Dread Lord]";
+			mes "What ! !";
+			mes "I'm only going to give you one!";
+			mes "You don't need any more for the test !";
+			mes "Do you want to stay a novice forever???";
+			mes "I would be happy to arrange that !";
+			close;
+		case 5:
+			mes "[Dread Lord]";
+			mes "What more do you want !";
+			mes "Get out of here !";
+			mes "OUT !";
+			close;
+		}
+	}
+	mes "[Dread Lord]";
+	mes "Argh, Get out of here !!";
+	mes "I don't like shouting but ..";
+	mes "GET OUT OF HERE! ! ! ! ! !";
+	close;
+}
+
+//============================================================ 
+// Old changelog
+//============================================================ 
+//= Fully working
+//= 1.2 Added Baby Class Support [Lupus]
+//= 1.3 Fixed a Zeny exploit, made more variables clear
+//= on finishing quests. [Lupus]
+//= 1.4 Fixed exploits [Lupus]
+//= 1.4a Fixed some typos [IVBela]
+//============================================================ 

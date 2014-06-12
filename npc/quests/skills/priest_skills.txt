@@ -1,0 +1,338 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://plutoea.googlecode.com/svn/
+// ---------------------------------
+// - 祭司 任務技能 腳本 - 
+//===================================
+// 版本: 1.5 ( 稍做改寫 )
+//===================================
+
+prt_church,111,112,1	script	萊伊娜斯 修女	79,{
+	switch (PRIEST_SK) {
+	case 0:
+		set redemp,1014;
+		if (getskilllv("PR_REDEMPTIO")) {
+			mes "[萊伊娜斯 修女]";
+			mes "I'll always be praying";
+			mes "for your safety. Be careful,";
+			mes "and I hope that you can bring";
+			mes "love and compassion to all";
+			mes "whom you meet in your travels.";
+			set PRIEST_SK,100;
+			close;
+		}
+		mes "[萊伊娜斯 修女]";
+		mes "凌晨的守護者，以你做為燈火來引導那位女士吧，奧丁神啊，你曾經說過奉獻出無限的慈悲和愛給我們的";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "請你把站在你前面的靈魂對她憐憫，讓她們得到她們想要的永遠的安息，用你永遠燦爛的光芒，照耀著他們吧";
+		if (BaseJob != Job_Priest) close;
+		next;
+		select("請問這是對為誰做的禱告啊?");
+		mes "[萊伊娜斯 修女]";
+		mes "..............";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "以前有一位年紀較輕的修女";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "她總是個性開朗明亮的，";
+		mes "有一點草率的個性，";
+		mes "也闖了一些大大小小禍事的可愛女孩";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "冒險家們故意選擇危險的地區，做為旅行來累積修行的，";
+		mes "因而在那樣的團體裡是有很多危險性的，";
+		mes "所以聖職者是不能或缺的，我想這你應該知道吧";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "某天有一群冒險家們，";
+		mes "為了要尋找一起參與旅行的聖職者，";
+		mes "曾拜訪過這裡了";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "^3131DD古城^000000";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "....難道這也是命運的捉弄嗎?";
+		mes "當時在大教堂裡，尤其是那一天，";
+		mes "可以配合參與旅行的，";
+		mes "在時間甚允許的聖職者一個都沒有，";
+		mes "除了那位小孩之外";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "對每件事情都很好奇的那位小孩，";
+		mes "使盡了所有的辦法，";
+		mes "最後終於加入到那隊伍裡去了";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "他們前往最有名的危險地方";
+		mes "^0000FF克雷斯特漢姆古城^000000，";
+		mes "在那裡也經歷了相當多的危險，";
+		mes "那小孩也在那裡孤軍奮鬥了一番";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "然後他們..在到達旅行的最後階段時，碰到了巨大的危險";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "尤其是在克雷斯特漢姆古城裡，";
+		mes "最危險的那一位，";
+		mes "在^0000FF邪駭浪人^000000們最多的地方，除了那位小孩";
+		mes "之外所有的夥伴們都相繼倒下了，";
+		mes "再過不久就會是全軍覆沒的緊急狀況啊";
+		next;
+		select("所以說他們到最後怎麼了?");
+		mes "[萊伊娜斯 修女]";
+		mes "就在其他夥伴們都不能做作戰的同時..";
+		mes "那小孩就開始唸起了，那古代的咒文了";
+		next;
+		select("那咒文是指?");
+		mes "[萊伊娜斯 修女]";
+		mes "^FF0000捨身取義 !!!^000000";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "在聖職者中勢力較優秀的，";
+		mes "高等級的聖職者中，";
+		mes "才能使用的那技術!!";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "那技術是救活自己周圍附近的伙伴，";
+		mes "相對的自己會變成不能戰鬥的狀態，";
+		mes "是^0000FF聖職者最高的犧牲技能^000000啊";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "一個連書都讀不好，";
+		mes "甚至時常引起麻煩的小孩，";
+		mes "在那危機的一瞬間，";
+		mes "想起了捨身取義的句子，";
+		mes "為了救起伙伴們花了不少功夫呢";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "我想他在那個時候，應該是蠻痛苦掙扎的吧，";
+		mes "應該是自己感到無能為力時，那時候才是最為痛苦的吧";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "費盡心力的小孩，";
+		mes "奧丁神覺得很可憐，難道是他下的奇蹟嗎?";
+		mes "捨身取義是成功了";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "奇蹟似的活下來的伙伴們";
+		mes "把周圍的狀況整理好之後，";
+		mes "用天地樹葉子把那小孩給扶起來了，";
+		mes "結束了最後的旅程，";
+		mes "平安的回到普隆德拉了";
+		next;
+		mes "["+ strcharinfo(0) +"]";
+		mes "突然得讓你說到以前的事情，";
+		mes "我還以為是一場悲哀的結局呢，還是不好啊";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "Well, a few months ago,";
+		mes "she went on a mission to";
+		mes "^3131FFLighthalzen^000000, a city in the";
+		mes "Schwaltzvalt Republic. I was";
+		mes "just worried since I haven't";
+		mes "heard from her in a while.";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "I come here to pray for";
+		mes "her everyday, and hope that";
+		mes "she'll come back safely and";
+		mes "share stories of her adventures";
+		mes "with me. Ooh, we'll talk all night long! It'll be so much fun!";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "Goodness, I've been";
+		mes "running my mouth! I'm";
+		mes "sorry to keep you, did you";
+		mes "have somewhere to go? Well,";
+		mes "I'll be praying for your safety~ ";
+		next;
+		mes "["+ strcharinfo(0) +"]";
+		mes "Before I go, would you";
+		mes "please tell me the name";
+		mes "of that High Priest you were";
+		mes "talking about? If I see her,";
+		mes "I'll ask her to contact you.";
+		next;
+		mes "[萊伊娜斯 修女]";
+		mes "Oh, thank you! Her name";
+		mes "is High Priest Sorin. Um,";
+		mes "^3131FF馬格雷特 繡靈^000000. If you";
+		mes "happen to find her, please";
+		mes "let her know that I am";
+		mes "praying for her safety.";
+		set PRIEST_SK,1;
+		close;
+	case 1:
+		mes "[萊伊娜斯 修女]";
+		mes "Oh, hello~";
+		mes "How are you";
+		mes "doing today?";
+		next;
+		if (select("我要學習^3131FF'捨身取義'^000000:結束對話") == 1) {
+			mes "[萊伊娜斯 修女]";
+			mes "Ooh, 捨身取義 would be";
+			mes "a good skill for you to learn~";
+			mes "It's difficult to cast, but when you succeed, you can revive all";
+			mes "of your defeated Party Members.";
+			next;
+			mes "[萊伊娜斯 修女]";
+			mes "Of course, the drawback";
+			mes "is that you must ^3131FFsacrifice";
+			mes "your own life^000000 in order to";
+			mes "use the skill. Now, to learn";
+			mes "捨身取義, you must first";
+			mes "learn ^3131FFLevel 1 Resurrection^000000.";
+			next;
+			mes "[萊伊娜斯 修女]";
+			mes "Ah, you must";
+			mes "also bring me";
+			mes "^3131FF30 Holy Waters and";
+			mes "20 Blue Gemstones^000000";
+			mes "so you can attempt";
+			mes "to learn the skill.";
+			set PRIEST_SK,2;
+			next;
+			mes "[萊伊娜斯 修女]";
+			mes "Um, but if you fail to";
+			mes "learn 捨身取義, you'll";
+			mes "lose 1 Holy Water and";
+			mes "1 Blue Gemstone and";
+			mes "you'll have to try it again...";
+			close;
+		}
+		mes "[萊伊娜斯 修女]";
+		mes "祈禱的話感覺心裡舒服一點，";
+		mes "感覺有點受到慰問的感覺?";
+		mes "也許就是因為這樣，我才會選走這條路吧，呵呵";
+		close;
+	case 2:
+		if (getskilllv("ALL_RESURRECTION") > 0) {
+			if (countitem(523) > 29 && countitem(717) > 19) {
+				mes "[萊伊娜斯 修女]";
+				mes "Ooh, it seems like you've";
+				mes "brought everything that you";
+				mes "need to learn 捨身取義.";
+				mes "Are you ready to try it? If you";
+				mes "fail, you'll lose 1 Holy Water";
+				mes "and 1 Blue Gemstone, okay?";
+				next;
+				mes "[萊伊娜斯 修女]";
+				mes "Now, please";
+				mes "concentrate and";
+				mes "repeat this special";
+				mes "prayer after me.";
+				next;
+				mes "[萊伊娜斯 修女]";
+				mes "^3131FFOh holy and venerable one,";
+				mes "we pray to you. Please show";
+				mes "us your mercy and guide us";
+				mes "with your light. Give us the";
+				mes "strength to walk the path of";
+				mes "love and sacrifice. 捨身取義!^000000";
+				next;
+				set .@redem_s,JobLevel+getskilllv("ALL_RESURRECTION");
+				set .@red_suc,rand(1,100);
+				if( .@redem_s < 31 ) {
+					if( .@red_suc > 20 && .@red_suc < 41 )
+						set .@success,1;
+				} else if( .@redem_s < 41 ) {
+					if( .@red_suc > 10 && .@red_suc < 41 )
+						set .@success,1;
+				} else {
+					if( .@red_suc > 10 && .@red_suc < 51 )
+						set .@success,1;
+				}
+				if (.@success) {
+					specialeffect2 EF_HEALSP;
+					mes "[萊伊娜斯 修女]";
+					mes "Congratulations!";
+					mes "You successfully";
+					mes "learned 捨身取義!";
+					mes "Please remember to only";
+					mes "use this skill in the most";
+					mes "critical situations.";
+					delitem 717,20; //藍色魔力礦石
+					delitem 523,30; //聖水
+					set PRIEST_SK,100;
+					skill "PR_REDEMPTIO",1,0;
+				}
+				else {
+					specialeffect2 EF_POISONHIT;
+					mes "[萊伊娜斯 修女]";
+					mes "Oh no! I'm sorry,";
+					mes "but you failed to";
+					mes "learn 捨身取義. Well,";
+					mes "I'll be waiting right here,";
+					mes "so we can try again when";
+					mes "you're ready, okay?";
+					delitem 717,1; //藍色魔力礦石
+					delitem 523,1; //聖水
+				}
+			}
+			else {
+				mes "[萊伊娜斯 修女]";
+				mes "If you want to try to learn";
+				mes "捨身取義, please bring";
+				mes "^3131FF20 Blue Gemstones^000000 and";
+				mes "^3131FF30 Holy Waters^000000. Ah, and";
+				mes "you need to learn ^3131FFLevel 1";
+				mes "Resurrection^000000 beforehand.";
+			}
+		}
+		else {
+			mes "[萊伊娜斯 修女]";
+			mes "If you want to try to learn";
+			mes "捨身取義, please bring";
+			mes "^3131FF20 Blue Gemstones^000000 and";
+			mes "^3131FF30 Holy Waters^000000. Ah, and";
+			mes "you need to learn ^3131FFLevel 1";
+			mes "Resurrection^000000 beforehand.";
+		}
+		close;
+	case 100:
+		if (getskilllv("PR_REDEMPTIO") == 0) {
+			mes "[萊伊娜斯 修女]";
+			mes "Hm? We've met before,";
+			mes "haven't we? Then again,";
+			mes "all Priests begin to look";
+			mes "the same after a while. Ah,";
+			mes "were you one of the ones";
+			mes "to whom I taught 捨身取義?";
+			next;
+			mes "[萊伊娜斯 修女]";
+			mes "Ah, you've forgotten, have";
+			mes "you? Well, it's no problem for";
+			mes "me to teach you again. This skill enables you to revive your fallen";
+			mes "Party Members by sacrificing";
+			mes "your own life for them.";
+			next;
+			mes "[萊伊娜斯 修女]";
+			mes "^3131FFOh holy and venerable one,";
+			mes "we pray to you. Please show";
+			mes "us your mercy and guide us";
+			mes "with your light. Give us the";
+			mes "strength to walk the path of";
+			mes "love and sacrifice. 捨身取義!^000000";
+			skill "PR_REDEMPTIO",1,0;
+			next;
+			mes "[萊伊娜斯 修女]";
+			mes "There...";
+			mes "You should be able";
+			mes "to perform 捨身取義";
+			mes "now. I hope you use it";
+			mes "well on your adventures~";
+		}
+		else {
+			mes "[萊伊娜斯 修女]";
+			mes "I'll always be praying";
+			mes "for your safety. Be careful,";
+			mes "and I hope that you can bring";
+			mes "love and compassion to all";
+			mes "whom you meet in your travels.";
+		}
+		close;
+	}
+}

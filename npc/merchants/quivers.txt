@@ -1,0 +1,151 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://plutoea.googlecode.com/svn/
+// -----------------------------------------
+// - 箭矢筒 製作任務 -
+//===========================================
+
+payon_in01,5,134,4	script	發明家 欽斯	89,{
+	if(Weight*100/MaxWeight >= 90) {
+		mes "[發明家 欽斯]";
+		mes "你現在負重太重了，連身體都站不穩";
+		mes "把東西清理過後再來的話";
+		mes "我會講一個讓你聽了";
+		mes "耳朵會豎起來的故事給你聽";
+		close;
+	}
+	mes "[發明家 欽斯]";
+	mes "我是天才發明家 欽斯!";
+	mes "我這一次發明了一個，名留千史的物品!";
+	mes "就是^FF0000魔法箭箭矢筒^000000!!";
+	next;
+	mes "[發明家 欽斯]";
+	mes "我想了好幾十年...";
+	mes "不管是下大雨還是下大雪...";
+	mes "為了研空出我想得到的結果!";
+	mes "已經發現如何利用魔力把箭矢濃縮";
+	mes "製作成可攜帶^0000FF魔法箭箭矢筒^000000";
+	mes "呵哈哈哈!";
+	next;
+	emotion 21;
+	mes "[發明家 欽斯]";
+	mes "這對拿弓的玩家來說";
+	mes "是一項大革命性的物品啊!";
+	mes "能製作出那個東的我";
+	mes "真的是天天天天天才發明家 欽斯!!!";
+	next;
+	mes "[發明家 欽斯]";
+	mes "你 有想要的箭箭矢筒嘛?";
+	mes "我猜那個物品對你來說";
+	mes "是讓你心中非常滿意的品吧!嘻嘻";
+	next;
+	switch (select("箭矢筒:鐵箭矢筒:鋼鐵箭矢筒:神之金屬箭矢筒:火箭矢筒:銀箭矢筒:風靈箭矢筒:地靈箭矢筒:水靈箭矢筒:影子箭矢筒:無形箭矢筒:鐵銹箭矢筒")) {
+	case 1:
+		setarray .@arr[0],1750,12004;
+		break;
+	case 2:
+		setarray .@arr[0],1770,12005;
+		break;
+	case 3:
+		setarray .@arr[0],1753,12006;
+		break;
+	case 4:
+		setarray .@arr[0],1765,12007;
+		break;
+	case 5:
+		setarray .@arr[0],1752,12008;
+		break;
+	case 6:
+		setarray .@arr[0],1751,12009;
+		break;
+	case 7:
+		setarray .@arr[0],1755,12010;
+		break;
+	case 8:
+		setarray .@arr[0],1756,12011;
+		break;
+	case 9:
+		setarray .@arr[0],1754,12012;
+		break;
+	case 10:
+		setarray .@arr[0],1767,12013;
+		break;
+	case 11:
+		setarray .@arr[0],1757,12014;
+		break;
+	case 12:
+		setarray .@arr[0],1762,12015;
+		break;
+	}
+	if(countitem(.@arr[0])<500 || Zeny<500) {
+		mes "[發明家 欽斯]";
+		mes "這是" +getitemname(.@arr[0])+ "可以";
+		mes "放入500只箭矢的大箭矢筒喔";
+		mes "因為用我自己特殊的秘方處理";
+		mes "比直接拿500只箭矢";
+		mes "還要更加輕便";
+		next;
+		mes "[發明家 欽斯]";
+		mes "怎樣?這是不是一件了不起的物品呢!";
+		mes "我這也算是做出了一個寶石呀!";
+		mes "像閃爍寶石頭一樣神秘的物!這就是我的寶物!";
+		mes "假如需要這個箭矢筒的話請帶" +getitemname(.@arr[0])+ "500只";
+		mes "和500金幣來吧";
+		mes "我會把它放在箭矢筒裡和你交換的";
+		close;
+	}
+	mes "[發明家 欽斯]";
+	mes "喔喔~你!";
+	mes "剛好攜帶著一個適合的物品啊";
+	mes "要不要直接拿";
+	mes "^FF0000500Zeny^000000試試看呢";
+	mes getitemname(.@arr[0])+ "500個";
+	mes "我會把500個箭矢放在箭矢筒裡和你交換的プ";
+	next;
+	switch (select("把材料都交換:只製作一筒:我不想交換耶")) {
+	case 1:
+		set .@have,countitem(.@arr[0]);	//矢所持數
+		set .@max,.@have/500;		//最大交換數
+		set .@price,.@max*500;		//料金
+		mes "[發明家 欽斯]";
+		mes "擁有的箭矢數量" +getitemname(.@arr[0])+ " :";
+		mes "^0000FF" +.@have+ " 個^000000";
+		mes "可以組合的箭矢筒數量" +getitemname(.@arr[1])+ " :";
+		mes "^0000FF" +.@max+ " 個^000000";
+		mes "組合時需要的金幣 :";
+		mes "^0000FF" +.@price+ " Zeny^000000";
+		next;
+		mes "請問你要交換嘛?";
+		next;
+		if(select("我要交換:我不想交換耶")==2) {
+			mes "[發明家 欽斯]";
+			mes "相信我試用看看吧...";
+			mes "這真是一個偉大的發明以及偉大的發現...";
+			close;
+		}
+		break;
+	case 2:
+		set .@max,1;
+		set .@price,500;
+		break;
+	case 3:
+		mes "[發明家 欽斯]";
+		mes "相信我試用看看吧...";
+		mes "這真是一個偉大的發明以及偉大的發現...";
+		close;
+	}
+	if ( Zeny < .@price ) {
+		mes "[發明家 欽斯]";
+		mes "你身上的錢不夠喔～";
+		close;
+	}
+	delitem .@arr[0],.@max*500;
+	set Zeny,Zeny-.@price;
+	getitem .@arr[1],.@max;
+	mes "[發明家 欽斯]";
+	mes "來，這個物品請你收下吧";
+	mes "另外^0000FF有一點注意事項^000000請你記住";
+	mes "^FF0000重量超過90%的話，這箭矢筒就不能使用的";
+	mes "記得請小心不要掉了，掉了會很糟糕的^000000";
+	close;
+}

@@ -1,0 +1,98 @@
+//======================================
+// [冥] The PlutoEA Project [王]
+// https://code.google.com/p/plutoea/
+// -------------------------------------
+// - 藥缽、製藥說明書 購買 - 
+//======================================
+// *改寫自JA
+//======================================
+
+alde_alche,24,188,2	script	組合 販賣員	740,{
+	if (checkweight(1201,1) == 0) {
+		mes "- 請等等! -";
+		mes "- 你身上攜帶了太多物品了 -";
+		mes "- 先把東西多餘的東西 -";
+		mes "- 寄放在卡普拉倉庫之後 -";
+		mes "- 再回來吧! -";
+		close;
+	}
+	mes "[葛伯 紗普]";
+	mes "歡迎來到鍊金術師組織，";
+	mes "需要什麼服務嗎?";
+	next;
+	switch (select("購買製藥物品:購買製作說明書:取消")) {
+	case 1:
+		mes "[葛伯 紗普]";
+		mes "請問需要什麼物品";
+		next;
+		if(select("藥缽 - 250z:停止交易")==2)
+			break;
+		mes "[葛伯 紗普]";
+		mes "請問需要幾個?";
+		mes "如想要停止交易請寫 '0' ";
+		while(1) {
+			next;
+			input .@num;
+			if(.@num <= 0) {
+				mes "[葛伯 紗普]";
+				mes "那，下次再說吧";
+				close;
+			}
+			if(.@num > 2000) {
+				mes "[葛伯 紗普]";
+				mes "請選於2000個以下";
+				continue;
+			}
+			break;
+		}
+		if(Zeny < .@num*8) {
+			mes "[葛伯 紗普]";
+			mes "金額不足噢";
+			mes "請確認一下所攜帶的金額";
+			close;
+		}
+		if(checkweight(7134,.@num)==0) {
+			mes "看樣子都不能帶走啊，";
+			mes "請確認一下所攜帶的物品量";
+			close;
+		}
+		set Zeny,Zeny-.@num*250;
+		getitem 7134,.@num;
+		break;
+	case 2:
+		mes "[葛伯 紗普]";
+		mes "請問需要哪些物品?";
+		mes "一般的製作說明書是100,000金幣，";
+		mes "比較特殊的幾種製作說明書除外";
+		next;
+		switch (select("一般藥水製作說明書:酒精製作說明書:火煙瓶製作說明書:鹽酸製作說明書:植物瓶製作說明書:刺錘瓶製作說明書:護貝藥製作說明書:纖細藥水製作說明書:取消交易")) {
+		default:
+			set .@price,100000;
+			break;
+		case 8:
+			set .@price,240000;
+			break;
+		case 9:
+			mes "[葛伯 紗普]";
+			mes "那，下次再說吧";
+			close;
+		}
+		if(Zeny < .@price) {
+			mes "[葛伯 紗普]";
+			mes "金額不足噢";
+			mes "請確認一下所攜帶的金額";
+			close;
+		}
+		set Zeny,Zeny-.@price;
+		setarray .@itemid,7144,7127,7128,7129,7130,7131,7132,7133;
+		getitem .@itemid[@menu-1],1;
+		mes "[葛伯 紗普]";
+		mes "感謝你的購買，";
+		mes "願你做出實用的藥";
+		close;
+	case 3:
+	}
+	mes "[葛伯 紗普]";
+	mes "那，下次再說吧";
+	close;
+}

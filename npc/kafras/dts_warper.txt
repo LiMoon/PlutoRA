@@ -1,0 +1,385 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://plutoea.googlecode.com/svn/
+// -----------------------------------------
+// - 商權投票腳本 - *改寫自JA
+//===========================================
+// 規則：
+// 1.開始投票後每24個小時會檢查一次票數，
+//    當雙方的得票都超過20票後，則由得票數高的
+//    一方獲勝；反之任一方未達20票則重新計算24
+//    個小時，直到雙方都超過20票為止。
+// 2.剛開始雙方都只有一個服務點可供傳送，但是
+//    只要任一方在這次投票中敗選，下次投票時，
+//    就會有新的傳送點出現；反之此次勝選，下次
+//    就會減少一個服務點，不過最少會保留一個。
+// 3.每六天重新投票一次。
+//-------------------------------------------
+
+-	script	VoteEvent	-1,{
+OnInit:
+	initnpctimer;
+	end;
+OnTimer60000:
+	set $VoteTime,$VoteTime+1;
+	if($VoteResult == 0) {
+		if($VoteTime >= 1440) {
+			if($VoteKafra < 20 && $VoteZonda < 20)
+				set $VoteTime,0;
+			else {
+				if($VoteKafra >= $VoteZonda) {
+					if($VoteZondaP < 2)
+						set $VoteZondaP,$VoteZondaP+1;
+					set $VoteResult,1;
+					set $VoteResult$,"卡普拉服務";
+				}
+				else {
+					if($VoteKafraP < 2)
+						set $VoteKafraP,$VoteKafraP+1;
+					set $VoteResult,2;
+					set $VoteResult$,"准它企劃社";
+				}
+				announce "商權投票已經結束了，把結果告訴大家了",8;
+				sleep 5000;
+				announce "投票結 果.................",8;
+				sleep 5000;
+				announce "" +$VoteResult$+ "獲得更多的得票，得到這一回的商權",8;
+				sleep 5000;
+				announce "以後請多加使用",8;
+				set $VoteTime,0;
+				initnpctimer;
+				end;
+			}
+		}
+		if($VoteTime % 120 == 0)
+			announce "目前舉行商權投票中，請多多參與",8;
+	}
+	else if($VoteTime >= 8640) {
+		if($VoteResult == 1 && $VoteKafraP > 0)
+			set $VoteKafraP,$VoteKafraP-1;
+		if($VoteResult == 2 && $VoteZondaP > 0)
+			set $VoteZondaP,$VoteZondaP-1;
+		set $VoteTime,0;
+		set $VoteResult,0;
+		set $VoteKafra,0;
+		set $VoteZonda,0;
+		set $VoteResult$,"";
+		set $VoteNumber,$VoteNumber+1;
+		announce "目前舉行重新商權投票中，請多多參與",8;
+	}
+	initnpctimer;
+	end;
+}
+function	script	Kafra_Vote	{
+	mes "[卡普拉投票 宣傳人員]";
+	mes "歡迎光臨，";
+	mes "因准它企劃社和卡普拉服務之間所簽訂的協定^ff0000'有關商權投票'^000000我是從卡普拉總公司被派遣到普隆德拉的投票宣傳人員，";
+	mes "請問我能幫你什麼嗎?";
+	next;
+	switch(select("有關商權投票的事情:我要參加投票:使用傳送服務:取消")) {
+	case 1:
+		mes "[卡普拉投票 宣傳人員]";
+		mes "目前卡普拉服務對顧客們除了空間傳送服務之外， 還計劃著傳送到各個洞穴的服務呢，";
+		next;
+		mes "[卡普拉投票 宣傳人員]";
+		mes "在這個計劃當中的同時，准它企劃社也做不同的區域傳送，和我們類似的概念的服務，也在企劃中被我們知道了，";
+		next;
+		mes "[卡普拉投票 宣傳人員]";
+		mes "類似的服務和類似的服務時間點都被彼此知道了這件事，我們開始和准它有了意見上的對立，";
+		next;
+		mes "[卡普拉投票 宣傳人員]";
+		mes "這樣子的對立最後所下的結論是^ff0000'商權投票'^000000也就是說，哪一個企業要服務我們尊重顧客們的意見之後來做決定吧，";
+		next;
+		mes "[卡普拉投票 宣傳人員]";
+		mes "先讓兩個企業對顧客們約定會服務哪些項目之後，讓顧客們瞭解之後由顧客們決定要投票投給誰，";
+		next;
+		mes "[卡普拉投票 宣傳人員]";
+		mes "不過只投票一次若對方一直贏一直服務的話，又怕會引起爭議，在一定的期限內先讓贏得投票的人先做服務後，講好互相再投一次票了，";
+		next;
+		mes "[卡普拉投票 宣傳人員]";
+		mes "當然再投票也是，相同的人也許會一直贏或是一直輸的關係，所以對兩方互相給予優點和缺點的狀態，";
+		next;
+		mes "[卡普拉投票 宣傳人員]";
+		mes "我們卡普拉服務，只要是顧客們願意的服務的話 會盡其所能服務的，以後請多多的支持我們，";
+		break;
+	case 2:
+		if(BaseLevel < 60) {
+			mes "[卡普拉投票 宣傳人員]";
+			mes "很抱歉，未滿60等級以下的玩家";
+			mes "不能參與投票";
+			break;
+		}
+		if($VoteTime >= 8640) {
+			mes "[卡普拉投票 宣傳人員]";
+			mes "之前投票的統計結果和，未滿法定參與投票最底人數的關係，再一次的舉行投票";
+			next;
+		}
+		if($VoteResult) {
+			mes "[卡普拉投票 宣傳人員]";
+			mes "現在不是投票的時間，所以不能投票";
+			mes "請在下一次投票時，請投我們卡普拉服務一票吧";
+			mes "祝你有一個美好的一天";
+			break;
+		}
+		if(ZONDA_VOTE > $VoteNumber) {
+			mes "[卡普拉投票 宣傳人員]";
+			mes "可是你已經參加過投票了不能再參與這次的投票，請在下一次投票時，請投我們卡普拉服務一票吧，";
+			mes " ";
+			mes "祝你有一個美好的一天";
+			break;
+		}
+		mes "[卡普拉投票 宣傳人員]";
+		mes "我們卡普拉要預計服務的地區是，如下所示：";
+		mes " ";
+		mes " - ^FF0000玩具洞穴2樓^000000";
+		if($VoteKafraP >= 1) mes " - ^FF0000艾爾帕蘭 鐘塔地下洞穴3樓^000000";
+		if($VoteKafraP >= 2) mes " - ^FF0000諾可羅德 洞穴2樓^000000";
+		next;
+		mes "[卡普拉投票 宣傳人員]";
+		mes "想要接受這個區域的傳送服務的話，那就請選擇我們卡普拉的服務吧，";
+		mes " ";
+		mes "請問你要投給卡普拉服務，一張重要的一票嗎?";
+		next;
+		if(select("不要:是的")==1) {
+			mes "[卡普拉投票 宣傳人員]";
+			mes "若顧客們的意思是這樣的話我也沒辦法呀，若有改變想法的話請在投票期間內來找我告訴我吧，反正卡普拉服務永遠和各位在一起的，";
+			mes "那麼祝你有一個美好的一天囉";
+			break;
+		}
+		set ZONDA_VOTE,$VoteNumber+1;
+		set $VoteKafra,$VoteKafra+1;
+		mes "[卡普拉投票 宣傳人員]";
+		mes "真的謝謝你呀，我們不會忘記顧客們投我們的一票，我們會做為非常努力的卡普拉服務，";
+		mes "祝你有一個美好的一天";
+		break;
+	case 3:
+		if($VoteResult == 0) {
+			mes "[卡普拉投票 宣傳人員]";
+			mes "很抱歉，現在是投票期間中所以不能使用傳送服務，請等待投票結束後，依據投票的結果才能使用傳送服務的";
+			break;
+		}
+		if($VoteResult == 2) {
+			mes "[卡普拉投票 宣傳人員]";
+			mes "很抱歉，根據投票的結果現在卡普拉服務是不做任何傳送服務的，下一次投票時，請投我們准它企劃社一票吧，";
+			mes "祝你有一個美好的一天";
+			break;
+		}
+		mes "[卡普拉投票 宣傳人員]";
+		mes "請選擇你的目的地";
+		next;
+		if($VoteKafraP >= 1) set @warp1$,"艾爾帕蘭 鐘塔地下洞穴3樓 -> 4000 z";
+		if($VoteKafraP >= 2) set @warp2$,"諾可羅德 洞穴2樓 -> 4000 z";
+		switch(select("玩具洞穴2樓 -> 4000 z",@warp1$,@warp2$,"取消")) {
+		case 1:	//玩具洞穴2樓
+			set @mapname$,"xmas_dun02";
+			setarray @warp,130,123;
+			break;
+		case 2:	//艾爾帕蘭 鐘塔地下洞穴3樓
+			set @mapname$,"alde_dun03";
+			setarray @warp,265,22;
+			break;
+		case 3:	//諾可羅德洞穴2樓
+			set @mapname$,"mag_dun02";
+			setarray @warp,47,40;
+			break;
+		case 4: break;
+		}
+		if(@mapname$ != "") {
+			if(Zeny < 4000) {
+				mes "[卡普拉投票 宣傳人員]";
+				mes "親愛的顧客，您的金幣不足喔";
+				break;
+			}
+			set Zeny,Zeny-4000;
+			warp @mapname$,@warp[0],@warp[1];
+			end;
+		}
+	case 4:
+		mes "[卡普拉投票 宣傳人員]";
+		mes "我們卡普拉服務會做更完美的服務，以及嚴格的業務管理，使顧客們更安心更方便的使用，做最大的努力的，";
+               	mes " ";
+		mes "感謝您的使用";
+		break;
+	}
+	close2;
+	cutin "",255;
+	end;
+}
+
+-	script	准它投票 宣傳人員#vote	874,{
+	cutin "zonda_01",2;
+	mes "[准它投票 宣傳人員]";
+	mes "你好，";
+	mes "和卡普拉服務所簽訂的協定^ff0000'有關商權投票'^000000，我是從准它企劃社被派遣到這裏的投票宣傳人員，";
+	mes " ";
+	mes "請問我能幫你什麼嗎?";
+	next;
+	switch(select("有關商權投票的事情:我要參加投票:使用傳送服務:取消")) {
+	case 1:
+		mes "[准它投票 宣傳人員]";
+		mes "現在米德加爾特所做的傳送服務，大部份都是卡普拉服務在做這項服務的，";
+		next;
+		mes "[准它投票 宣傳人員]";
+		mes "剛好准它企劃社和卡普拉服務做差別化的傳送各個洞穴服務計畫中，不知是否巧合剛好卡普拉那邊也做一樣的企劃，";
+		next;
+		mes "[准它投票 宣傳人員]";
+		mes "我們這邊是因為卡普拉服務把之前的商權幾乎都在掌握中，所以我們只好做新的商權，不過卡普拉那邊也是不會輕易放過這商機，所以兩個企業只好衝突了，";
+		next;
+		mes "[准它投票 宣傳人員]";
+		mes "在這樣的對立中最後所下的結論是^FF0000'商權投票'^000000，以顧客們重要的投票所決定的企業來做服務的，";
+		next;
+		mes "[准它投票 宣傳人員]";
+		mes "不過，既然己定出一方也是，雙方的對立立場一定會反復無常的，";
+		next;
+		mes "[准它投票 宣傳人員]";
+		mes "所以就因為這樣投票並不是投一次就定案的，過了一段時間再投票一次，當然再投票時為了防止一方一直贏，所以對兩方互相給予優點和缺點的狀態，";
+		next;
+		mes "[准它投票 宣傳人員]";
+		mes "准它企劃社一直以來，和其它公司走差別化的服務，更想接近顧客們的身邊，會盡其所能服務的，以後請多多的支持我們，";
+		break;
+	case 2:
+		if(BaseLevel < 60) {
+			mes "[准它投票 宣傳人員]";
+			mes "很抱歉，未滿60等級以下的玩家";
+			mes "不能參與投票";
+			break;
+		}
+		if($VoteTime >= 8640) {
+			mes "[准它投票 宣傳人員]";
+			mes "之前投票的統計結果和，未滿法定參與投票最底人數的關係，再一次的舉行投票";
+			next;
+		}
+		if($VoteResult) {
+			mes "[准它投票 宣傳人員]";
+			mes "現在不是投票的時間，所以不能投票";
+			mes "請在下一次投票時，請投我們准它企劃社一票吧";
+			mes "祝你有一個美好的一天";
+			break;
+		}
+		if(ZONDA_VOTE > $VoteNumber) {
+			mes "[准它投票 宣傳人員]";
+			mes "可是你已經參加過投票了不能再參與這次的投票，請在下一次投票時，請投我們准它企劃社一票吧，，";
+			mes " ";
+			mes "祝你有一個美好的一天";
+			break;
+		}
+		mes "[准它投票 宣傳人員]";
+		mes "我們准它企劃社要預計服務的地區是，如下所示：";
+		mes " ";
+		mes " - ^FF0000伊斯魯德島 地下洞穴3樓^000000";
+		if($VoteZondaP >= 1) mes " - ^FF0000艾爾帕蘭 鐘塔地上樓層3樓^000000";
+		if($VoteZondaP >= 2) mes " - ^FF0000克雷斯特漢姆古城^000000";
+		next;
+		mes "[准它投票 宣傳人員]";
+		mes "想要接受這個區域的傳送服務的話，那就請選擇我們准它企劃社吧，";
+		mes " ";
+		mes "請問你要投給准它企劃社，一張重要的一票嗎?";
+		next;
+		if(select("不是:是的")==1) {
+			mes "[准它投票 宣傳人員]";
+			mes "若顧客們的意思是這樣的話我也沒辦法呀，若有改變想法的話請在投票期間內來找我告訴我吧，反正准它企劃社永遠和各位在一起的，";
+			mes "那麼祝你有一個美好的一天囉";
+			break;
+		}
+		set ZONDA_VOTE,$VoteNumber+1;
+		set $VoteZonda,$VoteZonda+1;
+		mes "[准它投票 宣傳人員]";
+		mes "真的謝謝你呀，我們會做更差別化的服務，對顧客們盡最大的本份的，";
+		mes " ";
+		mes "那麼祝你有一個美好的一天囉";
+		break;
+	case 3:
+		if($VoteResult == 0) {
+			mes "[准它投票 宣傳人員]";
+			mes "很抱歉，現在是投票期間中所以不能使用傳送服務，請等待投票結束後，依據投票的結果才能使用傳送服務的";
+			break;
+		}
+		if($VoteResult == 1) {
+			mes "[准它投票 宣傳人員]";
+			mes "很抱歉，根據投票的結果現在准它企畫社是不做任何傳送服務的，下一次投票時，請投我們准它企劃社一票吧，";
+			mes "祝你有一個美好的一天";
+			break;
+		}
+		mes "[准它投票 宣傳人員]";
+		mes "請選擇你的目的地";
+		next;
+		if($VoteZondaP >= 1) set @warp1$,"艾爾帕蘭 鐘塔地上樓層3樓 -> 4000 z";
+		if($VoteZondaP >= 2) set @warp2$,"克雷斯特漢姆古城 -> 4000 z";
+		switch(select("伊斯魯德島 海底洞窟3層 -> 4000 z",@warp1$,@warp2$,"取消")) {
+		case 1:	//伊斯魯德島 海底洞窟3層
+			set @mapname$,"iz_dun02";
+			setarray @warp,234,206;
+			break;
+		case 2:	//艾爾帕蘭 鐘塔 地上3樓
+			set @mapname$,"c_tower3";
+			setarray @warp,64,143;
+			break;
+		case 3:	//克雷斯特漢姆古城
+			set @mapname$,"glast_01";
+			setarray @warp,368,303;
+			break;
+		case 4: break;
+		}
+		if(@mapname$ != "") {
+			if(Zeny < 4000) {
+				mes "[准它投票 宣傳人員]";
+				mes "親愛的顧客，您的金幣不足喔";
+				break;
+			}
+			set Zeny,Zeny-4000;
+			warp @mapname$,@warp[0],@warp[1];
+			end;
+		}
+	case 4:
+		mes "[准它投票 宣傳人員]";
+		mes "我們准它企劃社會做更差別化的服務，對顧客們盡最大的本份的，";
+		mes " ";
+		mes "感謝您的使用";
+		break;
+	}
+	close2;
+	cutin "",255;
+	end;
+}
+
+yuno,162,191,4	script	卡普拉投票 宣傳人員#01		861,{
+	cutin "kafra_09",2;
+	callfunc "Kafra_Vote";
+}
+yuno,153,191,6	duplicate(准它投票 宣傳人員#vote)	准它投票 宣傳人員#01		874
+
+prontera,164,125,4	script	卡普拉投票 宣傳人員::普隆德拉#02		116,{
+	cutin "kafra_02",2;
+	callfunc "Kafra_Vote";
+}
+prontera,147,125,6	duplicate(准它投票 宣傳人員#vote)	准它投票 宣傳人員#03		874
+moc_ruins,97,133,4,4	script	卡普拉投票 宣傳人員#03	116,{
+	cutin "kafra_02",2;
+	callfunc "Kafra_Vote";
+}
+moc_ruins,104,133,6	duplicate(准它投票 宣傳人員#vote)	准它投票 宣傳人員#04		874
+geffen,122,37,4	script	卡普拉投票 宣傳人員#04	116,{
+	cutin "kafra_02",2;
+	callfunc "Kafra_Vote";
+}
+geffen,117,37,6	duplicate(准它投票 宣傳人員#vote)	准它投票 宣傳人員#05		874
+payon,158,182,4	script	卡普拉投票 宣傳人員#05	116,{
+	cutin "kafra_02",2;
+	callfunc "Kafra_Vote";
+}
+payon,153,182,6	duplicate(准它投票 宣傳人員#vote)	准它投票 宣傳人員#06		874
+alberta,119,70,4	script	卡普拉投票 宣傳人員#06	116,{
+	cutin "kafra_02",2;
+	callfunc "Kafra_Vote";
+}
+alberta,114,70,6	duplicate(准它投票 宣傳人員#vote)	准它投票 宣傳人員#07		874
+aldebaran,145,102,4	script	卡普拉投票 宣傳人員#07	116,{
+	cutin "kafra_02",2;
+	callfunc "Kafra_Vote";
+}
+aldebaran,138,102,6	duplicate(准它投票 宣傳人員#vote)	准它投票 宣傳人員#08		874
+lighthalzen,163,60,4	script	卡普拉投票 宣傳人員#08	861,{
+	cutin "kafra_09",2;
+	callfunc "Kafra_Vote";
+}
+lighthalzen,154,60,6	duplicate(准它投票 宣傳人員#vote)	准它投票 宣傳人員#02		874

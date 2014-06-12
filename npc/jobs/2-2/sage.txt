@@ -1,0 +1,2929 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://plutoea.googlecode.com/svn
+// ---------------------------------
+// - 賢者 轉職腳本 - 
+//===================================
+// 版本：2.7（最新為2.8，但找不出差異）[熊貓]
+//===================================
+
+yuno_in02,38,61,5	script	學院 院長#sa	743,{
+	cutin "job_sage_kayron",2;
+	mes "[凱倫 葛瑞]";
+	if (Upper == 1) {
+		mes "哈哈，長久以來我看過很多人，你是誰啊";
+		mes "你擁有特別的'力量'和'能力'啊";
+		next;
+		mes "[凱倫 葛瑞]";
+		mes "對你來說這個場合不太適合你，去更寬廣的地方";
+		mes "把自己表現出來，告知大家反而會比較好";
+		mes "記得不要忘記初心啊";
+		close2;
+		cutin "job_sage_kayron",255;
+		end;
+	}
+	if (BaseJob != Job_Mage) {
+		if (BaseJob == Job_Sage) {
+			mes "什麼事，你...有什麼困難的事嗎?";
+			mes "不要因為已經成為賢者，而停止學習";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "我們的知識，就是發展這個大陸的原動力";
+			mes "，為了對所有人類有幫助，不要忘了要一";
+			mes "直探究及記錄";
+		}
+		else if (BaseJob == Job_Novice) {
+			mes "呵呵，到這種地方有什麼事...";
+			mes "是來閒逛的嗎?";
+			mes "為了來到這種地方應該很辛苦，是因為對";
+			mes "賢者有興趣吧，";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "假如身為賢者對學問有意思的話，去過一";
+			mes "一下魔法師的生活再來吧，";
+			mes "我會滿心歡喜的等待重逢的日子的，";
+		}
+		else {
+			mes "呵呵，我們雖然在研究這世界";
+			mes "但只是那樣還不夠啊";
+			mes "果然其它職業的人們";
+			mes "擁有的寶貴經驗是更重要的";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "假如周圍有賢者，";
+			mes "多多告知及幫忙，";
+			mes "他們也會相對的幫助你的...";
+		}
+		close2;
+		cutin "job_sage_kayron",255;
+		end;
+	}
+	switch (SAGE_Q) {
+	case 0:
+		mes "對於魔法充滿熱情的你，歡迎你，";
+		mes "來到這裡有什麼事?";
+		next;
+		switch(select("想要轉職成為賢者:請告訴我關於賢者的事情:沒有什麼事")) {
+		case 1:
+			mes "[凱倫 葛瑞]";
+			mes "嗯！想要轉職成為賢者嗎?";
+			mes "轉職啊... 不過最好先改變那想法吧";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "所謂賢者是對世上事物不停的研究與記錄，";
+			mes "圖謀大陸的發展的人們，";
+			mes "為了成為那種人，不是只有換個衣服穿";
+			mes "而已";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "你先去報考，修巴依采勒大學吧，";
+			mes "那邊會幫你詳細說明的";
+			break;
+		case 2:
+			mes "[凱倫 葛瑞]";
+			mes "轉職成賢者啊...";
+			mes "沒有任何人把成為賢者的事";
+			mes "說成轉職啊！";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "為了成為賢者，道先要報考";
+			mes "修巴依采勒比大學";
+			mes "然後參加入學考試";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "考完試後，要經過關於特定";
+			mes "科目的研究過程...";
+			mes "最後要將研究的結果寫成論文";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "然後將論文拿來給我，我會給予評價，";
+			mes "及格時，你就會以賢者的身份過生活";
+			break;
+		case 3:
+			mes "[凱倫 葛瑞]";
+			mes "呵嗯，有那種時間，就多看一本書吧，";
+			mes "世上所有的事情，全部都在書裡面，";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "當然，只用書是沒辦法知道所有的事...";
+			mes "不過對於我們賢者書還是很重要的";
+		}
+		break;
+	case 15:
+		if (countitem(1550) > 0) {
+			if (SkillPoint) {
+				mes "你還有殘留的技能點數喔，";
+				mes "在轉職前請先點完吧";
+				close2;
+				cutin "job_sage_kayron",255;
+				end;
+			}
+			mes "呼呼，完成論文了嗎?辛苦了";
+			mes "來給我看看吧，";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "呵嗯...";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "呵哦...";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "哦嗯...";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "文筆雖然還沒有成熟，不過寫的還不錯，";
+			mes "對...你看起來頗有研究天份，";
+			next;
+			completequest 2052;
+			callfunc "Job_Change",Job_Sage;
+			callfunc "F_ClearJobVar";
+			mes "[凱倫 葛瑞]";
+			mes "你畢業了！";
+			mes "從現在起過著賢者的生活吧，";
+			mes "往後也不要忘了現在的心情...";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "要好好珍藏論文，因為是你唯一寫的書，";
+			mes "可能有用到的時候，還有，邊看邊珍藏";
+			mes "現在的記憶";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "那麼......";
+			mes "希望你的未來充滿著知識，";
+			mes "努力研究吧！！";
+		}
+		else {
+			mes "嗯?論文寫得怎麼樣了?";
+			mes "要給我看的話就快點拿過來吧";
+			next;
+			mes "[凱倫 葛瑞]";
+			mes "該不會是忘記有這件事了吧?";
+			mes "總之我會等你拿過來的";
+		}
+		break;
+	default:
+		mes "呵呵，成為賢者的路並沒有那麼簡單，";
+		mes "只是很會使用魔法，並不是都可以";
+		mes "解決的...";
+		next;
+		mes "[凱倫 葛瑞]";
+		mes "努力點，把論文也完成後再回來吧";
+		mes "那麼，辛苦你了！";
+	}
+	close2;
+	cutin "",255;
+	end;
+}
+
+yuno_in03,154,35,4	script	學院 相關人員#a	742,{
+	mes "[梅泰伍司 詩夫]";
+	if (Upper == 1) {
+		mes "歡迎光臨，這裡是修巴依采勒比";
+		mes "魔法學院，";
+		mes "...唉喲?";
+		next;
+		mes "[梅泰伍司 詩夫]";
+		mes "請問你是... 初次和我見面嗎?";
+		mes "真奇怪，我昨晚沒有睡好嗎...";
+		mes "無所謂啦，祝你有個愉快的時間吧";
+		close;
+	}
+	if (BaseJob != Job_Mage) {
+		if (BaseJob == Job_Sage) {
+			mes "歡迎光臨";
+			mes "好久不見了呢";
+			mes "你的研究進行得怎麼樣了?";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "雖然一個人在書跟資料堆中學習是很好，";
+			mes "但偶爾到野外去跟魔物作面對面的接觸也是很重要的";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "如果遇上希望成為賢者的人，就這樣教導他們吧";
+			mes "也請你如此轉達給同為賢者的同僚們";
+		}
+		else {
+			mes "歡迎";
+			mes "這裡是修發茲發德魔法學院";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "我們是一所專門培育賢者，";
+			mes "以及從事魔物相關研究的機構";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "魔法師們只要達到職業等級40或以上就可以入學了";
+			mes "在經過一段時間的學習後，就可以成為賢者";
+			mes "如果你有相識的魔法師的話，請這樣告訴他們吧";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "那麼，祝你有美好的一天";
+		}
+		close;
+	}
+	switch (SAGE_Q) {
+	case 0:
+		mes "歡迎，這裡是";
+		mes "修巴依采勒比魔法學院";
+		mes "是魔法師啊，有什麼事情嗎?";
+		next;
+		switch(select("請告訴我關於轉職賢者的事情:想要申請入學:沒什麼事")) {
+		case 1:
+			mes "[梅泰伍司 詩夫]";
+			mes "希望轉職成為賢者嗎?";
+			mes "可是我們沒有幫你作轉職，";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "進入我們的學院，經過一定的過程...";
+			mes "就會得到關於正式研究活動的認定，";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "因為種理由我們不稱作轉職，";
+			mes "而稱作畢業，";
+			mes "不過怎樣入學申請時，要繳交學費";
+			mes "同時考入學考試";
+			next;
+			mes "[梅泰伍司 詩夫]"; 
+			mes "只是...";
+			mes "有個特別過程，限於有^000088古魔法書^000000";
+			mes "與^000088慧眼^000000的人免繳學費，";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "辦好入學手續後，會考入學考試，";
+			mes "通過入學考試後，會經由主題研究";
+			mes "撰寫論文，";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "論文寫好後，將論文拿給院長";
+			mes "讀過後決定合格可與否，";
+			mes "那麼從那時起，就可以以賢者的身份";
+			mes "參與研究活動";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "有意願時請隨時申請，";
+			mes "還有，祝你有個美好的一天";
+			close;
+		case 2:
+			mes "[梅泰伍司 詩夫]";
+			mes "是入學申請啊，";
+			mes "歡迎來到修巴依采勒比魔法學院，";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "要入學的基本條件是，";
+			mes "職業等級到40以上過著魔法師生活的人";
+			mes "還有，要準備學習程過必要所定的學費";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "學費是70,000金幣，";
+			mes "或是帶著^000088古魔法書^000000";
+			mes "與^000088慧眼^000000來，就可以免繳學費，";
+			next;
+			mes "[梅泰伍司 詩夫]";
+			mes "那麼，現在馬上申請入學嗎?";
+			next;
+			switch(select("我要申請入學:學費太貴了吧:我下次再來")) {
+			case 1:
+				if (JobLevel < 40) {
+					mes "[梅泰伍司 詩夫]";
+					mes "要入學的基本條件是，";
+					mes "職業等級要達到40以上喔";
+					mes "請先去修練到達此等級再來吧";
+					close;
+				}
+				if (SkillPoint) {
+					mes "[梅泰伍司 詩夫]";
+					mes "技能點數好像還有剩餘呢";
+					mes "請把剩餘的點數用完後再過來吧";
+					close;
+				}
+				mes "[梅泰伍司 詩夫]";
+				mes "那麼，現在就為你準備入學申請書";
+				mes "請在這裡簽名";
+				next;
+				select(strcharinfo(0));
+				mes "[梅泰伍司 詩夫]";
+				mes "名字是....";
+				mes strcharinfo(0);
+				mes "吧? 真是不錯的名字";
+				next;
+				if (JobLevel == 50) {
+					mes "[梅泰伍司 詩夫]";
+					mes "哦~已經把魔法師的能力鍛鍊至頂級水準了啊!";
+					mes "那特別免除你的入學費用!";
+					next;
+					mes "[梅泰伍司 詩夫]";
+					mes "好，入學手續已經辦理完畢";
+					mes "接下來就請你接受入學考試吧";
+					next;
+					mes "[梅泰伍司 詩夫]";
+					mes "請去找柯瑞土斯教授吧，";
+					mes "他就在裡面左邊的房間內";
+					set SAGE_Q,4;
+					setquest 2041;
+					close;
+				}
+				mes "[梅泰伍司 詩夫]";
+				mes "入學申請費用是70,000金幣，";
+				mes "若身上的金錢不夠的話，則可以用^3355FF老舊魔法書^000000及";
+				mes "^3355FF慧眼^000000代替喔";
+				next;
+				if (select("付 70,000金幣.:交出老舊魔法書和慧眼.") == 1) {
+					if (Zeny > 69999) {
+						set Zeny,Zeny-70000;
+						mes "[梅泰伍司 詩夫]";
+						mes "好了，已經收下你的入學申請費用了，";
+						mes "恭喜你完成申請的手續";
+						set SAGE_Q,4;
+						setquest 2041;
+						next;
+						mes "[梅泰伍司 詩夫]";
+						mes "去見柯瑞土斯教授就可以了，";
+						mes "他在進去左邊的房間裡";
+						close;
+					}
+					mes "[梅泰伍司 詩夫]";
+					mes "...入學費不夠呢";
+					mes "請下次再過來吧";
+					close;
+				}
+				if (countitem(1006) > 0 && countitem(1007) > 0) {
+					delitem 1006,1; //Old_Magic_Book
+					delitem 1007,1; //Penetration
+					mes "[梅泰伍司 詩夫]";
+					mes "把要求的物品都找來了，辛苦了";
+					mes "在此承認你的入學資格";
+					set SAGE_Q,4;
+					setquest 2041;
+					next;
+					mes "[梅泰伍司 詩夫]";
+					mes "去見柯瑞土斯教授就可以了，";
+					mes "他在進去左邊的房間裡";
+					close;
+				}
+				mes "[梅泰伍司 詩夫]";
+				mes "看樣子你還沒準備好喔";
+				mes "等你打算入學的時候";
+				mes "把東西帶齊了再來找我吧！";
+				close;
+			case 2:
+				if (JobLevel < 40) {
+					mes "[梅泰伍司 詩夫]";
+					mes "要入學的基本條件是，";
+					mes "職業等級要達到40以上喔";
+					mes "請先去修練到達此等級再來吧";
+					close;
+				}
+				if (JobLevel == 50) {
+					mes "[梅泰伍司 詩夫]";
+					mes "哦~已經把魔法師的能力鍛鍊至頂級水準了啊!";
+					mes "那特別免除你的入學費用!";
+					next;
+					mes "[梅泰伍司 詩夫]";
+					mes "好，入學手續已經辦理完畢";
+					mes "接下來就請你接受入學考試吧";
+					next;
+					mes "[梅泰伍司 詩夫]";
+					mes "請去找柯瑞土斯教授吧，";
+					mes "他就在裡面左邊的房間內";
+					set SAGE_Q,4;
+					setquest 2041;
+					close;
+				}
+				if (Zeny > 43210) {
+					mes "[梅泰伍司 詩夫]";
+					mes "噢噢，不好意思，因為這是學院的規定";
+					mes "申請費用一定非得要繳70,000金幣不可呀";
+					mes "不過倒是有個替代方案可以給你參考";
+					next;
+					mes "[梅泰伍司 詩夫]";
+					mes "如果你把^3355FF老舊魔法書^000000以及^3355FF慧眼^000000給帶來的話";
+					mes "就可以讓你免費申請入學喔!";
+					next;
+					mes "[梅泰伍司 詩夫]";
+					mes "那麼再見了，祝你有個愉快美好的一天";
+					close;
+				}
+				else {
+					mes "[梅泰伍司 詩夫]";
+					mes "好可惜，是錢不夠嗎?";
+					mes "按規定一定要準備好70,000金幣...";
+					next;
+					if (select("沒有別的方法嗎?:我下次再來") == 1) {
+						mes "[梅泰伍司 詩夫]";
+						mes "那麼我就給你特別的機會！";
+						mes "就是將學費降到30,000";
+						mes "金幣的同時，要找幾物種物品來";
+						next;
+						mes "[梅泰伍司 詩夫]";
+						mes "請找以下的物品來，";
+						switch(rand(1,3)) {
+						case 1:
+							set SAGE_Q,1;
+							setquest 2043;
+							mes "^3355FF羽毛^000000 50個";
+							mes "^3355FF毛^000000 50個";
+							mes "^3355FF鐵礦石^000000 25個";
+							break;
+						case 2:
+							set SAGE_Q,2;
+							setquest 2044;
+							mes "^3355FF三葉幸運草^000000 50個";
+							mes "^3355FF柔毛^000000 50個";
+							mes "^3355FF墨汁^000000 25個";
+							break;
+						case 3:
+							set SAGE_Q,3;
+							setquest 2045;
+							mes "^3355FF羽毛^000000 50個";
+							mes "^3355FF毛^000000 50個";
+							mes "^3355FF三葉幸運草^000000 50個";
+							mes "^3355FF柔毛^000000 50個";
+						}
+						next;
+						mes "[梅泰伍司 詩夫]";
+						mes "把我講的東西找來，就把學費降到";
+						mes "30,000金幣";
+						mes "這種條件就有可能吧！";
+						mes "請努力找找看吧！";
+						next;
+						mes "[梅泰伍司 詩夫]";
+						mes "當然那之前準備70,000金幣的話";
+						mes "就收學費的";
+						mes "這也是規定";
+						next;
+						mes "[梅泰伍司 詩夫]";
+						mes "還有找到^000088古魔法書^000000與^000088慧眼^000000來，也可以";
+						mes "那麼，祝你有個美好的一天";
+						close;
+					}
+					break;
+				}
+			case 3:
+			}
+		case 3:
+			mes "[梅泰伍司 詩夫]";
+			mes "好，請慢慢準備...";
+			mes "還有，祝你有個美好的一天";
+			close;
+		}
+	case 1:
+	case 2:
+	case 3:
+		mes "唉呀? 又是你呀?";
+		next;
+		if (countitem(1006) > 0 && countitem(1007) > 0) {
+			delitem 1006,1; //Old_Magic_Book
+			delitem 1007,1; //Penetration
+			mes "[梅泰伍司 詩夫]";
+			mes "把要求的物品都找來了，辛苦了";
+			mes "在此承認你的入學資格";
+			set SAGE_Q,4;
+			next;
+		}
+		else if (Zeny > 69999) {
+			set Zeny,Zeny-70000;
+			mes "[梅泰伍司 詩夫]";
+			mes "收下你的申請費用，辛苦了";
+			mes "在此承認你的入學資格";
+			set SAGE_Q,4;
+			next;
+		}
+		else {
+			switch (SAGE_Q) {
+			case 1:
+				setarray .@item[0], 916,914,1002;
+				setarray .@count[0], 50,50,25; 
+				break;
+			case 2:
+				setarray .@item[0], 705,949,1024;
+				setarray .@count[0], 50,50,25;
+				break;
+			case 3:
+				setarray .@item[0], 916,914,705,949;
+				setarray .@count[0], 50,50,50,50;
+				break;
+			}
+			set .@size, (getarraysize(.@item)-1); 
+			for( set .@i,0 ; .@i < .@size && countitem(.@item[.@i]) >= .@count[.@i] ; set .@i,.@i+1 );
+			if(.@i == .@size) {  
+				if (Zeny > 29999) {
+					for (set .@i, 0; .@i < .@size ; set .@i, .@i+1)
+						delitem .@item[.@i], .@count[.@i];  
+					set Zeny,Zeny-30000;
+					mes "[梅泰伍司 詩夫]";
+					mes "辛苦你了，在此通過你的入學申請";
+					set .@SAGE_Q_T,SAGE_Q;
+					set SAGE_Q,4;
+					next;
+				}
+				mes "[梅泰伍司 詩夫]";
+				mes "你還沒把錢給準備好嗎?";
+				mes "已經特別通融你，給予優惠";
+				mes "把物品帶來的話，就可以用30,000金幣申請入學";
+				mes "趕快去準備吧!";
+				close;
+			}
+			else {
+				mes "[梅泰伍司 詩夫]";
+				mes "你好像還沒有準備好呢";
+				mes "請再確認一次必要的物品";
+				next;
+				mes "[梅泰伍司 詩夫]";
+				mes "請你收集以下的物品來交給我";
+				mes .@count[0]+"個^3355FF"+getitemname(.@item[0])+"^000000";
+				mes .@count[1]+"個^3355FF"+getitemname(.@item[1])+"^000000";
+				mes .@count[2]+"個^3355FF"+getitemname(.@item[2])+"^000000";
+				if (SAGE_Q == 3) mes .@count[3]+"個^3355FF"+getitemname(.@item[3])+"^000000";
+				next;
+				mes "[梅泰伍司 詩夫]";
+				mes "把以上的物品拿來給我的話，";
+				mes "就可以優惠你入學費為30,000金幣了";
+				mes "請努力地去收集吧";
+				close;
+			}
+		}
+		mes "[梅泰伍司 詩夫]";
+		mes "好了，馬上為你進行申請手續，";
+		mes "請寫下你的貴姓大名吧";
+		next;
+		select(strcharinfo(0));
+		mes "[梅泰伍司 詩夫]";
+		switch (.@SAGE_Q_T) {
+		case 1: mes "你的名字是.... " + strcharinfo(0) + ". 真是不錯的名字啊"; break;
+		case 2: mes "你的名字是.... " + strcharinfo(0) + ". 聽起來就像是個聰明人啊"; break;
+		case 3: mes "你的名字是.... " + strcharinfo(0) + ". 真是個有趣的名字啊"; break;
+		}
+		next;
+		mes "[梅泰伍司 詩夫]";
+		mes "好，入學手續辦好了，";
+		mes "那麼馬上去考入學考試吧！";
+		set SAGE_Q,4;
+		if(checkquest(2043) != -1) {
+			changequest 2043,2041;
+		}
+		else if(checkquest(2044) != -1) {
+			changequest 2044,2041;
+		}
+		else if(checkquest(2045) != -1) {
+			changequest 2045,2041;
+		}
+		else {
+			setquest 2041;
+		}
+		next;
+		mes "[梅泰伍司 詩夫]";
+		mes "接下來去見柯瑞土斯教授就可以了，";
+		mes "他在進去左邊的房間裡";
+		close;
+	case 4:
+		mes "你還在這裡做什麼呢?";
+		mes "趕快去找柯瑞土斯教授，";
+		mes "他在進去左邊的房間等你呢";
+		close;
+	case 15:
+		mes "嗯?論文已經完成了嗎?";
+		mes "這樣的話，請趕快去找凱倫院長吧";
+		next;
+		mes "[梅泰伍司 詩夫]";
+		mes "長久的努力終於有成果了呢，太好了";
+		mes "那麼，祝你有美好的一天";
+		close;
+	default:
+		mes "啊，很抱歉";
+		mes "現在申請的人有點太多了....";
+		mes "後面的請稍等一下";
+		mes "真的是很抱歉....";
+		close;
+	}
+}
+
+yuno_in03,105,177,5	script	筆試 考試 教授#s	754,{
+	mes "[柯瑞土斯 貝多爾]";
+	if (BaseJob != Job_Mage) {
+		if (BaseJob == Job_Sage) {
+			mes "嗯?都畢業了你還回來做什麼?";
+			mes "想要重修嗎?";
+			next;
+			mes "[柯瑞土斯 貝多爾]";
+			mes "我很明白你的心情，但既然我們都認同你的能力了，就多相信自己一點吧";
+			mes "對學校懷念是很好，但也總不能成天在這兒晃";
+			mes "偶爾也去經歷一次危險的旅程吧!";
+			next;
+			mes "[柯瑞土斯 貝多爾]";
+			mes "別忘了把所得的經驗都記錄下來";
+			mes "這樣也可以把從中所得的知識傳授給別人了";
+		}
+		else if (BaseJob == Job_Novice) {
+			mes "小孩子在這裡做什麼呢??";
+			mes "這裡是魔法學院，可不是托兒所啊";
+			next;
+			mes "[柯瑞土斯 貝多爾]";
+			mes "出去跟波利玩吧，這裡是大人的學校啊!";
+		}
+		else if (Class == Job_Wizard) {
+			mes "Well...look who came crawling back. Magic addict.";
+			mes "Yeah yeah, so it's not so bad to be devoted to magic.";
+			next;
+			mes "[柯瑞土斯 貝多爾]";
+			mes "But I hope you remember, no one can live alone.";
+			mes "Although you're strong enough for solo play, you must cooperate and help other people. That's what a Wizard shoud stand for.";
+		}
+		else {
+			mes "呵嗯...";
+			mes "人學是次要的，即然是不同的職業沒辦法成為賢者";
+			mes "所謂才能是從出生就累積的......";
+			next;
+			mes "[柯瑞土斯 貝多爾]";
+			mes "所以，不要在這種地方徘徊...";
+			mes "與別人一起去打獵也好";
+		}
+		close;
+	}
+	switch (SAGE_Q) {
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+		mes "嗯哼....你的表情都告訴我了";
+		mes "你很想成為賢者";
+		next;
+		mes "[柯瑞土斯 貝多爾]";
+		mes "想要來上課的話就得先成為學院的學生，";
+		mes "辦好了入學手續再來找我吧";
+		close;
+	case 4:
+		mes "嗯，歡迎你就讀修發茲發德魔法學院";
+		mes "是先辦好了手續才來的吧?";
+		next;
+		mes "[柯瑞土斯 貝多爾]";
+		mes "我看看名字是....";
+		mes strcharinfo(0);
+		mes "沒錯吧?";
+		mes "好，那馬上就開始考試吧";
+		next;
+		mes "[柯瑞土斯 貝多爾]";
+		mes "我出的考題是關於世上萬物的";
+		mes "一共二十題，每題5分";
+		mes "取得80分以上就算是合格了";
+		next;
+		mes "[柯瑞土斯 貝多爾]";
+		mes "沒有馬上回答問題的話考試就會中止";
+		mes "這點要注意啊";
+		mes "那麼，考試開始";
+		break;
+	case 5:
+		mes "歡迎，";
+		mes "這次有讀好書再來嗎?";
+		next;
+		mes "[柯瑞土斯 貝多爾]";
+		mes "這次的條件也一樣，總共出20題";
+		mes "每題答對5分，80分以上就算合格，";
+		set sage_m2,rand(1,3);
+		set SAGE_Q,5;
+		break;
+	case 6:
+		mes "嗯?你還想再考一次嗎?";
+		mes "你的筆試已經合格了";
+		next;
+		mes "[柯瑞土斯 貝多爾]";
+		mes "去海路梅斯教授那裡接受實技考試吧";
+		mes "這樣一派悠閒可不行!";
+		close;
+	case 15:
+		mes "哦，努力把論文生了出來啊~";
+		mes "可是我並不是負責為論文評分";
+		next;
+		mes "[柯瑞土斯 貝多爾]";
+		mes "拿去給凱倫院長點評吧";
+		mes "你能不能畢業就看院長的決定了";
+		close;
+	default:
+		mes "現在正忙於計算其它學生的考試分數....";
+		mes "不好意思，請等下再來找我吧";
+		close;
+	}
+	next;
+	switch(rand(1,3)) {
+	case 1:
+		mes "1.";
+		mes "普隆德拉的禮品商人不賣的物品是?";
+		next;
+		if(select("白色盤子","紅色相框","花束","玻璃珠")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "2.";
+		mes "不賣雙刃短劍的城市是?";
+		next;
+		if(select("普隆德拉:夢羅克:吉芬:薑餅城")==1)
+			set .@sage_t,.@sage_t+5;
+		mes "3.";
+		mes "最接近烏龜島的是那一個城市?";
+		next;
+		if(select("艾爾帕蘭:艾爾貝塔:克魔島:依斯魯得")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "4.";
+		mes "以下不同種族的魔物是?";
+		next;
+		if(select("奈吉鳥:單眼蟲:傘蜥:海星")==4)
+			set .@sage_t,.@sage_t+5;
+		mes "5.";
+		mes "以下屬性不同的魔物是?";
+		next;
+		if(select("螳螂:重金屬蝗蟲:蝗蟲:鍬形蟲")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "6.";
+		mes "以下體型不同的魔物是?";
+		next;
+		if(select("幽靈劍士:幽靈弓箭手:邪骸浪人:鏡妖")==1)
+			set .@sage_t,.@sage_t+5;
+		mes "7.";
+		mes "以下哪種魔物不會掉落物品'酒精'?";
+		next;
+		if(select("鬼火:漂浮蟲:毒魔菇:蛙王")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "8.";
+		mes "與騎士轉職沒關係的人是?";
+		next;
+		if(select("詹姆士 喜拉吉斯:湯姆斯 塞爾班特斯:艾咪 佩亞特麗絲:愛德蒙登 克魯斯多")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "9.";
+		mes "不是普隆德拉的居民是?";
+		next;
+		if(select("特諾:阿歐魯的朋:湯瑪士:忽克連")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "10.";
+		mes "戴眼鏡的卡普拉員工的名字是?";
+		next;
+		if(select("狄波蘿太:泰依琳:克拉麗絲:繡靈")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "11.";
+		mes "使用技能 '雷爆術' Lv7時，";
+		mes "消耗的SP是?";
+		next;
+		if(select("49:59:69:74")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "12.";
+		mes "當SP剩下50%的時候，";
+		mes "技能 '能量外套' 的損傷減少率跟SP消費量是多少?";
+		next;
+		if(select("-24%；SP 1.5%消費:-24%；SP 2%消費:-18%；SP 1.5%消費:-18%；SP 2%消費")==4)
+			set .@sage_t,.@sage_t+5;
+		mes "13.";
+		mes "魔法師的'箭系魔法'中，";
+		mes "沒有以下哪一個屬性?";
+		next;
+		if(select("水屬性:地屬性:火屬性:風屬性")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "14.";
+		mes "盜賊技能'二刀連擊'Lv7時，";
+		mes "發動機率跟攻擊力分別是?";
+		next;
+		if(select("35% / 120%:35% / 140%:40% / 120%:40% / 140%")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "15.";
+		mes "以下哪個不是祭司的技能'十字驅魔攻擊'的前置技能?";
+		next;
+		if(select("天使之護:治癒術:光獵:轉生術")==1)
+			set .@sage_t,.@sage_t+5;
+		mes "16.";
+		mes "'兔耳髮圈'的防御力跟追加能力值是?";
+		next;
+		if(select("1 / LUK +2:1 / LUK +5:2 / LUK +2:2 / LUK +5")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "17.";
+		mes "以下何種職業無法裝備鐵製鎧甲?";
+		next;
+		if(select("劍士:商人:盜賊:弓箭手")==4)
+			set .@sage_t,.@sage_t+5;
+		mes "18.";
+		mes "可以回復全部HP、SP的是以下哪種物品?";
+		next;
+		if(select("蜂膠:天地樹芽:天地樹果實:瑪絲黛拉果實")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "19.";
+		mes "盧因-米德加爾茲王國的國王名諱是?";
+		next;
+		if(select("特利斯多 3世:特利斯坦 3世:特拉斯他 3世:特利斯得 3世")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "20.";
+		mes "十字軍們侍奉的神是?";
+		next;
+		if(select("奧丁:洛奇:托爾:蓋亞")==1)
+			set .@sage_t,.@sage_t+5;
+		break;
+	case 2:
+		mes "1.";
+		mes "夢羅克寶石商人不賣的寶石是?";
+		next;
+		if(select("黃寶石:深紅寶石:鑽石:藍寶石")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "2.";
+		mes "不賣魔物飼料的城市是?";
+		next;
+		if(select("普隆德拉:夢羅克:艾爾帕蘭:艾爾貝塔")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "3.";
+		mes "與迷藏森林最近的城市是?";
+		next;
+		if(select("普隆德拉:夢羅克:吉芬:斐揚")==1)
+			set .@sage_t,.@sage_t+5;
+		mes "4.";
+		mes "以下不同種族的魔物是?";
+		next;
+		if(select("摩卡:土波利:漂浮蟲:梅納海葵")==4)
+			set .@sage_t,.@sage_t+5;
+		mes "5.";
+		mes "以下屬性不同的魔物是?";
+		next;
+		if(select("土人:蛇女伊絲:基爾瑟:小惡魔")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "6.";
+		mes "以下體型不同的魔物是?";
+		next;
+		if(select("瑪勒盜蟲:鍬形蟲:重金屬蝗蟲:艾斯蜘蛛")==4)
+			set .@sage_t,.@sage_t+5;
+		mes "7.";
+		mes "以下哪個魔物不會掉落'天地樹葉子'?";
+		next;
+		if(select("馬爾杜克:小巴風特:天使波利:邪骸浪人")==1)
+			set .@sage_t,.@sage_t+5;
+		mes "8.";
+		mes "與祭司轉職沒有關係的人是?";
+		next;
+		if(select("湯姆斯 塞爾班特斯:文強 派內迪特:彼特 S 艾帕羅多:欣詩 馬茹卡利特")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "9.";
+		mes "不是夢羅克居民的人是?";
+		next;
+		if(select("世畢阿杰:阿拉甘:安東尼奧:尤塌亞邁尼")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "10.";
+		mes "藍色的頭髮很有魅力的卡普拉的職員叫什麼名字?";
+		next;
+		if(select("狄波蘿太:泰依琳:克拉麗絲:繡靈")==1)
+			set .@sage_t,.@sage_t+5;
+		mes "11.";
+		mes "以下哪個不是'火焰之壁'的前置技能?";
+		next;
+		if(select("火箭術 Lv 4:心靈爆破 Lv 4:火球術 Lv 5:火狩 Lv 1")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "12.";
+		mes "技能'禪心'等級６的時候，";
+		mes "技能效果在10秒內可以回復多少的ＳＰ值?";
+		next;
+		if(select("14:16:18:21")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "13.";
+		mes "魔法師在職業等級33時，";
+		mes "可以得到多少的INT加成值?";
+		next;
+		if(select("7:6:5:4")==4)
+			set .@sage_t,.@sage_t+5;
+		mes "14.";
+		mes "弓箭手技能'心神凝聚'，";
+		mes "Lv5的SP消費量跟持續時間是多少?";
+		next;
+		if(select("45 / 140秒:50 / 140秒:45 / 150秒:50 / 150秒")==1)
+			set .@sage_t,.@sage_t+5;
+		mes "15.";
+		mes "以下哪個不是鐵匠技能'武器值最大化'的前置技能?";
+		next;
+		if(select("武器保有:強化火屬性:大地之擊:無視體型攻擊")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "16.";
+		mes "粉紗髮圈的防御力跟追加能力是?";
+		next;
+		if(select("0 / SP +20:0 / SP +30:1 / SP +20:1 / SP +30")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "17.";
+		mes "以下何種職業無法裝備聖職之衣?";
+		next;
+		if(select("鍊金術師:商人:盜賊:服事")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "18.";
+		mes "無法使用'綠色藥水'治療的異常狀態是?";
+		next;
+		if(select("沉默:中毒:黑暗:詛咒")==4)
+			set .@sage_t,.@sage_t+5;
+		mes "19.";
+		mes "在吉芬的附近可以找到入口通往的哪個消失的古代王國的名字是?";
+		next;
+		if(select("葛芙萊揚:葛帔尼亞:葛菲多利亞:葛菲利亞")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "20.";
+		mes "被譽為世界根源之樹，它的名字是?";
+		next;
+		if(select("天地樹:伊多格拉希樹:瑪絲黛拉樹:枯樹枝")==1)
+			set .@sage_t,.@sage_t+5;
+		break;
+	case 3:
+		mes "1.";
+		mes "吉芬的魔法商人不賣的物品是?";
+		next;
+		if(select("大衣:橡木魔杖:頭箍:秘銀之衣")==1)
+			set .@sage_t,.@sage_t+5;
+		mes "2.";
+		mes "沒有售賣'厚刃劍'的城市是?";
+		next;
+		if(select("普隆德拉:依斯魯得:艾爾帕蘭:斐揚")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "3.";
+		mes "最接近克雷斯特漢姆古城的城市是?";
+		next;
+		if(select("普隆德拉:吉芬:夢羅克:斐揚")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "4.";
+		mes "以下不同種族的魔物是?";
+		next;
+		if(select("海星:馬克:烏賊:冰波利")==4)
+			set .@sage_t,.@sage_t+5;
+		mes "5.";
+		mes "以下不同屬性的魔物是?";
+		next;
+		if(select("沙漠幼狼:貍貓:小雞:巧克猴")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "6.";
+		mes "以下不同體型的魔物是?";
+		next;
+		if(select("海盜之王:惡靈:闇神官:卡利斯格")==1)
+			set .@sage_t,.@sage_t+5;
+		mes "7.";
+		mes "以下不會掉落'強化武器金屬-級數一'的怪物是?";
+		next;
+		if(select("蟲蛹:禿鷹:小野豬:沙漠幼狼")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "8.";
+		mes "與鐵匠轉職沒有關係的人是?";
+		next;
+		if(select("巴伊斯里特:修咖巴殷:巴爾卡帝:米特麻依兒")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "9.";
+		mes "不是艾爾帕蘭居民的人是";
+		next;
+		if(select("RS125:莫克娜:曼斯特:艾杰伯克")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "10.";
+		mes "最年輕的卡普拉職員的名字是?";
+		next;
+		if(select("狄波蘿太:泰依琳:克拉麗絲:繡靈")==4)
+			set .@sage_t,.@sage_t+5;
+		mes "11.";
+		mes "使用技能'暗之障壁'Lv6時，";
+		mes "消費SP與回避次數是?";
+		next;
+		if(select("SP 40, 6次:SP 35, 6次:SP 35, 7次:SP 40, 7次")==4)
+			set .@sage_t,.@sage_t+5;
+		mes "12.";
+		mes "使用技能'心靈爆破'Lv6時，";
+		mes "給對方魔物的傷害力是MATK的幾倍?";
+		next;
+		if(select("1.2倍:1.3倍:1.4倍:1.5倍")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "13.";
+		mes "在魔法師的轉職考試中，";
+		mes "作為混合液４號所需催化物的礦石是?";
+		next;
+		if(select("藍色魔力礦石:紅色魔力礦石:黃色魔力礦石:透明的寶石")==4)
+			set .@sage_t,.@sage_t+5;
+		mes "14.";
+		mes "劍士技能'狂擊'Lv6的攻擊力和SP消費量是?";
+		next;
+		if(select("250% / 8:280% / 8:280% / 15:310% / 15")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "15.";
+		mes "以下不是獵人技能'爆散陷阱'的前置技能的是?";
+		next;
+		if(select("陷阱移除:地雷陷阱:定位陷阱:強光陷阱")==1)
+			set .@sage_t,.@sage_t+5;
+		mes "16.";
+		mes "請告訴我'婚禮頭紗'的防御力跟追加能力值";
+		next;
+		if(select("0 / MDEF +3:0 / MDEF +5:1 / MDEF +3:1 / MDEF +5")==2)
+			set .@sage_t,.@sage_t+5;
+		mes "17.";
+		mes "以下何種職業無法裝備'長大衣'?";
+		next;
+		if(select("劍士:商人:盜賊:初學者")==4)	
+			set .@sage_t,.@sage_t+5;
+		mes "18.";
+		mes "以下哪種道具不是製作藍色染料的材料之一?";
+		next;
+		if(select("酒精:帝特立米藥水:卡勒波迪藥水:藍色藥草")==3)
+			set .@sage_t,.@sage_t+5;
+		mes "19.";
+		mes "奧丁神在創造世界的時候，";
+		mes "使用了以下哪一樣物品?";
+		next;
+		if(select("依美樂的心臟:依美樂的指甲:依美樂的牙齒:依美樂的遺物")==1)
+			set .@sage_t,.@sage_t+5;
+		mes "20.";
+		mes "被稱為'只會出現在牽動世界命運的人眼前'的金屬，";
+		mes "是以下的哪一樣?";
+		next;
+		if(select("強化武器金屬-級數二:華麗金屬:安培拉:強化武器金屬-級數一")==2)
+			set .@sage_t,.@sage_t+5;
+		}
+		mes "[柯瑞土斯 貝多爾]";
+		mes "20 題都答好了嗎?";
+		mes "那麼，來算分數吧，";
+		next;
+		mes "[柯瑞土斯 貝多爾]";
+		mes "考試結束";
+		mes "那麼開始評分";
+		next;
+		mes "[柯瑞土斯 貝多爾]";
+		mes "我看看....";
+		mes "嗯....";
+		next;
+		mes "[柯瑞土斯 貝多爾]";
+		mes "評分結束";
+		mes "你的分數是 " + .@sage_t + " 分";
+		if (.@sage_t == 100) {
+		if (SAGE_Q == 4) {
+			mes "真讓人吃驚呢";
+			mes "能做到這種程度，證明你很有成為賢者的天份";
+		}
+		else {
+			mes "嗯哼";
+			mes "能做到這樣也算不錯了";
+		}
+		set SAGE_Q,6;
+		changequest 2041,2046;
+		next;
+		mes "[柯瑞土斯 貝多爾]";
+		mes "好，你通過了我的筆試";
+		mes "現在就去海爾梅斯教授那裡，";
+		mes "接受術科考試吧";
+		}
+		else if (.@sage_t >= 80) {
+			set SAGE_Q,6;
+			changequest 2041,2046;
+			mes "真是差強人意，";
+			mes "不過這種水準應該可以聽課了";
+			next;
+			mes "[柯瑞土斯 貝多爾]";
+			mes "這樣你通過了筆試";
+			mes "那麼，去海爾梅斯教授那裡考術科吧！";
+		}
+		else {
+			if (SAGE_Q == 4) {
+				set SAGE_Q,5;
+				mes "....";
+				mes "很可惜，不合格";
+				next;
+				mes "[柯瑞土斯 貝多爾]";
+				mes "還是會給你補考的機會的，";
+				mes "去多多了解這個世界再過來吧";
+		}
+		else {
+			mes "很可惜沒有合格";
+			next;
+			mes "[柯瑞土斯 貝多爾]";
+			mes "再給你考筆試的資格，";
+			mes "再累積點關於世界的知識再來吧！";
+		}
+	}
+	close;
+}
+
+// 術科考試
+yuno_in03,169,180,3	script	術科考試 教授	755,{
+	mes "[海爾梅斯 特利斯]";
+	if (BaseJob != Job_Mage) {
+		if (BaseJob == Job_Sage) {
+			mes "Welcome. How have you been?";
+			mes "I guess you've been through a lot of hard times...I can tell by your appearance.";
+			next;
+			mes "[海爾梅斯 特利斯]";
+			mes "I know how hard it is to explore all those perilous areas, but it will help you to gain more knowledge.";
+			mes "Book smarts never can beat street smarts.";
+			next;
+			mes "[海爾梅斯 特利斯]";
+			mes "However, it's a very dangerous idea to go deep inside a dungeon alone. ";
+			mes "You'd better look for trustworthy comrades.";
+		}
+		else if (BaseJob == Job_Novice) {
+			mes "呵呵，是個可愛的初學者啊，";
+			next;
+			mes "[海爾梅斯 特利斯]";
+			mes "米德加爾特大陸上還有很多，連我都不";
+			mes "知道的東西，";
+			mes "很多的魔物們，神秘的物品，英雄與傳說";
+			mes "...";
+			next;
+			mes "[海爾梅斯 特利斯]";
+			mes "怎麼樣，你也懷著身為賢者的夢想怎麼樣?";
+			mes "是可以更詳細的探究這個世界的機會";
+			next;
+			mes "[海爾梅斯 特利斯]";
+			mes "如果有意願，會再見到面吧，";
+			mes "那麼，小心點回去吧，";
+		}
+		else {
+			mes "歡迎，";
+			mes "這裡是修巴依采勒比魔法學院，";
+			next;
+			mes "[海爾梅斯 特利斯]";
+			mes "我們賢者與其說是魔法師更接近學者，";
+			mes "在組隊中很有多幫助，";
+			next;
+			mes "[海爾梅斯 特利斯]";
+			mes "也許下次遠征時帶著賢者去看看吧，";
+			mes "光憑一起走動應該就可以成功的扮演自己的腳色...";
+		}
+		close;
+	}
+	switch (SAGE_Q) {
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+		mes "我是擔任術科考試的海爾梅斯教授，";
+		mes "你是想要成為賢者的學生嗎";
+		next;
+		mes "[海爾梅斯 特利斯]";
+		mes "想要成為賢者之前請先去申請入學，";
+		mes "以及通過筆試測驗吧!";
+		close;
+	case 4:
+	case 5:
+		mes "我是擔任術科考試的海爾梅斯教授，";
+		mes "你是想要成為賢者的學生嗎";
+		next;
+		mes "[海爾梅斯 特利斯]";
+		mes "先通過柯瑞土斯教授的筆試再來吧，";
+		mes "那之後再來考我的測驗吧！";
+		close;
+	case 6:
+		mes "歡迎，是完成筆試的學生啊?";
+		mes "那麼來考術科吧！";
+		next;
+		mes "[海爾梅斯 特利斯]";
+		mes "術科沒什麼特別的，";
+		mes "在時間內抓到所有登場的魔物就結束了";
+		next;
+		mes "[海爾梅斯 特利斯]";
+		mes "比聽一百次，親自去做做看更容易暸解";
+		mes "怎樣，現在考試好嗎?";
+		next;
+		if (select("我要考術科.:給我準備的時間.") == 1) {
+			set SAGE_Q,7;
+			mes "[海爾梅斯 特利斯]";
+			mes "那麼馬上那開始吧，";
+			mes "努力考試平安回來吧！";
+			close2;
+			warp "job_sage",50,154;
+			end;
+		}
+		set SAGE_Q,7;
+		mes "[海爾梅斯 特利斯]";
+		mes "好，那麼...慢慢準備再來吧";
+		close;
+	case 7:
+		mes "唷，今次有做好充分準備了嗎?";
+		mes "術科考試其實並不是那麼困難，";
+		mes "所以希望你能努力";
+		next;
+		mes "[海爾梅斯 特利斯]";
+		mes "那麼，要開始考試了嗎?";
+		next;
+		if (select("準備好了.:等我一下") == 1) {
+			mes "[海爾梅斯 特利斯]";
+			mes "那麼馬上那開始吧，";
+			mes "努力考試平安回來吧！";
+			close2;
+			warp "job_sage",50,154;
+			end;
+		}
+		mes "[海爾梅斯 特利斯]";
+		mes "好，那麼...慢慢準備再來吧";
+		close;
+	case 8:
+		mes "辛苦了，術科考試也合格了：";
+		mes "我接受你的入學";
+		next;
+		mes "[海爾梅斯 特利斯]";
+		mes "那麼，要幫你定要研究的領城才可以...";
+		mes "我來看看...";
+		mes "筆試的分數與戰鬥考試的時間?";
+		next;
+		mes "[海爾梅斯 特利斯]";
+		mes "呵嗯，呵嗯...是這樣啊，";
+		mes "好...這種程度應該沒問題";
+		next;
+		switch(rand(1,3)) {
+		case 1:
+			set SAGE_Q,9;
+			changequest 2046,2047;
+			mes "[海爾梅斯 特利斯]";
+			mes "你就去做有關於天地樹的研究吧，";
+			mes "傳說天地樹是世界上所有生命的根源";
+			next;
+			mes "[海爾梅斯 特利斯]";
+			mes "這是個很好的歷史課題，幫助我們了解";
+			mes "古往今來，世界的變化";
+			mes "去找斯必安 萊利斯教授吧";
+			mes "他在隔壁的教室裡";
+			break;
+		case 2:
+			set SAGE_Q,11;
+			changequest 2046,2048;
+			mes "[海爾梅斯 特利斯]";
+			mes "你就做關於生物魔法的研究吧，";
+			mes "是增廣有關我們在處理，基本魔法的暸解";
+			mes "的科目";
+			next;
+			mes "[海爾梅斯 特利斯]";
+			mes "是可以深入暸解，";
+			mes "關於魔法的本質的領域";
+			mes "去請求在魔物博物館的";
+			mes "路西伍司凱莎斯教授的幫忙，";
+			break;
+		case 3:
+			set SAGE_Q,13;
+			changequest 2046,2049;
+			mes "[海爾梅斯 特利斯]";
+			mes "你就做關於屬性魔法的研究吧，";
+			mes "是增廣有關我們在處理，基本魔法的暸解";
+			mes "的科目";
+			next;
+			mes "[海爾梅斯 特利斯]";
+			mes "是可以深入暸解，";
+			mes "關於魔法的本質的領域";
+			mes "去請求在生化工學研究所的";
+			mes "艾貝西喬勒奇教授的幫忙，";
+			break;
+		}
+		next;
+		mes "[海爾梅斯 特利斯]";
+		mes "那麼，祝你好運，";
+		mes "希望你有好結果！";
+		close;
+	case 9:
+		mes "嗯?要再講一次才聽的懂嗎?";
+		mes "不是叫你做有關天地樹歷史的研究嗎?";
+		next;
+		mes "[海爾梅斯 特利斯]";
+		mes "去找在教室的";
+		mes "斯必安 萊利斯教授";
+		close;
+	case 11:
+		mes "嗯?要再講一次才聽的懂嗎?";
+		mes "不是叫你做有關生物魔法的研究嗎?";
+		next;
+		mes "[海爾梅斯 特利斯]";
+		mes "去找在魔物博物館的";
+		mes "路西伍司凱莎斯教授";
+		close;
+	case 13:
+		mes "嗯?要再講一次才聽的懂嗎?";
+		mes "不是叫你做有關屬性魔法的研究嗎?";
+		next;
+		mes "[海爾梅斯 特利斯]";
+		mes "去找在生化工學研究所的";
+		mes "艾貝西喬勒奇教授";
+		close;
+	case 15:
+		mes "你在這裡胡鬧什麼?";
+		mes "論文完成了就趕快拿去給院長看吧";
+		mes "雖然你要給我看也是可以，";
+		mes "但你能不能畢業可不是取決於我啊!";
+		next;
+		mes "[海爾梅斯 特利斯]";
+		mes "好啦好啦~請快點拿過去吧";
+		close;
+	default:
+		mes "現在正忙於計算其它學生的考試分數....";
+		mes "不好意思，請等下再來找我吧";
+		close;
+	}
+}
+
+yuno_in03,62,176,2	script	歷史課 教授#sa	109,{
+	mes "[斯必安 萊利斯]";
+	if (BaseJob != Job_Mage) {
+		if (BaseJob == Job_Sage) {
+			mes "是誰....?";
+			mes "啊啊，是我以前教過的學生啊";
+			mes "莫非你已經從學院畢業了?時間過得真快";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "只要知道過去，就可以理解現在，從而想像出將來";
+			mes "所有的真理都會在那裡";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "你現在也是在尋求自己的過去吧";
+			mes "到哪天你開始回想、懷念'現在'，";
+			mes "發現到自己的改變時，再來找我吧";
+		}
+		else if (BaseJob == Job_Novice) {
+			mes "初學者? 初學者怎麼會在這種地方?";
+			next;
+			mes "你身上擁有無限發展的可能性，";
+			mes "以後想要走什麼樣的路?";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "不管選擇哪一條路，所有的事都取決於自";
+			mes "己的選擇，";
+			mes "千萬要找正確的路走下去...";
+		}
+		else {
+			mes "歡迎，本人在此擔任歷史學教授";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "現在的世界是由無數歲月的記錄累積而生成的，";
+			mes "自古，知道過去就等於知道現在與未來，";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "你也看看自己的過去，";
+			mes "一定的明確的看到未來...";
+		}
+		close;
+	}
+	if (SAGE_Q == 9) {
+		if (SAGE_Q2 == 0) {
+			mes "你好啊，" + strcharinfo(0) + "，很高興見到你";
+			mes "是來見我的嗎?是學生嗎?";
+			mes "我叫 '斯必安 萊利斯'，你的畢業論文就我來指導了";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "你的研究課題是有關於'天地樹'";
+			mes "不過說真的，你知道天地樹是什麼嗎?";
+			next;
+			switch(select("當然知道啊.:不知道.")) {
+			case 1:
+				mes "[斯必安 萊利斯]";
+				mes "哦? 是嗎?";
+				mes "那請你告訴我天地樹是什麼呢?";
+				next;
+				switch(select("一種健康食品.:所有生命的根源:阿里山上的神木")) {
+				case 1:
+					mes "[斯必安 萊利斯]";
+					mes "答錯了! " + strcharinfo(0) + " 扣10分";
+					mes "正確答案是:";
+					mes "天地樹是世界上所有生命的根源啊";
+					break;
+				case 2:
+					mes "[斯必安 萊利斯]";
+					mes "你答對了，'天地樹'也叫做'世界樹'";
+					mes "據說所有生命都是源自於它喔";
+					break;
+				case 3:
+					mes "[斯必安 萊利斯]";
+					mes "噢，這個玩笑可真不好笑";
+					mes "所以 " + strcharinfo(0) + " 扣10分!";
+					mes "正確答案是:";
+					mes "天地樹是世界上所有生命的根源啊";
+					break;
+				}
+				next;
+				break;
+			case 2:
+				mes "[斯必安 萊利斯]";
+				mes "噢噢，我還以為你會知道天地樹是什麼呢";
+				mes "天地樹是世界上所有生命的起源啊!";
+				next;
+				break;
+			}
+			mes "[斯必安 萊利斯]";
+			mes "不過在上課前，要幫我一個忙，";
+			mes "不是很難應該會答應我吧?";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "拿10個^000088跟天地樹有關係^000000的東西來吧";
+			mes "不會很難吧? 對吧?";
+			mes "那帶10個來就開始吧~";
+			set SAGE_Q2,1;
+			changequest 2047,2050;
+			close;
+		}
+		else {
+			if (countitem(607) > 0) {
+				mes "[斯必安 萊利斯]";
+				mes "哇嗚! 你看你帶了什麼東西來了!";
+				mes "是天地樹果實呢! 珍貴的物品啊";
+			}
+			else if (countitem(608) > 0) {
+				mes "[斯必安 萊利斯]";
+				mes "嗯... 這是什麼東西呢??";
+				mes "是天地樹芽啊，真不錯呢..";
+			}
+			else if (countitem(610) > 0) {
+				mes "[斯必安 萊利斯]";
+				mes "你帶來的是天地樹葉?";
+				mes "我記得沒錯的話..這東西在艾爾帕蘭";
+				mes "就可以輕鬆買到了吧";
+				mes "可見你沒有認真啊!";
+				mes "" + strcharinfo(0) + " 扣10分!";
+			}
+			else {
+				mes "[斯必安 萊利斯]";
+				mes "呃嗯 ? 東西呢? 把跟天地樹有關的東西帶來給我看看吧";
+				mes "確定帶來之後再來找我吧";
+				mes "不用太緊張，我會等你拿來的";
+				close;
+			}
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "好啦，我們現在可以正式上課了";
+			mes "仔細聽好了，如果你上課不認真的話";
+			mes "這學分我會把你當掉的啊";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "這世界的根源，世界樹，一棵非常巨大的梣木";
+			mes "它的根佈滿在整個盧恩-米德加茲王國";
+			mes "它的樹葉則連接到天上去";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "在這片大陸的外圍是一片大海洋，";
+			mes "巨大的蛇 堯樂門加特 圍繞著，";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "如我們所知，這是世界由三個部份組成";
+			mes "巨人族們生活的 '兀德加爾特'";
+			mes "人類生活的 '米德加爾特'";
+			mes "神生活的 '阿斯加爾特'";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "有棵樹的根就位於米德加爾特的中央，";
+			mes "那就是天地樹";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "米德加爾特是從巨人伊美樂的心臟裡誕生的，而世界樹的根則是把它與其他世界緊緊盤繞在一起";
+			mes "它的根向下延伸到三個不同的世界";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "第一分支的根延伸到神居住的阿斯加爾特";
+			mes "那是個我們人類至今仍未探索過的世界";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "第二分支延伸到巨人足們居住的兀德加爾特，這在許多神話和傳說裡都都有被提到過，都是我們耳熟能詳的";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "而第三分支的根則深入到'尼芙菲姆'";
+			mes "這裡是死者的歸宿，陰冷、潮濕、多霧";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "像是天地樹葉、天地樹的果實、天地樹芽";
+			mes "這些物品都是屬於天地樹的一部分";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "天地樹果實的功能可以使HP和SP全部恢復";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "天地樹芽可以恢復自身HP、SP的一半";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "天地樹葉子則可以使失去生命的人們，";
+			mes "重回到這世界上";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "最後，如果以後有人找到進入阿斯加爾特的方法";
+			mes "我希望你能找到世界樹的所在";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "縱使世界樹的故事只存在於神話與傳說，";
+			mes "我們賢者還是有義務要找出世界樹的真相";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "這就是今天的課了";
+			mes "請把上課的內容給記錄下來，";
+			mes "並且進你所能記憶下來吧";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "下次上課的時候，你必須撰寫論文了";
+			mes "請把撰寫論文所需的物品給帶來吧";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "用來當筆的^3355FF羽毛^000000 1個";
+			mes "記載文字用的^3355FF動物外皮^000000 1個";
+			mes "裝訂成書用的^3355FF瑪哪樹枝^000000 1個";
+			mes "寫字需要用到^3355FF墨汁^000000 1個";
+			mes "用來裝墨水的^3355FF空瓶^000000 1個";
+			next;
+			set SAGE_Q2,0;
+			set SAGE_Q,10;
+			changequest 2050,2051;
+			mes "[斯必安 萊利斯]";
+			mes "收集好了就回來找我吧";
+			mes "快要完成了，加油啊";
+			close;
+		}
+	}
+	else if (SAGE_Q == 10) {
+		if (countitem(916) > 0 && countitem(919) > 0 && countitem(1019) > 0 && countitem(1024) > 0 && countitem(713) > 0) {
+			delitem 916,1;
+			delitem 919,1;
+			delitem 1019,1;
+			delitem 1024,1;
+			delitem 713,1;
+			mes "那寫看看吧~好好寫看看吧~呼呼~";
+			mes "照我告訴你的內容就足夠了~那麼~";
+			next;
+			mes "..........";
+			next;
+			mes "....................";
+			next;
+			mes ".................................";
+			next;
+			mes ".....有一片海洋圍繞著大陸";
+			mes "而這片海洋被蛇的東西給盤繞呢?";
+			switch(select("世界樹:巨蛇堯樂門加特:巨大的烏龜與大象:巨龍")) {
+			case 1:
+				set .@w_point,.@w_point+1;
+				mes "世界樹";
+				break;
+			case 2:
+				mes "巨蛇堯樂門加特";
+				break;
+			case 3:
+				set .@w_point,.@w_point+1;
+				mes "巨大的烏龜與大象";
+				break;
+			case 4:
+				set .@w_point,.@w_point+1;
+				mes "巨龍";
+				break;
+			}
+			mes "這個大陸是由三個地方所組成的，例如..";
+			switch(select("蜘蛛居住的妙勒尼山脈:巨人居住的兀拉諾斯:巨人居住的兀德加爾特:耶誕村落薑餅城")) {
+			case 1:
+				set .@w_point,.@w_point+1;
+				mes "蜘蛛居住的妙勒尼山脈、";
+				break;
+			case 2:
+				set .@w_point,.@w_point+1;
+				mes "巨人居住的兀拉諾斯、";
+				break;
+			case 3:
+				mes "巨人居住的兀德加爾特、";
+				break;
+			case 4:
+				set .@w_point,.@w_point+1;
+				mes "耶誕村落薑餅城、";
+				break;
+			}
+			switch(select("人類居住的米德加爾特:人類居住的盧恩-米德加爾特:人魚居住的特托尼亞:沙漠城市夢羅克")) {
+			case 1:
+				mes "人類居住在米德加爾特、";
+				break;
+			case 2:
+				set .@w_point,.@w_point+1;
+				mes "人類居住在盧恩-米德加爾特、";
+				break;
+			case 3:
+				set .@w_point,.@w_point+1;
+				mes "人魚居住在特托尼亞、";
+				break;
+			case 4:
+				set .@w_point,.@w_point+1;
+				mes "沙漠城市夢羅克、";
+				break;
+			}
+			switch(select("神居住的阿貝加爾特:神居住的阿斯加爾特:公民居住的秀發茲發德:盧恩-米德加爾特首都 普隆德拉")) {
+			case 1:
+				set .@w_point,.@w_point+1;
+				mes "神居住的阿貝加爾特";
+				break;
+			case 2:
+				mes "神居住的阿斯加爾特";
+				break;
+			case 3:
+				set .@w_point,.@w_point+1;
+				mes "公民居住的秀發茲發德";
+				break;
+			case 4:
+				set .@w_point,.@w_point+1;
+				mes "盧恩-米德加爾特首都 普隆德拉";
+				break;
+			}
+			mes "這個大陸就是由以上三個世界所組成";
+			next;
+			if (.@w_point > 0) {
+				mes "[斯必安 萊利斯]";
+				mes "..." + strcharinfo(0) + "，你有認真聽課嗎?";
+				mes "你的著論根本沒資格被稱為論文啊";
+				next;
+				mes "[斯必安 萊利斯]";
+				mes "你的論文不夠格拿去給院長看的，";
+				mes "多讀點書後再來吧";
+				close;
+			}
+			mes ".....就如我們上一堂課所說";
+			mes "世界樹是...";
+			switch(select("一棵巨大的梣木:一棵阿里山上的神木:一棵大柳樹:一根巨大的枯枝")) {
+			case 1:
+				mes "一棵巨大的梣木";
+				break;
+			case 2:
+				set .@w_point,.@w_point+1;
+				mes "一棵阿里山上的神木";
+				break;
+			case 3:
+				set .@w_point,.@w_point+1;
+				mes "一棵大柳樹";
+				break;
+			case 4:
+				set .@w_point,.@w_point+1;
+				mes "一根巨大的枯枝";
+				break;
+			}
+			mes "世界樹的根深入到三個地方，";
+			mes "分別是...";
+			switch(select("秀發茲發德, 兀德加爾特, 尼芙菲姆.:米德加爾特, 兀德加爾特, 娜芙菲姆.:阿斯加爾特, 兀德加爾特, 娜芙菲姆.:阿斯加爾特, 兀德加爾特, 尼芙菲姆.")) {
+			case 1:
+				set .@w_point,.@w_point+1;
+				mes "秀發茲發德, 兀德加爾特, 尼芙菲姆.";
+				break;
+			case 2:
+				set .@w_point,.@w_point+1;
+				mes "米德加爾特, 兀德加爾特, 娜芙菲姆.";
+				break;
+			case 3:
+				set .@w_point,.@w_point+1;
+				mes "阿斯加爾特, 兀德加爾特, 娜芙菲姆.";
+				break;
+			case 4:
+				mes "阿斯加爾特, 兀德加爾特, 尼芙菲姆.";
+				break;
+			}
+			mes "而天地樹芽可以..";
+			switch(select("恢復所有異常狀態.:一次恢復所有HP/SP.:恢復一半的HP/SP.:恢復 沉默、詛咒、混亂 狀態.")) {
+			case 1:
+				set .@w_point,.@w_point+1;
+				mes "恢復所有異常狀態.";
+				break;
+			case 2:
+				set .@w_point,.@w_point+1;
+				mes "一次恢復所有HP/SP.";
+				break;
+			case 3:
+				mes "恢復一半的HP/SP.";
+				break;
+			case 4:
+				set .@w_point,.@w_point+1;
+				mes "恢復 沉默、詛咒、混亂 狀態.";
+				break;
+			}
+			next;
+			if (.@w_point > 0) {
+				mes "[斯必安 萊利斯]";
+				mes "..." + strcharinfo(0) + "，你有認真聽課嗎?";
+				mes "你的著論根本沒資格被稱為論文啊";
+				next;
+				mes "[斯必安 萊利斯]";
+				mes "你的論文不夠格拿去給院長看的，";
+				mes "多讀點書後再來吧";
+				close;
+			}
+			mes "..........";
+			next;
+			mes "....................";
+			next;
+			mes ".................................";
+			next;
+			set SAGE_Q,15;
+			changequest 2051,2052;
+			mes "[斯必安 萊利斯]";
+			mes "噢，你寫好了嗎?";
+			mes "請好好保管你的論文，";
+			mes "丟了就不能再重寫一本囉";
+			getitem 1550,1; //Book
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "我認為你可以把論文拿去給校長看了，";
+			mes "是否能畢業決定在他手上呢..";
+			close;
+		}
+		else {
+			mes "在做什麼...跟我開玩笑嗎?呼呼";
+			mes "忘記了嗎?要再講一次嗎?呼呼呼，";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "用來當筆的^3355FF羽毛^000000 1個";
+			mes "記載文字用的^3355FF動物外皮^000000 1個";
+			mes "裝訂成書用的^3355FF瑪哪樹枝^000000 1個";
+			mes "寫字需要用到^3355FF墨汁^000000 1個";
+			mes "用來裝墨水的^3355FF空瓶^000000 1個";
+			next;
+			mes "[斯必安 萊利斯]";
+			mes "準備這種事要自己做吧～不是嗎?";
+			mes "呼一定要找來喔，呼呼呼";
+			close;
+		}
+	}
+	else if (SAGE_Q == 15) {
+		mes "你在做什麼?";
+		mes "不是說了論文要拿給院長看嗎?";
+		mes "好啦，不要在這種地方胡鬧了";
+		close;
+	}
+	else {
+		mes "不曉得你找我有什麼事情，";
+		mes "不管怎樣，請等會兒再來吧";
+		mes "我還要思考許多哲理呢..";
+		close;
+	}
+}
+
+yuno_in03,32,102,1	script	生物學 教授#sa	755,{
+	mes "[路西伍司 凱莎斯]";
+	if (BaseJob != Job_Mage) {
+		if (BaseJob == Job_Sage) {
+			mes "有什麼不懂的地方嗎?";
+			mes "有問題要問我的話請在一周前先預約好，我很忙的";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "你也知道我在忙個什麼吧?";
+			mes "只要是成為了賢者的傢伙們就都會明白吧....";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "有空的時候就去迷宮探索看看吧";
+			mes "就算只是平躺在床上翻滾凝望天花板，";
+			mes "說不定其中也有學習新知的機會唷";
+		}
+		else if (BaseJob == Job_Novice) {
+			mes "來找我有事情嗎，小朋友?";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "你最好出去跟你朋友們一同玩耍去";
+			mes "這裡不是給你玩躲貓貓的地方喔~";
+		}
+		else {
+			mes "嗯?是來觀看魔物的嗎?";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "要看是可以，但不要到處亂摸啊";
+			mes "因為碰到了的話會出現危險的東西...";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "對了，要是抓到了珍貴的魔物，";
+			mes "請一定要告訴我";
+			mes "我會出高價買下那情報";
+		}
+		close;
+	}
+	if (SAGE_Q == 11) {
+		if (SAGE_Q2 == 0) {
+			mes "好，已經通過了筆試是吧";
+			mes "我是生物學界中數一數二的學者，";
+			mes "我叫路西伍司 凱莎斯";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "別人自我介紹後，自己也該報上名字，這點是禮貌";
+			mes "你的名字是?";
+			next;
+			select(strcharinfo(0));
+			mes "[路西伍司 凱莎斯]";
+			mes "不錯的名字很高興認識你";
+			mes "那麼，我來說明一下接下來你要研究的這個領域吧";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "正如你所知道的，你要研究的是關於魔物的事情";
+			mes "到現在為止，你也有過不少與魔物相遇及打鬥的經驗吧?";
+			next;
+			if (select("是的，有努力地經過那樣的時間:不，我不太....") == 1) {
+				mes "[路西伍司 凱莎斯]";
+				mes "努力過?";
+				mes "是去過很多好玩的地方才對吧?";
+				mes "算了，我的課可沒有那麼好玩喔~";
+			} else {
+				mes "[路西伍司 凱莎斯]";
+				mes "這樣啊...";
+				mes "可是，我的教學並不是為了好玩";
+				mes "也有可能要你前往你從來沒接觸過的黑暗又危險的地方...";
+				mes "要有完全改變心態的心理準備啊";
+			}
+			next;
+			set sage_m4,rand(1,3);
+			mes "[路西伍司 凱莎斯]";
+			mes "那麼現在就開始吧";
+			mes "你只要緊記著我的課多數是即看即學，這樣就差不多了";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "我現在需要";
+			if (sage_m4 == 1) {
+				set SAGE_Q2,1;
+				changequest 2048,2053;
+				mes "^3355FF觸鬚^000000 5個";
+				mes "^3355FF單細胞^000000 5個";
+				mes "^3355FF魚尾^000000 5個";
+			}
+			else if (sage_m4 == 2) {
+				set SAGE_Q2,2;
+				changequest 2048,2054;
+				mes "^3355FF鉗子^000000 5個";
+				mes "^3355FF蛤蜊肉^000000 5個";
+				mes "^3355FF人魚之心^000000 5個";
+			}
+			else {
+				set SAGE_Q2,3;
+				changequest 2048,2055;
+				mes "^3355FF血管^000000 5個";
+				mes "^3355FF鉗子^000000 5個";
+				mes "^3355FF銳利麟片^000000 5個";
+			}
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "那將我要的東西帶來";
+			mes "開始吧";
+			close;
+		}
+		else if (SAGE_Q2 >= 1 && SAGE_Q2 <=3) {
+			switch(SAGE_Q2) {
+			case 1: setarray .@items[0],962,1052,1023; break;
+			case 2: setarray .@items[0],960,966,950; break;
+			case 3: setarray .@items[0],1050,960,963; break;
+			}
+			if (countitem(.@items[0]) > 4 && countitem(.@items[1]) > 4 && countitem(.@items[2]) > 4) {
+				mes "唷，真是辛苦了";
+				mes "雖然不知道你是撿來的還是買來的";
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "總之，掉落這些物品的魔物們，都有共通的地方";
+				mes "你知道是什麼嗎?";
+				next;
+				if (select("都是水屬性:都是魚貝類:都是主動攻擊:都是魔物") <= 2) {
+					mes "[路西伍司 凱莎斯]";
+					mes "對，有的是水屬性、也有魚貝類";
+					mes "大部份的魚貝類都是在水中生長的，";
+					mes "所以也是水屬性";
+				} else {
+					set sage_m4,4;
+					mes "[路西伍司 凱莎斯]";
+					mes "...不對，他們的共通點是，";
+					mes "既是水屬性、也是魚貝類";
+					mes "大部份的魚貝類都是在水中生長，";
+					mes "在生活的過程中身體適應了環境的結果，";
+					mes "就是變為水屬性了";
+				}
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "雖然不能說所有的魚貝類都是水屬性，但大致而言也差不多了";
+				mes "那麼，對魚貝類們特別有效的魔法是哪一種?";
+				next;
+				switch(select("雷擊術:火箭術:雷爆術:冰凍術")) {
+				case 1:
+				case 3:
+					mes "[路西伍司 凱莎斯]";
+					mes "正確對水屬性來說，";
+					mes "風屬性魔法雷擊術是最有效的";
+					mes "不過對魔法詠唱會作出反應的魔物，";
+					mes "還是要十二萬分地注意";
+					next;
+					mes "[路西伍司 凱莎斯]";
+					mes "話說回來像梅納海葵跟海星那種是魚貝類但是屬性又不同的魔物，";
+					mes "也是要小心地應對";
+					break;
+				case 2:
+				case 4:
+					set sage_m4,4;
+					mes "[路西伍司 凱莎斯]";
+					mes "...不對";
+					mes "對水屬性來說最有效的是風屬性的雷擊術、雷爆術";
+					mes "在屬性的相剋效果上再用點功吧";
+					break;
+				}
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "那麼，接下來學習關於昆蟲系的事情吧";
+				mes "那麼....";
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "接下來把這些找來給我";
+				switch(rand(1,4)) {
+				case 1:
+					set SAGE_Q2,4;
+					if(checkquest(2053) != -1) {
+						changequest 2053,2056;
+					}
+					else if(checkquest(2054) != -1) {
+						changequest 2054,2056;
+					}
+					else {
+						changequest 2055,2056;
+					}
+					mes "^3355FF蜘蛛絲^000000 5個";
+					mes "^3355FF堅硬外殼^000000 5個";
+					mes "^3355FF昆蟲觸角^000000 5個";
+					break;
+				case 2:
+					set SAGE_Q2,5;
+					if(checkquest(2053) != -1) {
+						changequest 2053,2057;
+					}
+					else if(checkquest(2054) != -1) {
+						changequest 2054,2057;
+					}
+					else {
+						changequest 2055,2057;
+					}
+					mes "^3355FF硬角^000000 5個";
+					mes "^3355FF蝸牛殼^000000 5個";
+					mes "^3355FF蛾蝶蟲翅膀粉末^000000 5個";
+					break;
+				case 3:
+					set SAGE_Q2,6;
+					if(checkquest(2053) != -1) {
+						changequest 2053,2058;
+					}
+					else if(checkquest(2054) != -1) {
+						changequest 2054,2058;
+					}
+					else {
+						changequest 2055,2058;
+					}
+					mes "^3355FF螳螂臂^000000 5個";
+					mes "^3355FF昆蟲外殼^000000 5個";
+					mes "^3355FF彩色昆蟲外殼^000000 5個";
+					break;
+				case 4:
+					if(checkquest(2053) != -1) {
+						changequest 2053,2059;
+					}
+					else if(checkquest(2054) != -1) {
+						changequest 2054,2059;
+					}
+					else {
+						changequest 2055,2059;
+					}
+					set SAGE_Q2,7;
+					mes "^3355FF蜘蛛絲^000000 5個";
+					mes "^3355FF螳螂臂^000000 5個";
+					mes "^3355FF堅硬外皮^000000 5個";
+				}
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "全部找來後我會告訴你下一步";
+				mes "那麼，去吧";
+				close;
+			}
+			mes "喂喂，振作一點啊";
+			mes "我會再說一次的，好好記著啊";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "^3355FF"+getitemname(.@items[0])+"^000000 5個";
+			mes "^3355FF"+getitemname(.@items[1])+"^000000 5個";
+			mes "^3355FF"+getitemname(.@items[2])+"^000000 5個";
+			close;
+		}
+		else if (SAGE_Q2 >= 4  && SAGE_Q2 <= 7) {
+			switch(SAGE_Q2) {
+			case 4: setarray .@items[0],1025,935,928; break;
+			case 5: setarray .@items[0],947,946,1057; break;
+			case 6: setarray .@items[0],1031,955,1013; break;
+			case 7: setarray .@items[0],1025,1031,943; break;
+			}
+			if (countitem(.@items[0]) > 4 && countitem(.@items[1]) > 4 && countitem(.@items[2]) > 4) {
+				mes "好，全都收集到了";
+				mes "沒忘了勤於觀察吧";
+				mes "不過像這個量也不是什麼很困難的事情吧";
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "昆蟲有著多種多樣的屬性，";
+				mes "所以在使用魔法前，";
+				mes "一定要再三想清楚才行動";
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "特別是盜賊的隱匿跟刺客的偽裝，對那些傢伙都無效";
+				mes "這也是很引人注目的一點";
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "其中也有集體行動的昆蟲";
+				mes "比較明顯的就是首領等級的昆蟲了吧，都有他們專屬的兵團跟隨著";
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "例如女王蟻的蟻后....";
+				mes "女王蜂的蜂后、";
+				mes "盜蟲的大家長－黃金蟲....";
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "一個人面對這樣的首領級昆蟲時，";
+				mes "沒有死的覺悟是不行的";
+				mes "要去尋找他們的棲息地時，";
+				mes "最好還是跟同伴們一起去";
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "好了，話就聊到這裡吧";
+				mes "差不多也要開始寫論文了";
+				mes "就算只是做做樣子也是一定要的，";
+				mes "所以快點開始吧";
+				mes "在那之前，你先去把這些東西準備好再來";
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "用來當筆的 ^3051FD羽毛^000000 1個";
+				mes "記載文字用的 ^3051FD動物外皮^000000 1個";
+				mes "釘裝必要的 ^3051FD瑪哪樹枝^000000 1個";
+				mes "墨水果然還是要用 ^3051FD墨汁^000000 1個";
+				mes "裝墨汁的 ^3051FD空瓶^000000 1個";
+				next;
+				mes "[路西伍司 凱莎斯]";
+				mes "收集好了就回來找我吧";
+				mes "快要完成了，加油啊";
+				set SAGE_Q2,0;
+				set SAGE_Q,12;
+				if(checkquest(2056) != -1) {
+					changequest 2056,2051;
+				}
+				else if(checkquest(2057) != -1) {
+					changequest 2057,2051;
+				}
+				else if(checkquest(2058) != -1) {
+					changequest 2058,2051;
+				}
+				else {
+					changequest 2059,2051;
+				}
+				close;
+			}
+			mes "什麼，忘了要找什麼物品?";
+			mes "算了，我再說一次";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "^3355FF"+getitemname(.@items[0])+"^000000 5個";
+			mes "^3355FF"+getitemname(.@items[1])+"^000000 5個";
+			mes "^3355FF"+getitemname(.@items[2])+"^000000 5個";
+			close;
+		}
+		mes "Zzz...Zzz...";
+		close;
+	}
+	else if (SAGE_Q == 12) {
+		if (countitem(916) > 0 && countitem(919) > 0 && countitem(1019) > 0 && countitem(1024) > 0 && countitem(713) > 0) {
+			delitem 916,1;
+			delitem 919,1;
+			delitem 1019,1;
+			delitem 1024,1;
+			delitem 713,1;
+			mes "好，都收集來了";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "只讓你一人獨自寫比較好，";
+			mes "我把範例放在這裡，多少參考一下吧";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "怎麼樣?";
+			mes "光是自己親身去體驗過的事情，";
+			mes "就已經十分有寫下來的意義了";
+			mes "那麼，寫好了就拿給我看一下吧";
+			next;
+			mes "..........";
+			next;
+			mes "....................";
+			next;
+			mes ".................................";
+			next;
+			select("魔物們會因為種族的分別");
+			mes "魔物們會因為種族的分別";
+			select("在屬性上也會很多樣的變化");
+			mes "在屬性上也會很多樣的變化";
+			select("一定要預先掌握魔物們的屬性");
+			mes "一定要預先掌握魔物們的屬性";
+			select("才能更有效地使用適當的魔法");
+			mes "才能更有效地使用適當的魔法";
+			select("特別要注意的就是有一部份的魔物");
+			mes "特別要注意的就是有一部份的魔物";
+			select("看起來很可愛但卻很危險");
+			mes "看起來很可愛但卻很危險";
+			next;
+			mes "..........";
+			next;
+			mes "....................";
+			next;
+			mes ".................................";
+			next;
+			set SAGE_Q,15;
+			changequest 2051,2052;
+			getitem 1550,1;
+			mes "[路西伍司 凱莎斯]";
+			mes "嗯哼，辛苦了!";
+			mes "這個絕對不能弄丟啊!";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "把這個交給院長看，";
+			mes "就能決定你能否畢業了";
+			mes "不枉一路努力到現在啊";
+			close;
+		}
+		else {
+			mes "什麼嘛，還沒準備好不是嗎";
+			mes "我再說一次....";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "用來當筆的 ^3051FD羽毛^000000 1個";
+			mes "記載文字用的 ^3051FD動物外皮^000000 1個";
+			mes "釘裝必要的 ^3051FD瑪哪樹枝^000000 1個";
+			mes "墨水果然還是要用 ^3051FD墨汁^000000 1個";
+			mes "裝墨汁的 ^3051FD空瓶^000000 1個";
+			next;
+			mes "[路西伍司 凱莎斯]";
+			mes "都已經一路努力到這裡了，";
+			mes "這點程度的已經不算什麼了吧?";
+			mes "好啦，快點準備吧";
+			close;
+		}
+	}
+	else if (SAGE_Q == 15) {
+		mes "你在做什麼?";
+		mes "不是說了論文要拿給院長看嗎?";
+		mes "好啦，不要在這種地方胡鬧了";
+		close;
+	}
+	else {
+		mes "嗚~頭好痛....";
+		mes "要準備的東西太多了啦....";
+		mes "什麼!這邊也快忙死了!";
+		next;
+		mes "[路西伍司 凱莎斯]";
+		mes "要參觀的話就自己看個夠吧!";
+		mes "我就說了我的頭很痛...嗚...";
+		mes "真是的....(碎碎唸)";
+		close;
+	}
+}
+
+yuno_in03,244,31,3	script	物理學 教授#sa	120,{
+	mes "[艾貝西 喬勒奇]";
+	if (BaseJob != Job_Mage) {
+		if (BaseJob == Job_Sage) {
+			mes "嘻唷呵呵,午安";
+			mes "有什麼事嗎?";
+			mes "....啊啊，原來是賢者啊~!";
+			mes "見到你真高興呀~";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "話說回來，你怎麼會如此悠閑的在這種地方晃呢~?";
+			mes "不過，比老是沉迷於魔力的人比起來，也是比較正常的呢~唷呵呵";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "什麼什麼?";
+			mes "有時候也想要回來學校嗎?";
+			mes "不要說這種話了，來來來，快點出去走走吧，唷呵呵....";
+		}
+		else if (BaseJob == Job_Novice) {
+			mes "嗯?嗯?什麼什麼?";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "是來參觀的嗎?";
+			mes "我覺得這裡也沒什麼好看的啊~";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "你說很稀有嗎?";
+			mes "真是的~唷呵呵呵呵";
+		}
+		else {
+			mes "你在說什麼我聽不懂";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "對物理不懂?";
+			mes "那你還敢來修我的課";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "不怕我把你當掉嗎?";
+			mes "現在的小孩真是的！";
+		}
+		close;
+	}
+	if (SAGE_Q == 13) {
+		if (SAGE_Q2 == 0) {
+			mes "你好啊，真高興見到你";
+			mes "已經很久沒有新生來過了";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "唷呵呵，我就是要教導你的教授";
+			mes "怎樣? 很榮幸吧? 喔呵呵呵!";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "呀，在開始上課之前，";
+			mes "可以拜託你一件事嗎~?";
+			mes "哎呀哎呀，不是什麼困難的事情啦";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "帶^3051FD石頭^00000030個過來給我吧";
+			mes "就是這樣，一點都不難對吧?";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "如果自己沒辦法收集石頭的話，";
+			mes "那試試看拜託盜賊朋友們看看";
+			mes "那麼，我等你的30個石頭喔";
+			set SAGE_Q2,1;
+			changequest 2049,2060;
+			close;
+		}
+		else if (SAGE_Q2 == 1) {
+			if (countitem(7049) > 29) {
+				mes "哎呀，都收集來了呢~!";
+				mes "等我一下下喔~";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "阿布拉卡達布拉!!";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "阿~布拉卡達布拉!!";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "阿布拉卡~達布拉!!";
+				next;
+				delitem 7049,30;
+				mes "[艾貝西 喬勒奇]";
+				mes "看，剛剛那樣普通的石頭，";
+				mes "可以做出３個這樣的優良石頭喔!";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "好滿足好滿足呀~";
+				mes "對吧?很高興吧?呀呵呵呵!";
+				next;
+				getitem 991,1;
+				getitem 993,1; 
+				getitem 992,1;
+				mes "[艾貝西 喬勒奇]";
+				mes "來，給你屬性原石";
+				mes "還有呢還有呢~";
+				mes "要把我的話聽到最後啊~";
+				set SAGE_Q2,2;
+				changequest 2060,2061;
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "幫我做這些箭來吧";
+				mes "^3051FD水靈箭矢^000000 50個";
+				mes "^3051FD地靈箭矢^000000 50個";
+				mes "^3051FD風靈箭矢^000000 50個";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "如果有朋友是弓箭手的話，";
+				mes "就可以做出來了不是嗎?";
+				mes "那就拜託你了!";
+				close;
+			}
+			else {
+				mes "你想怎樣?";
+				mes "想來捉弄我嗎?";
+				mes "哎唷~不要玩了，快點出去吧";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "^3051FD石頭^00000030個的收集可不要忘了，";
+				mes "我不是說過了嗎!";
+				mes "只是路上滾來滾去的石頭嘛~";
+				mes "不是很容易就撿的到嗎~?";
+				close;
+			}
+		}
+		else if (SAGE_Q2 == 2) {
+			if (countitem(1754) > 49 && countitem(1756) > 49 && countitem(1755) > 49) {
+				mes "啊呀，都帶來了呢";
+				mes "那~開始講課吧~";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "我會讀給你聽，要好好聽著喔!";
+				mes "說到重點時別忘了畫起來呀";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "水屬性魔法對火屬性來說~很強";
+				mes "你就想成是往火上倒水就對了";
+				mes "夠簡單吧?";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "風屬性魔法對水屬性來說~很強";
+				mes "如果閃電打進湖裡的話會怎樣?";
+				mes "唷呵呵!";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "地屬性魔法對風屬性來說~很強";
+				mes "為了抵擋刮風不都是要用磚土來建房子?";
+				mes "就是那樣就是那樣";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "火屬性魔法對地屬來說~很強";
+				mes "要是發生火災了樹木不都會燒起來嗎?";
+				mes "跟那個是一樣的....";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "啊啦，已經這麼晚了呀";
+				mes "那麼~接下來的就下次再講吧";
+				delitem 1754,50;
+				delitem 1756,50;
+				delitem 1755,50;
+				set SAGE_Q2,3;
+				changequest 2060,2061;
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "下次你過來之前，^3051FD聖水^000000可以帶1個來給我嗎?";
+				mes "如果沒有聖職者朋友的話，";
+				mes "好像就只能靠自己做了....";
+				close;
+			}
+			else {
+				mes "什麼什麼?";
+				mes "你把我剛剛給你的原石怎麼了嗎?";
+				mes "難不成是賣掉了嗎....";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "^3051FD水靈箭矢^000000 50個";
+				mes "^3051FD地靈箭矢^000000 50個";
+				mes "^3051FD風靈箭矢^000000 50個";
+				mes "拜託一下弓箭手的朋友們幫忙做出來吧~";
+				close;
+			}
+		}
+		else if (SAGE_Q2 == 3) {
+			if (countitem(523) > 0) {
+				mes "好~了好了!";
+				mes "帶過來了嘛!";
+				mes "那麼那麼，我要接著講下去了喔!";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "這次也是會讀出來所以要用心聽!";
+				mes "也要做筆記喔";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "水屬性的弱點就是風屬性!";
+				mes "被冰凍起來的話，再被雷擊中會很痛吧?";
+				mes "唷呵呵!";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "風屬性的弱點就是地屬性!";
+				mes "跑來跑去的孩子們摔倒在地上了，";
+				mes "就會受很重的傷對吧?";
+				mes "呵....";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "地屬性的弱點就是火屬性!";
+				mes "從泥土中長出來的樹木們，";
+				mes "被火一燒不就都變成灰了嗎?";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "火屬性的弱點就是水屬性!";
+				mes "要把熱烘烘的東西冷卻下來，";
+				mes "果然還是要用到水呢";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "好了好了，課就上到這裡~";
+				mes "完畢~~~~~!";
+				mes "都明白了吧?";
+				delitem 523,1;
+				set SAGE_Q2,0;
+				set SAGE_Q,14;
+				changequest 2062,2051;
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "嗯，再來只要寫好論文就完美了";
+				mes "我的課程果然是最好的呢!";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "那麼，快點做好寫論文的準備吧";
+				mes "用來當筆的 ^3051FD羽毛^000000 1個";
+				mes "記載文字用的 ^3051FD動物外皮^000000 1個";
+				mes "釘裝必要的 ^3051FD瑪哪樹枝^000000 1個";
+				mes "墨水果然還是要用 ^3051FD墨汁^000000 1個";
+				mes "裝墨汁的 ^3051FD空瓶^000000 1個";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "要準備的就這些";
+				mes "我等你哦~";
+				close;
+			}
+			else {
+				mes "到底怎麼了!";
+				mes "看看，又忘記了不是嗎~";
+				next;
+				mes "[艾貝西 喬勒奇]";
+				mes "^3051FD聖水^0000001個，";
+				mes "拜託看看身為聖職者的朋友們吧";
+				close;
+			}
+		}
+		else {
+			mes "你有時間嗎...?";
+			mes "哈哈，我是開玩笑的! 女朋友!";
+			close;
+		}
+	}
+	else if (SAGE_Q == 14) {
+		if (countitem(916) > 0 && countitem(919) > 0 && countitem(1019) > 0 && countitem(1024) > 0 && countitem(713) > 0) {
+			delitem 916,1;
+			delitem 919,1;
+			delitem 1019,1;
+			delitem 1024,1;
+			delitem 713,1;
+			mes "嗯唔";
+			mes "那~我們就開始寫吧";
+			mes "有我的指導就一定沒問題的!";
+			mes "唷呵呵呵!";
+			next;
+			mes "..........";
+			next;
+			mes "....................";
+			next;
+			mes ".................................";
+			next;
+			mes "....屬性魔法可以分為哪四大元素";
+			switch(select("水、地、火、風:地、水、火、風:水、風、地、火")) {
+			case 1:
+				mes "水、地、火、風";
+				break;
+			case 2:
+				mes "地、水、火、風";
+				break;
+			case 3:
+				mes "水、風、地、火";
+				break;
+			}
+			mes "各樣的屬性都有它們的特性，";
+			switch (select("風屬性魔法比水屬性強:水屬性魔法比火屬性強:火屬性魔法比地屬性強")) {
+				case 1:
+					mes "風屬性魔法比水屬性強，";
+					mes "地屬性魔法比風屬性強";
+					break;
+				case 2:
+					mes "水屬性魔法比火屬性強，";
+					mes "風屬性魔法比水屬性強";
+					break;
+				case 3:
+					mes "火屬性魔法比地屬性強，";
+					mes "水屬性魔法比火屬性強";
+					break;
+			}
+			switch (select("可是因為也有弱點的存在:屬性武器也是一樣:種族的不同屬性也會很多樣化")) {
+				case 1:
+					mes "可是因為也有弱點的存在，";
+					break;
+				case 2:
+					mes "屬性武器也是一樣，";
+					break;
+				case 3:
+					mes "種族的不同屬性也會很多樣化，";
+					break;
+			}
+			switch (select("一定要把握好自己的能力:因應場合使用不同的屬性:聽說紅色藥水是草莓口味的")) {
+				case 1:
+					mes "一定要把握好自己的能力";
+					break;
+				case 2:
+					mes "因應場合使用不同的屬性";
+					break;
+				case 3:
+					mes "聽說紅色藥水是草莓口味的";
+					break;
+			}
+			next;
+			switch (select("普隆德拉的艾米是最可愛的女孩:有人說紅色藥水是用波利做的:魔法的奧妙遠超人類的智慧")) {
+				case 1:
+					mes "普隆德拉的艾米是最可愛的女孩";
+					break;
+				case 2:
+					mes "有人說紅色藥水是用波利做的";
+					break;
+				case 3:
+					mes "魔法的奧妙遠超人類的智慧";
+					break;
+			}
+			switch (select("可是夢羅克商人家的妹妹也很可愛:為什麼會是草莓味真的是個謎:因此過份依賴魔力是很危險的")) {
+				case 1:
+					mes "可是夢羅克商人家的妹妹也很可愛";
+					break;
+				case 2:
+					mes "為什麼會是草莓味真的是個謎";
+					break;
+				case 3:
+					mes "因此過份依賴魔力是很危險的";
+					break;
+			}
+			switch (select("如果可以給我兔耳髮圈的話:話說回來白色藥水的味道:要是適當地使用魔法與休息")) {
+				case 1:
+					mes "如果可以給我兔耳髮圈的話";
+					break;
+				case 2:
+					mes "話說回來白色藥水的味道";
+					break;
+				case 3:
+					mes "要是適當地使用魔法與休息";
+					break;
+			}
+			switch (select("我會給你快樂當回禮:太難想像了:就可以保障戰鬥時的安全")) {
+				case 1:
+					mes "我會給你快樂當回禮";
+					break;
+				case 2:
+					mes "太難想像了";
+					break;
+				case 3:
+					mes "就可以保障戰鬥時的安全";
+					break;
+			}
+			switch (select("兔耳髮圈跟服事們很相配:雖然很喜歡那混亂的口感:跟其它的職業組成隊伍")) {
+				case 1:
+					mes "兔耳髮圈跟服事們很相配";
+					break;
+				case 2:
+					mes "雖然很喜歡那混亂的口感";
+					break;
+				case 3:
+					mes "跟其它的職業組成隊伍";
+					break;
+			}
+			switch (select("可是那跟騎士一定更相配:可是就算體力降到最底也不會喝的:那樣的戰鬥才是我所期待的")) {
+				case 1:
+					mes "可是那跟騎士一定更相配";
+					break;
+				case 2:
+					mes "可是就算體力降到最底也不會喝的";
+					break;
+				case 3:
+					mes "那樣的戰鬥才是我所期待的";
+					break;
+			}
+			next;
+			mes "..........";
+			next;
+			mes "....................";
+			next;
+			mes ".................................";
+			next;
+			set SAGE_Q,15;
+			changequest 2051,2052;
+			mes "[艾貝西 喬勒奇]";
+			mes "呵呵~";
+			mes "好像有抓到一些感覺嘛~";
+			mes "好啦，完成了唷呵呵....";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "把這個拿給院長看吧";
+			mes "然後你也可以畢業了!";
+			getitem 1550,1;
+			close;
+		}
+		else {
+			mes "什麼什麼?";
+			mes "不能這麼迷糊啊~~";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "用來當筆的 ^3051FD羽毛^000000 1個";
+			mes "記載文字用的 ^3051FD動物外皮^000000 1個";
+			mes "釘裝必要的 ^3051FD瑪哪樹枝^000000 1個";
+			mes "墨水果然還是要用 ^3051FD墨汁^000000 1個";
+			mes "裝墨汁的 ^3051FD空瓶^000000 1個";
+			next;
+			mes "[艾貝西 喬勒奇]";
+			mes "這樣的話，一個人也可以準備好吧?";
+			mes "要找人幫忙也沒關係喔~";
+			close;
+		}
+	}
+	else if (SAGE_Q == 15) {
+		mes "在做什麼?想在這裡玩嗎?";
+		mes "不趕快走還在做什麼?呼呼，";
+		next;
+		mes "[艾貝西 喬勒奇]";
+		mes "這樣會失去的，呼呼，";
+		mes "在晚上之前趕快回去吧，呼呼呼";
+		close;
+	}
+	else close;
+}
+
+job_sage,50,165,4	script	術科 考試 服務 人員#talk	700,{
+	mes "[術科考試助理]";
+	mes "歡迎到賢者術科考試場來";
+	mes "想要考試的話，就到考試等待室去";
+	next;
+	mes "[術科考試助理]";
+	mes "有其它人在考試時，請稍後，";
+	mes "進行的狀況會告知在本地圖的玩家";
+	mes "結束的同時，重新開始";
+	next;
+	mes "[術科考試助理]";
+	mes "每個人所需考試的時間是";
+	mes "5至10分鐘";
+	mes "在戰鬥場上想要出去時請重新登入";
+	close;
+}
+job_sage,50,165,4	script	考試等待室#sg	700,{
+OnInit:
+	disablenpc "考試等待室#sg";
+	waitingroom "考試等待室",20,"考試等待室#sg::OnStartArena",1;
+	enablewaitingroomevent;
+	end;
+
+OnStartArena:
+	warpwaitingpc "job_sage",116,97;
+	donpcevent "Arena#1::OnEnable";
+	disablewaitingroomevent;
+	end;
+
+OnEnable:
+	enablewaitingroomevent;
+	end;
+
+}
+
+-	script	Arena#1	66,{
+OnInit:
+	disablenpc "Arena#1";
+	end;
+
+OnEnable:
+	enablenpc "Arena#1";
+	set .MyMobs,16;
+	monster "job_sage",111,102,"級數 F",1183,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",120,102,"級數 F",1183,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",111,93,"級數 F",1183,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",120,93,"級數 F",1183,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",107,98,"級數 F",1183,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",124,98,"級數 F",1183,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",115,106,"級數 F",1183,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",115,90,"級數 F",1183,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",103,110,"級數 D",1184,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",128,110,"級數 D",1184,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",103,85,"級數 D",1184,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",128,85,"級數 D",1184,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",107,106,"級數 D",1184,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",124,106,"級數 D",1184,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",107,89,"級數 D",1184,1,"Arena#1::OnMyMobDead";
+	monster "job_sage",124,89,"級數 D",1184,1,"Arena#1::OnMyMobDead";
+	initnpctimer;
+	end;
+
+OnReset:
+	killmonsterall "job_sage";
+	end;
+
+OnMyMobDead:
+	set .MyMobs,.MyMobs-1;
+	if (.MyMobs < 1) {
+		mapannounce "job_sage","考試場 : " + strcharinfo(0) + ", 成功打敗魔物.",bc_map;
+		donpcevent "Arena#2::OnEnable";
+		stopnpctimer;
+	}
+	end;
+
+OnTimer1000:
+	mapannounce "job_sage","考試場 : 術科考試開始",bc_map;
+	end;
+
+OnTimer2000:
+	mapannounce "job_sage","考試場 : 第一場考試－限定時間３分鐘",bc_map;
+	end;
+
+OnTimer3000:
+	mapannounce "job_sage","考試場 : 在有效時間內，把魔物全部殺掉",bc_map;
+	end;
+
+OnTimer33000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 2分30秒",bc_map;
+	end;
+
+OnTimer63000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 2分",bc_map;
+	end;
+
+OnTimer93000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 1分30秒",bc_map;
+	end;
+
+OnTimer123000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 1分",bc_map;
+	end;
+
+OnTimer153000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 30秒",bc_map;
+	end;
+
+OnTimer173000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 10秒！",bc_map;
+	end;
+
+OnTimer183000:
+	mapannounce "job_sage","考試場 : 時間終了！",bc_map;
+	donpcevent "Arena#1::OnReset";
+	end;
+
+OnTimer184000:
+	areawarp "job_sage",100,82,131,113,"yuno",324,258;
+	end;
+
+OnTimer185000:
+	mapannounce "job_sage","考試場 : 下一位應試者請準備",bc_map;
+	end;
+
+OnTimer186000:
+	disablenpc "Arena#1";
+	donpcevent "考試等待室#sg::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+-	script	Arena#2	-1,{
+OnInit:
+	disablenpc "Arena#2";
+	end;
+
+OnEnable:
+	enablenpc "Arena#2";
+	disablenpc "Arena#1::OnReset";
+	set .MyMobs,24;
+	monster "job_sage",111,102,"代數學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",111,102,"物理學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",111,102,"歷史學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",120,102,"地理學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",120,102,"天文學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",120,102,"氣象學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",111,93,"建築學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",111,93,"對照組",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",111,93,"機械學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",120,102,"統計學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",120,102,"藝術學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",120,102,"語言學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",111,93,"動物學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",111,93,"營養學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",111,93,"造景學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",120,93,"人類學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",120,93,"生物學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",120,93,"倫理學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",107,98,"經濟學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",107,98,"政治學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",107,98,"攝影學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",124,98,"園藝學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",124,98,"衛生學",1063,1,"Arena#2::OnMyMobDead";
+	monster "job_sage",124,98,"社會學",1063,1,"Arena#2::OnMyMobDead";
+	initnpctimer;
+	end;
+
+OnReset:
+	killmonsterall "job_sage";
+	end;
+
+OnMyMobDead:
+	set .MyMobs,.MyMobs-1;
+	if (.MyMobs < 1) {
+		mapannounce "job_sage","考試場 : " + strcharinfo(0) + "，成功打敗魔物",bc_map;
+		donpcevent "Arena#Doorkeeper::OnEnable";
+		donpcevent "Arena#3::OnEnable";
+		stopnpctimer;
+	}
+	end;
+
+OnTimer1000:
+	mapannounce "job_sage","考試場 : 第二場考試－限定時間３分鐘",bc_map;
+	end;
+
+OnTimer2000:
+	mapannounce "job_sage","考試場 : 在有效時間內，把魔物全部殺掉",bc_map;
+	end;
+
+OnTimer33000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 2分30秒",bc_map;
+	end;
+
+OnTimer63000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 2分",bc_map;
+	end;
+
+OnTimer93000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 1分30秒",bc_map;
+	end;
+
+OnTimer123000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 1分",bc_map;
+	end;
+
+OnTimer153000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 30秒",bc_map;
+	end;
+
+OnTimer173000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 10秒！",bc_map;
+	end;
+
+OnTimer183000:
+	mapannounce "job_sage","考試場 : 時間終了！",bc_map;
+	donpcevent "Arena#2::OnReset";
+	end;
+
+OnTimer184000:
+	areawarp "job_sage",100,82,131,113,"yuno",324,258;
+	end;
+
+OnTimer185000:
+	mapannounce "job_sage","考試場 : 下一位應試者請準備",bc_map;
+	end;
+
+OnTimer186000:
+	disablenpc "Arena#2";
+	donpcevent "考試等待室#sg::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+-	script	Arena#Doorkeeper	-1,{
+OnInit:
+	disablenpc "Arena#Doorkeeper";
+	end;
+
+OnEnable:
+	enablenpc "Arena#Doorkeeper";
+	donpcevent "Arena#2::OnReset";
+	disablenpc "Arena#2";
+	set .MyMobs,1;
+	monster "job_sage",116,97,"學士學位",1179,1,"Arena#Doorkeeper::OnMyMobDead";
+	initnpctimer;
+	end;
+
+OnReset:
+	donpcevent "Arena#3::OnReset";
+	killmonsterall "job_sage";
+	end;
+
+OnDisable:
+	disablenpc "Arena#3";
+	disablenpc "Arena#Doorkeeper";
+	end;
+
+OnMyMobDead:
+	set .MyMobs,.MyMobs-1;
+	if (.MyMobs < 1) {
+		mapannounce "job_sage","考試場 : 恭喜 " + strcharinfo(0) + "通過術科考試了",bc_map;
+		set SAGE_Q,8;
+		donpcevent "Test Helper#sg::OnEnable";
+		disablenpc "Arena#Doorkeeper";
+		stopnpctimer;
+	}
+	end;
+
+OnTimer1000:
+	mapannounce "job_sage","考試場 : 第二場考試－限定時間１分鐘",bc_map;
+	end;
+
+OnTimer30000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 30秒",bc_map;
+	end;
+
+OnTimer50000:
+	mapannounce "job_sage","考試場 : 時間限制還剩下 10秒！",bc_map;
+	end;
+
+OnTimer60000:
+	mapannounce "job_sage","考試場 : 時間終了！",bc_map;
+	donpcevent "Arena#Doorkeeper::OnReset";
+	end;
+
+OnTimer61000:
+	areawarp "job_sage",100,82,131,113,"yuno",324,258;
+	end;
+
+OnTimer62000:
+	mapannounce "job_sage","考試場 : 下一位應試者請準備",bc_map;
+	end;
+
+OnTimer63000:
+	disablenpc "Arena#Doorkeeper";
+	donpcevent "考試等待室#sg::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+-	script	Arena#3	-1,{
+OnInit:
+	disablenpc "Arena#3";
+	end;
+
+OnEnable:
+	monster "job_sage",107,106,"翹課",1185,1;
+	monster "job_sage",124,106,"遲到",1185,1;
+	monster "job_sage",107,89,"作弊",1185,1;
+	monster "job_sage",124,89,"作弊",1185,1;
+	end;
+
+OnDisable:
+	killmonsterall "job_sage";
+	end;
+}
+
+-	script	Test Helper#sg	-1,{
+OnInit:
+	disablenpc "Test Helper#sg";
+	end;
+
+OnEnable:
+	initnpctimer;
+	end;
+
+OnTimer2000:
+	mapannounce "job_sage","考試場 : 回去把剩下的轉職過程，全部結束吧",bc_map;
+	end;
+
+OnTimer4000:
+	mapannounce "job_sage","考試場 : 術科考試結束，下一位應試者請準備",bc_map;
+	end;
+
+OnTimer5000:
+	areawarp "job_sage",100,82,131,113,"yuno_in03",163,180;
+	end;
+
+OnTimer7000:
+	mapannounce "job_sage","考試場 : 下一位應試者請準備",bc_map;
+	end;
+
+OnTimer9000:
+	disablenpc "Test Helper#sg";
+	donpcevent "考試等待室#sg::OnEnable";
+	stopnpctimer;
+	end;
+}

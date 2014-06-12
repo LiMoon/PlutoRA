@@ -1,0 +1,57 @@
+//===== rAthena Script =======================================
+//= Milk Trader
+//===== By: ==================================================
+//= kobra_k88; L0ne_W0lf
+//===== Current Version: =====================================
+//= 1.5
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= [Official Conversion]
+//= Trades bottles for milk
+//===== Additional Comments: =================================
+//= Fully working
+//= 1.1 Negative input bug fixed [Lupus]
+//= 1.2 Raised the price to close zeny exploit [Lupus]
+//= 1.2a Switched to Lupus's "loopless" technique.[kobra_k88]
+//= 1.3 Rescripted to Aegis 10.3 standards. [L0ne_W0lf]
+//= 1.4 Implemented checkweight. [L0ne_W0lf]
+//= 1.5 Fixed missed variable. (bugreport:1523) [L0ne_W0lf]
+//============================================================
+
+prontera,73,140,0	script	牛奶商人#Milk Trader	86,{
+	if (checkweight(1201,1) == 0) {
+		mes "你必須先拿掉一些東西，因為你會負重";
+		close;
+	}
+	mes "[牛奶商人]";
+	mes "若收集帶來空瓶的話，只要付15";
+	mes "金錢可買到牛奶 1瓶!!";
+	next;
+	if (select("全部交換 空瓶:放棄") == 1) {
+		if (countitem(713) <= 0) {
+			mes "[牛奶商人]";
+			mes "那，歡迎來有空瓶的顧客!!";
+			mes "....沒有人嗎?";
+			close;
+		}
+		set .@bottles,countitem(713);
+		set .@total_weight,.@bottles * 50;
+		set .@total_cost,.@bottles * 15;
+		if (Zeny < .@Total_cost) {
+			mes "[牛奶商人]";
+			mes "換取一瓶牛奶需要15 zeny，你至少要有" + .@total_cost + "zeny!";
+			close;
+		}
+		if (MaxWeight - Weight < .@total_weight) {
+			mes "[牛奶商人]";
+			mes "你必須先拿掉一些東西，因為你會負重";
+			close;
+		}
+		set Zeny, Zeny-.@total_cost;
+		delitem 713,.@bottles; //Empty Bottles
+		getitem 519,.@bottles; //Milk
+		close;
+	}
+	close;
+}

@@ -1,0 +1,691 @@
+//===== rAthena Script ======================================= 
+//= Soul Linker Job Quest
+//===== By: ================================================== 
+//= Celestria & Samuray22
+//===== Current Version: ===================================== 
+//= 1.6
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Job quest for Soul Linker class.
+//= [Vars Used]
+//= SOUL_Q = Job Change Phase. (Max 4)
+//===== Additional Comments: ================================= 
+//= 1.2 Rescripted to Aegis 10.3 standards. [Samuray22]
+//= 1.3 Slight updates and fixes to the script. [L0ne_W0lf]
+//=     Removes the use of labels, and corrects other errors.
+//=     Removed the GM-use only NPC from the sec_in map. 
+//=     No longer used a global var, uses an NPC var instead.
+//= 1.3a Deleted Empty Color Tag. (bugreport:1572) [Samuray22]
+//= 1.4 Replaced effect numerics with constants. [L0ne_W0lf]
+//= 1.5 Added Quest Log commands. [Kisuka]
+//= 1.6 Updated to match the latest official script. [Euphy]
+//============================================================ 
+
+morocc_in,174,30,6	script	小孩#link1	716,{
+	if (Class == Job_Soul_Linker) {
+		mes "[馬伊雅]";
+		mes "Best of luck in your";
+		mes "journeys. As you master";
+		mes "more Soul Linker skills,";
+		mes "you will be able to draw";
+		mes "more of the spirits' power";
+		mes "to endow upon your allies...";
+		close;
+	}
+	if (Class == Job_Star_Gladiator) {
+		mes "[小孩]";
+		if (Sex == 1) {
+			mes "Aren't you a warrior";
+			mes "of the sun? I'm familiar";
+		}
+		else {
+			mes "Aren't you a warrior of";
+			mes "the moon? I'm familiar";
+		}
+		mes "with your ways. After all,";
+		mes "the basis of both of our";
+		mes "skills is grounded in the";
+		mes "Taekwon Do job, right?";
+		close;
+	}
+	if (Class != Job_Taekwon) {
+		mes "[小孩]";
+		mes "Mm? I've got nothing to";
+		mes "offer you. But if you know";
+		mes "any well experienced";
+		mes "practitioners of Taekwon";
+		mes "Do, they might benefit";
+		mes "from what I know.";
+		close;
+	}
+	if (JobLevel < 40) {
+		mes "[小孩]";
+		mes "So you're studying";
+		mes "Taekwon Do. That's good,";
+		mes "that's very good. Just keep";
+		mes "refining those skills and";
+		mes "stick to your training.";
+		close;
+	}
+	else if (JobLevel > 39) {
+		if (SOUL_Q == 0) {
+			mes "[小孩]";
+			mes "...";
+			mes "喂 你";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "我嗎?";
+			next;
+			mes "[小孩]";
+			mes "嗯，";
+			mes "就是那邊的你";
+			mes "就是你啊";
+			next;
+			if (select("小孩啊，怎麼說話這麼沒禮貌啊:不理他，走人") == 1) {
+				mes "[小孩]";
+				mes "不要因為我看起來像個小孩";
+				mes "就不尊重我啊，";
+				mes "其實我是個，";
+				mes "...已經活到三百零五歲的人啊";
+				emotion e_pif;
+				next;
+				mes "[小孩]";
+				mes "你的武術...";
+				mes "你認為這是個你唯一";
+				mes "要走的路嗎?";
+				mes "依我看來，";
+				mes "你還有別的路可以走啊...";
+				emotion e_heh;
+				next;
+				mes "[小孩]";
+				mes "請你仔細想一想吧，";
+				mes "到你目前為止所見的人群中，";
+				mes "強壯的魔法師，鍊金術師等等...";
+				mes "其中有沒有發現奇怪的事嗎?";
+				next;
+				mes "[小孩]";
+				mes "對呀，奇怪的事情...";
+				mes "譬如說...";
+				mes "像幽靈之類的啦";
+				next;
+				mes "[小孩]";
+				mes "哎呦，不要太害怕呀，";
+				mes "那些人是因為迷上了你的氣息，";
+				mes "才會跟著你的，";
+				mes "在你不知不覺的時候";
+				next;
+				mes "[小孩]";
+				mes "他們還想著繼續戰鬥下去呢，";
+				mes "可是他們沒有肉體啊，";
+				mes "只能在旁觀賞啊，";
+				mes "對他們，";
+				mes "有你可以幫助他們的事情，";
+				mes "可以從他們借來力量啊";
+				next;
+				mes "[小孩]";
+				mes "雖然不是給你使用的，";
+				mes "但那些魂魄生前所擁有的職業，";
+				mes "可以把他們的力量借給別人的，";
+				mes "到死了為止他們還留在這裡的理由是，";
+				mes "表示證明他們曾經強壯過...";
+				next;
+				mes "[小孩]";
+				mes "我就直接講結論吧，";
+				mes "有沒有心想要成為'悟靈士'呢?";
+				next;
+				if (select("小孩啊，你的媽媽在哪裡?:悟靈士?") == 1) {
+					mes "[小孩]";
+					mes "哎喲，你為什麼聽不懂";
+					mes "人類說的話呢!";
+					mes "真是的...";
+					close;
+				}
+				mes "[小孩]";
+				mes "是啊，悟靈士，";
+				mes "可以介於強壯死者們的力量，";
+				mes "可讓夥伴們變成更強壯的人，";
+				mes "對你有充分你一方面的潛能，";
+				mes "至少你還沒有領悟到而已，";
+				mes "怎麼樣? 你也想要嗎?";
+				next;
+				if (select("不用了:我要!") == 1) {
+					mes "[小孩]";
+					mes "...真可惜啊，";
+					mes "假設以後";
+					mes "想要放棄這拳術的話，";
+					mes "請再來找我吧";
+					close;
+				}
+				set SOUL_Q,1;
+				setquest 6005;
+				mes "[小孩]";
+				mes "好吧...";
+				mes "那我需要幾項物品，";
+				mes "^0000FF3克拉鑽石^000000，^0000FF不死心臟^000000，^0000FF永恆玫瑰^000000，";
+				mes "各需要一個即可，";
+				mes "都準備好了的話再來找我吧";
+				close;
+			}
+			mes "[小孩]";
+			mes "喂? 喂?";
+			mes "等一下!";
+			mes "請問你要去哪裡啊!";
+			mes "請聽聽我說話呀!";
+			close;
+		}
+		else if (SOUL_Q == 1) {
+			if (Class == Job_Taekwon) {
+				mes "[小孩]";
+				mes "你又回來了，";
+				mes "看看... 你有沒有把永恆玫瑰和";
+				mes "3克拉鑽石，不死心臟";
+				mes "帶來了嗎?";
+				next;
+				if (select("在這裡:沒有 還沒...") == 1) {
+					if (countitem(732) > 0 && countitem(929) > 0 && countitem(748) > 0) {
+						delitem 732,1; //Crystal_Jewel__
+						delitem 929,1; //Immortal_Heart
+						delitem 748,1; //Witherless_Rose
+						set SOUL_Q,2;
+						changequest 6005,6006;
+						mes "[小孩]";
+						mes "好的，物品已收到了，";
+						mes "來...那麼，";
+						mes "我為什麼叫你蒐集這些東西，";
+						mes "我等一下再跟你說..";
+						next;
+						mes "[馬伊雅]";
+						mes "我的名字叫馬伊雅，";
+						mes "還有...";
+						mes "或許你已經猜到了，";
+						mes "我已經不是屬於這個世界的人了";
+						next;
+						mes "[馬伊雅]";
+						mes "我不是沒能去冥府，";
+						mes "而是我還有一些事情沒做完，";
+						mes "所以還不能離開啊，";
+						mes "我希望能出現我的接班人...";
+						mes "...說真的，有人願意出來接班的話，";
+						mes "我才能做些交接啊...";
+						next;
+						mes "[馬伊雅]";
+						mes "我在這裡等候的理由是，";
+						mes "把那些有潛力的人";
+						mes "變成為";
+						mes "悟靈士啊...";
+						next;
+						mes "[馬伊雅]";
+						mes "等你心理準備好了的話，";
+						mes "再來跟我對話吧";
+						close;
+					}
+					mes "[小孩]";
+					mes "哦... 物品不夠啊，";
+					mes "你竟然要騙我，";
+					mes "你以為我是小孩，";
+					mes "講謊話就能欺騙過我嗎?";
+					emotion e_pif;
+					next;
+					mes "[小孩]";
+					mes "這次就原諒你吧，";
+					mes "反正我有很多的時間啊";
+					mes "等你有空的話，";
+					mes "在把東西帶來吧";
+					close;
+				}
+				mes "[小孩]";
+				mes "Mm. That's fine.";
+				mes "Although I have all";
+				mes "the time to spare in";
+				mes "the world, I don't like";
+				mes "to wait for very long.";
+				close;
+			}
+			set SOUL_Q,0;
+			mes "[小孩]";
+			mes "You've become a warrior";
+			mes "of the Sun, the Moon and";
+			mes "the Stars instead? I had no";
+			mes "idea you had that potential.";
+			mes "I suppose I can't blame you...";
+			close;
+		}
+		else if (SOUL_Q == 2) {
+			if (SkillPoint) {
+				mes "[馬伊雅]";
+				mes "You still have some";
+				mes "unallocated Skill Points.";
+				mes "Use them all to learn some";
+				mes "Taekwon Do skills, and then";
+				mes "return when you're ready.";
+				close;
+			}
+			if (.SoulLinkerTest == 1) {
+				mes "[馬伊雅]";
+				mes "Right now, someone else";
+				mes "is completing the ceremony";
+				mes "to become a Soul Linker.";
+				mes "Would you please wait until";
+				mes "it's finished? Then, when I'm";
+				mes "available, I'll attend to you.";
+				close;
+			}
+			donpcevent "Timer#link3::OnEnable";
+			set .SoulLinkerTest,1;
+			mes "[馬伊雅]";
+			mes "Great, I've finished";
+			mes "the preparations. Now";
+			mes "we'll proceed with the";
+			mes "ceremony to change";
+			mes "you into a Soul Linker.";
+			mes "Now close your eyes...";
+			close2;
+			warp "job_soul",30,30;
+			end;
+		}
+		else if (SOUL_Q > 2) {
+			mes "[馬伊雅]";
+			mes "Are you ready to";
+			mes "enter the depths";
+			mes "of your mind again?";
+			next;
+			if (select("No:Yes") == 1) {
+				mes "[馬伊雅]";
+				mes "Well then, come";
+				mes "back to me when you";
+				mes "think you are ready.";
+				mes "Until then, I'll be";
+				mes "waiting right here.";
+				close;
+			}
+			if (.SoulLinkerTest == 1) {
+				mes "[馬伊雅]";
+				mes "Right now, someone else";
+				mes "is completing the ceremony";
+				mes "to become a Soul Linker.";
+				mes "Would you please wait until";
+				mes "it's finished? Then, when I'm";
+				mes "available, I'll attend to you.";
+				close;
+			}
+			donpcevent "Timer#link3::OnEnable";
+			set .SoulLinkerTest,1;
+			mes "[馬伊雅]";
+			mes "Alright then, close";
+			mes "your eyes and relax.";
+			mes "We'll go back into the";
+			mes "depths of your mind.";
+			close2;
+			warp "job_soul",30,30;
+			end;
+		}
+	}
+
+OnInit:
+	set .SoulLinkerTest,0;
+	end;
+}
+
+job_soul,30,31,0	script	馬伊雅#link2::SLTester	-1,3,3,{
+OnTouch:
+	if (Class == Job_Taekwon) {
+		if (JobLevel < 40) {
+			set getvariableofnpc(.SoulLinkerTest,"小孩#link1"),0;
+			mes "[馬伊雅]";
+			mes "職業等級不足還會出現在這裡的確是很不尋常的事情啊，出去吧";
+			close2;
+			warp "morocc",157,47;
+			end;
+		}
+		if (SOUL_Q == 2) {
+			mes "[馬伊雅]";
+			mes "這裡是你的心裡，";
+			mes "還有...";
+			mes "被你的心所吸引";
+			mes "而來的魂魄們，";
+			mes "也都一起在這邊";
+			next;
+			mes "[馬伊雅]";
+			mes "假如你成為悟靈士的話，";
+			mes "他們會隨時地幫助你，";
+			mes "會把你的伙伴們變得更強壯的，";
+			mes "雖然現在的人數並不是很多，";
+			mes "就要看你對悟靈士";
+			mes "要怎麼努力的修煉而不同啦";
+			next;
+			mes "[馬伊雅]";
+			mes "你的心裡對別的";
+			mes "強壯的魂魄們，";
+			mes "會陸陸續續地吸引他們的";
+			next;
+			set SOUL_Q,3;
+			changequest 6006,6007;
+			mes "[馬伊雅]";
+			mes "你在這和你的心裡";
+			mes "可對看的時間";
+			mes "只有3分鐘，";
+			mes "現在這個時候";
+			mes "時間也在流失啊，";
+			mes "你試著跟他們對話看看吧";
+			close;
+		}
+		else if (SOUL_Q == 3) {
+			mes "[馬伊雅]";
+			mes "魂魄們所講的話，";
+			mes "你可要仔細聽好啊";
+			close;
+		}
+		else if (SOUL_Q == 4) {
+			mes "[馬伊雅]";
+			mes "如果你跟他們有充分的對話的話，";
+			mes "你現在就可以成為悟靈士了，";
+			mes "請問你要怎麼辦?";
+			next;
+			if (select("再跟他們多對話一些:我想轉職成悟靈士") == 1) {
+				mes "[馬伊雅]";
+				mes "知道了，";
+				mes "不過時間是限定的，";
+				mes "快點做會比較好的";
+				close;
+			}
+			if (ismounting()) {
+				mes "[馬伊雅]";
+				mes "You are on a riding pet,";
+				mes "so you cannot change your job.";
+				mes "Please unequip your riding pet and try again!";
+				close;
+			}
+			mes "[馬伊雅]";
+			mes "好的，";
+			mes "那麼現在就開始做儀式了";
+			next;
+			mes "[馬伊雅]";
+			mes "永恆玫瑰";
+			mes "會替你凋謝的";
+			specialeffect EF_MAPPILLAR2,AREA,"馬伊雅#link2";
+			next;
+			mes "[馬伊雅]";
+			mes "不死心臟";
+			mes "會替你停止跳動的";
+			next;
+			mes "[馬伊雅]";
+			mes "堅硬的鑽石";
+			mes "會替你破碎的";
+			next;
+			mes "[馬伊雅]";
+			mes "想要繼續征戰的人們";
+			mes "會替你赴湯蹈火的";
+			next;
+			if (SkillPoint) {
+				mes "^0000ff您尚有未使用的技能點數^000000";
+				close;
+			}
+			completequest 6008;
+			callfunc "Job_Change",Job_Soul_Linker;
+			callfunc "F_ClearJobVar";	// clears all job variables for the current player
+			set SOUL_Q,0;
+			mes "[馬伊雅]";
+			mes "I wish the best of luck";
+			mes "in your new life. Surround";
+			mes "yourself with allies, and the";
+			mes "spirits will be able to protect";
+			mes "you and help you fight in your battles. Farewell for now, friend.";
+			close2;
+			set getvariableofnpc(.SoulLinkerTest,"小孩#link1"),0;
+			donpcevent "Timer#link3::OnDisable";
+			warp "morocc",157,47;
+			end;
+		}
+		set getvariableofnpc(.SoulLinkerTest,"小孩#link1"),0;
+		mes "[馬伊雅]";
+		mes "Hmm...?";
+		mes "The time for you";
+		mes "to be here has not";
+		mes "arrived. Let's go";
+		mes "back to Morroc...";
+		close2;
+		warp "morocc",157,47;
+		end;
+	}
+	set getvariableofnpc(.SoulLinkerTest,"小孩#link1"),0;
+	if (Class == Job_Soul_Linker) {
+		mes "[馬伊雅]";
+		mes "The time has come for";
+		mes "you to venture out into the";
+		mes "wide world! More Soul Linkers";
+		mes "will definitely be needed in the ongoing battle against evil...";
+	}
+	else {
+		mes "[馬伊雅]";
+		mes "That's strange...";
+		mes "You're not supposed to";
+		mes "be here. Let me guide";
+		mes "you back to Morroc...";
+	}
+	close2;
+	warp "morocc",157,47;
+	end;
+}
+
+job_soul,35,30,6	duplicate(SLTester)	馬伊雅#link6	716
+
+job_soul,30,35,6	script	武道家的靈魂#link4	827,{
+	if (SOUL_Q == 2) {
+		mes "[武道家的靈魂]";
+		mes "Who am I...?";
+		mes "I think... I think";
+		mes "it would be best if";
+		mes "you spoke to Maya first...";
+		mes "Who and what I am requires";
+		mes "a complicated explanation...";
+		close;
+	}
+	else if (SOUL_Q > 2) {
+		mes "[武道家的靈魂]";
+		mes "在我活著的時候，";
+		mes "所有的人都對我說，";
+		mes "作為武道家的本份，";
+		mes "能做的事情都做完了，";
+		mes "等到我死後回想時，";
+		mes "並不是如此啊";
+		next;
+		mes "[武道家的靈魂]";
+		mes "我想把這技術";
+		mes "讓我的後輩們能感受得到，";
+		mes "並不是我要親自教他們的，";
+		mes "在沒有借到我的力量時，";
+		mes "他們是用不著的，";
+		mes "為了這個時候";
+		next;
+		mes "[武道家的靈魂]";
+		mes "會需要你的力量的，";
+		mes "懇求你幫助我，";
+		mes "為了這世上的後輩們，";
+		mes "要不要教給他們";
+		mes "有更高的世界呢?";
+		next;
+		set SOUL_Q,4;
+		if(checkquest(6008) == -1) {
+			changequest 6007,6008;
+		}
+		mes "[武道家的靈魂]";
+		mes "拜託你啦";
+		close;
+	}
+	mes "[武道家的靈魂]";
+	mes "...";
+	close;
+}
+
+job_soul,30,25,7	script	賢者的靈魂#link5	754,{
+	if (SOUL_Q == 2) {
+		mes "[賢者的靈魂]";
+		mes "Speak to 馬伊雅.";
+		mes "I'm afraid I may";
+		mes "confuse you if 馬伊雅";
+		mes "doesn't first explain";
+		mes "your present situation...";
+		close;
+	}
+	else if (SOUL_Q > 2) {
+		mes "[賢者的靈魂]";
+		mes "破壞!";
+		mes "破壞是我唯一要走的路!";
+		mes "在我生前";
+		mes "沒有完成過，";
+		mes "我想要做的一些破壞行為，";
+		mes "而變成了亡靈";
+		next;
+		mes "[賢者的靈魂]";
+		mes "如果有人向我";
+		mes "來借取力量的話，";
+		mes "來做些敲打和破壞的事情的話，";
+		mes "我真的願意把我的力量";
+		mes "借給他的!";
+		next;
+		mes "[賢者的靈魂]";
+		mes "對我，對我，";
+		mes "對我來說，";
+		mes "我有著可以破壞這世界上所有的力量啊!";
+		mes "若你沒有幫助我的話，";
+		mes "這就變成了完全沒有用的力量了!";
+		set SOUL_Q,4;
+		if(checkquest(6008) == -1) {
+			changequest 6007,6008;
+		}
+		next;
+		mes "[賢者的靈魂]";
+		mes "就交給你了！";
+		close;
+	}
+	mes "[賢者的靈魂]";
+	mes "...";
+	close;
+}
+
+job_soul,25,30,5	script	鍊金術師的靈魂#link7	744,{
+	if (SOUL_Q == 2) {
+		mes "[鍊金術師的靈魂]";
+		mes "Oh! I really want to";
+		mes "speak to you, but what";
+		mes "I have to say won't make";
+		mes "much sense unless you";
+		mes "talk to 馬伊雅 first. But yes,";
+		mes "I really need your help.";
+		close;
+	}
+	else if (SOUL_Q > 2) {
+		mes "[鍊金術師的靈魂]";
+		mes "沒有人比我擁有";
+		mes "更快的手，";
+		mes "更沒有人比我";
+		mes "用更快的速度";
+		mes "做出鍊金術的";
+		next;
+		mes "[鍊金術師的靈魂]";
+		mes "結果我過於相信我的雙手，";
+		mes "因事故而死亡了...";
+		mes "反而因此在那裡得到更大的力量，";
+		mes "更試著想要更快速的";
+		mes "施展鍊金術的";
+		mes "意志也產生了";
+		next;
+		mes "[鍊金術師的靈魂]";
+		mes "我希望我的後輩們";
+		mes "更能奮發上進一下，";
+		mes "看到我的力量作為榜樣，";
+		mes "要不要給他們注入一些";
+		mes "更強的意志呢?";
+		set SOUL_Q,4;
+		if(checkquest(6008) == -1) {
+			changequest 6007,6008;
+		}
+		next;
+		mes "[鍊金術師的靈魂]";
+		mes "拜託你了";
+		close;
+	}
+	mes "[鍊金術師的靈魂]";
+	mes "...";
+	close;
+}
+
+job_soul,1,5,0	script	Timer#link3	111,{
+	end;
+
+OnEnable:
+	initnpctimer;
+	end;
+
+OnDisable:
+	stopnpctimer;
+	set getvariableofnpc(.SoulLinkerTest,"小孩#link1"),0;
+	end;
+
+OnTimer60000:
+OnTimer120000:
+	if (getmapusers("job_soul") == 0) {
+		stopnpctimer;
+		set getvariableofnpc(.SoulLinkerTest,"小孩#link1"),0;
+	}
+	end;
+
+OnTimer180000:
+OnTimer181000:
+OnTimer182000:
+	mapwarp "job_soul","morocc",157,47;
+	end;
+
+OnTimer183000:
+	mapwarp "job_soul","morocc",157,47;
+	set getvariableofnpc(.SoulLinkerTest,"小孩#link1"),0;
+	stopnpctimer;
+}
+
+sec_in02,35,153,0	script	悟靈士變數控制	871,{
+	callfunc "F_GM_NPC";
+	mes "[悟靈士變數控制]";
+	mes "I can reset the Soul Linker";
+	mes "NPCs if a Soul Linker candidate";
+	mes "encounters a problem during the";
+	mes "end of the job quest. Please do";
+	mes "not use this function if players are still in the Quest Map.";
+	next;
+	if (callfunc("F_GM_NPC",1854,0) < 1) {
+		mes "[Soul Linker Var]";
+		mes "Password";
+		mes "is incorrect.";
+		close;
+	} else {
+		mes "[Soul Linker Var]";
+		mes "Would you like to";
+		mes "reset the Soul Linker";
+		mes "Global Variable?";
+		next;
+		switch(select("Reset:Cancel")) {
+		case 1:
+			mes "[Soul Linker Var]";
+			mes "The Soul Linker";
+			mes "Job Quest NPCs";
+			mes "have been reset.";
+			set getvariableofnpc(.SoulLinkerTest,"小孩#link1"),0;
+			close;
+		case 2:
+			mes "[Soul Linker Var]";
+			mes "You have canceled";
+			mes "this command.";
+			close;
+		}
+	}
+}
+
+//============================================================ 
+// Old changelog
+//============================================================ 
+//= A temp Soul Linker Job Changer based on the kRO quest.
+//= Quest info from RagnaInfo. Sprites from kRO screenshots
+//= 1.0 Optimized and updated [Lupus]
+//= 1.1 Fixed NPC names according to iRO [Lupus]
+//============================================================ 

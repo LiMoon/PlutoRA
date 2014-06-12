@@ -1,0 +1,116 @@
+//===== rAthena Script ======================================= 
+//= 離婚腳本
+//===== By: ================================================== 
+//= Perkka, Scriptor, LightFighter
+//= L0ne_W0lf
+//= 中文化 [小笨冰]
+//===== Current Version: ===================================== 
+//= 1.5
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Official Divorce script.
+//= Added isloggedin() check, even though Aegis doesn't do it;
+//= should be able to divorce even when the spouse is not online.
+//===== Additional Comments: ================================= 
+//= Both players should be online to get divorced
+//= Fixed menu [Lupus]
+//= 1.1 Added check if the patner's online, added effects [Lupus]
+//= 1.2 Updated to Aegis 10.3 standards. [L0ne_W0lf]
+//= 1.2a Commented out check of 'wedding_sign' to let
+//=     old married players divorcing, optimized, fixed a bug [Lupus]
+//= 1.3 Wedding variable 'wedding_sign' is now unset on divorce. [L0ne_W0lf]
+//= 1.4 Removed ifpartneron check, fixed typo in percentheal. [L0ne_W0lf]
+//= 1.5 Replaced effect numerics with constants. [L0ne_W0lf]
+//============================================================ 
+
+nif_in,190,112,5	script	小惡魔#divorce	738,{
+	mes "[小惡魔]";
+  	if (!getpartnerid()) {
+		mes "喀喀喀，人類到最後都是一個人的，";
+		mes "寂寞的心情只是暫時而已，寂寞的話";
+		mes "養一隻寵物怎麼樣呢?";
+		mes "最近我，小惡魔很受歡迎喔...";
+		close;
+	}
+	mes "看起來表情不太好喔... 有什麼";
+	mes "後悔的事嗎? 你要知道我一點";
+	mes "都不想幫忙覺得幸福的人，";
+	mes "小惡魔對那種人";
+	mes "一點興趣都沒有，喀喀喀";
+	next;
+	mes "[小惡魔]";
+	mes "其他的擱在一邊先問你好了，";
+	mes "結婚之後幸福嗎? 先不要想";
+	mes "什麼愛不愛的... 我比誰都清楚";
+	mes "在華麗的結婚典禮背後";
+	mes "藏著無數的問題";
+	next;
+	mes "[小惡魔]";
+	mes "沒錯，你來到這裡也是";
+	mes "一種命運，我也知道是想要";
+	mes "改變未來人生的意志，";
+	mes "就算是承諾永恆的對象，那顆心";
+	mes "也總有一天會枯萎的...!";
+	next;
+	mes "[小惡魔]";
+	mes "方法很簡單! 所謂的婚姻也是";
+	mes "契約的一種，只要拜託";
+	mes "小惡魔的話牠可以很容易的";
+	mes "幫你毀約的... 了解嗎?";
+	mes "自己過著自由的生活呢!!";
+	next;
+	mes "[小惡魔]";
+	mes "也不需要對方同意，";
+	mes "願意的話，也許會墜入新戀情吧，";
+	mes "不必要對離去的對方";
+	mes "念念不忘... 要我幫你嗎?";
+	mes "可以使婚姻無效喔...!";
+	next;
+	if (select("不，我現在很幸福:對，我想自己過生活") == 1) {
+		mes "[小惡魔]";
+		mes "哼，哼，情侶之類的... 情侶之類的!!";
+		mes "總有一天會後悔的再來找";
+		mes "小惡魔呢!! 瞧你的幸福";
+		mes "會維持多久!!";
+		close2;
+		warp "niflheim",169,162;
+		end;
+	}
+	mes "[小惡魔]";
+	mes "好吧，其他的不需要，只要有";
+	mes "你的心及2,500,000金幣就夠了，";
+	mes "回到結婚前的生活吧，";
+	mes "可以吧? 嗯? 是這樣嗎?";
+	mes "是解除婚約嗎?";
+	next;
+	if (select("...我再考慮一下:我想要付出代價之後解除婚約") == 1) {
+		mes "[小惡魔]";
+		mes "不必再考慮呢，人類到最後都是";
+		mes "一個人的! 心裡的準備及資金的準備，";
+		mes "兩者都準備好了之後再來找我吧...";
+		mes "喀喀喀喀喀.....";
+		close;
+	}
+	mes "[小惡魔]";
+	if (Zeny > 2499999) {
+		specialeffect EF_MAGICROD;
+		specialeffect2 EF_DEVIL;
+		set wedding_sign,0;
+		set Zeny, Zeny-2500000;
+		percentheal -100,-100;
+		divorce;
+		mes "在你改戀心意之前馬上幫你解除婚約!!";
+		mes "喀喀喀，你現在是一個人了!";
+		mes "自由了呢!";
+		mes "把沉重的心情全部拋開!";
+		mes "要感謝小惡魔喔.....!";
+		close;
+	}
+	mes "我說過2,500,000金幣了吧? 這是為了";
+	mes "拜託小惡魔而表示的誠意呢，";
+	mes "連這些錢也沒有的話就一輩子";
+	mes "過著被約束的生活吧... 喀喀喀";
+	close;
+}

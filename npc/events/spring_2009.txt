@@ -1,0 +1,725 @@
+//==========================================
+// [冥] The PlutoEA Project [王]
+// https://plutoea.googlecode.com/svn/
+// -----------------------------------------
+// - TRO 2009 迎春活動 -
+//==========================================
+//= 版本：1.7 [笨冰]
+//==========================================
+
+//----------------------------------------------------------
+// 時間控制項
+//----------------------------------------------------------
+pay_arche,1,1,0	script	08spring_timer	-1,{
+OnInit:
+	donpcevent "08spring_timer::OnEventPy";
+	donpcevent "08spring_timer::OnEventPr";
+	end;
+
+OnEventPy:
+	sleep2 5400000;
+	enablenpc "花樹#08spring_py02";
+	set $@08springevent,1;
+	donpcevent "花樹#08spring_py02::OnUnhide";
+	sleep2 1800100;
+	set $@08springevent,0;
+	donpcevent "花樹#08spring_py02::OnHide";
+	disablenpc "花樹#08spring_py02";
+	sleep2 5400000;
+	goto OnEventPy;
+	end;
+
+OnEventPr:
+	sleep2 5400000;
+	enablenpc "花樹#08spring_prb01";
+	enablenpc "花樹#08spring_prb02";
+	enablenpc "花樹#08spring_prb03";
+	enablenpc "花樹#08spring_prb04";
+	set $@08seventpr,1;
+	donpcevent "花樹#08spring_prb01::OnUnhide";
+	donpcevent "花樹#08spring_prb02::OnUnhide";
+	donpcevent "花樹#08spring_prb03::OnUnhide";
+	donpcevent "花樹#08spring_prb04::OnUnhide";
+	sleep2 1800100;
+	set $@08seventpr,0;
+	donpcevent "花樹#08spring_prb01::OnHide";
+	donpcevent "花樹#08spring_prb02::OnHide";
+	donpcevent "花樹#08spring_prb03::OnHide";
+	donpcevent "花樹#08spring_prb04::OnHide";
+	disablenpc "花樹#08spring_prb01";
+	disablenpc "花樹#08spring_prb02";
+	disablenpc "花樹#08spring_prb03";
+	disablenpc "花樹#08spring_prb04";
+	goto OnEventPr;
+	end;
+}
+
+//----------------------------------------------------------
+// 花樹
+//----------------------------------------------------------
+prontera,172,294,0	script	花樹#08spring_pr01	111,{
+	if ($@08seventpr) {
+		mes "^4d4dff從樹上感受到微弱的魔力，";
+		mes "而花瓣也隨風起舞著，";
+		mes "若強風吹來應該會掉落一些花朵...^000000";
+		if ( SPRINGEVENT == 4 ) {
+			next;
+			switch(select("使用折扇:取消")) {
+			case 1:
+				if (countitem(6009) < 1) { mes "沒有折扇"; close; }
+				mes "^4d4dff使用裴雷斯所給的折扇向樹木大力搧風，";
+				mes "因受到強風而使樹木嚴重搖晃，讓充滿許多花朵的樹枝掉落滿地^000000";
+				next;
+				delitem 6009,1;
+				set .@fb,rand(5,10);
+				getitem 12310,.@fb;
+				mes "獲得^4d4dff櫻花樹枝 "+.@fb+"個!!^000000";
+				close;
+			case 2:
+				mes "[0]";
+				mes "晚點再來吧..";
+				close;
+			}
+		}
+		close;
+	}
+	mes "^4d4dff這是綻放著華麗春花的樹木，";
+	mes "先在樹下享受一下花香吧";
+	close;
+OnEffect:
+	misceffect EF_MAPPILLAR2;
+	misceffect EF_LEVEL99_4;
+	end;
+}
+
+prontera,172,282,0	script	花樹#08spring_pr02	111,{
+	if ($@08seventpr) {
+		mes "^4d4dff從樹上感受到微弱的魔力，";
+		mes "而花瓣也隨風起舞著，";
+		mes "若強風吹來應該會掉落一些花朵...^000000";
+		if ( SPRINGEVENT == 4 ) {
+			next;
+			switch(select("使用折扇:取消")) {
+			case 1:
+				if (countitem(6009) < 1) { mes "沒有折扇"; close; }
+				mes "^4d4dff使用裴雷斯所給的折扇向樹木大力搧風，";
+				mes "因受到強風而使樹木嚴重搖晃，讓充滿許多花朵的樹枝掉落滿地^000000";
+				next;
+				delitem 6009,1;
+				set .@fb,rand(5,10);
+				getitem 12310,.@fb;
+				mes "獲得^4d4dff櫻花樹枝 "+.@fb+"個!!^000000";
+				close;
+			case 2:
+				mes "[0]";
+				mes "晚點再來吧..";
+				close;
+			}
+		}
+		close;
+	}
+	mes "^4d4dff這是綻放著華麗春花的樹木，";
+	mes "先在樹下享受一下花香吧";
+	close;
+OnEffect:
+	misceffect EF_MAPPILLAR2;
+	misceffect EF_LEVEL99_4;
+	end;
+}
+
+prontera,139,282,0	script	花樹#08spring_pr03	111,{
+	if ($@08seventpr) {
+		mes "^4d4dff從樹上感受到微弱的魔力，";
+		mes "而花瓣也隨風起舞著，";
+		mes "若強風吹來應該會掉落一些花朵...^000000";
+		if ( SPRINGEVENT == 4 ) {
+			next;
+			switch(select("使用折扇:取消")) {
+			case 1:
+				if (countitem(6009) < 1) { mes "沒有折扇"; close; }
+				mes "^4d4dff使用裴雷斯所給的折扇向樹木大力搧風，";
+				mes "因受到強風而使樹木嚴重搖晃，讓充滿許多花朵的樹枝掉落滿地^000000";
+				next;
+				delitem 6009,1;
+				set .@fb,rand(5,10);
+				getitem 12310,.@fb;
+				mes "獲得^4d4dff櫻花樹枝 "+.@fb+"個!!^000000";
+				close;
+			case 2:
+				mes "[0]";
+				mes "晚點再來吧..";
+				close;
+			}
+		}
+		close;
+	}
+	mes "^4d4dff這是綻放著華麗春花的樹木，";
+	mes "先在樹下享受一下花香吧";
+	close;
+OnEffect:
+	misceffect EF_MAPPILLAR2;
+	misceffect EF_LEVEL99_4;
+	end;
+}
+
+prontera,139,294,0	script	花樹#08spring_pr04	111,{
+	if ($@08seventpr) {
+		mes "^4d4dff從樹上感受到微弱的魔力，";
+		mes "而花瓣也隨風起舞著，";
+		mes "若強風吹來應該會掉落一些花朵...^000000";
+		if ( SPRINGEVENT == 4 ) {
+			next;
+			switch(select("使用折扇:取消")) {
+			case 1:
+				if (countitem(6009) < 1) { mes "沒有折扇"; close; }
+				mes "^4d4dff使用裴雷斯所給的折扇向樹木大力搧風，";
+				mes "因受到強風而使樹木嚴重搖晃，讓充滿許多花朵的樹枝掉落滿地^000000";
+				next;
+				delitem 6009,1;
+				set .@fb,rand(5,10);
+				getitem 12310,.@fb;
+				mes "獲得^4d4dff櫻花樹枝 "+.@fb+"個!!^000000";
+				close;
+			case 2:
+				mes "[0]";
+				mes "晚點再來吧..";
+				close;
+			}
+		}
+		close;
+	}
+	mes "^4d4dff這是綻放著華麗春花的樹木，";
+	mes "先在樹下享受一下花香吧";
+	close;
+OnEffect:
+	misceffect EF_MAPPILLAR2;
+	misceffect EF_LEVEL99_4;
+	end;
+}
+
+pay_arche,76,136,0	script	花樹#08spring_py01	111,{
+	if ($@08springevent) {
+		mes "^4d4dff從樹上感受到微弱的魔力，";
+		mes "而花瓣也隨風起舞著，";
+		mes "若強風吹來應該會掉落一些花朵...^000000";
+		if ( SPRINGEVENT == 4 ) {
+			next;
+			switch(select("使用折扇:取消")) {
+			case 1:
+				if (countitem(6009) < 1) { mes "沒有折扇"; close; }
+				mes "^4d4dff使用裴雷斯所給的折扇向樹木大力搧風，";
+				mes "因受到強風而使樹木嚴重搖晃，讓充滿許多花朵的樹枝掉落滿地^000000";
+				next;
+				delitem 6009,1;
+				set .@fb,rand(5,10);
+				getitem 12310,.@fb;
+				mes "獲得^4d4dff櫻花樹枝 "+.@fb+"個!!^000000";
+				close;
+			case 2:
+				mes "[0]";
+				mes "晚點再來吧..";
+				close;
+			}
+		}
+		close;
+	}
+	mes "^4d4dff這是綻放著華麗春花的樹木，";
+	mes "先在樹下享受一下花香吧";
+	close;
+
+OnEffect:
+	misceffect EF_MAPPILLAR2;
+	misceffect EF_LEVEL99_4;
+	end;
+}
+
+//----------------------------------------------------------
+// 掉落櫻花樹枝
+//----------------------------------------------------------
+//每一小時三十分鐘，有三十分鐘的時間會隨機掉落櫻花樹枝(普隆得拉)
+//----------------------------------------------------------
+prontera,172,294,0	script	花樹#08spring_prb01	-1,{
+	end;
+OnMake:
+	makeitem 12310,1,"prontera",172,290;
+	set .@make,1;
+	while(1) {
+		sleep2 120000;
+		set .@make,.@make+1;
+		donpcevent "花樹#08spring_pr01::OnEffect";
+		set .@m1,rand(2);
+		if (.@m1) {
+			set .@m2,rand(3);
+			if (.@m2==1) makeitem 12310,1,"prontera",169,294;
+			if (.@m2==2) makeitem 12310,1,"prontera",172,297;
+			else makeitem 12310,1,"prontera",172,290;
+		}
+		break;
+	if (.@make==16)	end;
+	}
+	end;
+
+OnUnhide:
+	donpcevent "花樹#08spring_pr01::OnEffect";
+	goto OnMake;
+	end;
+
+OnHide:
+	misceffect 16;
+	end;
+}
+
+prontera,172,282,0	script	花樹#08spring_prb02	-1,{
+	end;
+OnMake:
+	makeitem 12310,1,"prontera",172,279;
+	set .@make,1;
+	while(1) {
+		sleep2 120000;
+		set .@make,.@make+1;
+		donpcevent "花樹#08spring_pr02::OnEffect";
+		set .@m1,rand(2);
+		if (.@m1) {
+			set .@m2,rand(3);
+			if (.@m2==1) makeitem 12310,1,"prontera",169,282;
+			if (.@m2==2) makeitem 12310,1,"prontera",172,279;
+			else makeitem 12310,1,"prontera",172,285;
+		}
+		break;
+	if (.@make==16)	end;
+	}
+	end;
+OnUnhide:
+	donpcevent "花樹#08spring_pr02::OnEffect";
+	goto OnMake;
+	end;
+OnHide:
+	misceffect 16;
+	end;
+}
+
+prontera,139,282,0	script	花樹#08spring_prb03	-1,{
+	end;
+OnMake:
+	makeitem 12310,1,"prontera",140,279;
+	set .@make,1;
+	while(1) {
+		sleep2 120000;
+		set .@make,.@make+1;
+		donpcevent "花樹#08spring_pr03::OnEffect";
+		set .@m1,rand(2);
+		if (.@m1) {
+			set .@m2,rand(3);
+			if (.@m2==1) makeitem 12310,1,"prontera",140,284;
+			if (.@m2==2) makeitem 12310,1,"prontera",142,281;
+			else makeitem 12310,1,"prontera",172,285;
+		}
+		break;
+	if (.@make==16)	end;
+	}
+	end;
+OnUnhide:
+	misceffect EF_MAPPILLAR2;
+	misceffect EF_LEVEL99_4;
+	goto OnMake;
+	end;
+OnHide:
+	misceffect 16;
+	end;
+}
+
+prontera,139,294,0	script	花樹#08spring_prb04	-1,{
+	end;
+OnMake:
+	makeitem 12310,1,"prontera",137,294;
+	set .@make,1;
+	while(1) {
+		sleep2 120000;
+		set .@make,.@make+1;
+		donpcevent "花樹#08spring_pr04::OnEffect";
+		set .@m1,rand(2);
+		if (.@m1) {
+			set .@m2,rand(3);
+			if (.@m2==1) makeitem 12310,1,"prontera",137,294;
+			if (.@m2==2) makeitem 12310,1,"prontera",139,290;
+			else makeitem 12310,1,"prontera",140,297;
+		}
+		break;
+	if (.@make==16)	end;
+	}
+	end;
+OnUnhide:
+	donpcevent "花樹#08spring_pr04::OnEffect";
+	goto OnMake;
+	end;
+OnHide:
+	misceffect 16;
+	end;
+}
+
+//----------------------------------------------------------
+// 掉落櫻花樹枝
+//----------------------------------------------------------
+// 每三小時，有三十分鐘的時間會隨機掉落櫻花樹枝(斐揚)
+//----------------------------------------------------------
+pay_arche,76,136,0	script	花樹#08spring_py02	-1,{
+	end;
+OnMake:
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	makeitem 12310,1,"pay_arche",71,131;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	makeitem 12310,1,"pay_arche",71,131;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	makeitem 12310,1,"pay_arche",71,131;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	makeitem 12310,1,"pay_arche",71,131;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	sleep2 120000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	makeitem 12310,1,"pay_arche",71,131;
+	sleep2 100000;
+	donpcevent "花樹#08spring_py01::OnEffect";
+	makeitem 12310,1,"pay_arche",79,133;
+	makeitem 12310,1,"pay_arche",74,132;
+	makeitem 12310,1,"pay_arche",71,136;
+	end;
+OnUnhide:
+	donpcevent "花樹#08spring_py01::OnEffect";
+	goto OnMake;
+	end;
+OnHide:
+	misceffect 16;
+	end;
+}
+
+//----------------------------------------------------------
+// 裴雷斯
+//----------------------------------------------------------
+// 斐揚的花樹發光時，將無法對話
+//----------------------------------------------------------
+pay_arche,66,143,5	script	船長裴雷斯#08spring	421,{
+	if ($@08springevent) {
+		mes "[裴雷斯]";
+		mes "... 不好意思可以稍後再來嗎?";
+		mes "我現在不想受打擾";
+		next;
+		mes "[裴雷斯]";
+		mes "春天真好，";
+		mes "你也別錯過好好享受吧!";
+		mes "此刻盡情去享受不算奢侈啦";
+		close;
+	}
+	switch (SPRINGEVENT) {
+	case 0:
+		mes "[裴雷斯]";
+		mes "... .... ...嗯?";
+		mes "你找我有事嗎?";
+		next;
+		select("是.. 貓咪!:貓咪會說人話哩!:是隻肥貓呢?!");
+		mes "[裴雷斯]";
+		mes "這位朋友還真有趣，";
+		mes "你管我是貓還是會說話，都跟你沒關係吧?";
+		next;
+		mes "[裴雷斯]";
+		mes "不過.. 這裡的風景優美又舒適吧!";
+		mes "像這樣花瓣飄起的天氣更讓心情舒暢不已...";
+		next;
+		mes "[裴雷斯]";
+		mes ".....　...嗯嗯..";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "..... ... ...";
+		next;
+		mes "[裴雷斯]";
+		mes "我與弟弟一起正在經營商隊，";
+		mes "地地說曾受到此地人的鼎力相助，叫我好好答謝他們";
+		mes ".. ..";
+		next;
+		select("原來如此");
+		mes "[裴雷斯]";
+		mes "我對你這位人類友人印象不錯，我就告訴你好了，";
+		mes "這顆巨樹提供大家絕佳的休憩之地..";
+		mes "最近從這顆樹上感覺到神祕的氣息";
+		next;
+		mes "[裴雷斯]";
+		mes ".. 時而像這樣注視它的話....";
+		mes "樹上就會出現一團光圈，";
+		mes "偶然間看到帶有花朵的樹枝掉下來...";
+		mes "於是我就輕輕搖一下...";
+		next;
+		mes "[裴雷斯]";
+		mes "就覺得心情氣爽，";
+		mes "有如洗掉霉運般，";
+		mes "全身上下輕鬆多了";
+		next;
+		set SPRINGEVENT,1;
+		mes "[裴雷斯]";
+		mes "如果你想要櫻花樹枝的話我可以幫你，";
+		mes "引起強風後它就會掉下來了..";
+		close;
+	case 1:
+		mes "[裴雷斯]";
+		mes ".... 嗯? 是你嗎?";
+		mes "找我有事嗎?";
+		next;
+		if (select("我想要櫻花樹枝:沒事..")==2) {
+			mes "[裴雷斯]";
+			mes "你瞧不起我是嗎?";
+			mes "嗯? 是嗎?";
+			close;
+		}
+		mes "[裴雷斯]";
+		mes "拿到櫻花樹枝的方法有..親自去摘或搖晃讓它掉落..";
+		mes "兩者之一，但告訴你利用風的優雅方法吧";
+		next;
+		mes "[裴雷斯]";
+		mes "利用簡單的材料來製作可引起強風的道具，";
+		mes "然後再利用強風好讓樹木掉落樹枝";
+		next;
+		mes "[裴雷斯]";
+		mes "像你這樣有能力的人...";
+		mes "材料需要....";
+		next;
+		if (BaseLevel < 70) {
+			set SPRINGEVENT,3;
+			mes "[裴雷斯]";
+			mes "^4a4aff風靈石 1個、";
+			mes "竹筒 2個、";
+			mes "油紙 2個^000000，";
+			mes "差不多這些了";
+			close;
+		}
+		set SPRINGEVENT,2;
+		mes "[裴雷斯]";
+		mes "^4a4aff風靈石 1個、";
+		mes "折扇 1個、";
+		mes "藍色魔力礦石 1個^000000，";
+		mes "差不多這些了";
+		close;
+	case 2:
+	case 3:
+		mes "[裴雷斯]";
+		mes "折扇的材料都帶來了嗎?";
+		mes "... 我要先確認一下";
+		next;
+		if ( SPRINGEVENT == 2 ) {
+			if (countitem(717) < 1 || countitem(7262) < 1 || countitem(7523) < 1) {
+				mes "[裴雷斯]";
+				mes "... 材料是";
+				mes "^4a4aff風靈石 1個、";
+				mes "折扇 1個、";
+				mes "藍色魔力礦石 1個^000000，";
+				mes "都沒有帶來";
+				close;
+			}
+		}
+		else {
+			if (countitem(7150) < 2 || countitem(7151) < 2 || countitem(7523) < 1) {
+				mes "[裴雷斯]";
+				mes "... 材料是";
+				mes "^4a4aff風靈石 1個、";
+				mes "竹筒 2個、";
+				mes "油紙 2個^000000，";
+				mes "都沒有帶來";
+				close;
+			}
+		}
+		mes "[裴雷斯]";
+		mes "確實都帶齊了，";
+		mes "用這個來製作起風的媒介後利用風靈石上的風力";
+		next;
+		specialeffect2 EF_WIND;
+		mes "[裴雷斯]";
+		mes "像這樣....";
+		next;
+		mes "[裴雷斯]";
+		mes "OK，都做好了，";
+		mes "將這把折扇用在花樹上就可以了，";
+		mes "只是不能隨時使用，另外有可獲得擁有神秘力量的櫻花樹枝之時段";
+		next;
+		if ( SPRINGEVENT == 2 ) {
+			delitem 717,1;
+			delitem 7262,1;
+			delitem 7523,1;
+		}
+		else {
+			delitem 7150,2;
+			delitem 7151,2;
+			delitem 7523,1;
+		}
+		getitem 6009,1;
+		set SPRINGEVENT,4;
+		mes "[裴雷斯]";
+		mes "這點你親自去打聽吧!";
+		close;
+	case 4:
+		mes "[裴雷斯]";
+		mes "你有什麼事嗎?";
+		next;
+		switch(select("製作折扇所需材料:製作折扇:櫻花樹枝的運用方法:取消")) {
+		case 1:
+			if (countitem(6009)) {
+				mes "[裴雷斯]";
+				mes "...?";
+				mes "你手上拿著的是什麼呢?";
+				mes "你已經有了幹嘛還要求重作呢?";
+				mes "不要太貪心";
+				close;
+			}
+			mes "[裴雷斯]";
+			mes "記得要備齊好材料，";
+			mes "雖說我是隻神奇貓.......";
+			mes "但也不能無中生有";
+			next;
+			mes "[裴雷斯]";
+			mes "材料是 '風靈石 1個'、'竹筒 2個'、'油紙 2個'";
+			close;
+		case 2:
+			if (countitem(6009)) {
+				mes "[裴雷斯]";
+				mes "...?";
+				mes "你手上拿著的是什麼呢?";
+				mes "你已經有了幹嘛還要求重作呢?";
+				mes "不要太貪心";
+				close;
+			}
+			if ( BaseLevel < 70 && countitem(7150) < 2 || BaseLevel < 70 && countitem(7151) < 2 || BaseLevel < 70 && countitem(7523) < 1) {
+				mes "[裴雷斯]";
+				mes "記得要備齊好材料，";
+				mes "雖說我是隻神奇貓.......";
+				mes "但也不能無中生有";
+				next;
+				mes "[裴雷斯]";
+				mes "材料是 '風靈石 1個'、'竹筒 2個'、'油紙 2個'";
+				close;
+			}
+			if ( BaseLevel > 69 && countitem(717) < 1 || BaseLevel > 69 && countitem(7262) < 1 || BaseLevel > 69 && countitem(7523) < 1) {
+				mes "[裴雷斯]";
+				mes "記得要備齊好材料，";
+				mes "雖說我是隻神奇貓.......";
+				mes "但也不能無中生有";
+				next;
+				mes "[裴雷斯]";
+				mes "材料是 '風靈石 1個'、'折扇 1個'、'藍色魔力礦石'";
+				close;
+			}
+			mes "[裴雷斯]";
+			mes "跳過繁瑣過程我馬上幫你做，";
+			mes "我一一示範也是件苦差事..";
+			next;
+			if (BaseLevel > 69) {
+				delitem 717,1;
+				delitem 7262,1;
+				delitem 7523,1;
+			}
+			if (BaseLevel < 70) {
+				delitem 7150,2;
+				delitem 7151,2;
+				delitem 7523,1;
+			}
+			getitem 6009,1;
+			mes "[裴雷斯]";
+			mes "OK，在這給你";
+			close;
+		case 3:
+			mes "[裴雷斯]";
+			mes "開滿春花的櫻花樹枝，似乎帶些魔力的樣子，";
+			mes "所以像這樣揮舞..";
+			mes "身體就變輕盈又敏捷";
+			next;
+			mes "[裴雷斯]";
+			mes "如果需要更大的效果時，就要做成一束來使用，";
+			mes "所以一次拿五個來揮舞的話..";
+			mes "結果會怎樣呢?";
+			next;
+			if (select("製作大型櫻花樹枝:取消")==1) {
+				if (countitem(12310) < 5 || countitem(7186) < 1) {
+					mes "[裴雷斯]";
+					mes "想要製作大型櫻花樹枝的話至少要有^4a4aff櫻花";
+					mes "樹枝 5個^000000，";
+					mes "另外還需要細繩，請帶來 ^4a4aff細長梗";
+					mes "^0000001個吧";
+					close;
+				}
+				mes "[裴雷斯]";
+				mes "將這些櫻花樹枝..";
+				mes "像這樣好好捆在一起.. 變成一束...";
+				next;
+				delitem 12310,5;
+				delitem 7186,1;
+				getitem 12311,1;
+				mes "[裴雷斯]";
+				mes "在這給你，去向好友們炫耀一下吧";
+				close;
+			}
+			mes "[裴雷斯]";
+			mes "若有為隊友們著想的話，你會再來找我的.";
+			close;
+		case 4:
+			mes "[裴雷斯]";
+			mes "我打算暫時待在這裡，可以隨時來找我";
+			close;
+		}
+	}
+}

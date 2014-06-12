@@ -1,0 +1,285 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://plutoea.googlecode.com/svn/
+// -----------------------------------------
+// - 旅館服務生 腳本 - 改寫自JA
+//===========================================
+function	script	TownInn	{
+	next;
+	switch (select("儲存:休息 - 5000金幣:取消")) {
+	case 1:
+		savepoint getarg(2),getarg(3),getarg(4);
+		mes "["+getarg(1)+"]";
+		switch(getarg(0)) {
+		case 0:
+			mes "已為您儲存好了! 謝謝 !";
+			return;
+		case 1:
+			mes "好的！";
+			mes "我會好好儲存的！下次在這裡見面吧！噗噗～";
+			break;
+		case 2:
+			mes "好的！";
+			mes "我會在這裡好好儲存的！謝謝您使用我！";
+			mes "下次再見～";
+			break;
+		case 3:
+			mes "已為您儲存好了... 再見~";
+			return;
+		}
+		next;
+		break;
+	case 2:
+		if(Zeny<5000) {
+			mes "["+getarg(1)+"]";
+			switch(getarg(0)) {
+			case 0:
+				mes "旅館費用是5000z!";
+				return;
+			case 1:
+				mes "旅館費用是5000z!";
+				return;
+			case 2:
+				mes "旅館費用是5000z!";
+				return;
+			case 3:
+				mes "旅館費用是5000z!";
+				return;
+			}
+		}
+		mes "["+getarg(1)+"]";
+		switch(getarg(0)) {
+			case 0: mes "好好的休息吧"; 	break;
+			case 1: mes "好好的休息吧~"; 	break;
+			case 2: mes "好好的休息吧~"; 	break;
+			case 3: mes "祝你有個愉快的時間!"; 	break;
+		}
+		close2;
+		set Zeny,Zeny-5000;
+		warp getarg(2),getarg(5),getarg(6);
+		percentheal 100,100;
+		end;
+	}
+	switch(getarg(0)) {
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+		break;
+	}
+	return;
+}
+
+// к①⑦Ъь
+prt_in,244,135,0	script	旅館 服務生#Sammy	53,{
+	mes "[服務生 善美]";
+	mes "歡迎光臨!";
+	mes "歡迎光臨'內卡拉司'旅館我能為您服務什麼？";
+	callfunc "TownInn",1,"服務生 善美","prt_in",238,131,247,104;
+	close;
+}
+
+prt_in,61,141,4	script	旅館 服務生#Ahlma	94,{
+	mes "[服務生 阿瑪]";
+	mes "歡迎光臨!～歡迎光臨'內卡拉司'旅館我能為您服務什麼？";
+	callfunc "TownInn",2,"服務生 阿瑪","prt_in",63,136,60,166;
+	close;
+}
+
+ein_in01,206,224,3	script	飯店 職員#ein	855,{
+	mes "[飯店 職員]";
+	mes "你好嗎-";
+	mes "我們飯店是以整潔、親切、幸福作為三大";
+	mes "經營的宗旨，希望任何時候能提供給顧客";
+	mes "最佳的休息環境而不斷努力，更成為艾音布羅克最好的模範飯店";
+	if (kain_ticket == 5) {
+		next;
+		mes "[飯店 職員]";
+		mes "您是說來找'狄普魯 阿科'先生嗎?我查一下...";
+		next;
+		mes "[飯店 職員]";
+		mes "有了，狄普魯 阿科先生是投宿在201房";
+		next;
+		mes "[飯店 職員]";
+		mes "祝您有個美好和舒適的一天";
+		close;
+	}
+	callfunc "TownInn",3,"飯店 職員","ein_in01",201,223,272,167;
+	close;
+}
+
+// 艾爾帕蘭
+aldeba_in,92,58,2	script	旅館服務生#Rilim	53,{
+	mes "[服務生 立琳]";
+	mes "歡迎光臨!";
+	mes "請問有什麼需要幫忙的呢?";
+	callfunc "TownInn",0,"服務生 立琳","aldeba_in",93,50,92,112;
+	close;
+}
+
+// (新)斐揚
+payon_in01,132,62,2	script	旅館服務生#Ahee	53,{
+	mes "[服務生 阿喜]";
+	mes "啊，客人...這裡是斐揚旅館";
+	mes "請問有什麼需要幫忙的呢";
+	callfunc "TownInn",3,"服務生 阿喜","payon_in01",135,62,132,11;
+	close;
+}
+
+// 夢羅克
+/*
+morocc_in,147,141,2	script	旅館服務生#Hasna	53,{
+	mes "[服務生 哈斯娜]";
+	mes "歡迎光臨!";
+	mes "請問有什麼需要幫忙的呢?";
+	callfunc "TownInn",0,"服務生 哈斯娜","morocc_in",142,139,173,135;
+	close;
+}
+
+// 夢羅克
+morocc_in,78,100,4	script	旅館服務生#Marlu	53,{
+	mes "[服務生 馬那樂]";
+	mes "歡迎光臨!";
+	mes "請問有什麼需要幫忙的呢?";
+	callfunc "TownInn",0,"服務生 馬那樂","morocc_in",78,94,79,123;
+	close;
+}
+*/
+
+// 艾爾貝塔
+alberta_in,32,142,2	script	旅館服務生#Moira	53,{
+	mes "[服務生傑尼]";
+	mes "歡迎光臨! 我是旅館'服務生'!";
+	mes "請問有什麼需要幫忙的呢?";
+	callfunc "TownInn",0,"服務生傑尼","alberta_in",25,142,16,105;
+	close;
+}
+
+// 吉芬
+geffen_in,70,64,3	script	旅館服務生#Cena	53,{
+	mes "[服務生賽娜]";
+	mes "歡迎光臨，這裡是吉芬唯一的旅館'依芙麗特'";
+	callfunc "TownInn",0,"服務生賽娜","geffen_in",70,60,31,31;
+	close;
+}
+
+// 里希塔樂鎮
+lhz_in02,230,284,4	script	飯店 職員#lhz	86,{
+	mes "[飯店 職員]";
+	mes "歡迎光臨，我們是業界最高級的飯店，";
+	mes "叫做'皇龍'飯店，擁有寬敞的空間，";
+	mes "和其它飯店差異化的服務，";
+	mes "提供最佳舒適的休憩環境，";
+	mes "讓顧客賓至如歸保證滿意";
+	next;
+	switch(select("儲存:休息 - 5000金幣:取消")) {
+	case 1:
+		savepoint "lhz_in02",375,61;
+		mes "[飯店 職員]";
+		mes "儲存完成，謝謝你";
+		close;
+	case 2:
+		if(Zeny<5000) {
+			mes "[飯店 職員]";
+			mes "顧客您的錢不夠喔!";
+			mes "休息一次要5000金幣";
+			close;
+		}
+		mes "[飯店 職員]";
+		mes "祝你休息愉快";
+		close2;
+		set Zeny,Zeny-5000;
+		skilleffect 34,0;
+		sc_start SC_BLESSING,240000,10;
+		warp "lhz_in02",220,150;
+		percentheal 100,100;
+		end;
+	case 3:
+		mes "[飯店 職員]";
+		mes "謝謝你，";
+		mes "歡迎再度光臨";
+		close;
+	}
+}
+
+// 毀葛
+hu_in01,246,107,3	script	旅館 員工#Receptionist	53,{
+	mes "[旅館 員工]";
+	mes "歡迎光臨";
+	mes "我們旅館是為了疲憊的旅客，隨時隨地的";
+	mes "準備好乾淨又清爽的寢具的";
+	callfunc "TownInn",0,"旅館 員工","hu_in01",263,95,267,5;
+	close;
+}
+// 拉赫
+ra_in01,376,69,4	script	飯店 職員#Annie	931,{
+	mes "[飯店 職員]";
+	mes "願菲依雅的恩典與你同在....";
+	mes "歡迎光臨來到菲依雅永無止盡的愛一樣";
+	mes "以溫馨為自豪的拉赫飯店";
+	next;
+	switch(select("儲存:休息 - 5000z:取消")) {
+	case 1:
+		savepoint "ra_in01",375,61;
+		mes "[飯店 職員]";
+		mes "謝謝你的利用";
+		next;
+		mes "[飯店 職員]";
+		mes "願菲依雅女神保佑你有個快樂的一天!";
+		close;
+	case 2:
+		if(Zeny<5000) {
+			mes "[飯店 職員]";
+			mes "顧客您的錢不夠喔!";
+			mes "休息一次要5000金幣";
+			close;
+		}
+		mes "[飯店 職員]";
+		mes "請您好好休息";
+		close2;
+		set Zeny,Zeny-5000;
+		warp "ra_in01",358,130;
+		percentheal 100,100;
+		end;
+	case 3:
+		mes "[飯店 職員]";
+		mes "謝謝你，";
+		mes "歡迎再度光臨";
+		close;
+	}
+}
+
+// 菲音斯
+ve_in,157,219,5	script	旅館 主人#venis	709,{
+	mes "[旅館 主人]";
+	mes "您好~";
+	mes "歡迎您來到在菲音斯裡最涼快的旅館~";
+	next;
+	switch(select("儲存位置:休息後再走 - 5000z:結束")) {
+	case 1:
+		savepoint "ve_in",157,210;
+		mes "[旅館 主人]";
+		mes "謝謝你的利用";
+		mes "願菲依雅女神保佑你有個快樂的一天!";
+		close;
+	case 2:
+		if(Zeny<5000) {
+			mes "[旅館 主人]";
+			mes "顧客您的錢不夠喔!";
+			mes "休息一次要5000金幣";
+			close;
+		}
+		mes "[旅館 主人]";
+		mes "請您好好休息";
+		close2;
+		set Zeny,Zeny-5000;
+		warp "ve_in",184,228;
+		percentheal 100,100;
+		end;
+	case 3:
+		mes "[旅館 主人]";
+		mes "謝謝你，";
+		mes "歡迎再度光臨";
+		close;
+	}
+}

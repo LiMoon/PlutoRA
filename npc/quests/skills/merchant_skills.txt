@@ -1,0 +1,589 @@
+//===== rAthena Script =======================================
+//= Merchant Skills Quests
+//===== By: ==================================================
+//= kobra_k88
+//===== Current Version: =====================================
+//= 1.8
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= Quests for skills: Crazy Uproar, Change Cart, Cart Revolution
+//===== Additional Comments: =================================
+//= 1.5 Rescripted to Aegis 10.3 stadards. [L0ne_W0lf]
+//= 1.6 Updated to latest available official file. [Masao]
+//= 1.7 Fixed JobLevel requirements. [Euphy]
+//= 1.8 Moved Alberta NPC to pre-re/re paths. [Euphy]
+//============================================================
+// 克商斯採用 JA寫法
+//============================================================
+
+alberta,83,96,5	script	內寇	98,7,7,{
+	if (BaseClass == Job_Merchant) {
+		if (getskilllv("MC_LOUD") == 1) {
+			mes "非常抱歉. 內寇的商店是...";
+			mes "噢? 這是誰呀?";
+			mes "真是好久不見啊!";
+			mes "過的不錯吧?";
+			next;
+			mes "很高興見到你!!";
+			mes "家裡沒什麼大事吧?";
+			mes "真的真的很高興見到你!";
+			mes "這位老兄啊! 有空的話，常來我們店裡玩啊!";
+			mes "過這麼久來一次，你的面孔都快忘掉了!";
+			next;
+			mes "真是歡喜啊!!";
+			mes "這樣子見面多好啊!"; 
+			mes "有空的話，常來艾爾貝塔嗎!";
+			mes "又可以看到別的美眉，我又免費請你吃飯!!";
+			mes "也可以和我敘舊，順便也可以吶喊一下!!";
+			mes "多好啊!!!";
+			close;
+		}
+		else if (JobLevel < 15) {
+			mes "[內寇]";
+			mes "噢, 有人已經迷上我的嗓音";
+			mes "特地來看我嗎?";
+			mes "還是我的嗓音比較大啊!";
+			mes "在很遠的地方都可以聽到啊.";
+			mes "我還有事要對你說呢.";
+			mes "(左看看右看看)"; 
+			next; 
+			mes "[內寇]"; 
+			mes "我的嗓音不只"; 
+			mes "只有大聲而已歐!"; 
+			mes "你的商人等級，到達 15 等級的話";
+			mes "我會把我的秘密告訴你!";
+			mes "請你下一次再來找我好嗎!!!";
+			next;
+			mes "[內寇]";
+			mes "嗚哈哈哈哈哈哈哈哈哈哈哈哈!";
+			mes "布哈哈哈哈哈哈哈哈哈哈哈哈!";
+			close;
+		}
+		else if ((countitem(722) > 6) && (countitem(532) > 0) && (countitem(921) > 49) && (JobLevel >= 15 || (BaseJob == Job_Blacksmith || BaseJob == Job_Alchemist))) {
+			mes "[內寇]";
+			mes "噢! 你已經!";
+			mes "有得音的資格囉!";
+			mes "請你現在接受我的幫助，完成得音吧";
+			mes "請問你要修練，大聲吶喊技能嗎?";
+			next;
+			switch(select("是的!!!!:不想:請問那是什麼啊?")) {
+			case 1:
+				mes "[內寇]";
+				mes "啊哈哈哈!! 好的!!!";
+				mes "就是這骨氣!";
+				mes "那就出發了!"; 
+				next;
+				delitem 722,7; //Scarlet_Jewel
+				delitem 532,1; //Banana_Juice
+				delitem 921,50; //Mushroom_Spore
+				skill "MC_LOUD",1,0;
+				mes "[內寇]";
+				mes "終於修練完，大聲吶喊技能了!!";
+				mes "可以隨時隨地大聲吶喊囉!"; 
+				mes "哈哈哈哈哈哈哈!";
+				close;
+			case 2:
+				mes "[內寇]";
+				mes ".. 真的啊.";
+				mes "哼...";
+				close;
+			case 3:
+				mes "[內寇]";
+				mes "所謂大聲吶喊是，透過大聲喊叫";
+				mes "燃燒戰鬥意志的技能";
+				mes "消耗Sp 8可維持5分鐘的時間";
+				mes "讓STR值，增加4!!!!!";
+				mes "當重複使用時，時間歸零重新計時";
+				mes "再維持5分鐘的施法時間";
+				next;
+				mes "[內寇]";
+				mes "平時保持一般的力量活著,";
+				mes "等到要正式打仗時候，把所有的力量都集中";
+				mes "算是一種氣道的力量"; 
+				mes "挺有用的唉!!!!";
+				close;
+			}
+		}
+		mes "[內寇]";
+		mes "噢, 有人已經迷上我的嗓音";
+		mes "特地來看我嗎?";
+		mes "還是我的嗓音比較大啊!";
+		mes "在很遠的地方都可以聽到啊.";
+		mes "我還有事要對你說呢.";
+		mes "(左看看右看看)";
+		next;
+		mes "[內寇]";
+		mes "我的嗓音不只"; 
+		mes "只有大聲而已歐!";	
+		mes "我已經修練完了";
+		mes "用嗓門大聲吶喊的技能啊!";
+		next;
+		mes "[內寇]";
+		mes "所謂大聲吶喊是，透過大聲喊叫";
+		mes "燃燒戰鬥意志的技能";
+		mes "消耗Sp 8可維持5分鐘的時間";
+		mes "讓STR值，增加4!!!!!";
+		mes "當重複使用時，時間歸零重新計時";
+		mes "再維持5分鐘的施法時間";
+		next;
+		mes "[內寇]";
+		mes "平時保持一般的力量活著,";
+		mes "等到要正式打仗時候，把所有的力量都集中";
+		mes "算是一種氣道的力量"; 
+		mes "挺有用的唉!!!!"; 
+		mes "要想修練這技能的話";
+		mes "一定要得音!!!";
+		next;
+		mes "[內寇]";
+		mes "要想得音的話，先到斐揚弓箭手村落";
+		mes "找一位大嗓門的，音優詩人";
+		mes "從他那裡授課的話，就可以啦!";
+		next;
+		mes "[內寇]";
+		mes "不過那個人已經死了!";
+		mes "所以說現在沒有人，傳授這技能了!"; 
+		mes "哈哈哈哈哈哈哈哈!!!!";
+		mes "..............................";
+		mes "...好像有點很失望的表情歐?";
+		mes "你是想要學，大聲吶喊這技能嗎?";
+		next;
+		mes "[內寇]";
+		mes "哼... 我來傳授給你吧?";
+		mes "假如你是真的想學的話，我可以傳授給你啊";
+		mes "首先呢, 要把聲帶撕開.";
+		mes "撕開聲帶時，需要準備的物品如下";
+		next;
+		mes "[內寇]";
+		mes "珍珠 7個, 香蕉汁 1瓶";
+		mes "香菇芽孢 50個，要帶來給我啊!";
+		mes "到時候我把你的聲帶撕開囉!";
+		next;
+		mes "[內寇]";
+		mes "等到都準備好之後，在來找我吧!";
+		mes "到那時候，我會保養好喉嚨等你唷!!";
+		mes "布哈哈哈哈哈哈哈哈哈哈~~~!!";
+		close;
+	}
+	mes "[內寇]";
+	mes "內寇商店，現在正在休業中";
+	mes "請你下一次再來找我吧. 哈哈~";
+	close;
+
+OnTouch:
+	mes "[!?]";
+	mes "哇哈哈哈哈哈哈!!";
+	mes "哇哈哈哈哈哈!!?";
+	close;
+}
+
+alberta,119,221,6	script	廈爾倫	107,{
+	if (BaseClass == Job_Merchant) {
+		if (getskilllv("MC_CHANGECART") == 1) {
+			mes "[廈爾倫]";
+			mes "嗯? 是誰會帶這種";
+			mes "吵雜的手推車遊走";
+			mes "原來是你啊.";
+			mes "對啊, 我記得你啊.";
+			mes "怎麼樣? 新手推車, 確實是不錯吧?";
+			next;
+			mes "[廈爾倫]";
+			mes "享受著人生活吧.";
+			mes "只看著前面往前衝，那並不是人生啊.";
+			mes "帶著陳重的手推車, 逍遙自在的";
+			mes "環繞這世界";
+			mes "是我們商人生存之道啊.";
+			mes "那就下一次再見面囉";
+			next;
+			mes "[廈爾倫]";
+			mes "祝你健康~";
+			close;
+		}
+		else if (JobLevel >= 30|| (BaseJob == Job_Blacksmith || BaseJob == Job_Alchemist)) {
+			mes "[廈爾倫]";
+			mes "很高興見到你，商人兄弟.";
+			mes "若我的記憶沒有錯的話, 你是";
+			mes "最近當紅炸子雞的那位"; 
+			mes "商人吧.";
+			next;
+			mes "可是你怎麼帶這種";
+			mes "很俗的手推車，到處遊走呢"; 
+			mes "不會丟臉嗎?";
+			next;
+			switch(select("所以我才會來找你啊:我的手推車又沒有惹到你?:有兩雙一樣的，你會不高興嗎?")) {
+			case 1:
+				if ((countitem(1019) > 49) && (countitem(998) > 9) && (countitem(919) > 19)) {
+					mes "[廈爾倫]";
+					mes "哈哈! 知道啦，知道啦!";
+					mes "看你這麼有誠意";
+					mes "就幫你改裝手推車啦.";
+					next;
+					delitem 1019,50; //Wooden_Block
+					delitem 998,10; //Iron
+					delitem 919,20; //Animal's_Skin
+					skill "MC_CHANGECART",1,0;
+					mes "[廈爾倫]";
+					mes "恭禧你啦.";
+					mes "你現在可以按照自己的喜好";
+					mes "就可以更換手推車啦.";
+					mes "以後不需要我的幫忙";
+					mes "只要你自己消耗點Sp"; 
+					mes "就可以更換啦.";
+					next;
+					mes "[廈爾倫]";
+					mes "是一件很方便的事情啊.";
+					mes "另外還有一件事情!";
+					mes "當等級上升時";
+					mes "按等級別可以擁有新的";
+					mes "手推車";
+					mes "所以請你加油囉.";
+					next;
+					mes "[廈爾倫]";
+					mes "真的好搭配啊!";
+					mes "哈哈哈! 祝你有個愉快的一天!";
+					close;
+				}
+				mes "[廈爾倫]";
+				mes "嗯... 我想你應該知道";
+				mes "我會幫你改裝手推車的事實.";
+				mes "不過改裝手推車時";
+				mes "要需要改裝時，所需要的材料";
+				next;
+				mes "[廈爾倫]"; 
+				mes "瑪哪樹枝 50個.";
+				mes "鐵 10個.";
+				mes "動物外皮 20張."; 
+				mes "這些都準備齊全了之後";
+				mes "才能改造手推車啊";
+				next;
+				mes "[廈爾倫]";
+				mes "所以說等準備好之後,";
+				mes "再來找我吧.";
+				close;
+			case 2:
+				mes "[廈爾倫]";
+				mes "這, 你不知道嗎?(態度突然轉變)";
+				mes "對商人來說，新的自信感表現!";
+				mes "可以表現優秀的頭腦，和道具的價值!";
+				mes "改裝手推車才是, 更能讓商人";
+				mes "更能突顯這職業的技能啊!";
+				next;
+				mes "[廈爾倫]";
+				mes "只要消耗Sp 40 ";
+				mes "按照自己的等級，就能更換手推車";
+				mes "是一個很興奮的技能啊!";
+				next; 
+				mes "[廈爾倫]"; 
+				mes "這就是改裝手推車技能啊!";
+				mes "是全國區域商人的話，這是基本條件啊."; 
+				mes "我現在教你，怎麼製作的方法";
+				mes "請你牢記";
+				mes "等到以後";
+				mes "自己照著做一遍，就可以啦!";
+				next;
+				mes "[廈爾倫]";
+				mes "但是, 剛開始的時候";
+				mes "要需要準備材料啊.";
+				mes "瑪哪樹枝 50個！";
+				mes "鐵 10個！";
+				mes "動物外皮 20張！";
+				mes "請你去準備吧!";
+				next;
+				mes "[廈爾倫]";
+				mes "照著同樣的方法去做，就可以啦";
+				mes "等到材料準備好之後";
+				mes "再來找我吧.";
+				mes "瞭解嗎?";
+				close;
+			case 3:
+				mes "[廈爾倫]";
+				mes "這...這不是手推車啊!";
+				close;
+			}
+		}
+		mes "[廈爾倫]";
+			mes "很高興見到你，這位年輕人.";
+			mes "做生意還挺有意思嗎? 我是雜物搜集商";
+			mes "廈爾倫. 最近在研究";
+			mes "有關手推車.";
+			mes "這類商品.";
+			next;
+			mes "[廈爾倫]";
+			mes "你對現在所攜帶的手推車，不會覺得很厭煩嗎?";
+			mes "有想要改，手推車的念頭的話"; 
+			mes "來找我吧，我會幫你好好的修改.";
+			mes "不過呢, 是有條件的.";
+			next;
+			mes "[廈爾倫]";
+			mes "我是較有名氣的商人啊,";
+			mes "不想跟菜鳥做交易啊."; 
+			mes "假如你的商人等級";
+			mes "升到 30等級以上時";
+			mes "我會再考慮看看，我們的交易關係.";
+		close;
+	}
+	mes "[廈爾倫]";
+	mes "我是搜集各式各樣"; 
+	mes "商品的人，我叫廈爾倫";
+	mes "假如你搜集到，不錯的物品的話"; 
+	mes "一定要拿到我這裡來"; 
+	mes "和我交易啊.";
+	close;
+}
+
+-	script	::Gershaun_alberta	-1,{
+	if (BaseClass == Job_Merchant) {
+		if (getskilllv("MC_CARTREVOLUTION") == 1) {
+			mes "[克商斯]";
+			mes "啊, 好久不見啊!"; 
+			mes "咳歐, 那手推車被沾上的，深紅色東西.";
+			mes "確實是別人流下來的血啊...";
+			mes "我想我確實的，把這技能傳授給你了!"; 
+			next; 
+			mes "[克商斯]";
+			mes "你和我都是一樣，會流血的人類啊!";
+			mes "嗯!的確是!!";
+			mes "我有點高興! 我樂意幫你抓背!";
+			mes "來啊! 快啊!";
+			close;
+		}
+		else if (JobLevel >= 35 || (BaseJob == Job_Blacksmith || BaseJob == Job_Alchemist)) {
+			mes "[克商斯]";
+			mes "恩嗯. 你是一個";
+			mes "身材不錯的商人啊";
+			mes "搬運的力量，不是普通啊?";
+			mes "以這種程度";
+			mes "可以修練手推車攻擊啊!";
+			next;
+			switch(select("所以大哥，我這不是正好來找你了嗎:哦...這樣啊...(無視)")) {
+			case 1:
+				switch(rand(1,3)) {
+				case 1: setarray .@Quantity[0],2,20,30,20,5; break;
+				case 2: setarray .@Quantity[0],2,15,25,15,5; break;
+				case 3: setarray .@Quantity[0],2,23,32,23,6; break;
+				}
+				if (countitem(533) >= .@Quantity[0] && countitem(998) >= .@Quantity[1] && countitem(938) >= .@Quantity[2] && countitem(601) >= .@Quantity[3] && countitem(962) >= .@Quantity[4]) {
+					mes "[克商斯]";
+					mes "呼呼!"; 
+					mes "知道了! 從現在開始";
+					mes "傳授給你手推車攻擊吧!";
+					next; 
+					mes "[克商斯]"; 
+					mes "像今天這樣好的天氣!";
+					mes "給努力揮舞者們"; 
+					mes "應該給的報答!";
+					next;
+					delitem 533,.@Quantity[0]; //Grape_Juice
+					delitem 998,.@Quantity[1]; //Iron
+					delitem 938,.@Quantity[2]; //Sticky_Mucus
+					delitem 601,.@Quantity[3]; //Wing_Of_Fly
+					delitem 962,.@Quantity[4]; //Tentacle
+					skill 153,1,0;
+					mes "[克商斯]";
+					mes "你現在可以使用，手推車攻擊了";
+					mes "用這可怕的破壞機械,";
+					mes "期待讓所有天下的人，都知道商人的可怕";
+					mes "咳哈哈哈哈!!!";
+					next;
+					mes "[興奮的 克商斯]";
+					mes "祝你有個快樂的一天!!";
+					close;
+				}
+				else if (countitem(532) > 0) {
+					mes "[克商斯]";
+					mes "呼啊!";
+					mes "我最喜愛的香蕉汁!";
+					mes "我會抱著感激的心，把它吃掉!";
+					mes "...............咳啊!";
+					mes "真好吃啊! 謝謝! 那你就好好的走吧!";
+					next;
+					mes "[克商斯]";
+					mes "嗯?";
+					mes "怎麼還不走啊?";
+					mes "啊! 還對手推車攻擊";
+					mes "抱著一些迷戀啊!"; 
+					mes "那就好吧. 看著你拿給我，香蕉汁的情意上";
+					mes "我特別傳授，這技能給你囉.";
+					next;
+					mes "[克商斯]";
+					mes "傳授手推車攻擊";
+					mes "並不是很難的事情";
+					mes "所需要的物品請你先準備好.";
+					mes "所需要的物品是...";
+					next;
+					mes "[克商斯]";
+					mes "首先讓手推車更堅強時，所需要的鐵";
+					mes "需要20個, 然後需要緩衝撞擊力的";
+					mes "軟軟的粘稠液體30個";
+					mes "還需要蒼蠅翅膀";
+					mes "大約20個? 觸鬚大約 5個 左右?";
+					mes "還有我要喝的，葡萄汁 2瓶!";
+					next;
+					mes "[克商斯]"; 
+					mes "準備好之後就拿給我吧.";
+					mes "這並不代表一定要拿30個,或 20個 的意思."; 
+					mes "以我當時的體能狀態 ，所需要的量會不同啊!";
+					mes "哈哈哈哈!";
+					mes "那我就期待你了. 祝你一路順風~";
+					close;
+				}
+				else {
+					mes "[克商斯]";
+					mes "嗯!";
+					mes "天下沒有白吃的午餐!";
+					mes "假如你給我一瓶香蕉汁"; 
+					mes "求我告訴你的話，我會考慮看看啊?";
+					close;
+				}
+			case 2:
+				mes "[克商斯]";
+				mes "呼... 你還不知道";
+				mes "手推車攻擊啊.";
+				mes "好吧, 這些日子一來 ";
+				mes "我自己修練的秘訣，偷偷的告訴你.";
+				mes "請你仔細聽啊."; 
+				next;
+				mes "[克商斯]";
+				mes "我已經研究過";
+				mes "手推車其它活用的方法.";
+				mes "試著用手推車，煮過泡麵";
+				mes "也用過手推車跳繩";
+				mes "不過呢，任何一項";
+				mes "都不能滿足我的需求.";
+				next; 
+				mes "[克商斯]";
+				mes "當我失望絕透時";
+				mes "我帶著手推車來到了原野.";
+				mes "好無考慮著前面一直走著";
+				mes "碰到了一隻，強烈的魔物.";
+				mes "我感覺到生命受到威脅!";
+				mes "剛好那天，我沒有帶任何武器出門啊!";
+				next;
+				mes "[克商斯]";
+				mes "我被恐懼感嚇著";
+				mes "我腦海裡想著，我是不是就這樣悲慘的死亡呢"; 
+				mes "結果我就抱著一線希望";
+				mes "拿起手推車";
+				mes "朝著魔物砸下去了!";
+				next;
+				mes "[克商斯]"; 
+				mes "魔物就被砸碎了.";
+				mes "我那時候才明瞭.";
+				mes "手推車也可以變成武器啊!";
+				mes "終於知道用手推車";
+				mes "也可以攻擊敵人啊!";
+				next;
+				mes "[克商斯]";
+				mes "手推車 攻擊!"; 
+				mes "這是我研發出來的，手推車攻擊技能."; 
+				mes "消耗Sp 12之後";
+				mes "把手推車抬起來";
+				mes "對著敵人的頭部，砸下去的技能!";
+				next;
+				mes "[克商斯]";
+				mes "手推車越重，效果會越強";
+				mes "只要被砸一下";
+				mes "敵人會得到";
+				mes "被退後的撞擊力!";
+				mes "這就是手推車攻擊啊!";
+				close;
+			}
+		}
+		mes "[克商斯]";
+		mes "嗯, 你是年輕的商人啊.";
+		mes "你一定是攜帶手推車到處遊走吧";
+		mes "因為那是做生意的工具啊.";
+		mes "不過那不是全部啊?";
+		next;
+		mes "[克商斯]";
+		mes "我已經研究過";
+		mes "手推車其它活用的方法.";
+		mes "試著用手推車，煮過泡麵";
+		mes "也用過手推車跳繩";
+		mes "不過呢，任何一項";
+		mes "都不能滿足我的需求."; 
+		next;
+		switch (select("我知道我知道.:...?")) {
+		case 1:
+			mes "[克商斯]";
+			mes "...換句話說，我的意思是...";
+			close;
+		case 2:
+			mes "[克商斯]";
+			mes "當我失望絕透時";
+			mes "我帶著手推車來到了原野.";
+			mes "好無考慮著前面一直走著";
+			mes "碰到了一隻，強烈的魔物.";
+			mes "我感覺到生命受到威脅!";
+			mes "剛好那天，我沒有帶任何武器出門啊!";
+			next;
+			mes "[克商斯]";
+			mes "我被恐懼感嚇著";
+			mes "我腦海裡想著，我是不是就這樣悲慘的死亡呢"; 
+			mes "結果我就抱著一線希望";
+			mes "拿起手推車";
+			mes "朝著魔物砸下去了!";
+			mes "結果是! 結果是!";
+			next;
+			mes "[克商斯]";
+			mes "魔物就被砸碎了.";
+			mes "我那時候才明瞭.";
+			mes "手推車也可以變成武器啊!";
+			mes "終於知道用手推車";
+			mes "也可以攻擊敵人啊!";
+			next;
+			mes "[克商斯]"; 
+			mes "手推車 攻擊!"; 
+			mes "這是我研發出來的，手推車攻擊技能."; 
+			mes "消耗Sp 12之後";
+			mes "把手推車抬起來";
+			mes "對著敵人的頭部，砸下去的技能!";
+			next;
+			mes "[克商斯]"; 
+			mes "手推車越重，效果會越強";
+			mes "只要被砸一下";
+			mes "敵人會得到";
+			mes "被退後的撞擊力!";
+			next;
+			mes "[克商斯]";
+			mes "想學這技能嗎?";
+			next;
+			switch(select("是的!!:不過，我想學做壽司的手藝...")) {
+			case 1:
+				mes "[克商斯]";
+				mes "好吧!";
+				mes "我就給你做一個特訓";
+				mes "首先需要體力!";
+				mes "先練到商人等級 35之後";
+				mes "再來找我!";
+				mes "那時候再談細節吧!";
+				close;
+			case 2:
+				mes "[壽司王 克商斯]";
+				mes "想要在廚房學做壽司的話";
+				mes "還需要十年的修練啊!";
+				close;
+			}
+		}
+	}
+	mes "[克商斯]";
+	mes "把不可能變成可能";
+	mes "把不可能變成可能."; 
+	mes "把不可能變成可能.";
+	close;
+}
+
+//============================================================ 
+// Old changelog
+//============================================================ 
+//= Fully working
+//= 1.1 Bug fixes
+//= 1.a Now using functions found in "Global_Functions.txt"
+//=     for class checks.[kobra_k88]
+//= 1.2 Added Baby Class Support [Lupus]
+//= 1.3 Removed callfunc Is_####_Class in favor of baseClass [Silentdragon]
+//= 1.4 Fixed exploits [Lupus]
+//= 1.4a Fixed some typos [IVBela] 1.4b  Gershaun -> Gershuan
+//=     changed perm. variables to temp ones [Lupus]
+//= 1.4b Added missing 1 Banana Juice requirement to Cart Revolution [DracoRPG]
+//============================================================

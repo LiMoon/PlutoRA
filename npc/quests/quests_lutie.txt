@@ -1,0 +1,354 @@
+//===== rAthena Script ======================================= 
+//= Quest NPCs related to Lutie
+//===== By: ================================================== 
+//= TonyMan & Samuray22
+//===== Current Version: ===================================== 
+//= 1.3b
+//===== Compatible With: ===================================== 
+//= rAthena 1.0
+//===== Description: ========================================= 
+//= Blush, Cake Hat, Candle, Chef Hat, Raccoon Hat, Rainbow Eggshell,
+//= Spore Hat, Wonder Nutshell Quests
+//===== Additional Comments: ================================= 
+//= 1.1 Optimized [Lupus]
+//= 1.2 Fixed Chef Hat items [Lupus]
+//= 1.3 Update NPC to the Official One. [Samuray22]
+//= 1.3a Changed item names to item IDs. [Samuray22]
+//= 1.3b Removed a scrap " left in a delitem. [L0ne_W0lf]
+//= 1.4 Updated NPCs once again. [L0ne_W0lf]
+//============================================================ 
+// Translated by Yanpo（PlutoEA）
+//============================================================ 
+
+xmas,117,295,4	script	自動販賣機專家	704,{
+	mes "[堤堤酷飛]";
+	mes "嗚 哈 哈 哈 哼 哼 哼";
+	mes "... 你來了";
+	mes "我是在薑餅城";
+	mes "玩具工廠裡的廠長，我叫堤堤酷飛!!";
+	mes "對於新事業";
+	mes "開了眼界！";
+	next;
+	switch(select( "講述有關自動販賣機的事情:說明自動販賣機商品:結束對話")) {
+	case 1:
+		mes "[堤堤酷飛]";
+		mes "我左邊的小雪人";
+		mes "有看到了嗎？來 來 ..";
+		mes "仔細看";
+		mes "那雪人的嘴巴被設計成";
+		mes "他可以吞下";
+		next;
+		mes "[堤堤酷飛]";
+		mes "世上任何可口的東西";
+		mes ".. 感覺不太好？";
+		mes "無論手臂或腿";
+		mes "放進去看看 ~";
+		mes "什麼都進的去 -";
+		mes "哈哈哈 . 換個話題吧";
+		next;
+		mes "[堤堤酷飛]";
+		mes "這就是";
+		mes "創造出新的";
+		mes "裝扮物品的";
+		mes "自動販賣機";
+		mes "只要是自動販賣機要求的";
+		mes "各種物品";
+		next;
+		mes "[堤堤酷飛]";
+		mes "倒入雪人的";
+		mes "嘴吧裡時";
+		mes "就可以獲得";
+		mes "我想要的";
+		mes "美麗的物品";
+		mes "嗚 哈 哈 哼 哼 淒 淒";
+		close;
+	case 2:
+		mes "[堤堤酷飛]";
+		mes "哼哼哼哼哼";
+		mes "對於";
+		mes "我這天才";
+		mes "有問題要問的話";
+		mes "請悄悄的問我吧~";
+		next;
+		switch( select( "貍貓帽:魔菇帽:神秘的水果皮帽:藍白蛋殼帽:紅暈:廚師帽:蠟燭頭飾:蛋糕帽:結束對話")) {
+		case 1:
+			mes "[堤堤酷飛]";
+			mes "貍貓帽？";
+			mes "^3355FF貓耳發圈^000000 1";
+			mes "^3355FF龍鱗^000000 20";
+			mes "^3355FF植物梗^000000 200";
+			mes "^3355FF海獺的皮革^000000300";
+			break;
+		case 2:
+			mes "[堤堤酷飛]";
+			mes "魔菇帽？";
+			mes "^3355FF毒蘑菇芽孢^000000 850";
+			mes "^3355FF燃燒一半的木材^000000 300";
+			mes "^3355FF細長舌頭^000000 1";
+			break;
+		case 3:
+			mes "[堤堤酷飛]";
+			mes "神秘的水果皮帽？";
+			mes "^3355FF水果皮帽^000000 1";
+			mes "^3355FF蜻蜓的翅膀^000000 500";
+			break;
+		case 4:
+			mes "[堤堤酷飛]";
+			mes "藍白蛋殼帽？";
+			mes "^3355FF蛋殼帽^000000 1";
+			mes "^3355FF藍色染料^000000 1";
+			mes "^3355FF沙漠之狼指甲^000000 50";
+			break;
+		case 5:
+			mes "[堤堤酷飛]";
+			mes "紅暈?";
+			mes "你!";
+			mes "好像知道什麼似的 ?!";
+			mes "哼哼 . 不管怎麼樣";
+			mes "- ^3355FF艾麗絲的圍裙^000000 100 -";
+			break;
+		case 6:
+			mes "[堤堤酷飛]";
+			mes "廚師帽？";
+			mes "^3355FF小蛋糕^000000 120";
+			mes "^3355FF白色染料^000000 1";
+			mes "^3355FF柔毛^000000 330";
+			mes "^3355FF龍鱗^000000 450";
+			break;
+		case 7:
+			mes "[堤堤酷飛]";
+			mes "蠟燭頭飾？";
+			mes "^3355FF火線頭飾^000000 1";
+			mes "^3355FF火柴^000000 50";
+			mes "^3355FF蜂膠^000000 100";
+			break;
+		case 8:
+			mes "[堤堤酷飛]";
+			mes "蛋糕帽？";
+			mes "^3355FF糖果^000000 10";
+			mes "^3355FF柺杖糖^000000 5";
+			mes "^3355FF薑餅^000000 15";
+			mes "^3355FF小蛋糕^000000 20";
+			mes "^3355FF鋼鐵^000000 10";
+			break;
+		case 9:
+			mes "[堤堤酷飛]";
+			mes "不管什麼時候都可以問我";
+			mes "'天才' 是";
+			mes "什麼事都知道啊";
+			mes "我的頭腦";
+			mes "在這世界上最優秀的!";
+			mes "就是 . 這麼好 !";
+			break;
+		}
+		next;
+		mes "[堤堤酷飛]";
+		mes "啊，我是天才啊";
+		mes "哇哇太好了";
+		mes "哼哼哼";
+		mes "哼哼哼哼哼哼";
+		close;
+	case 3:
+		mes "[堤堤酷飛]";
+		mes "我是天才啊 天才 !!";
+		mes "在這世界上 !";
+		mes "能創造出這麼好的物品";
+		mes "能出自於我的頭腦";
+		mes "別人一定感到驚訝啊";
+		mes "哈 - 哈 - 哈";
+		next;
+		mes "[堤堤酷飛]";
+		mes "- 玩具工廠老闆 -";
+		mes "- 堤堤酷飛 -";
+		mes "- 用手，指著 -";
+		mes "- 小雪人 -";
+		mes "- 自動販賣機時 -";
+		mes "- 他會不專心的 -";
+		mes "- 跳來跳去 -";
+		close;
+	}
+}
+
+xmas,115,297,3	script	自動販賣機	111,{
+	mes "[奧迪]";
+	mes "- 祝你快樂 -";
+	mes "- 道具自動販賣機 -";
+	mes "- 請選擇需要的商品 -";
+	mes "- 然後放入道具 -";
+	mes "- 最後我會給你你需要的道具 -";
+	next;
+	switch( select( "^FF3355- 注意事項（必讀） -^000000:貍貓帽:魔菇帽:神秘的水果皮帽:藍白蛋殼帽:紅暈:廚師帽:蠟燭頭飾:蛋糕帽:取消")) {
+	case 1:
+		mes "[奧迪]";
+		mes "叮噹！";
+		mes "我講一個";
+		mes "注意事項好了";
+		mes "本自動販賣機";
+		mes "把一般裝備物品和";
+		mes "客人們特別";
+		next;
+		mes "[奧迪]";
+		mes "給的物品";
+		mes "不會做";
+		mes "分別";
+		mes "的程式";
+		mes "換句話說，^FF5533有插著好的^000000";
+		mes "^FF5533裝備卡片^000000 或是";
+		next;
+		mes "[奧迪]";
+		mes "^FF5533完成較高^000000";
+		mes "^FF5533精煉的物品^000000";
+		mes "^3355FF它會當做^000000";
+		mes "^3355FF一般物品處理^000000";
+		mes "所以當把物品交換 + 製作時";
+		mes "請把貴重的物品";
+		next;
+		mes "[奧迪]";
+		mes "交給卡普拉服務處";
+		mes "或是拜託";
+		mes "借放在其它地方";
+		mes "假如拿著貴重物品";
+		mes "被自動販賣機";
+		next;
+		mes "[奧迪]";
+		mes "程式誤判";
+		mes "被搶走時 ..";
+		mes "本自動販賣機";
+		mes "對這損失";
+		mes "不負任何責任";
+		next;
+		mes "[奧迪]";
+		mes "祝你有個愉快的時間";
+		mes "謝謝";
+		close;
+	case 2:
+		if (countitem(2213) > 0 && countitem(1036) > 19 && countitem(7012) > 199 && countitem(7065) > 299) {
+			callfunc "販賣機","good";
+			next;
+			delitem 2213, 1; //貓耳髮圈
+			delitem 1036, 20; //龍鱗 
+			delitem 7012, 200; //強韌鱗梗
+			delitem 7065, 300; //海獺的皮革
+			getitem 5033, 1; //貍貓帽
+			callfunc "販賣機","finish";
+		}
+			callfunc "販賣機","bad";
+	case 3:
+		if (countitem(7033) > 849 && countitem(7068) > 299 && countitem(1015) > 0) {
+			callfunc "販賣機","good";
+			next;
+			delitem 7033, 850; //毒魔菇芽孢
+			delitem 7068, 300; //燃燒一半的木材
+			delitem 1015, 1; //細長舌頭
+			getitem 5029, 1; //魔菇帽
+			callfunc "販賣機","finish";
+		}
+			callfunc "販賣機","bad";
+	case 4:
+		if (countitem(5037) > 0 && countitem(7064) > 499) {
+			callfunc "販賣機","good";
+			next;
+			delitem 5037, 1; //水果皮帽
+			delitem 7064, 500; //蜻蜓的翅膀
+			getitem 5050, 1; //神秘的水果皮帽
+			callfunc "販賣機","finish";
+		}
+			callfunc "販賣機","bad";
+	case 5:
+		if (countitem(5015) > 0 && countitem(978) > 0 && countitem(7030) > 49) {
+			callfunc "販賣機","good";
+			next;
+			delitem 5015, 1; //蛋殼帽
+			delitem 978, 1; //藍色染料
+			delitem 7030, 50; //沙漠之狼之指甲
+			getitem 5039, 1; //藍白蛋殼帽
+			callfunc "販賣機","finish";
+		}
+			callfunc "販賣機","bad";
+	case 6:
+		if (countitem(7047) > 99) {
+			callfunc "販賣機","good";
+			next;
+			delitem 7047, 100; //愛麗絲的圍裙
+			getitem 5040, 1; //紅暈
+			callfunc "販賣機","finish";
+		}
+			callfunc "販賣機","bad";
+	case 7:
+		if (countitem(539) > 119 && countitem(982) > 0 && countitem(949) > 329 && countitem(1036) > 449) {
+			callfunc "販賣機","good";
+			next;
+			delitem 539, 120; //小蛋糕
+			delitem 982, 1; //白色染料
+			delitem 949, 330; //柔毛
+			delitem 1036, 450; //龍鱗
+			getitem 5026, 1; //廚師帽
+			callfunc "販賣機","finish";
+		}
+			callfunc "販賣機","bad";
+	case 8:
+		if (countitem(2279) > 0 && countitem(7035) > 49 && countitem(526) > 99) {
+			callfunc "販賣機","good";
+			next;
+			delitem 2279, 1; //火線頭飾
+			delitem 7035, 50; //火柴
+			delitem 526, 100; //蜂膠
+			getitem 5028, 1; //蠟燭頭飾
+			callfunc "販賣機","finish";
+		}
+			callfunc "販賣機","bad";
+	case 9:
+		if (countitem(529) > 9 && countitem(530) > 4 && countitem(538) > 14 && countitem(539) > 19 && countitem(999) > 9) {
+			callfunc "販賣機","good";
+			next;
+			delitem 529, 10; //糖果
+			delitem 530, 5; //柺杖糖
+			delitem 538, 15; //薑餅
+			delitem 539, 20; //小蛋糕
+			delitem 999, 10; //鋼鐵
+			getitem 5024, 1; //蛋糕帽
+			callfunc "販賣機","finish";
+		}
+			callfunc "販賣機","bad";
+	case 10:
+		mes "[奧迪]";
+		mes "- 謝謝您 -";
+		mes "- 再次使用 -";
+		mes "- . . . . . -";
+		mes "- 我也沒使用 -";
+		mes "- 謝什麼謝呀 -";
+		mes "- 真奇怪 ! -";
+		close;
+	}
+}
+
+function	script	販賣機	{
+	if(getarg(0) == "good") {
+		mes "- 嗶 嗶 嗶－ !! -";
+		mes " - 你把材料通通丟進去販賣機裡面 - ";
+		return;
+	} else if(getarg(0) == "bad") {
+		mes "[奧迪]";
+		mes "- 嗶 嗶 嗶－ !! -";
+		mes "- 嘔嘶 ! 嘔嘶 ! -";
+		mes "- 物品不夠啊 -";
+		mes "- 嘔嘶 ! 嘔嘶 ! -";
+		mes "不要小看我噢";
+		close;
+	}
+	mes "[奧迪]";
+	mes "- broook boom -";
+	mes "- boooom!! -";
+	mes "- weck weck !! -";
+	mes "- boom!! -";
+	mes "- ugh ! -";
+	if(countitem(5040) > 0) {
+		mes "- Wow . 紅暈 !! -";
+		mes "- You are so cool -";
+		mes "- you know real fashion ! -";
+		mes "- ah so cute 紅暈 -";
+		mes "- Wanna touch .. -";
+	}
+	mes "- Thanks for use! -";
+	close;
+}

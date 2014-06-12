@@ -1,0 +1,39 @@
+//===== rAthena Script ======================================= 
+//= Rachel Airport NPCs
+//===== By: ================================================== 
+//= rAthena Dev Team
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= Rachel Airport NPCs
+//===== Additional Comments: ================================= 
+//= 1.0 First version.
+//============================================================ 
+
+ra_fild12,295,208,0	script	toairplane#rachel	45,1,1,{
+	end;
+OnTouch:
+	mes "利用飛空艇的費用是1200金幣，如果您持";
+	mes "有飛空艇免費搭乘券的話，就能免費進入";
+	mes "，請問您要搭坐嗎?";
+	next;
+	if (select("Yes:No") == 1) {
+		if (countitem(7311) > 0) {
+			delitem 7311,1; //Free_Flying_Ship_Ticket
+			warp "airplane_01",245,60;
+			end;
+		}
+		if (Zeny >= 1200) {
+			set Zeny, Zeny - 1200;
+			warp "airplane_01",245,60;
+			end;
+		}
+		mes "您要花費1200金幣才能進入，";
+		mes "但您持有的金幣不夠喔";
+		close;
+	}
+	mes "歡迎您下次再來。謝謝光臨";
+	close;
+}

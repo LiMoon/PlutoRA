@@ -1,0 +1,405 @@
+//===== rAthena Script ======================================= 
+//= Eden Group Quests - Common NPCs
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.8
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= Eden Group Headquarter NPC's.
+//===== Additional Comments: ================================= 
+//= 1.0 First Version.
+//= 1.1 Removed showevent use, and use of duplicates.
+//=     Commented out warps that should not be active.
+//= 1.2 Reduced 300+ copy-paste lines to 1 duplicated NPC. [Brian]
+//= 1.3 Some little optimization here and there. [Masao]
+//= 1.4 Updated to match the new Izlude Map. [Masao]
+//= 1.5 Added some missing Eden Group Teleport Officers. [Masao]
+//= 1.6 Added Izlude RE coordinates. [Euphy]
+//= 1.7 Added Malaya teleporter. [Euphy]
+//= 1.8 Updated to match the latest official script. [Euphy]
+//============================================================
+
+moc_para01,27,35,5	script	秘書萊茵 伊貝努勒	952,{
+	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 2000) {
+		mes "- 請稍等一下 !! -";
+		mes "- 您目前的負重量過重了! -";
+		close;
+	}
+	mes "[萊茵 伊貝努勒]";
+	mes "追逐夢想與浪漫的人類哦! 你們的樂園就在這伊甸園裡，";
+	mes "你好，您需要什麼服務呢?";
+	next;
+	while (1) {
+		switch (select("何謂伊甸園?:報名伊甸園:申請委託:查詢委託:結束對話")) {
+		case 1:
+			mes "[萊茵 伊貝努勒]";
+			mes "伊甸園受理來自米德加爾特各地有困難人的請託，並協助解決問題的工作";
+			next;
+			mes "[萊茵 伊貝努勒]";
+			mes "當受理委託人的問題後，我們就會將相關委託內容公佈並告知伊甸園團員們";
+			next;
+			mes "[萊茵 伊貝努勒]";
+			mes "而伊甸園團員們會從中挑選符合自己條件的問題後去處理解決，";
+			mes "當然還能獲得委託人所給的一些酬勞";
+			next;
+			mes "[萊茵 伊貝努勒]";
+			mes "伊甸園透過處理委託案件，可以讓新手熟習陌生又遼闊的世界，";
+			mes "中級以上的玩家則是透過旅行世界而邂逅緣分，當然還能累計不少名聲和財富吧!";
+			next;
+			break;
+		case 2:
+			if (countitem(6219) < 1) {
+				mes "[萊茵 伊貝努勒]";
+				mes "透過簡單的申請手續，任何人皆可成為伊甸園的成員，";
+				mes "你願意加入伊甸園嗎?";
+				next;
+				switch (select("願意:不願意")) {
+				case 1:
+					mes "[萊茵 伊貝努勒]";
+					mes "好，請你在這路簽名";
+					input .@input$;
+					next;
+					mes "[萊茵 伊貝努勒]";
+					mes "簽完名字了嗎?";
+					mes "我來看一下";
+					next;
+					mes "[萊茵 伊貝努勒]";
+					mes "大名是^3131FFBo"+.@input$+"^000000.. 對嗎？";
+					mes "呃？ 錯了嗎？";
+					next;
+					emotion e_swt;
+					mes "[萊茵 伊貝努勒]";
+					mes "不過這裡簽的大名是...";
+					mes "嗯，的確是難懂的字";
+					next;
+					mes "[萊茵 伊貝努勒]";
+					mes "請重新簽名好嗎? 這次要寫得^3131FF清清楚楚^000000.";
+					input .@input$;
+					next;
+					mes "[萊茵 伊貝努勒]";
+					mes "啊!原來是^3131FF"+strcharinfo(0)+"^000000喔!";
+					mes "這次確認是沒問題了";
+					next;
+					emotion e_no1;
+					mes "[萊茵 伊貝努勒]";
+					mes "在伊甸園名單成員上加入你的大名了，";
+					mes "非常歡迎你加入伊甸園!";
+					next;
+					mes "[萊茵 伊貝努勒]";
+					mes "希望你以後身為伊甸園成員後，恪守職守努力完成任務吧!";
+					getitem 6219,1; //Para_Team_Mark
+					next;
+					break;
+				case 2:
+					mes "[萊茵 伊貝努勒]";
+					mes "你對伊甸園還有疑問?";
+					next;
+					break;
+				}
+			} else {
+				mes "[萊茵 伊貝努勒]";
+				mes "你已經加入伊甸園了";
+				next;
+			}
+			break;
+		case 3:
+			mes "[萊茵 伊貝努勒]";
+			mes "你有要向伊甸園委託事情嗎?";
+			next;
+			if(select("是:不是") == 1) {
+				mes "[萊茵 伊貝努勒]";
+				mes "請在這份文件寫下您的大名";
+				input .@input$;
+				next;
+				mes "[萊茵 伊貝努勒]";
+				mes "^3131FF"+strcharinfo(0)+"^000000.. 這名字沒錯嗎？";
+				mes "字體不太工整，難以辨..";
+				next;
+				mes "[萊茵 伊貝努勒]";
+				mes "請^3131FF"+strcharinfo(0)+"^000000告知您想委託的內容，";
+				mes "還有是在哪一個地區執行的委託呢？";
+				input .@input$;
+				next;
+				mes "[萊茵 伊貝努勒]";
+				mes "^3131FF執行地: "+.@inputstr$+"^000000";
+				mes "嗯.. 我先幫你登記";
+				next;
+				mes "[萊茵 伊貝努勒]";
+				mes "需要執行哪一種委託事情請概略寫一下，例如說'消滅波波利 10隻'等";
+				input .@input$;
+				next;
+				mes "[萊茵 伊貝努勒]";
+				mes "都寫好了嗎?";
+				mes "我來看一下";
+				next;
+				mes "[萊茵 伊貝努勒]";
+				mes "嗯...........";
+				next;
+				mes "[萊茵 伊貝努勒]";
+				mes "嗯嗯..................";
+				next;
+				emotion e_dots;
+				mes "[萊茵 伊貝努勒]";
+				mes "在登記委託之前要不要先接受我的委託呢?";
+				next;
+				emotion e_pif;
+				mes "[萊茵 伊貝努勒]";
+				mes "^3131FF委託人: 萊茵 伊貝努勒^000000";
+				mes "^3131FF執行內容: 寫字矯正練習一個月^000000";
+				mes "實在是難懂的字體";
+				next;
+				mes "[萊茵 伊貝努勒]";
+				mes "^3131FF任務:"+.@input$+"^000000";
+				mes "已完成登記了";
+				next;
+				mes "[萊茵 伊貝努勒]";
+				mes "目前因為登記的案件太多，更新到公佈欄上需要一點時間，";
+				mes "所以敬請耐心等候順序";
+				next;
+			}
+			break;
+		case 4:
+			if (countitem(6219) > 0) {
+				mes "[萊茵 伊貝努勒]";
+				mes "你身為伊甸園成員並願意執行伊甸園處所登記的委託案件嗎?";
+				next;
+				mes "[萊茵 伊貝努勒]";
+				mes "右側牆面的公佈欄上登記著各種委託案件正等著您去選擇，";
+				mes "請先閱讀執行委託條件與內容後，選出適合自己能力的案件吧!";
+				next;
+			}
+			else {
+				mes "[萊茵 伊貝努勒]";
+				mes "若要執行任務的話，請先加入伊甸園吧!";
+				close;
+			}
+			break;
+		case 5:
+			mes "[萊茵 伊貝努勒]";
+			mes "若有問題歡迎隨時來找我";
+			close;
+		}
+	}
+	close;
+}
+
+-	script	伊甸園 空間移動師#0::eto	-1,{
+	mes "[伊甸園 空間移動師]";
+	mes "對這世界感到陌生的受訓生及毫無目標地徬徨中的冒險家們，都來找我吧!";
+	mes "可以協助各位排除萬難的伊甸園登場囉!";
+	next;
+	mes "[伊甸園 空間移動師]";
+	mes "你不想虛度光陰嗎?";
+	mes "你想為大家服務嗎?";
+	mes "你想成為解決疑難雜症的專家嗎?";
+	mes "你在煩惱什麼呢? 請立即洽詢伊甸園吧!";
+	next;
+	switch (select("前往伊甸園:結束對話")) {
+	case 1:
+		mes "[伊甸園 空間移動師]";
+		mes "出發囉! 到我們的總部!";
+		set nak_warp,strnpcinfo(2);
+		close2;
+		warp "moc_para01",31,14;
+		end;
+	case 2:
+		mes "[伊甸園 空間移動師]";
+		mes "以後改變心意時歡迎隨時來找我!";
+		close;
+	}
+}
+prontera,124,76,3	duplicate(eto)	伊甸園 空間移動師#1	729
+moc_ruins,68,164,3	duplicate(eto)	伊甸園 空間移動師#2	729
+geffen,132,66,3	duplicate(eto)	伊甸園 空間移動師#3	729
+alberta,124,67,3	duplicate(eto)	伊甸園 空間移動師#4	729
+aldebaran,133,119,5	duplicate(eto)	伊甸園 空間移動師#5	729
+izlude_in,68,162,1	duplicate(eto)	伊甸園 空間移動師#6	729
+prt_church,103,78,3	duplicate(eto)	伊甸園 空間移動師#7	729
+geffen_in,160,104,5	duplicate(eto)	伊甸園 空間移動師#8	729
+moc_prydb1,53,126,3	duplicate(eto)	伊甸園 空間移動師#9	729
+alberta_in,75,39,3	duplicate(eto)	伊甸園 空間移動師#10	729
+payon_in02,58,58,1	duplicate(eto)	伊甸園 空間移動師#11	729
+payon,177,111,3	duplicate(eto)	伊甸園 空間移動師#12	729
+que_ng,33,73,3	duplicate(eto)	伊甸園 空間移動師#13	729
+que_ng,144,161,5	duplicate(eto)	伊甸園 空間移動師#14	729
+yuno,144,189,5	duplicate(eto)	伊甸園 空間移動師#15	729
+rachel,125,144,3	duplicate(eto)	伊甸園 空間移動師#16	729
+comodo,202,151,4	duplicate(eto)	伊甸園 空間移動師#17	729
+hugel,93,153,4	duplicate(eto)	伊甸園 空間移動師#18	729
+veins,220,109,4	duplicate(eto)	伊甸園 空間移動師#19	729
+einbroch,250,211,4	duplicate(eto)	伊甸園 空間移動師#20	729
+lighthalzen,164,86,4	duplicate(eto)	伊甸園 空間移動師#21	729
+amatsu,100,145,5	duplicate(eto)	伊甸園 空間移動師#22	729
+ayothaya,221,191,3	duplicate(eto)	伊甸園 空間移動師#23	729
+louyang,224,107,3	duplicate(eto)	伊甸園 空間移動師#24	729
+gonryun,162,122,5	duplicate(eto)	伊甸園 空間移動師#25	729
+moscovia,209,197,5	duplicate(eto)	伊甸園 空間移動師#26	729
+brasilis,191,224,3	duplicate(eto)	伊甸園 空間移動師#27	729
+dewata,192,193,5	duplicate(eto)	伊甸園 空間移動師#28	729
+morocc,161,97,5	duplicate(eto)	伊甸園 空間移動師#29	729
+izlude,131,148,4	duplicate(eto)	伊甸園 空間移動師#30	729
+izlude_a,131,148,4	duplicate(eto)	伊甸園 空間移動師#30::eto_iz_a	729
+izlude_b,131,148,4	duplicate(eto)	伊甸園 空間移動師#30::eto_iz_b	729
+izlude_c,131,148,4	duplicate(eto)	伊甸園 空間移動師#30::eto_iz_c	729
+izlude_d,131,148,4	duplicate(eto)	伊甸園 空間移動師#30::eto_iz_d	729
+umbala,105,158,3	duplicate(eto)	伊甸園 空間移動師#31	729
+malaya,238,206,6	duplicate(eto)	伊甸園 空間移動師#32	729
+
+moc_para01,30,10,0	script	#eden_out	45,1,1,{
+OnTouch:
+	switch (nak_warp) {
+		case 1: warp "prontera",116,72; end;
+		case 2: warp "moc_ruins",64,161; end;
+		case 3: warp "geffen",120,39; end;
+		case 4: warp "alberta",117,56; end;
+		case 5: warp "aldebaran",168,112; end;
+		case 6: warp "izlude_in",73,165; end;
+		case 7: warp "prt_church",99,78; end;
+		case 8: warp "geffen_in",162,99; end;
+		case 9: warp "moc_prydb1",51,118; end;
+		case 10: warp "alberta_in",73,43; end;
+		case 11: warp "payon_in02",64,60; end;
+		case 12: warp "payon",161,58; end;
+		case 13: warp "que_ng",33,63; end;
+		case 14: warp "que_ng",144,166; end;
+		case 15: warp "yuno",158,125; end;
+		case 16: warp "rachel",115,125; end;
+		case 17: warp "comodo",192,145; end;
+		case 18: warp "hugel",88,148; end;
+		case 19: warp "veins",216,104; end;
+		case 20: warp "einbroch",246,204; end;
+		case 21: warp "lighthalzen",159,95; end;
+		case 22: warp "amatsu",110,150; end;
+		case 23: warp "ayothaya",217,178; end;
+		case 24: warp "louyang",217,103; end;
+		case 25: warp "gonryun",155,120; end;
+		case 26: warp "moscovia",218,198; end;
+		case 27: warp "brasilis",190,220; end;
+		case 28: warp "dewata",192,182; end;
+		case 29: warp "morocc",161,97; end;
+		case 30: warp "izlude",134,118; end;	// Old coordinates: (127,142)
+		case 31: warp "umbala",94,154; end;
+		case 32: warp "malaya",234,199; end;
+		default: warp "prontera",116,72; end;
+	}
+	end;
+}
+
+moc_para01,47,39,3	script	#warp_2_pass	111,{
+	if (countitem(6219) > 0) {
+		mes "[萊茵 伊貝努勒]";
+		mes "那裡是伊甸園的專屬空間，";
+		mes "只要是成員皆可自由使用";
+		next;
+		switch(select("進去:不進去")) {
+		case 1:
+			mes "雖然裝飾的很美麗，不過卻是很厚重的門";
+			close2;
+			warp "moc_para01",106,14;
+			end;
+		case 2:
+			mes "[萊茵 伊貝努勒]";
+			mes "你不太有好奇心喔!";
+			close;
+		}
+	}
+	mes "[萊茵 伊貝努勒]";
+	mes "那裡是伊甸園的專屬空間，";
+	mes "若想入內的話，必須先向我填寫申請加入伊甸園的申請表";
+	close;
+}
+
+moc_para01,16,22,7	script	老冒險家#eden	900,{
+	mes "[老冒險家]";
+	mes "那個名叫萊茵 伊貝努勒的年輕人，";
+	mes "竟然無禮地對我說'謝絕推銷'呢!?";
+	next;
+	mes "[老冒險家]";
+	mes "我本來想加入伊甸園，她卻如此傲慢待我!?";
+	mes "你也覺得我像個推銷員嗎?";
+	close;
+}
+
+moc_para01,182,48,3	script	伊甸園料理師#eden	886,{
+	set .@eggf,rand(1,118);
+	set .@eggf_1,.@eggf + 1;
+	set .@eggf_2,.@eggf + 2;
+	set .@eggf_6,.@eggf + 6;
+	mes "[伊甸園料理師]";
+	mes ""+.@eggf+".. "+.@eggf_1+"... "+.@eggf_2+".... "+.@eggf_6+"..?";
+	next;
+	emotion e_sob;
+	mes "[伊甸園料理師]";
+	mes "哇啊!這到底是第幾個煎蛋呢?";
+	mes "嗚嗚!!!又得要創新數了!!";
+	next;
+	emotion e_sob;
+	mes "[伊甸園料理師]";
+	mes "小姐為什麼說這是委託案件而交辦我做呢?";
+	next;
+	emotion e_sob;
+	mes "[伊甸園料理師]";
+	mes "她要123個煎蛋幹嘛?又吃不完，一定是想捉弄我而言!嗚嗚!!!";
+	close;
+}
+
+moc_para01,172,28,5	script	見習伊甸園成員#eden	883,{
+	mes "[見習伊甸園成員]";
+	mes "我自從加入伊甸園後體認到一件事";
+	next;
+	mes "[見習伊甸園成員]";
+	mes "一定要非常努力才可以...";
+	next;
+	mes "[見習伊甸園成員]";
+	mes "不過我連最基本的也沒成功過呢?";
+	next;
+	mes "[見習伊甸園成員]";
+	mes "我可能沒救了...";
+	close;
+}
+
+moc_para01,20,35,5	script	秘書助理 妮蝶	814,{
+	mes "[妮蝶]";
+	mes "我加入伊甸園界如同昨日，如今早已過了三秋呢?";
+	mes "由於每天非常忙碌，都沒注意到時間過這麼快!";
+	next;
+	mes "[妮蝶]";
+	mes "天天都好像在打仗一樣";
+	next;
+	mes "[妮蝶]";
+	mes "由於^3131FF右邊餐廳^000000的主廚";
+	mes "使用超多調味料，連大廳都飄來那味道，因此必須隨時保持通風狀態";
+	next;
+	mes "[妮蝶]";
+	mes "另外^3131FF大廳北邊^000000大門對面的^3131FF校場^000000則不斷傳來吼叫聲";
+	next;
+	emotion e_ag;
+	mes "[妮蝶]";
+	mes "在^3131FF2樓宿舍^000000裡，小姐歇斯底里般的叫聲與校場上的吼叫聲，簡直是一搭一唱呢?";
+	next;
+	mes "[妮蝶]";
+	mes "小姐指的是我們伊甸園的園長啦!";
+	next;
+	mes "[妮蝶]";
+	mes "實在是搞不懂一整天到底在做什麼?";
+	next;
+	emotion e_omg;
+	mes "[妮蝶]";
+	mes "哈!";
+	mes "噓...我說過的話請你要保密哦!";
+	next;
+	mes "[妮蝶]";
+	emotion e_sigh;
+	mes "萬一被伊貝努勒知道，說不定會去告狀";
+	next;
+	emotion e_pif,0,"秘書萊茵 伊貝努勒";
+	mes "[萊茵 伊貝努勒]";
+	mes "我不是那種人啦~";
+	next;
+	emotion e_wah;
+	mes "[妮蝶]";
+	mes "哎呀! 被聽到了! 哇啊!";
+	close;
+}

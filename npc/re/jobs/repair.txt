@@ -1,0 +1,315 @@
+//===== rAthena Script ======================================= 
+//= Job Repairs
+//===== By: ==================================================
+//= Euphy
+//===== Current Version: ===================================== 
+//= 1.1
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Removes potentially conflicting job data.
+//===== Additional Comments: ================================= 
+//= 1.0 First version.
+//= 1.1 Added GM management function. [Euphy]
+//============================================================ 
+
+/*
+rAthena -> official job variable conversion
+-------------------------------------------
+
+Knight: KNIGHT_Q -> job_knight_q
+Priest: PRIEST_Q -> job_priest_q
+Wizard: WIZ_Q -> job_wizard_q
+Blacksmith: BSMITH_Q -> job_black
+Assassin: ASSIN_Q -> job_assasin
+Hunter: HNTR_Q -> job_hunter
+Crusader: CRUS_Q -> job_crusader_q
+Monk: MONK_Q -> job_monk
+Sage: SAGE_Q -> job_sage_q
+Alchemist: ALCH_Q -> job_alchemist_q
+Rogue: ROGUE_Q -> job_rogue
+Bard: BARD_Q -> job_bard_q
+Dancer: DANC_Q -> job_dancer
+
+Rebirth: ADVJOB -> job_karma
+
+Rune Knight: job_rune_edq
+Arch Bishop: job_arch
+Warlock: job_wl
+Mechanic: job__mechanic -> job_mechanic
+Guillotine Cross: job_3rd_gc
+Ranger: job_ranger01
+Royal Guard: job_royal -> job_roy
+Sura: job_shu
+Sorcerer: job_soc
+Geneticist: job_gen
+Shadow Chaser: job_sha -> job_3rd_sc
+Minstrel: job_min
+Wanderer: job_wan
+
+Gunslinger: GUNS_Q -> hg_gun
+Ninja: NINJ_Q -> hg_nin
+Taekwon: TK_Q -> job_taekwon
+Star Gladiator: STGL_Q -> job_star
+Soul Linker: SOUL_Q -> job_linker
+Super Novice: SUPNOV_Q -> job_super
+Expanded Super Novice: EXSUPNOV_Q -> job_super2
+*/
+
+prt_in,38,104,4	script	巴琪莉#repair	811,{
+	if (checkweight(1201,1) == 0) {
+		mes "請注意您的負重量";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "請注意您的負重量";
+		close;
+	}
+	mes "[巴琪莉]";
+	mes "我是專門照顧專職/轉生考試過程中身體出現異常徵兆的玩家，名字叫巴琪莉，跟巴希莉是朋友關係。";
+	next;
+	mes "[巴琪莉]";
+	mes "當異常徵兆都消失後，考試課程必須重新來過，你的決定是?";
+	next;
+	switch(select("我沒有異常徵兆:我身體有異常")) {
+	case 1:
+		mes "[巴琪莉]";
+		mes "太好了，那請慢走!";
+		close;
+	case 2:
+		mes "[巴琪莉]";
+		mes "你確定要初始化後重新開始嗎?";
+		next;
+		if(select("不要:是，我要重新開始!") == 1) {
+			mes "[巴琪莉]";
+			mes "沒關係，請下次再來!";
+			close;
+		}
+		mes "[巴琪莉]";
+		mes "目前已持有之專職相關物品可能都會消失哦! 你確定嗎?";
+		next;
+		if(select("不要:是，我要重新開始!") == 1) {
+			mes "[巴琪莉]";
+			mes "沒關係，請下次再來!";
+			close;
+		}
+		mes "[巴琪莉]";
+		mes "這樣有可能會得到找不到戀人的詛咒哦! 你確定嗎?";
+		next;
+		if(select("不要:是，我要初始化!") == 1) {
+			mes "[巴琪莉]";
+			mes "沒關係，請下次再來!";
+			close;
+		}
+		mes "[巴琪莉]";
+		mes "嚴重時有可能會丟頭路哦，你確定轉職課程要初始化嗎?";
+		next;
+		if(select("不要:轉職課程初始化") == 1) {
+			mes "[巴琪莉]";
+			mes "沒關係，請下次再來!";
+			close;
+		}
+		specialeffect2 EF_INVENOM;
+		progressbar "0xffff00",3;
+
+		// 咒術士 - quest items
+		if (isequipped(2796) || isequipped(2797)) {
+			mes "[巴琪莉]";
+			mes "請卸除您身上的魔力石吧";
+			close;
+		}
+		if (countitem(2796) || countitem(2797)) {
+			if (isequipped(2796) || isequipped(2797)) {
+				mes "[巴琪莉]";
+				mes "請完整地卸除您身上的魔力石吧";
+				close;
+			}
+			setarray .@items[0], 2796, 2797, 6152, 6151; //Magical_Stone,Magical_Stone_,Glittering_Crystal,Peice_Of_Great_Bradium
+			for(set .@i,0; .@i<4; set .@i,.@i+1) {
+				if (countitem(.@items[.@i]))
+					delitem .@items[.@i], countitem(.@items[.@i]);
+			}
+			mes "[巴琪莉]";
+			mes "你身上帶了一些多餘的雜物呢，我會順道幫你整理一番。";
+			close;
+		}
+
+		// Baby and third job characters meet no further conditions.
+		if (eaclass()&(EAJL_BABY|EAJL_THIRD)) {
+			mes "[巴琪莉]";
+			mes "我想你現在應該用不著來找我吧";
+			close;
+		}
+
+		// 轉生 - 變數
+		if ((Class >= Job_Swordman && Class <= Job_Crusader2) && ADVJOB != 0) {
+			set ADVJOB,0;
+			mes "[巴琪莉]";
+			mes "你帶有太多業障，我會為您一一清除。";
+			next;
+			mes "[巴琪莉]";
+			mes "如果問題還是接連發生的話，再回來找我吧";
+			close;
+		}
+
+		// 二轉職業 - variable and quests
+		// callsub L_Second, "<variable>", <quest>;
+		if (Class == Job_Swordman) {
+			callsub L_Second, "KNIGHT_Q", 9012;
+			callsub L_Second, "CRUS_Q", 3015;
+		} else if (Class == Job_Archer) {
+			callsub L_Second, "HNTR_Q", 4013;
+			callsub L_Second, "BARD_Q", 3004;
+			callsub L_Second, "DANC_Q", 7006;
+		} else if (Class == Job_Mage) {
+			callsub L_Second, "WIZ_Q", 9018;
+			callsub L_Second, "SAGE_Q", 2052;
+		} else if (Class == Job_Merchant) {
+			callsub L_Second, "BSMITH_Q", 2016;
+			callsub L_Second, "ALCH_Q", 2040;
+		} else if (Class == Job_Thief) {
+			callsub L_Second, "ASSIN_Q", 8008;
+			callsub L_Second, "ROGUE_Q", 2027;
+		} else if (Class == Job_Acolyte) {
+			callsub L_Second, "PRIEST_Q", 8016;
+			callsub L_Second, "MONK_Q", 3032;
+		}
+
+		// 三轉職業 - variable and quests
+		// callsub L_Third, "<variable>", <main quest>, <first quest>, <last quest>{, <additional quest>};
+		if (BaseJob == Job_Assassin)
+			callsub L_Third, "job_3rd_gc", 7100, 7091, 7116;
+		else if (BaseJob == Job_Blacksmith)
+			callsub L_Third, "job__mechanic", 10101, 10090, 10101;
+		else if (BaseJob == Job_Hunter)
+			callsub L_Third, "job_ranger01", 8262, 8254, 8262;
+		else if (BaseJob == Job_Knight)
+			callsub L_Third, "job_rune_edq", 3219, 3200, 3220;
+		else if (BaseJob == Job_Priest)
+			callsub L_Third, "job_arch", 2191, 2187, 2191;
+		else if (BaseJob == Job_Wizard)
+			callsub L_Third, "job_wl", 11112, 11106, 11112;
+		else if (BaseJob == Job_Alchemist)
+			callsub L_Third, "job_gen", 2223, 2209, 2217, 2223;
+		else if (BaseJob == Job_Bard)
+			callsub L_Third, "job_min", 11154, 11135, 11154;
+		else if (BaseJob == Job_Crusader)
+			callsub L_Third, "job_royal", 0, 12090, 12094;
+		else if (BaseJob == Job_Dancer)
+			callsub L_Third, "job_wan", 2222, 2218, 2222;
+		else if (BaseJob == Job_Monk)
+			callsub L_Third, "job_shu", 11158, 11155, 11158;
+		else if (BaseJob == Job_Rogue)
+			callsub L_Third, "job_sha", 7180, 7160, 7180;
+		else if (BaseJob == Job_Sage)
+			callsub L_Third, "job_soc", 12098, 12096, 12098;
+
+		mes "[巴琪莉]";
+		mes "我想你現在應該用不著來找我了吧";
+		close;
+	}
+
+L_Second:
+	if (getd(getarg(0)) != 0) {
+		setd getarg(0),0;
+		if (checkquest(getarg(1)) == 2)
+			erasequest getarg(1);
+		mes "[巴琪莉]";
+		mes "我會為你解決身上的疑難雜症";
+		next;
+		mes "[巴琪莉]";
+		mes "如果問題還是接連發生的話，再回來找我吧";
+		close;
+	} else
+		return;
+
+L_Third:
+	if (getd(getarg(0)) != 0) {
+		setd getarg(0),0;
+		if (getarg(1)) {
+			if (checkquest(getarg(1)) == 2)
+				erasequest getarg(1);
+		}
+		for(set .@i,getarg(2); .@i<=getarg(3); set .@i,.@i+1) {
+			if (checkquest(.@i) > -1)
+				erasequest .@i;
+		}
+		if (getarg(4,0)) {
+			if (checkquest(getarg(4)) > -1)
+				erasequest getarg(4);
+		}
+		mes "[巴琪莉]";
+		mes "我會為你解決身上的疑難雜症";
+		next;
+		mes "[巴琪莉]";
+		mes "如果問題還是接連發生的話，再回來找我吧";
+		close;
+	} else
+		return;
+}
+
+-	script	巴琪莉#sign	-1,{
+	mes "^ff00ff喬遷通知：因付不起辦公室的租金，只好先搬至普隆德拉精煉場對面的大樓。^000000";
+	mes " ";
+	mes "^ff00ff巴琪莉^000000";
+	close;
+}
+in_moc_16,17,33,4	duplicate(Valerie#sign)	巴琪莉#asn	837
+ein_in01,13,28,4	duplicate(Valerie#sign)	巴琪莉#bls	837
+hu_in01,386,377,4	duplicate(Valerie#sign)	巴琪莉#hnt	837
+prt_in,88,108,4	duplicate(Valerie#sign)	巴琪莉#knt	837
+prt_church,19,36,4	duplicate(Valerie#sign)	巴琪莉#prst	837
+gef_tower,110,30,4	duplicate(Valerie#sign)	巴琪莉#wiz	837
+comodo,215,155,4	duplicate(Valerie#sign)	巴琪莉#danc	837
+prt_castle,45,167,4	duplicate(Valerie#sign)	巴琪莉#cru	837
+prt_monk,59,253,4	duplicate(Valerie#sign)	巴琪莉#mnk	837
+moc_ruins,90,104,4	duplicate(Valerie#sign)	巴琪莉#rg	837
+yuno_in02,43,62,4	duplicate(Valerie#sign)	巴琪莉#sag	837
+prt_church,103,86,4	duplicate(Valerie#sign)	巴琪莉#arch	837
+que_job01,75,92,4	duplicate(Valerie#sign)	巴琪莉#gc	837
+yuno,129,150,4	duplicate(Valerie#sign)	巴琪莉#mech	837
+tur_dun01,159,40,4	duplicate(Valerie#sign)	巴琪莉#ran	837
+prt_in,167,24,4	duplicate(Valerie#sign)	巴琪莉#rk	837
+spl_in02,81,102,4	duplicate(Valerie#sign)	巴琪莉#wl	837
+alde_alche,38,181,4	duplicate(Valerie#sign)	巴琪莉#alche	837
+alberta,198,129,4	duplicate(Valerie#sign)	巴琪莉#min	837
+in_rogue,376,104,4	duplicate(Valerie#sign)	巴琪莉#sc	837
+ve_in,244,122,4	duplicate(Valerie#sign)	巴琪莉#shu	837
+xmas,166,209,4	duplicate(Valerie#sign)	巴琪莉#wan	837
+
+sec_in02,12,40,5	script	Job Repair	57,1,1,{
+	callfunc "F_GM_NPC";
+	mes "請輸入密碼";
+	next;
+	if (callfunc("F_GM_NPC","1854",1) == 1) {
+		set job_arch,100;
+		set job_3rd_gc,100;
+		set job__mechanic,100;
+		set job_ranger01,100;
+		set job_rune_edq,100;
+		set job_wl,100;
+		set job_gen,100;
+		set job_min,100;
+		set job_royal,100;
+		set job_sha,100;
+		set job_soc,100;
+		set job_shu,100;
+		set job_wan,100;
+		set KNIGHT_Q,100;
+		set PRIEST_Q,100;
+		set WIZ_Q,100;
+		set BSMITH_Q,100;
+		set ASSIN_Q,100;
+		set HNTR_Q,100;
+		set CRUS_Q,100;
+		set MONK_Q,100;
+		set SAGE_Q,100;
+		set ALCH_Q,100;
+		set ROGUE_Q,100;
+		set BARD_Q,100;
+		set DANC_Q,100;
+		set ADVJOB,15;
+	}
+	close;
+}

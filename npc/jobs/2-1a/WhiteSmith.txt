@@ -1,0 +1,60 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// https://code.google.com/p/plutoea
+// ---------------------------------
+// - 神工匠 轉職腳本 - 
+//===================================
+// 版本：1.3c
+//===================================
+
+valkyrie,44,50,5	script	神工匠#Valkyrie	731,{
+	if (ADVJOB == 0 || Upper != 1) {
+		set .@karma_d,rand(1,10);
+		if (.@karma_d > 4) {
+			mes "[神工匠]";
+			mes "恭喜你轉生成功";
+			mes "戲給戰士們光榮!!";
+			close;
+		}
+		mes "[神工匠]";
+		mes "這是收據，我想你也辛苦了";
+		mes ""+strcharinfo(0)+"...轉送，謝謝你囉";
+		mes "......";
+		close;
+	}
+	else if (ADVJOB == Job_WhiteSmith && Class == Job_Merchant_High && JobLevel > 39) {
+		mes "[神工匠]";
+		mes "找回你榮譽的樣子，";
+		mes "照亮時代的時機又";
+		mes "回來了，以新的模樣";
+		mes "走像那英雄的路吧";
+		next;
+		mes "[神工匠]";
+		mes "要轉職為神工匠嗎?";
+		next;
+		if (select("不:是") == 1) {
+			mes "[神工匠]";
+			mes "準備好的話再來找我吧，";
+			mes "獻給戰士們的光榮!";
+			close;
+		}
+		if (SkillPoint) {
+			mes "[神工匠]";
+			mes "好像學習的還不夠多，";
+			mes "學會所有技能之後再來吧";
+			close;
+		}
+		jobchange Job_Whitesmith;
+		set ADVJOB,0;
+		mes "[神工匠]";
+		mes "恭喜你，回到世上之後，";
+		mes "希望能成為用你的能力";
+		mes "領導全部的人";
+		close;
+	}
+	mes "[神工匠]";
+	mes "歡迎來到榮譽的巴哈拉，";
+	mes "好好的休息再回去吧，";
+	mes "戲給戰士們光榮!";
+	close;
+}

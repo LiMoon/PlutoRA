@@ -1,0 +1,151 @@
+//===== rAthena Script =======================================
+//= Eden Group Quests - Mission [11 - 25]
+//===== By: ==================================================
+//= L0ne_W0lf
+//= 中文化: XD人、Yanpo (PlutoeA)
+//===== Current Version: =====================================
+//= 1.2
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= Repetable Quests for Players between Baselevel 11 - 25.
+//===== Additional Comments: =================================
+//= 1.0 First Version.
+//= 1.1 Some little optimization here and there. [Masao]
+//= 1.2 Optimized. [Euphy]
+//============================================================
+
+moc_para01,36,38,3	script	委託 [11 - 25]#Tuto	857,{
+	if (countitem(6219) < 1) {
+		mes "- 若想要接受委託，需要有 -";
+		mes "- ^4d4dff'伊甸園徽章'^000000 -";
+		close;
+	}
+	for(set .@i,11124; .@i<11134; set .@i,.@i+1)
+		if (checkquest(.@i,PLAYTIME) == 2) erasequest .@i;
+	for(set .@i,11114; .@i<11123; set .@i,.@i+1) {
+		set .@j, checkquest(.@i,HUNTING);
+		if (.@j == 2) {
+			mes "- 若有完成的委託事項時，-";
+			mes "- 向負責人領取獎賞後，-";
+			mes "- 可再接新的 -";
+			mes "- 委託任務 -";
+			mes "- 負責人 : 史匹克 -";
+			close;
+		}
+		else if (.@j >= 0) {
+			mes "- 必須先完成執行中 -";
+			mes "- 委託後，才能接受 -";
+			mes "- 新的委託 -";
+			mes "- 負責人 : 史匹克 -";
+			close;
+		}
+	}
+	if (BaseLevel < 11) {
+		mes " - 目前沒有適合你的任務 - ";
+		close;
+	}
+	if (BaseLevel > 25) {
+		mes "- 那些事都太容易了， -";
+		mes "- 還是去找別的事 -";
+		mes "- 來做好了! -";
+		close;
+	}
+	mes " - 提供給新手的簡易 -";
+	mes " - 公佈欄 -";
+	mes " ";
+	mes " - 負責人 : 史匹克 -";
+	next;
+	switch(select("打蜂兵:打禿鷹:收集蝗蟲後腿:打森靈:打魔菇:消滅害蟲:打摩卡:打吸血蝙蝠:收集羽毛:收集毒魔菇芽孢:取消")) {
+		case 1: callsub L_Quest,11114,"打蜂兵"," - 普隆德拉西北方的 ^4d4dff'蜂兵'^000000 - "," - 抓個10隻來吧! - ";
+		case 2: callsub L_Quest,11115,"打禿鷹"," - 夢羅克南方的 ^4d4dff'禿鷹'^000000 - "," - 抓個20隻來吧! - ";
+		case 3: callsub L_Quest,11116,"收集蝗蟲後腿"," - 普隆德拉西南方的 ^4d4dff'搖滾蝗蟲'^000000 - "," - 抓個10隻來吧! - "," - 也帶10個 ^4d4dff蝗蟲後腿^000000回來 - ";
+		case 4: callsub L_Quest,11117,"打森靈"," - 斐揚東南方的 ^4d4dff'森靈'^000000 - "," - 抓個20隻來吧- ";
+		case 5: callsub L_Quest,11118,"打魔菇"," - 斐揚附近的 ^4d4dff'魔菇'^000000 - "," - 抓個30隻來吧 - ";
+		case 6: callsub L_Quest,11119,"消滅害蟲"," - 普隆德拉下水道的 ^4d4dff盜蟲卵^000000 - "," - 抓個20隻來吧 - "," - 也帶10個 ^4d4dff蛹殼^000000回來 - ";
+		case 7: callsub L_Quest,11120,"打摩卡"," - 普隆德拉南方的 ^4d4dff'摩卡'^000000 - "," - 抓個20隻來吧 - ";
+		case 8: callsub L_Quest,11121,"打吸血蝙蝠"," - 普隆德拉下水道的 ^4d4dff吸血蝙蝠^000000 - "," - 抓個20隻來吧 - ","";
+		case 9: callsub L_Quest,11122,"收集羽毛"," - 普隆德拉南方的 ^4d4dff'小雞'^000000 - "," - 抓個30隻來吧! - ";
+		case 10: callsub L_Quest,11123,"收集毒魔菇芽孢"," - 吉芬塔裡的 ^4d4dff'毒魔菇'^000000 - "," - 抓個30隻來吧! - "," - 也帶5個 ^4d4dff毒魔菇芽孢^000000回來 - ";
+		case 11: mes " - 公佈欄任務取消 - "; close;
+	}
+	end;
+L_Quest:
+	if (checkquest(getarg(0),PLAYTIME) == 1) {
+		mes " - 任務 ^4d4dff"+getarg(1)+"^000000 - ";
+		mes " - 已完成 - ";
+		mes " ";
+		mes " - 負責人 : 史匹克 - ";
+		close;
+	}
+	mes " - 任務 '"+getarg(1)+"' - ";
+	for(set .@i,2; .@i<getargcount(); set .@i,.@i+1)
+		mes getarg(.@i);
+	mes " ";
+	mes " - 負責人 : 史匹克 - ";
+	next;
+	if(select("決定:找別的事情做") == 2) {
+		mes " - 去找別的事情做好了 - ";
+		close;
+	}
+	for(set .@i,2; .@i<getargcount(); set .@i,.@i+1)
+		mes getarg(.@i);
+	if (getarg(0) == 11123 && checkquest(11123,PLAYTIME) == 2)
+		erasequest 11133;	// Special case for "收集毒魔菇芽孢"
+	setquest getarg(0);
+	close;
+}
+
+moc_para01,32,30,6	script	史匹克	914,{
+	for(set .@i,11114; .@i<11124; set .@i,.@i+1) {
+		set .@j, checkquest(.@i,HUNTING);
+		if (.@j == 2) switch(.@i) {
+			case 11114: callsub L_Quest,.@i,"打蜂兵",900;
+			case 11115: callsub L_Quest,.@i,"打禿鷹",1800;
+			case 11116: callsub L_Quest,.@i,"收集蝗蟲後腿",1400,940,10;
+			case 11117: callsub L_Quest,.@i,"打森靈",2600;
+			case 11118: callsub L_Quest,.@i,"打魔菇",3900;
+			case 11119: callsub L_Quest,.@i,"消滅害蟲",2900,915,10;
+			case 11120: callsub L_Quest,.@i,"打摩卡",3200;
+			case 11121: callsub L_Quest,.@i,"打吸血蝙蝠",3200;
+			case 11122: callsub L_Quest,.@i,"收集羽毛",5400;
+			case 11123: callsub L_Quest,.@i,"收集毒魔菇芽孢",6000,7033,5;
+		}
+		else if (.@j >= 0) {
+			mes "[史匹克]";
+			mes "你的委託內容似乎尚未完成，";
+			mes "沒有很難請繼續加油吧!";
+			close;
+		}
+	}
+	mes "[史匹克]";
+	mes "你在找事情做嗎?";
+	mes "我們協會委託工作超多的，真是傷腦筋";
+	next;
+	mes "[史匹克]";
+	mes "建議你接時候的事情來做看看";
+	close;
+L_Quest:
+	if (checkquest(getarg(0),HUNTING) == 2) {
+		if (getarg(3,0))
+			if (countitem(getarg(3)) < getarg(4)) {
+				mes "[史匹克]";
+				mes "委託你的"+getitemname(getarg(3))+"數量似乎不足，";
+				mes "需收集"+getarg(4)+"個"+getitemname(getarg(3))+"回來啊!";
+				close;
+			}
+		mes "[史匹克]";
+		mes "嗯... 我來看看~";
+		mes getarg(1)+"委託已經完成了";
+		next;
+		mes "[史匹克]";
+		mes "非~~常辛苦你了，";
+		mes "雖不能告訴你委託人是誰，但對方也感到相當滿意，";
+		mes "下一次再拜託你了?";
+		if (getarg(3,0)) delitem getarg(3),getarg(4);
+		erasequest getarg(0);
+		setquest getarg(0)+10;
+		getexp getarg(2),0;
+		close;
+	}
+}

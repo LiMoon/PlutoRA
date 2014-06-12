@@ -1,0 +1,1839 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://plutoea.googlecode.com/svn/
+// ---------------------------------
+// - 祭司 轉職腳本 - 
+//===================================
+// 版本：2.6
+//===================================
+
+prt_church,16,41,4	script	高等級 祭司#prst	60,{
+	if (Upper == 1 && .@AllowHPAssist != 1) {
+		mes "[湯瑪斯 神父]";
+		mes "你是重新誕生之後活在這世界上的人啊";
+		mes "普隆德拉教堂會注視著你的幸福";
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "不要害怕這世界上的考驗";
+		mes "你已經擁有戰勝的力量和勇氣了";
+		mes "願神保佑你....";
+		close;
+	}
+	if (BaseJob != Job_Acolyte) {
+		if (BaseJob == Job_Priest) {
+			mes "[湯瑪斯 神父]";
+			mes "願神保佑你，祭司弟兄姐妹們";
+			mes "奉神的旨意，你又再次來到這裡了...";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "不知是否和往常一樣，帶領著神的子女們走向光明之路呢";
+			mes "今天為了什麼事找我呢?";
+			next;
+			switch(select("我是路過，順邊跟你打招呼:我是想幫助，跟我一起來的這位服事:最近活的很辛苦，希望你能幫助")) {
+			case 1:
+				mes "[湯瑪斯 神父]";
+				mes "是這樣，我也過的很好";
+				mes "幫我跟其他的弟兄姊妹們問好";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "我們祭司是聽從神的旨意才來到這個世界";
+				mes "希望你們不要忘了隨時都要幫助周圍的人...";
+				close;
+			case 2:
+				mes "[湯瑪斯 神父]";
+				mes "是這樣啊....很好的想法";
+				mes "教導其它服事，也是我們祭司不能忘記的事情啊";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "不過所有的過程都不能幫他";
+				mes "身為服事，有他必需要經過的磨練";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "第二個過程「驅魔修行」，";
+				mes "你可以進入考場幫助他";
+				mes "另外為了要一起進行，";
+				mes "還需要一個^3051FD幸運珠鏈^000000";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "你會幫助服事的驅魔修行嗎?";
+				next;
+				if (select("是的，我會盡力幫助他們:待會兒我會再過來") == 1) {
+					if (countitem(2608) > 0) {
+						mes "[湯瑪斯 神父]";
+						mes "那麼我就傳送你到服事的修行場所了";
+						mes "替我向彼特神父問好啊";
+						next;
+						mes "[湯瑪斯 神父]";
+						mes "希望你會好好教導，讓對方成為好祭司";
+						close2;
+						warp "job_prist",26,178;
+						end;
+					}
+					mes "[湯瑪斯 神父]";
+					mes "唉呦...你好像沒有^3051FD幸運珠鏈^000000噢";
+					next;
+					mes "[湯瑪斯 神父]";
+					mes "想要一起進去幫忙的話，";
+					mes "就準備好^3051FD幸運珠鏈^000000再過來吧";
+					close;
+				}
+				mes "[湯瑪斯 神父]";
+				mes "是的，慢慢準備吧";
+				mes "希望你能夠準備^3051FD幸運珠鏈^000000再回來";
+				close;
+			case 3:
+				mes "[湯瑪斯 神父]";
+				mes "加油啊....你是神所恩寵的子女";
+				mes "我在此以神之名祈禱，讓你恢復痛苦的身體與受傷的精神";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "神啊...請永遠幫助我們，保佑我們...";
+				mes "讓我們的心不管遇到任何困難逆境都能夠堅定而不動搖...";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "這裡有您的子女正在受苦...";
+				mes "請讓他休息吧，希望以您的神力，能夠愈療傷痕並讓心鎮定下來...";
+				percentheal 90,0;
+				next;
+				percentheal 0,90;
+				mes "[湯瑪斯 神父]";
+				mes "應該是好多了";
+				mes "請你再回去一趟，傳達神的旨意...";
+				mes "願神保佑你...";
+				close;
+			}
+		}
+		else if (BaseClass == Job_Novice) {
+			mes "[湯瑪斯 神父]";
+			mes "願神保佑你，孩子們...";
+			mes "這裡是普隆德拉大聖堂";
+			mes "有什麼事情來找我嗎?";
+			next;
+			switch(select("我想轉職成服事:我想轉職成^5533FF祭司^000000:我只是來逛一下")) {
+			case 1:
+				mes "[湯瑪斯 神父]";
+				mes "哈哈...你是來轉職成服事的嗎?";
+				mes "服事轉職要到反方向的房間去噢...";
+				break;
+			case 2:
+				mes "[湯瑪斯 神父]";
+				mes "哈哈...要當祭司之前，首先要當服事噢";
+				mes "服事轉職到反方向的房間去問就可以啦...";
+				break;
+			case 3:
+				mes "[湯瑪斯 神父]";
+				mes "請把這裡當自己的家一樣，好好休息之後再離開吧....";
+				mes "聖堂是比世界上任何一個地方都安全的場所";
+				break;
+			}
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "願神保佑你....";
+			close;
+		}
+		else {
+			mes "[湯瑪斯 神父]";
+			mes "願神保佑你，弟兄姐妹們";
+			mes "這裡是普隆德拉聖堂";
+			mes "有什麼事情來找我嗎?";
+			next;
+			switch(select("請你告訴我關於祭司的事:我只是來逛逛")) {
+			case 1:
+				mes "[湯瑪斯 神父]";
+				mes "所謂祭司就是傳達神的旨意的人";
+				mes "是轉職服事之後，努力經過反覆無限修行後得到的成果...";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "身為服事的JobLv必須在40級或以上，";
+				mes "再通過幾個試煉之後就可以轉職";
+				mes "可以得到關於惡魔和轉生術等更強的能力，輔助技能也會增加...";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "之後在城市、迷宮等任何地方，都會成為很重要的角色";
+				mes "我們祭司的使命，就是為了別人而奉獻努力";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "不過，如果遇到其他的祭司，就不能強求他貢獻";
+				mes "身為祭司，可以說是自願選擇幫助別人...";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "不能抱著會得到任何利益回報的心情去幫助別人";
+				mes "相對的，接受幫助的人也是要慎重有禮貌的感謝對方才行";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "講到這裡不知道說明的詳不詳細";
+				mes "不如直接見過祭司之後，再好好的跟他聊...";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "願神保佑你...";
+				next;
+				break;
+			case 2:
+				mes "[湯瑪斯 神父]";
+				mes "請把這裡當作家一樣放輕鬆休息";
+				mes "在這世界上聖堂比任何地方都還安全";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "願神保佑你....";
+				next;
+				break;
+			}
+			mes "[湯瑪斯 神父]";
+			mes "Well...";
+			mes "May God";
+			mes "bless you.";
+			close;
+		}
+	}
+	if (PRIEST_Q == 0) {
+		mes "[湯瑪斯 神父]";
+		mes "你找我有什麼事嗎?";
+		next;
+		switch(select("我想轉職成祭司:我只是來問候您")) {
+		case 1:
+			mes "[湯瑪斯 神父]";
+			mes "是這樣啊...你希望成為祭司啊...";
+			mes "神也會在祝福你的決心";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "我是在普隆德拉負責驅魔的主教，";
+			mes "名叫湯姆斯塞爾班特斯";
+			mes "請不要抱著負擔，放輕鬆點";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "你如果要轉職為祭司，就要先通過幾個修行";
+			mes "在那之前，你必須先把職業等級升到40級或以上才行";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "首先為了方便修行，請你先接受轉職的申請吧";
+			mes "你現在就要申請轉職修行了嗎?";
+			next;
+			if (select("是的，我要開始祭司修行:讓我再考慮看看") == 1) {
+				if (JobLevel < 40) {
+					mes "[湯瑪斯 神父]";
+					mes "很遺憾的你現在還不能成為一個祭司...";
+					mes "請你先到世界各地，經歷更多的事情後再來吧";
+					next;
+					mes "[湯瑪斯 神父]";
+					mes "祭司是祭司，服事是服事，都各有各自的使命...";
+					mes "希望時機成熟時再過來這裡，我會在這裡等你的";
+					close;
+				}
+				if (SkillPoint) {
+					mes "[湯瑪斯 神父]";
+					mes "等等...你還有沒學過的技能要先學";
+					mes "先把需要的技能學會之後再過來申請吧...";
+					close;
+				}
+				set PRIEST_Q,1;
+				setquest 8009;
+				mes "[湯瑪斯 神父]";
+				mes "很好，那麼我就告訴你關於祭司的修行";
+				mes "雖然修行歷程很痛苦，希望你能夠順利克服，" +strcharinfo(0)+ "";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "為了成為祭司，首先要先去進行巡禮";
+				mes "先依序去見過區域中修行的三位神父，之後再回來就好了";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "第二項是驅魔修行";
+				mes "所謂驅魔，就是要趕走惡魔並戰勝誘惑的修行";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "第三項是奉獻的誓約";
+				mes "是考驗你身為祭司幫助別人，並且傳達神的旨意的意願如何";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "不過如果是職業等級在50以上的服事，就可以省略巡禮的項目";
+				mes "這表示服事已經相當的努力了...";
+				next;
+				if (JobLevel == 50) {
+					mes "[湯瑪斯 神父]";
+					mes "你職業等級已經到50級了啊";
+					mes "真是辛苦你了";
+					mes "我看你是相當的忠實的服事";
+					next;
+					mes "[湯瑪斯 神父]";
+					mes "那麼你就馬上進行驅魔修行吧";
+					mes "驅魔修行是不能跟其他祭司結伴同行的";
+					next;
+					mes "[湯瑪斯 神父]";
+					mes "我相信以你的能力可以輕鬆的克服";
+					mes "如果跟其他祭司兄弟姊妹一起進行的話，想必能做的更好";
+					next;
+					mes "[湯瑪斯 神父]";
+					mes "那麼，現在就開始驅魔修行嗎?";
+					set PRIEST_Q,5;
+					changequest 8009,8011;
+					next;
+					if (select("請開始吧:我準備一下再過來") == 1) {
+						mes "[湯瑪斯 神父]";
+						mes "好的，我送你到驅魔修行的地方去";
+						next;
+						mes "[湯瑪斯 神父]";
+						mes "到達之後，請你先去見彼特神父詢問關於驅魔修行的事情";
+						next;
+						warp "job_prist",24,180;
+						end;
+					}
+					mes "[湯瑪斯 神父]";
+					mes "好吧，請你好好準備之後再過來吧";
+					mes "希望你轉職順利";
+					close;
+				}
+				mes "[湯瑪斯 神父]";
+				mes "那麼，我就告訴你關於巡禮的順序";
+				mes "首先要先去見普隆德拉東北方的魯帕卡法拉神父再回來";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "接下來是見瑪狄妲修女再回來";
+				mes "她住在普隆德拉西南方的夢羅克村落區域";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "最後請你去見攸晤斯克神父";
+				mes "我聽說攸晤斯克神父正在西北方的普隆德拉區域修行";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "那麼就請你一路小心";
+				mes "如果還有問題的話就，請你去問欣詩修女";
+				mes "巡禮結束之後，我再告訴你下一回合的試驗";
+				next;
+				mes "[湯瑪斯 神父]";
+				mes "願神保佑你...";
+				changequest 8009,8010;
+				close;
+			}
+			mes "[湯瑪斯 神父]";
+			mes "請在這裡好好的休息";
+			mes "也經常歡迎你來聖堂拜訪";
+			mes "願上帝保佑你";
+			close;
+		case 2:
+			mes "[湯瑪斯 神父]";
+			mes "是嗎...我過的很好";
+			mes "身為服事你的千萬不要忘記使命，";
+			mes "希望你一生都能遵行神所指示的道路而行";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "希望你以後會再過來拜訪，希望下次你能告訴我關於其他兄弟姊妹的消息";
+			mes "願神保佑你...";
+			close;
+		}
+	}
+	else if (PRIEST_Q == 1) {
+		mes "[湯瑪斯 神父]";
+		mes "啊?你怎麼還在這裡呢?";
+		mes "難道你忘了巡禮的修行嗎?";
+		next;
+		if (select("不好意思請再告訴我一次順序:不會!我怎麼可能忘記呢!") == 1) {
+			mes "[湯瑪斯 神父]";
+			mes "哎呀...第一次開始修行就這樣的話會很麻煩喔";
+			mes "我再告訴你一次順序，希望這次你能記清楚巡禮的順序好完成任務";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "首先請你先會見魯帕卡法拉神父";
+			mes "他正在普隆德拉東北方的區域修行";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "下一個是要會見瑪狄妲修女";
+			mes "她人在普隆德拉西南方的夢羅克村落區域中";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "第三個是攸晤斯克神父";
+			mes "他正在西北方的普隆德拉區域修行";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "那麼，請你路上小心";
+			mes "如果要知道詳細的內容的話就請你問欣詩修女";
+			mes "巡禮結束之後，我再告訴你下一回合的試驗";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "願神保佑你...";
+			close;
+		}
+		mes "[湯瑪斯 神父]";
+		mes "這樣嗎";
+		mes "還有疑問的話，就請你問入口的欣詩修女吧";
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "那就請你趕快出發，路上小心";
+		mes "願神保佑你";
+		close;
+	}
+	else if (PRIEST_Q == 2) {
+		mes "[湯瑪斯 神父]";
+		mes "已經見過魯帕卡法拉神父了吧";
+		mes "路途這麼遙遠，真是辛苦你了";
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "然後要去見瑪狄妲修女";
+		mes "她人在普隆德拉西南方的夢羅克村落區域中";
+		mes "那麼加油吧";
+		close;
+	}
+	else if (PRIEST_Q == 3) {
+		mes "[湯瑪斯 神父]";
+		mes "你已經見過瑪狄妲修女了嗎";
+		mes "她是在沙漠中努力修行的人...";
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "接下來最後是要去見攸晤斯克神父";
+		mes "他位在危險的西北方區域，請你務必要去見他";
+		close;
+	}
+	else if (PRIEST_Q == 4) {
+		set PRIEST_Q,5;
+		changequest 8010,8011;
+		mes "[湯瑪斯 神父]";
+		mes "你已經見過攸晤斯克神父了嗎";
+		mes "恭喜你順利完成第一階段的巡禮修行";
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "現在開始第二階段的驅魔修行";
+		mes "我剛才也說過，驅魔修行不能跟其他的祭司一起進行";
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "雖然不能夠全程都接受幫助，不過有祭司的兄弟姊妹幫助是再好不過了";
+		mes "那麼，現在就要開始進行驅魔修行嗎?";
+		next;
+		if (select("請開始吧:我準備一下再過來") == 1) {
+			set PRIEST_Q,5;
+			mes "[湯瑪斯 神父]";
+			mes "好的，我送你到驅魔修行的地方去";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "到達之後，請你先去見彼特神父詢問關於驅魔修行的事情";
+			next;
+			warp "job_prist",24,180;
+			end;
+		}
+		mes "[湯瑪斯 神父]";
+		mes "好吧，請你好好準備之後再過來吧";
+		mes "希望你轉職順利";
+		close;
+	}
+	else if (PRIEST_Q == 5) {
+		mes "[湯瑪斯 神父]";
+		mes "你已經準備好進行驅魔修行了吧";
+		mes "那麼我們就開始吧?";
+		next;
+		if (select("我要開始:準備好以後再來") == 1) {
+			mes "[湯瑪斯 神父]";
+			mes "好的，我送你到驅魔修行的地方去";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "到達之後，請你先去見彼特神父詢問關於驅魔修行的事情";
+			close2;
+			warp "job_prist",24,180;
+			end;
+		}
+		mes "[湯瑪斯 神父]";
+		mes "好吧，請你好好準備之後再過來吧";
+		mes "希望你轉職順利";
+		close;
+	}
+	else if (PRIEST_Q == 6) {
+		mes "[湯瑪斯 神父]";
+		mes "你看起來相當的疲倦...";
+		mes "不過等你當上祭司之後有可能會更疲累";
+		mes "請你加油不要輕易放棄修行";
+		mes "要不要再挑戰一次呢?";
+		next;
+		if (select("好!我再挑戰一次:我準備一下再過來") == 1) {
+			mes "[湯瑪斯 神父]";
+			mes "好的我送你到驅魔修行的地方去吧";
+			next;
+			mes "[湯瑪斯 神父]";
+			mes "請你先找到彼特神父之後再請他幫忙";
+			next;
+			warp "job_prist",24,180;
+			end;
+		}
+		mes "[湯瑪斯 神父]";
+		mes "好吧，請你好好準備之後再過來吧";
+		mes "希望你轉職順利";
+		close;
+	}
+	else if (PRIEST_Q == 7) {
+		mes "[湯瑪斯 神父]";
+		mes "很高興你能順利完成驅魔修行，辛苦你了";
+		mes "戰勝誘惑以及難題的你已經可以稱的上是一名祭司了";
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "最後請你去找欣詩修女完成誓約";
+		mes "只要照著心底深處神的心聲以及平時你的想法來回答就可以了";
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "那麼，我期待你的轉職";
+		mes "請你路上小心...";
+		close;
+	}
+	else if (PRIEST_Q == 8) {
+		mes "[湯瑪斯 神父]";
+		mes "為什麼...究竟為什麼呢?";
+		mes "你至今還沒完成誓約呢?";
+		mes "身為祭司的你，如果連最基本的心態都沒準備好的話，很容易會受到惡魔的誘惑...";
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "你再回去找欣詩修女吧";
+		mes "然後請你正確無誤的完成誓約";
+		mes "要不然的話，為了讓你的基本心態能準備好，我會報告請你再去進行一次巡禮修行";
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "請你路上小心";
+		mes "遵照神的旨意，請你仔細聆聽內心深處的聲音...";
+		close;
+	}
+	else if (PRIEST_Q == 9) {
+		if (SkillPoint) {
+			mes "[湯瑪斯 神父]";
+			mes "等一下...因為你還有其他沒學過的技能要先學習";
+			mes "請你把其他必備的技能先學會再來吧...";
+			close;
+		}
+		mes "[湯瑪斯 神父]";
+		mes "恭喜你，你已經完成了全部的修行";
+		mes "我現在就讓你轉職成為祭司";
+		next;
+		changequest 8015,8016;
+		mes "[湯瑪斯 神父]";
+		mes "神啊...願您將您的全能賜與您面前的這位信徒吧";
+		mes "請你賜給這位信徒傲立於世的強大意志、";
+		mes "伸展的力量以及無限的光榮吧...";
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "希望藉此能夠讓他成為其他兄弟姊妹的領導，";
+		mes "願您能幫助我們在這世界上行您的奇跡...";
+		next;
+		set .@joblvl,JobLevel;
+		completequest 8016;
+		callfunc "Job_Change",Job_Priest;
+		callfunc "F_ClearJobVar";
+		mes "[湯瑪斯 神父]";
+		mes "你已經成為一位祭司了";
+		mes "恭喜你";
+		mes "願您從今以後能以全新的心態來幫助其他人";
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "然後...為了紀念你轉職成功我送你一本書";
+		if (.@joblvl < 50) {
+			getitem 1550,1; //Book
+			mes "對於傳達神的旨意的你，這本書會提供你人生必備的知識";
+		}
+		else {
+			getitem 1551,1; //Bible
+			mes "對於傳達神的旨意的你，這本聖經會提供你人生必備的知識";
+		}
+		next;
+		mes "[湯瑪斯 神父]";
+		mes "那麼我們就此結束轉職的儀式";
+		mes "辛苦你了...";
+		mes "趕快去你要走的路吧...";
+		close;
+	}
+}
+
+prt_church,27,24,1	script	奉獻的 修女	79,{
+	mes "[欣詩 修女]";
+	if (BaseJob != Job_Acolyte) {
+		if (BaseJob == Job_Priest) {
+			mes "願神保佑"+(Sex?"你":"妳")+"，祭司"+(Sex?"弟兄":"姐妹")+"們";
+			mes "希望你今天也過個充實的一天";
+		}
+		else if (Class == Job_Novice) {
+			mes "願神保佑你，兄弟姐妹們";
+			mes "普隆德拉聖堂歡迎你";
+			next;
+			mes "[欣詩 修女]";
+			mes "還沒有選擇職業啊? 對於從事聖職有考慮過嗎?";
+			mes "成為服事幫助別人活著，是一件有意義的事情";
+			next;
+			mes "[欣詩 修女]";
+			mes "要轉職成服事，請詢問^5533FF反方向房間裡的神父^000000吧";
+			mes "相信著神勤勉的活著，再也沒有比這個活的更有意義啦";
+			next;
+			mes "[欣詩 修女]";
+			mes "還有身為服事努力修練之後，等到職業等級升到 40級時";
+			mes "再來到這裡也可以轉職成祭司";
+			next;
+			mes "[欣詩 修女]";
+			mes "由於你目前還是初學者，慢慢的考慮再決定吧";
+		}
+		else {
+			mes "這裡是普隆德拉教堂，需要我為你做些什麼嗎?";
+			next;
+			if (select("請你告訴我關於^0000FF祭司^000000的事情:我只是來逛逛.") == 1) {
+				mes "[欣詩 修女]";
+				mes "所謂^0000FF祭司^000000就是傳達神的旨意的使者.";
+				mes "首先初學者要先轉職成^0000FF服事^000000之後.在經歷成長而成為^0000FF祭司^000000";
+				next;
+				mes "[欣詩 修女]"; 
+				mes "聖職者嚴格禁止攜帶刀劍等銳利的武器.";
+				mes "畢竟攻擊魔物的目的不是為了殺生 .";
+				next;
+				mes "[欣詩 修女]";
+				mes "當然,會見^0000FF祭司^000000直接詢問他是最好不過的了 ,...";
+				mes "您要不要晉見位在最裡面房間裡的湯瑪斯 神父?";
+				next;
+				mes "[欣詩 修女]";
+				mes "他能比我更詳細回答您的問題.";
+				mes "還是請你到最裡面的房間詢問湯瑪斯 神父好了.";
+				next;
+			}
+			mes "[欣詩 修女]";
+			mes "那麼, 願神保佑你...";
+			close;
+		}
+	}
+	if (PRIEST_Q == 0) {
+		mes "願神保佑你...";
+		mes "你有什麼事嗎?";
+		next;
+		switch(select("我想轉職成為祭司:沒有什麼事")) {
+		case 1:
+			mes "[欣詩 修女]";
+			mes "啊，你想轉職成為祭司啊?";
+			mes "很多服事也想轉職成為祭司";
+			next;
+			mes "[欣詩 修女]";
+			mes "我的名字叫做世實 瑪茹卡利特";
+			mes "我是負責幫助服事轉職的修女";
+			mes "希望我能幫助你轉職";
+			next;
+			mes "[欣詩 修女]";
+			mes "可能因為我是在這長大的，所以看過很多人轉職成為祭司";
+			mes "所以我現在還在這裡幫助有心想成為祭司的人";
+			next;
+			mes "[欣詩 修女]";
+			mes "要轉職成為祭司必須經過三階段的修行";
+			mes "經歷聖地巡禮、驅魔修行、誓約儀式...才可以成為祭司";
+			next;
+			mes "[欣詩 修女]";
+			mes "如果你要轉職，首先先去找裡面的湯瑪斯主教";
+			mes "現在可以進行轉職修行了";
+			next;
+			mes "[欣詩 修女]";
+			mes "如果再修行中遇到難題或遇到不解之事就請你來問我吧";
+			mes "我會盡我所能的來幫助你";
+			close;
+		case 2:
+			mes "[欣詩 修女]";
+			mes "請你放輕鬆休息吧";
+			mes "聖堂對弟兄姊妹來說就像家一樣的地方，請你放輕鬆休息吧";
+			next;
+			mes "[欣詩 修女]";
+			mes "下次再來時希望你能告訴我其他兄弟姊妹的消息";
+			mes "願神保佑你...";
+			close;
+		}
+	}
+	else if (PRIEST_Q == 1) {
+		mes "[欣詩 修女]";
+		mes "已經開始進行巡禮儀式了吧，雖然辛苦不過希望你能加油";
+		mes "第一個要會見的就是魯帕卡法拉神父";
+		next;
+		mes "[欣詩 修女]";
+		mes "他是位在普隆德拉東北方的地方";
+		mes "往北方一次，往東方三次經過區域就會看到";
+		next;
+		mes "[欣詩 修女]";
+		mes "你可以從入口看到神父";
+		mes "當然也可以先往東方一次，北方一次...再往東方走就可以了";
+		next;
+		mes "[欣詩 修女]";
+		mes "他所住的區域有很多猴子";
+		mes "不過偶爾也會出現黑色名叫巧克的猴子魔物";
+		next;
+		mes "[欣詩 修女]";
+		mes "你要先去會見魯帕卡法拉神父後，再會見瑪狄妲修女，然後去見攸晤斯克神父就可以了";
+		mes "當然也可以中途到這裡再確認一次";
+		next;
+		mes "[欣詩 修女]";
+		mes "那麼，請你路上小心";
+		mes "即使到最後關頭也不要放棄，請加油";
+		close;
+	}
+	else if (PRIEST_Q == 2) {
+		mes "你已經會見了魯帕卡法拉神父了";
+		mes "這次該要去會見瑪狄妲修女";
+		mes "瑪狄妲修女位在夢羅克的一個村落附近";
+		next;
+		mes "[欣詩 修女]";
+		mes "聽說她是在夢羅克東方區域的一個角落修行中";
+		mes "應該是...請你往西北方附近仔細找就會找得到她";
+		next;
+		mes "[欣詩 修女]";
+		mes "我雖然也想和其他人一樣去修行，";
+		mes "不過現在目前還想幫助其他人，";
+		mes "這也是一種聽從神的旨意之方法";
+		next;
+		mes "[欣詩 修女]";
+		mes "請你路上小心";
+		mes "雖然會有些辛苦但請你不要因為挫折而放棄，了解嗎?";
+		close;
+	}
+	else if (PRIEST_Q == 3) {
+		mes "最後請你見過攸晤斯克神父再回來就可以了";
+		mes "他在普隆德拉的西北方，聽說在湖泊附近";
+		next;
+		mes "[欣詩 修女]";
+		mes "請往北方一次，往西方兩次就好了";
+		mes "我建議往西方走比較快，會比較容易一點";
+		next;
+		mes "[欣詩 修女]";
+		mes "雖然完成巡禮儀式，但是轉職的修行還沒有結束呢";
+		mes "請一路小心我期待你能順利歸來...";
+		close;
+	}
+	else if (PRIEST_Q == 4) {
+		mes "歡迎你回來";
+		mes "路上很辛苦吧?";
+		mes "現在你可以去報告主教之後進行下一階段的試驗";
+		next;
+		mes "[欣詩 修女]";
+		mes "雖然驅魔修行很辛苦，但我相信你一定能順利完成試驗";
+		mes "雖然我也很想幫助你，但是我必須在這裡協助其他服事才行";
+		next;
+		mes "[欣詩 修女]";
+		mes "如果有人能協助你修行就好了";
+		mes "那麼，請路上小心!";
+		close;
+	}
+	else if (PRIEST_Q == 5) {
+		mes "你還沒有去進行驅魔修行嗎?";
+		mes "我也不能跟你泄漏這次修行的相關細節...";
+		next;
+		mes "[欣詩 修女]";
+		mes "我只能建議你要先有萬全的準備，並且面對任何事情都必須不被迷惑";
+		mes "你只要相信自己就能完成任務";
+		next;
+		mes "[欣詩 修女]";
+		mes "如果要知道更詳細的事情，請你去詢問修行場的彼特神父";
+		mes "湯瑪斯主教也是相當親切的人，他會熱心指導你的";
+		close;
+	}
+	else if (PRIEST_Q == 6) {
+		mes "修行很辛苦吧?";
+		mes "不過請你不要輕易放棄";
+		mes "你要戰勝任何迷惑才能當個好祭司";
+		next;
+		mes "[欣詩 修女]";
+		mes "如果有祭司前輩的話，不妨請他一起同行";
+		mes "他們可以幫助你進行到驅魔修行的第一階段";
+		next;
+		mes "[欣詩 修女]";
+		mes "願神保佑你...";
+		mes "驅魔修行結束之後，請你再過來找我";
+		close;
+	}
+	else if (PRIEST_Q == 7 || PRIEST_Q == 8) {
+		if (PRIEST_Q == 7) {
+			if(checkquest(8014) == -1) {
+				changequest 8013,8014;
+			}
+			mes "辛苦你了!";
+			mes "你已經順利回來了，你現在已經到達了轉職的最後階段了";
+			next;
+			mes "[欣詩 修女]";
+			mes "那麼，為了讓你正式轉職成為真正的祭司，接下來我們開始進行誓約儀式";
+			mes "請你誠實回答我的問題";
+		}
+		else if (PRIEST_Q == 8) {
+			mes "....";
+			next;
+			mes "[欣詩 修女]";
+			mes "你回來了";
+			mes "這次希望你老實跟我們說...";
+			next;
+			mes "[欣詩 修女]";
+			mes "希望我們能傳授到你的真誠...";
+			mes "希望你老實跟我們說，我再一次問你";
+		}
+		next;
+		mes "[欣詩 修女]";
+		mes "讓我們開始吧";
+		next;
+		mes "[欣詩 修女]";
+		mes "從今以後，你願意將一生奉獻於神嗎?";
+		next;
+		if (select("是的:不是的") == 2) {
+			set PRIEST_Q,8;
+			mes "[欣詩 修女]";
+			mes "怎麼會...怎麼會這樣說呢...";
+			mes "看來你似乎缺乏身為祭司的心態...";
+			next;
+			mes "[欣詩 修女]";
+			mes "請你經過深思熟慮之後再過來吧";
+			mes "目前你的心靈很容易受到罪惡的誘惑";
+			close;
+		}
+		mes "[欣詩 修女]";
+		mes "你會利用神能來謀求自己的利益嗎?";
+		next;
+		if (select("會:不會") == 1) {
+			set PRIEST_Q,8;
+			mes "[欣詩 修女]";
+			mes "這樣是不行的";
+			mes "祭司的神能不是為了謀求利益而被賦予的";
+			mes "你怎麼會抱持這樣的想法來當祭司呢?";
+			next;
+			mes "[欣詩 修女]";
+			mes "請你再多思考祭司應有的處世心態再過來吧";
+			mes "這種想法只會受到世俗的影響而墮落";
+			close;
+		}
+		mes "[欣詩 修女]";
+		mes "你在戰鬥中會為了別人而使用自己的能力嗎?";
+		next;
+		if (select("會:不會") == 2) {
+			mes "[欣詩 修女]";
+			set PRIEST_Q,8;
+			mes "這樣是不行的";
+			mes "我們祭司所擁有的能力是為了幫助別人而使用的...";
+			mes "不管是什麼樣的人我們都要積極的幫忙...";
+			next;
+			mes "[欣詩 修女]";
+			mes "你去村里看一下吧...";
+			mes "那你就會了解該做些什麼了...";
+			close;
+		}
+		mes "[欣詩 修女]";
+		mes "你會為了幫助別人，犧牲自己也在所不惜嗎?";
+		next;
+		if (select("會:不會") == 2) {
+			mes "[欣詩 修女]";
+			mes "...不是嗎";
+			mes "神的旨意不是這樣的";
+			mes "如果能犧牲小我而完成大我是件很偉大的事";
+			next;
+			mes "[欣詩 修女]";
+			mes "你回去再考慮所謂犧牲後再過來吧";
+			mes "是件說來容易做來難的事...";
+			set PRIEST_Q,8;
+			close;
+		}
+		mes "[欣詩 修女]";
+		mes "你會在村落和區域裡，會和別人一樣「一直洗頻」嗎?";
+		next;
+		if (select("會:不會") == 1) {
+			mes "[欣詩 修女]";
+			mes "這樣是不行的";
+			mes "你這樣做不只是祭司也會影響到別人";
+			mes "就算你大聲嚷嚷也不會有人理會你的";
+			next;
+			mes "[欣詩 修女]";
+			mes "就算是你傳達神的旨意，請你要自重哦...";
+			set PRIEST_Q,8;
+			close;
+		}
+		mes "[欣詩 修女]";
+		mes "你會一邊拖怪一邊幫助其他人的戰鬥嗎?";
+		next;
+		if (select("會:不會") == 1) {
+			mes "[欣詩 修女]";
+			mes "這樣是很危險的";
+			mes "拖物是會影響到別人的";
+			mes "不管是善魔物或是惡魔物...這樣的舉動是不能容忍的";
+			next;
+			mes "[欣詩 修女]";
+			mes "這樣做表面上看起來是幫助他人，實際上是惡事的";
+			mes "你再想一想到底怎麼做才是個好方法";
+			set PRIEST_Q,8;
+			close;
+		}
+		mes "[欣詩 修女]";
+		mes "你會不會順從神的旨意而生存，順從神的旨意而死呢?";
+		next;
+		if (select("會:不會") == 2) {
+			mes "[欣詩 修女]";
+			mes "你這樣的還不能成為祭司的";
+			mes "死是短暫的...即使神的旨意是如此也要順從旨意";
+			next;
+			mes "[欣詩 修女]";
+			mes "另外我們祭司有復活的能力";
+			mes "你再考慮一次生存和死對你來說是甚麼意義吧";
+			set PRIEST_Q,8;
+			close;
+		}
+		mes "[欣詩 修女]";
+		mes "我們就見證你的承諾";
+		mes "最後，請你發誓你所說過的話";
+		next;
+		if (select("我發誓:不要") == 1) {
+			set PRIEST_Q,9;
+			mes "[欣詩 修女]";
+			mes "那麼，這樣我們就結束儀式了";
+			mes "請你到湯瑪斯主教那轉職為祭司吧";
+			next;
+			mes "[欣詩 修女]";
+			mes "請你不論到任何地方也要切記...";
+			mes "我們都是兄弟姊妹這件事...";
+			mes "希望神會保佑你...";
+			close;
+		}
+		mes "[欣詩 修女]";
+		mes "....";
+		next;
+		mes "[欣詩 修女]";
+		mes "還不夠...你的心理準備還不夠";
+		mes "你還不能轉職為祭司";
+		next;
+		mes "[欣詩 修女]";
+		mes "那麼...最好要從巡禮做起吧...";
+		mes "不過先要鎮定身心後，再來找我吧";
+		next;
+		mes "[欣詩 修女]";
+		mes "希望神會保佑你...";
+		set PRIEST_Q,8;
+		changequest 8014,8015;
+		close;
+	}
+	else if (PRIEST_Q == 9) {
+		mes "現在全部的修行都已經結束了...";
+		mes "你現在去找湯瑪斯主教轉職為祭司吧";
+		next;
+		mes "[欣詩 修女]";
+		mes "希望神保佑你";
+		close;
+	}
+}
+
+// 2nd Test
+//==========================================================
+job_prist,24,187,4	script	彼特神父	110,{
+	mes "[彼特神父]";
+	if (BaseJob == Job_Priest) {
+		mes "願神佑佑你";
+		next;
+		mes "[彼特神父]";
+		mes "祭司啊...";
+		mes "你有服事要幫助嗎?";
+		mes "很好，你心地還滿善良的嘛";
+		mes "我相信，你一定能夠好好地幫助別人的";
+		next;
+		mes "[彼特神父]";
+		mes "不過你必需要切記一件事情，";
+		mes "這件事不是你的轉職修行";
+		mes "切記哦，你的任務是輔佐他，而不是幫他解決事情!";
+		next;
+		mes "[彼特神父]";
+		mes "那麼...你現在就要進去幫助他了嗎?";
+		next;
+		switch (select("我現在就進去:你再等我一下:我要回去村落")) {
+		case 1:
+			mes "[彼特神父]";
+			mes "很好!";
+			mes "服事一進去就開始，你進去吧";
+			mes "你也可以回憶一下當年服事時的你...哈哈!";
+			close2;
+			warp "job_prist",24,44;
+			end;
+		case 2:
+			mes "[彼特神父]";
+			mes "嗯?你還要準備些什麼嗎?";
+			mes "沒關係，那你等時間到了再進去就好";
+			close;
+		case 3:
+			mes "[彼特神父]";
+			mes "嗯?那你就先回去吧";
+			mes "以後要是有緣的話再相逢了";
+			mes "希望神保佑你!!";
+			mes "路上請你小心!";
+			close2;
+			warp "prontera",234,318;
+			end;
+		}
+	}
+	if (PRIEST_Q == 5) {
+		mes "希望神保佑你，歡迎你回來!";
+		mes "首先我要先恭喜你順利地通過了第一次的修行";
+		next;
+		mes "[彼特神父]";
+		mes "我的名字叫做彼特 S.艾帕羅多";
+		mes "湯瑪斯那個傢伙近來好嗎?";
+		next;
+		mes "[彼特神父]";
+		mes "啊，他現在已經成為主教了，所以應該稱呼他為湯瑪斯主教哦...";
+		mes "他可不是個跟我一樣，一輩子都只是個當神父的料";
+		mes "哈哈哈!";
+		next;
+		mes "[彼特神父]";
+		mes "反正你人都已經進來了，那我就跟你說明一下關於驅魔修行好了";
+		mes "你應該了解驅魔修行吧?";
+		next;
+		if(select("是的，我了解:我還不太了解...")==1) {
+			mes "[彼特神父]";
+			mes "你還挺聰明的嘛!";
+			mes "不過你還是聽一下說明會比較好喔";
+			mes "也不是說了解就完全都會了哈哈!";
+		}
+		else {
+			mes "[彼特神父]";
+			mes "是嗎?那麼你需要詳細的說明囉";
+			mes "聽完之後你可能會覺得你曾在不知不覺中也驅過幾次魔";
+		}
+		next;
+		mes "[彼特神父]";
+		mes "所謂的驅魔修行，就是驅除妖魔";
+		mes "所謂妖怪，就是不死系等等惡魔的稱號";
+		next;
+		mes "[彼特神父]";
+		mes "這世界上有很多魔物都不是因為神的旨意而存在的";
+		mes "那些魔物經常都會欺負那些信仰神的善良老百姓們";
+		next;
+		mes "[彼特神父]";
+		mes "我們祭司的任務，就是要驅除像不死系那樣的妖怪!";
+		mes "唯有這樣做才能為這世界帶來和平!";
+		next;
+		mes "[彼特神父]";
+		mes "你現在應該了解所謂的驅魔修行了吧?";
+		mes "就是要測試身為祭司的你驅除的能力";
+		mes "不過...因為這項修行非常地辛苦艱難，";
+		mes "所以你可以請別的祭司一起幫助你進行驅魔修行";
+		next;
+		mes "[彼特神父]";
+		mes "如果你有熟識的祭司前輩，也可以一起進去";
+		mes "那麼，差不多可以開始了嗎?";
+		next;
+		switch(select("開始吧:請你等我一下:我要回去村落")) {
+		case 1:
+			mes "[彼特神父]";
+			mes "那麼，現在就開始進行驅魔修行";
+			mes "很容易的啦，你只要把出現的魔物全部消滅就可以了";
+			next;
+			mes "[彼特神父]";
+			mes "有分為幾個階段，所以你要小心";
+			mes "那麼，進去吧!";
+			close2;
+			changequest 8011,8012;
+			warp "job_prist",24,44;
+			donpcevent "驅魔#prst::OnEnable";
+			donpcevent "彼特神父::OnDisable";
+			donpcevent "彼特神父#2::OnEnable";
+			end;
+		case 2:
+			set PRIEST_Q,6;
+			mes "[彼特神父]";
+			mes "嗯?你需要多準備一下嗎?";
+			mes "那沒關係，你等到時間到了再進去就可以了";
+			close;
+		case 3:
+			set PRIEST_Q,6;
+			mes "[彼特神父]";
+			mes "什麼?村落?";
+			mes "你才剛來就說要回去了嗎?";
+			mes "我是沒有什麼差別啦...你也真是的";
+			next;
+			mes "[彼特神父]";
+			mes "嗯，可能因為是第一次的關係你才會比較害怕";
+			mes "以後你有足夠的勇氣時再回來吧";
+			close2;
+			warp "prontera",234,318;
+			end;
+		}
+	}
+	else if (PRIEST_Q == 6) {
+		mes "Are you ready this time?";
+		mes "Complete this trial quickly,";
+		mes "and become a Priest!";
+		next;
+		mes "[彼特神父]";
+		mes "Are you ready then?";
+		next;
+		switch(select("I'm ready.:Please hold on.:I want to go back.")) {
+		case 1:
+			mes "[彼特神父]";
+			mes "Now, let the spiritual training begin. For the glory of God, for peace on earth, and goodwill towards all men...";
+			next;
+			mes "[彼特神父]";
+			mes "Go...";
+			mes "Kill those";
+			mes "misbegotten creatures!";
+			close2;
+			if(checkquest(8012) == -1) {
+				changequest 8011,8012;
+			}
+			warp "job_prist",24,44;
+			donpcevent "驅魔#prst::OnEnable";
+			donpcevent "彼特神父::OnDisable";
+			donpcevent "彼特神父#2::OnEnable";
+			end;
+		case 2:
+			mes "[彼特神父]";
+			mes "Hm? What is it you need?";
+			mes "Well, no problem. You can";
+			mes "afford to take your time.";
+			close;
+		case 3:
+			mes "[彼特神父]";
+			mes "What...?";
+			mes "You wanna go back??";
+			next;
+			mes "[彼特神父]";
+			mes "I understand. I suppose you have some important reason or business that you must attend to. Come back whenever you can.";
+			close2;
+			warp "prontera",234,318;
+			end;
+		}
+	}
+	else {
+		mes "Go back!";
+		close2;
+		warp "prontera",234,318;
+		end;
+	}
+
+OnEnable:
+	enablenpc "彼特神父";
+	end;
+
+OnDisable:
+	disablenpc "彼特神父";
+	end;
+}
+
+job_prist,23,187,1	script	彼特神父#2	110,{
+	mes "[彼特神父]";
+	if (BaseJob == Job_Priest || PRIEST_Q == 5 || PRIEST_Q == 6) {
+		mes "現在正有人在進行驅魔，";
+		mes "你還是過一會再來吧";
+		next;
+		mes "[彼特神父]";
+		mes "不久就會有公告";
+		mes "等結束了之後再送你過去";
+		close;
+	}
+	else {
+		mes "和平與你同在";
+		close2;
+		warp "prontera",234,318;
+		end;
+	}
+
+OnInit:
+	disablenpc "彼特神父#2";
+	end;
+
+OnEnable:
+	enablenpc "彼特神父#2";
+	end;
+
+OnDisable:
+	disablenpc "彼特神父#2";
+	end;
+}
+
+-	script	驅魔#prst	110,{
+OnInit:
+	disablenpc "驅魔#prst";
+	end;
+
+OnEnable:
+	donpcevent "Zombie1_1::OnEnable";
+	donpcevent "Zombie2_1::OnEnable";
+	donpcevent "Zombie3_1::OnEnable";
+	donpcevent "Zombie4_1::OnEnable";
+	donpcevent "Zombie5_1::OnEnable";
+	initnpctimer;
+	end;
+
+Onm1:
+	set .MyMobs,13;
+	monster "job_prist",24,52,"缺德",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",18,52,"不忠",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",30,52,"嫉妒",1015,1,"Z_C#prst::OnMyMobDead";
+	end;
+
+Onm2:
+	monster "job_prist",21,62,"憤怒",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",27,62,"怨恨",1015,1,"Z_C#prst::OnMyMobDead";
+	end;
+
+Onm3:
+	monster "job_prist",24,72,"傲慢",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",18,72,"情欲",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",30,72,"怠惰",1015,1,"Z_C#prst::OnMyMobDead";
+	end;
+
+Onm4:
+	monster "job_prist",21,82,"野心",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",27,82,"貪欲",1015,1,"Z_C#prst::OnMyMobDead";
+	end;
+
+Onm5:
+	monster "job_prist",24,92,"絕望",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",18,92,"不信",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",30,92,"恐怖",1015,1,"Z_C#prst::OnMyMobDead";
+	end;
+
+OnDisable:
+	disablenpc "驅魔#prst";
+	killmonsterall "job_prist";
+	end;
+
+OnTimer300000:
+	areawarp "job_prist",8,34,39,109,"prontera",234,318;
+	end;
+
+OnTimer300500:
+	donpcevent "驅魔#prst::OnDisable";
+	end;
+
+OnTimer301500:
+	donpcevent "驅魔#prst::OnDisable";
+	donpcevent "彼特神父#2::OnDisable";
+	donpcevent "彼特神父::OnEnable";
+	end;
+
+OnTimer302000:
+	stopnpctimer;
+	end;
+}
+
+-	script	Z_C#prst	-1,{
+	end;
+
+OnMyMobDead:
+	set getvariableofnpc(.MyMobs,"驅魔#prst"),getvariableofnpc(.MyMobs,"驅魔#prst") - 1;
+	end;
+}
+
+job_prist,24,44,0	script	Zombie Info	-1,1,1,{
+OnTouch:
+	if (BaseJob == Job_Priest) {
+		mes "[彼特神父]";
+		mes "當應試者進入考場之後開始計算五分鐘";
+		mes "請你自旁協助他";
+		next;
+		mes "[彼特神父]";
+		mes "越過下個傳送點就會抵達下一個驅魔區域";
+		next;
+		mes "[彼特神父]";
+		mes "請記住，驅魔考試請務必在五分鐘之內完成";
+		close;
+	}
+	else if (BaseJob == Job_Acolyte){
+		mes "[彼特神父]";
+		mes "從進入試場開始只有5分鐘的時間! 只有5分鐘而已哦!，你先慢慢地前進之後再驅除腐屍吧.";
+		close;
+	}
+	end;
+}
+
+job_prist,24,52,0	script	Zombie1_1	-1,14,1,{
+OnInit:
+	disablenpc "Zombie1_1";
+	end;
+
+OnTouch:
+	if (BaseJob == Job_Acolyte) {
+		donpcevent "驅魔#prst::Onm1";
+		donpcevent "Zombie1_1::OnDisable";
+	}
+	end;
+
+OnEnable:
+	enablenpc "Zombie1_1";
+	end;
+
+OnDisable:
+	disablenpc "Zombie1_1";
+	end;
+}
+
+job_prist,21,62,0	script	Zombie2_1	-1,17,1,{
+OnInit:
+	disablenpc "Zombie2_1";
+	end;
+
+OnTouch:
+	if (BaseJob == Job_Acolyte) {
+		donpcevent "驅魔#prst::Onm2";
+		donpcevent "Zombie2_1::OnDisable";
+	}
+	end;
+
+OnEnable:
+	enablenpc "Zombie2_1";
+	end;
+
+OnDisable:
+	disablenpc "Zombie2_1";
+	end;
+}
+
+job_prist,24,72,0	script	Zombie3_1	-1,14,1,{
+OnInit:
+	disablenpc "Zombie3_1";
+	end;
+
+OnTouch:
+	if (BaseJob == Job_Acolyte) {
+		donpcevent "驅魔#prst::Onm3";
+		donpcevent "Zombie3_1::OnDisable";
+	}
+	end;
+
+OnEnable:
+	enablenpc "Zombie3_1";
+	end;
+
+OnDisable:
+	disablenpc "Zombie3_1";
+	end;
+}
+
+job_prist,21,82,0	script	Zombie4_1	-1,17,1,{
+OnInit:
+	disablenpc "Zombie4_1";
+	end;
+
+OnTouch:
+	if (BaseJob == Job_Acolyte) {
+		donpcevent "驅魔#prst::Onm4";
+		donpcevent "Zombie4_1::OnDisable";
+	}
+	end;
+
+OnEnable:
+	enablenpc "Zombie4_1";
+	end;
+
+OnDisable:
+	disablenpc "Zombie4_1";
+}
+
+job_prist,24,92,0	script	Zombie5_1	-1,14,1,{
+OnInit:
+	disablenpc "Zombie5_1";
+	end;
+
+OnTouch:
+	if (BaseJob == Job_Acolyte) {
+		donpcevent "驅魔#prst::Onm5";
+		donpcevent "Zombie5_1::OnDisable";
+	}
+	end;
+
+OnEnable:
+	enablenpc "Zombie5_1";
+	end;
+
+OnDisable:
+	disablenpc "Zombie5_1";
+}
+
+job_prist,24,109,4	script	prst1_1	45,3,3,{
+OnTouch:
+	set .@mobs,getvariableofnpc(.MyMobs,"驅魔#prst");
+	if (BaseJob == Job_Priest) warp "job_prist",168,17;
+	else if (BaseClass == Job_Acolyte && .@mobs < 1) {
+		warp "job_prist",168,17;
+		donpcevent "驅魔#prst::OnDisable";
+		donpcevent "彼特神父#2::OnDisable";
+		donpcevent "彼特神父::OnEnable";
+		donpcevent "驅魔#prst::OnDisable";
+	}
+	end;
+}
+
+// 3rd Test
+//==========================================================
+job_prist,168,45,4	script	小惡魔#prst	1109,8,1,{
+OnTouch:
+	if (BaseJob == Job_Priest) {
+		mes "[小惡魔]";
+		mes "哼，為什麼祭司會來到這種地方?嘻嘻... 不如在村落裡祈禱吧";
+		mes "把時間浪費在不重要事情上，是你的興趣嗎?";
+		next;
+		mes "[小惡魔]";
+		mes "我小惡魔今天特別放你一馬，快借過吧";
+		mes "下次再來的話，就不會對你客氣了";
+		close;
+	}
+	if (BaseClass == Job_Acolyte) {
+		mes "[小惡魔]";
+		mes "哦~ 這不是^0000FF服事^000000嗎? 不是很久都沒看到了嗎? 哈哈哈.";
+		mes "看樣子你是準備要轉職為^0000FF祭司^000000的嗎...";
+		next;
+		mes "[小惡魔]";
+		mes "我很瞭解你們這種事奉神的人. 是多麼地辛苦啊.";
+		mes "我覺得你會到這種地方來才是更奇怪的呢.";
+		next;
+		mes "[小惡魔]";
+		mes "你有必要走這麼艱難的道路嗎? 哈哈.";
+		mes "也有很多其它的好職業. 不是嗎?";
+		next;
+		mes "[小惡魔]";
+		mes "不管在村落也好, 密穴也好, 從來都是其它人向你們求救.";
+		mes "他們卻從來都沒有幫助過你們... 可笑啊?";
+		next;
+		mes "[小惡魔]";
+		mes "我難得給你一次真心的忠告... 你還是放棄的好.";
+		mes "考試會很難, 往後的日子也會很辛苦.";
+		next;
+		if (select("好吧, 那我就要放棄了:惡魔啊, 快消失吧") == 1) {
+			mes "[小惡魔]";
+			mes "哈哈哈, 這樣選就對了! 你以後再也不用來了!";
+			mes "既然你已經放棄了轉職, 那我就送你一樣禮物吧.";
+			next;
+			mes "[小惡魔]";
+			mes "就讓你免費見見我的朋友吧! 哈哈哈!";
+			close2;
+			warp "c_tower2",168,33;
+			end;
+		}
+		mes "[小惡魔]";
+		mes "哎唷, 好害怕喔? 我真是怕得要死了呢. 哈哈.";
+		mes "你不要這樣子嘛. 再聽我說一下嘛.";
+		next;
+		mes "[小惡魔]";
+		mes "你要是現在放棄轉職的話, 我就送你一樣非常棒的禮物.";
+		mes "這可是你這輩子都很難得到的禮物呢.";
+		next;
+		cutin "嘐蝶お溯蝶蘋萄",4;
+		mes "[小惡魔]";
+		mes "你有機會拿到伺服器中最強的卡片哦?";
+		mes "你再考慮清楚喔. 不要轉職了之後才在後悔...";
+		next;
+		if (select("快點把卡片給我!!:消失吧!惡魔!") == 1) {
+			mes "[小惡魔]";
+			mes "哈哈哈, 人類果然都是一樣的. 選擇得好!";
+			mes "那我就把這貴重的卡片送給你吧!";
+			next;
+			mes "[小惡魔]";
+			mes "不過這可不是我送給你的哦. 哈哈.";
+			mes "你再努力的找找看吧!";
+			close2;
+			warp "mjolnir_05",200,200;
+			end;
+		}
+		cutin "嘐蝶お溯蝶蘋萄",255;
+		mes "[小惡魔]";
+		mes "哈哈, 你的脾氣還挺倔強的嘛... 你再繼續胡鬧下去看看吧.";
+		mes "我會等著瞧, 看你能不能站著回去.";
+		next;
+		mes "[小惡魔]";
+		mes "終有一天你會後悔的想再度回到我身邊吧... 哈哈哈!";
+		close;
+	}
+	end;
+}
+
+job_prist,168,80,4	script	死靈#prst	1046,8,1,{
+OnTouch:
+	if (BaseJob == Job_Priest) {
+		mes "[死靈]";
+		mes "愚蠢的人類... 這樣做對你是沒有什麼好處的";
+		mes "你不會很煩嗎? 反正又不是你要轉職";
+		next;
+		mes "[死靈]";
+		mes "為了一個沒有希望的服事，沒必要這麼辛苦";
+		mes "不要把時間浪費在沒有意義的事情上";
+		close;
+	}
+	else if (BaseClass == Job_Acolyte) {
+		mes "[死靈]";
+		mes "正在那邊走著的^0000FF服事^000000. 請你等一下來聽我說幾句話吧.";
+		next;
+		mes "[死靈]";
+		mes "你是為了什麼會想來當^0000FF祭司^000000的呢?";
+		mes "我看你根本不適合做這一行.";
+		next;
+		mes "[死靈]";
+		mes "如果你願意的話, 我可以用我的能力重新再給你一次機會.";
+		mes "從現在變回初學者, 只要你願意還可以讓你選擇做其它的職業.";
+		next;
+		mes "[死靈]";
+		mes "當然這會因你的等級能力值而改變.";
+		mes "這不是一個很好的條件嗎? 只要你願意, 我可以馬上幫你.";
+		next;
+		if (select("希望你可以幫助我!:惡魔啊, 快消失吧") == 1) {
+			mes "[死靈]";
+			mes "選擇的好.";
+			mes "我就如你所願讓你回到初學者的階段吧.";
+			next;
+			mes "[死靈]";
+			mes "從死裡復活要再經過很長的一段時間!!";
+			close2;
+			warp "gef_dun02",210,177;
+			end;
+		}
+		mes "[死靈]";
+		mes "你似乎不太瞭解我的意思... 你再好好地想想看吧.";
+		mes "這可是你一生中難得的大好機會哦.";
+		next;
+		mes "[死靈]";
+		mes "當然, 只要你開口說一聲不想當^0000FF祭司^000000就可以了.";
+		mes "那麼就可以從事其它職業, 跟我一樣當個劍士如何啊?";
+		next;
+		if (select("我不想轉職為^0000FF祭司^000000!:惡魔啊, 快消失吧!") == 1) {
+			mes "[死靈]";
+			mes "好選擇. 你再也不要回到這個地方來了.";
+			mes "如你所願的讓你成為初學者吧.";
+			next;
+			mes "[死靈]";
+			mes "從死裡復活後需要再經過一段很長的時間";
+			close2;
+			warp "gef_dun02",210,177;
+			end;
+		}
+		mes "[死靈]";
+		mes "很好... 那我今天就放你一馬.";
+		next;
+		mes "[死靈]";
+		mes "以後再讓我看到你的話, 我就會讓你很痛苦的死去.";
+		close;
+	}
+}
+
+job_prist,168,115,4	script	黑暗之王#prst	1272,8,1,{
+OnTouch:
+	if (BaseJob == Job_Priest) {
+		mes "[黑暗之王]";
+		mes "讓你感受一下痛苦和絕望!!";
+		mes "讓你體會一下受到最重要的人背叛你的憤怒吧!";
+		next;
+		mes "[黑暗之王]";
+		mes "在那之後, 終有一天等你再度成為尖銳的刀之後再回去吧!";
+		mes "詛咒你刺到心臟的最深處吧!";
+		close;
+	}
+	else if (BaseClass == Job_Acolyte) {
+		mes "[黑暗之王]";
+		mes "給我站住, 人類.";
+		mes "你是得到誰的允許膽敢經過這裡!";
+		next;
+		mes "[黑暗之王]";
+		mes "想要轉職為^0000FF祭司^000000的^0000FF服事^000000人類. 你不能經過這裡,";
+		mes "快滾回去. 要不然我就立刻把你給殺了.";
+		next;
+		mes "[黑暗之王]";
+		mes "比螞蟻還要不如的人類們... 不要影響我的休息, 快滾回去!";
+		next;
+		if (select("我知道錯了. 請你放我一馬吧:惡魔啊, 快消失吧") == 1) {
+			mes "[黑暗之王]";
+			mes "再也不要出現了!";
+			close2;
+			warp "gl_church",145,170;
+			end;
+		}
+		mes "[黑暗之王]";
+		mes "你不用再逞強了, 那是沒有用的.";
+		mes "我只要用一根小指頭, 就可以把你給碎屍萬段了.";
+		next;
+		mes "[黑暗之王]";
+		mes "在我用無限的黑暗魔力來對付你之前, 快滾回去!";
+		next;
+		if (select("哎呀, 請你不要殺我:惡魔啊, 快消失吧!") == 1) {
+			mes "[黑暗之王]";
+			mes "再也不要出現了!";
+			close2;
+			warp "gl_church",145,170;
+			end;
+		}
+		mes "[黑暗之王]";
+		mes "你的決心還是不變嗎... 連對付你都讓我嫌麻煩的人類.";
+		next;
+		mes "[黑暗之王]";
+		mes "你要是再出現在我面前, 我就會讓你嘗一嘗身陷地獄的痛苦.";
+		close;
+	}
+}
+
+job_prist,168,150,4	script	巴風特#prst	736,8,1,{
+OnTouch:
+	if (BaseJob == Job_Priest) {
+		mes "[巴風特]";
+		mes "真是麻煩的^0000FF祭司^000000...";
+		next;
+		mes "[巴風特]";
+		mes "我沒什麼好跟你說的. 你快點過去吧.";
+		close;
+	}
+	else if (BaseClass == Job_Acolyte) {
+		mes "[巴風特]";
+		mes "嘿...恩...?";
+		next;
+		mes "[巴風特]";
+		mes "你對'惡魔的約定'有興趣嗎?";
+		next;
+		mes "[巴風特]";
+		mes "我可以給你世界上的財富";
+		mes "但是....";
+		next;
+		mes "[巴風特]";
+		mes "你必須放棄當一位神職者";
+		mes "如果你做不到...";
+		next;
+		mes "[巴風特]";
+		mes "還有, 只要你願意的話, 隨時都可以召喚我.";
+		mes "如此一來所有的人都會害怕與你為敵, 也都會讓大家記住你的名字.";
+		next;
+		if (select("我答應你:去死啦，惡魔!") == 1) {
+			mes "[巴風特]";
+			mes "那麼我們就來簽訂契約吧...";
+			mes "你是絕對不會後悔的...";
+			next;
+			mes "[巴風特]";
+			mes "你去找有我在的地方.";
+			mes "到那裡再來進行簽訂契約的事.";
+			close2;
+			warp "glast_01",200,203;
+			end;
+		}
+		mes "[巴風特]";
+		mes "啊...真是強烈的決心..";
+		mes "我還會來找你報仇的...";
+		next;
+		mes "[巴風特]";
+		mes "我可是特地為了你準備了魔物呢...";
+		mes "不曉得你還可以撐多久.";
+		next;
+		mes "[巴風特]";
+		mes "那麼, 你就過去吧";
+		close;
+	}
+}
+
+job_prist,168,180,4	script	prst2_1	45,3,3,{
+OnTouch:
+	if (BaseJob == Job_Priest) warp "job_prist",98,40;
+	else if (BaseClass == Job_Acolyte) {
+		warp "job_prist",98,40;
+		donpcevent "驅魔2::OnEnable";
+	}
+	end;
+}
+
+// 4th Test
+//==========================================================
+job_prist,1,2,1	script	驅魔2	110,1,1,{
+OnInit:
+	disablenpc "驅魔2";
+	end;
+
+OnEnable:
+	donpcevent "驅魔3::OnEnable";
+	donpcevent "Mummy2_1::OnEnable";
+	donpcevent "驅魔4::OnEnable";
+	end;
+
+Onm1:
+	monster "job_prist",90,55,"貪慾",1041,1;
+	monster "job_prist",105,55,"淫亂",1041,1;
+	end;
+
+Onm2:
+	monster "job_prist",90,70,"驕傲",1041,1;
+	monster "job_prist",105,70,"懶惰",1041,1;
+	end;
+
+Onm3:
+	monster "job_prist",90,85,"憤怒",1041,1;
+	monster "job_prist",105,85,"猜忌",1041,1;
+	end;
+
+OnDisable:
+	disablenpc "驅魔2";
+	killmonsterall "job_prist";
+	end;
+}
+
+job_prist,90,55,0	script	驅魔3	-1,15,1,{
+OnInit:
+	disablenpc "驅魔3";
+	end;
+
+OnTouch:
+	if (BaseJob == Job_Acolyte) {
+		donpcevent "驅魔2::Onm1";
+		donpcevent "驅魔3::OnDisable";
+	}
+	end;
+
+OnEnable:
+	enablenpc "驅魔3";
+	end;
+
+OnDisable:
+	disablenpc "驅魔3";
+	end;
+}
+
+job_prist,90,70,0	script	Mummy2_1	-1,15,1,{
+OnInit:
+	disablenpc "Mummy2_1";
+	end;
+
+OnTouch:
+	if (BaseJob == Job_Acolyte) {
+		donpcevent "驅魔2::Onm2";
+		donpcevent "Mummy2_1::OnDisable";
+	}
+	end;
+
+OnEnable:
+	enablenpc "Mummy2_1";
+	end;
+
+OnDisable:
+	disablenpc "Mummy2_1";
+	end;
+}
+
+job_prist,90,85,0	script	驅魔4	-1,15,1,{
+OnInit:
+	disablenpc "驅魔4";
+	end;
+
+OnTouch:
+	if (BaseJob == Job_Acolyte) {
+		donpcevent "驅魔2::Onm3";
+		donpcevent "驅魔4::OnDisable";
+	}
+	end;
+
+OnEnable:
+	enablenpc "驅魔4";
+	end;
+
+OnDisable:
+	disablenpc "驅魔4";
+	end;
+}
+
+job_prist,98,105,4	script	prst3_1	45,3,3,{
+OnTouch:
+	if (BaseJob == Job_Priest) {
+		warp "prt_church",15,36;
+		end; 
+	}
+	else if (BaseClass == Job_Acolyte) {
+		set PRIEST_Q,7;
+		if(checkquest(8012) != -1) {
+			changequest 8012,8013;
+		}
+		warp "prt_church",16,37;
+		donpcevent "驅魔2::OnDisable";
+	}
+	end;
+}
+
+// Functions
+//==========================================================
+function	script	F_FatherRub	{
+	if (PRIEST_Q != 0) {
+		if (PRIEST_Q == 1) {
+			mes "是希望成為祭司的服事啊...";
+			mes "已經有接到湯瑪斯教主的消息";
+			mes "畢竟開始了巡禮，務必努力至最後成為祭司";
+			next;
+			mes "[神父 魯帕卡法拉]";
+			mes "下次有機會的話，請光臨這兒的修道院看看...";
+			mes "這裡可所謂是我們的教壇的聖地";
+			next;
+			mes "[神父 魯帕卡法拉]";
+			mes "那麼，到下個巡禮地去吧";
+			close2;
+			savepoint "prt_fild03",361,255;
+			set PRIEST_Q,2;
+			end;
+		}
+		else if (PRIEST_Q == 2) {
+			mes "趕快到下一個巡禮地去吧";
+			mes "一路上小心";
+			close;
+		}
+		mes "為什麼又回到這裡了呢?";
+		mes "趕快回去繼續你的修行";
+		close;
+	}
+	mes "是服事嗎，你到這而有什麼事情嗎?";
+	close;
+}
+
+function	script	F_MotherMart	{
+	if (PRIEST_Q != 0) {
+		if (PRIEST_Q == 1) {
+			mes "服事修行者啊?";
+			mes "不過來見我之前要先見過另外一位再來";
+			next;
+			mes "[修女 瑪狄妲]";
+			mes "請教'湯瑪斯 神父'或'欣詩 修女'吧，願神保佑你..";
+			close;
+		}
+		else if (PRIEST_Q == 2) {
+			mes "啊，是服事修行者吧?";
+			mes "遠道而來辛苦了~";
+			mes "我們祭司要傳達地上所有神的旨意";
+			next;
+			mes "[修女 瑪狄妲]";
+			mes "成為祭司之後，也一定要到夢羅克村的金字塔來啊";
+			mes "那時拜託將可憐的人們解放出來...";
+			next;
+			mes "[修女 瑪狄妲]";
+			mes "那麼，繼續巡禮吧...";
+			mes "願神保佑你...";
+			close2;
+			savepoint "moc_fild07",35,355;
+			set PRIEST_Q,3;
+			end;
+		}
+		else if (PRIEST_Q == 3) {
+			mes "不要停留於此，繼續下去吧...";
+			close;
+		}
+		mes "為什麼又回到這兒?";
+		mes "繼續去修行吧";
+		close;
+	}
+	mes "是服事嗎，你到這而有什麼事情嗎?";
+	close;
+}
+
+function	script	F_FatherYos	{
+	if (PRIEST_Q != 0) {
+		if (PRIEST_Q == 2 || PRIEST_Q == 1) {
+			mes "嗯，是服務修行者啊";
+			mes "遠到而來辛苦你了";
+			next;
+			mes "[神父 約斯克]";
+			mes "不過來見我之前要先見過另外一位再來";
+			mes "一句話，你找錯地方了";
+			next;
+			mes "[神父 約斯克]";
+			mes "回到教堂確認去吧";
+			close;
+		}
+		else if (PRIEST_Q == 3) {
+			mes "嗯，是祭司修行者啊";
+			mes "遠到而來辛苦你了";
+			next;
+			mes "[神父 約斯克]";
+			mes "為了不讓祭司名聲遭受羞辱，";
+			mes "請一定要光明正大的生存下去";
+			next;
+			mes "[神父 約斯克]";
+			mes "回到教堂去吧";
+			mes "你的巡禮結束了";
+			mes "一路上辛苦你了";
+			mes "回去也要小心哦";
+			close2;
+			savepoint "prt_fild00",206,230;
+			set PRIEST_Q,4;
+			end;
+		}
+		else if (PRIEST_Q == 4) {
+			mes "還沒回教堂嗎?";
+			mes "要打算在這裡一輩子嗎?";
+			close;
+		}
+		mes "不要在這裡玩了";
+		mes "趕快成為祭司吧";
+		close;
+	}
+	mes "是服事嗎，你到這而有什麼事情嗎?";
+	close;
+}
+

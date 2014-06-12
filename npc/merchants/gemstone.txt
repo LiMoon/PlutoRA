@@ -1,0 +1,87 @@
+//============================================
+// [冥] The PlutoEA Project [王]
+// http://plutoea.googlecode.com/svn/
+// -----------------------------------------
+// - 魔力礦石交換 - 
+//============================================
+//= * 自JA移植
+//==============================================
+
+payon,173,238,5	script	傑依德	754,{
+	mes "[傑依德]";
+	mes "您好~";
+	mes "如果你拿兩個相同色彩的魔力礦石來給我的話，";
+	mes "我會馬上幫你做成不同色彩的魔力礦石喔!";
+	next;
+	switch (select("藍色魔力礦石換為紅色魔力礦石!:紅色魔力礦石換為黃色魔力礦石!:黃色魔力礦石換為藍色魔力礦石!")) {
+	case 1:
+		set .@itemid,717;
+		set .@gain,716;
+		break;
+	case 2:
+		set .@itemid,716;
+		set .@gain,715;
+		break;
+	case 3:
+		set .@itemid,715;
+		set .@gain,717;
+		break;
+	}
+	if(countitem(.@itemid)<2) {
+		mes "[傑依德]";
+		mes "哈哈哈!";
+		mes "這位朋友你在開玩笑嘛!";
+		mes getitemname(.@itemid)+ "沒有2個的話";
+		mes getitemname(.@gain)+ "就沒有辦法給你呢!";
+		close;
+	}
+	set .@max,countitem(.@itemid)/2;
+	mes "[傑依德]";
+	mes "嗯...";
+	mes "用這些差不多可以做" +.@max+ "個";
+	mes "" +getitemname(.@gain)+ "";
+	mes "你要交換幾個呢?";
+	next;
+	switch (select("我要把所有的都換掉:我要指定幾個:取消")) {
+	case 1:
+		set .@num,.@max;
+		break;
+	case 2:
+		mes "[傑依德]";
+		mes "需要幾個呢?";
+		mes "請以100個為上限";
+		while(1) {
+			next;
+			input .@num;
+			if(.@num > 100) {
+				mes "[傑依德]";
+				mes "嗯?";
+				mes "只能做100個以下喔!?";
+				continue;
+			}
+			break;
+		}
+		if(.@num > .@max)
+			close;
+		if(.@num <= 0) {
+			mes "[傑依德]";
+			mes "別開玩笑了";
+			close;
+		}
+		break;
+	case 3:
+		mes "[傑依德]";
+		mes "這樣啊...";
+		mes "如果有需要交換的話";
+		mes "不用客氣隨時都可以來";
+		close;
+	}
+	delitem .@itemid,.@num*2;
+	getitem .@gain,.@num;
+	mes "[傑依德]";
+	mes "來，你要的";
+	mes getitemname(.@gain)+ "都在這";
+	mes "有需要的話隨時再來找我吧!";
+	mes "...嗯? 我臉上有什麼東西嗎?";
+	close;
+}

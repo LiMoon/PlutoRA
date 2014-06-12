@@ -1,0 +1,95 @@
+//===== rAthena Script =======================================
+//= Kunai Merchant （飛刀商人 卡新）
+//===== By: ==================================================
+//= rAthena Dev Team
+//===== Current Version: =====================================
+//= 1.3a
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= Trades a few shurikens + ninja stones for elemental kunai.
+//===== Additional Comments: =================================
+//= 1.0 Added the npc. It uses a function that sends the item 
+//=     id of the 2 required items plus the amount. Can trade
+//=     up to 500 units (5,000 kunais) at once. [erKURITA]
+//= 1.1 Officialized script [Playtester]
+//= 1.2a Optimized/cleaned up a bit [ultramage]
+//= 1.3 Updated to match AEGIS script. [Kisuka]
+//= 1.3a Kagerou/Oboro support (BaseJob -> BaseClass) [Euphy]
+//============================================================
+
+que_ng,72,29,3	script	飛刀商人 卡新	83,{
+	if(BaseClass == Job_Ninja) {
+		mes "[卡新]";
+		mes "你好，我是 卡新!";
+		mes "如果你有缺少飛刀的話，";
+		mes "歡迎你向我購買!";
+		next;
+		mes "[卡新]";
+		mes "請問你要買哪一項呢?";
+		next;
+		switch(select("巨毒飛刀:垂冰飛刀:強風飛刀:黑土飛刀:火焰飛刀:取消")) {
+		case 1: callfunc "Kunai_Trade",13250,20,7524,1,13259; break;
+		case 2: callfunc "Kunai_Trade",13251,8,7522,2,13255; break;
+		case 3: callfunc "Kunai_Trade",13252,4,7523,2,13257; break;
+		case 4: callfunc "Kunai_Trade",13253,2,7524,1,13256; break;
+		case 5: callfunc "Kunai_Trade",13254,1,7521,2,13258; break;
+		case 6:
+			mes "[卡新]";
+			mes "嗯~ 好吧~";
+			mes "隨時再來~";
+			mes "我, 風之卡新, 永遠在這裡.";
+			close;
+		}
+	}
+	mes "[卡新]";
+	mes "我是替影子們提供";
+	mes "兌換物品服務的，";
+	mes "叫做 風之卡新";
+	next;
+	mes "[卡新]";
+	mes "我看你不像是個忍者，";
+	mes "你就隨便看看後再走吧";
+	close;
+}
+
+function	script	Kunai_Trade	{
+	mes "[卡新]";
+	mes "如果你給我"+getarg(1)+" 支"+getitemname(getarg(0))+" ";
+	mes "和"+getarg(3)+" 顆"+getitemname(getarg(2))+", 我會給你一包含";
+	mes "10 支的"+getitemname(getarg(4))+".";
+	next;
+	mes "[卡新]";
+	mes "你一次最多能交易500 包.";
+	mes "如果你不想交易的話, 請輸入0.";
+	next;
+	input .@amount;
+	mes "[卡新]";
+	if(.@amount < 1 || .@amount > 500) {
+		mes "嗯~ 好吧~";
+		mes "隨時再來~";
+		mes "我, 風之卡新, 永遠在這裡.";
+		close;
+	}
+	if(countitem(getarg(0)) < .@amount*getarg(1) || countitem(getarg(2)) < .@amount*getarg(3)) {
+		mes "嗯... 情況不太妙~";
+		mes "你沒有足夠的材料來交易你想要";
+		mes "的那麼多的苦無.";
+		mes "如果你真需要, 就要帶夠材料. ";
+		close;
+ 	}
+	if(checkweight(getarg(4), .@amount*10) == 0) {
+		mes "你的背包太滿了不能放這麼多貨";
+		mes "物. 等你為這些貨品騰出地方在";
+		mes "來找我吧.";
+		close;
+	}
+	mes "[卡新]";
+	mes "很好~ 非常好!";
+	mes "確認數量!";
+	mes "這是你的貨物.";
+	delitem getarg(0),getarg(1)*.@amount;
+	delitem getarg(2),getarg(3)*.@amount;
+	getitem getarg(4),10*.@amount;
+	close;
+}

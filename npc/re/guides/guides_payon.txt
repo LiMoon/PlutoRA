@@ -1,0 +1,296 @@
+//===== rAthena Script ======================================= 
+//= 斐揚 解說員
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.2
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guides for the city of Payon.
+//===== Additional Comments: ================================= 
+//= 1.0 First version, Renewal guides.
+//= 1.1 Fixed and optimized. [Euphy]
+//= 1.2 Navigation system update. [Euphy]
+//============================================================ 
+
+payon,163,64,3	script	解說員#01payon::GuidePayon	708,{
+	cutin "pay_soldier",2;
+	mes "[斐揚 解說員]";
+	mes "這裡是山岳之都 ^8B4513斐揚^000000，";
+	mes "歡迎您的大駕光臨，";
+	mes "需要為您介紹嗎?";
+	F_Navi("[斐揚 解說員]");
+	next;
+	while (1) {
+		switch(select("[ 主要設施 ]:[ 商人&小幫手 ]:刪除小地圖的標記:結束對話")) {
+		case 1:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 弓箭手村 ]:[ 道具店 ]:[ 武器、防具店 ]:[ 旅館及酒店 ]:[ 中央宮 ]:[ 內宮 ]:[ 宮廷御廚 ]:返回上一選單")) {
+				case 1:
+					mes "[斐揚 解說員]";
+					mes "這裡是弓箭手公會的所在地，";
+					mes "可經由北側底端的門";
+					mes "前往"+F_Navi("弓箭手村","payon,227,328","^B9062F")+"，";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,227,328,0,0xFF0000;
+					next;
+					break;
+				case 2:
+					callsub L_Mark, F_Navi("道具店","payon,144,85","^0000FF");
+					viewpoint 1,144,85,1,0x0A82FF;
+					next;
+					break;
+				case 3:
+					callsub L_Mark, F_Navi("武器、防具店","payon,139,159","^FF5400");
+					viewpoint 1,139,159,2,0xFFB400;
+					next;
+					break;
+				case 4:
+					callsub L_Mark, F_Navi("旅館及酒店","payon,220,117","^006400");
+					viewpoint 1,220,117,3,0xAAFF00;
+					next;
+					break;
+				case 5:
+					callsub L_Mark, F_Navi("中央宮","payon,155,245","^7F3300");
+					viewpoint 1,155,245,4,0xD2691E;
+					next;
+					break;
+				case 6:
+					callsub L_Mark, F_Navi("內宮","payon,107,325","^800080");
+					viewpoint 1,107,325,5,0xDA70D6;
+					next;
+					break;
+				case 7:
+					callsub L_Mark, F_Navi("宮廷御廚","payon,154,325","^B9062F");
+					viewpoint 1,154,325,6,0xFF0000;
+					next;
+					break;
+				case 8:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 伊甸園傳送師 ]:[ 商城物品銷售解說員 ]:[ 維修及精煉師 ]:[ 卡普拉職員 ]:[ 陷阱專家 ]:[ 世亞布連 ]:[ 雷亞布連 ]:[ 傑宜德 ]:[ 認養寵物商人 ]:[ 料理材料商人 ]:返回上一選單")) {
+				case 1:
+					callsub L_Mark, F_Navi("伊甸園傳送師","payon,177,111","^0000FF");
+					viewpoint 1,177,111,7,0x0A82FF;
+					next;
+					break;
+				case 2:
+					callsub L_Mark, F_Navi("商城物品銷售解說員","payon,164,157","^FF5400");
+					viewpoint 1,164,157,8,0xFFB400;
+					next;
+					break;
+				case 3:
+					callsub L_Mark, F_Navi("維修及精煉師","payon,144,170","^006400");
+					viewpoint 1,144,170,9,0xAAFF00;
+					next;
+					break;
+				case 4:
+					callsub L_Mark, "^7F3300卡普拉職員s^000000";
+					viewpoint 1,181,104,10,0xD2691E;
+					viewpoint 1,175,226,11,0xD2691E;
+					next;
+					break;
+				case 5:
+					callsub L_Mark, F_Navi("陷阱專家","payon,123,109","^800080");
+					viewpoint 1,123,109,12,0xDA70D6;
+					next;
+					break;
+				case 6:
+					mes "[斐揚 解說員]";
+					mes F_Navi("世亞布連","payon,140,151","^B9062F");
+					mes "在武器或防具上提供^0000FF打洞^000000";
+					mes "服務的專業技術員，";
+					mes "只是並非所有的";
+					mes "東西都可以哦!";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,140,151,13,0xFF0000;
+					next;
+					break;
+				case 7:
+					mes "[斐揚 解說員]";
+					mes F_Navi("雷亞布連","payon,236,199","^0000FF");
+					mes "在武器或防具上提供^0000FF打洞^000000";
+					mes "服務的專業技術員，";
+					mes "只是並非所有的";
+					mes "東西都可以哦!";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,236,199,14,0x0A82FF;
+					next;
+					break;
+				case 8:
+					mes "[斐揚 解說員]";
+					mes F_Navi("傑宜德","payon,173,238","^FF5400");
+					mes "將各式各類的^FF5400魔力礦石^000000";
+					mes "提供交換的服務，";
+					mes "還需要其它服務嗎?";
+					viewpoint 1,173,238,15,0xFFB400;
+					next;
+					break;
+				case 9:
+					callsub L_Mark, F_Navi("認養寵物商人","payon,177,131","^006400");
+					viewpoint 1,177,131,16,0xAAFF00;
+					next;
+					break;
+				case 10:
+					callsub L_Mark, F_Navi("料理材料商人","payon,206,119","^7F3300");
+					viewpoint 1,206,119,17,0xD2691E;
+					next;
+					break;
+				case 11:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			mes "[斐揚 解說員]";
+			mes "已刪除小地圖上的標誌了，";
+			mes "還需要其它服務嗎?";
+			viewpoint 2,1,1,0,0xFFFF00;
+			viewpoint 2,1,1,1,0x000000;
+			viewpoint 2,1,1,2,0xFF0000;
+			viewpoint 2,1,1,3,0xFFFF00;
+			viewpoint 2,1,1,4,0xFFFF00;
+			viewpoint 2,1,1,5,0xFFFF00;
+			viewpoint 2,1,1,6,0xFFFF00;
+			viewpoint 2,1,1,7,0xFFFF00;
+			viewpoint 2,1,1,8,0xFFFF00;
+			viewpoint 2,1,1,9,0xFFFF00;
+			viewpoint 2,1,1,10,0xFFFF00;
+			viewpoint 2,1,1,11,0xFFFF00;
+			viewpoint 2,1,1,12,0xFFFF00;
+			viewpoint 2,1,1,13,0xFFFF00;
+			viewpoint 2,1,1,14,0xFFFF00;
+			viewpoint 2,1,1,15,0xFFFF00;
+			viewpoint 2,1,1,16,0xFFFF00;
+			viewpoint 2,1,1,17,0xFFFF00;
+			next;
+			break;
+		case 4:
+			mes "[斐揚 解說員]";
+			mes "祝您旅途愉快!";
+			close;
+			cutin "",255;
+			end;
+		}
+	}
+	end;
+L_Mark:
+	mes "[斐揚 解說員]";
+	mes ""+getarg(0)+"的";
+	mes "位置已經標記在";
+	mes "小地圖上了，";
+	mes "還需要其它服務嗎?";
+	return;
+}
+
+payon,151,182,6	duplicate(GuidePayon)	解說員#02payon	708
+payon,221,85,6	duplicate(GuidePayon)	解說員#03payon	708
+payon,233,324,4	duplicate(GuidePayon)	解說員#04payon	708
+
+pay_arche,86,33,4	script	解說員#05payon	708,{
+	cutin "pay_soldier",2;
+	mes "[斐揚 解說員]";
+	mes "歡迎光臨!";
+	mes "這裡是隸屬於山岳之都斐揚的";
+	mes "^8B4513弓箭手村^000000，";
+	mes "需要為您介紹嗎?";
+	F_Navi("[斐揚 解說員]");
+	next;
+	set .@str$,"還需要其它服務嗎?";
+	while (1) {
+		switch(select("[ 斐揚迷宮 ]:[ 弓箭手公會 ]:[ 道具店 ]:[ 卡普拉職員 ]:[ 傭兵公會管理員 ]:[ 鍊金術師公會會員 ]:[ 伊甸園傳送師 ]:刪除小地圖的標記:結束對話")) {
+		case 1:
+			mes "[斐揚 解說員]";
+			mes F_Navi("斐揚迷宮入口","pay_arche,38,131","^B9062F")+"的";
+			mes "位置已經標記在";
+			mes "小地圖上了，";
+			mes .@str$;
+			viewpoint 1,38,131,0,0xFF0000;
+			next;
+			break;
+		case 2:
+			mes "[斐揚 解說員]";
+			mes F_Navi("弓箭手公會","pay_arche,143,164","^0000FF")+"是";
+			mes "想要轉職為弓箭手的";
+			mes "冒險家們必來的";
+			mes "地方，";
+			mes .@str$;
+			viewpoint 1,143,164,1,0x0A82FF;
+			next;
+			break;
+		case 3:
+			mes "[斐揚 解說員]";
+			mes F_Navi("道具店","pay_arche,72,156","^FF5400");
+			mes "位置已經標記在";
+			mes "小地圖上了，";
+			mes .@str$;
+			viewpoint 1,72,156,2,0xFFB400;
+			next;
+			break;
+		case 4:
+			mes "[斐揚 解說員]";
+			mes "^006400卡普拉職員^000000的";
+			mes "位置已經標記在";
+			mes "小地圖上了，";
+			mes .@str$;
+			viewpoint 1,55,123,3,0xAAFF00;
+			next;
+			break;
+		case 5:
+			mes "[斐揚 解說員]";
+			mes F_Navi("傭兵公會管理員","pay_arche,101,166","^7F3300");
+			mes "位置已經標記在";
+			mes "小地圖上了，";
+			mes .@str$;
+			viewpoint 1,101,166,4,0xD2691E;
+			next;
+			break;
+		case 6:
+			mes "[斐揚 解說員]";
+			mes F_Navi("鍊金術師公會會員","pay_arche,126,113,","^800080");
+			mes "位置已經標記在";
+			mes "小地圖上了，";
+			mes .@str$;
+			viewpoint 1,127,113,5,0xDA70D6;
+			next;
+			break;
+		case 7:
+			mes "[斐揚 解說員]";
+			mes F_Navi("伊甸園傳送師","pay_arche,143,164","^0000FF")+"目前";
+			mes "位於弓箭手公會的大樓前，";
+			mes .@str$;
+			viewpoint 1,143,164,6,0x0A82FF;
+			next;
+			break;
+		case 8:
+			mes "[斐揚 解說員]";
+			mes "已刪除小地圖上的標誌了，";
+			mes .@str$;
+			viewpoint 2,1,1,0,0xFFFF00;
+			viewpoint 2,1,1,1,0x000000;
+			viewpoint 2,1,1,2,0xFF0000;
+			viewpoint 2,1,1,3,0xFFFF00;
+			viewpoint 2,1,1,4,0xFFFF00;
+			viewpoint 2,1,1,5,0xFFFF00;
+			viewpoint 2,1,1,6,0xFFFF00;
+			next;
+			break;
+		case 9:
+			mes "[斐揚 解說員]";
+			mes "祝您旅途愉快!";
+			close2;
+			cutin "",255;
+			end;
+		}
+	}
+}

@@ -1,0 +1,61 @@
+//===== rAthena Script ======================================= 
+//= Stone Changer
+//===== By: ================================================== 
+//= Euphy
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Organizes ores in a player's inventory.
+//===== Additional Comments: ================================= 
+//= 1.0 First version.
+//============================================================ 
+
+geffen_in,99,174,5	script	礦石鑑定師#sorty	700,{
+	mes "[礦石鑑定師 蘇媞]";
+	mes "凌亂又沒啥用卻佔據^3131FF背包的相同礦石^000000還有很多嗎?";
+	mes "我蘇媞會替各位鑑定後一次整理搞定-!";
+	next;
+	switch(select("整理礦石:不要")) {
+	case 1:
+		mes "[礦石鑑定師 蘇媞]";
+		mes "目前只針對^FF0000鋼鐵^000000, ^FF0000鐵^000000, ^FF0000鐵礦石^000000, ^FF0000神之金屬原石^000000,^FF0000海神之憤怒^000000等進行鑑別及整頓，";
+		mes "^3131FF其它物品還不行哦!^000000!";
+		next;
+		mes "[礦石鑑定師 蘇媞]";
+		mes "你要清理礦石嗎?";
+		next;
+		set .@i, select("鑑別鋼鐵:鑑別鐵:鑑別鐵礦石:鑑別神之金屬原石:鑑別海神之憤怒:取消");
+		if (.@i == 5) {
+			mes "[礦石鑑定師 蘇媞]";
+			mes "天啊! 蘇媞討厭懶惰的人啦!";
+			close;
+		}
+		setarray .@ores[0],999,998,1002,756,6423;
+		set .@item, .@ores[.@i-1];
+		if (countitem(.@item) == 0) {
+			mes "[礦石鑑定師 蘇媞]";
+			mes "好像沒有"+getitemname(.@item)+"...";
+			close;
+		}
+		while(1) {
+			if (countitem(.@item)) {
+				set .@count, countitem(.@item);
+				set .@total, .@total + .@count;
+				delitem .@item, .@count;
+			} else {
+				getitem .@item, .@total;
+				break;
+			}
+		}
+		mes "[礦石鑑定師 蘇媞]";
+		mes "好了! 看起來不錯吧?";
+		close;
+	case 2:
+		mes "[礦石鑑定師 蘇媞]";
+		mes "你的背包很乾淨是吧? 呵呵，不錯!";
+		close;
+	}
+}

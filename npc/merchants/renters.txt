@@ -1,0 +1,169 @@
+//===== rAthena Script ======================================= 
+//= Renters
+//===== By: ================================================== 
+//= kobra_k88, mod by Lupus
+//===== Current Version: ===================================== 
+//= 2.2
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= Knight and Crusader 大嘴鳥 管理兵s, Falcon Breeder scripts
+//===== Additional Comments: ================================= 
+//= Fully working
+//= Added another Falcon Master into the Hunters Guild [Lupus]
+//= 1.2: replaced checkoption(x) with checkriding,checkfalcon [Lupus]
+//= 1.3: Added support Adv Classes + Baby Class [Lupus]
+//= 1.4: Added different prices for normal, advanced and baby classes
+//= but you could set them to the same [Lupus]
+//= 1.5: Fixed spelling mistakes [Nexon]
+//= 1.5a: Small fix (Falcon Taming -> Falcon Mastery) [Komurka]
+//= 1.6: Moved the Falcon Master to Hugel [Poki#3]
+//= 1.7 Updated to Aegis 10.3 standards. [L0ne_W0lf]
+//= 1.8 Added 3rd Job creature NPCs (Dragon/Gryphon) [L0ne_W0lf]
+//= 1.9 Enabled Gryphon Renter NPC and added Mado Gear NPC. [Masao]
+//= 2.0 Fixed problems with third classes and new mounts. [Euphy]
+//= 2.1 Moved some renters to a separate renewal file. [Daegaladh]
+//= 2.2 Added warg checks. [Euphy]
+//============================================================ 
+
+// PecoPeco Breeder (for Knights)-------------------------------------------
+prontera,55,350,5	script	大嘴鳥 管理兵#knt	105,{
+	if(Upper==0) set .@price,2500; //普通大嘴鳥價格
+	if(Upper==1) set .@price,2500; //轉生
+	if(Upper==2) set .@price,2500; //養子
+
+	mes "[大嘴鳥 管理兵]";
+	if (BaseJob == Job_Knight && Class < Job_Rune_Knight) {
+		mes "歡迎光臨，你要租大嘴鳥嗎?";
+		mes "租用一隻大嘴鳥需要 "+.@price+" Zeny, 同時, 你必須學過騎乘術才能駕馭它.";
+		next;
+		switch(select("使用:不使用")) {
+		case 1:
+			if (Zeny < .@price) {
+				mes "[大嘴鳥 管理兵]";
+				mes "您的金錢不足.";
+				close;
+			}
+			else if(getskilllv("KN_RIDING") == 0) {
+				mes "[大嘴鳥 管理兵]";
+				mes "你沒學過騎乘術呢";
+				mes "要學過騎乘術才能使用大嘴鳥喔";
+				close;
+			}
+			else if(checkriding()) {
+				mes "[大嘴鳥 管理兵]";
+				mes "您已經在使用大嘴鳥了";
+				close;
+			}
+			else if(ismounting()) {
+				mes "[大嘴鳥 管理兵]";
+				mes "請先移除您的騎寵";
+				close;
+			}
+			set Zeny, Zeny-.@price;
+			setriding;
+			close;
+		case 2:
+			mes "[大嘴鳥 管理兵]";
+			mes "我知道了";
+			mes "那麼，";
+			mes "祝福你有美好的一天";
+			close;
+		}
+	}
+	else {
+		mes "請問有什麼事嗎?";
+		mes "我們的大嘴鳥是^4444FF 騎士 ^000000專用的";
+		close;
+	}
+}
+
+// Grand PecoPeco Breeder (for Crusaders)-------------------------------------------
+prontera,232,318,3	script	大嘴鳥 管理兵#cru	105,{
+	if(Upper==0) set .@price,3500; //普通大嘴鳥價格
+	if(Upper==1) set .@price,3500; //轉生
+	if(Upper==2) set .@price,3500; //養子
+
+	mes "[PecoPeco Breeder]";
+	if (BaseJob == Job_Crusader && Class < Job_Rune_Knight) {
+		if(Upper != 1 ) mes "歡迎，十字軍大人";
+		else mes "歡迎，是聖殿十字軍大人";
+		mes "這裡有特別的大嘴鳥，為您準備好了";
+		mes "一隻 "+.@price+" 金幣";
+		next;
+		switch(select("使用:不使用")) {
+		case 1:
+			if (Zeny < .@price) {
+				mes "[大嘴鳥 管理兵]";
+				mes "您的金錢不足.";
+				close;
+			}
+			else if(getskilllv("KN_RIDING") == 0) {
+				mes "[大嘴鳥 管理兵]";
+				mes "你沒學過騎乘術呢";
+				mes "要學過騎乘術才能使用大嘴鳥喔";
+				close;
+			}
+			else if(checkriding()) {
+				mes "[大嘴鳥 管理兵]";
+				mes "您已經在使用大嘴鳥了";
+				close;
+			}
+			else if(ismounting()) {
+				mes "[大嘴鳥 管理兵]";
+				mes "請先移除您的騎寵";
+				close;
+			}
+			set Zeny, Zeny-.@price;
+			setriding;
+			close;
+		case 2:
+			mes "[大嘴鳥 管理兵]";
+			mes "是這樣啊，那就，辛苦了";
+			close;
+		}
+	} else {
+		mes "請問有什麼事嗎?";
+		mes "我們的大嘴鳥是^4444FF 十字軍 ^000000專用的";
+		close;
+	}
+}
+
+// Falcon Master--------------------------------------------------------------
+hu_in01,381,304,5	script	Falcon Breeder#hnt	105,{
+	if(Upper==0) set .@price,2500; //普通獵鷹
+	if(Upper==1) set .@price,2500; //轉生
+	if(Upper==2) set .@price,2500; //養子
+	mes "[獵鷹 管理員]";
+	if (BaseJob == Job_Hunter) {
+		mes "哈囉! 我是獵鷹 管理員.";
+		mes "你可以花費 "+.@price+" z 租用獵鷹，不過你要先學會 ^5555FF'馴鷹術'^000000 ";
+		next;
+		if (select("我要租獵鷹:不用了，謝謝") == 1) {
+			if (zeny < .@price) {
+				mes "[獵鷹 管理員]";
+				mes "您的金錢不足.";
+				close;
+			}
+			else if(getskilllv("HT_FALCON") == 0) {
+				mes "[獵鷹 管理員]";
+				mes "對不起，你必須至少學會一級的訓鷹術技能才能使用獵鷹。";
+				close;
+			}
+			else if(checkfalcon()) {
+				mes "[獵鷹 管理員]";
+				mes "往你的頭上看看";
+				mes "你的獵鷹正在你頭上盤旋......";
+				close;
+			}
+			set zeny,zeny-.@price;
+			setfalcon;
+			close;
+		}
+		mes "[獵鷹 管理員]";
+		mes "祝你有個美好的一天";
+		close;
+	}
+	mes "抱歉，獵鷹只能租給獵人.";
+	close;
+}
