@@ -6540,11 +6540,11 @@
 12777,Luk_Dish20,Luk Dish20,2,0,,10,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
 12778,Bapho_Jr_Scroll,小巴風特召喚書,2,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ mercenary_create 2325,1800000; },{},{}
 12779,Galapago_Scroll,啤酒企鵝召喚書,2,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ mercenary_create 2326,1800000; },{},{}
-12780,10M_Zeny_Check,10M Zeny Check,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
-12781,1M_Zeny_Check,1M Zeny Check,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
-12782,100T_Zeny_Check,100T Zeny Check,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
-12783,10000_Zeny_Check,10000 Zeny Check,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
-12784,1000_Zeny_Check,1000 Zeny Check,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+12780,10M_Zeny_Check,10M Zeny支票,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+12781,1M_Zeny_Check,1M Zeny支票,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+12782,100T_Zeny_Check,100T Zeny支票,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+12783,10000_Zeny_Check,10000 Zeny支票,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+12784,1000_Zeny_Check,1000 Zeny支票,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
 12785,Dragon_Egg_Scroll,Dragon Egg Scroll,2,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
 12786,Change_Slot_Card,角色欄位變更卡,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ set CharMoves, CharMoves + 1; },{},{}
 12787,Diabolic_Scroll,赤焰小惡魔召喚書,2,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ mercenary_create 2342,1800000; },{},{}
@@ -7424,7 +7424,7 @@
 13891,Fire_Converter_Box,Fire Converter Box,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12114,10; },{},{}
 13892,Water_Converter_Box,Water Converter Box,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12115,10; },{},{}
 13893,Wind_Converter_Box,Wind Converter Box,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12117,10; },{},{}
-13894,Earth_Converter_Box,Earth Converter Box,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12116,10; },{},{}
+13894,Earth_Converter_Box,地 肯貝特箱子,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12116,10; },{},{}
 13895,Starter_Pack,Starter Pack,18,20,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 7229,2; getitem 569,300; getitem 504,20; getitem 505,20; getitem 7060,30; getitem 2403,1; getitem 5039,1; getitem 2503,1; getitem 2307,1; getitem 616,1; getitem 603,1; getitem 617,1; getitem 610,5; getitem 604,5; },{},{}
 13896,Mimic_Summon_Box5,邪惡箱召喚書5個箱子,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12276,5; },{},{}
 13897,Disguise_Summon_Box5,假面鬼召喚書5個箱子,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12277,5; },{},{}
