@@ -61,7 +61,3 @@
 //==================================================================
 //2338,Wedding_Dress,Wedding Dress,4,43000,,500,,0,,0,0xFFFFFFFE,63,0,16,,0,1,0,{},{ sc_start SC_WEDDING,-1,0; },{ sc_end SC_WEDDING; }
 //7170,Tuxedo,Tuxedo,4,43000,,10,,0,,0,0xFFFFFFFE,63,1,16,,0,1,0,{},{ sc_start SC_WEDDING,-1,0; },{ sc_end SC_WEDDING; }
-
-// twRO Hero 2 New Item add
-//==================================================================
-//22511,Fenrir_Card_,潘利爾卡片,6,10,,10,,,,,,,,769,,,,,{ bonus bMatk,25; /* 固定詠唱減少50%，持續5分鐘：bonus2 bSkillFixedCast,-50,300000; ？*/ },{},{}
