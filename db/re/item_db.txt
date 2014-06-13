@@ -1445,7 +1445,7 @@
 2364,Meteo_Plate_Armor,隕石鋼鐵鎧甲,4,20,,3000,,85,,1,0x000444A2,18,2,16,,55,1,0,{ bonus2 bResEff,Eff_Stun,3000; bonus2 bResEff,Eff_Freeze,3000; },{},{}
 2365,Orleans_Gown,歐羅萊昂的制服,4,20,,300,,15,,1,0xFFFFFFFE,18,2,16,,55,1,0,{ bonus bVariableCastrate,15; bonus bNoCastCancel,0; },{},{}
 2366,Divine_Cloth,神聖的衣裳,4,20,,1500,,50,,1,0xFFFFFFFE,18,2,16,,55,1,0,{ bonus2 bResEff,Eff_Curse,500; bonus2 bResEff,Eff_Silence,500; bonus2 bResEff,Eff_Stun,500; bonus2 bResEff,Eff_Stone,500; bonus2 bResEff,Eff_Sleep,500; },{},{}
-2367,Sniping_Suit,剪裁[服裝] ,4,20,,750,,42,,1,0x00000800,18,2,16,,50,1,0,{ bonus bMdef,5; bonus bCritical,6+(readparam(bLuk)/10); bonus bDelayRate,-23; },{},{}
+2367,Sniping_Suit,剪裁服裝,4,20,,750,,42,,1,0x00000800,18,2,16,,50,1,0,{ bonus bMdef,5; bonus bCritical,6+(readparam(bLuk)/10); bonus bDelayRate,-23; },{},{}
 2368,Golden_Armor,Golden Armor,4,20,,2000,,4,,0,0xFFFFFFFF,63,2,16,,0,0,0,{ bonus bMdef,4; },{},{}
 2369,Freyja_Overcoat,Freyja Overcoat,4,0,,500,,12,,0,0xFFFFFFFE,63,2,16,,0,0,0,{ bonus bUnbreakableArmor,0; bonus2 bSubRace,RC_DemiHuman,10; bonus2 bSubRace,RC_Player,10; },{},{}
 2370,Used_Mage_Coat,Used Mage Coat,4,0,,0,,15,,0,0xFFFFFFFF,63,2,16,,0,0,0,{ bonus bMaxHP,300; bonus bMaxSP,30; bonus bBaseAtk,10; bonus bAGI,1; },{},{}
@@ -3820,8 +3820,8 @@
 6043,Letter_From_Lugen,魯根的信件,3,0,,10,,,,,,,,,,,,,{},{},{}
 6044,Letter_From_Otto,奧圖的信件,3,0,,10,,,,,,,,,,,,,{},{},{}
 6045,Supply_Box,宅配箱子,3,0,,0,,,,,,,,,,,,,{},{},{}
-6046,Clothing_Dye_Coupon,[服裝] 染色兌換卷,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
-6047,Clothing_Dye_Coupon_II,[服裝] 染色兌換卷Ⅱ,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+6046,Clothing_Dye_Coupon,服裝染色兌換卷,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+6047,Clothing_Dye_Coupon_II,服裝染色兌換卷Ⅱ,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
 6048,Unidentified_Mineral,奇異礦石,3,0,,10,,,,,,,,,,,,,{},{},{}
 6049,Marlin,馬林魚,3,0,,10,,,,,,,,,,,,,{},{},{}
 6050,Mercenary_Contract,Mercenary Contract,3,0,,10,,,,,,,,,,,,,{},{},{}
@@ -7819,8 +7819,8 @@
 14286,Skull_Ring_Box,Skull Ring Box,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 2763,1; },{},{}
 14287,Baricade_Repair_Kit,Barricade Repair Kit,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 1019,30; getitem 999,10; getitem 1011,10; getitem 984,5; },{},{}
 14288,Guardian_Stone_Repair_Kit,Guardian Stone Repair Kit,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 984,1; getitem 985,1; getitem 7049,30; getitem 717,5; getitem 716,5; getitem 715,5; },{},{}
-14289,Cloth_Dye_Coupon_Box,[服裝] 染色兌換卷箱子,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 6046,1; },{},{}
-14290,Cloth_Dye_Coupon2_Box,[服裝] 染色兌換卷箱子Ⅱ,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 6047,1; },{},{}
+14289,Cloth_Dye_Coupon_Box,服裝染色兌換卷箱子,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 6046,1; },{},{}
+14290,Cloth_Dye_Coupon2_Box,服裝染色兌換卷箱子Ⅱ,18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 6047,1; },{},{}
 14291,Cloth_Dye_Coupon3_Box,Clothing Dye Coupon Box,2,,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 6046,1; },{},{}
 14292,Cloth_Dye_Coupon4_Box,Clothing Dye Coupon Box II,2,,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 6047,1; },{},{}
 14293,Mercenary_Contract_Box,Mercenary Contract Box,2,,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 6050,1; },{},{}
