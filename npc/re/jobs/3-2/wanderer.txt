@@ -2,10 +2,13 @@
 //= Wanderer Job Quest
 //===== By: ================================================== 
 //= Muad_Dib, Meyraw
+//===== 中文化 ================================================
+//= 冥王RA-PlutoRA
+//= XD人
 //===== Current Version: ===================================== 
 //= 1.5
 //===== Compatible With: ===================================== 
-//= rAthena SVN
+//= rAthena Project
 //===== Description: ========================================= 
 //= [Official Conversion]
 //= Job change Quest from Dancer / Gypsy -> Wanderer.
@@ -18,140 +21,136 @@
 //= 1.5 Added VIP features. [Euphy]
 //============================================================
 
-xmas,162,209,5	script	Aspiring Wanderer, Soy	714,{
+xmas,162,209,5	script	浪姬舞者志願生小伊	714,{
 	if (job_wan == 0) {
-		mes "[Soy]";
-		mes "Mimi, what should I do?";
-		mes "My heart is beating so fast. Ahhh~";
+		mes "[小伊]";
+		mes "咪咪，怎麼辦啊?";
+		mes "我的心老是噗通噗通的跳。唉，真是~";
 		next;
-		mes "[Mimi]";
-		mes "Why is you face so flushed? Ha ha ha.";
+		mes "[咪咪]";
+		mes "小伊，你的臉怎麼紅了?啊哈哈。";
 		next;
-		mes "[Soy]";
-		mes "Don't make fun of me Mimi~";
-		mes "I have dreamed of being at Dancer Kim's stage for a very long time!";
-		emotion e_shy,0,"Aspiring Wanderer, Soy";
+		mes "[小伊]";
+		mes "咪咪，別跟我開玩笑~";
+		mes "但是我在夢中都想念著金舞孃的表演!"; //但是?可是或不過?
+		emotion e_shy,0,"浪姬舞者志願生小伊";
 		next;
-		mes "[Soy]";
-		mes "I might lose my senses if I really see her dancing like a beautiful angel sent from above.";
+		mes "[小伊]";
+		mes "有如神秘妖仙女降臨般，受到如此讚賞的金舞孃。看到她之後，我說不定會興奮地暈過去的。"; //妖仙女或天使? 原文是說天使，台版則是妖仙女，我還懷疑其實是缺字問題
 		next;
-		mes "[Mimi]";
-		mes "Calm down, Soy.";
-		mes "You are going to faint even before the performance starts. Ha ha.";
+		mes "[咪咪]";
+		mes "鎮靜點，小伊。";
+		mes "這個樣子的話，在公演開始之錢你就要倒下了，呵呵。";
 		next;
-		mes "[Mimi]";
-		mes "But I understand you.";
-		mes "Many people are looking forward to meeting the best Wanderer in the world.";
+		mes "[咪咪]";
+		mes "但是我可以理解。";
+		mes "聽說可以見到世界上最受好評的浪姬舞者之後，我也非常期待。";
 		if (BaseJob != Job_Dancer || BaseLevel < 99) close;
 		next;
-		select("Dancer Kim?:Wanderer?");
-		emotion e_omg,0,"Aspiring Wanderer, Soy";
-		mes "[Soy]";
-		mes "What? You don't know the famous Wanderer, Dancer Kim?";
-		mes "Oh my, oh my!!!";
-		mes "You seem to know the art of dancing but how come you don't know her?";
-		mes "Oh, no!";
+		select("金舞孃?浪姬舞者?");
+		emotion e_omg,0,"浪姬舞者志願生小伊";
+		mes "[小伊]";
+		mes "怎麼?你連浪姬舞者金舞孃都不知道嗎?";
+		mes "天哪，不會吧!!!";
+		mes "看你好像也跳過舞，怎麼連她也不知道呢?";
+		mes "天哪，不會吧!";
 		next;
-		mes "[Mimi]";
-		mes "A Wanderer is a free-spirited person who wanders about the world with the wind and the stars.";
-		mes "Rhythm and Music accompany them wherever they go.";
+		mes "[咪咪]";
+		mes "浪姬舞者是隨著風、伴著星星在世界各地流浪的自由靈魂。";
+		mes "她們總是伴隨著優美的音樂翩翩起舞。";
 		next;
-		mes "[Mimi]";
-		mes "Dancer Kim is the most famous Wanderer who tours the world with the Maestro Guitar Dong as the team <Nollio>.";
+		mes "[咪咪]";
+		mes "浪姬舞者金舞孃和宮廷樂師宋組成的組合<諾里歐>，目前正在進行巡迴公演。她是位非常著名的舞蹈家。";
 		next;
-		mes "[Mimi]";
-		mes "Soy and myself are Aspiring Wanderers, and there will be a performance of <Nollio> in this town soon, so we are eagerly looking forward to see it.";
+		mes "[咪咪]";
+		mes "我和小伊是浪姬舞者志願生，不久之後，<諾里歐>公演就會在這裡舉行，因此我們非常期待。";
 		next;
-		mes "[Soy]";
-		mes "If you are a true Dancer, you must be struck with her Dance!";
-		mes "Will I ever meet a Maestro like Guitar Song someday, Mimi?";
+		mes "[小伊]";
+		mes "如果是真正的舞孃，看了她們的公演之後，一定會引起共鳴的!";
+		mes "我也能遇到像宋樂師這樣浪漫的詩人嗎，咪咪?";
 		next;
-		emotion e_heh,0,"Aspiring Wanderer, Soy";
-		mes "[Mimi]";
-		mes "Just hang in there, Soy. Ha ha.";
+		emotion e_heh,0,"浪姬舞者志願生小伊";
+		mes "[咪咪]";
+		mes "加油，小伊，呵呵。";
 		next;
-		switch(select("Where is the performance?:End the conversation.")) {
+		switch(select("公演在什麼地方舉行呢?:結束對話")) {
 		case 1:
-			mes "[Soy]";
-			mes "Right in front of the Christmas tree!";
-			mes "White snow, beautiful melody, and my captivating dance.";
-			mes "Don't you think it would be a great performance?";
+			mes "[小伊]";
+			mes "就在聖誕樹前面!";
+			mes "雪白的雪花，優美的音樂和有魅力的舞蹈。";
+			mes "一定會是一場了不起的公演。你說對吧?";
 			set job_wan,1;
 			close;
 		case 2:
-			mes "[Mimi]";
-			mes "If you are interested in becoming a Wanderer, just come back to me anytime. Although I'm not perfect, I will try my best to help you.";
+			mes "[咪咪]";
+			mes "如果你對浪姬舞者感興趣的話，可以隨時來找我。我雖然還有很多不足的地方，但我會盡可能地提供幫助。";
 			close;
 		}
 	} else if (job_wan == 1) {
-		if (strnpcinfo(0) == "Aspiring Wanderer, Soy") {
-			mes "[Soy]";
-			mes "The performance will be held in front of the Christmas tree here in Lutie.";
-			mes "I can't wait! Ah~ I'm losing my senses, Mimi.";
+		if (strnpcinfo(0) == "浪姬舞者志願生小伊") {
+			mes "[小伊]";
+			mes "公演將會在薑餅城的聖誕樹錢舉行。";
+			mes "我好像又期待得太厲害了!啊~我都快暈了，咪咪。";
 		} else {
-			mes "[Mimi]";
-			mes "A Wanderer's dancing charm is higher than that of a dancer or gypsy, everyone will lose their souls when they see their performance.";
-			next;
-			mes "[Mimi]";
-			mes "I want to become a Wanderer, but I'm still a dancer.";
-			mes "But I think^3131FF it's better to learn Gypsy's unique skills first, and then become a Wanderer^000000. Soy can't wait to become a Wanderer.";
+			mes "[咪咪]";
+			mes "我也想成為浪姬舞者，但是我還只是個舞孃。";
+			mes "但是我想^3131FF應該先學習冷豔舞姬獨有的能力，然後再成為浪姬舞者比較好^000000。小伊太心急了，恨不得馬上就變成浪姬舞者。";
 		}
 		close;
 	} else if (job_wan == 10) {
-		mes "[Soy]";
-		mes "<Nollio> is the best!!";
+		mes "[小伊]";
+		mes "<諾里歐>是最棒的!!";
 		close;
 	} else {
-		if (strnpcinfo(0) == "Aspiring Wanderer, Soy") {
-			mes "[Soy]";
-			mes "I want to become an famous Wanderer too, Mimi.";
+		if (strnpcinfo(0) == "浪姬舞者志願生小伊") {
+			mes "[小伊]";
+			mes "我也想成為一名優秀的浪姬舞者，咪咪。";
 		} else {
-			mes "[Mimi]";
-			mes "Not sure if I'm greedy, but I need to learn all Dancer and Gypsy skills before I can become a Wanderer.";
+			mes "[咪咪]";
+			mes "不知道是不是我太貪心了，我要先學會舞孃和冷豔舞姬的所有能力，然後再爭取成為浪姬舞者。";
 		}
 		close;
 	}
 }
-xmas,163,209,3	duplicate(Aspiring Wanderer, Soy)	Aspiring Wanderer, Mimi	714
+xmas,163,209,3	duplicate(浪姬舞者志願生小伊)	浪姬舞者志願生咪咪	714
 
-xmas,132,143,5	script	Performance Manager#wnd	713,{
-	mes "[Performance Manager]";
+xmas,132,143,5	script	公演工作人員#wnd	713,{
+	mes "[公演工作人員]";
 	if (job_wan == 0) {
-		mes "Oh, what should I do?";
+		mes "啊呀，這可怎麼辦啊?";
 		close;
 	} else if (job_wan == 1) {
-		mes "Oh, what should I do?";
-		mes "Why did they do this?";
+		mes "啊呀，這可怎麼辦啊?";
+		mes "怎麼會這樣呢?";
 		next;
-		emotion e_shy,0,"Aspiring Wanderer, Soy";
-		mes "[Performance Manager]";
-		mes "Hey, you there!";
-		mes "Please listen to my story.";
-		mes "Actually, I shouldn't tell anyone.";
-		mes "But I'm so overwhelmed that I might go crazy. Ahhhh~~!";
+		emotion e_shy,0,"浪姬舞者志願生小伊";
+		mes "[公演工作人員]";
+		mes "喂，你!";
+		mes "我能跟你說句話嗎?";
+		mes "事實上，這不是能隨便跟人說的事情。";
+		mes "但是我鬱悶得快瘋掉了。哎呀，真是，真是。";
 		next;
 		while (1) {
 			set .@loop,0;
-			switch(select("Sorry, I don't care.:What's the matter?:Why are you telling me this?")) {
+			switch(select("不感興趣:有什麼事嗎?:既然不能說，為什麼要告訴我?")) {
 			case 1:
-				mes "[Performance Manager]";
-				mes "That's a bit harsh don't you think?";
+				mes "[公演工作人員]";
+				mes "哎呀!真是個無情的世界!";
 				close;
 			case 2:
-				mes "[Performance Manager]";
-				mes "The performance is supposed to be soon!";
+				mes "[公演工作人員]";
+				mes "我想說的是公演沒剩幾天了!";
 				next;
-				mes "[Performance Manager]";
-				mes "Those people don't feel any responsibility..";
-				mes "We're all expecting them and I've promoted them a lot.";
+				mes "[公演工作人員]";
+				mes "都是些沒有責任感的傢伙。";
+				mes "我本來對公演充滿了期待，已經做足了宣傳工作。";
 				next;
 				set .@loop,1;
 				break;
 			case 3:
 				emotion e_ag;
-				mes "[Performance Manager]";
-				mes "I told you that I'm overwhelmed!";
-				mes "You don't understand me!";
+				mes "[公演工作人員]";
+				mes "我不是說了嗎?因為太鬱悶!算了，跟你說不清楚!";
 				next;
 				break;
 			}
@@ -159,261 +158,253 @@ xmas,132,143,5	script	Performance Manager#wnd	713,{
 		}
 		while (1) {
 			set .@loop,0;
-			switch(select("Is there a problem?:Who do you mean?:It has nothing to do with me.")) {
+			switch(select("發生了什麼問題嗎?:你在說誰啊?:好像跟我沒關係吧?")) {
 			case 1:
-				mes "[Performance Manager]";
-				mes "How could they do that?";
-				mes "People will throw snowballs!";
-				mes "Maybe they will even throw a big snowman, no!";
+				mes "[公演工作人員]";
+				mes "怎麼能這樣呢?";
+				mes "我會被人用雪球砸的!";
+				mes "不，也許會扔雪人過來。哎呀!";
 				next;
 				emotion e_wah;
-				mes "[Performance Manager]";
-				mes "People might grab me by the collar!!";
-				mes "Swing swing, dangling dangling!!";
-				mes "This is awful.";
+				mes "[公演工作人員]";
+				mes "人們會抓住我的領子，用力搖晃!!!哎呀!真可怕!";
 				next;
 				set .@loop,1;
 				break;
 			case 2:
-				mes "[Performance Manager]";
-				mes "Who?!";
-				mes "It's <Nollio>!";
-				mes "You call that a question?";
-				mes "They are the worst people in the world.";
+				mes "[公演工作人員]";
+				mes "還會是誰!";
+				mes "就是<諾里歐>!";
+				mes "你知道嗎?";
+				mes "他們是世界上最壞的人。";
 				next;
 				break;
 			case 3:
-				mes "[Performance Manager]";
-				mes "What a heartless thing to say!";
+				mes "[公演工作人員]";
+				mes "太過分了!";
 				close;
 			}
 			if (.@loop) break;
 		}
 		while (1) {
 			set .@loop,0;
-			switch(select("Are you afraid of people?:The performers caused trouble?:Ignore him.")) {
+			switch(select("怕別人找你麻煩?:參加公演的人出問題了啊:不理他，走開")) {
 			case 1:
-				mes "[Performance Manager]";
-				mes "Wouldn't you be afraid of all the eyes of people if you were me?";
-				mes "I am in charge of this performance! A lot of people are looking forward to see it and there are many sponsors who are supporting us! I'm so stressed.";
+				mes "[公演工作人員]";
+				mes "換成是你的話，難道你不會害怕嗎?";
+				mes "我是公演的負責人!你知道包括公演幕後人員在內的那麼多人要花多少錢嗎?要面對多少人的期待!你想想我有多重的負擔。";
 				next;
 				break;
 			case 2:
-				mes "[Performance Manager]";
-				mes "Yes!";
-				mes "<Nollio> has cancelled their performance!";
+				mes "[公演工作人員]";
+				mes "是的!";
+				mes "就是傳說中的<諾里歐>組合，突然通知要取消公演!";
 				next;
-				mes "[Performance Manager]";
-				mes "And they didn't give me any reason whatsoever!";
+				mes "[公演工作人員]";
+				mes "公演的日子就要到了，這對我來說簡直就是晴天霹靂!";
 				next;
-				mes "[Performance Manager]";
-				mes "Besides the money I spent for promoting and setting up the stage..";
-				mes "How can I handle all the angry people?";
+				mes "[公演工作人員]";
+				mes "哎呀，就算不去想公演的宣傳費跟器材費，光是人們的抱怨就有夠可怕的了......";
 				next;
 				set .@loop,1;
 				break;
 			case 3:
-				mes "[Performance Manager]";
-				mes "Hey, where are you going!";
+				mes "[公演工作人員]";
+				mes "喂，你去哪兒!";
 				close;
 			}
 			if (.@loop) break;
 		}
 		mes "[" + strcharinfo(0) + "]";
-		mes "I see that you are worried that the performance is going down the drain.";
-		mes "You wanted to make a successful performance to meet the fan's expectations.";
+		mes "費盡心血準備的公演突然成了泡影，你一定很擔心吧!";
+		mes "觀眾們一定希望看到一場成功的公演。";
 		next;
-		mes "[Performance Manager]";
-		mes "I really don't know how I should manage this.";
-		mes "Why did they suddenly cancel the performance?";
-		mes "Do you know?";
+		mes "[公演工作人員]";
+		mes "我都不知道現在該怎麼辦呢。";
+		mes "他們為什麼突然取消公演?";
+		mes "你知道嗎?";
 		next;
-		mes "[Performance Manager]";
-		mes "Why is <Nollio> taking this kind of attitude towards me?";
-		mes "Did I make any mistakes? After making a contract with them, I did everything they demanded of me!";
+		mes "[公演工作人員]";
+		mes "<諾里歐>為什麼會突然取消公演呢?";
+		mes "是我做錯了什麼嗎?和他們簽訂合約之後，他們要求的東西我已經全部滿足了啊!";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "It's because...";
+		mes "這個嘛......";
 		input .@inputstr$;
-		mes "^3131FF" + .@inputstr$ + "^000000";
-		mes "......";
+		mes " + .@inputstr$ + ";
+		mes "...是這個原因";
 		next;
 		emotion e_ag;
-		mes "[Performance Manager]";
-		mes "What the hell are you talking about?";
-		mes "Are you teasing me because I'm emotionally unstable?";
+		mes "[公演工作人員]";
+		mes "你在胡說什麼啊?";
+		mes "你是覺得我精神不正常，所以在跟我開玩笑嗎?";
 		next;
-		mes "[Performance Manager]";
-		mes "Oh, I'm so worried that I'm having heart palpitations and I'm starting to feel dizzy!";
+		mes "[公演工作人員]";
+		mes "哎呀，胸口發悶，腦袋發暈，感覺自己馬上就要倒下了!";
 		next;
-		mes "[Performance Manager]";
-		mes "Hey! Can you please go out and find the Maestro Guitar Song?";
+		mes "[公演工作人員]";
+		mes "喂!!快去找宮廷樂師宋啊!";
 		next;
-		switch(select("Ah, okay.:Why should I do that?:I won't!")) {
+		switch(select("好吧!:為什麼是我?:不要!")) {
 		case 1:
 			break;
 		case 2:
 			emotion e_an;
-			mes "[Performance Manager]";
-			mes "You're asking me why!?";
-			mes "Ahh, no.....";
-			mes "It's because you seem like a similar artist.";
-			mes "You also wanted to watch the performance, didn't you?";
+			mes "[公演工作人員]";
+			mes "我怎麼知道!?";
+			mes "啊，不，不。";
+			mes "你會幫我吧?";
+			mes "你難道不想看公演嗎?";
 			next;
 			break;
 		case 3:
-			mes "[Performance Manager]";
-			mes "You are so cold-hearted....";
+			mes "[公演工作人員]";
+			mes "你這不把我往絕路上趕嗎......";
 			close;
 		}
-		if (getserverdef(VAR_VIP_SCRIPT)) {
+		if (VIP_SCRIPT) {
 			callfunc "VIP_Third_Class";
 			set job_wan,2;
 			setquest 2218;
 			next;
 		}
-		mes "[Performance Manager]";
-		mes "I would grab them by their collars if I could!";
-		mes "I would tell them Why are you spoiling the performance? but for now, dealing with the angry sponsors is hard enough... Oh, no!";
+		mes "[公演工作人員]";
+		mes "要是可以的話，我真想衝過去一把抓住他們的領子!";
+		mes "那些想要讓公演泡湯的該死傢伙!!但是現在我必須先去應付那些贊助人......哎呀!!";
 		next;
-		mes "[Performance Manager]";
-		mes "I don't know where Guitar Song is, but it is clear that he likes to visit the Comodo Casino!";
-		mes "Hu, Hurry up!! Oh, I really feel dizzy! Guitar Song!!!";
+		mes "[公演工作人員]";
+		mes "雖然我也不知道宋樂師在哪裡，但我知道他經常去克魔島，你去克魔島的各個地方仔細找一下!";
+		mes "快!快!!哎呀，我真的快要暈倒了!哎呀!宋樂師那個傢伙!!!";
 		set job_wan,2;
 		setquest 2218;
 		close;
 	} else if (job_wan == 2) {
-		mes "I am not sure if Guitar Song is in Comodo, you should go there and find him!";
+		mes "我也不知道宋樂師到底在不在克魔島，你先去找看看吧!";
 		close;
 	} else if (job_wan == 9) {
-		mes "They came back!!";
+		mes "他們回來啦!!";
 		close;
 	} else if (job_wan == 10) {
-		mes "Thanks to you, the performance was successful.";
-		mes "You are so competent!";
-		mes "In return, I will prepare the stage for you someday.";
+		mes "多虧了你，公演才能順利完成。";
+		mes "真是位能幹的朋友!";
+		mes "為了報答，到時候我會專門為你準備一場公演。";
 		close;
 	}
-	mes "Ahhh, so distracting!";
+	mes "哎呀，太散漫了，哎呀!";
 	close;
 }
 
-comodo,140,86,5	script	Cheerless Maestro	479,{
+comodo,140,86,5	script	無奈的宮廷樂師	479,{
 	if (job_wan < 2) {
-		mes "[Cheerless Maestro]";
-		mes "You can dance ~";
-		mes "You can do your work ~";
-		mes "You are the dancing Queen ~";
-		mes "I am the tambourine King ~";
+		mes "[無奈的宮廷樂師]";
+		mes "你可以跳舞 ~~";
+		mes "你可以幹活 ~~";
+		mes "你是跳舞女王 ~~";
+		mes "我則是鼓手王 ~~";
 		next;
-		mes "[Cheerless Maestro]";
-		mes "Whew...";
+		mes "[無奈的宮廷樂師]";
+		mes "呼...";
 		close;
 	} else if (job_wan == 2) {
-		mes "[Cheerless Maestro]";
-		mes "You can dance ~";
-		mes "You can do your work ~";
-		mes "You are the dancing Queen ~";
-		mes "I am the tambourine King ~";
+		mes "[無奈的宮廷樂師]";
+		mes "你可以跳舞 ~~";
+		mes "你可以幹活 ~~";
+		mes "你是跳舞女王 ~~";
+		mes "我則是鼓手王 ~~";
 		next;
-		mes "- You found a Maestro -";
-		mes "- singing a weird song. -";
+		mes "- 看到了一個正在唱著奇怪歌的宮廷樂師 -";
 		next;
-		if(select("That's a weird song.:Ignore it.") == 2) {
-			mes "- What a weird person, I better stay away. -";
+		if(select("真是首奇怪的歌:不管他") == 2) {
+			mes "- 這種奇怪的人，還是躲開為妙。 -";
 			close;
 		}
 		emotion e_omg;
-		mes "[Cheerless Maestro]";
-		mes "What?!";
-		mes "Are you ignoring my immortal masterpiece <Tambourine King>? You are the first person who's ever slapped me in the face.";
+		mes "[無奈的宮廷樂師]";
+		mes "什麼?!";
+		mes "你竟敢看不起我的不朽名曲<手鼓王>?這是頭一次當面被打耳光，真好笑。";
 		next;
-		select("I didn't slap you.");
+		select("我沒有打你啊。");
 		emotion e_gasp;
-		mes "[Cheerless Maestro]";
-		mes "Oh! Lady, looking at your appearance you must be a dancer, right?";
+		mes "[無奈的宮廷樂師]";
+		mes "哦!看你的服裝，以前應該跳過舞吧?";
 		next;
-		mes "[Cheerless Maestro]";
-		mes "Do you have a Bard or Minstrel traveling together with you?";
-		mes "If you don't, how about making a traveling troupe with me?";
+		mes "[無奈的宮廷樂師]";
+		mes "你有和你一起的詩人同伴嗎?怎麼樣?如果沒有的話，就和我一起組成一個流浪樂團吧?";
 		next;
-		mes "[Cheerless Maestro]";
-		mes "The name of the team is <Guitar Song's Agony>.";
-		mes "This name expresses the excruciating pain it takes to create art works.";
+		mes "[無奈的宮廷樂師]";
+		mes "名字就叫<宋樂師的苦惱>。";
+		mes "可以很貼切的表達出宋樂師在創作時的痛苦。";
+		mes "這個名字很有味道，人氣一定會很高的。";
 		next;
-		mes "[Cheerless Maestro]";
-		mes "It has an edgy kind of name So I think that it will be a very popular group.";
-		next;
-		select("Are you Guitar Song?");
+		select("你就是宋樂師?");
 		emotion e_shy;
-		mes "[Guitar Song]";
-		mes "Huh... I'm a bit disappointed that you finally recognize me now.";
-		mes "Yes, I am the handsome Guitar Song in the famous group <Nollio>.";
-		mes "Ha ha ha!";
+		mes "[宋樂師]";
+		mes "呵...現在才認出來嗎?真是鬱悶。";
+		mes "是的，我就是著名組合<諾里歐>的世界第一美男宋樂師，呵呵。";
 		next;
-		mes "[Guitar Song]";
-		mes "So how about it? Isn't that a tempting offer to you?";
-		mes "I'm a really famous Maestro at the peak of my popularity. People are dying to work with me, but you are indifferent to me lady.";
+		mes "[宋樂師]";
+		mes "怎麼樣?對我的提議感興趣嗎?";
+		mes "我真的是人氣很高的宮廷樂師。一般人聽到這個提議之後，早就高興得暈過去了。";
 		next;
-		select("Where is Dancer Kim?:Why'd you cancel the performance?");
-		mes "[Guitar Song]";
-		mes "Why are you asking me that question so suddenly?";
-		mes "Come on, let's just talk about a pleasant matter.";
-		mes "Dancer Kim and the performance have nothing to do with me.";
+		select("跟金舞孃的行蹤:公演取消的原因");
+		mes "[宋樂師]";
+		mes "幹嘛突然提這個?";
+		mes "喂，喂，我們說點開心的好嗎?";
+		mes "什麼金舞孃，什麼公演，都和我沒關係。";
 		next;
-		select("What do you mean?");
-		mes "[Guitar Song]";
-		mes "Hey, I told you to stop talking about this matter....";
-		mes "I don't want to think about it. It just hurts my feelings.";
+		select("你在說什麼啊?");
+		mes "[宋樂師]";
+		mes "喂，我不是說過不要再提了嗎?";
+		mes "我不想再想了。想了又能怎樣，只會讓心情更糟。";
 		next;
-		mes "- Guitar Song is adamantly refusing to talk. What should I do to hear the story about <Nollio>? -";
+		mes "- 宋樂師拒絕談起那件事情。該怎麼跟他說<諾里歐>的事呢? -";
 		set job_wan,3;
 		close;
 	} else if (job_wan == 3) {
 		mes "[" + strcharinfo(0) + "]";
-		mes "(Would it be possible for me to make him tell me what happened with Nollio?)";
+		mes "(憑我的力量，能讓宋樂師說出諾里歐的事情嗎?)";
 		next;
-		switch(select("Use Dazzler:Use Lullaby:Use Lucky Luck")) {
+		switch(select("驚聲尖叫:搖籃曲:女神之吻")) {
 		case 1:
 			if (getskilllv("DC_UGLYDANCE") == 5 || rand(100) >= 80) {
-				mes "- You get closer to Song's ear. -";
+				mes "- 你湊近宋樂師的耳朵。 -";
 				next;
 				mes "[" + strcharinfo(0) + "]";
-				mes "Okay-";
+				mes "嗯-";
 				next;
 				mes "[" + strcharinfo(0) + "]";
-				mes "Oi-!!!!!";
+				mes "喂-!!!!!";
 				specialeffect EF_STUNATTACK;
 				next;
-				mes "[Guitar Song]";
-				mes "Wh...what!! What are you doing?!?";
-				mes "You almost damaged my eardrum.";
+				mes "[宋樂師]";
+				mes "幹、幹嘛?!!你在幹什麼啊?!?";
+				mes "耳膜都要震破了。";
 				emotion e_an;
 				next;
 				mes "[" + strcharinfo(0) + "]";
-				mes "Hey, cheer up!!!";
+				mes "喂，打起精神!!!";
 				next;
-				mes "[Guitar Song]";
-				mes "What are you talking about?";
+				mes "[宋樂師]";
+				mes "你在說什麼啊?";
 				next;
 				mes "[" + strcharinfo(0) + "]";
-				mes "You should know, people are addicted to your music?";
-				mes "So many people are supporting you with anticipation.";
-				mes "Would you break your promise and let people down? Not giving people any reason?";
+				mes "你應該很清楚人們對你的音樂有多麼著迷，";
+				mes "為了看公演，那麼多人都充滿期待地幫你加油。";
+				mes "你難道就這樣不負責任地違背約定嗎?不告訴大家任何理由?";
 				next;
 			} else {
 				mes "[" + strcharinfo(0) + "]";
-				mes "Okay-";
+				mes "嗯-";
 				next;
 				mes "[" + strcharinfo(0) + "]";
-				mes "Aaaaahhh!!!!!";
+				mes "啊啊啊啊啊啊啊!!!!!";
 				next;
-				mes "[Guitar Song]";
-				mes "What... what are you doing?!! What's wrong with you!";
-				mes "Security!!!";
+				mes "[宋樂師]";
+				mes "幹、幹嘛?!!你這人怎麼這樣啊!";
+				mes "警衛!!!";
 				next;
-				mes "[Black-suit Guards]";
-				mes "Please stop this.";
+				mes "[穿著黑衣的青年們]";
+				mes "請不要這麼做。";
 				close2;
 				warp "comodo",117,98;
 				end;
@@ -421,447 +412,432 @@ comodo,140,86,5	script	Cheerless Maestro	479,{
 			break;
 		case 2:
 			if (getskilllv("BD_LULLABY") == 0) {
-				mes "- You cannot use this skill without learning it. -";
+				mes "- 未學習該技能，無法使用。 -";
 				close;
 			}
 			mes "[" + strcharinfo(0) + "]";
-			mes "Looks like I will not get answer even if I force him.";
+			mes "看來逼他也得不到什麼回答。";
 			close;
 		case 3:
 			if (getskilllv("DC_FORTUNEKISS") == 0) {
-				mes "- You cannot use this skill without learning it. -";
+				mes "- 未學習該技能，無法使用。 -";
 				close;
 			}
 			emotion e_what,1;
 			mes "[" + strcharinfo(0) + "]";
-			mes "Ah, ah my Guitar Song~";
+			mes "啊，宋樂師~";
 			next;
-			mes "[Guitar Song]";
-			mes "What? I've got goose bumps.";
-			next;
-			emotion e_what,1;
-			mes "[" + strcharinfo(0) + "]";
-			mes "I've been watching <Nollio> for years.";
-			next;
-			mes "[Guitar Song]";
-			mes "I know that we are that popular! Ha ha ha!";
+			mes "[宋樂師]";
+			mes "呵呵，怎麼了? 雞皮疙瘩都要起來了。";
 			next;
 			emotion e_what,1;
 			mes "[" + strcharinfo(0) + "]";
-			mes "I've seen other Maestro's performances but there was no one better then Guitar Song.";
+			mes "從很久以前開始，我就一直在看<諾里歐>的演出";
 			next;
-			mes "[Guitar Song]";
-			mes "He he he! Yes, I know I am super great!";
+			mes "[宋樂師]";
+			mes "我們確實很有名!哈哈哈!";
+			next;
+			emotion e_what,1;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我看過很多其他宮廷樂師的公演，但您的演奏是最高超的。";
+			next;
+			mes "[宋樂師]";
+			mes "嘿嘿嘿!我確實很了不起!";
 			next;
 			emotion e_no1,1;
 			mes "[" + strcharinfo(0) + "]";
-			mes "Oh... When I hear Guitar Song's performance for the first time I has a crush on you immediately.";
-			next;
-			mes "[" + strcharinfo(0) + "]";
-			mes "It felt like hearing mommy's lullaby~ It was so beautiful and moving... You are the best artist of our time.";
+			mes "真的......第一次聽您演奏之後，我就對您一見鍾情";
+			mes "就像躺在搖籃裡聽著媽媽的搖籃曲一樣~~";
+			mes "太美了，太讓人感動......您是這個時代最了不起的藝術家";
 			next;
 			specialeffect EF_STEAL;
-			mes "[Guitar Song]";
-			mes "Ha ha ha. I know that well, but it feels good to hear a compliment from you!";
+			mes "[宋樂師]";
+			mes "嘿嘿，那是當然，不過聽你這樣說，我還是很高興!";
 			next;
 			mes "[" + strcharinfo(0) + "]";
-			mes "So I was looking forward to seeing your performance in Lutie this time.";
-			mes "But after I heard the performance got cancelled, I felt so sad.";
+			mes "因此我對這次薑餅城的公演也非常期待。";
+			mes "聽說公演突然取消的消息之後，我感覺天都快掉下來了，再也無法抑制心中的失落。";
 			next;
 			emotion e_sob,1;
 			mes "[" + strcharinfo(0) + "]";
-			mes "Now I can't hear Guitar Song's melody~~";
-			mes "I wanted to dance to your music like a beautiful butterfly.";
-			mes "Is there no way for my dream to be true now? Sob sob...";
+			mes "竟然不能聽到您的音樂~~~我想做一隻陶醉在您音樂裡的蝴蝶，在音樂的海洋中翩翩起舞，";
+			mes "我的夢想現在無法實現了!嗚嗚!";
 			next;
-			mes "[Guitar Song]";
-			mes "Huh huh! No, that is not...";
-			next;
-			emotion e_sob,1;
-			mes "[" + strcharinfo(0) + "]";
-			mes "I am really happy to meet you in person, but I hope to see your performance in the beautiful snowy town, Lutie.. Sob sob...";
+			mes "[宋樂師]";
+			mes "呵呵!這個嘛......";
 			next;
 			emotion e_sob,1;
 			mes "[" + strcharinfo(0) + "]";
-			mes "Why in the world don't you show us the performance, Guitar Song?";
-			mes "Don't you like me? Sob sob..";
+			mes "能在這裡遇到您，我感到非常高興。但是美麗的薑餅城公演......嗚嗚。";
+			next;
+			emotion e_sob,1;
+			mes "[" + strcharinfo(0) + "]";
+			mes "您到底為什麼要取消公演啊?";
+			mes "我，真的很想知道。您是討厭我嗎?嗯?";
 			next;
 			emotion e_omg;
-			mes "[Guitar Song]";
-			mes "No, it's not that kind of reason!";
+			mes "[宋樂師]";
+			mes "沒有，怎麼可能是這種原因!";
 			next;
 			mes "[" + strcharinfo(0) + "]";
-			mes "Then please tell me, I really love your music... but now I feel so blue...";
+			mes "求求您告訴我吧!我的心真的非常痛...我是如此喜愛您和您的音樂......";
 			emotion e_what;
 			next;
 			break;
 		}
-		mes "[Guitar Song]";
-		mes "Oh, no! You know...";
-		mes "I want to have a performance, too!";
-		mes "But I cannot do it all by myself!";
+		mes "[宋樂師]";
+		mes "啊，哎呀，這個嘛!";
+		mes "其實我很想舉行公演!";
+		mes "但是光我一個人怎麼能舉行公演呢?";
 		next;
 		emotion e_ag;
-		mes "[Guitar Song]";
-		mes "It's all because of Dancer Kim!";
-		mes "One day, she suddenly got mad and told me that she would quit <Nollio>!";
-		mes "I was also tired of here unpredictable feelings, too!";
+		mes "[宋樂師]";
+		mes "這都是金舞孃的問題!";
+		mes "不久前，她突然大發脾氣，離開了<諾里歐>!";
+		mes "金舞孃的脾氣每天時好時壞，我也受夠了!";
 		next;
-		mes "[Guitar Song]";
-		mes "Pshaw.";
+		mes "[宋樂師]";
+		mes "呿。";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Why did she get mad so suddenly?";
+		mes "金舞孃為什麼回突然發火啊?";
 		next;
 		emotion e_swt;
-		mes "[Guitar Song]";
-		mes "I don't know! She must be holding a grudge for something.";
-		mes "That's what she's like.";
-		mes "She suddenly disappeared and sent me a letter telling me that the team would be disbanded.";
+		mes "[宋樂師]";
+		mes "我也不知道!她到底是哪根筋錯亂。";
+		mes "金舞孃本來就是那種人。";
+		mes "她突然失蹤，然後發來了一封要求解散組合的信。真是亂來。";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Where is Dancer Kim now?";
+		mes "金舞孃現在在哪兒呢?";
 		next;
-		mes "[Guitar Song]";
-		mes "Well, the letter was sent from Hugel.";
-		mes "I guess she might be back at her hometown.";
-		mes "That's where I met her for the first time.";
+		mes "[宋樂師]";
+		mes "郵件的寄信地址是毀葛。";
+		mes "她好像是回故鄉去了。那裡是我和金舞孃第一次見面的地方...";
 		next;
 		emotion e_dots;
-		mes "[Guitar Song]";
-		mes "Although she loses her temper easily, her dance is so wonderful....";
-		mes "I don't know what I am doing wrong.";
+		mes "[宋樂師]";
+		mes "呿，雖然動不動就發脾氣，但她的舞確實跳得很好......";
 		set job_wan,4;
 		changequest 2218,2219;
 		next;
-		mes "[Guitar Song]";
-		mes "She smiled so happily that she likes the new song so much..";
-		mes "Who can dance to my music so wonderfully as she did?";
-		mes "Now my music and my life is history... (muttering).";
+		mes "[宋樂師]"; //這裡採用自主修正官方分段與語氣感覺
+		mes "不知道她到底對我有什麼不滿，這樣對我......";
+		mes "這次的新歌她聽了很滿意，笑得很開心呢......";
+		mes "現在還有誰能將我的音樂升華成舞蹈呢?";
+		mes "我的音樂看樣子也到盡頭了...嘀嘀咕咕...";
 		close;
 	} else if (job_wan > 3 && job_wan < 8) {
-		mes "[Guitar Song]";
-		mes "Dancer Kim is probably addicted to the monster races in Hugel again!";
-		mes "Back in the day when she was addicted to the monster races, who do you think got her out of it?";
+		mes "[宋樂師]";
+		mes "金舞孃應該又在毀葛沉迷魔物賽跑吧?";
+		mes "當初那麼沉迷於魔物賽跑，是誰把你拉出來的來著......";
 		close;
 	} else if (job_wan == 8) {
 		emotion e_gasp;
-		mes "- You tell him what happened in Hugel and ask him to go back to Lutie. -";
+		mes "- 你把毀葛發生的事情告訴了宋樂師，讓他到薑餅城去。 -";
 		next;
-		mes "[Guitar Song]";
-		mes "Oh oh~";
-		mes "You are silly Dancer Kim~";
-		mes "Without me, who else can take care of such a lady like you~";
+		mes "[宋樂師]";
+		mes "哦哦~";
+		mes "金舞孃，你真是個傻瓜~";
+		mes "除了我，還有誰來照顧你呢~";
 		next;
-		mes "[Guitar Song]";
-		mes "I'll go there right away and scold her.";
+		mes "[宋樂師]";
+		mes "得馬上過去罵她一頓。";
 		set job_wan,9;
 		close;
 	} else if (job_wan == 9) {
-		mes "[Guitar Song]";
-		mes "Okay, I will go to the Christmas tree in Lutie where the performance is supposed to be held.";
+		mes "[宋樂師]";
+		mes "我馬上去薑餅城的聖誕樹前參加公演。";
 		close;
 	}
-	mes "[Cheerless Maestro]";
-	mes "Where is my partner...";
+	mes "[無奈的宮廷樂師]";
+	mes "我的同伴在哪裡......";
 	close;
 }
 
-hu_in01,305,251,5	script	Vacant Looking Lady#wnd	879,{
+hu_in01,305,251,5	script	發呆的女人#wnd	879,{
 	if (job_wan < 4) {
-		mes "[Vacant Looking Lady]";
-		mes "(blank...)";
+		mes "[發呆的女人]";
+		mes "發呆......";
 		close;
 	} else if (job_wan == 4) {
-		mes "[Vacant Looking Lady]";
-		mes "Sob... sob...";
+		mes "[發呆的女人]";
+		mes "...嗚嗚...嗚嗚";
 		next;
-		select("Why are you crying?");
+		select("你為什麼哭啊?");
 		emotion e_sob;
-		mes "[Vacant Looking Lady]";
-		mes "I gave up my dream...";
-		mes "*Sob *Sob.";
+		mes "[發呆的女人]";
+		mes "因為我放棄了自己的夢想，嗚嗚!";
 		next;
-		select("What do you mean?");
-		mes "[Vacant Looking Lady]";
-		mes "I said goodbye to my partner who had been working with me for a long time.";
+		select("你在說什麼呢?");
+		mes "[發呆的女人]";
+		mes "我和一直都在一起旅行的同伴提出分手。";
 		next;
-		select("Why did you say goodbye?");
+		select("哎呀，幹嘛要說那種話呢?");
 		emotion e_sob;
-		mes "[Vacant Looking Lady]";
-		mes "it's because... sob... sob!";
+		mes "[發呆的女人]";
+		mes "那個嘛......嗚!";
 		next;
-		select("You can tell me everything.");
-		mes "[Vacant Looking Lady]";
-		mes "When Wanderers and Maestro's get together, their abilities become stronger.";
+		select("有什麼事情，快告訴我。");
+		mes "[發呆的女人]";
+		mes "你知道浪姬舞者和宮廷樂師在一起的話，就能讓各自的能力相輔相成吧?";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "So when they travel, they often get together and perform duets.";
-		mes "They have a good time dancing and playing music.";
+		mes "[發呆的女人]";
+		mes "因此，浪姬舞者和宮廷樂師經常結伴旅行一起演出，";
+		mes "伴隨著明快的樂曲，跳著歡快的舞蹈，度過美好的時光。";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "A few days ago, with my partner Guitar Song. I showed a beautiful dance to his music to many people as we usually do.";
+		mes "[發呆的女人]";
+		mes "不久前，我和搭擋宮廷樂師宋一起，像平常一樣，和其他組合一起給人們表演了歡快的歌舞。";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "I was really proud of being a Wanderer after I drew all of that enthusiastic applause.";
-		mes "Guitar Song also praised me.";
-		mes "I was so happy that day.";
+		mes "[發呆的女人]";
+		mes "特別是我的舞蹈，受到了比平時更多的掌聲，讓我感到非常驕傲。";
+		mes "宋樂師也對我大力稱讚。我感覺自己都快飛上天了。";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "But...";
+		mes "[發呆的女人]";
+		mes "但是...";
 		next;
-		select("What happened next?");
-		mes "[Vacant Looking Lady]";
-		mes "The following morning, I woke up and washed my fave and was looking for something to eat in my room..";
+		select("到底發生了什麼是...");
+		mes "[發呆的女人]";
+		mes "第二天早上我起床之後，刷完牙，洗完臉。因為肚子餓，就在翻包包看有沒有什麼吃的東西......";
 		next;
 		emotion e_omg;
-		mes "[Vacant Looking Lady]";
-		mes "Then Guitar Song suddenly opened the door of my room for some reason and said ^3131FFHey! What the hell are.. you doing here?^000000 and then he threw me out of my room!";
+		mes "[發呆的女人]";
+		mes "就在那個時候，不知道發生了什麼事，宋樂師衝著我喊道：^3131FF喂!你在那裡幹什麼?^000000，然後就把我從房間趕了出去。";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "We've been together for a long time but how can he do such a thing to me?";
-		mes "At first, I thought he was kidding around with me! But when he kicked me out of my room...";
+		mes "[發呆的女人]";
+		mes "我們一直以來都事很好的同伴，他怎麼能那樣對我呢?";
+		mes "我以為宋樂師是在開玩笑!但是被他趕到門外去的時候，真的...";
 		next;
 		emotion e_sob;
-		mes "[Vacant Looking Lady]";
-		mes "Why didn't he recognize my face?";
-		mes "Do you think he doesn't want to see my face without makeup?";
-		mes "Boo hoo hoo!";
+		mes "[發呆的女人]";
+		mes "宋樂師為什麼沒有認出我啊?還是看到我沒化妝的臉之後，他不想認我了啊?嗚嗚嗚!";
 		next;
-		select("So you disbanded the team?");
+		select("所以你要解散組合?");
 		emotion e_sob;
-		mes "[Vacant Looking Lady]";
-		mes "Are you also ignoring my wounded self-respect as a woman?";
+		mes "[發呆的女人]";
+		mes "連你也不把我這個受傷女人的自尊心當回事嗎?";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "No! He is really a caring man!";
-		mes "But I don't think you disbanded your precious team just because of that.";
+		mes "怎麼會!他應該是無心的!";
+		mes "因為這種小事，好像不至於要解散組合吧?";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "You're right.";
-		mes "It's not just because of that.";
-		mes "The real reason why I disbanded the team is...";
+		mes "[發呆的女人]";
+		mes "沒錯，不光是這個原因。";
+		mes "讓我不得不說出那種傷人的話的原因是......";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "After that day, I went to my hometown, Hugel and I just stayed indoors.";
-		mes "It was then when Shide comforted me with sweet cakes.";
+		mes "[發呆的女人]";
+		mes "那天我被宋樂師傷透了心，回到了故鄉。";
+		mes "每天都躲在房裡獨自傷心。西伊岱為我做了好吃的蛋糕來安慰我。";
 		next;
 		emotion e_shy;
-		mes "[Vacant Looking Lady]";
-		mes "Shide's cake is so wonderful!";
-		mes "It is the most famous cake in Hugel with soft sponge cake and fresh fruits and sweet chocolate cream!";
+		mes "[發呆的女人]";
+		mes "西伊岱的蛋糕真的是最棒的!";
+		mes "在鬆軟的海綿蛋糕上塗上入口即化的醇香黑巧克力，上面再鋪上新鮮的水果，在毀葛可以算得上數一數二的作品!";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "It felt like all the angels of happiness came to comfort me when I tasted that sweet cake.";
+		mes "[發呆的女人]";
+		mes "在傷心的時候吃上一口好吃的蛋糕...感覺好像世界上所有的幸福妖精都來到我的身邊，溫柔地撫慰我。";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "So I ate it every morning and every night.";
+		mes "[發呆的女人]";
+		mes "從早到晚，我一直在盡情地接受妖精們的安慰...";
 		next;
-		select("Oh, you wouldn't...");
+		select("難道...");
 		emotion e_sob;
-		mes "[Vacant Looking Lady]";
-		mes "The angel of happiness took back my sadness and gave me a lot of belly fat!";
-		mes "Boo hoo hoo hoo!!";
+		mes "[發呆的女人]";
+		mes "幸福妖精們帶走了我的悲傷，卻給我帶來了贅肉!啊啊啊啊啊!!";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "Now I can't wear my dancing clothes!";
-		mes "I am not a dancer who dances like a beautiful butterfly anymore!";
+		mes "[發呆的女人]";//官方對話此處未分段且雜亂，暫照原文的對話來分段
+		mes "浪姬舞者的衣服穿不上了!我不能再被稱做跳舞的仙女了!";
+		mes "腰也彎不下去了!啊啊啊啊!";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "What is worse, it became hard to bend my waist forward!";
-		mes "Boo hoo hoo!";
+		mes "[發呆的女人]";
+		mes "公演的日子馬上就要到了!但幸福妖精們給我帶來了比妙勒尼山脈還要艱難的考驗!";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "The performance day is approaching, but the angel of happiness brought me a big obstacle.";
-		mes "Now I've fallen into despair again!";
-		mes "I can't let Guitar Song and my fans see me like this!";
+		mes "[發呆的女人]";
+		mes "我又重新陷入了絕望!我不能以這個樣子去見宋樂師和粉絲們!";
 		next;
-		mes "[Vacant Looking Lady]";
-		mes "<Nollio> is over! Boo hoo hoo!";
+		mes "[發呆的女人]";
+		mes "諾里歐組合完了!啊啊啊啊!";
 		set job_wan,5;
 		close;
 	} else if (job_wan == 5) {
 		emotion e_sob;
-		mes "[Vacant Looking Lady]";
-		mes "Not long ago, I was like a beautiful dove, but now I am just a fat chicken.";
-		mes "Sob sob...!";
-		mes "I think the life of Wanderer Dancer Kim is over now.";
-		mes "Boo hoo hoo hoo!";
+		mes "[發呆的女人]";
+		mes "曾經像是美麗白鴿的我，現在卻變成了老母雞。啊啊!";
+		mes "浪姬舞者金舞孃的人生就到此為止了。啊啊啊!";
 		next;
-		if(select("Hey, don't give up.:I feel sorry for you.") == 2) {
-			mes "[Dancer Kim]";
-			mes "My life cannot get out of abyss now......";
+		if(select("不要放棄:看來是不行了") == 2) {
+			mes "[金舞孃]";
+			mes "我的人生已經無法從深淵中走出來了......";
 			close;
 		}
-		mes "[Dancer Kim]";
-		mes "But I already told Guitar Song that it's all over.";
-		mes "Even if it's not over, I cannot do anything right now.";
+		mes "[金舞孃]";
+		mes "我已經跟宋樂師說一切都完了。";
+		mes "都完了...即便堅持，這個樣子也什麼都做不了。";
 		next;
-		select("If you give up, it will be over.");
-		mes "[Dancer Kim]";
-		mes "But in this situation...";
-		mes "Do I really have a way to change it?";
+		select("如果你放棄，那一切真的就完了。");
+		mes "[金舞孃]";
+		mes "但是這樣下去的話...";
+		mes "難道真的沒有辦法了嗎...";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Exercise is the best way!";
-		mes "If you work hard, your bossy will be lighter than before!";
+		mes "減肥最有效果的就是運動!";
+		mes "只要努力鍛練，身體一定會有變化的!";
 		next;
-		mes "[Dancer Kim]";
-		mes "But I get tired and give up easily.";
-		mes "I think I am going to give up.";
+		mes "[金舞孃]";
+		mes "但是我是屬於那種容易厭倦、容易放棄的人。";
+		mes "用不了多久我就會放棄了。";
 		next;
-		if(select("Well, there's no other way.:Let's work together.") == 1) {
-			mes "[Dancer Kim]";
-			mes "No dreams and no hope...";
+		if(select("那就沒辦法了:和我一起鍛鍊吧") == 1) {
+			mes "[金舞孃]";
+			mes "沒有夢想，也沒有希望...";
 			close;
 		}
 		emotion e_omg;
-		mes "[Dancer Kim]";
-		mes "Will you exercise together with me?";
-		mes "Really?";
+		mes "[金舞孃]";
+		mes "你想和我一起運動?";
+		mes "真的嗎?";
 		next;
-		mes "[Dancer Kim]";
-		mes "I'm sure that I would try harder if I had someone to workout with.";
+		mes "[金舞孃]";
+		mes "和一個人努力相比，有個人在旁邊一起努力，自己也就能逼著自己努力了。";
 		next;
-		mes "[Dancer Kim]";
-		mes "I feel better now!";
-		mes "I think I'm gaining strength again!";
-		mes "Let's work together!";
+		mes "[金舞孃]";
+		mes "感覺心裡輕鬆不少!";
+		mes "感覺渾身又有幹勁!";
+		mes "趁現在幹勁十足的時候，盡快克服難關吧!";
 		next;
-		select("What should we do first?");
-		mes "[Dancer Kim]";
-		mes "I have a good idea!";
+		select("該幹什麼呢?");
+		mes "[金舞孃]";
+		mes "我有個好主意!";
 		next;
-		mes "[Dancer Kim]";
-		mes "Meet me at Abyss Lake.";
-		mes "I'll see you there.";
-		mes "Just go one field South and one field West from here in Hugel.";
-		mes "I'll meet you there.";
+		mes "[金舞孃]";
+		mes "在毀葛西南方向，有個名叫做深淵湖水的地方。";
+		mes "我們在那裡見面吧!";
 		set job_wan,6;
 		changequest 2219,2220;
 		close;
 	} else if (job_wan == 6 || job_wan == 7) {
-		mes "[Dancer Kim]";
-		mes "I'll meet you at Abyss Lake.";
+		mes "[金舞孃]";
+		mes "我會在深淵湖水等你。";
 		close;
 	} else if (job_wan == 8) {
-		mes "[Dancer Kim]";
-		mes "Please tell Guitar Song to go to Lutie";
-		mes "I'll go there after I've packed my luggage!";
+		mes "[金舞孃]";
+		mes "快點讓宋樂師去薑餅城。";
+		mes "我收拾好行李之後，就馬上出發!";
 		close;
 	}
-	mes "[Vacant Looking Lady]";
-	mes "Where is my partner......";
+	mes "[發呆的女人]";
+	mes "我的搭擋在哪裡......";
 	close;
 }
 
-hu_fild05,342,130,5	script	Dancer Kim#fild	879,{
+hu_fild05,342,130,5	script	金舞孃#fild	879,{
 	if (job_wan == 6) {
-		mes "[Dancer Kim]";
-		mes "Exercising together is good but if we compete for it, I think we'll get a better effect!";
+		mes "[金舞孃]";
+		mes "雖然一起運動很好，但如果相互競爭，效果就會更好!";
 		next;
-		mes "[Dancer Kim]";
-		mes "From now on, let's compete to see who defeats the Yellow Novus first!";
+		mes "[金舞孃]";
+		mes "從現在開始，我們兩人來比賽捕捉黃諾博斯!";
 		next;
-		mes "[Dancer Kim]";
-		mes "You need to defeat 50 Yellow Novus!";
-		mes "Are you ready?";
+		mes "[金舞孃]";
+		mes "目標是50隻!";
+		mes "準備好了嗎?";
 		next;
-		if(select("No.:Yes.") == 1) {
-			mes "[Dancer Kim]";
-			mes "Hurry up before I lose interest!";
+		if(select("不:是的") == 1) {
+			mes "[金舞孃]";
+			mes "在我的興趣消失之前，請你快點做好準備!";
 			close;
 		}
-		mes "[Dancer Kim]";
-		mes "Good! Then ready, set~~";
-		mes "Go!";
+		mes "[金舞孃]";
+		mes "好的!那麼，準備~~";
+		mes "開始!";
 		set job_wan,7;
 		changequest 2220,2221;
 		close;
 	} else if (job_wan == 7) {
 		if (checkquest(2221,PLAYTIME) == 0 || checkquest(2221,PLAYTIME) == 1) {
 			if (checkquest(2221,HUNTING) == 2) {
-				mes "[Dancer Kim]";
-				mes "Whew!";
-				mes "Looks like I've lost!";
+				mes "[金舞孃]";
+				mes "就是這個感覺!過去我穿越邊境，在米德加爾特大陸各地遊歷。不知不覺卻變成了一個縮在角落裡的懶蟲。";
 				next;
-				mes "[Dancer Kim]";
-				mes "This feeling reminds me of the past where I've crossed the borders of many continents.";
+				mes "[金舞孃]";
+				mes "啊啊!看這個!";
+				mes "好像感覺運動有點效果。你覺得呢?";
 				next;
-				mes "[Dancer Kim]";
-				mes "Ah! Look at this!";
-				mes "I'm getting slimmer, can you see it?";
+				mes "[金舞孃]";
+				mes "感覺全身又充滿了力量。";
+				mes "我突然很想見我的好搭擋宋樂師，";
+				mes "我又想重新開始跳舞了。";
 				next;
-				mes "[Dancer Kim]";
-				mes "I feel that my body is full of power.";
-				mes "I suddenly want to see my good partner Guitar Song.";
-				mes "I want to start dancing again.";
-				next;
-				select("How about dancing in Lutie?");
+				select("在雪地裡跳舞怎麼樣呢?");
 				emotion e_gasp;
-				mes "[Dancer Kim]";
-				mes "Ah! Christmas Village! Yes! Yes!";
-				mes "My dream to dance in Lutie will finally come true.";
+				mes "[金舞孃]";
+				mes "薑餅城!沒錯!是的!在薑餅城即將迎接夢幻公演的時候，我卻搞出大事!";
 				next;
-				mes "[Dancer Kim]";
-				mes "I want to dance and jump all day to bring people happiness!";
-				mes "So I will go to Lutie.";
+				mes "[金舞孃]";
+				mes "我要跳上一整天，把我的喜悅傳達給那裡的人們!";
+				mes "我就要這樣跑到薑餅城去!";
 				next;
-				mes "[Dancer Kim]";
-				mes "Ah, do me a favor, please.";
-				mes "Can you bring Guitar Song to Lutie?";
-				mes "Say that his partner is waiting for him.";
+				mes "[金舞孃]";
+				mes "嗯，有件事我想拜託你......";
+				mes "你能讓宋樂師快點到薑餅城去嗎?";
+				mes "就說永遠的搭擋正在那裡等他。";
 				next;
-				select("No problem!");
-				mes "[Dancer Kim]";
-				mes "You're a good person. I'm really happy that I met you.";
-				mes "Thank god for sending such a stubborn person to me!";
+				select("沒問題!");
+				mes "[金舞孃]";
+				mes "你真是個好人，見到你真高興。.";
+				mes "神給我這個自私的人派來了你這樣的人，我真是個幸運兒!";
 				set job_wan,8;
 				changequest 2221,2222;
 				close;
 			} else {
-				mes "[Dancer Kim]";
-				mes "Does it look easy to you?";
-				mes "But I'm sure I have a better chance to win.";
+				mes "[金舞孃]";
+				mes "你看起來挺悠閒的嘛?";
+				mes "但是還是我的勝算比較更大。";
 				close;
 			}
 		} else if (checkquest(2221,PLAYTIME) == 2) {
-			mes "[Dancer Kim]";
-			mes "Oh, you came back to me.";
-			mes "I'm so tired. I don't give up halfway. It's a good exercise for me. I will have to give up Nollio to another Wanderer, it's all over....";
+			mes "[金舞孃]";
+			mes "回來啦!";
+			mes "我累了，途中就回來了。看來我的運動神經還是不行，諾里歐和浪姬舞者，這些全完了...";
 			next;
-			mes "- Dancer Kim dropped down by grief and fatigue -";
+			mes "- 金舞孃好像忍受不了痛苦而放棄了比賽，坐到地上。 -";
 			set job_wan,6;
 			changequest 2221,2220;
 			close;
 		} else {
-			mes "[Dancer Kim]";
+			mes "[金舞孃]";
 			mes "Huh...?";
 			set job_wan,6;
 			close;
 		}
 	} else if (job_wan == 8) {
-		mes "[Dancer Kim]";
-		mes "Please tell Song, I will be waiting for him at the Christmas tree.";
+		mes "[金舞孃]";
+		mes "拜託你了!請你轉告宋樂師，說我會在薑餅城等他。";
 		close;
 	}
-	mes "[Dancer Kim]";
-	mes "Hunting Novus is the best exercise, I think.";
+	mes "[金舞孃]";
+	mes "狩獵諾博斯果然是最好的運動。";
 	close;
 }
 
 -	script	#fildshout00::wandererjcq	-1,{
 OnTouch:
 	if (job_wan == 7) {
-		switch(rand(3)) {
+		switch(rand(5)) {  //老外好像少了一句地圖廣播 //2013/10/23 懷疑不只有這幾句，有待查證
 		case 0:
-			mapannounce "hu_fild05","Dancer Kim: Hey, how did you get so fast? I've only got few myself...",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+			mapannounce "hu_fild05","金舞孃：啊啊，你的身手怎麼這麼快啊?我才抓了幾隻......",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
 			break;
 		case 1:
-			mapannounce "hu_fild05","Dancer Kim: Errrgghh! Hey Novus! I'm gonna get you~",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+			mapannounce "hu_fild05","金舞孃：呀呀!諾博斯們，姐姐來啦~~",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
 			break;
 		case 2:
-			mapannounce "hu_fild05","Dancer Kim: Oh, are you tired already? Is this my victory? Ho ho ho.",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+			mapannounce "hu_fild05","金舞孃：哎呀，這麼快就累了嗎?看來比賽是我獲勝了，呵呵呵",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+			break;
+		case 3:
+			mapannounce "hu_fild05","金舞孃：指甲斷了!好疼啊......要放棄了嗎......",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+			break;
+		case 4:
+			mapannounce "hu_fild05","金舞孃：看來你的運動神經也不怎麼樣嘛!看來我是贏定了。",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
 			break;
 		}
 	}
@@ -881,151 +857,146 @@ hu_fild05,69,147,0	duplicate(wandererjcq)	#fildshout10	139,20,20
 xmas,148,131,0	script	#wandergogo	139,3,3,{
 OnTouch:
 	if (job_wan == 9) {
-		enablenpc "Dancer Kim#xmas";
-		enablenpc "Guitar Song#xmas";
-		enablenpc "Spectator#xmas1";
-		enablenpc "Spectator#xmas2";
-		enablenpc "Spectator#xmas3";
-		enablenpc "Spectator#xmas4";
-		enablenpc "Soy#xmas";
-		enablenpc "Mimi#xmas";
+		enablenpc "金舞孃#xmas";
+		enablenpc "宋樂師#xmas";
+		enablenpc "公演觀眾#xmas1";
+		enablenpc "公演觀眾#xmas2";
+		enablenpc "公演觀眾#xmas3";
+		enablenpc "公演觀眾#xmas4";
+		enablenpc "小伊#xmas";
+		enablenpc "咪咪#xmas";
 	}
 	end;
 }
 
-xmas,147,135,5	script	Dancer Kim#xmas	485,{
+xmas,147,135,5	script	金舞孃#xmas	485,{
 	if (job_wan == 9) {
 		if (BaseJob != Job_Dancer && BaseLevel < 99 && JobLevel < 50) {
-			mes "- You can't continue the quest because the condition for the quest is not appropriate. -";
+			mes "- 因任務承受條件不符而無法進行 -";
 			close;
 		}
 		if (SkillPoint) {
-			mes "- You can't continue the quest because you have remaining skill points. -";
+			mes "- 因還有剩餘技能點數而無法進行 -";
 			close;
 		}
 		if (checkweight(1201,2) == 0) {
-			mes "- You need to empty your inventory if you want to continue the quest. -";
+			mes "- 必須清空背包，才能執行任務。 -";
 			close;
 		}
 		if (ismounting()) {
-			mes "[Dancer Kim]";
-			mes "Please get off of that creature you're riding on.";
-			mes "Then talk to me again.";
+			mes "- 需從坐騎下來後才能夠進行任務。 -";
 			close;
 		}
-		mes "- <Nollio> is performing. -";
+		mes "- 看到了正在進行演出的<諾里歐>。 -";
 		next;
-		emotion e_ho,0,"Guitar Song#xmas";
+		emotion e_ho,0,"宋樂師#xmas";
 		emotion e_ho;
-		mes "[Guitar Song]";
-		mes "One! Two! Three!";
-		mes "Blue fish dancing~";
-		mes "Fan! Fan! Fan! I am your fan~";
-		mes "With a strong mind and strong will, I complete fishing~";
+		mes "[宋樂師]";
+		mes "背! 背! 藍背魚~~";
+		mes "風! 風! 我是風~~";
+		mes "堅強的意志，堅強的韌性，就算流鼻血，~";
+		mes "也要完成表演~~~";
 		next;
-		emotion e_ho,0,"Spectator#xmas1";
-		emotion e_ho,0,"Spectator#xmas2";
-		emotion e_ho,0,"Spectator#xmas3";
-		emotion e_ho,0,"Spectator#xmas4";
-		emotion e_ho,0,"Soy#xmas";
-		emotion e_ho,0,"Mimi#xmas";
-		mes "[Spectators]";
-		mes "AAAAhhhhhhhhh - - !!!";
-		mes "So cool! Nollio is the best!!!";
+		emotion e_ho,0,"公演觀眾#xmas1";
+		emotion e_ho,0,"公演觀眾#xmas2";
+		emotion e_ho,0,"公演觀眾#xmas3";
+		emotion e_ho,0,"公演觀眾#xmas4";
+		emotion e_ho,0,"小伊#xmas";
+		emotion e_ho,0,"咪咪#xmas";
+		mes "[公演觀眾]";
+		mes "呀啊啊啊啊 - - !!!";
+		mes "太棒了!諾里歐最棒!!!";
 		next;
-		mes "[Guitar Song]";
-		mes "Hello, ladies and gentlemen!";
+		mes "[宋樂師]";
+		mes "大家好!";
 		next;
-		emotion e_lv,0,"Spectator#xmas1";
-		emotion e_lv,0,"Spectator#xmas2";
-		emotion e_lv,0,"Spectator#xmas3";
-		emotion e_lv,0,"Spectator#xmas4";
-		emotion e_lv,0,"Soy#xmas";
-		emotion e_lv,0,"Mimi#xmas";
-		mes "[Spectators]";
-		mes "Hello!!!!!";
+		emotion e_lv,0,"公演觀眾#xmas1";
+		emotion e_lv,0,"公演觀眾#xmas2";
+		emotion e_lv,0,"公演觀眾#xmas3";
+		emotion e_lv,0,"公演觀眾#xmas4";
+		emotion e_lv,0,"小伊#xmas";
+		emotion e_lv,0,"咪咪#xmas";
+		mes "[公演觀眾]";
+		mes "你好!!!!!!";
 		next;
-		mes "[Guitar Song]";
-		mes "We are the romantic Wanderer team <Nollio> who stroll along the world following love and wind!";
+		mes "[宋樂師]";
+		mes "我們是追求愛、追尋風，在世界上旅行的浪漫流浪者<諾里歐>!";
 		next;
-		emotion e_lv,0,"Spectator#xmas1";
-		emotion e_lv,0,"Spectator#xmas2";
-		emotion e_lv,0,"Spectator#xmas3";
-		emotion e_lv,0,"Spectator#xmas4";
-		emotion e_lv,0,"Soy#xmas";
-		emotion e_lv,0,"Mimi#xmas";
-		mes "[Spectators]";
-		mes "Wowwwww~!";
+		emotion e_lv,0,"公演觀眾#xmas1";
+		emotion e_lv,0,"公演觀眾#xmas2";
+		emotion e_lv,0,"公演觀眾#xmas3";
+		emotion e_lv,0,"公演觀眾#xmas4";
+		emotion e_lv,0,"小伊#xmas";
+		emotion e_lv,0,"咪咪#xmas";
+		mes "[公演觀眾]";
+		mes "呀啊啊啊啊 ~~!";
 		next;
 		emotion e_no1;
-		mes "[Dancer Kim]";
-		mes "It's so fascinating that I can dance in a snowy, beautiful village,";
-		mes "I'm so glad that I came here, Lutie.";
+		mes "[金舞孃]";
+		mes "在雪花飄飄的美麗村莊跳舞，感覺自己彷彿來到了愛芙海姆，";
+		mes "能夠來到薑餅城，我感到非常高興。";
 		next;
-		mes "[Spectators]";
-		mes "Yayyyy~";
+		mes "[公演觀眾]";
+		mes "哇啊啊 ~~";
 		next;
-		mes "[Dancer Kim]";
-		mes "In fact, this wonderfull performance would have been cancelled because of my carelessness.";
+		mes "[金舞孃]";
+		mes "其實......今天的演出，差一點就因為我的失誤而取消了。";
 		next;
-		mes "[Guitar Song]";
-		mes "I unintentionally made her upset.";
-		mes "Let me take this opportunity to say to her that I'm sorry.";
+		mes "[宋樂師]";
+		mes "我好像無意之中傷到了金舞孃的心。";
+		mes "在此我想對她說聲抱歉。";
 		next;
-		mes "[Dancer Kim]";
-		mes "It's okay.";
-		mes "I'm sorry for behaving as I did.";
+		mes "[金舞孃]";
+		mes "不，都是因為我太任性了。應該我向你道歉才對。";
 		next;
-		mes "[Dancer Kim]";
-		mes "In fact there is a friend who cheered me up and helped me get through the hardships I faced when I was depressed in my hometown.";
+		mes "[金舞孃]";
+		mes "事實上，我和宋樂師吵架之後就回到了故鄉。在我最消沉的時候，有個朋友過來鼓勵我，和我一起努力，幫助我度過了難關。";
 		next;
-		mes "[Dancer Kim]";
-		mes "You may love my friend's dance more than mine in the future.";
-		mes "She has a great talent.";
+		mes "[金舞孃]";
+		mes "我想今後你們也許會更喜歡那個朋友的舞蹈。";
+		mes "我觀察她好久，發現她是個很有才能的人。";
 		next;
-		mes "[Dancer Kim]";
-		mes "Introducing!";
+		mes "[金舞孃]";
+		mes "我來介紹一下!";
 		next;
-		mes "[Dancer Kim]";
-		mapannounce "xmas","Dancer Kim: Introducing the rising Wanderer! " + strcharinfo(0) + "!",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
-		mes "This rising Wanderer star, " + strcharinfo(0) + "!";
+		mes "[金舞孃]";
+		mapannounce "xmas","金舞孃： 我來介紹一下！今後將會引領浪姬舞者界潮流的未來之星－－" + strcharinfo(0) + "!",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+		mes "今後將會引領浪姬舞者界潮流的未來之星－－" + strcharinfo(0) + "!";
 		jobchange roclass(eaclass()|EAJL_THIRD);
 		set job_wan,10;
 		getitem 2795,1; //Green_Apple_Ring
 		getitem 5758,1; //Dying_Swan
 		completequest 2222;
 		next;
-		mes "[Dancer Kim]";
-		mes "Ha ha ha, are you surprised?";
-		mes "Don't look so puzzled?";
-		mes "You led me here, you deserve it.";
+		mes "[金舞孃]";
+		mes "哈哈哈，很吃驚嗎?";
+		mes "幹嘛站在那裡發呆啊?";
+		mes "是你把我帶到了這裡，你完全擁有這樣的資格。";
 		next;
-		mes "[Dancer Kim]";
-		mes "Oh! You are like a beautiful swan!";
-		mes "The goddess must be jealous to see your beauty.";
+		mes "[金舞孃]";
+		mes "真像一隻美麗的天鵝!";
+		mes "菲依雅女神看到你之後，也會非常嫉妒的。";
 		next;
-		mes "[Dancer Kim]";
-		mes "" + strcharinfo(0) + "! I hope to see your beautiful exploits in the future.";
-		mes "Also, I hope you to meet your precious Maestro.";
-		mes "Let's perform together later, shall we? Ha ha.";
+		mes "[金舞孃]";
+		mes "" + strcharinfo(0) + "!祝你今後能夠取得驕人的成就。";
+		mes "希望你能找到屬於自己的宮廷樂師。到那個時候，我們來場合奏。怎麼樣?呵呵。";
 		next;
-		mes "[Guitar Song]";
-		mes "Thanks to you, I didn't lose my precious partner.";
-		mes "Thank you a lot.";
-		mes "Soon I will make a song for you, so wait for it.";
+		mes "[宋樂師]";
+		mes "多虧了你，我才沒有失去一個寶貴的同伴。";
+		mes "真是謝謝你。不久的將來，為你譜寫的美麗歌謠一定會在宮廷樂師中傳唱，我非常期待，呵呵。";
 		close2;
-		disablenpc "Dancer Kim#xmas";
-		disablenpc "Guitar Song#xmas";
-		disablenpc "Spectator#xmas1";
-		disablenpc "Spectator#xmas2";
-		disablenpc "Spectator#xmas3";
-		disablenpc "Spectator#xmas4";
-		disablenpc "Soy#xmas";
-		disablenpc "Mimi#xmas";
+		disablenpc "金舞孃#xmas";
+		disablenpc "宋樂師#xmas";
+		disablenpc "公演觀眾#xmas1";
+		disablenpc "公演觀眾#xmas2";
+		disablenpc "公演觀眾#xmas3";
+		disablenpc "公演觀眾#xmas4";
+		disablenpc "小伊#xmas";
+		disablenpc "咪咪#xmas";
 		end;
 	}
 OnInit:
-	disablenpc "Dancer Kim#xmas";
+	disablenpc "金舞孃#xmas";
 	end;
 }
 
@@ -1035,10 +1006,10 @@ OnInit:
 	disablenpc strnpcinfo(0);
 	end;
 }
-xmas,149,135,3	duplicate(#wander_xmas)	Guitar Song#xmas	479
-xmas,142,130,7	duplicate(#wander_xmas)	Spectator#xmas1	711
-xmas,145,127,7	duplicate(#wander_xmas)	Spectator#xmas2	712
-xmas,148,127,7	duplicate(#wander_xmas)	Soy#xmas	714
-xmas,149,127,1	duplicate(#wander_xmas)	Mimi#xmas	714
-xmas,151,127,1	duplicate(#wander_xmas)	Spectator#xmas3	716
-xmas,154,129,1	duplicate(#wander_xmas)	Spectator#xmas4	797
+xmas,149,135,3	duplicate(#wander_xmas)	宋樂師#xmas	479
+xmas,142,130,7	duplicate(#wander_xmas)	公演觀眾#xmas1	711
+xmas,145,127,7	duplicate(#wander_xmas)	公演觀眾#xmas2	712
+xmas,148,127,7	duplicate(#wander_xmas)	小伊#xmas	714
+xmas,149,127,1	duplicate(#wander_xmas)	咪咪#xmas	714
+xmas,151,127,1	duplicate(#wander_xmas)	公演觀眾#xmas3	716
+xmas,154,129,1	duplicate(#wander_xmas)	公演觀眾#xmas4	797

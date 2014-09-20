@@ -2,10 +2,13 @@
 //= Sura Job Quest
 //===== By: ================================================== 
 //= Muad_Dib, Gepard
+//===== 中文化 ================================================
+//= 冥王RA-PlutoRA
+//= XD人
 //===== Current Version: ===================================== 
 //= 1.4
 //===== Compatible With: ===================================== 
-//= rAthena SVN
+//= rAthena Project
 //===== Description: ========================================= 
 //= [Official Conversion]
 //= Job change Quest from Monk / Champion -> Sura.
@@ -17,190 +20,199 @@
 //= 1.4 Added VIP features. [Euphy]
 //============================================================
 
-ve_in,237,125,0	script	King Crab#job_shu	107,{
+ve_in,237,125,0	script	金克雷#job_shu	107,{
 	if (job_shu == 0) {
 		if (BaseJob == Job_Monk && BaseLevel >= 99 && JobLevel >= 50) {
 			set .@job_check,1;
-			if (getserverdef(VAR_VIP_SCRIPT)) {
+			if (VIP_SCRIPT) {
 				callfunc "VIP_Third_Class";
 				set job_shu,1;
 				setquest 11155;
 				next;
 			}
 		}
-		mes "[King Crab]";
-		mes "Khh ha ha ha ha ha ha.";
-		mes "That little rookie was knocked out by my one blow!";
+		mes "[金克雷]";
+		mes "哈哈哈哈哈哈。";
+		mes "那個小傢伙一拳就躺下了!";
 		next;
-		mes "[Sludge Worm]";
-		mes "Those arrogant fellows deserve a bitter lesson.";
-		mes "How dare a little rookie attack you, boss!";
+		mes "[斯拉吉沃]";
+		mes "那種沒禮貌的東西就應該好好教訓一下!";
+		mes "竟敢惹我們大哥!";
 		next;
 		if (!.@job_check) {
-			mes "[King Crab]";
-			mes "Khhha ha ha ha ha ha!!!!";
-			mes "One more cup of beer, here!!!";
-			mes "I will drink today!!!";
+			mes "[金克雷]";
+			mes "哈哈哈哈哈哈!!!!";
+			mes "再來一杯啤酒!!!";
+			mes "今天一定要喝得盡興!!!";
 			next;
-			mes "[Sludge Worm]";
-			mes "King Crab!!! I will follow you forever!!";
+			mes "[斯拉吉沃]";
+			mes "金克雷大哥!!!我會一輩子跟著你的!!!!";
 			close;
 		}
-		mes "[King Crab]";
-		mes "Ha ha ha ha ha ha ha!!!!";
+		mes "[金克雷]";
+		mes "哈哈哈哈哈哈!!!!";
 		next;
-		mes "[Sludge Worm]";
-		mes "Hey! Right here!!! One more cup of beer!!!";
-		mes "What are you doing? My boss's cup is already empty! Come quickly!";
+		mes "[斯拉吉沃]";
+		mes "喂!服務員!!!再來一杯啤酒!!!";
+		mes "我們大哥的杯子空了，還不趕快端過來!";
 		next;
-		mes "[Waitress]";
-		mes "Yes, I will bring it right away.";
+		mes "[酒店女服務生]";
+		mes "好，馬上就來。";
 		next;
-		mes "[Sludge Worm]";
-		mes "Too slow!!! Who do you think my boss is? Huh!?";
+		mes "[斯拉吉沃]";
+		mes "太晚了!!!你知道我們大哥是什麼人嗎?嗯!?";
 		next;
-		mes "[Waitress]";
-		mes "I... I'm really sorry, sir...";
+		mes "[酒店女服務生]";
+		mes "對...對不起...";
 		next;
-		mes "[King Crab]";
-		mes "K k k k k. That's enough.";
-		mes "That cute girl seems to be scared of you!";
-		mes "Hey lady~ We are not scary people~~";
+		mes "[金克雷]";
+		mes "呵呵呵，算了算了。";
+		mes "你這麼凶神惡煞的，把可愛的小姐都嚇著了，";
+		mes "小姐~我們不是那麼可怕的人~";
 		next;
-		mes "[Waitress]";
-		mes "Aaaaaaaaaaak! Don't do this!!";
+		mes "[酒店女服務生]";
+		mes "啊!請別這樣!!";
 		next;
-		mes "- Bang -";
+		mes "- 噹 -";
 		donpcevent "???#bcmd::OnEnable";
 		next;
 		mes "[???]";
-		mes "Hey, there.";
-		mes "I've been watching you, making a ruckus like you own this place.";
+		mes "為。";
+		mes "店裡面到處都是豬叫的聲音，我都快受不了了";
 		next;
 		mes "[???]";
-		mes "It's too noisy. So if you want to say that nonsense again, go home.";
+		mes "吵死了。那種廢話，你們到外面去說就好了。";
 		next;
-		mes "[Sludge Worm]";
-		mes "What?!";
-		mes "I don't know who you are but you must've lost your mind!";
-		mes "Do you have any idea who my boss is?!!";
+		mes "[斯拉吉沃]";
+		mes "什麼?!";
+		mes "你是什麼東西?竟敢讓我們出去!";
+		mes "你知道我們大哥是誰嗎!!";
 		next;
-		mes "[Sludge Worm]";
-		mes "This is the famous King Crab!!!";
-		mes "Who can decimate entire armies with his fist!!!";
+		mes "[斯拉吉沃]";
+		mes "他就是大名鼎鼎的!!!";
+		mes "孩子都嚇到不敢哭的山賊金克雷!!!";
 		next;
 		mes "[???]";
-		mes "You do all the dirty things like your dirty face.";
-		mes "You're just a thug satisfying your desires.";
+		mes "長得那麼骯髒，做的也是骯髒的事情，倒是滿相配的嘛!";
+		mes "在世界面臨危機的時候，卻只顧著自己填飽肚子，那就是所謂的山賊。";
 		next;
-		mes "[King Crab]";
-		mes "What?";
-		mes "How dare you say those things?";
-		mes "Just because you're a girl doesn't mean I'll just let it go.";
+		mes "[???]";
+		mes "也是...如果有點頭腦的話，就不會在這裡地方說這種話了。";
 		next;
-		mes "[Sludge Worm]";
-		mes "Huh! The boss is really mad!";
-		mes "I can beat you up with one blow...";
+		mes "[金克雷]";
+		mes "什麼!";
+		mes "你這賤人還真敢說，";
+		mes "我可不會因為對手是女人而手下留情的。";
+		next;
+		mes "[斯拉吉沃]";
+		mes "哼!大哥真的發火了!";
+		mes "像你這種女人，一拳頭就......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Hey! How dare you use violence against a lady!?";
+		mes "喂!你們幾個男人，怎麼對小姐這麼沒禮貌!!";
 		next;
 		mes "[???]";
-		mes "Move back, you little thing...";
+		mes "讓開，小孩......";
 		next;
 		mes "[???]";
-		mes "Oh, I'm glad to hear that.";
-		mes "I won't attack first because I'm in the middle of training.";
+		mes "你能這麼說，我挺高興的。";
+		mes "我正在修行，不能先發動攻擊。";
 		next;
-		mes "[King Crab & Sludge Worm]";
-		mes "What?";
+		mes "[金克雷&斯拉吉沃]";
+		mes "嗯?";
 		next;
-		mes "[King Crab & Sludge Worm]";
-		mes "Uhhhh?!";
+		mes "[金克雷&斯拉吉沃]";
+		mes "哦?!";
 		next;
-		mes "[King Crab & Sludge Worm]";
-		mes "Aaaaaahhhhhhhhk!!!!!!!!";
-		specialeffect EF_FIRESPLASHHIT,AREA,"King Crab#job_shu";
-		specialeffect EF_FIRESPLASHHIT,AREA,"Sludge Worm#job_shu";
+		mes "[金克雷&斯拉吉沃]";
+		mes "呃啊啊啊啊啊啊啊!!!!!!";
+		specialeffect EF_FIRESPLASHHIT,AREA,"金克雷#job_shu";
+		specialeffect EF_FIRESPLASHHIT,AREA,"斯拉吉沃#job_shu";
 		next;
-		mes "- What is that amazing power? -";
-		mes "- I've never seen this -";
-		mes "- kind of skill before... -";
-		next;
-		mes "[???]";
-		mes "Well, the mood is spoiled...";
-		next;
-		mes "[Waitress]";
-		mes "Tha... Thank you so much...";
-		mes "How can I repay you?";
+		mes "- 怎麼回事?那種力量?? -";
+		mes "- 那麼高大的人一下子就打飛了......? -";
+		mes "- 好像是從來沒看過的 -";
+		mes "- 技能......? -";
 		next;
 		mes "[???]";
-		mes "It's not a big deal. It's okay.";
+		mes "真掃興...";
 		next;
-		mes "[Waitress]";
-		mes "Are you going back to your lodging?";
-		mes "If it's okay with you, can I deliver you a meal?";
+		mes "[酒店女服務生]";
+		mes "真...真是謝謝你...";
+		mes "真不知道該怎麼報答你。";
 		next;
 		mes "[???]";
-		mes "Oh, you don't really need to.";
-		mes "Just a slice of bread and warm soup will be enough for me.";
-		mes "Then, I've got to say goodbye. Bye.";
+		mes "區區小事何足掛齒。";
+		next;
+		mes "[酒店女服務生]";
+		mes "你要回去了嗎?";
+		mes "要不要我把菜給你端上來?";
+		next;
+		mes "[???]";
+		mes "不用太在意。";
+		mes "給我來個麵包，來碗熱湯就行了，";
+		mes "再見!";
 		donpcevent "???#bcmd::OnDisable";
 		next;
-		mes "[Waitress]";
-		mes "Bye...";
-		mes "...";
-		mes ".....";
-		mes "........(cheeks glowing)";
+		mes "[酒店女服務生]";
+		mes "好的......";
+		mes "......";
+		mes "......";
+		mes "......(暖烘烘~)";
 		set job_shu,1;
 		setquest 11155;
 		close;
 	} else {
-		if (strnpcinfo(0) == "King Crab#job_shu") {
-			mes "[King Crab]";
-			mes "How come a little rookie knocked me out! Me! The great King Crab...";
+		if (strnpcinfo(0) == "金克雷#job_shu") {
+			mes "[金克雷]";
+			mes "竟然一下子就把我打飛了......";
+			next;
+			mes "[金克雷]";
+			mes "不行，我被她迷住了......";
 		} else {
-			mes "[Sludge Worm]";
-			mes "Boss... Are we really past our prime now?";
-			mes "Sob... sob...";
+			mes "[斯拉吉沃]";
+			mes "大哥...現在我們混不下去了嗎?";
+			mes "嗚嗚。";
 		}
 		close;
 	}
 }
-ve_in,241,128,4	duplicate(King Crab#job_shu)	Sludge Worm#job_shu	110
+ve_in,241,128,4	duplicate(金克雷#job_shu)	斯拉吉沃#job_shu	110
 
-ve_in,244,126,3	script	Waitress#job_shu	69,{
-	mes "[Waitress]";
+ve_in,244,126,3	script	酒店女服務生#job_shu	69,{
+	mes "[酒店女服務生]";
 	if (job_shu == 0) {
-		mes "Oh no~";
-		mes "I hate those noisy and impolite customers!";
-		mes "I hope there is someone who can scold them for me.";
+		mes "唉~";
+		mes "最討厭那種吵吵鬧鬧、沒禮貌的客人了!";
+		mes "要是有人能教訓他們就好了。";
 		close;
 	} else if (job_shu == 1) {
 		if (BaseJob == Job_Monk) {
-			mes "Oh dear~";
-			mes "I really appreciate you, "+jobname(Class)+", for helping me a while ago.";
+			mes "哎呀~";
+			mes ""+jobname(Class)+"先生";
+			mes "謝謝你剛才幫我。";
 			next;
 		}
-		mes "Ah, the person we saw before?";
-		mes "She has been staying in this village for days,";
-		mes "Isn't she so great?";
+		mes "[酒店女服務生]";
+		mes "啊...你是說剛才那個人嗎?";
+		mes "幾天前，她就來到了這裡。";
+		mes "很帥吧?";
 		next;
-		mes "[Waitress]";
-		mes "Although she is a woman like me, she was so cool!";
-		mes "Aaahh~ That beautiful and imposing figure...";
+		mes "[酒店女服務生]";
+		mes "雖然都是女人，但我都快被她迷住了。";
+		mes "啊~那美妙的身姿...";
 		next;
-		mes "[Waitress]";
-		mes "Oh my!!";
-		mes "I forgot to do something!";
-		mes "I should cook right away and then bring the meal to the Inn. Aaahh~";
+		mes "[酒店女服務生]";
+		mes "啊!!";
+		mes "現在不是胡思亂想的時候!!!";
+		mes "我得趕快做好料理，給她送過去才行~";
 		next;
-		mes "[Waitress]";
-		mes "If you still don't know where to stay, please use ^f57d7dthe Inn at the upper side of this building^000000.";
+		mes "[酒店女服務生]";
+		mes "如果你還沒找到住的地方，就住到^f57d7d樓上的旅館^000000裡好了。";
 		close;
 	}
-	mes "Now that the customers have become a little quiet.";
-	mes "Ahhhh, I feel better now!!";
+	mes "那些客人這下終於安靜了。";
+	mes "哎呀。這下好多了!!";
 	close;
 }
 
@@ -228,183 +240,184 @@ OnTouch:
 	if (job_shu == 1) {
 		set .@n$, "["+strcharinfo(0)+"]";
 		mes "[???]";
-		mes "Who is it?!";
+		mes "誰啊!";
 		next;
 		mes .@n$;
-		mes "I am the person who was at the pub a while ago.";
-		mes "I have something to ask.";
+		mes "我是剛才在酒店裡的人";
+		mes "我想問你點事情。";
 		next;
 		mes "[???]";
-		mes "Don't bother me, just go away!";
+		mes "煩死了，走開。";
 		next;
 		mes .@n$;
-		mes "Please, I just want to talk.";
+		mes "別...別這樣嘛。跟我...(喀?)";
 		next;
 		mes "[???]";
-		mes "...";
+		mes "......";
 		next;
 		mes .@n$;
-		mes "Don't ignore me, just talk to me.";
+		mes "不要看不起我，跟我說說話嘛。";
 		next;
 		mes .@n$;
-		mes "Just for a moment, isn't it okay?";
+		mes "一下下就好了。";
 		next;
 		mes .@n$;
-		mes "I'm not here to hurt you.";
+		mes "我不會害你";
 		next;
 		mes .@n$;
-		mes "How could you treat someone who came to your door so badly?";
+		mes "怎麼能這麼對待找上門的客人呢...";
 		next;
 		mes .@n$;
-		mes "You're going too far.";
+		mes "真是太過分了。";
 		next;
 		mes .@n$;
-		mes "After I saw you fighting...";
+		mes "看了剛才你的格鬥";
 		next;
 		mes .@n$;
-		mes "I thought that you must have practiced martial arts and I came here to meet you.";
+		mes "我看你好像身懷絕技，所以才特地來找你的。";
 		next;
 		mes .@n$;
-		mes "But seeing that you stood me up outside like this...";
+		mes "這樣拒絕人，";
 		next;
 		mes .@n$;
-		mes "You must be advanced in martial arts...";
+		mes "好像和強調禮節的武術精神不太相符吧。";
 		next;
 		mes "[???]";
-		mes "How persistent...";
+		mes "真是個頑固的傢伙......";
 		next;
 		mes "[???]";
-		mes "What the hell do you want?";
+		mes "你想得到什麼啊?";
 		set job_shu,2;
 		close;
 	}
 	end;
 }
 
-ve_in,98,159,0	script	Fighter#job_shu	484,{
+ve_in,98,159,0	script	格鬥家#job_shu	484,{
 	if (job_shu < 2) {
-		mes "[Fighter]";
-		mes "Ahhhh~ I'm so tired.";
-		mes "Training is so tough and I have a long way to go!";
+		mes "[格鬥家]";
+		mes "啊~好累。";
+		mes "修行之路是遙遠又艱辛的!";
 		close;
 	} else if (job_shu == 2) {
 		mes "["+strcharinfo(0)+"]";
-		mes "I want to know about the skill you used a while ago.";
+		mes "我想知道你剛才用的是什麼技能。";
 		next;
 		mes "[???]";
 		mes "...";
-		mes "......";
-		mes ".........";
-		mes "............ A rookie like you doesn't need to know.";
+		mes "...";
+		mes "...";
+		mes "...你這種小朋友知道了又能怎麼樣?";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Rookie?!";
-		mes "I have steadily practiced martial arts.";
-		mes "I am confident that I will never lose.";
+		mes "我不是小朋友!";
+		mes "我已經一直在刻苦修行武藝。";
+		mes "我有自信不會輸給任何人。";
 		next;
 		mes "[???]";
-		mes "So you can beat me, too?";
+		mes "也不會輸給我?";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "No...";
-		mes "I guess that's too much...";
-		mes "Frankly speaking, I was quite amazed by you.";
+		mes "...不...";
+		mes "那可能有點難...";
+		mes "老實說我挺震驚的。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "I had thought that I was strong enough but after seeing you fight, I realized that I was full of conceit.";
+		mes "我一直認為自己很強。但看了你的戰鬥之後，我知道我之前太高估我自己了。";
 		next;
 		mes "[???]";
-		mes "Huuuh~ No matter how strong you are,";
-		mes "you cannot avoid reaching for your true limit.";
+		mes "嘿~你能強到什麼地方去啊?";
+		mes "還不是到達了極限，只能在原地徘徊。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "You are just the person that I expected.";
+		mes "...我果然沒有看錯";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "I think you would know";
-		mes "how to overcome this limitation.";
+		mes "我想你一定知道。";
+		mes "突破界限的方法。";
 		next;
 		mes "[???]";
-		mes "Stop it.";
+		mes "夠了。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "What? Why?";
+		mes "嗯? 為什麼?";
 		next;
 		mes "[???]";
-		mes "Are you a human?";
+		mes "你是人類嗎?";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "What?";
-		mes "Of course, I am a human.";
+		mes "嗯?";
+		mes "怎麼突然說出這種莫名其妙的話......";
+		mes "你也看到了，我當然是人類。";
 		next;
 		mes "[???]";
-		mes "To become stronger is too hard for a mere human.";
-		mes "If you want to, just buy better equipment.";
+		mes "人類的話，要比你現在變得更強是很難的。";
+		mes "如果你想變得更強，就去買更好的裝備吧。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Then, what are you?";
-		mes "You mean you're not a human being?";
+		mes "那你是什麼?";
+		mes "你不是人類嗎?";
 		next;
 		mes "[???]";
-		mes "To overstep the limit...";
-		mes "is impossible for a human.";
-		mes "It's a ghost's way...";
+		mes "超越界限......";
+		mes "那不是人類的道路，";
+		mes "而是鬼神的道路......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Ghost?";
+		mes "鬼神?";
 		next;
 		mes "[???]";
-		mes "I gave up being a human after I chose this way.";
-		mes "The way to become a Sura abandoning divine protection.";
+		mes "選擇這條道路之後，我就放棄身為人類的身分。";
+		mes "我放棄了神的庇護，踏上了修羅之路。";
 		next;
 		mes "[???]";
-		mes "You won't even have time to take a rest if you choose this way.";
-		mes "You'll become a puppet for war...";
+		mes "選擇這條道路之後，就不再有片刻的安逸。";
+		mes "只是成為單純的戰爭機器......";
 		next;
-		switch(select("But I still want to know more.:Well, I quit then.")) {
+		switch(select("我還是想知道:那就算了")) {
 		case 1:
 			mes "[???]";
-			mes "Aren't you an idiot?";
-			mes "Why are you so happy about becoming a ghost?";
+			mes "你是傻瓜嗎?";
+			mes "成為鬼神有什麼好的?";
 			next;
 			mes "[???]";
-			mes "You'll regret it, so just be satisfied with your present life.";
+			mes "你100%會後悔的，還是好好過你現在的生活吧。";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "Well, now that I've met you, I won't live my life this way anymore!";
+			mes "如果不知道就算了。但是看到你之後，我就再也忘不掉了!";
 			next;
 			mes "[???]";
-			mes "Hah... you're really making me tired.";
+			mes "啊...真是個煩人的傢伙。";
 			next;
 			mes "[???]";
-			mes "Okay, then^f57d7d go and kill 100 Desert Wolves.^000000";
-			mes "After that, I'll think about it again.";
+			mes "好吧，^f57d7d你先去捕捉100之沙漠之狼^000000，";
+			mes "這樣我就考慮一下。";
 			set job_shu,3;
 			changequest 11155,11156;
 			close;
 		case 2:
 			mes "[???]";
-			mes "Well, good choice.";
-			mes "You don't need to look for trouble.";
+			mes "明智的決定。";
+			mes "沒有必要自找苦吃。";
 			close;
 		}
 	} else if (job_shu == 3) {
 		if (checkquest(11156,HUNTING) == 2) {
 			mes "[???]";
-			mes "Wow~";
-			mes "Did you really kill all those wolves?";
-			mes "I figured you'd have given up.";
+			mes "啊~";
+			mes "怎麼?你真的去抓了嗎?";
+			mes "我本來是想為難你一下。";
 			next;
 			mes "[???]";
-			mes "A woman's word is her bond!!";
-			mes "A promise is a promise.";
+			mes "一言抵千金!!";
+			mes "雖然我沒想到你真的會去做，所以才答應你。但約定就是約定。";
 			next;
 			mes "[???]";
-			mes "Go to ^f57d7dEl Mes Gorge Southeast of Juno^000000.";
-			mes "My colleague ^f57d7dBuddy^000000 will be training himself near the center of that area.";
+			mes "你到^f57d7d朱諾南部的爾邁斯峽谷的山谷^000000中去";
+			mes "我的師弟^f57d7d博迪^000000應該在那邊修行";
 			next;
-			mes "[Bruno]";
-			mes "Tell him that 'Bruno' sent you there and after that, just suit yourself.";
+			mes "[布魯諾]";
+			mes "你說是'布魯諾'讓你去找他的。接下去的事情他會看著辦。";
 			set job_shu,4;
 			changequest 11156,11157;
 			close;
@@ -417,115 +430,115 @@ ve_in,98,159,0	script	Fighter#job_shu	484,{
 		mes "Then I'll think about it again.";
 		close;
 	} else if (job_shu == 4) {
-		mes "[Bruno]";
-		mes "Go to ^f57d7dEl Mes Gorge Southeast of Juno^000000.";
-		mes "My colleague ^f57d7dBuddy^000000 will be training himself near the center of that area.";
+		mes "[布魯諾]";
+		mes "你到^f57d7d朱諾南部的爾邁斯峽谷的山谷^000000中去";
+		mes "我的師弟^f57d7d博迪^000000應該在那邊修行";
 		next;
-		mes "[Bruno]";
-		mes "Tell him that 'Bruno' sent you there and after that, just suit yourself.";
+		mes "[布魯諾]";
+		mes "你說是'布魯諾'讓你去找他的。接下去的事情他會看著辦。";
 		close;
 	} else if (job_shu == 100) {
-		mes "[Bruno]";
-		mes "Hey~ !";
-		mes "How are you doing?";
+		mes "[布魯諾]";
+		mes "喂~師弟!";
+		mes "最近怎麼樣?";
 		next;
-		mes "[Bruno]";
-		mes "Don't you have any presents for your teacher?";
+		mes "[布魯諾]";
+		mes "沒什麼禮物要送給我這個師兄嗎?";
 		close;
 	}
-	mes "[Bruno]";
+	mes "[布魯諾]";
 	mes "I recommend you to reconsider being a Sura.";
 	mes "Sura is strong and cool, but that's not all.";
 	next;
-	mes "[Bruno]";
+	mes "[布魯諾]";
 	mes "Me?";
 	mes "If I need to choose a job again, I will definitely choose Sura.";
 	close;
 }
 
-yuno_fild07,254,176,7	script	Buddy#job_shu	753,{
+yuno_fild07,254,176,7	script	博迪#job_shu	753,{
 	if (job_shu < 4) {
-		mes "[Buddy]";
-		mes "Haaap!!! Haaaap!!! Whoo!! Haahhp!!!";
+		mes "[博迪]";
+		mes "哈!!哈!!哈!!哈!!";
 		next;
-		mes "[Buddy]";
-		mes "I don't know why you're here but please don't stand behind me unless you want to die.";
+		mes "[博迪]";
+		mes "雖然不知道你來找我是為了什麼，但如果你想留住自己的性命，就不要待在我身邊。";
 		close;
 	} else if (job_shu == 4) {
-		mes "[Buddy]";
-		mes "Haaap!!! Haaaap!!! Whoo!! Haahhp!!!";
+		mes "[博迪]";
+		mes "哈!!哈!!哈!!哈!!";
 		next;
-		mes "[Buddy]";
-		mes "I don't know why you're here but please don't stand behind me unless you want to die.";
-		next;
-		mes "["+strcharinfo(0)+"]";
-		mes "'Bruno' sent me here.";
-		next;
-		mes "[Buddy]";
-		mes "Ah! My colleague introduced me to you!";
-		mes "Anyway, why are you here to see me?";
+		mes "[博迪]";
+		mes "雖然不知道你來找我是為了什麼，但如果你想留住自己的性命，就不要待在我身邊。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "I asked Bruno about her strength, and she recommended me to you.";
+		mes "是'布魯諾'叫我來的。";
 		next;
-		mes "[Buddy]";
-		mes "That difficult girl... no, just kidding.";
-		mes "You must be a special person for her to send you to me.";
+		mes "[博迪]";
+		mes "啊，是師兄讓你來的啊。";
+		mes "找我有什麼事情嗎?";
 		next;
-		mes "[Buddy]";
-		mes "Well, I can't answer your question because I'm in the process of self-training, so I will take you to our master.";
+		mes "["+strcharinfo(0)+"]";
+		mes "我問布魯諾她的力量是怎麼回事，她讓我來找你。";
 		next;
-		mes "[Buddy]";
-		mes "My master doesn't like noise, so please ^f57d7dwait in the living room silently.^000000";
+		mes "[博迪]";
+		mes "那個麻煩的女人...啊，不，呵呵。";
+		mes "既然是難伺候的布魯諾師兄介紹的，看來你應該不是普通人。";
 		next;
-		mes "[Buddy]";
-		mes "This way...";
+		mes "[博迪]";
+		mes "我也正在修行，無法回答你的問題。我會把你介紹給我們的師父。";
+		next;
+		mes "[博迪]";
+		mes "師父不喜歡吵鬧^f57d7d請你先在接待室裡等一下^000000";
+		next;
+		mes "[博迪]";
+		mes "請跟我來......";
 		set job_shu,5;
 		changequest 11157,11158;
 		close2;
 		warp "sword_1-1",215,244;
 		end;
 	} else if (job_shu == 100) {
-		mes "[Buddy]";
-		mes "Ah, long time no see, "+strcharinfo(0)+".";
-		mes "Are you here to meet my master?";
+		mes "[博迪]";
+		mes "啊，"+strcharinfo(0)+"，好久不見";
+		mes "你是來見師父的嗎?";
 		next;
-		switch(select("Yes:No")) {
+		switch(select("是的:不")) {
 		case 1:
-			mes "[Buddy]";
-			mes "I'll take you right away.";
+			mes "[博迪]";
+			mes "我馬上帶你過去";
 			close2;
 			warp "sword_1-1",216,168;
 			end;
 		case 2:
-			mes "[Buddy]";
-			mes "Then, why are you here?";
-			mes "You are not here to see me, aren't you?";
+			mes "[博迪]";
+			mes "那你來這裡有什麼事嗎?";
+			mes "難...難道是...來見我的?!";
 			close;
 		}
 	}
-	mes "[Buddy]";
-	mes strcharinfo(0)+", didn't you meet the master yet?";
+	mes "[博迪]";
+	mes strcharinfo(0)+"你還沒見到師父嗎?";
 	next;
-	mes "[Buddy]";
-	mes "My master doesn't like noise, so please ^f57d7dwait in the living room silently.^000000";
+	mes "[博迪]";
+	mes "師父不喜歡吵鬧^f57d7d請你先在接待室裡等一下^000000";
 	next;
-	mes "[Buddy]";
-	mes "This way...";
+	mes "[博迪]";
+	mes "請跟我來......";
 	close2;
 	warp "sword_1-1",215,244;
 	end;
 }
 
-sword_1-1,223,243,4	script	Drawing Room	753,{
+sword_1-1,223,243,4	script	接待室	753,{
 	end;
 OnInit:
-	waitingroom "Drawing Room",20,"Drawing Room::OnStartArena",1;
+	waitingroom "接待室",20,"接待室::OnStartArena",1;
 	enablewaitingroomevent;
 	end;
 OnStartArena:
 	warpwaitingpc "sword_2-1",223,205;
-	donpcevent "Buddy#Sura_Salon::OnEnable";
+	donpcevent "博迪#Sura_Salon::OnEnable";
 	disablewaitingroomevent;
 	end;
 OnEnable:
@@ -536,131 +549,131 @@ OnDisable:
 	end;
 }
 
-sword_1-1,223,243,4	script	Buddy#job_shu_Salong	753,{
-	mes "[Buddy]";
-	mes "My master doesn't like noise, so please ^f57d7dwait in the living room silently.^000000";
+sword_1-1,223,243,4	script	博迪#job_shu_Salong	753,{
+	mes "[博迪]";
+	mes "師父不喜歡吵鬧^f57d7d請你先在接待室裡等一下^000000";
 	next;
-	switch(select("Go to the living room.:Go outside.")) {
+	switch(select("去接待室:離開")) {
 	case 1:
-		mes "[Buddy]";
-		mes "Please wait in the living room at the upper side.";
+		mes "[博迪]";
+		mes "好的，你去上面的的接待室等一下。";
 		close;
 	case 2:
-		mes "[Buddy]";
-		mes "Then, see you again.";
+		mes "[博迪]";
+		mes "再見!";
 		close2;
 		warp "yuno_fild07",255,178;
 		end;
 	}
 }
 
-sword_2-1,1,1,0	script	Buddy#Sura_Salon	66,{
+sword_2-1,1,1,0	script	博迪#Sura_Salon	66,{
 	end;
 OnInit:
-	disablenpc "Buddy#Sura_Salon";
+	disablenpc "博迪#Sura_Salon";
 	end;
 OnEnable:
-	enablenpc "Buddy#Sura_Salon";
+	enablenpc "博迪#Sura_Salon";
 	initnpctimer;
 	end;
 OnReset:
-	killmonster "sword_2-1","Buddy#Sura_Salon::OnMyMobDead";
+	killmonster "sword_2-1","博迪#Sura_Salon::OnMyMobDead";
 	end;
 OnDisable:
-	disablenpc "Buddy#Sura_Salon";
+	disablenpc "博迪#Sura_Salon";
 	stopnpctimer;
 	end;
 OnMyMobDead:
-	if (mobcount("sword_2-1","Buddy#Sura_Salon::OnMyMobDead") < 1) {
-		monster "sword_2-1",219,210,"Hallucination",1479,1,"Buddy#Sura_Salon::OnMyMobDead";
-		monster "sword_2-1",228,209,"Hallucination",1483,1,"Buddy#Sura_Salon::OnMyMobDead";
-		monster "sword_2-1",228,201,"Hallucination",1479,1,"Buddy#Sura_Salon::OnMyMobDead";
-		monster "sword_2-1",219,201,"Hallucination",1483,1,"Buddy#Sura_Salon::OnMyMobDead";
+	if (mobcount("sword_2-1","博迪#Sura_Salon::OnMyMobDead") < 1) {
+		monster "sword_2-1",219,210,"幻覺",1479,1,"博迪#Sura_Salon::OnMyMobDead";
+		monster "sword_2-1",228,209,"幻覺",1483,1,"博迪#Sura_Salon::OnMyMobDead";
+		monster "sword_2-1",228,201,"幻覺",1479,1,"博迪#Sura_Salon::OnMyMobDead";
+		monster "sword_2-1",219,201,"幻覺",1483,1,"博迪#Sura_Salon::OnMyMobDead";
 	}
 	end;
 OnTimer3000:
-	mapannounce "sword_2-1","The master is now in the middle of training, and you need to wait in the living room around 5 minutes.",bc_map;
+	mapannounce "sword_2-1","博迪: 師父正在修行，您可能要再等5分鐘左右。",bc_map;
 	end;
 OnTimer4000:
-	mapannounce "sword_2-1","Ah! You may have hallucinations in the living room, so please be careful.",bc_map;
+	mapannounce "sword_2-1","博迪: 啊!在接待室中可能會看到幻覺，請你小心。",bc_map;
 	end;
 OnTimer5000:
-	mapannounce "sword_2-1","This is the policy of the master, so please don't feel unpleasant.",bc_map;
+	mapannounce "sword_2-1","博迪: 這是師父設置的，請不要覺得不便。",bc_map;
 	end;
 OnTimer33000:
-	monster "sword_2-1",219,210,"Hallucination",1480,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",219,210,"It can't be true",1479,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,209,"Hallucination",1446,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,209,"Just Imagination",1483,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,201,"Hallucination",1480,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,201,"Illusion",1479,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",219,201,"Hallucination",1446,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",219,201,"Just Imagination",1483,1,"Buddy#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,210,"幻覺",1480,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,210,"唉，難道",1479,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,209,"幻覺",1446,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,209,"錯覺",1483,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,201,"幻覺",1480,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,201,"幻象",1479,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,201,"幻覺",1446,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,201,"錯覺",1483,1,"博迪#Sura_Salon::OnMyMobDead";
 	end;
 OnTimer93000:
-	monster "sword_2-1",219,210,"Hallucination",1480,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",219,210,"Just Imagination",1479,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,209,"Hallucination",1446,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,209,"Hallucination",1483,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,201,"Hallucination",1480,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",219,201,"Hallucination",1446,1,"Buddy#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,210,"幻覺",1480,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,210,"錯覺",1479,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,209,"幻覺",1446,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,209,"幻覺",1483,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,201,"幻覺",1480,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,201,"幻覺",1446,1,"博迪#Sura_Salon::OnMyMobDead";
 	end;
 OnTimer153000:
-	mapannounce "sword_2-1","If you're bored, may I bring you some magazines?",bc_map;
-	monster "sword_2-1",219,210,"Magazine",1478,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",219,210,"Magazine",1478,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,209,"Magazine",1478,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,209,"Magazine",1478,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,201,"Magazine",1478,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,201,"Magazine",1478,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",219,201,"Magazine",1478,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",219,201,"Magazine",1478,1,"Buddy#Sura_Salon::OnMyMobDead";
+	mapannounce "sword_2-1","博迪: 等得太無聊的話，要我給你一本雜誌嗎?",bc_map;
+	monster "sword_2-1",219,210,"雜誌",1478,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,210,"雜誌",1478,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,209,"雜誌",1478,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,209,"雜誌",1478,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,201,"雜誌",1478,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,201,"雜誌",1478,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,201,"雜誌",1478,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,201,"雜誌",1478,1,"博迪#Sura_Salon::OnMyMobDead";
 	end;
 OnTimer213000:
-	monster "sword_2-1",219,210,"Hallucination",1480,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",219,210,"Never mind",1479,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,209,"Hallucination",1483,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,201,"Hallucination",1480,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,201,"Can you see me?",1479,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",219,201,"Hallucination",1483,1,"Buddy#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,210,"幻覺",1480,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,210,"別在意",1479,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,209,"幻覺",1483,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,201,"幻覺",1480,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,201,"你看到我了?",1479,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,201,"幻覺",1483,1,"博迪#Sura_Salon::OnMyMobDead";
 	end;
 OnTimer273000:
-	monster "sword_2-1",219,210,"",1480,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,209,"Hallucination",1446,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,201,"Hallucination",1480,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",228,201,"Hallucination",1479,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",219,201,"Hallucination",1446,1,"Buddy#Sura_Salon::OnMyMobDead";
-	monster "sword_2-1",219,201,"Hallucination",1483,1,"Buddy#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,210,"幻覺",1480,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,209,"幻覺",1446,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,201,"幻覺",1480,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",228,201,"幻覺",1479,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,201,"幻覺",1446,1,"博迪#Sura_Salon::OnMyMobDead";
+	monster "sword_2-1",219,201,"幻覺",1483,1,"博迪#Sura_Salon::OnMyMobDead";
 	end;
 OnTimer300000:
-	mapannounce "sword_2-1","The master has arrived. Soon I'll show you into the master's room.",bc_map;
+	mapannounce "sword_2-1","博迪: 師父到了，我馬上把你帶到師父的房裡去。",bc_map;
 	end;
 OnTimer303000:
-	donpcevent "Buddy#job_shuaneh::OnEnable";
+	donpcevent "博迪#job_shuaneh::OnEnable";
 	end;
 OnTimer305000:
-	donpcevent "Buddy#Sura_Salon::OnReset";
+	donpcevent "博迪#Sura_Salon::OnReset";
 	end;
 OnTimer315000:
-	mapannounce "sword_2-1","Come on here.",bc_map;
-	donpcevent "Buddy#job_shuaneh::OnDisable";
+	mapannounce "sword_2-1","博迪: 請快到這邊來。",bc_map;
+	donpcevent "博迪#job_shuaneh::OnDisable";
 	donpcevent "#Sura_garajjom::OnEnable";
 	end;
 OnTimer320000:
-	mapannounce "sword_2-1","I guess you're not ready to meet the master yet...",bc_map;
+	mapannounce "sword_2-1","博迪: I guess you're not ready to meet the 師父 yet...",bc_map;
 	donpcevent "#Sura_garajjom::OnDisable";
-	donpcevent "Drawing Room::OnEnable";
+	donpcevent "接待室::OnEnable";
 	mapwarp "sword_2-1","yuno_fild07",255,178;
 	stopnpctimer;
 	end;
 }
 
-sword_2-1,223,205,7	script	Buddy#job_shuaneh	753,{
+sword_2-1,223,205,7	script	博迪#job_shuaneh	753,{
 	if (job_shu > 4) {
 		mes "I'll show you the way. This way.";
 		close2;
 		warp "sword_1-1",216,168;
-		donpcevent "Buddy#job_shuaneh::OnDisable";
+		donpcevent "博迪#job_shuaneh::OnDisable";
 		end;
 	}
 	mes "Why are you here?";
@@ -669,10 +682,10 @@ sword_2-1,223,205,7	script	Buddy#job_shuaneh	753,{
 	end;
 OnInit:
 OnDisable:
-	disablenpc "Buddy#job_shuaneh";
+	disablenpc "博迪#job_shuaneh";
 	end;
 OnEnable:
-	enablenpc "Buddy#job_shuaneh";
+	enablenpc "博迪#job_shuaneh";
 	end;
 }
 
@@ -689,63 +702,63 @@ OnEnable:
 	end;
 }
 
-sword_1-1,222,169,5	script	Bruno#job_shu	484,{
+sword_1-1,222,169,5	script	布魯諾#job_shu	484,{
 	if (job_shu > 4) {
-		mes "[Bruno]";
-		mes "Hey~ "+strcharinfo(0)+", what's up?";
+		mes "[布魯諾]";
+		mes "嗨~"+strcharinfo(0)+"，有什麼事嗎?";
 		next;
-		switch(select("Let's have conversation.:Go outside.")) {
+		switch(select("對話:離開")) {
 		case 1:
 			if (job_shu == 100) {
-				mes "[Bruno]";
-				mes "My master?";
-				mes "He said he has put the world out of his mind and he is a ghost who gave up being a human but he seems to have a lingering desire for the world.";
+				mes "[布魯諾]";
+				mes "我們師父?";
+				mes "雖然他說自己已經放棄俗世，成為鬼神，但其他還是對人世充滿了迷戀。";
 				next;
-				mes "[Bruno]";
-				mes "Well, I am also a Sura but I still enjoy traveling and meeting many people~";
+				mes "[布魯諾]";
+				mes "就算成為了修羅，仍需要不斷地修行，不斷和其他人交流~";
 				next;
-				mes "[Bruno]";
-				mes "In the old days, my master had one close friend but after becoming a Sura,";
+				mes "[布魯諾]";
+				mes "師父在成為修羅之前有個非常要好的朋友，決心成為修羅之後，";
 				next;
-				mes "[Bruno]";
-				mes "I heard that he wrote a letter to the friend that he had died.";
-				mes "Then he sometimes visits 'the place of memory' secretly.";
+				mes "[布魯諾]";
+				mes "他給那們朋友寫了一封信，說自己已經'死了'。";
+				mes "但是他偶爾會偷偷地到'充滿回憶之處'去。";
 				next;
-				mes "[Bruno]";
-				mes "It would be better not saying that he died and just keep meeting his friend.";
-				mes "He's a bit of a stick-in-the-mud.";
+				mes "[布魯諾]";
+				mes "其實他可以告訴朋友自己沒有死，然後去見他。";
+				mes "雖然是我們的師父，我不應該這麼說，但確實固執得要死。";
 				next;
-				mes "[Bruno]";
-				mes "But he is really cool and awesome.";
-				mes "Ho ho.";
+				mes "[布魯諾]";
+				mes "不過他倒是挺帥氣的就是。";
+				mes "呵呵";
 				next;
-				mes "[Bruno]";
-				mes "The reason why I keep traveling is to find 'the precious friend' of my master and not to training myself more.";
+				mes "[布魯諾]";
+				mes "我一直在各地旅行，其實也是為了尋找師父的'那個好朋友'，而不是純粹地為了修行。";
 				next;
-				mes "[Bruno]";
-				mes "I feel heavy-hearted when I see my master missing his friend...";
-				mes "It's not... not just for my... master!";
+				mes "[布魯諾]";
+				mes "我只是覺得太無聊，所以才會這樣做。";
+				mes "絕...絕不是為了師父!";
 				close;
 			}
-			mes "[Bruno]";
-			mes "Wow~ I thought you would be knocked out before seeing my master but you are finally here now?";
+			mes "[布魯諾]";
+			mes "喂~我還以為你沒見到師父你就會離開，沒想到居然讓你來到了這裡。";
 			next;
-			mes "[Bruno]";
-			mes "Anyway you are here now, so I am your immediate superior.";
+			mes "[布魯諾]";
+			mes "既然讓你來到了這裡，就是我的師弟了，快叫我師兄。";
 			next;
-			mes "[Bruno]";
-			mes "We don't care about your age in our world!";
+			mes "[布魯諾]";
+			mes "在我們的世界哩，年齡只不過是個數字!";
 			close;
 		case 2:
-			mes "[Bruno]";
-			mes "Come again whenever you want to~";
-			mes "I will show you the training course of the dead~";
+			mes "[布魯諾]";
+			mes "你可以隨時過來~";
+			mes "我會讓你看看我的死亡訓練課程的~";
 			close2;
 			warp "yuno_fild07",255,178;
 			end;
 		}
 	}
-	mes "[Bruno]";
+	mes "[布魯諾]";
 	mes "What are you?";
 	mes "How did you find this place!";
 	mes "Go away!!!";
@@ -754,14 +767,14 @@ sword_1-1,222,169,5	script	Bruno#job_shu	484,{
 	end;
 }
 
-sword_1-1,223,167,2	script	Master#job_shu	483,{
-	mes "[Master]";
+sword_1-1,223,167,2	script	師父#job_shu	483,{
+	mes "[師父]";
 	if (job_shu == 5) {
-		mes "You must have bright eyes to see that you finally came to this room.";
+		mes "居然被你找到我的房間，看來你還不錯嘛。";
 		next;
-		mes "[Master]";
+		mes "[師父]";
 		if (SkillPoint != 0) {
-			mes "You can't become a Sura unless you use all your skill points.";
+			mes "但是不放棄過去的技能點數，是無法成為修羅的。";
 			close;
 		}
 		if (checkweight(1201,1) == 0 || MaxWeight - Weight < 3500) {
@@ -777,43 +790,44 @@ sword_1-1,223,167,2	script	Master#job_shu	483,{
 			mes "Hmm?";
 			close;
 		}
-		mes "Of course~";
-		mes "I have keen eyes.";
+		mes "[布魯諾]";
+		mes "那當然~";
+		mes "我的眼睛一向很準。";
 		next;
-		mes "[Bruno]";
-		mes "Master! This is a wolf fur coat.";
-		mes "Put it on when it's cold.";
+		mes "[布魯諾]";
+		mes "還有師父!這是狼毛做成的大衣。";
+		mes "請你天冷的時候穿上。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Ahhk! That is the wolf I... caught... Uhh.";
+		mes "啊，那是我抓......呃。";
 		next;
-		mes "- Whack -";
+		mes "- 砰 -";
 		next;
-		mes "[Bruno]";
-		mes "Ho ho ho~";
-		mes "Do you have something to say, "+strcharinfo(0)+"?";
-		mes "You became a member of our family, let's get along together ~";
+		mes "[布魯諾]";
+		mes "呵呵呵~";
+		mes ""+strcharinfo(0)+"師弟，你有什麼話要說嗎?";
+		mes "以後大家要和睦相處哦~";
 		next;
-		mes "[Master]";
-		mes "Right, I now accept you as my student, too.";
+		mes "[師父]";
+		mes "好吧，其他的弟子好像都已經認同你，我就收你為徒吧!";
 		next;
-		mes "[Master]";
-		mes "I think you already know it, but to live as a Sura will not be that easy.";
+		mes "[師父]";
+		mes "既然你能來到這個地方，就應該知道，我們修羅的道路充滿了艱辛。";
 		next;
-		mes "[Master]";
-		mes "I also shut myself off from the world. If there comes a day when we go to the world again, it must be the day when the world needs ghosts for the wars.";
+		mes "[師父]";
+		mes "我已經切斷了和俗世的聯繫，當世界陷入戰爭而需要鬼神的時候，我們才會重新回到俗世。";
 		next;
-		mes "[Master]";
-		mes "I hope those days will not come but... I'll willingly be the ghost and kill all enemies.";
+		mes "[師父]";
+		mes "希望那樣的時刻永遠不要到來...但是要是真的有那麼一天，我們絕不能有一絲猶豫，一定要變成鬼神，消滅敵人。";
 		next;
 		if (ismounting()) {
-			mes "[Master]";
+			mes "[師父]";
 			mes "So... please get down from your riding pet!";
 			mes "It is a loss of etiquette on this situation.";
 			close;
 		}
-		mes "[Master]";
-		mes "You should train yourself steadily until that day.";
+		mes "[師父]";
+		mes "為此，一定要勤於修練。";
 		set job_shu,100;
 		jobchange roclass(eaclass()|EAJL_THIRD);
 		completequest 11158;
@@ -821,16 +835,16 @@ sword_1-1,223,167,2	script	Master#job_shu	483,{
 		getitem 2795,1; //Green_Apple_Ring
 		close;
 	} else if (job_shu > 5) {
-		mes "Once I was also an ordinary young man who traveled a lot and met many friends.";
+		mes "我也曾經是一個平凡的青年，在世界各地旅行，結識各路好友。";
 		next;
-		mes "[Master]";
-		mes "However, as you might have felt, I finally faced my limitation.";
+		mes "[師父]";
+		mes "但是就像你一樣，我也會有瓶頸。";
 		next;
-		mes "[Master]";
-		mes "Sometimes I wondered 'should I have to give up everything to be more powerful...?'";
+		mes "[師父]";
+		mes "偶爾我也會想，有時你不得不放棄所有的東西，來讓自己變得更強。";
 		next;
-		mes "[Master]";
-		mes "But what's done is done...";
+		mes "[師父]";
+		mes "當然，現在後悔也來不及了...";
 		close;
 	}
 	mes "This is not a place where you can stay.";
@@ -839,10 +853,10 @@ sword_1-1,223,167,2	script	Master#job_shu	483,{
 	warp "yuno_fild07",255,178;
 	end;
 }
-
+//GM用NPC，大概是要測試用的
 sword_2-1,1,2,0	script	Button Girl#sura	66,{
 	callfunc "F_GM_NPC";
-	switch(select("Turn on arena.:Turn off arena.:Turn on the living room.:Turn on Buddy.:Turn on Gara.:Turn off all.:Close")) {
+	switch(select("Turn on arena.:Turn off arena.:Turn on the living room.:Turn on 博迪.:Turn on Gara.:Turn off all.:Close")) {
 	case 1:
 		mes "Turn on arena.";
 		donpcevent "Drawing Room::OnEnable";
@@ -853,11 +867,11 @@ sword_2-1,1,2,0	script	Button Girl#sura	66,{
 		close;
 	case 3:
 		mes "Turn on the living room.";
-		donpcevent "Buddy#Sura_Salon::OnEnable";
+		donpcevent "博迪#Sura_Salon::OnEnable";
 		close;
 	case 4:
-		mes "Turn on Buddy.";
-		donpcevent "Buddy#job_shuaneh::OnEnable";
+		mes "Turn on 博迪.";
+		donpcevent "博迪#job_shuaneh::OnEnable";
 		close;
 	case 5:
 		mes "Turn on Gara.";
@@ -866,9 +880,9 @@ sword_2-1,1,2,0	script	Button Girl#sura	66,{
 	case 6:
 		mes "Turn off all.";
 		donpcevent "Drawing Room::OnDisable";
-		donpcevent "Buddy#Sura_Salon::OnReset";
-		donpcevent "Buddy#Sura_Salon::OnDisable";
-		donpcevent "Buddy#job_shuaneh::OnDisable";
+		donpcevent "博迪#Sura_Salon::OnReset";
+		donpcevent "博迪#Sura_Salon::OnDisable";
+		donpcevent "博迪#job_shuaneh::OnDisable";
 		donpcevent "#Sura_garajjom::OnDisable";
 		close;
 	case 7:

@@ -2,10 +2,13 @@
 //= Royal Guard Job Quest
 //===== By: ================================================== 
 //= Muad_Dib
+//===== 中文化 ================================================
+//= 冥王RA-PlutoRA
+//= XD人
 //===== Current Version: ===================================== 
 //= 1.3
 //===== Compatible With: ===================================== 
-//= rAthena Project
+//= rAthena SVN
 //===== Description: ========================================= 
 //= [Official Conversion]
 //= Job change Quest from Crusader / Paladin -> Royal Guard.
@@ -40,7 +43,7 @@ prt_castle,48,161,3	script	中年紳士#rg	57,{
 	}
 	if (BaseJob != Job_Crusader) {
 		mes "[中年紳士]";
-		mes "原來是個年輕朋友啊。希望你繼續努力。";
+		mes "I don't have anything to say to you. Find another person.";
 		close;
 	}
 	if (job_royal == 0) {
@@ -62,7 +65,7 @@ prt_castle,48,161,3	script	中年紳士#rg	57,{
 		mes "[中年紳士]";
 		mes "年輕人怎麼這麼愛管閒事啊。你又是誰啊?為什麼在這裡鬼鬼祟祟的啊?";
 		next;
-		select("我就是無所事事!:這裡是我工作的地方:你難道不應該先回答我的問題嗎"?);
+		select("我就是無所事事!:這裡是我工作的地方:你難道不應該先回答我的問題嗎?");
 		mes "[中年紳士]";
 		mes "你是在跟我挑釁嗎?你知道我是誰嗎?";
 		next;
@@ -108,7 +111,7 @@ prt_castle,48,161,3	script	中年紳士#rg	57,{
 		next;
 		switch(select("不服氣:取消對話")) {
 		case 1:
-			if (getserverdef(VAR_VIP_SCRIPT)) {
+			if (VIP_SCRIPT) {
 				callfunc "VIP_Third_Class";
 				set job_royal,1;
 				setquest 12090;
@@ -290,8 +293,7 @@ prt_castle,48,161,3	script	中年紳士#rg	57,{
 			mes "我們的情報員也正在尋找那個痕跡，你千萬不要太勉強";
 			close;
 		}
-		mes "[哈因理希]";
-		mes "恩，這不就是我們正在尋找的遺物嗎?";
+		mes "嗯，這不就是我們正在尋找的遺物嗎?";
 		next;
 		mes "[哈因理希]";
 		mes "你總是給我帶來驚喜。你竟然找到了情報員幾乎放棄尋找的遺物。你以前是小偷嗎?";
@@ -331,11 +333,11 @@ prt_castle,48,161,3	script	中年紳士#rg	57,{
 		changequest 12093,12094;
 		close;
 	} else if (job_royal == 5) {
-		if (countitem(6275) == 0) {
-			mes "What? Did you lose the shield? What is the one on your back?";
-			getitem 6275,1; //King_Shield
-			close;
-		}
+		//if (countitem(6275) == 0) { //無法「遺失」盾牌
+			//mes "What? Did you lose the shield? What is the one on your back?";
+			//getitem 6275,1; //King_Shield
+			//close;
+		//}
 		mes "多虧了你，發掘工作差不多全部結束了。真是謝謝你。";
 		close;
 	}
@@ -350,11 +352,12 @@ glast_01,240,366,5	script	施密特的思念	844,{
 		mes "應該要抱著恭敬的心前來吧!請你下來，並且保持禮儀";
 		close;
 	}
+	//台版沒有這段檢查盾牌，而且盾牌本身為不可交易存倉販賣丟地之道具
 	if (BaseJob == Job_Crusader && job_royal == 5) {
-		if (countitem(6275) == 0) {
-			mes "^000099You seem to have lost the shield. Go back to Heinrich and ask for help^000000.";
-			close;
-		}
+		//if (countitem(6275) == 0) {
+			//mes "^000099You seem to have lost the shield. Go back to Heinrich and ask for help^000000.";
+			//close;
+		//}
 		mes "[施密特的思念]";
 		mes "你是誰?......";
 		next;
@@ -415,7 +418,7 @@ glast_01,240,366,5	script	施密特的思念	844,{
 			mes "是嗎?看來是哈因理希看錯人了......";
 			close;
 		}
-		mes "[Memory of King Schmidtz]";
+		mes "[施密特的思念]";
 		if (BaseLevel < 99 || JobLevel < 50 || SkillPoint != 0) {
 			mes "不過在那之前你先看一下你的身軀吧!";
 			next;
@@ -424,11 +427,15 @@ glast_01,240,366,5	script	施密特的思念	844,{
 			close;
 		}
 		mes "繼承的時刻到了，年輕的皇家禁衛隊......";
+		specialeffect2 EF_MAPPILLAR;
+		progressbar "FFFF00",7;
+		specialeffect2 EF_LORD;
 		next;
 		mes "[施密特的思念]";
 		mes "你的力量......";
 		mes "不要忘記你是為了何種信念，為了什麼而戰的。";
 		close2;
+		//台版特效移前
 		specialeffect2 EF_MAPPILLAR;
 		progressbar "FFFF00",7;
 		specialeffect2 EF_LORD;
@@ -503,7 +510,7 @@ OnTouch:
 	}
 	end;
 }
-
+//此處為「巴哈拉宮」皇家、盧恩、妖術轉職任務變數調整用NPC
 sec_in02,12,43,3	script	sorcereryal	57,1,1,{
 	callfunc "F_GM_NPC";
 	switch(select("Royal Guard:Rune Knight:Sorcerer")) {

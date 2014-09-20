@@ -2,10 +2,13 @@
 //= Minstrel Job Quest
 //===== By: ================================================== 
 //= Muad_Dib
+//===== 中文化 ================================================
+//= 冥王RA-PlutoRA
+//= XD人
 //===== Current Version: ===================================== 
 //= 1.4
 //===== Compatible With: ===================================== 
-//= rAthena SVN
+//= rAthena Project
 //===== Description: ========================================= 
 //= [Official Conversion]
 //= Job change Quest from Bard / Clown -> Minstrel.
@@ -21,175 +24,183 @@ alberta,196,133,4	script	吟遊詩人#job_min	486,{
 	if (job_min == 0) {
 		if (BaseJob == Job_Bard && BaseLevel > 98 && JobLevel > 49) {
 			mes "[吟遊詩人]";
-			mes "The voice of heaven revolves around in my ears";
-			mes "like a wandering wind,";
+			mes "就像迴旋的風聲一樣，";
+			mes "天上的聲音在耳朵裡徘徊。";
 			next;
 			mes "[吟遊詩人]";
-			mes "Even though I close my eyes and cover my ears,";
-			mes "I can hear a voice from somewhere,";
+			mes "即使堵住耳朵，遮住眼睛，";
+			mes "仍然能夠聽到的那個聲音";
 			next;
 			mes "[吟遊詩人]";
-			mes "It put temptation in exhausted crewman to deep sleep,";
-			mes "made them feel as if they were in a land of dreams.";
+			mes "誘惑著船員";
+			mes "前往大海深處，並在";
+			mes "夢境中墜入地獄";
 			next;
-			mes "[Girl]";
-			mes "Ahhh!! Awesome!!";
+			mes "[村落小姐]";
+			mes "啊!!!太帥了!!";
 			next;
-			mes "[Boy]";
-			mes "Encore!! Encore!!!";
+			mes "[村落青年]";
+			mes "安可!!安可!!!";
 			next;
-			mes "[Old Man passing by]";
-			mes "Eeeee~ that's not real song...";
+			mes "[路過的老人]";
+			mes "哎呀～現在的年輕人，那個也叫歌嗎......";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "Clap.";
-			mes "I can feel the rhythm.";
-			mes "Can I hear one more song?";
+			mes "拍拍拍";
+			mes "感覺節奏感很強。";
+			mes "能再來一首嗎?";
 			next;
 			mes "[吟遊詩人]";
-			mes "Hum?";
-			mes "Judging by your outfit I think you are good at singing, why don't you sing us a song?";
+			mes "嗯?";
+			mes "從你的服裝看，好像是個很有實力的吟遊詩人，你能來唱一首嗎?";
 			next;
 			mes "["+strcharinfo(0)+"]";
 			mes "??!!";
 			next;
 			mes "[吟遊詩人]";
-			mes "Hahaha!";
-			mes "Just kidding.";
-			mes "Were you serious? Haha.";
+			mes "哈哈哈!";
+			mes "開個玩笑。";
+			mes "你以為是真的嗎?真是個有趣的傢伙。";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "...";
+			mes "......";
 			next;
 			mes "[卡利安]";
-			mes "Sorry~";
-			mes "Don't be upset...";
-			mes "My name is 卡利安, I'm just going around.";
+			mes "對不起～";
+			mes "別生氣嘛......";
+			mes "我叫卡利安，經常在世界各地流浪。";
 			next;
 			mes "[卡利安]";
-			mes "Do you want to go somewhere?";
-			mes "Alberta is perfect for traveling.";
+			mes "你到這裡來，也是想到什麼地方去吧?";
+			mes "從艾爾貝塔去哪裡都很方便。";
 			next;
 			mes "[卡利安]";
-			mes "But when you go to sea, you have to be careful.";
-			mes "If you run into a Siren, then it's only a matter of time before she kills you.";
+			mes "但是出海的時候一定要小心，";
+			mes "不小心被塞壬誘惑的話，就會成為她們的美餐"; //F*CK NOOB，這裡新斷線居然給我把塞壬翻譯成賽依連，還性轉換成女的
 			next;
 			mes "[卡利安]";
-			mes "No man can survive after hearing ^f57d7dthe voice of a Siren^000000.";
+			mes "我從來沒聽過有人聽了^f57d7d塞壬的歌聲^000000之後能夠活下來";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "I'm "+strcharinfo(0)+".";
-			mes "Are you here in Alberta to travel?";
+			mes "我叫"+strcharinfo(0)+"。";
+			mes "你也是要去別的地方，所以才到艾爾貝塔來的嗎?";
 			next;
 			mes "[卡利安]";
-			mes "Um... I'm not trying to leave...";
-			mes "...";
+			mes "嗯......我不是要去別的地方......";
+			mes "......";
 			next;
 			mes "[卡利安]";
-			mes "Yes!";
-			mes "I'm looking for '^f57d7d宮廷樂師宋^000000'.";
+			mes "是的!";
+			mes "我是在搜集^f57d7d'宮廷樂師宋'^000000的故事。";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "^f57d7d'宮廷樂師宋'^000000, you mean the poet of legend?";
+			mes "^f57d7d'宮廷樂師宋'^000000，那個......傳說中流浪的吟遊詩人?";
 			next;
 			mes "[卡利安]";
-			mes "That's right.";
-			mes "According to a rumor that I heard, he is a rich noble.";
-			mes "But other than that fact, I can't get any more information.";
+			mes "沒錯。";
+			mes "聽說他出身於普隆德拉的一個富有的貴族家庭。";
+			mes "此外就一無所知了。";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "Why can't you get any more information?";
+			mes "貴族少爺為什麼要去流浪呢?";
 			next;
 			mes "[卡利安]";
-			mes "Well?";
-			mes "That's why I tried to go 普隆德拉...";
-			mes "Umm...";
+			mes "這個嘛?";
+			mes "為了打聽這個，我曾經去過普隆德拉......";
+			mes "嗯......";
 			next;
 			mes "[卡利安]";
-			mes "如果你感興趣的話，願意和我一起蒐集^f57d7d'宮廷樂師宋'^000000的故事嗎?";
+			mes "如果你感興趣的話，願意和我一起搜集^f57d7d'宮廷樂師宋'^000000的故事嗎?";
 			next;
-			if(select("好的:不要") == 2) {
+			if(select("Ok.:No.") == 2) {
 				mes "["+strcharinfo(0)+"]";
-				mes "I'm not interested.";
+				mes "我不感興趣。";
 				next;
 				mes "[卡利安]";
-				mes "Are you? It can't be helped.";
-				mes "See you later~";
+				mes "是嗎?那就算了。";
+				mes "下次有機會再見～";
 				close;
 			}
-			if (getserverdef(VAR_VIP_SCRIPT)) {
+			if (VIP_SCRIPT) {
 				callfunc "VIP_Third_Class";
 				set job_min,1;
 				setquest 11135;
 				next;
 			}
 			mes "["+strcharinfo(0)+"]";
-			mes "Ok, I will.";
+			mes "好的。";
 			set job_min,1;
 			setquest 11135;
 			next;
 			mes "[卡利安]";
-			mes "It's good to travel by yourself but sometimes you feel that you want to have friends around.";
+			mes "一個人流浪雖然也很好，但有時有個同伴也很不錯。";
 			next;
 			mes "[卡利安]";
-			mes "Then "+strcharinfo(0)+".";
-			mes "Can you collect some ^f57d7dInformation on '宮廷樂師宋'^000000 in ^f57d7d普隆德拉^000000?";
-			mes "Because I have something to investigate in Alberta.";
+			mes "好的，"+strcharinfo(0)+".";
+			mes "你能幫我去^f57d7d普隆德拉^000000，搜集和";
+			mes "^f57d7d'宮廷樂師宋'有關的情報^000000嗎?";
+			mes "我要在艾爾貝塔進行調查。";
 			next;
 			mes "[卡利安]";
-			mes "Please come back here after finishing the investigation.";
+			mes "那就拜託你了～";
+			mes "調查結束之後，馬上到這裡來。";
 			close;
 		}
 		mes "[吟遊詩人]";
-		mes "You have to be careful when you are going to sea.";
-		mes "If a Siren fascinates you, then it's only a matter of time before she kills you.";
+		mes "但是出海的時候一定要小心，";
+		mes "不小心被塞壬誘惑的話，就會成為她們的美餐"; //F*CK NOOB，這裡新斷線居然給我把塞壬翻譯成賽依連，還性轉換成女的
 		next;
 		mes "[吟遊詩人]";
-		mes "No man can survive after hearing ^f57d7dthe voice of a Siren^000000.";
+		mes "我從來沒聽過有人聽了^f57d7d塞壬的歌聲^000000之後能夠活下來";
 		close;
 	} else if (job_min == 1) {
 		mes "[卡利安]";
-		mes "It's good to travel by yourself but sometimes you feel that you want to have friends around.";
+		mes "一個人流浪雖然也很好，但有時有個同伴也很不錯。";
 		next;
 		mes "[卡利安]";
-		mes "Then "+strcharinfo(0)+".";
-		mes "Can you collect some ^f57d7dInformation on '宮廷樂師宋'^000000 in ^f57d7d普隆德拉^000000?";
-		mes "Because I have something to investigate in Alberta.";
+		mes "好的，"+strcharinfo(0)+".";
+		mes "你能幫我去^f57d7d普隆德拉^000000，搜集和";
+		mes "^f57d7d'宮廷樂師宋'有關的情報^000000嗎?";
+		mes "我要在艾爾貝塔進行調查。";
 		next;
 		mes "[卡利安]";
-		mes "Please come back here after finishing the investigation.";
+		mes "那就拜託你了～";
+		mes "調查結束之後，馬上到這裡來。";
 		close;
 	} else if (job_min > 1 && job_min < 4) {
 		mes "[卡利安]";
-		mes "Can you collect some ^f57d7d information on '宮廷樂師宋'^000000 in ^f57d7d普隆德拉^000000?";
-		mes "Because I have something to investigate in Alberta.";
+		mes "你能幫我去^f57d7d普隆德拉^000000，搜集和";
+		mes "^f57d7d'宮廷樂師宋'有關的情報^000000嗎?";
+		mes "我要在艾爾貝塔進行調查。";
 		next;
 		mes "[卡利安]";
-		mes "Please come back here after finishing the investigation.";
+		mes "那就拜託你了～";
+		mes "調查結束之後，馬上到這裡來。";
 		close;
 	} else if (job_min == 4) {
 		mes "[卡利安]";
-		mes strcharinfo(0)+"! Did you already go to 普隆德拉?";
-		mes "Did you get any useful information?";
+		mes strcharinfo(0)+"這麼快就從普隆德拉回來啦?";
+		mes "找到什麼有用的情報了嗎?";
 		next;
 		mes "[卡利安]";
-		mes "Hum~ did you?";
-		mes "I think that's not enough to use...";
+		mes " 嗯～是嗎?";
+		mes "好像沒什麼有用的消息......";
 		next;
 		mes "[卡利安]";
-		mes "Huhu~ But I got some useful information from some of the captains here in Alberta.";
+		mes "呵呵～但是我得到了一個不錯的情報。";
+		mes "我向艾爾貝塔的船長們打聽了一下。";
 		next;
 		mes "[卡利安]";
-		mes "聽說為了有關推斷為^f57d7d宮廷樂師宋^000000的人在港口搭乘的船的情報。";
-		mes "他搭的船是幾年前就停止營運的開往^f57d7d毀葛^000000的船。";
+		mes "聽說了有關推斷為^f57d7d宮廷樂師宋^000000的人在港口搭乘的船的情報。";
+		mes "他搭的是幾年前就停止運營的開往^f57d7d毀葛^000000的船";
 		next;
 		mes "[卡利安]";
-		mes "It doesn't exist any more, so I need to take an airship...";
-		mes "It's my first time to take it.";
+		mes "現在那條航線雖然已經沒有了，但好像可以乘坐飛空艇過去......";
+		mes "事實上，我還是第一次坐飛空艇。";
 		next;
 		mes "[卡利安]";
-		mes "Um..";
-		mes "Anyway let's meet at the airship in Izlude.";
+		mes "嗯......";
+		mes "飛空艇可以在伊斯魯得島乘坐，我們在飛空艇上見吧。";
 		set job_min,5;
 		changequest 11138,11139;
 		close;
@@ -214,20 +225,20 @@ alberta,196,133,4	script	吟遊詩人#job_min	486,{
 		mes "Well?";
 		mes "Let me leave here?";
 		next;
-		mes "[宮廷樂師宋]";
+		mes "[Minstrel Song]";
 		mes "Whenever you want to see me, visit me.";
 		mes "If you have time come by and have a chat with me.";
 		next;
 		switch(select("Accept.:Refuse.")) {
 		case 1:
-			mes "[宮廷樂師宋]";
+			mes "[Minstrel Song]";
 			mes "Did you visit somewhere fun?";
 			mes "I'm excited!";
 			close2;
 			warp "prt_in",101,174;
 			end;
 		case 2:
-			mes "[宮廷樂師宋]";
+			mes "[Minstrel Song]";
 			mes "Then pass by here next time.";
 			close;
 		}
@@ -250,97 +261,93 @@ prontera,141,97,4	script	親切的阿姨	701,{
 	mes "[親切的阿姨]";
 	if (job_min == 1) {
 		mes "宮廷樂師宋?";
-		mes "I haven't heard that name before.";
+		mes "我還是第一次聽到這樣的名字?";
 		next;
 		mes "[親切的阿姨]";
-		mes "Is he a legendary poet?";
-		mes "I don't know who he is, but I guess he is a grand man?";
+		mes "傳說的吟遊詩人?";
+		mes "雖然不知道那是什麼，應該是個了不起的人吧?";
 		next;
 		mes "[親切的阿姨]";
-		mes "和唱歌有關的事情，你可以去問問^f57d7d城門附近戴眼鏡的那個傢伙^000000。";
-		mes "他在寫一本名叫最新流行歌曲100首的書~";
+		mes "啊!和唱歌有關的事情，你可以去問問^f57d7d城門附近戴眼鏡的那個傢伙^000000。";
+		mes "他在寫一本叫最新流行歌曲100首的書～";
 		next;
 		mes "[親切的阿姨]";
-		mes "He must know something about making that book.";
+		mes "他能寫那種書，一定知道些什麼吧?";
 		set job_min,2;
 		changequest 11135,11136;
 		close;
 	} else if (job_min == 2) {
-		mes "Ah! Ask a ^f57d7dman wearing glasses near the gate of the castle^000000 about the song.";
-		mes "They will make a book of 100 hit songs~";
+		mes "和唱歌有關的事情，你可以去問問^f57d7d城門附近戴眼鏡的那個傢伙^000000。";
+		mes "他在寫一本叫最新流行歌曲100首的書～";
 		next;
 		mes "[親切的阿姨]";
-		mes "He must know something about making that book.";
+		mes "他能寫那種書，一定知道些什麼吧?";
 		close;
 	}
-	mes "I heard that a ^f57d7dman wearing glasses near the gate of the castle^000000 is making a 100 hit song book~";
+	mes "聽說^f57d7d城門附近戴眼鏡的那個傢伙^000000在寫一本名叫最新歌曲100首的書～";
 	close;
 }
 
 prontera,140,331,6	script	戴眼鏡的人	883,{
 	mes "[戴眼鏡的人]";
 	if (job_min == 2) {
-		mes "You mean 宮廷樂師宋?";
-		mes "I don't know details of his life but I heard that he wrote great songs.";
+		mes "宮廷樂師宋嗎?";
+		mes "具體的我也不太清楚，但聽說他寫了很多名曲。";
 		next;
 		mes "[戴眼鏡的人]";
-		mes "I don't get how a boy raised in a rich environment could write a song like this.";
+		mes "真不知道那個原本衣食無憂的少爺，到底經歷了怎樣的旅行，才能寫出那麼優美的歌曲。";
 		next;
 		mes "[戴眼鏡的人]";
-		mes "He is still on a trip, but these days we haven't heard new songs from him.";
+		mes "聽說他還在四處旅行，創作歌曲。但最近好像很久沒有新歌出來了。";
 		next;
 		mes "[戴眼鏡的人]";
-		mes "So we are worried.";
+		mes "我們這些業內人士對此非常擔心。";
 		next;
 		mes "[戴眼鏡的人]";
-		mes "其它的事情我也是聽^f57d7d道具店前面的一個女人^000000說的，詳細的情況你最好去問問她。";
+		mes "其他的事情我也是聽^f57d7d道具店前面的一個女人^000000說的，詳細的情況你最好去問問她。";
 		set job_min,3;
 		changequest 11136,11137;
 		close;
 	} else if (job_min == 3) {
-		mes "其它的事情我也是聽^f57d7d道具店前面的一個女人^000000說的，詳細的情況你最好去問問她。";
+		mes "其他的事情我也是聽^f57d7d道具店前面的一個女人^000000說的，詳細的情況你最好去問問她。";
 		close;
 	}
-	mes "100 hit songs!!";
-	mes "Whoever want to be a Minstrel should know about this!";
+	mes "最新流行歌曲100首!!";
+	mes "對於緊追潮流的人來說，最新歌曲是最基本的東西!";
 	next;
 	mes "[戴眼鏡的人]";
-	mes "Once this book is completed, I'll be rich!";
-	mes "Haha!!";
+	mes "等書完成之後，就等日進斗金了!";
+	mes "啊哈哈!!";
 	close;
 }
 
 prontera,146,218,4	script	女人#job_min	90,{
 	if (job_min == 3) {
 		mes "[女人]";
-		mes "你知道那個叫宮廷樂師宋的人在哪裡啊? 我聽起來好像是我們家少爺。";
+		mes "你知道那個叫宮廷樂師宋的人在哪裡啊?";
+		mes "我聽起來好像是我們家少爺。";
 		next;
 		mes "[女人]";
-		mes "A few years ago, he went off to sea but he never came back.";
+		mes "幾年前他突然說想去看海，去了艾爾貝塔，之後就音訊全無了。";
 		next;
 		mes "[女人]";
-		mes "He liked to sing a lot but we didn't let him sing.";
+		mes "少爺在年輕的時候很喜歡唱歌，但家裡人對此非常反對。";
 		next;
 		mes "[女人]";
-		mes "His father didn't like him singing much.";
+		mes "特別是我們家主人，對少爺沉迷於音樂感到非常不滿。";
 		next;
 		mes "[女人]";
-		mes "So he broke every instrument in the house...";
-		mes "It was terrible.";
-		mes "Where is my little boy... sniff.";
+		mes "結果把少爺心愛的樂器全部摔壞了......";
+		mes "不知道可憐的少爺現在在哪裡......嗚嗚";
 		next;
-		mes "- I can't get anymore -";
-		mes "- useful information. -";
-		mes "- I'll go back to Alberta -";
-		mes "- and talk to that Bard. -";
+		mes "- 好像沒辦法獲得更多的情報了。 -";
+		mes "- 回到艾爾貝塔去吧。 -";
 		set job_min,4;
 		changequest 11137,11138;
 		close;
 	} else if (job_min == 4) {
-		mes "- I can't get any more -";
-		mes "- useful information. -";
-		mes "- Go back to Alberta. -";
-		mes "- and talk to that Bard. -";
+		mes "- 好像沒辦法獲得更多的情報了。 -";
+		mes "- 回到艾爾貝塔去吧。 -";
 		close;
 	}
 	mes "[女人]";
@@ -350,14 +357,14 @@ prontera,146,218,4	script	女人#job_min	90,{
 
 airplane,222,67,6	script	卡利安#job_min1	486,{
 	mes "[卡利安]";
-	mes "Yup!!!!!!!!!!!!!!!!!!";
+	mes "唔!!!!!!!";
 	next;
 	mes "[卡利安]";
-	mes "不.....不要碰我.....";
-	mes "我很難受.....";
+	mes "不......不要碰我......";
+	mes "我很難受......";
 	next;
 	mes "[卡利安]";
-	mes "Acchh...";
+	mes "嘔......";
 	if (job_min == 5) {
 		set job_min,6;
 		changequest 11139,11140;
@@ -371,35 +378,35 @@ airplane,222,67,6	script	卡利安#job_min1	486,{
 hu_in01,267,5,3	script	卡利安#job_min2	486,{
 	mes "[卡利安]";
 	if (job_min == 6) {
-		mes "Eeeeh it's so painful.";
-		mes "I don't want to feel like this ever again.";
+		mes "呃呃......我快死了......";
+		mes "我再也不想坐飛空艇了......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Are you ok?";
+		mes "你還好吧?";
 		next;
 		mes "[卡利安]";
-		mes "...";
-		mes "No...";
+		mes "......";
+		mes "不好......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "I'm feeling ok.";
-		mes "So, I'm going to find out information in town, you can take a rest.";
+		mes "......看起來也不太好......";
+		mes "那我先去村裡收集情報，你先好好休息吧。";
 		next;
 		mes "[卡利安]";
-		mes "Sorry, blech! I still feel bad...";
-		mes "You can get good information from the ^f57d7dPub^000000. Owww...";
+		mes "對不起......嘔!";
+		mes "^f57d7d酒店^000000裡......應該會有很多人，也許能找到什麼情報，水......唔......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "You don't have to tell me everything. I can take care of it.";
+		mes "沒關係，你別說話了......";
 		next;
 		mes "[卡利安]";
-		mes "...";
+		mes "......";
 		set job_min,7;
 		changequest 11140,11141;
 		close;
 	} else if (job_min == 7) {
-		mes "Sorry... Owww!";
-		mes "You can get good information from the ^f57d7dPub^000000. Owww...";
+		mes "對不起......嘔!";
+		mes "^f57d7d酒店^000000裡......應該會有很多人，也許能找到什麼情報，水......唔......";
 		close;
 	} else if (job_min == 8) {
 		mes "Wooo.";
@@ -411,215 +418,217 @@ hu_in01,267,5,3	script	卡利安#job_min2	486,{
 		mes "- from a man in the Pub. -";
 		close;
 	} else if (job_min == 9) {
-		mes "Owww...";
+		mes "呃呃......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "How do you feel?";
+		mes "怎麼樣了?";
 		next;
 		mes "[卡利安]";
-		mes "Oww...";
-		mes "I feel better.";
+		mes "呃......";
+		mes "好像好點了。";
 		next;
 		mes "[卡利安]";
-		mes "Did you get anything?";
-		mes "I'm sorry that I can't be more helpful to you.";
+		mes "打聽到什麼了嗎?";
+		mes "來毀葛之後，盡給你添麻煩了，對不起。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "No, it's ok.";
-		mes "I met a man in the Pub, he said that he got a song from '宮廷樂師宋'.";
+		mes "不......沒事。";
+		mes "我在酒店裡見到一個大叔，他說在幾年前從“宮廷樂師宋”那裡得到了一首曲子。";
 		next;
 		mes "[卡利安]";
-		mes "Pub?";
-		mes "You got a song?";
+		mes "酒店?";
+		mes "得......得到了曲子?";
 		mes ".....";
-		mes "Bleech...";
+		mes "唔......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Hey! Are you sure that you are ok?";
+		mes "哎呀，你真的沒事嗎?";
 		next;
 		mes "[卡利安]";
-		mes "I don't become airsick,";
-		mes "It's just bad memories.";
-		mes "So did you hear something?";
+		mes "頭暈已經好了，別擔心......";
+		mes "只不過還有點不好的記憶......";
+		mes "你聽到了什麼消息?";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "I heard a song named ^f57d7d'Metallic Sound'^000000.";
+		mes "我聽到了名叫^f57d7d'重金屬音樂'^000000的歌......";
 		next;
 		mes "[卡利安]";
-		mes "What?!?!?!?!!!!!";
-		mes "You heard that?!";
+		mes "什麼?!?!?!?!!!!";
+		mes "你聽到了那個?!";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Why? Do you know that song?";
+		mes "嗯?你也知道那首歌嗎?";
 		next;
 		mes "[卡利安]";
-		mes "Ahh...";
-		mes "Y-yes...";
+		mes "啊?";
+		mes "嗯......聽過幾次......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Hmm...";
+		mes "嗯......";
 		next;
 		mes "[卡利安]";
-		mes "I met him before.";
-		mes "He has a great voice...";
+		mes "過去我見過那個大叔。";
+		mes "聲音非常洪亮的那個大叔......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Yes.";
-		mes "I blacked out as I heard that song.";
+		mes "嗯。";
+		mes "聽的時候，我差點暈了過去。";
 		next;
 		mes "[卡利安]";
-		mes "He has the destructive power of voice.";
-		mes "And he...";
-		mes "What else?";
+		mes "破壞力還是那麼驚人啊。";
+		mes "那個大叔......";
+		mes "沒有別的情報嗎?";
 		next;
 		mes "["+strcharinfo(0)+"]";
 		mes "啊!!";
-		mes "^f57d7d'宮廷樂師宋'^000000好像去了^f57d7d達納托斯之塔^000000。";
-		mes "不知道他去那裡做了什麼。";
+		mes "^f57d7d'宮廷樂師宋'^000000好像去了 ^f57d7d達納托斯塔^000000。";
+		mes "不知道他去那裡做什麼。";
 		next;
 		mes "[卡利安]";
-		mes "Did he? I must go there!";
+		mes "是嗎?那我們過去看看。";
 		set job_min,10;
 		changequest 11142,11143;
 		close;
 	} else if (job_min == 10) {
-		mes "What are you doing? Let's go to Thanatos tower.";
+		mes "你在做什麼?快出發去達納托斯塔吧。";
 		close;
 	}
-	mes "Of course it's easy to take an airship, but sometimes it can be good to walk.";
+	mes "飛空艇雖然好，但我還是喜歡慢慢走著旅行。";
 	next;
 	mes "[卡利安]";
-	mes "It isn't about my sickness.";
+	mes "倒不是因為我暈船。";
 	close;
 }
 
 hu_in01,361,103,3	script	走音大叔	995,{
 	if (job_min == 7) {
 		mes "[走音大叔]";
-		mes "Lala~ lala~";
-		mes "Humming~?";
+		mes "啦啦～啦啦～";
+		mes "蹦嚓蹦嚓～?";
 		next;
 		mes "[走音大叔]";
-		mes "lalala~";
-		mes "lullula~";
+		mes "叮咚叮咚～";
+		mes "嚕嚕啦啦～?";
 		next;
-		mes "- 聽上去非常奇怪的歌曲 -";
+		mes "- 聽上去非常奇怪的歌曲。 -";
 		mes "- 讓人懷疑是不是人發出 -";
 		mes "- 來的聲音。 -";
 		next;
-		if(select("到別的地方去:繼續聽") == 1)
+		if(select("到別的地方去:繼續聽。") == 1)
 			close;
 		mes "[走音大叔]";
-		mes "Turuturu~";
-		mes "Dadada~";
+		mes "哆囉哆囉～";
+		mes "噹低啦噹～?";
 		next;
 		mes "[走音大叔]";
-		mes "Shubashuba~ shaaa~";
-		mes "Blahblah~";
-		mes "Lalala...";
+		mes "休吧休吧～夏吧裡郎～";
+		mes "布啦布啦～?";
+		mes "克哩哩......";
 		mes "......!!";
 		next;
 		mes "[走音大叔]";
-		mes "Hum!! Hey you, you were listening to my song.";
-		mes "You look like a "+((Class == Job_Clown)?"Clown":"Bard")+", how about you sing for me as rewarding my song?";
+		mes "嗯!!喂，你，從剛才開始你就一直用心聽我的歌。";
+		mes "看你好像是個"+((Class == Job_Clown)?"搞笑藝人":"吟遊詩人")+"，光在那邊聽人唱歌，難道你自己不應該來一首嗎?"; //台版這裡兩種職業都直稱吟遊詩人，這裡採用原腳本的判定
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "What?!";
+		mes "嗯?!";
 		next;
 		mes "[走音大叔]";
-		mes "Sing for me.";
-		mes "Come on~";
+		mes "快唱一首!";
+		mes "快～～";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Ok...";
-		mes "Hum hum...";
+		mes "那?......嗯嗯......";
+		mes "啊啊......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "You are standing in the middle of Asgard's field.";
-		mes "You hand the fruit of heaven over to me~";
-		mes "You are loved by every god~";
+		mes "站在阿斯嘉特發光的原野上";
+		mes "拿出天國之果的我的女神";
+		mes "願你得到眾神的愛～";
 		next;
 		mes "[走音大叔]";
-		mes "Hooo~ You sing well. I can feel better when I hear ^f57d7d'Idun's apple'^000000~";
+		mes "哦～唱的很不錯嘛。聽了你的^f57d7d'伊登的蘋果'^000000，感覺體力好像恢復了～";
 		next;
 		mes "[走音大叔]";
-		mes "As you can see!";
-		mes "I'm a guy who can enjoy songs!";
+		mes "看來你也應該知道!";
+		mes "我是個喜歡音樂的男人!";
 		next;
 		mes "[走音大叔]";
-		mes "I think it is nothing to be proud of. But I'm good at singing.";
-		mes "When I was young, I tried to be a Bard but I had to succeed the family business.";
+		mes "不是我吹牛，我在唱歌方面很有一手。";
+		mes "事實上，我年輕的時候也想成為一名吟遊詩人，但因為必須繼承家業，所以沒有辦法。";
 		next;
 		mes "[走音大叔]";
-		mes "For a long time I lost my dream, I'm already old.";
+		mes "因為忙著工作，所以夢想被放到了一邊，不知不覺已經年紀一大把了。";
 		next;
 		mes "[走音大叔]";
-		mes "I have family that needed my protection.";
-		mes "But one day I believe that my dreams come true!";
+		mes "現在我有了很多需要我關心的家人......";
+		mes "但是相信總有一天我一定能實現自己的夢想!";
 		next;
 		mes "[走音大叔]";
-		mes "In my spare time, I heard the stories of a tourist in the Pub.";
-		mes "When I left there, I didn't want to become a laughing stock.";
+		mes "所以閒暇的時候，我經常來酒店和旅行的人聊天。";
+		mes "如果我沒有準備就離開的話，一定會被人當笑話的。";
 		next;
 		mes "[走音大叔]";
-		mes "And I can show my song to those who know the song.";
+		mes "對於喜歡歌的人，我偶爾還會在他們面前一展歌喉。";
 		next;
 		mes "[走音大叔]";
-		mes "They are usually surprised when they hear the song.";
-		mes "They are surprised by my skill.";
-		mes "Huhu";
+		mes "聽了我的歌之後，所有的人都非常吃驚，臉都變綠了。";
+		mes "他們一定是被我的實力嚇傻了。";
+		mes "呵呵";
 		next;
 		mes "[走音大叔]";
-		mes "But ^f57d7d'宮廷樂師宋'^000000 didn't get discouraged by my song.";
-		mes "Of course he isn't good enough to me.";
+		mes "但是那名叫^f57d7d'宮廷樂師宋'^000000的人，聽了我的歌之後也能做到不動聲色。";
+		mes "他是個很有實力的傢伙，雖然比我差那麼一點。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Did you meet ^f57d7d'宮廷樂師宋'^000000?";
+		mes "你見過^f57d7d'宮廷樂師宋'^000000嗎?";
 		next;
 		mes "[走音大叔]";
-		mes "Hmm? Have you met him?";
-		mes "I did. A few years ago.";
+		mes "嗯?你也知道那個傢伙嗎?";
+		mes "當然見過啦。";
+		mes "那是好幾年前的事情了。";
 		next;
 		mes "[走音大叔]";
-		mes "When he heard my song, he said that he can't hear songs like this anywhere.";
+		mes "他聽了我的歌之後大加稱讚，說“好久沒有聽到這麼有破壞力的歌了～”。";
 		next;
 		mes "[走音大叔]";
-		mes "I could have the opportunity to sing for him in 毀葛.";
-		mes "There is no one who has skill like that.";
+		mes "他在毀葛停留的時候，我見過他好幾次。";
+		mes "每次我都會唱歌給他聽。";
+		mes "因為實力那麼強的傢伙確實不多見。";
 		next;
 		mes "[走音大叔]";
-		mes "Before he left, I got a song that reminds me of him.";
+		mes "在他離開之前，最後一次見面的時候，他給了我一首曲子，說是聽了我的歌之後創作的。";
 		next;
 		mes "[走音大叔]";
-		mes "He said that he will go to Thanatos.";
+		mes "他說要去達納托斯塔，不知道現在過得怎麼樣。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Did you get a song?";
+		mes "他給了你一首曲子?";
 		next;
 		mes "[走音大叔]";
-		mes "Yes!";
-		mes "He conceded my ability!";
+		mes "是的!";
+		mes "那是他認可我的實力的證據!";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Can I hear the song?";
+		mes "我能聽聽那首歌嗎?";
 		next;
 		mes "[走音大叔]";
-		mes "Hum...";
-		mes "Wait.";
-		mes "I have to find a piece of paper.";
-		mes "I put it in my vest.";
+		mes "嗯哼......";
+		mes "你等一下。";
+		mes "那張紙應該就在我身上。";
+		mes "我把它當作護身符，縫在背心裡面。";
 		next;
 		mes "[走音大叔]";
-		mes "Rummaging rummaging.";
-		mes "Browsing browsing .";
+		mes "摸索摸索。";
+		mes "翻找翻找。";
 		set job_min,8;
 		close;
 	} else if (job_min == 8) {
 		mes "[走音大叔]";
-		mes "I got it.";
-		mes "Hum!";
-		mes "Listen carefully!";
-		mes "^f57d7d'Metallic Sound!!'^000000";
+		mes "嗯，在這裡。";
+		mes "哎嘿!";
+		mes "這可不是人人都能聽到的歌，好好聽著吧!";
+		mes "^f57d7d'重金屬音樂!!!!'^000000";
 		next;
 		mes "[走音大叔]";
 		mes "$$$$$$@@@@@!!!!";
@@ -633,46 +642,47 @@ hu_in01,361,103,3	script	走音大叔	995,{
 		mes "&$$%@@@%@##%~~~";
 		percentheal -30,-30;
 		next;
-		mes "-You lose consciousness.-";
-		mes "-This voice must have-";
-		mes "-huge destructive-";
-		mes "-power.-";
+		mes "-精神逐漸變得模糊。-";
+		mes "-好像聽到了擁有豐富-";
+		mes "-內涵的、破壞力驚人-";
+		mes "-的歌聲。-";
 		percentheal -30,-30;
 		next;
-		mes "-And I can't remember-";
-		mes "-the end of this song.-";
+		mes "-音樂的後面部分-";
+		mes "-就記不太清楚了。-";
 		next;
 		mes "[走音大叔]";
-		mes "Hey~";
+		mes "喂～";
 		next;
 		mes "[走音大叔]";
-		mes "Open your eyes~";
+		mes "快睜開眼睛～";
 		next;
 		mes "[走音大叔]";
-		mes "Clap";
-		mes "Hey~";
+		mes "啪啪";
+		mes "喂～";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Eeeee...";
+		mes "呃......";
 		next;
 		mes "[走音大叔]";
-		mes "I think you are qualified, but you seem to need more training.";
+		mes "我還以為你是個很有實力的傢伙，沒想到就這樣倒下去了。看來你還需要進一步的修練啊。";
 		next;
 		mes "["+strcharinfo(0)+"]";
 		mes "......";
 		next;
-		mes "-You're so exhausted.-";
-		mes "-So go back to the hotel.-";
+		mes "-感覺非常疲倦。-";
+		mes "-情報已經得到，最好-";
+		mes "-回旅館休息一下。-";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Thank you for your song.";
-		mes "I have to go back...";
+		mes "唱得真好聽。";
+		mes "那我先回去了......";
 		next;
 		mes "[走音大叔]";
-		mes "Ah?";
-		mes "Ok see you later.";
-		mes "If you want to hear my song, you can visit me.";
-		mes "Hahahh";
+		mes "是嗎?";
+		mes "你的身體看上去有點弱，路上小心。";
+		mes "如果你想聽我唱歌，可以隨時來找我。";
+		mes "哈哈哈";
 		set job_min,9;
 		changequest 11141,11142;
 		close;
@@ -680,15 +690,15 @@ hu_in01,361,103,3	script	走音大叔	995,{
 		mes "["+strcharinfo(0)+"]";
 		mes "......";
 		next;
-		mes "-I'm so exhausted.-";
-		mes "-You got information-";
-		mes "-so go back to the hotel.-";
+		mes "-感覺非常疲倦。-";
+		mes "-情報已經得到，最好-";
+		mes "-回旅館休息一下。-";
 		close;
 	} else if (job_min == 10) {
 		mes "[走音大叔]";
-		mes "Are you leaving??";
-		mes "If you want to hear my song, you can visit me.";
-		mes "Hahahah";
+		mes "你要離開毀葛??";
+		mes "如果你想聽我唱歌，可以隨時來找我。";
+		mes "哈哈哈";
 		close;
 	} else if (job_min == 100) {
 		mes "[走音大叔]";
@@ -698,51 +708,49 @@ hu_in01,361,103,3	script	走音大叔	995,{
 		close;
 	}
 	mes "[走音大叔]";
-	mes "Lala~ lalal~";
-	mes "Lulu~?";
+	mes "啦啦～啦啦～";
+	mes "蹦嚓蹦嚓～?";
 	next;
 	mes "[走音大叔]";
-	mes "Lalalal~";
-	mes "Lululul~";
+	mes "叮咚叮咚～";
+	mes "嚕嚕啦啦～?";
 	next;
-	mes "-It's very hard to hear.-";
-	mes "-You start to have doubts-";
-	mes "-that such a sound can be-";
-	mes "-coming out a human.-";
+	mes "- 聽上去非常奇怪的歌曲。 -";
+	mes "- 讓人懷疑是不是人發出 -";
+	mes "- 來的聲音。 -";
 	close;
 }
 
 tha_scene01,140,200,0	script	#min_receipt	139,3,3,{
 OnTouch:
 	if (job_min == 10 || (job_min == 11 && countitem(6271) == 0)) {
-		mes "-地上有一張紙。-";
+		mes "-地上有一張紙-";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "What is this?";
+		mes "這是什麼?";
 		next;
 		mes "[卡利安]";
-		mes "What does it say?";
+		mes "上面好像寫著什麼字?";
 		donpcevent "卡利安#cmd1::OnEnable";
 		next;
 		mes "===================";
-		mes "==照片兌換收據==";
+		mes "=照片兌換收據=";
 		mes "===================";
-		mes "顧客 : 宮廷樂師宋";
+		mes "顧客：宮廷樂師宋";
 		next;
-		mes "- Bring this receipt and exchange it";
-		mes "";
-		mes "- Juno's store manager : 店長金喀嚓.";
+		mes "- 請拿本收據到相關店鋪兌換。";
+		mes "- 朱諾分店店長：金喀擦";
 		next;
-		mes "- Directions : Around Juno's plaza.";
+		mes "- 地址：朱諾礦山附近。";
 		getitem 6271,1; //Mins_Receipt
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Photo exchange receipt?";
-		mes "How did he drop it...";
+		mes "照片兌換收據?";
+		mes "竟然把這東西掉了......";
 		next;
 		mes "[卡利安]";
-		mes "Juno's store...";
-		mes "Let's go to Juno...";
+		mes "朱諾分店......";
+		mes "那就去朱諾看看吧。";
 		if (job_min == 10) {
 			set job_min,11;
 			changequest 11143,11144;
@@ -834,243 +842,247 @@ comodo,184,109,0	duplicate(卡利安#cmd2)	卡利安#cmd6	486
 moc_fild16,204,231,0	duplicate(卡利安#cmd2)	卡利安#cmd7	486
 aldebaran,142,128,2	duplicate(卡利安#cmd2)	卡利安#cmd8	486
 
-yuno,143,170,6	script	店長金喀嚓#job_min	748,{
-	mes "[店長金喀嚓]";
+yuno,143,170,6	script	店長金喀擦#job_min	748,{
+	mes "[金喀擦]";
 	if (job_min == 11) {
-		mes "Hi~ welcome~";
-		mes "I can take a picture for you.";
-		mes "Do you want to take a pic?";
+		mes "哎呀～歡迎光臨～";
+		mes "我可以為你留下這一瞬間的記憶。";
+		mes "你想拍張紀念照嗎?";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "No...";
-		mes "Do you remember this receipt?";
+		mes "不......";
+		mes "你還記得這張收據嗎?";
 		next;
-		mes "[店長金喀嚓]";
-		mes "Let me see~";
-		mes "Umm...";
+		mes "[金喀擦]";
+		mes "讓我看看～";
+		mes "嗯......";
 		next;
-		mes "[店長金喀嚓]";
-		mes "Yes...";
-		mes "It looks so old.";
+		mes "[金喀擦]";
+		mes "哎呀，這個";
+		mes "好像是幾年前的收據啊。";
 		next;
-		mes "[店長金喀嚓]";
-		mes "It's okay.";
-		mes "Tourists usually don't pick up their pictures.";
+		mes "[金喀擦]";
+		mes "不過沒關係";
+		mes "長年在外旅行的人可能會很長時間才會來取，我已經習慣了。";
 		next;
-		mes "[店長金喀嚓]";
-		mes "So there are plenty of photos I've been holding on to.";
+		mes "[金喀擦]";
+		mes "因此店裡到處都堆滿了照片。但我已經習慣了。";
 		next;
-		mes "[店長金喀嚓]";
-		mes "I can find that so easily.";
-		mes "I keep lots of old stuff.";
-		mes "No problem.";
+		mes "[金喀擦]";
+		mes "雖然有很多沒有取走的照片，但我很快就能幫你找到。";
+		mes "還有一些是我的祖先時代留下來的。";
+		mes "我已經習慣了。";
 		next;
-		mes "[店長金喀嚓]";
-		mes "browsing~";
+		mes "[金喀擦]";
+		mes "翻找翻找";
 		next;
-		mes "[店長金喀嚓]";
-		mes "browsing~";
+		mes "[金喀擦]";
+		mes "嘩啦啦";
 		next;
-		mes "[店長金喀嚓]";
-		mes "I think I found it!";
-		mes "The photo crashed down, but it's ok.";
-		mes "No problem.";
+		mes "[金喀擦]";
+		mes "找到了!";
+		mes "雖然堆在一邊的照片倒了，不過沒關係。";
+		mes "我已經習慣了。";
 		next;
-		mes "[店長金喀嚓]";
-		mes "Here, take a look.";
+		mes "[金喀擦]";
+		mes "如果你想要拍紀念照，請再來找我。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "The picture!";
-		mes "Let me see it!";
+		mes "照片!";
+		mes "好像是很有用的情報啊?!";
+		mes "拍的是什麼呢?";
 		next;
 		mes "[卡利安]";
-		mes "Hurry.";
+		mes "快給我看看。";
 		donpcevent "卡利安#cmd2::OnEnable";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "...";
+		mes "......";
 		next;
 		mes "[卡利安]";
-		mes "Oh~ Good pic, isn't it?";
+		mes "哦～拍得不錯嘛!";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "I expected I would see the face of '宮廷樂師宋', but he's wearing a mask...";
-		mes "He's wearing a mask?!";
-		mes "We came here for this?";
+		mes "我以為會拍到“宮廷樂師宋”的臉。";
+		mes "沒想到戴著面具?!";
+		mes "看來朱諾也是白跑一趟了。";
 		next;
 		mes "[卡利安]";
-		mes "Ah! look at this!";
-		mes "Something is on the back of the picture.";
+		mes "啊!看這個!";
+		mes "照片後面好像寫著什麼?";
 		next;
-		mes "-";
-		mes "我想要玩偶熊。有33個就差不多了吧?";
-		mes "　　-達納托斯之塔前";
-		mes "　　　　　　　　宮廷樂師宋";
+		mes "-我想要玩偶熊。有33個就差不多了吧?";
+		mes "-達納托斯塔前";
+		mes "-宮廷樂師宋";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "What does it mean?";
+		mes "......他是想說什麼呢?";
 		next;
 		mes "[卡利安]";
-		mes "Well...";
+		mes "這個嘛......";
 		next;
 		mes "[卡利安]";
-		mes "Um... Teddy Bear...";
-		mes "Between Einbroch and Lighthalzen, there is an area that teddy bears live.";
+		mes "嗯......玩偶熊......";
+		mes "聽說礦山洞穴和企業之都之間有個生活著玩偶熊的地方。";
 		next;
 		mes "[卡利安]";
-		mes "We might be able to get something there.";
+		mes "去那裡的話，說不定能找到些什麼。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Then why would he need 33?";
+		mes "為什麼非得是33個?";
 		next;
 		mes "[卡利安]";
-		mes "Well... Go there and we might be able to find out something.";
+		mes "這個嘛......你先去搜集，也許能知道些什麼。";
 		next;
 		mes "[卡利安]";
-		mes "Umm... Then I'll pass by Einbroch and go to Lighthalzen. Why don't you go to the place where Teddy Bears are?";
+		mes "嗯......我先去礦山洞穴，然後再去企業之都。你能到有玩偶熊的地方去一趟嗎?";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Ok. Then let's meet at Lighthalzen's hotel.";
-		mes "I'll get the 33 Teddy Bears.";
+		mes "好的，那就在企業之都大飯店見。";
+		mes "不管是33個也好，333個也好，沒有問題。";
 		donpcevent "卡利安#cmd2::OnDisable";
 		set job_min,12;
 		getitem 6270,1; //Mins_Picture
 		changequest 11144,11145;
 		close;
 	} else if (job_min == 12) {
-		mes "Then take care.";
+		mes "如果你想拍紀念照的話，請再來找我。";
 		next;
 		mes "[卡利安]";
-		mes "Let's go there!";
+		mes "照片下次再拍，趕快出發吧!";
 		donpcevent "卡利安#cmd2::OnEnable";
 		next;
 		mes "[卡利安]";
-		mes "Then I'll pass by Einbroch and go to Lighthalzen. Why don't you go to the place where Teddy Bears are?";
+		mes "嗯......我先去礦山洞穴，然後再去企業之都。你能到有玩偶熊的地方去一趟嗎?";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Then let's meet at Lighthalzen's hotel.";
-		mes "I'll get the 33 Teddy Bears.";
+		mes "好的，那就在企業之都大飯店見。";
+		mes "不管是33個也好，333個也好，沒有問題。";
 		donpcevent "卡利安#cmd2::OnDisable";
 		close;
 	}
-	mes "Hi~ welcome~";
-	mes "I can take a picture for you.";
-	mes "Do you want to take a pic?";
+	mes "哎呀～歡迎光臨～";
+	mes "我可以為你留下這一瞬間的記憶。";
+	mes "你想拍張紀念照嗎?";
 	close;
 }
 
-lighthalzen,155,119,3	script	Little girl#job_min	891,3,3,{
+lighthalzen,155,119,3	script	小女孩#job_min	891,3,3,{
 OnTouch:
 	if (checkquest(11145,HUNTING) == 2) {
 		if (job_min == 12) {
-			mes "[Little Girl]";
-			mes "Ah!!!!";
-			mes "Teddy bear!!!";
+			mes "[小女孩]";
+			mes "啊!!!!";
+			mes "玩偶熊!!!";
 			next;
-			mes "[Little Girl]";
-			mes "Why do you have lots of teddy bears?";
-			mes "Where did you get them old man?";
-			next;
-			mes "["+strcharinfo(0)+"]";
-			mes "Hey, I'm not an old man.";
-			next;
-			mes "[Little Girl]";
-			mes "And my name isn't 'Hey'!";
-			mes "My name is '麗安'!";
+			mes "[小女孩]";
+			mes "叔叔，你怎麼有這麼多玩偶熊啊?";
+			mes "是從哪裡找到的啊?";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "Sorry~ sorry~";
-			mes "What if I give you a teddy bear.";
+			mes "孩子，我不是叔叔，是哥哥。";
 			next;
-			mes "[麗安]";
-			mes "Ah!";
-			mes "Are you sure?";
-			mes "Hooray!!!";
-			next;
-			mes "[麗安]";
-			mes "A man who I saw before didn't give me teddy bears even though he had lots of them!";
+			mes "[小女孩]";
+			mes "我也不是小孩子。";
+			mes "我有個好聽的名字，叫“麗安”！";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "Is he the guy in this pic?";
+			mes "對不起～對不起～";
+			mes "我給你一個玩偶熊，別生氣。";
 			next;
 			mes "[麗安]";
-			mes "I can't remember well.";
-			mes "But I think he is.";
+			mes "啊!";
+			mes "真的嗎?";
+			mes "真高興!!!";
 			next;
 			mes "[麗安]";
-			mes "My mother said that he was rolling in a room with teddy bears.";
+			mes "過去我也看到有個吟遊詩人叔叔拿著這麼多的玩偶熊，但是卻不肯給我!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "你看到的那個吟遊詩人是照片上這個人嗎?";
+			next;
+			mes "[麗安]";
+			mes "那是我3歲的時候看到的，記不太清楚了。";
+			mes "好像就是他。";
+			next;
+			mes "[麗安]";
+			mes "媽媽告訴我說，那個人在大飯店房間堆滿了玩偶，幾天都沒有出來。";
 			next;
 			mes "[麗安]";
 			mes "他用玩偶熊做了一件毛衣，穿著它到^f57d7d冰洞穴^000000去了。";
 			next;
 			mes "[麗安]";
-			mes "My mother works here.";
+			mes "我媽媽在這邊工作。";
+			mes "她說進去打掃的時候，裡面到處都是棉花。";
 			next;
 			mes "["+strcharinfo(0)+"]";
 			mes "冰洞穴?";
 			next;
 			mes "[麗安]";
-			mes "Mother said that it's freezing.";
+			mes "媽媽說，";
+			mes "那裡非常冷";
+			mes "到處都是冰。";
 			next;
 			mes "[卡利安]";
-			mes "Hey~ "+strcharinfo(0)+"~";
+			mes "喂"+strcharinfo(0)+"～";
+			mes "呵呵";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "Ah, 卡利安. Did you just get here?";
+			mes "啊，卡利安，你現在才到嗎?";
 			next;
 			mes "[卡利安]";
-			mes "Yes.";
-			mes "It was much farther away than I'd expected.";
+			mes "嗯。";
+			mes "比我想像的遠了一點。";
 			donpcevent "卡利安#cmd3::OnEnable";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "You... walked here?";
+			mes "難道......你是走過來的?";
 			next;
 			mes "[卡利安]";
-			mes "...";
-			mes "I didn't want to take the airship again...";
+			mes "......";
+			mes "我不想再坐飛空艇......";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "Oh... got it.";
-			mes "Then did you get anything in Einbroch?";
+			mes "哦......是嗎?";
+			mes "礦山洞穴那裡有什麼收穫嗎?";
 			next;
 			mes "[卡利安]";
-			mes "I think '宮廷樂師宋' went to Einbroch, but he left soon because of air.";
-			mes "How about you? Did you find something about the teddy bears?";
+			mes "“宮廷樂師宋”確實去了礦山洞穴，但是覺得那邊空氣不好，所以很快就走了。";
+			mes "你呢?知道玩偶熊是怎麼回事了嗎?";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "'宮廷樂師宋' might be in an 冰洞穴.";
+			mes "“宮廷樂師宋”好像去了冰洞穴。";
 			next;
 			mes "[卡利安]";
-			mes "Might be?";
+			mes "好像?";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "This little... ah... 麗安 saw him.";
+			mes "是這個小孩......不，......麗安看見的。";
 			next;
 			mes "[卡利安]";
-			mes "Then it's time to go to the 冰洞穴?";
-			mes "Huu... legs hurt.";
-			mes "Ok, let's go to there.";
+			mes "那這次我們要去冰洞穴嗎?";
+			mes "呼......腿好疼啊。";
+			mes "我們休息一下再出發吧。";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "Okay.";
+			mes "好吧。";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "Thanks, 麗安.";
-			mes "I'll give you all the teddy bears I have.";
+			mes "麗安，謝謝你告訴我。";
+			mes "我把這些玩偶熊全部送給你。";
 			next;
 			mes "[麗安]";
-			mes "Really?!";
-			mes "Waaah!!!!!!!!!";
-			mes "I'm so happy!!!";
-			mes "Thank you, "+strcharinfo(0)+".";
+			mes "真的嗎?!";
+			mes "哇!!!!!";
+			mes "我也要把我的房間堆滿玩偶熊!!!";
+			mes "+strcharinfo(0)+""哥哥，謝謝你。";
 			set job_min,13;
 			changequest 11145,11146;
 			donpcevent "卡利安#cmd3::OnDisable";
 			close;
 		} else if (job_min == 13) {
 			mes "[麗安]";
-			mes "I heard that '宮廷樂師宋' when I went to the 冰洞穴.";
+			mes "I heard that '宮廷樂師宋' when I went to the Ice Cave.";
 			mes "Thank you for the Teddy Bears!";
 			close;
 		} else if (job_min > 13) {
@@ -1078,12 +1090,12 @@ OnTouch:
 			mes "I'm having a lot of fun playing with the Teddy Bears!";
 			close;
 		} else {
-			mes "[Little Girl]";
+			mes "[小女孩]";
 			mes "I'm having a lot of fun playing with the Teddy Bears!";
 			close;
 		}
 	}
-	mes "[Little Girl]";
+	mes "[小女孩]";
 	mes "Do you like teddy bears?";
 	mes "I love 'em!!!!!";
 	close;
@@ -1103,7 +1115,7 @@ OnTouch:
 ice_dun01,157,23,0	script	#Minsicecave2	139,2,2,{
 OnTouch:
 	if (job_min == 13) {
-		mes "-The giant born to ice-";
+		mes "-有個住在冰裡出生的巨人-";
 		close2;
 		warp "ice_dun01",141,41;
 		end;
@@ -1125,7 +1137,7 @@ OnTouch:
 ice_dun01,120,35,0	script	#Minsicecave4	139,2,2,{
 OnTouch:
 	if (job_min == 13) {
-		mes "-His body became the ground-";
+		mes "-他的軀體變成了大地-";
 		close2;
 		warp "ice_dun01",104,30;
 		end;
@@ -1136,7 +1148,7 @@ OnTouch:
 ice_dun01,104,30,0	script	#Minsicecave5	139,2,2,{
 OnTouch:
 	if (job_min == 13) {
-		mes "-His bones became a mountain-";
+		mes "-他的骨頭變成了山峰-";
 		close2;
 		warp "ice_dun01",86,23;
 		end;
@@ -1147,7 +1159,7 @@ OnTouch:
 ice_dun01,86,23,0	script	#Minsicecave6	139,2,2,{
 OnTouch:
 	if (job_min == 13) {
-		mes "-His skin became soil-";
+		mes "-他的肉變成了泥土-"; //土壤會比較好?
 		close2;
 		warp "ice_dun01",75,19;
 		end;
@@ -1158,7 +1170,7 @@ OnTouch:
 ice_dun01,75,19,0	script	#Minsicecave7	139,2,2,{
 OnTouch:
 	if (job_min == 13) {
-		mes "-His blood became a river-";
+		mes "-他的血變成了江河-";
 		close2;
 		warp "ice_dun01",56,12;
 		end;
@@ -1169,7 +1181,7 @@ OnTouch:
 ice_dun01,56,12,0	script	#Minsicecave8	139,2,2,{
 OnTouch:
 	if (job_min == 13) {
-		mes "-His hair became a plant-";
+		mes "-他的頭髮變成了植物-";
 		close2;
 		warp "ice_dun01",29,26;
 		end;
@@ -1180,7 +1192,7 @@ OnTouch:
 ice_dun01,29,26,0	script	#Minsicecave9	139,2,2,{
 OnTouch:
 	if (job_min == 13) {
-		mes "-His head became the sky-";
+		mes "-他的頭變成了天空-";
 		close2;
 		warp "ice_dun01",25,46;
 		end;
@@ -1191,7 +1203,7 @@ OnTouch:
 ice_dun01,25,46,0	script	#Minsicecave10	139,2,2,{
 OnTouch:
 	if (job_min == 13) {
-		mes "-His tears from his-";
+		mes "-他眼中流下的淚水-";
 		close2;
 		warp "ice_dun01",20,66;
 		end;
@@ -1202,7 +1214,7 @@ OnTouch:
 ice_dun01,20,66,0	script	#Minsicecave11	139,2,2,{
 OnTouch:
 	if (job_min == 13) {
-		mes "-eyes became dew-";
+		mes "-凝結在拉雷德的葉片上-";
 		close2;
 		warp "ice_dun01",22,85;
 		end;
@@ -1213,7 +1225,7 @@ OnTouch:
 ice_dun01,22,85,0	script	#Minsicecave12	139,2,2,{
 OnTouch:
 	if (job_min == 13) {
-		mes "-on the leaves-";
+		mes "-變成了露水-";
 		percentheal -90,0;
 		set job_min,14;
 		changequest 11146,11147;
@@ -1228,11 +1240,11 @@ ra_in01,361,129,0	script	#jmRachelHotel	139,2,2,{
 OnTouch:
 	if (job_min == 14) {
 		mes "[阿姨]";
-		mes "Huu!!";
-		mes "Wake up!";
+		mes "哎啊!!";
+		mes "你醒了嗎?";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Where am I...?";
+		mes "這裡是......?";
 		set job_min,15;
 		close;
 	}
@@ -1242,88 +1254,90 @@ OnTouch:
 ra_in01,358,130,4	script	阿姨#job_min	979,{
 	mes "[阿姨]";
 	if (job_min == 14) {
-		mes "Huu!!";
-		mes "Wake up!";
+		mes "哎啊!!";
+		mes "你醒了嗎?";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Where am I...?";
+		mes "這裡是......?";
 		set job_min,15;
 		close;
 	} else if (job_min == 15) {
-		mes "You're in Rachel.";
-		mes "You are strange. You have to wear warmer clothes if you want to go into the 冰洞穴.";
+		mes "這裡是拉赫。";
+		mes "你好像是其他地方人吧?怎麼能穿這麼單薄的衣服，到那麼寒冷的洞穴去呢?";
 		next;
 		mes "[阿姨]";
-		mes "You're lucky that my husband found you when he did.";
+		mes "還好在凍死之前被人發現了。";
+		mes "剛好我丈夫路過那裡。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Sorry.";
+		mes "對不起。";
 		next;
 		mes "[阿姨]";
-		mes "Anyway!! Be careful!";
-		mes "You don't believe your youth alone will protect you.";
+		mes "總之!!你要小心!";
+		mes "不要因為年輕，一時衝動丟了性命。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "I'll be careful.";
+		mes "以後我會小心的。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Do you know that song written on the wall of the Ice cave?";
+		mes "不過你知道刻在冰洞穴牆壁上的歌嗎?";
 		next;
 		mes "[阿姨]";
-		mes "Did you go there to see?";
-		mes "A few years ago, one man wearing a mask carved that on the Ice cave.";
+		mes "你也是去看那個的嗎?";
+		mes "那是幾年前，有個渾身圍著玩偶的男人刻的，他每天都會到那個洞穴去。";
 		next;
 		mes "[阿姨]";
-		mes "I couldn't see his face because of the mask,";
+		mes "他戴著面具，所以看不清他的臉，但經常看到他在冰洞穴進進出出。";
 		next;
 		mes "[阿姨]";
-		mes "but he got a cold and felt so painful.";
+		mes "他患上了嚴重的感冒，每天都咳嗽，面具下面還有鼻涕流下來。";
 		next;
 		mes "[阿姨]";
-		mes "And then he decided to go to Comodo.";
+		mes "他生病躺了幾天，就說要去溫暖的南方國家，於是去了克魔島。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Comodo?";
+		mes "克魔島，是盧恩米德加茲王國的那個克魔島嗎?"; //這裡我覺得望老外排版比較好看
 		next;
 		mes "[阿姨]";
-		mes "Yes, I heard that Comodo is a very fun place, I want to go there before I die.";
+		mes "除了那裡，還有哪裡叫克魔島啊?";
+		mes "聽說那裡非常溫暖，每天都會放煙火，非常好玩。在死之前，我一定要去一次。";
 		next;
 		mes "[阿姨]";
-		mes "If you want to go there you have to take an airship to the Rune-Midgarts Kingdom.";
+		mes "想到那裡去，必須去秀發茲發德，搭飛空艇去盧恩米德加茲，然後再走上很長的一段路。";
 		next;
 		mes "[阿姨]";
-		mes "That's not easy.";
+		mes "對我們這種平民來說，是個遙不可及的地方。";
 		next;
 		mes "[卡利安]";
-		mes "What?! An Airship?!";
-		mes "Eee I don't want to go on an airship again!";
+		mes "什麼?!飛空艇?!?!?";
+		mes "啊，我再也不想坐了!!!!!";
 		donpcevent "卡利安#cmd4::OnEnable";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Take it easy...";
-		mes "Is there another way to go there?";
+		mes "卡利安，鎮靜......";
+		mes "對了，阿姨，有沒有不坐飛空艇的方法?";
 		next;
 		mes "[阿姨]";
-		mes "Without an airship?";
-		mes "You can walk...";
-		mes "But it takes a long time...";
+		mes "不坐飛空艇?";
+		mes "從陸路繞過去不是不行，但是......";
+		mes "那不知道要花多少時間......";
 		next;
 		mes "[阿姨]";
-		mes "Ah! It's Comodo over southern Veins.";
+		mes "啊!對了，在南面的菲音斯坐船，越過海之後，就是克魔島了。";
 		next;
 		mes "[阿姨]";
-		mes "We don't have a proper boat.";
-		mes "In southern of Veins, there is a port. If you are lucky you can take it...";
+		mes "雖然沒有定期的航班，";
+		mes "但是在菲音斯南面有個渡口，從那裡坐船，運氣好的話，說不定可以到達克魔島......";
 		donpcevent "卡利安#cmd4::OnDisable";
 		set job_min,16;
 		changequest 11147,11148;
 		close;
 	} else if (job_min == 16) {
-		mes "Ah! It's Comodo over southern Veins.";
+		mes "啊!對了，在南面的菲音斯坐船，越過海之後，就是克魔島了。";
 		next;
 		mes "[阿姨]";
 		mes "雖然沒有定期的航班，";
-		mes "但是在菲音斯南面有個渡口，從那裡坐船，運氣好的話，說不定可以到達克魔島。";
+		mes "但是在菲音斯南面有個渡口，從那裡坐船，運氣好的話，說不定可以到達克魔島......";
 		close;
 	}
 	mes "I heard that Comodo is a very fun place, I want to go there before I die.";
@@ -1336,67 +1350,69 @@ ra_in01,358,130,4	script	阿姨#job_min	979,{
 	close;
 }
 
-ve_fild07,131,132,5	script	=Notice=#job_min	837,{
+ve_fild07,131,132,5	script	=提醒=#job_min	837,{
 function Choice;
 	if (job_min == 16) {
 		mes "===提醒===";
-		mes "宮廷樂師宋，在這裡用獨木舟去克魔島!";
+		mes "宮廷樂師宋，在這裡用獨木舟去克魔島!!";
 		mes "挑戰一下吧，年輕人!";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Will it be okay...";
+		mes "真的沒關係嗎......";
 		next;
 		mes "[卡利安]";
-		mes "Don't worry, trust me!!";
+		mes "別擔心，相信我吧!!";
 		donpcevent "卡利安#cmd5::OnEnable";
 		next;
 		mes "-想到之前吃過的苦頭-";
 		mes "-他說的話好像不太可靠-";
 		next;
-		if(select("我不願意:坐獨木舟過去") == 1) {
+		if(select("我不願意。:坐獨木舟過去。") == 1) {
 			mes "[卡利安]";
-			mes "I never ride airships ever...";
+			mes "我絕對不坐飛空艇......";
 			donpcevent "卡利安#cmd5::OnDisable";
 			close;
 		}
 		mes "[卡利安]";
-		mes "Ok then let's go!!!!!";
+		mes "好的，馬上出發吧!!!!!";
 		next;
-		mes "-If you take a small boat,-";
-		mes "-and go ahead-";
-		mes "-to Comodo,-";
-		mes "-You should see-";
-		mes "-other small boats.-";
+		mes "-坐著小木船-";
+		mes "-開始向克魔島-";
+		mes "-划去-";
+		mes "-遠遠地開始看到-";
+		mes "-其他小船。-";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Hmm...";
-		mes "I didn't think that there was anyone who would cross over this sea with a boat.";
-		mes "You sure I'll see other boats?";
+		mes "嗯......";
+		mes "我還以為沒人可以用船穿越這片海呢。";
+		mes "怎麼還有其他的船?";
 		next;
 		mes "[卡利安]";
-		mes "They will be headed the other direction.";
+		mes "他們和我們去的方面不一樣。";
 		donpcevent "卡利安#cmd5::OnDisable";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Where are you going?";
+		mes "他們是去哪兒?";
 		next;
 		mes "[卡利安]";
-		mes "Well? I haven't heard of the place's name before.";
-		mes "It's just called 'island' from what I heard.";
+		mes "這個嘛。那裡的名字我沒聽過。";
+		mes "只是知道那裡叫“什麼島”......";
 		next;
-		mes "-For a while the silence-";
-		mes "-continues. 卡利安 starts-";
-		mes "-to hum as she rows.-";
+		mes "-接著是一段沉默-";
+		mes "-卡利安一邊划槳，-";
+		mes "-一邊開始哼歌。-";
 		next;
-		mes "-Listening to 卡利安 hum-";
-		mes "-You suddenly feel like-";
-		mes "-you're sitting in water.-";
+		mes "-伴隨著潺潺的波浪聲-";
+		mes "-聽著愉快的哼唱-";
+		mes "-在感受海風吹拂的時候-";
+		mes "-感覺屁股越來-";
+		mes "-越潮。-"; //少了濕?
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Hey! There's a water leak!!";
+		mes "啊啊!!!漏水了!!!!!!";
 		next;
 		mes "[卡利安]";
-		mes "Ahhhh!!!!!!!!!!!!!!";
+		mes "啊!!!!!!!!!!!!!!";
 		next;
 		switch(rand(3)) {
 			case 0: Choice("跳舞。","划槳。","舀水。"); break;
@@ -1409,48 +1425,48 @@ function Choice;
 			case 2: Choice("划槳。","舀水。","睡覺。"); break;
 		}
 		switch(rand(3)) {
-			case 0: Choice("Sing.","划槳。","舀水。"); break;
+			case 0: Choice("唱歌。","划槳。","舀水。"); break;
 			case 1: Choice("舀水。","划槳。","睡覺。"); break;
-			case 2: Choice("划槳。","舀水。","Sing."); break;
+			case 2: Choice("划槳。","舀水。","唱歌。"); break;
 		}
 		switch(rand(3)) {
-			case 0: Choice("Have some water.","划槳。","舀水。"); break;
-			case 1: Choice("舀水。","划槳。","Have some water."); break;
-			case 2: Choice("划槳。","舀水。","Have some water."); break;
+			case 0: Choice("喝水。","划槳。","舀水。"); break;
+			case 1: Choice("舀水。","划槳。","喝水。"); break;
+			case 2: Choice("划槳。","舀水。","喝水。"); break;
 		}
 		switch(rand(3)) {
-			case 0: Choice("Shout 'Viva'.","划槳。","舀水。"); break;
-			case 1: Choice("舀水。","划槳。","Shout 'Viva'."); break;
-			case 2: Choice("划槳。","舀水。","Shout 'Viva'."); break;
+			case 0: Choice("大聲喊萬歲!","划槳。","舀水。"); break;
+			case 1: Choice("舀水。","划槳。","大聲喊萬歲!"); break;
+			case 2: Choice("划槳。","舀水。","大聲喊萬歲!"); break;
 		}
 		switch(rand(3)) {
-			case 0: Choice("Go fishing.","划槳。","舀水。"); break;
-			case 1: Choice("舀水。","划槳。","Go fishing."); break;
-			case 2: Choice("划槳。","舀水。","Go fishing."); break;
+			case 0: Choice("釣魚。","划槳。","舀水。"); break;
+			case 1: Choice("舀水。","划槳。","釣魚。"); break;
+			case 2: Choice("划槳。","舀水。","釣魚。"); break;
 		}
 		switch(rand(3)) {
-			case 0: Choice("Listen to my song.","划槳。","舀水。"); break;
-			case 1: Choice("舀水。","划槳。","Listen to my song."); break;
-			case 2: Choice("划槳。","舀水。","Listen to my song."); break;
+			case 0: Choice("聽我唱歌!!!","划槳。","舀水。"); break;
+			case 1: Choice("舀水。","划槳。","聽我唱歌!!!"); break;
+			case 2: Choice("划槳。","舀水。","聽我唱歌!!!"); break;
 		}
 		switch(rand(3)) {
-			case 0: Choice("Pray.","划槳。","舀水。"); break;
-			case 1: Choice("舀水。","划槳。","Pray."); break;
-			case 2: Choice("划槳。","舀水。","Pray."); break;
+			case 0: Choice("祈禱。","划槳。","舀水。"); break;
+			case 1: Choice("舀水。","划槳。","祈禱。"); break;
+			case 2: Choice("划槳。","舀水。","祈禱。"); break;
 		}
 		switch(rand(3)) {
-			case 0: Choice("Eat some food.","划槳。","舀水。"); break;
-			case 1: Choice("舀水。","划槳。","Eat some food."); break;
-			case 2: Choice("划槳。","舀水。","Eat some food."); break;
+			case 0: Choice("吃飯。","划槳。","舀水。"); break;
+			case 1: Choice("舀水。","划槳。","吃飯。"); break;
+			case 2: Choice("划槳。","舀水。","吃飯。"); break;
 		}
 		switch(rand(3)) {
-			case 0: Choice("Give up.","划槳。","舀水。"); break;
-			case 1: Choice("舀水。","划槳。","Give up."); break;
-			case 2: Choice("划槳。","舀水。","Give up."); break;
+			case 0: Choice("放棄。","划槳。","舀水。"); break;
+			case 1: Choice("舀水。","划槳。","放棄。"); break;
+			case 2: Choice("划槳。","舀水。","放棄。"); break;
 		}
-		mes "-I've escaped from the-";
-		mes "-throes of death a-";
-		mes "-countless amount of times.-";
+		mes "-為什麼最近-";
+		mes "-好像經歷了好幾次-";
+		mes "-生死關頭。-";
 		set job_min,17;
 		changequest 11148,11149;
 		close2;
@@ -1458,20 +1474,20 @@ function Choice;
 		end;
 	}
 	mes "===提醒===";
-	mes "宮廷樂師宋, Go to Comodo by boat!";
-	mes "Be ambitious!";
+	mes "宮廷樂師宋，在這裡用獨木舟去克魔島!!";
+	mes "挑戰一下吧，年輕人!";
 	close;
 
 	function Choice {
 		set .@i$, getarg(select(getarg(0),getarg(1),getarg(2))-1);
 		mes "[卡利安]";
 		if (.@i$ == "舀水。") {
-			mes "I'll row and you just throw the water out!!";
+			mes "我來划槳，你去舀水!!";
 			next;
 			return;
 		}
-		if (.@i$ == "划槳。") mes "The boat is sinking!!!";
-		else mes "What the hell do you think you're doing?";
+		if (.@i$ == "划槳。") mes "船要沉下去了!!!!!!";
+		else mes "你在做什麼啊......";
 		close;
 	}
 }
@@ -1480,34 +1496,32 @@ comodo,184,108,0	script	#jmComodo Almost Dead	139,2,2,{
 OnTouch:
 	if (job_min == 17) {
 		mes "["+strcharinfo(0)+"]";
-		mes "得.....得救了....";
+		mes "得......得救了......";
 		next;
 		mes "[卡利安]";
-		mes "That was a close call.";
+		mes "呼......真是九死一生啊。";
 		donpcevent "卡利安#cmd6::OnEnable";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "You're the one that insisted that we ride on that boat. That's how we ended up like this in the first place!";
-		next;
-		mes "["+strcharinfo(0)+"]";
-		mes "We wouldn't have suffered like this if we just took the Airship.";
+		mes "當初就是你執意要坐船，所以才會弄成這個樣子!";
+		mes "如果坐飛空艇的話，就不會變成這樣。";
 		next;
 		mes "[卡利安]";
-		mes "But I told you that I don't ride airships!";
+		mes "......不過我還是更討厭飛空艇......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "I can't believe this!";
+		mes "這個傢伙......";
 		next;
 		mes "[卡利安]";
-		mes "Well, let's forget about the past!";
-		mes "Since we're in Comodo, let's just have some fun okay?";
+		mes "過去的事情就把它給忘了吧!!";
+		mes "既然來了克魔島，就盡情地玩吧。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Then what should we do about looking for '宮廷樂師宋'??";
+		mes "尋找“宮廷樂師宋”的事情呢?";
 		next;
 		mes "[卡利安]";
-		mes "Oh yeah...";
-		mes "Why don't we ask the villagers?";
+		mes "啊，沒錯......";
+		mes "那我們去向村民打聽一下吧。";
 		donpcevent "卡利安#cmd6::OnDisable";
 		set job_min,18;
 		changequest 11149,11150;
@@ -1521,15 +1535,15 @@ comodo,192,119,0	script	獨木舟達人#job_min	98,{
 	if (job_min == 18) {
 		mes "什麼?";
 		mes "宮廷樂師宋?";
-		mes "我不清楚～";
+		mes "不太清楚～";
 		next;
 		mes "[獨木舟達人]";
 		mes "你去北邊的餐廳看看。";
 		mes "如果他到這裡來了，一定會去餐廳。";
 		next;
 		mes "[獨木舟達人]";
-		mes "The hostess is good at memorizing the faces of customers.";
-		mes "It's good for business you know?";
+		mes "那裡的店主阿姨對每個客人的臉都記得很清楚。";
+		mes "這應該就是他做生意的秘訣吧?";
 		set job_min,19;
 		changequest 11150,11151;
 		close;
@@ -1537,50 +1551,49 @@ comodo,192,119,0	script	獨木舟達人#job_min	98,{
 	mes "The sea is man's dream.";
 	next;
 	mes "[獨木舟達人]";
-	mes "It's my hope that I can cross over to 毀葛 someday!";
+	mes "It's my hope that I can cross over to Hugel someday!";
 	close;
 }
 
-comodo,159,316,4	script	烤肉的阿姨	701,{
-	mes "[烤肉的阿姨]";
+comodo,159,316,4	script	烤肉的女人	701,{
+	mes "[烤肉的女人]";
 	if (job_min == 19) {
 		mes "宮廷樂師宋?";
-		mes "Yes, I remember that face because he visited a few years ago.";
+		mes "我記得他幾年前來過。";
 		next;
-		mes "[烤肉的阿姨]";
-		mes "He ate a whole plate of baby back ribs by himself...";
-		mes "How can I forget his face?";
+		mes "[烤肉的女人]";
+		mes "因為他點了一份烤野豬，一個人全部吃下去了......";
+		mes "那樣的客人我怎麼會忘記呢。";
 		next;
-		mes "[烤肉的阿姨]";
-		mes "It was kind of a big fuss.";
-		mes "It was so crowded because of him.";
+		mes "[烤肉的女人]";
+		mes "那時真的很吵。";
+		mes "那個客人在的時候，就沒有一天安靜的日子。";
 		next;
-		mes "[烤肉的阿姨]";
-		mes "Finally, he became exhausted and he wanted to go somewhere quiet.";
+		mes "[烤肉的女人]";
+		mes "他玩瘋了一段日子，最後自己也累了，說想要到安靜的地方去。";
 		next;
-		mes "[烤肉的阿姨]";
-		mes "I told him that there was a quiet place near Morroc, and he left.";
+		mes "[烤肉的女人]";
+		mes "我告訴他夢羅克附近有個安靜的地方，他第二天就離開了這裡。";
 		next;
-		mes "[烤肉的阿姨]";
-		mes "I regret that.";
+		mes "[烤肉的女人]";
+		mes "我應該不要告訴他的。";
 		next;
-		mes "[烤肉的阿姨]";
-		mes "He raised our income a lot while he was here...";
+		mes "[烤肉的女人]";
+		mes "因為有那個客人在，我的店裡生意非常好......";
 		set job_min,20;
 		changequest 11151,11152;
 		close;
 	} else if (job_min == 20) {
 		mes "問我那個安靜的地方是哪裡?";
-		mes "這個嘛，我也是聽客人們說的，所以我也不太清楚。聽說是在夢羅克東南部有個奇怪的建築。";
+		mes "這個嘛，我也是聽客人說的，所以我也不太清楚。聽說在夢羅克東南部有個奇怪的建築。";
 		next;
-		mes "[烤肉的阿姨]";
-		mes "I heard that some mysterious people gather there.";
-		mes "I think they're part of some secret guild called ash... or assa... Oh I forget...";
+		mes "[烤肉的女人]";
+		mes "除了那個建築之外，那裡人很少，聽說那裡著聚集一些神秘的人......";
 		close;
 	}
 	mes "He ate a whole plate of baby back ribs by himself.";
 	next;
-	mes "[烤肉的阿姨]";
+	mes "[烤肉的女人]";
 	mes "I'll never forget him.";
 	close;
 }
@@ -1589,57 +1602,58 @@ moc_fild16,206,232,0	script	#jmTransfer news	139,3,3,{
 OnTouch:
 	if (job_min == 20) {
 		mes "["+strcharinfo(0)+"]";
-		mes "Um? What is this?";
-		mes "Something covered by sand?";
+		mes "嗯?這是什麼?";
+		mes "殺子底下埋著什麼東西?";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Ah It's!!";
-		mes "I think '宮廷樂師宋' dropped it!";
+		mes "啊，這難道!!";
+		mes "好像是“宮廷樂師宋”掉的東西?";
 		next;
 		mes "[卡利安]";
-		mes "What?! How do you know?";
+		mes "什麼?!你怎麼知道?";
 		donpcevent "卡利安#cmd7::OnEnable";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "之前在毀葛遇到的大叔和在達納托斯之塔前面撿到的收據";
+		mes "之前在毀葛遇到的大叔和在達納托斯前面撿到的收據，";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "and this poem written on this paper.";
-		mes "The calligraphy style is the same.";
+		mes "還有這紙片上的詩，";
+		mes "字體都一樣。";
 		next;
 		mes "[卡利安]";
-		mes "I want to see clock tower...";
+		mes "我想看看鐘塔......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "But this poem can't be a clue...";
-		mes "...";
-		mes "What?";
+		mes "但是，這首“詩”裡，沒有什麼有用的線索嗎...";
+		mes "......";
+		mes "什麼??";
 		next;
 		mes "[卡利安]";
-		mes "我想看看鐘塔.....";
+		mes "......";
+		mes "我想看看鐘塔......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Clock tower?";
-		mes "What are you saying all of a sudden?";
+		mes "鐘塔?";
+		mes "你在說什麼呢?";
 		next;
 		mes "[卡利安]";
-		mes "The... huge clock tower in Al De Baran.";
+		mes "就是......艾爾帕蘭的那個巨大的鐘塔。";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "I know but...";
+		mes "那個我知道......";
 		next;
 		mes "[卡利安]";
-		mes "Will you join me?";
+		mes "我們不去看看嗎?";
 		next;
 		switch(select("Refuse.:Accept.")) {
 		case 1:
 			mes "[卡利安]";
-			mes "Come on~Come on~";
-			mes "Come on~Come on~";
-			mes "Come on~~~~~~~~~";
+			mes "去吧～去吧～去吧～";
+			mes "去吧～去吧～去吧～";
+			mes "去吧～～～～～～～";
 			next;
 			mes "[卡利安]";
-			mes "We don't have any more clues.";
+			mes "反正現在沒別的線索。";
 			next;
 			mes "[卡利安]";
 			break;
@@ -1651,7 +1665,7 @@ OnTouch:
 			mes "Ok!!!";
 			break;
 		}
-		mes "Hey! Let's go~~";
+		mes "好的!出發～～";
 		donpcevent "卡利安#cmd7::OnDisable";
 		set job_min,21;
 		changequest 11152,11153;
@@ -1664,62 +1678,59 @@ aldebaran,140,130,0	script	#jmAldebaran Clock Tower	139,3,3,{
 OnTouch:
 	if (job_min == 21) {
 		mes "["+strcharinfo(0)+"]";
-		mes "Anyway why do you want to visit this place?";
+		mes "幹嘛突然到這裡來啊?";
 		next;
 		mes "[卡利安]";
 		mes "......";
 		donpcevent "卡利安#cmd8::OnEnable";
 		next;
 		mes "[卡利安]";
-		mes "這是我的好朋友最喜歡的地方";
-		mes "在感到疲倦的時候，他經常到這裡看鐘塔";
+		mes "這是我好朋友最喜歡的地方。";
+		mes "在感到疲倦的時候，他經常來這裡看鐘塔。";
 		next;
 		mes "[卡利安]";
-		mes "Let me go back to my hometown.";
-		mes "There are many beautiful flowers.";
-		mes "The birds sing for me.";
-		mes "It's this old town.";
+		mes "把我送回我的故鄉";
+		mes "那個五穀豐收、百花開放";
+		mes "雲雀在天空歌唱的地方";
+		mes "那就是我這個老黑人的故鄉。";
 		next;
 		mes "[卡利安]";
-		mes "I harvest crops";
-		mes "for my church.";
-		mes "There is no warmer";
-		mes "place than where";
-		mes "I was raised.";
+		mes "為了聖戰，我浴血奮戰";
+		mes "收穫了沉甸甸的果實";
+		mes "沒有一個地方，比小時候";
+		mes "玩鬧的家鄉更讓人懷念。";
 		next;
 		mes "[卡利安]";
-		mes "Let me go back to my hometown.";
-		mes "Let me play in the lake until I die.";
-		mes "I'll take a rest";
-		mes "at the end of my life.";
+		mes "把我送回我的故鄉";
+		mes "在我老死之前，";
+		mes "讓我在那裡的湖邊玩耍";
+		mes "直到生命的終點。";
 		next;
 		mes "[卡利安]";
-		mes "Where is Misa and Masa.";
-		mes "They already went to the";
-		mes "brilliant mountain where";
-		mes "it is full of freedom and";
-		mes "pleasure I want to go";
-		mes "there soon.";
+		mes "美莎和瑪莎到哪去了";
+		mes "到美麗的小山去了嗎";
+		mes "在那個充滿了自由與喜悅的地方";
+		mes "我想趕快回去休息";
 		next;
 		mes "[卡利安]";
-		mes "It's a song that my friend always sang for me.";
-		mes "I haven't sung it in a long time...";
+		mes "這是那個朋友經常唱的歌，";
+		mes "但現在已經聽不到了......";
 		next;
 		mes "[卡利安]";
-		mes "Why don't we go back to 普隆德拉?";
+		mes "好的，我們回普隆德拉去吧。";
 		next;
 		mes "[卡利安]";
-		mes "I can't get rid of the the memories that I was impressed with when I entered 普隆德拉's gates.";
+		mes "我至今還無法忘記，和那個朋友結束艱苦的旅程，進入普隆德拉南門時的心情。";
 		set job_min,22;
 		changequest 11153,11154;
 		donpcevent "卡利安#cmd8::OnDisable";
 		close;
 	} else if (job_min == 22) {
 		mes "[卡利安]";
-		mes "Let's go back to 普隆德拉?";
+		mes "好的，我們回普隆德拉去吧。";
 		next;
 		mes "[卡利安]";
-		mes "I can't get rid of the memories that I was impressed with when I entered 普隆德拉's gates.";
+		mes "我至今還無法忘記，和那個朋友結束艱苦的旅程，進入普隆德拉南門時的心情。";
 		close;
 	}
 	end;
@@ -1730,13 +1741,13 @@ OnTouch:
 	if (job_min == 22) {
 		mes "[卡利安]";
 		mes "終於回來了。";
-		mes "回到了普隆德拉.....";
+		mes "回到了普隆德拉......";
 		donpcevent "卡利安#cmd9::OnEnable";
 		next;
 		mes "[卡利安]";
-		mes "I'm so tired.";
-		mes "I want to take a rest~";
-		mes "Come here, "+strcharinfo(0)+".";
+		mes "啊～好累啊。";
+		mes "真想快點回去休息～～";
+		mes "+strcharinfo(0)+""，你到這裡來。";
 		set job_min,23;
 		close;
 	}
@@ -1746,7 +1757,7 @@ OnTouch:
 prontera,155,42,0	script	#prtjm1	139,1,1,{
 OnTouch:
 	if (job_min == 23) {
-		mes "-Let me go back to my hometown.-";
+		mes "-把我送回我的故鄉-";
 		set job_min,24;
 		close2;
 		warp "prontera",155,44;
@@ -1758,7 +1769,6 @@ OnTouch:
 prontera,155,44,0	script	#prtjm2	139,1,1,{
 OnTouch:
 	if (job_min == 24) {
-		mes "-把我送回我的故鄉-";
 		mes "-那個五穀豐收、百花開放-";
 		set job_min,25;
 		close2;
@@ -1771,7 +1781,7 @@ OnTouch:
 prontera,155,46,0	script	#prtjm3	139,1,1,{
 OnTouch:
 	if (job_min == 25) {
-		mes "-The birds sing for me.-";
+		mes "-雲雀在天空歌唱的地方-";
 		set job_min,26;
 		close2;
 		warp "prontera",155,48;
@@ -1783,20 +1793,16 @@ OnTouch:
 prontera,155,48,0	script	#prtjm4	139,1,1,{
 OnTouch:
 	if (job_min == 26 || job_min == 27) {
-		mes "-It's this old town.-";
+		mes "-那就是我這個老黑人的故鄉。-";
 		next;
 		if (SkillPoint != 0) {
 			mes "[卡利安]";
-			mes "Hey... Don't you know how to use your skill points?";
-			mes "You should use them.";
+			mes "咦......你知道自己還有技能點數沒用掉嗎?";
+			mes "那種東西趕快處理掉。";
 			close;
 		}
 		if (checkweight(1201,1) == 0 || MaxWeight - Weight < 3500) {
-			mes "^3355FFWait a minute! You're";
-			mes "carrying too many items";
-			mes "right now, store some of";
-			mes "your extra things in Kafra";
-			mes "Storage, and then come back.^000000";
+			mes "旅行的時候帶的行李好像太多了，去倉庫清理一下背包吧!";
 			close;
 		}
 		if (BaseLevel < 99 || JobLevel < 50) {
@@ -1812,15 +1818,15 @@ OnTouch:
 			close;
 		}
 		mes "["+strcharinfo(0)+"]";
-		mes "-It's a poem that you picked up in the desert.-";
+		mes "-這是沙漠撿到的紙上寫的詩。-";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "-How does 卡利安 know-";
-		mes "-that song's not a poem?-";
+		mes "-卡利安是怎麼知道這-";
+		mes "-首其實不是 “詩”的歌的呢?-";
 		next;
 		mes "[卡利安]";
-		mes "Why are you looking at me?";
-		mes "How was it? Have fun??";
+		mes "幹嘛那樣盯著我啊?";
+		mes "怎麼樣?旅行愉快嗎?";
 		set job_min,27;
 		donpcevent "卡利安#cmd9::OnDisable";
 		close2;
@@ -1833,13 +1839,13 @@ OnTouch:
 prt_in,94,172,4	script	卡利安#job_min3	480,{
 	if (job_min == 27) {
 		if (checkweight(1201,1) == 0 || MaxWeight - Weight < 3500) {
-			mes "While you are on a trip, you gain lots of stuff. Make yourself lighter.";
+			mes "旅行的時候帶的行李好像太多了，去倉庫清理一下背包吧!";
 			close;
 		}
 		mes "[卡利安]";
 		if (SkillPoint != 0) {
-			mes "Ah~! Did you know that you still have skill points?";
-			mes "Handle that quickly.";
+			mes "咦......你知道自己還有技能點數沒用掉嗎?";
+			mes "那種東西趕快處理掉。";
 			close;
 		}
 		if (BaseLevel < 99 || JobLevel < 50) {
@@ -1848,40 +1854,39 @@ prt_in,94,172,4	script	卡利安#job_min3	480,{
 			close;
 		}
 		if (ismounting()) {
-			mes "Please unequip your riding pet and try again!";
+			mes "你先從坐騎下來再說。";
 			close;
 		}
 		if (BaseJob != Job_Bard) {
 			mes "Huh?";
 			close;
 		}
-		mes "I'm sorry about the lie.";
-		mes "The song written on this paper...";
+		mes "不好意思，這段時間我一直在說謊。";
+		mes "寫著這張歌詞的紙......";
 		next;
 		mes "[卡利安]";
-		mes "I really want to find my friend's article left behind.";
-		mes "I couldn't find it by myself.";
+		mes "是我好朋友的遺物，所以我想找到它。";
+		mes "但是我一個人沒法找到。";
 		next;
 		mes "[卡利安]";
-		mes "I gave it to my friend but he kept it precious...";
+		mes "雖然是我給他的，但他卻把它當寶貝......";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Did you give it to him?";
-		mes "Wait a second!";
-		mes "Just who are you?";
+		mes "你給的?";
+		mes "你在說謊......難道?!?!?";
 		next;
 		mes "[宮廷樂師宋]";
-		mes "Yes! I'm '宮廷樂師宋'!";
-		mes "Are you surprised!?";
+		mes "沒錯，我就是“宮廷樂師宋”！";
+		mes "怎麼樣?!吃驚嗎?";
 		next;
 		mes "["+strcharinfo(0)+"]";
 		mes "......";
 		next;
 		mes "[宮廷樂師宋]";
-		mes "This is my present to you.";
+		mes "你為我找回了和好友在一起的珍貴回憶，同時也給了我新的回憶，這是我給你的一點謝意。";
 		next;
 		mes "[宮廷樂師宋]";
-		mes "因為你也是我的好朋友。";
+		mes "因為你也是我的好朋友";
 		set job_min,100;
 		jobchange roclass(eaclass()|EAJL_THIRD);
 		completequest 11154;
@@ -1889,32 +1894,32 @@ prt_in,94,172,4	script	卡利安#job_min3	480,{
 		getitem 2795,1; //Green_Apple_Ring
 		close;
 	} else if (job_min > 99) {
-		switch(select("Talk.:Leave.")) {
+		switch(select("聊天:離開")) {
 		case 1:
 			mes "[宮廷樂師宋]";
-			mes "The name '卡利安'?";
-			mes "He gave it to me.";
+			mes "卡利安這個名字?";
+			mes "是那個傢伙幫我取的。";
 			next;
 			mes "[宮廷樂師宋]";
-			mes "He said that when he hears my song, he feels warmhearted.";
-			mes "'Kallianga' means hot air.";
+			mes "他說聽了我的歌，感覺空氣好像變暖和了。";
+			mes "在他們國家的語言中，“卡利安”是炎熱的空氣的意思。";
 			next;
 			mes "[宮廷樂師宋]";
-			mes "He likes to sing...";
+			mes "那個傢伙雖然不是吟遊詩人，但卻非常喜歡唱歌。";
 			next;
 			mes "[宮廷樂師宋]";
-			mes "And he's good at singing for sure?";
+			mes "而且實力也不錯。";
 			next;
 			mes "[宮廷樂師宋]";
-			mes "Ah! If it's okay with you, I want to take a pic with you in Juno?";
+			mes "啊!!下次有機會的話，願意和我一起去朱諾的照相館去合張影嗎?";
 			next;
 			mes "[宮廷樂師宋]";
-			mes "I want to have something to remember you by.";
+			mes "我想留一點你的遺......不......留點能留下你我的回憶的東西。";
 			close;
 		case 2:
 			mes "[宮廷樂師宋]";
-			mes "See you.";
-			mes "It was really fun.";
+			mes "下次再見。";
+			mes "和你在一起的時間，真的非常愉快。";
 			close2;
 			warp "prontera",156,99;
 			end;

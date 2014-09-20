@@ -2,10 +2,13 @@
 //= Genetic Job Quest
 //===== By: ================================================== 
 //= Muad_Dib, Aeomin
+//===== 中文化 ================================================
+//= 冥王RA-PlutoRA
+//= XD人
 //===== Current Version: ===================================== 
 //= 1.4
 //===== Compatible With: ===================================== 
-//= rAthena SVN
+//= rAthena Project
 //===== Description: ========================================= 
 //= [Official Conversion]
 //= Job change Quest from Alchemist / Creator -> Genetic.
@@ -23,37 +26,37 @@ alde_alche,35,186,5	script	鍊金術師公會人員	805,{
 	if (BaseLevel > 98 && JobLevel > 49){
 		if (BaseJob == Job_Alchemist) {
 			if (SkillPoint != 0) {
-				mes "- You still have unused skill points. Come back when you have used all of them. -";
+				mes "- 存在剩餘的技能點數，無法執行任務。 -";
 				close;
 			}
 			if (job_gen == 0) {
-				mes "Our Alchemist Union brings up many junior alchemists with various promotions and investigations.";
+				mes "我們鍊金術師公會最近透過各種宣傳和研究，培養了一大批鍊金術晚輩。";
 				next;
 				mes "[鍊金術師公會人員]";
-				mes "They have spread to all corners of Rune-Midgart and were active in many fields like sciences or special item production methods.";
+				mes "他們分散在米德加爾特各地，活躍在生命研究和特殊物品製作方法研究等各個方面，宣傳鍊金術的偉大。並透過發表各種研究論文，促進了學術的發展。";
 				next;
 				mes "[鍊金術師公會人員]";
-				mes "We call the members of our new union ^3131FF'Geneticists'^000000.";
+				mes "在公會中，這些取得優秀成果的公會成員被統稱為^3131FF'基因學者^000000。";
 				next;
 				mes "[鍊金術師公會人員]";
-				mes "Geneticists are the ones who have reached their peak potential in the world of Alchemy. They are the ones who currently spearhead alchemy throughout all of Rune-Midgart.";
+				mes "基因學者可以說是達到鍊金頂峰的人，是引領米爾加爾特的學術潮流的一群人。";
 				next;
 				mes "[鍊金術師公會人員]";
-				mes "It looks like you are an expert in this field, how about meeting other geneticists?";
+				mes "我看你在這個方面也達到了一定的程度，你想見見其他的基因學者嗎?";
 				next;
 				mes "[鍊金術師公會人員]";
-				mes "Not long ago there was a Geneticist who announced a sensational new life studying research.";
-				mes "You are very knowledgeable. Do you think you might understand her work?";
+				mes "剛好在不久前，有個基因學者發表的論文在生命研究領域引起了轟動。";
+				mes "像你這種擁有豐富學識的人，應該可以理解她的研究成果，並和她進行討論吧?";
 				next;
 				mes "[鍊金術師公會人員]";
-				mes "Her study may help you gain the knowledge to help you make a Geneticist!";;
+				mes "說不定她的研究成果會對你的研究起到幫助，你也可以因此成為基因學者!";;
 				next;
 				mes "[鍊金術師公會人員]";
-				mes "How's that sound? Do you want to meet a Geneticist?";
+				mes "怎麼樣?你想去見見那位基因學者嗎?";
 				next;
-				switch(select("Of course, I want to meet a Geneticist.:I don't want to meet a Geneticist.")) {
+				switch(select("去見她:不去見她")) {
 				case 1:
-					if (getserverdef(VAR_VIP_SCRIPT)) {
+					if (VIP_SCRIPT) {
 						callfunc "VIP_Third_Class";
 						set job_gen,1;
 						setquest 2215;
@@ -64,279 +67,269 @@ alde_alche,35,186,5	script	鍊金術師公會人員	805,{
 					mes "最近風頭最勁的基因學者是'德布梨絲'。";
 					next;
 					mes "[鍊金術師公會人員]";
-					mes "You can find her in the Alchemy Lab at the western part of Lighthalzen. There is also another Geneticist studying weaponry there, you might want to pay her a visit as well.";
+					mes "她就在企業都市的研究室裡，那裡還有其他研究武器的基因學者。你應該會很高興見到那些基因學者的。";
 					set job_gen,1;
 					setquest 2215;
 					close;
 				case 2:
 					mes "[鍊金術師公會人員]";
-					mes "Aren't you interested in the study of life?";
+					mes "你對生命研究不感興趣嗎?";
 					close;
 				}
 			}
-			mes "The infamous Geneticist is studying at the Alchemy Lab in the western part of Lighthalzen.";
-			mes "If you are interested, go meet with her.";
+			mes "最近在學術界引起轟動的基因學者正在企業都市進行研究。";
+			mes "如果你感興趣的話，可以去看一看。";
 			close;
 		}
 	}
-	mes "我們鍊金術師工會最近透過各種宣傳和研究，培養了一大批鍊金術師晚輩。";
+	mes "我們鍊金術師公會最近透過各種宣傳和研究，培養了一大批鍊金術晚輩。";
 	next;
 	mes "[鍊金術師公會人員]";
-	mes "他們分散在米德加爾特各地，活躍在生命研究和特殊物品製造方法研究等各個方面，宣傳煉金術的偉大。並透過發表各種研究論文，促進了學術的發展。";
+	mes "他們分散在米德加爾特各地，活躍在生命研究和特殊物品製作方法研究等各個方面，宣傳鍊金術的偉大。並透過發表各種研究論文，促進了學術的發展。";
 	next;
 	mes "[鍊金術師公會人員]";
-	mes "在公會中，這些取得優秀成果的公會員被統稱為^3131FF'基因學者'^000000。";
+	mes "在公會中，這些取得優秀成果的公會成員被統稱為^3131FF'基因學者^000000。";
 	next;
 	mes "[鍊金術師公會人員]";
-	mes "基因學者可以說是達到煉金術頂峰的人，是引領米德加爾特的學術潮流的一群人。";
+	mes "基因學者可以說是達到鍊金頂峰的人，是引領米爾加爾特的學術潮流的一群人。";
 	close;
 }
 
 job3_gen01,25,58,3	script	德布梨絲#gen	865,{
 	if (SkillPoint != 0) {
-		mes "- You still have some unused skill points. -";
+		mes "- 還有剩餘的技能點數，無法執行任務。 -";
 		close;
 	}
 	if (job_gen == 1) {
 		mes "[德布梨絲]";
-		mes "Oh! The bloodsucking plant sample C is withering again.";
-		mes "Should I change the ingredient of the growth care?";
-		mes "Hey please cheer up soon!";
+		mes "啊!吸血植物樣本C又謝掉了。";
+		mes "得換一下生長劑的成分嗎?";
+		mes "得快點才行啊!";
 		next;
 		mes "[德布梨絲]";
-		mes "Oh? A stranger?";
-		mes "Your look tells me that you are doing Alchemy as well right?";
+		mes "哎呀?我好像是第一次見到你吧?";
+		mes "看你的穿著，你也是學鍊金術的吧?";
 		next;
 		mes "[德布梨絲]";
-		mes "People say the number of alchemists is increasing nowadays though there aren't may who study this field properly!";
+		mes "最近鍊金術師越來越多，但真正能靜下心來研究學問的人卻沒有幾個!";
 		next;
 		mes "[德布梨絲]";
-		mes "They're all too worried about saying things like, ''Look at my bomb damage!'' or ''isn?t my homunculus prettier?''";
+		mes "你看看這個，這個炸彈的威力非常強喔!";
+		mes "我製造的小矮人是不是更漂亮!光說著這類的話!";
 		next;
 		mes "[德布梨絲]";
-		mes "The Alchemist Union was saying they'd support the researchers but actually what you get from the studying is just 'Spores Which Can Be Easily Raised'!";
+		mes "雖然鍊金術師公會說會給研究員很多支持，但我努力研究得到的只有這個<方便種植物的蘑菇>!";
 		next;
 		mes "[德布梨絲]";
-		mes "Thanks to that, there are spores everywhere in my lab! There are spores everywhere!";
+		mes "因此研究室到處都是蘑菇!家裡的各個地方都是孢子!";
 		next;
-		select("Why do you talk like that?");
+		select("你說話的語調挺特別的。");
 		mes "[德布梨絲]";
-		mes "我是盧恩-米德加茲人!";
-		mes "你去過盧恩-米德加茲嗎? 在盧恩-米德加茲，所有人都這麼說話。";
+		mes "我是盧恩.米德加茲人!";
+		mes "你去過盧恩.米德加茲嗎?在盧恩.米德加茲，所有人都這麼說話。";
 		next;
-		switch(select("是嗎?!:我也是盧恩-米德加茲來的。")) {
+		switch(select("是嗎?!:我也是盧恩.米德加茲來的。")) {
 		case 1:
 			mes "[德布梨絲]";
-			mes "Impossible?";
-			mes "Do you come from a Rune-Midgart village?";
-			mes "My village is very big, everyone there speaks like this.";
+			mes "真的嗎?";
+			mes "你一定是從盧恩.米德加茲的哪個小村莊出來的吧?";
+			mes "我們村子很大，所有人說話的時候都是這個語調。";
 			break;
 		case 2:
 			emotion e_lv;
 			mes "[德布梨絲]";
-			mes "Really! That's why I felt some kind of familiar atmosphere around you.";
-			mes "Meeting a hometown person in Schwaltzvalt, it's my pleasure to meet you!";
+			mes "哎呀!越看越覺得你很親切。";
+			mes "竟然能在秀發茲發德碰到老鄉，真是太讓人高興了!";
 			break;
 		}
 		next;
-		mes "- Thump!! -";
+		mes "- 噹噹噹噹! -";
 		next;
 		emotion e_ag;
 		mes "[德布梨絲]";
-		mes "Ughhhhh! That woman started again!";
+		mes "啊啊啊啊!那個大嫂又開始了!";
 		next;
-		select("What's that sound?");
+		select("那是什麼聲音?");
 		mes "[德布梨絲]";
-		mes "That's the sound of an experiment being carried out by my roommate, 黛米凱伯林..";
-		mes "Demi's a fire shell technician so she's always noisy like that.";
+		mes "那是我的同學，和我住在一起的黛米凱柏林做實驗的聲音。";
+		mes "黛米是砲彈專家，因此經常製造很多噪音。";
 		next;
 		emotion e_sob;
 		mes "[德布梨絲]";
-		mes "Look at that!";
-		mes "My spores and plants are all freaked out!";
-		mes "I can't do my work with those noisy sounds. It gives me so much stress!!";
+		mes "你看!";
+		mes "我的蘑菇和植物們全都很害怕!";
+		mes "我也因為那個聲音而沒辦法集中精力研究。真是煩死人了!!";
 		next;
-		mes "- Munch Crunch -";
-		next;
-		mes "[德布梨絲]";
-		mes "When I don't feel good, I savor Mr. Orlean's handmade cookies little by little.";
+		mes "- 嘎啦 嘎啦 -";
 		next;
 		mes "[德布梨絲]";
-		mes "It's a high-quality cookie that I got from Prontera. When I get one bite, it seems like I'm floating to Asgard.";
-		mes "The softness of the sweet cookie drowns out the clashing sounds from 黛米凱伯林.";
+		mes "像這樣心情不好的時候，就必須吃一點歐羅萊昂做的餅乾。";
 		next;
 		mes "[德布梨絲]";
-		mes "Wanna try one?";
-		mes "Ah, I've eaten all of it.";
+		mes "那是從普隆德拉運來的高級餅乾，放一塊在嘴裡，就會讓我想起仙宮。";
+		mes "吃了一塊甜美的餅乾後，黛米凱柏林的叮叮噹噹的聲音就好像消失得無影無蹤了。";
 		next;
 		mes "[德布梨絲]";
-		mes "But it's okay! On the 2nd floor of my room, there are boxes of those!";
-		mes "I couldn't stop buying it all in bulk. Ho ho ho.";
+		mes "你也來一塊嗎?";
+		mes "啊，這麼快就全吃完啦。";
 		next;
-		mes "- Zooooooooooooooooing -";
+		mes "[德布梨絲]";
+		mes "不過沒關係!在我的2樓房間裡，堆著好幾箱子!";
+		mes "因為忍受不住誘惑，所以我採購了很多，呵呵呵!";
+		next;
+		mes "- 嘎啊啊啊啊! -";
 		specialeffect EF_ENDURE;
 		next;
 		specialeffect EF_REPAIRWEAPON,AREA,"#from1to2gen";
-		mes "- (Screeching Sounds)!!! -";
-		mes "- (Screeching)!!! -";
+		mes "-嘎啊啊! 嘎啊啊啊啊!!! -";
 		next;
 		specialeffect EF_CRASHEARTH,AREA,"#from1to2gen";
-		mes "- Bump! Bump! Bump! -";
+		mes "- 噹!噹!!噹!!!噹!!!! -";
 		next;
 		mes "[德布梨絲]";
 		mes "..................";
 		next;
 		mes "[德布梨絲]";
-		mes "Yoooooooooooow";
-		mes "Yipeeeeeeeeee!!!";
+		mes "哦哦哦哦呃呃";
+		mes "嘎啊啊啊啊啊啊啊啊!!!!";
 		next;
 		mes "[德布梨絲]";
-		mes "Demiiiiiiiiiiiiiiiiiiiiiiii!!!";
-		mes "Demiiiiiiiiiiiiiiiiiiiii!!!";
+		mes "黛米!!!!!黛米!!!!!";
 		next;
-		mes "-";
-		mes "看來需要用什麼東西讓德布梨絲鎮靜下來";
-		mes "-";
+		mes "- 看來必須讓德布梨絲鎮靜下來 -";
 		set job_gen,2;
 		close;
 	} else if (job_gen == 2) {
 		mes "[德布梨絲]";
-		mes "Yipeeeeeeeeee!!!";
-		mes "Demiiiiii!!!";
-		mes "Demiiiiiiiii!!!";
+		mes "嘎啊啊啊啊啊啊啊啊!!!!";
+		mes "黛米!!!!!黛米!!!!!";
 		next;
-		mes "- Hmm. -";
-		mes "- What'll make her calm? -";
+		mes "- 看來需要用什麼東西讓德布梨絲鎮靜下來 -";
 		close;
 	} else if (job_gen == 3) {
 		mes "[德布梨絲]";
-		mes "Yipeeeeeeeeee!!!";
-		mes "Demiiiiii!!!";
-		mes "Demiiiiiiiii!!!";
+		mes "嘎啊啊啊啊啊啊啊啊!!!!";
+		mes "黛米!!!!!黛米!!!!!";
 		next;
 		select("把餅乾交給德布梨絲。");
-		mes "- 德布梨絲 quickly snatches -";
-		mes "- away the cookie and stuffs -";
-		mes "- it all in her mouth. -";
+		mes "- 德布梨絲像餓狼一樣，一把抓過餅乾，塞進了嘴裡。 -";
 		next;
-		mes "- Crunch Crunch Crunch -";
-		mes "- Crunch Crunch Crunch -";
-		mes "- Crunch Crunch Crunch -";
+		mes "- 嘎啦 嘎啦 嘎啦 -";
+		mes "- 嘎啦 嘎啦 嘎啦 -";
+		mes "- 嘎啦 嘎啦 嘎啦 -";
 		next;
 		mes "[德布梨絲]";
-		mes "Ah, The sweet buttery taste remains at the end of my tongue.";
-		mes "This really gives me peace of mind.";
+		mes "啊，";
+		mes "留在舌尖的甜美的奶油香味，";
+		mes "真的能讓人的心情平靜下來。";
 		next;
 		emotion e_pif;
 		mes "[德布梨絲]";
-		mes "Demi is studying hard today as well";
-		mes "Huhuhu. She's really a hard worker.";
+		mes "黛米今天又很用功嘛!";
+		mes "呵呵呵，真是個用功的朋友。";
 		next;
-		mes "- That cookie changed her mood quick. -";
+		mes "- 果然餅乾的效果相當好，也相當快速。 -";
 		emotion e_no1,1;
 		next;
 		mes "[德布梨絲]";
-		mes "You came here with a love for Alchemy?";
+		mes "你也是喜歡鍊金術，所以才會到這裡來的吧?";
 		next;
 		mes "[德布梨絲]";
-		mes "Oh wait, We haven't introduced ourselves yet.";
-		mes "My name is 德布梨絲.";
-		mes "I'm very interested in making living things that show new and peculiar growth.";
+		mes "哦，對了，我還沒跟你自我介紹呢。";
+		mes "我叫德布梨絲";
+		mes "我對創造新的、獨特的生命體非常感興趣。";
 		next;
 		mes "[德布梨絲]";
-		mes "What's your name, young alchemist?";
+		mes "你叫什麼啊，鍊金術師晚輩?";
 		next;
-		select("I'm "+strcharinfo(0)+".");
+		select("我叫"+strcharinfo(0)+"。");
 		mes "[德布梨絲]";
-		mes "Oh, "+strcharinfo(0)+"!";
-		mes "That's a very unusual name. Pleased to meet you.";
+		mes "哦，"+strcharinfo(0)+"!";
+		mes "名字很獨特嘛!見到你很高興。";
 		next;
+		mes "[德布梨絲]";//此處老外排版
+		mes "但是我記不住名字......";
+		mes "我就隨便叫你<泡泡>了。沒關係吧?";
+		next;
+		//select("I uhh...");//此處沒有出現
 		mes "[德布梨絲]";
-		mes "But I can't memorize the name well.";
-		mes "So I'll just call you <Popo>. Would that be ok?";
+		mes "泡泡，你聽說過我的研究嗎?";
+		mes "你是讀了我的論文之後才來找我的吧?";
 		next;
-		select("I uhh...");
-		mes "[德布梨絲]";
-		mes "Great...";
-		mes "Popo, have you heard of my research?";
-		mes "You came here because of that, am I right?";
-		next;
-		switch(select("No.:Yes.")) {
+		switch(select("不:是的")) {
 		case 1:
 			mes "[德布梨絲]";
-			mes "Well, it's all over your face.";
-			mes "You don't have to be shy.";
+			mes "哎呀，你的臉上都寫著呢。";
+			mes "不要害羞嘛!";
 			break;
 		case 2:
 			mes "[德布梨絲]";
-			mes "That's right huh?";
-			mes "Well, as I expected, there really is something that makes homeland people get each other";
+			mes "果然沒錯吧?";
+			mes "同一個地方的人，果然就容易溝通。";
 			break;
 		}
 		next;
 		mes "[德布梨絲]";
-		mes "When you saw me in that feverish state, you remembered what I said before and that calmed me down.";
+		mes "剛才你看到我怒不可遏之後，用我之前跟你提到的方法讓我恢復了原狀。";
 		next;
 		mes "[德布梨絲]";
-		mes "I like the way you manage yourself and take care to remember small details.";
-		mes "You have the talent to become a Geneticist.";
+		mes "你這種不放過任何小信息的注意力很讓我滿意。";
+		mes "你擁有成為一名基因學者的素質。";
 		next;
 		mes "[德布梨絲]";
-		mes "^FF0000If you become a Geneticist, you can't take the Alchemist's or Biochemist study course that you haven't investigated before.^000000";
-		mes "If that's all right for you, how about giving it a shot right now?.";
+		mes "^FF0000成為基因學者之後，就無法再對鍊金術師和創造者的研究課題進行研究了。^000000";
+		mes "如果你可以接受的話，現在就可以挑戰一下。";
 		next;
-		switch(select("I'll try later.:I want to become a Geneticist!")) {
+		switch(select("以後再挑戰。:我想馬上成為基因學者!")) {
 		case 1:
 			mes "[德布梨絲]";
-			mes "Alright.";
-			mes "Even though your knowledge is not that great as that of Geneticists, a fundamental knowledge is also important.";
-			mes "Popo, come back to me once you've finished your studies.";
+			mes "沒辦法。";
+			mes "雖然那些研究課題比基因學者更是下位的階段，但基礎也是非常重要的。";
+			mes "泡泡，等你完成了所有的研究之後再來找我吧!一定要來找我喔。";
 			set job_gen,4;
 			close;
 		case 2:
 			mes "[德布梨絲]";
-			mes "Good!";
-			mes "Let's do it!";
+			mes "很好!";
+			mes "讓我們一起努力吧!";
 			set job_gen,5;
 			close;
 		}
 	} else if (job_gen == 4) {
 		mes "[德布梨絲]";
-		mes "泡泡，你聽說過我的研究嗎?";
-		mes "Are you ready to give it a shot?";
+		mes "泡泡!";
+		mes "你做好挑戰基因學者資格的準備了嗎?";
 		next;
-		switch(select("No.:Yes!")) {
+		switch(select("還沒有。:是的!")) {
 		case 1:
 			mes "[德布梨絲]";
-			mes "You have to do your best! There is no easy way when looking for knowledge!";
+			mes "你要不斷努力!學問是沒有捷徑的!";
 			close;
 		case 2:
 			mes "[德布梨絲]";
-			mes "Very good!";
-			mes "Let's do it!";
+			mes "很好!";
+			mes "讓我們一起努力吧!";
 			set job_gen,5;
 			close;
 		}
 	} else if (job_gen == 5) {
 		mes "[德布梨絲]";
-		mes "What do you think of plants, Popo";
-		mes "Do you like plants? What kind of plants are you interested in?";
+		mes "泡泡，你對植物有什麼看法嗎?";
+		mes "你喜歡植物嗎?你對什麼植物感興趣呢?";
 		next;
-		mes "- Boom, Boom, Boom -";
+		mes "- 噹噹噹噹 -";
 		next;
 		emotion e_swt;
 		mes "[德布梨絲]";
-		mes "Ah, please tell me 黛米凱伯林 is not starting again?";
-		mes "Please let my expectation be wrong ... Please... Demi, please...";
+		mes "啊，黛米凱柏林該不會又開始了吧?";
+		mes "希望這次又不成功...黛米...一定...不能成功...";
 		next;
 		mes "[德布梨絲]";
-		mes "Where did I stop talking";
-		mes "Oh, right. Plants are very important in Alchemy.";
+		mes "我說到哪裡了?";
+		mes "啊，對了。在鍊金術中，植物占據了相當大的比重。";
+		mes "鍊金術師們會讓噬人花和氣泡蟲快速生長，幫助自己戰鬥...";
 		next;
-		mes "[德布梨絲]";
-		mes "Alchemy can make Flora's and Geographers grow immensely fast, so they can help in battle, like those Alchemists...";
-		next;
-		mes "- Boom!! Boom!! Boom!! Boom!! -";
+		mes "- 噹!!噹!!噹!!噹!! -";
 		next;
 		emotion e_dots;
 		mes "[德布梨絲]";
@@ -344,18 +337,18 @@ job3_gen01,25,58,3	script	德布梨絲#gen	865,{
 		next;
 		emotion e_dots;
 		mes "[德布梨絲]";
-		mes "Techniques, plants are relatively easy to...";
+		mes "和技術一樣，植物比較容易通過...";
 		next;
-		mes "- Boom!!!!!! -";
+		mes "- 砰!!!! -";
 		next;
 		emotion e_dots;
 		mes "[德布梨絲]";
-		mes "Crossbreed...";
+		mes "…交配…";
 		next;
-		mes "- Pop!!!!!! -";
-		mes "- Keeeeeeeeeeeeeh!!!! -";
-		mes "- Boooooooooooooom!!!! -";
-		mes "- Boom!! Boom!! Boom!! -";
+		mes "- 砰!!!! -";
+		mes "- 嘎啊啊啊啊啊啊!!!! -";
+		mes "- 咚咚咚!!!! -";
+		mes "- 噹!!噹!!噹!!噹!! -";
 		next;
 		emotion e_dots;
 		mes "[德布梨絲]";
@@ -363,42 +356,44 @@ job3_gen01,25,58,3	script	德布梨絲#gen	865,{
 		next;
 		emotion e_dots;
 		mes "[德布梨絲]";
-		mes "Popo.";
+		mes "泡泡。";
 		next;
 		emotion e_dots;
 		mes "[德布梨絲]";
-		mes "I'll give you the test to become a Geneticist.";
+		mes "想成為基因學者，你必須通過有關的考試。";
 		next;
 		mes "[德布梨絲]";
-		mes "主題是<完美的隔音系統>!";
-		mes "你必須用研究所1樓的植物和實驗工具，把我從黛米凱伯林的可怕的噪音中解救出來。";
+		mes "主題是<完善的隔音系統>!";
+		mes "你必須用研究所1樓的植物和實驗工具，";
+		mes "把我從黛米凱柏林的可怕的噪音中解救出來。";
 		next;
 		mes "[德布梨絲]";
-		mes "Well, you better get started!";
+		mes "好的，快開始吧!";
 		set job_gen,6;
 		close;
 	} else if (job_gen == 6) {
 		mes "[德布梨絲]";
-		mes "主題是<完美的隔音系統>!";
-		mes "你必須用研究所1樓的植物和實驗工具，把我從黛米凱伯林的可怕的噪音中解救出來。";
+		mes "主題是<完善的隔音系統>!";
+		mes "你必須用研究所1樓的植物和實驗工具，";
+		mes "把我從黛米凱柏林的可怕的噪音中解救出來。";
 		next;
 		mes "[德布梨絲]";
-		mes "There are some guides in the cabinet that you may use.";
-		mes "Well, you better get started!";
+		mes "在架子上有相關書籍，可以供你參考。";
+		mes "好的，快開始吧!";
 		close;
 	} else if (job_gen > 6 && job_gen < 60) {
 		mes "[德布梨絲]";
-		mes "Is there a problem?";
+		mes "有什麼事嗎?";
 		next;
-		switch(select("Nothing.:The experiment failed.")) {
+		switch(select("沒什麼。:研究搞砸了。")) {
 		case 1:
 			mes "[德布梨絲]";
-			mes "Better get started, or I'll start to scream!!!";
+			mes "再不開始的話，我就要尖叫了!!";
 			close;
 		case 2:
 			mes "[德布梨絲]";
-			mes "You can start from the beginning then?";
-			mes "Why are you asking me such things?";
+			mes "從頭來過不就行了?";
+			mes "這種事情來問我幹什麼?";
 			set job_gen,7;
 			if (checkquest(2209) == 1) erasequest 2209;
 			if (checkquest(2210) == 1) erasequest 2210;
@@ -409,77 +404,77 @@ job3_gen01,25,58,3	script	德布梨絲#gen	865,{
 			close;
 		}
 	} else if (job_gen == 60 || job_gen == 61) {
-		mes "- Zing Zing Zigi Zigi -";
+		mes "- 叮叮嘎嘎 -";
 		next;
-		mes "- Zing Zing Zigi Zigi -";
-		next;
-		mes "[德布梨絲]";
-		mes "What the hell is 黛米凱伯林 doing?";
-		mes "That's really a noisy one.";
+		mes "- 噹噹噹叩叩叩 -";
 		next;
 		mes "[德布梨絲]";
-		mes "Your study is done, 泡泡?";
-		mes "Give me those seeds.";
+		mes "黛米凱柏林到底在幹什麼?";
+		mes "真是吵死了。";
 		next;
-		if (countitem(6273) == 0 && countitem(6272) == 0) {
+		mes "[德布梨絲]";
+		mes "研究好像結束了吧，泡泡?";
+		mes "把種子給我吧!";
+		next;
+		if (countitem(6273) == 0 && countitem(6272) == 0) { //疑似官方現行版本任務無法觸發此區塊
 			mes "[德布梨絲]";
-			mes "What happened?";
-			mes "How could you say the study is completed without any result?";
-			mes "Start again.";
+			mes "發生什麼事了?";
+			mes "你怎麼可以說實驗完成後沒有任何結果?";
+			mes "再從頭開始吧。";
 			set job_gen,7;
 		} else {
 			mes "[德布梨絲]";
-			mes "Well, I'll take a look at the seeds Popo made.";
-			mes "What's the result?";
+			mes "讓我看看你製造的種子。";
+			mes "到底會是什麼結果呢?";
 			next;
 			mes "[德布梨絲]";
-			mes "When you put a seed in a Super Cultivator, and adjust the temperature...";
+			mes "把種子放進超高速培養機中，調節濕度和日曬量...";
 			next;
 			mes "[德布梨絲]";
-			mes "Damn!";
+			mes "哎呀!";
 			next;
 			if (job_gen == 60) {
 				specialeffect EF_FLASHER,AREA,"Super Cultivator#gen";
 				specialeffect EF_PHARMACY_OK,AREA,"Super Cultivator#gen";
 				mes "[德布梨絲]";
-				mes "Popo, look at that!";
-				mes "That's really a mysterious plant!";
+				mes "泡泡，你看這個!";
+				mes "真是個神奇的植物!";
 				next;
 				mes "[德布梨絲]";
-				mes "The inside of the Cultivator is now full of thorny stems!";
-				mes "It's as if the stems are making a wall and growing very sturdily and those are getting tangled!";
+				mes "培養機內部到處都是帶尖刺的藤!";
+				mes "枝條非常密集堅固，就像是牆壁一樣!";
 				next;
 				mes "[德布梨絲]";
-				mes "This is it, Popo!";
-				mes "This plant's properties can be used for many applications!";
+				mes "就是這個，泡泡!";
+				mes "利用這種植物的特性，可以用於各種用途!!";
 				next;
 				mes "[德布梨絲]";
-				mes "This is really great, Popo.";
-				mes "I knew that you were knowledgeable but your ability is more than that!";
+				mes "真是了不起，泡泡。";
+				mes "我以為你應該會有一點成果，沒想到比我想像的更好!";
 				next;
 				mes "[德布梨絲]";
-				mes "I will tell the outcome to the Alchemist Union.";
-				mes "I will send a recommendation letter saying that your ability is really great and that you could be a brilliant member.";
+				mes "我得把你的研究成果告訴鍊金術公會。";
+				mes "我會寫一封信，說泡泡的實力非常了不起，完全有資格成為基因學者的一員。";
 				next;
 				mes "[德布梨絲]";
-				mes "Getting an answer from the Union will take some time, so could you wait a moment?";
-				mes "Why don't you go up to 黛米凱伯林?";
+				mes "等待公會的答覆可能需要一點時間，你能稍等一下嗎?";
+				mes "你去見見黛米凱柏林吧!";
 				next;
 				mes "[德布梨絲]";
-				mes "She is a fellow Geneticist, specializing in mini cannons.";
-				mes "Go take a look at her experiment results.";
-				mes "Could you give this message to her? Tell her to conduct her experiments quietly.";
-				delitem 6273,1; //Altered_Seed
+				mes "她也是基因學者，特長是迷你大砲。";
+				mes "你去看看她的研究成果吧!";
+				mes "幫我轉告她，讓她研究的時候動作輕一點。";
+				delitem 6273,1; //變異種子
 				set job_gen,62;
 				changequest 2215,2216;
 			} else {
 				specialeffect EF_SPELLBREAKER,AREA,"Super Cultivator#gen";
 				specialeffect EF_PHARMACY_FAIL,AREA,"Super Cultivator#gen";
 				mes "[德布梨絲]";
-				mes "Uh oh! You failed, Popo.";
-				mes "It didn't grow at all, it's withered already.";
-				mes "Go and start over!";
-				delitem 6272,1; //Experiment_Seed
+				mes "哎呀!失敗了，泡泡。";
+				mes "完全沒有成長，很快就謝掉了。";
+				mes "快去重新研究!";
+				delitem 6272,1; //實驗用種子
 				set job_gen,7;
 			}
 		}
@@ -500,7 +495,7 @@ job3_gen01,25,58,3	script	德布梨絲#gen	865,{
 			close;
 		}
 		mes "[德布梨絲]";
-		mes "在收到公會的答覆之前，你先去看看黛米凱伯林的研究成果吧!";
+		mes "在收到公會的答覆之前，你先去看看黛米凱柏林的研究成果吧!";
 		close;
 	} else if (job_gen == 76) {
 		mes "[德布梨絲]";
@@ -508,58 +503,54 @@ job3_gen01,25,58,3	script	德布梨絲#gen	865,{
 		mes "有好消息!";
 		next;
 		if (checkweight(1201,2) == 0 || MaxWeight - Weight < 2000) {
-			mes "- Wait a minute !! -";
-			mes "- Currently you're carrying -";
-			mes "- too many items with you. -";
-			mes "- Please try again -";
-			mes "- after you lose some weight. -";
+			mes "- 請在這裡這裡暫停一下!! -";
+			mes "- 您所攜帶的物品太多了 -";
+			mes "- 所以不能獲得物品 -";
+			mes "- 請減輕重量之後 -";
+			mes "- 再來挑戰吧 -";
 			close;
 		}
 		mes "[德布梨絲]";
 		if (BaseJob != Job_Alchemist || BaseLevel < 99 || JobLevel < 50) {
-			mes "Oh, it looks like you're not ready to hear it.";
+			mes "哦，但是你好像還沒做好聽消息的準備。";
 			close;
 		}
 		if (checkcart()){
-			mes "First take off that heavy and dirty cart, that doesn't suit you on this happy moment.";
+			mes "先把那個沉重、骯髒的手推車放掉。在這種開心的時刻，那個東西太煞風景了。";
 			close;
 		}
 		if (SkillPoint != 0) {
-			mes "But you look like you have a lingering desire for previous studies.";
+			mes "- 還有剩餘的技能點數，無法執行任務。 -";
 			close;
 		}
-		mes "A letter has arrived from the Alchemist Union.";
-		mes "I'll read it to you, Popo!";
+		mes "收到鍊金術師公會的信了。";
+		mes "我來讀給你聽，泡泡!";
 		next;
-		mes "<Dearest Miss 德布梨絲,>";
-		mes "<We are very aware of the brilliant activities you've shown lately.>";
+		mes "<親愛的從事基因學研究的德布梨絲小姐>";
+		mes "<最近我們看到了你的活耀，聽到了很多你的消息。>";
 		next;
-		mes "<Miss. 德布梨絲>";
-		mes "This guy is also from my hometown.";
+		mes "[德布梨絲]";
+		mes "這位是我的老鄉。";
 		next;
-		mes "<I heard very good news that your research results are taking the step of commercial use.>";
-		mes "<I'm sure it will be a great inspiration for other Alchemists.>";
+		mes "<傳達你的很多研究成果都進入了可上市的階段，我們對此感到非常高興。>";
+		mes "<這一定會給其他鍊金術師造成很大的激勵作用。>";
 		next;
-		mes "<Come to think of it, you've attached a paper?>";
-		mes "<It was a new plant which makes plants grow super-fast, discovered by an Alchemist named, "+strcharinfo(0)+">";
+		mes "<另外你還隨信附了一篇論文。>";
+		mes "<內容是名叫"+strcharinfo(0)+"的鍊金術師發現的，可以高速成長形成各種隔離斷膜的新型植物。>";
+		mes "<我和鍊金術師公會的各位鍊金術師看了這篇論文，覺得很有意思。>";
 		next;
-		mes "<Myself and many other Alchemists from the Alchemist union are taking great interest in this.>";
+		mes "<聽說了這一消息的其他基因學者對該種植物的應用也非常關心，希望今後能有更多相關的研究論文。>";
 		next;
-		mes "<We are looking forward to more volumes of study papers and outcomes, especially from other Geneticists who?ve heard this news.>";
+		mes "<德布梨絲>";
+		mes "<我想"+strcharinfo(0)+"具備了作為一名基因學者的能力和素質。>";
+		mes "<請你盡快轉告他，希望他在成為基因學者之後，能夠繼續有好的表現。>";
 		next;
-		mes "<Miss. 德布梨絲>";
-		mes "<I think that "+strcharinfo(0)+" has enough ability and talent to be a Geneticist.>";
-		next;
-		mes "<Please tell "+strcharinfo(0)+" as soon as possible that we are expecting remarkable activities as a Geneticist from now on.>";
-		next;
-		mes "<The Alchemist Union is very proud of Miss 德布梨絲, Miss 黛米凱伯林 and "+strcharinfo(0)+" who are excellent talented people.>";
-		mes "<We hope that you yield good fruits in the future as well.>";
+		mes "<鍊金術師公會對於能有德布梨絲小姐、黛米凱柏林小姐和"+strcharinfo(0)+"這樣優秀的人才而感到驕傲。>";
+		mes "<期待你們今後有更好的研究成果發布。>";
 		next;
 		mes "[德布梨絲]";
 		if (ismounting()) {
-			mes "You are on a riding pet,";
-			mes "so you cannot change your job.";
-			mes "Please unequip your riding pet and try again!";
+			mes "請你先從那兇惡的東西上下來，牠不適合如此開心的場合。";
 			close;
 		}
 		mes "祝賀你，泡泡!";
@@ -570,16 +561,16 @@ job3_gen01,25,58,3	script	德布梨絲#gen	865,{
 		getitem 2795,1; //Green_Apple_Ring
 		next;
 		mes "[德布梨絲]";
-		mes "Just like the word from the Union, I'm also looking forward to your awesome activities.";
-		mes "Let's try hard together! To become the best Geneticist!";
+		mes "就像公會信中說的那樣，我也對你充滿了期待。";
+		mes "我們一起努力吧!爭取成為最好的基因學者!";
 		close;
 	} else if (job_gen == 77) {
 		mes "[德布梨絲]";
-		mes "Popo, do you want to join my Love Orleans club? It's a club for those that love cookies. Of course, we don't think of doing weird things with Charles Orleans.";
+		mes "泡泡，你想加入我愛萊昂嗎?那是喜愛餅乾的人組成的同好會。當然，我們對歐羅萊昂完全沒有不純潔的想法。";
 		close;
 	}
 	mes "[德布梨絲]";
-	mes "Am I that pretty to you? Why are you staring at me like that?";
+	mes "我那麼漂亮嗎?幹嘛總是盯著我看?";
 	close;
 }
 
@@ -587,64 +578,63 @@ job3_gen01,83,72,3	script	送貨箱#generic	111,{
 	mes "- 有個巨大的箱子。 -";
 	if (job_gen == 2) {
 		next;
-		switch(select("打開箱子查看:確認地址:什麼也不做。")) {
+		switch(select("打開箱子查看:確認地址:什麼都不做。")) {
 		case 1:
 			mes "- 箱子裡裝著包裝精美的幾袋餅乾。 -";
 			next;
-			switch(select("拿出餅乾:什麼也不做。")) {
+			switch(select("拿出餅乾:什麼都不做。")) {
 			case 1:
-				mes "- 你從箱子裡拿出了一袋餅乾。-";
+				mes "- 你從箱子裡拿出一袋餅乾。 -";
 				set job_gen,3;
 				close;
 			case 2:
-				mes "You do nothing.";
+				mes "你什麼都沒做。";
 				close;
 			}
 		case 2:
-			mes "[From: 盧恩-米德加茲王國, 普隆德拉, Charles Orleans]";
-			mes "[Recipient: 秀發茲發德共和國, 里希塔樂鎮, 德布梨絲]";
+			mes "[寄件人：盧恩.米德加茲王國普隆德拉歐羅萊昂]";
+			mes "[收件人：秀發茲發德共和國企業都市德布梨絲]";
 			close;
 		case 3:
-			mes "You do nothing.";
+			mes "你什麼都沒做。";
 			close;
 		}
 	}
 	close;
 }
 
-job3_gen01,12,56,3	script	植物圖鑑#generic	111,{
-	mes "<世界上最容易的煉金術>";
+job3_gen01,12,56,3	script	植物圖鑒#generic	111,{
+	mes "<世界上最容易的練金術>";
 	mes "包勃羅斯著";
 	next;
 	switch(select("動物篇:植物篇:礦物篇:其他")) {
 	case 1:
-		mes "...Using animals in Alchemy can easily be practiced by anyone.";
-		mes "You can put the animals that you want to use on the white tray, imagine the goal you want to make and then practice the alchemy.";
-		mes "It's very easy.";
+		mes "...利用動物進行的鍊金術非常簡單，誰都可以學會。";
+		mes "把用來施展鍊金術的動物放在白色的托盤上，在頭腦中想像變化的目標三次，然後使用鍊金術。";
+		mes "非常簡單。";
 		next;
-		mes "...The animals that are used in Alchemy might in the danger of getting extinct because of being captured by thoughtless alchemists.";
-		mes "So I won't mention them.";
+		mes "...鍊金術中主要使用的動物，如果遭到鍊金術師們的濫捕，可能會面臨滅絕，因此在本書中不進行討論。";
 		close;
 	case 2:
-		mes "...The guide of Alchemy using plants is easy to follow, even for a little kid.";
-		mes "You can put the plants on the table, and break or cut them, connect them using a simple tool, then do alchemy.";
-		mes "That's really an extraordinary method.";
+		mes "...利用植物進行的鍊金術連小孩子都很容易學會。";
+		mes "把用來施展鍊金術的植物放在桌子上，用簡單的工具把它們折斷或切斷，接在一起，然後使用鍊金術即可。";
+		mes "真是了不起的方法。";
 		next;
-		mes "...The plants usually used for Alchemy are 美枝草 and Muka Trees that have sharp thorns but are delicate inside and Bogi Creeper whose growth speed is really fast but parasitic on living things.";
+		mes "...鍊金術中主要使用的植物有體型超大的美枝草、中間柔軟但是長著非常鋒利的刺的摩卡樹、生長速度非常快但必須寄生在其他生物身上的補氣藤。";
 		if (job_gen == 6)
 			set job_gen,7;
 		close;
 	case 3:
-		mes "...Using minerals in Alchemy is a way that beginners find pretty easy.";
-		mes "You can put the minerals you want to in the beautifully crafted box, and sing any song that you can think of twice and then practice the alchemy.";
-		mes "That's really an easy way.";
+		mes "...使用礦物的鍊金術是新手很容易掌握的技術。";
+		mes "將礦物放進精緻的箱子裡，隨便唱兩次想到的歌，然後施展鍊金術就行了。";
+		mes "真是非常容易。";
 		next;
-		mes "...A mineral that's usually used for Alchemy is 'Phracon' which doesn't cost a lot.";
+		mes "...鍊金術中使用的礦物主要是強化武器金屬等級1，所以對資金的要求也不高。";
 		close;
 	case 4:
-		mes "...Alchemy is the easiest thing in the world.";
-		mes "This writer shows a cobalt blue Alchemy demonstration in front of students every week, and always get a big applaud from them.";
-		mes "I'm sure that you would be into the Alchemy world at the moment you read this book.";
+		mes "...鍊金術是世界上最容易的東西。";
+		mes "筆者每週都會在學生們面前用發出藍光的礦物進行鍊金術示範，每次總能得到熱烈的歡迎。";
+		mes "相信大家看了本書之後，也會被鍊金術給迷住的。";
 		close;
 	}
 }
@@ -658,18 +648,18 @@ function	script	Genetic_Job_Plant	{
 			switch(select("用作材料:不使用")) {
 			case 1:
 				if (getarg(3,0)) set .@str$,"some of the ";
-				mes "- You've acquired "+.@str$+getarg(1)+". -";
+				mes "- 你獲得了"+.@str$+getarg(1)+"。 -";
 				setquest getarg(0);
 				close;
 			case 2:
-				mes "- This plant doesn't look suitable as an experiment sample. -";
+				mes "- 這種植物好像不適合用在研究。 -";
 				close;
 			}
 		}
-		mes "- You've already acquired "+getarg(1)+". -";
+		mes "- 你已經有"+getarg(1)+"了。 -";
 		close;
 	} else if (job_gen == 6) {
-		mes "Information related to this plant can be found in the Plant Guide in the cabinet.";
+		mes "好像需要有關植物的信息，在房間的某個地方應該可以找到。";
 		close;
 	}
 	mes "- "+getarg(2)+" -";
@@ -680,34 +670,33 @@ job3_gen01,36,55,3	script	美枝草#gen	844,{
 	callfunc "Genetic_Job_Plant",2209,"美枝草","雖然是個草，但體積非常巨大，被稱為美枝草。";
 	end;
 }
-job3_gen01,36,45,3	script	Muka Tree#gen	844,{
-	callfunc "Genetic_Job_Plant",2210,"Muka Tree","This is the Muka Tree which protects its delicate inside with sharp thorns.",1;
+job3_gen01,36,45,3	script	摩卡樹#gen	844,{
+	callfunc "Genetic_Job_Plant",2210,"摩卡樹","- 長有保護脆弱身體的尖刺的摩卡樹。 -",1;
 	end;
 }
-job3_gen01,42,55,3	script	Bogi Vine#gen	844,{
-	callfunc "Genetic_Job_Plant",2211,"Bogi Vine","This is a Bogi Vine which has a very fast growth speed.",1;
+job3_gen01,42,55,3	script	補氣藤#gen	844,{
+	callfunc "Genetic_Job_Plant",2211,"補氣藤","- 成長速度非常快的補氣藤。 -",1;
 	end;
 }
-job3_gen01,30,58,3	script	Aolatura#gen	844,{
-	callfunc "Genetic_Job_Plant",2212,"Aolatura","This is known to blossom then thousand flowers as it only blooms once per lifetime.";
+job3_gen01,30,58,3	script	阿蘭杜拉#gen	844,{
+	callfunc "Genetic_Job_Plant",2212,"阿蘭杜拉","- 開花時，會全伸長滿花的植物。 -";
 	end;
 }
-job3_gen01,30,63,3	script	Congra#gen	844,{
-	callfunc "Genetic_Job_Plant",2213,"Congra","It's a plant that has a big and solid stem with enormous leaves.";
+job3_gen01,30,63,3	script	昆格拉#gen	844,{
+	callfunc "Genetic_Job_Plant",2213,"昆格拉","- 擁有巨大而堅固的樹幹和非常大的葉子的植物。 -";
 	end;
 }
-job3_gen01,32,38,3	script	Sticky Grass#gen	844,{
-	callfunc "Genetic_Job_Plant",2214,"Sticky Grass","I may not know the name but it's sticky and can stick to just about anything.";
+job3_gen01,32,38,3	script	黏稠草#gen	844,{
+	callfunc "Genetic_Job_Plant",2214,"黏稠草","- 雖然不知道名字，但擁有粘性，可以粘在任何地方。 -";
 	end;
 }
 
 job3_gen01,7,50,3	script	實驗台#gen	844,{
 	if (job_gen == 7) {
-		mes "-";
-		mes "放著很多工具的實驗台，好像可以把植物放上去進行組合研究。 -";
+		mes "- 放著很多工具的實驗台，好像可以把植物放上去進行組合研究。 -";
 		next;
 		if(select("進行實驗:不進行實驗") == 2) {
-			mes "- It's not the time to start an experiment. -";
+			mes "- 還沒到實驗的時候。 -";
 			close;
 		}
 		if ((checkquest(2209) == -1 || checkquest(2209) == 0) &&
@@ -717,36 +706,36 @@ job3_gen01,7,50,3	script	實驗台#gen	844,{
 		    (checkquest(2213) == -1 || checkquest(2213) == 0) &&
 		    (checkquest(2214) == -1 || checkquest(2214) == 0)) {
 			mes "["+strcharinfo(0)+"]";
-			mes "Hmm, I need to gather plant materials first.";
+			mes "哎呀，應該把要做實驗用的植物帶過來。";
 			close;
 		}
 		mes "要怎麼處理準備好的植物呢?";
 		next;
 		select("折斷:粉碎:搗碎");
 		while (1) {
-			mes "What shall I do now?";
+			mes "接著做什麼呢?";
 			next;
 			if (rand(2))
-				select("燃燒做成灰:泡在蒸餾水裡:用蒸氣蒸");
+				select("燃燒做成灰:泡在蒸餾水裡:用蒸汽蒸");
 			else
 				select("放在實驗用的燒瓶裡搖晃:冷凍:加熱");
 			if (!rand(7)) break;
 		}
-		mes "What shall I do now?";
+		mes "接著做什麼呢?";
 		next;
 		select("注入到實驗用的種子中。");
 		mes "你想選擇哪個種子?";
 		next;
 		select("實驗用種子-A型:實驗用種子-B型:實驗用種子-C型:實驗用種子-D型");
-		mes "I've put the prepared materials into the chosen testing seed.";
+		mes "把選擇好的種子中放進了準備好的物質內";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Good. Now I can let Miss 德布梨絲 take a look at this seed!";
+		mes "好的，現在把種子拿去給德布梨絲看看吧!";
 		if ((checkquest(2209) == -1 || checkquest(2209) == 0) &&
 		    (checkquest(2210) == -1 || checkquest(2210) == 0) &&
 		    (checkquest(2211) == -1 || checkquest(2211) == 0)){
 			set job_gen,61;
-			getitem 6272,1; //Experiment_Seed
+			getitem 6272,1; //實驗用種子
 			close;
 		}
 		if (checkquest(2209) == 1) set job_gen,job_gen+10;
@@ -755,18 +744,18 @@ job3_gen01,7,50,3	script	實驗台#gen	844,{
 		set .@score, job_gen + JobLevel - 20;
 		if (rand(1,100) < .@score) {
 			set job_gen,60;
-			getitem 6273,1; //Altered_Seed
+			getitem 6273,1; //變異種子
 			close;
 		} else {
 			set job_gen,61;
-			getitem 6272,1; //Experiment_Seed
+			getitem 6272,1; //實驗用種子
 			close;
 		}
 	} else if (job_gen > 7 && job_gen < 60) {
-		mes "- It looks like the experiment has failed. I better start over. -";
+		mes "- 看起來實驗好像失敗了，我最好重新來過。 -";
 		set job_gen,7;
-		if (countitem(6273)) delitem 6273,1; //Altered_Seed
-		if (countitem(6272)) delitem 6272,1; //Experiment_Seed
+		if (countitem(6273)) delitem 6273,1; //變異種子
+		if (countitem(6272)) delitem 6272,1; //實驗用種子
 		if (checkquest(2209) == 1) erasequest 2209;
 		if (checkquest(2210) == 1) erasequest 2210;
 		if (checkquest(2211) == 1) erasequest 2211;
@@ -775,157 +764,156 @@ job3_gen01,7,50,3	script	實驗台#gen	844,{
 		if (checkquest(2214) == 1) erasequest 2214;
 		close;
 	} else if (job_gen == 60 || job_gen == 61) {
-		mes " - It looks like I need to let Miss 德布梨絲 take a look at this seed! -";
+		mes " - 好像把實驗得到的的種子交給德布梨絲就可以了。 -";
 		end;
 	}
-	mes "- This is a 實驗台 with a lot of equipment. I think I can study the combinations here with plants. -";
+	mes "- 放著很多工具的實驗台，好像可以把植物放上去進行組合研究。 -";
 	close;
 }
 
-job3_gen01,21,67,3	script	Super Cultivator#gen	844,{
+job3_gen01,21,67,3	script	超高速培養機#gen	844,{
 	end;
 }
 
-job3_gen01,91,48,3	script	黛米凱伯林#gen	982,{
-	mes "[黛米凱伯林]";
+job3_gen01,91,48,3	script	黛米凱柏林#gen	982,{
+	mes "[黛米凱柏林]";
 	if (job_gen < 62) {
-		mes "Hmm~ Where'd that bolt go?";
+		mes "啊~螺栓去哪兒了?";
 		close;
 	} else if (job_gen == 62) {
-		mes "我想坐在藍色的手推車上面~";
+		mes "我想坐在藍色的手推車上~";
 		mes "裝上美麗如畫的大砲~";
 		mes "和我心愛的人一起~";
-		mes "開心一輩子的砲~?";
+		mes "開一輩子的砲~~";
 		next;
-		mes "[黛米凱伯林]";
-		mes "Er~ Where's the bolt?";
-		mes "Why aren't their enough screws? Didn't I order new ones just recently?";
+		mes "[黛米凱柏林]";
+		mes "啊~螺栓去哪兒了?";
+		mes "螺絲也怎麼不夠了?昨天我不是剛訂購了一批嗎?";
 		next;
-		select("Hello~?");
-		mes "[黛米凱伯林]";
-		mes "Oh, my~?";
-		mes "When did you... Who are you?";
+		select("你好");
+		mes "[黛米凱柏林]";
+		mes "哎呀~?";
+		mes "什麼時候...你是誰啊?";
 		next;
-		mes "[黛米凱伯林]";
-		mes "Oh, my god!";
-		mes "Hey! Please help me!";
+		mes "[黛米凱柏林]";
+		mes "啊!不，現在不是說話的時候!";
+		mes "喂!你來幫幫我!";
 		next;
-		mes "[黛米凱伯林]";
-		mes "I need to complete and ordered mini cannon today, but I can't find the parts!";
+		mes "[黛米凱柏林]";
+		mes "客人訂購的手推車用迷你砲必須在今天完成，但不知道零件跑哪裡去了!";
 		next;
-		mes "[黛米凱伯林]";
-		mes "Ugh~ I think they dropped around here somewhere.";
-		mes "I only need 10! I need to put the other parts together first... Please could you help me?!";
+		mes "[黛米凱柏林]";
+		mes "哎呀~我想是不是掉在這周圍......";
+		mes "只要有10個就行了!我得組裝其他零件......拜託你了!";
 		changequest 2216,2217;
 		set job_gen,63;
 		close;
 	} else if (job_gen > 62 && job_gen < 74) {
-		mes "Ah, oh no, oh no~~~";
-		mes "Did you find the parts? No, not yet? You promised, please hurry up!";
+		mes "啊，糟了，糟了~~~";
+		mes "零件找到了嗎?還沒有嗎?既然答應幫我，就請你把握時間!";
 		close;
 	} else if (job_gen == 74) {
 		mes "這個手推車的火力還不夠，把這個裝在這裡的話...";
 		next;
 		select("零件拿來了");
-		mes "[黛米凱伯林]";
-		mes "Oh, gosh!";
-		mes "You scared me to death!!";
-		mes "Oh, are these my lost screws and bolts?";
-		mes "Where did you find these?";
+		mes "[黛米凱柏林]";
+		mes "哎呀，嚇我一跳!!!";
+		mes "你怎麼總是喜歡嚇人啊???";
+		mes "這不是我丟失的螺絲和螺栓嗎?";
+		mes "你是在哪裡找到的?";
 		next;
-		select("You asked me to find them!");
-		mes "[黛米凱伯林]";
-		mes "Oh?, really?";
-		mes "Did I? Hohohohoho.";
-		mes "I don't even know where my mind is.";
+		select("你不是讓我去找的嗎?");
+		mes "[黛米凱柏林]";
+		mes "哎呀?哎呀?";
+		mes "真的嗎?呵呵呵呵呵!";
+		mes "看我的記性。";
 		next;
-		mes "[黛米凱伯林]";
-		mes "Please wait a moment.";
-		mes "I will be done quickly with these.";
+		mes "[黛米凱柏林]";
+		mes "請稍等一下。";
+		mes "只要有這些零件，馬上就能結束了。";
 		next;
-		mes "- Snap Snap Snap -";
+		mes "- 嘎嘎嘎嘎 -";
 		next;
-		mes "[黛米凱伯林]";
-		mes "Okay, I've connected the cannon to the cart... Now shall we test the performance?";
+		mes "[黛米凱柏林]";
+		mes "很好，砲已經組裝到了手推車上......接下來測試一下性能怎麼樣?";
 		next;
-		mes "- Sizlle... -";
+		mes "- 嘁... -";
 		next;
-		mes "- Pop! Pop! Pop! Pop! -";
+		mes "- 砰!砰!砰!砰! -";
 		next;
-		mes "[黛米凱伯林]";
-		mes "Great! Success!";
-		mes "Whew. You've been a lot of help to me.";
-		mes "Thank you very much.";
+		mes "[黛米凱柏林]";
+		mes "很好!成功了!";
+		mes "呼，多虧了你，訂購的東西終於按時完成了。";
+		mes "真是太感謝了。";
 		next;
-		mes "[黛米凱伯林]";
-		mes "Oh, by the way what made you come here?";
-		mes "Did you come here to order something";
-		next;
-		mes "["+strcharinfo(0)+"]";
-		mes "I'm a Geneticist applicant.";
-		mes "I heard that you were very knowledgeable about portable mini cannons and stuff.";
-		next;
-		mes "[黛米凱伯林]";
-		mes "Yep, I deal with many kinds of cannons.";
-		mes "Nowadays, there are those who want to remodel their carts, so I've been installing several additional functions such as mini cannons to their carts.";
+		mes "[黛米凱柏林]";
+		mes "啊?你來找我有什麼事嗎?";
+		mes "你也是來訂做東西的嗎?";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Cart remodeling?";
+		mes "我是基因學者志願生。";
+		mes "聽說黛米凱柏林在攜帶式迷你加農砲方面有著獨到的見解。";
 		next;
-		mes "[黛米凱伯林]";
-		mes "Yes, didn't you want to race out when you went downhill?";
-		mes "Or haven't you ever thought that it was so boring dragging around that plain old cart?";
+		mes "[黛米凱柏林]";
+		mes "是的，我可以製作很多種加農砲。";
+		mes "最近有很多人請我幫他們改造手推車，我給他們安裝了包含迷你加農砲在內很多附加功能。";
 		next;
-		mes "[黛米凱伯林]";
-		mes "Carts are no longer just a wagon for storage.";
-		mes "You could hang a cannon on a cart to make it help you boost your attack power.";
+		mes "["+strcharinfo(0)+"]";
+		mes "改造手推車?";
 		next;
-		mes "[黛米凱伯林]";
-		mes "Miss 德布梨絲 seems to be studying childish experiments downstairs.";
-		mes "I don't understand why those research papers get so popular.";
+		mes "[黛米凱柏林]";
+		mes "是的，你在下坡的時候，難道不想坐著手推車飛奔嗎?";
+		mes "或你不覺得拖著手推車到處走很無趣嗎?";
+		next;
+		mes "[黛米凱柏林]";
+		mes "手推車不再只是裝載東西的推車。";
+		mes "在手推車上裝上加農砲，可以讓它成為攻擊時的好幫手，可以讓你的力量獲得爆發性的提高。";
+		next;
+		mes "[黛米凱柏林]";
+		mes "在下面德布梨絲好像正在做某種像扮家家酒一樣的研究。";
+		mes "我完全不能理解那種論文怎麼能賺到那麼多人氣的，哼。";
 		emotion e_pif;
 		next;
-		mes "[黛米凱伯林]";
-		mes "請看看這個超級迷你加農炮。";
-		mes "只有手掌大小，是世界上最輕、最小的加農炮。";
-		mes "你不覺得它很可愛嗎? 啊-";
+		mes "[黛米凱柏林]";
+		mes "請看看這個超級迷你加農砲。";
+		mes "只有手掌大小，是世界上最輕、最小的加農砲。";
+		mes "你不覺得它很可愛嘛?啊-";
 		emotion e_awsm;
 		next;
 		select("我的手推車也能進行改造嗎?");
-		mes "[黛米凱伯林]";
-		mes "Unfortunately, the cart remodeling is only allowed for Geneticists.";
-		mes "It's a rule from the Alchemist Union, so I can't help it.";
+		mes "[黛米凱柏林]";
+		mes "很遺憾，手推車改造只針對基因學者。";
+		mes "這是鍊金術公會的規定，我也沒辦法。";
 		next;
-		mes "[黛米凱伯林]";
-		mes "But don't get disappointed.";
-		mes "You can be a Geneticist too!";
-		mes "Hohoho.";
+		mes "[黛米凱柏林]";
+		mes "但是請不要失望。";
+		mes "只要成為基因學者不就行了?呵呵呵呵!";
 		next;
-		mes "[黛米凱伯林]";
-		mes "And what's more, you can?t so the cart remodeling to just any cart.";
-		mes "It can only be done on quality certified carts that've been polished for a long time.";
+		mes "[黛米凱柏林]";
+		mes "而且不是所有手推車都可以進行改造。";
+		mes "必須是經過長時間內磨練的、品質經過檢驗的手推車才行。";
 		next;
-		mes "[黛米凱伯林]";
-		mes "You should practice your cart skills whenever you have time until you become a Geneticist.";
-		mes "Till your muscles are dealing with your cart in powerful harmony and your cart moves beautifully,";
+		mes "[黛米凱柏林]";
+		mes "在成為基因學者之前，請你平時好好修練修練手推車技能。";
+		mes "要使你的肌肉和手推車的運動達到完美的平衡才行。";
 		next;
-		mes "[黛米凱伯林]";
-		mes "If you want, ^FF0000I'll show you a good training spot.^000000";
-		mes "^FF0000德布梨絲 won't like it much^000000, but it's the best place. Haha.";
+		mes "[黛米凱柏林]";
+		mes "如果你需要的話，^FF0000我可以給你介紹一個不錯的修練場所^000000。";
+		mes "^FF0000雖然她應該不怎麼喜歡^000000，但那裡真的是很棒的場所，呵呵!";
 		next;
-		mes "[黛米凱伯林]";
+		mes "[黛米凱柏林]";
 		mes "趁這次機會，你去盡情讓你的手推車飛奔吧!";
 		mes "你去用手推車打飛";
-		mes "^FF0000100個左右的怪物^000000，緩解一下疲勞，熟悉一下手推車。";
+		mes "^FF0000100個左右的怪物^000000緩解一下疲勞，熟悉一下手推車。";
 		next;
-		mes "[黛米凱伯林]";
-		mes "Well, I need to get to work for the next order.";
-		mes "Come and find me whenever you need training.";
-		mes "I'll help you out whenever you need your cart remodeled.";
+		mes "[黛米凱柏林]";
+		mes "好了，我得開始準備下一個訂單的製作了。";
+		mes "需要修練的時候，請隨時來找我。";
+		mes "我會隨時幫你進行手推車改造的。";
 		next;
-		mes "- Rattle -";
+		mes "- 咯 -";
 		next;
-		mes "- What's this? I feel like the floor is missing somewhere. -";
+		mes "- 怎麼回事?感覺地面好像突然空蕩蕩的。 -";
 		set job_gen,75;
 		changequest 2217,2223;
 		close2;
@@ -933,43 +921,44 @@ job3_gen01,91,48,3	script	黛米凱伯林#gen	982,{
 		end;
 	} else if (job_gen == 75) {
 		if (checkquest(2223,HUNTING) == 2) {
-			mes "德布梨絲好像發現是我把你送進圍欄的了。看著她的那個表情，感覺真的很不錯。真可惜。";
+			mes "德布梨絲好像發現是我把你送進圍欄的了。";
+			mes "看著德布梨絲的那個表情，感覺真的很不錯。真可惜。";
 			close;
 		}
-		mes "Sigh, haven't you finished practicing?";
-		mes "Do you want to enter the spore pen?";
+		mes "哎呀，修練還沒結束嗎?";
+		mes "你想到魔菇圍欄裡去嗎?";
 		next;
-		switch(select("Yes.:No.")) {
+		switch(select("是的:不")) {
 		case 1:
-			mes "[黛米凱伯林]";
-			mes "Have fun swinging your cart around~";
+			mes "[黛米凱柏林]";
+			mes "盡情地!盡情地揮舞你的手推車吧~";
 			close2;
 			warp "job3_gen01",23,32;
 			end;
 		case 2:
-			mes "[黛米凱伯林]";
-			mes "What a shame! I wanted to see Miss 德布梨絲's angry face.";
+			mes "[黛米凱柏林]";
+			mes "哎呀，真可惜。我真想看看德布梨絲火冒三丈的樣子。";
 			close;
 		}
 	} else if (job_gen > 75) {
-		mes "It seem Miss 德布梨絲 found out that I put you in her spore pen.";
-		mes "It's funny when you look at her face. After you've killed all those spores.";
+		mes "德布梨絲好像發現是我把你送進圍欄的了。";
+		mes "看著德布梨絲的那個表情，感覺真的很不錯。真可惜。";
 		close;
 	}
 }
 
 -	script	散亂的東西#gen	-1,{
 	if (job_gen > 62 && job_gen < 74) {
-		mes "- 地上散亂著各種東西，實驗室裡一片狼藉 -";
+		mes "- 地上散落著各種東西，實驗室一片狼藉 -";
 		next;
-		mes "- You found a little metal fragment. -";
+		mes "- 在裡面你找到了一些小金屬碎片 -";
 		set job_gen, job_gen+1;
 		specialeffect EF_BASH;
 		disablenpc strnpcinfo(0);
 		initnpctimer;
 		close;
 	} else if (job_gen == 74) {
-		mes "- I think I've gathered all of the parts. -";
+		mes "- 零件好像都已收齊了 -";
 		close;
 	}
 	end;
@@ -993,43 +982,43 @@ job3_gen01,18,39,3	script	警告#gen	837,{
 	next;
 	switch(select("到圍欄外面去:待著不動")) {
 	case 1:
-		mes "- I'd better get out before I get caught by Miss 德布梨絲. -";
+		mes "- 在被德布梨絲抓住之前，最好還是出去 -";
 		close2;
 		warp "job3_gen01",21,38;
 		end;
 	case 2:
-		mes "- I decide to stay still. -";
+		mes "- 行動已取消。 -";
 		close;
 	}
 }
 
-job3_gen01,80,12,1	script	Stacked Magazines#gen	111,{
-	mes "- 'Monthly Bang!' magazines are piled up in disorder. -";
+job3_gen01,80,12,1	script	堆著的書#gen	111,{
+	mes "- <月刊BooM!>的過期雜誌亂糟糟地堆在那裡。 -";
 	close;
 }
 
-job3_gen01,83,20,1	script	Bed#gen	111,{
-	mes "- A checker patterned blanket set which looks like it was picked carefully is too good for this dirty bed. -";
+job3_gen01,83,20,1	script	床#gen	111,{
+	mes "- 方格花紋的床單組好像經過了精心挑選，但看上去髒兮兮的，幾乎喪失了休息的功能。 -";
 	close;
 }
 
-job3_gen01,85,25,1	script	Opened Book#gen	111,{
-	mes "< Do you want to have my pretty room? Do you have enough zeny? Is there enough room? Run to the Lighthalzen Department Store right away and get the most high-end wall papers and interior accessories! >";
+job3_gen01,85,25,1	script	被打開的書#gen	111,{
+	mes "< 你也想要這麼漂亮的房間嗎?你的錢夠嗎?你有足夠大的房間嗎?請馬上到企業都市百貨商店去，把最高級的壁紙和裝飾用品全部買回來吧! >";
 	next;
-	mes "< Luxurious candles that'll lighten up your room, a huge golden mirror that every lady owns, you cannot miss any of them! >";
+	mes "< 在夜裡照亮你的房間的高級蠟燭，貴婦人必須擁有的黃金材質的大鏡子。兩著缺一不可! >";
 	close;
 }
 
 job3_gen01,81,81,0	script	#dbroom	139,2,2,{
 OnTouch:
-	mes "- It's a room that looks like a storehouse, thanks to so many parcels piled up in the room. -";
+	mes "- 房間的一邊堆滿著快遞箱子，看上去像倉庫一樣。 -";
 	close;
 }
 
-job3_gen01,24,32,0	script	The gaze of 德布梨絲	139,2,2,{
+job3_gen01,24,32,0	script	The gaze of Devries	139,2,2,{
 OnTouch:
 	if (checkquest(2223,HUNTING) == 2) {
-		mapannounce "job3_gen01","德布梨絲: Whoa? Was there a lost kitty in the spore pen?",bc_map,"0x99CC00"; //FW_NORMAL 12 0 0
+		mapannounce "job3_gen01","德布梨絲：哎呀?魔菇圍欄裡有貓跑進去了嗎?",bc_map,"0x99CC00"; //FW_NORMAL 12 0 0
 		emotion e_omg,1;
 		warp "job3_gen01",21,38;
 	}
